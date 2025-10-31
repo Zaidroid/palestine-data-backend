@@ -1,0 +1,130 @@
+{
+  "indicator": "SL.TLF.CACT.FE.ZS",
+  "indicator_name": "Labor force participation rate, female (% of female population ages 15+)",
+  "category": "labor",
+  "data": [
+    {
+      "year": 2010,
+      "value": 14.033,
+      "indicator": "SL.TLF.CACT.FE.ZS",
+      "indicator_name": "Labor force participation rate, female (% of female population ages 15+)",
+      "country": "West Bank and Gaza",
+      "source": "pcbs",
+      "source_detail": "PCBS via World Bank API"
+    },
+    {
+      "year": 2011,
+      "value": 15.625,
+      "indicator": "SL.TLF.CACT.FE.ZS",
+      "indicator_name": "Labor force participation rate, female (% of female population ages 15+)",
+      "country": "West Bank and Gaza",
+      "source": "pcbs",
+      "source_detail": "PCBS via World Bank API"
+    },
+    {
+      "year": 2012,
+      "value": 16.169,
+      "indicator": "SL.TLF.CACT.FE.ZS",
+      "indicator_name": "Labor force participation rate, female (% of female population ages 15+)",
+      "country": "West Bank and Gaza",
+      "source": "pcbs",
+      "source_detail": "PCBS via World Bank API"
+    },
+    {
+      "year": 2013,
+      "value": 15.829,
+      "indicator": "SL.TLF.CACT.FE.ZS",
+      "indicator_name": "Labor force participation rate, female (% of female population ages 15+)",
+      "country": "West Bank and Gaza",
+      "source": "pcbs",
+      "source_detail": "PCBS via World Bank API"
+    },
+    {
+      "year": 2014,
+      "value": 16.563,
+      "indicator": "SL.TLF.CACT.FE.ZS",
+      "indicator_name": "Labor force participation rate, female (% of female population ages 15+)",
+      "country": "West Bank and Gaza",
+      "source": "pcbs",
+      "source_detail": "PCBS via World Bank API"
+    },
+    {
+      "year": 2015,
+      "value": 17.998,
+      "indicator": "SL.TLF.CACT.FE.ZS",
+      "indicator_name": "Labor force participation rate, female (% of female population ages 15+)",
+      "country": "West Bank and Gaza",
+      "source": "pcbs",
+      "source_detail": "PCBS via World Bank API"
+    },
+    {
+      "year": 2016,
+      "value": 17.435,
+      "indicator": "SL.TLF.CACT.FE.ZS",
+      "indicator_name": "Labor force participation rate, female (% of female population ages 15+)",
+      "country": "West Bank and Gaza",
+      "source": "pcbs",
+      "source_detail": "PCBS via World Bank API"
+    },
+    {
+      "year": 2017,
+      "value": 17.665,
+      "indicator": "SL.TLF.CACT.FE.ZS",
+      "indicator_name": "Labor force participation rate, female (% of female population ages 15+)",
+      "country": "West Bank and Gaza",
+      "source": "pcbs",
+      "source_detail": "PCBS via World Bank API"
+    },
+    {
+      "year": 2018,
+      "value": 17.665,
+      "indicator": "SL.TLF.CACT.FE.ZS",
+      "indicator_name": "Labor force participation rate, female (% of female population ages 15+)",
+      "country": "West Bank and Gaza",
+      "source": "pcbs",
+      "source_detail": "PCBS via World Bank API"
+    },
+    {
+      "year": 2019,
+      "value": 18.383,
+      "indicator": "SL.TLF.CACT.FE.ZS",
+      "indicator_name": "Labor force participation rate, female (% of female population ages 15+)",
+      "country": "West Bank and Gaza",
+      "source": "pcbs",
+      "source_detail": "PCBS via World Bank API"
+    },
+    {
+      "year": 2020,
+      "value": 16.431,
+      "indicator": "SL.TLF.CACT.FE.ZS",
+      "indicator_name": "Labor force participation rate, female (% of female population ages 15+)",
+      "country": "West Bank and Gaza",
+      "source": "pcbs",
+      "source_detail": "PCBS via World Bank API"
+    },
+    {
+      "year": 2021,
+      "value": 17.545,
+      "indicator": "SL.TLF.CACT.FE.ZS",
+      "indicator_name": "Labor force participation rate, female (% of female population ages 15+)",
+      "country": "West Bank and Gaza",
+      "source": "pcbs",
+      "source_detail": "PCBS via World Bank API"
+    },
+    {
+      "year": 2022,
+      "value": 18.934,
+      "indicator": "SL.TLF.CACT.FE.ZS",
+      "indicator_name": "Labor force participation rate, female (% of female population ages 15+)",
+      "country": "West Bank and Gaza",
+      "source": "pcbs",
+      "source_detail": "PCBS via World Bank API"
+    }
+  ],
+  "metadata": {
+    "source": "Palestinian Central Bureau of Statistics (PCBS)",
+    "source_detail": "Data accessed via World Bank Open Data API",
+    "last_updated": "2025-10-30T09:42:58.552Z",
+    "total_points": 13
+  }
+}

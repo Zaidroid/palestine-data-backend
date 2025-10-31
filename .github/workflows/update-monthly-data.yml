@@ -1,0 +1,226 @@
+name: Update Monthly Data Sources
+
+# Run monthly on the 1st at midnight UTC for World Bank, WHO, UNRWA, and PCBS data
+on:
+  schedule:
+    # Runs at 00:00 UTC on the 1st of every month
+    - cron: '0 0 1 * *'
+  
+  # Allow manual trigger from GitHub Actions tab
+  workflow_dispatch:
+
+jobs:
+  update-monthly-data:
+    runs-on: ubuntu-latest
+    
+    steps:
+      # 1. Checkout the repository
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+      
+      # 2. Setup Node.js
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '18'
+          cache: 'npm'
+      
+      # 3. Install dependencies
+      - name: Install dependencies
+        run: npm ci
+      
+      # 4. Fetch World Bank data
+      - name: Fetch World Bank data
+        id: fetch_worldbank
+        run: |
+          echo "Fetching World Bank data..."
+          if node scripts/fetch-worldbank-data.js; then
+            echo "✅ World Bank data fetched successfully"
+            echo "success=true" >> $GITHUB_OUTPUT
+          else
+            echo "❌ World Bank data fetch failed"
+            echo "success=false" >> $GITHUB_OUTPUT
+          fi
+        env:
+          NODE_ENV: production
+        continue-on-error: true
+      
+      # 5. Fetch WHO data
+      - name: Fetch WHO data
+        id: fetch_who
+        run: |
+          echo "Fetching WHO data..."
+          if node scripts/fetch-who-data.js; then
+            echo "✅ WHO data fetched successfully"
+            echo "success=true" >> $GITHUB_OUTPUT
+          else
+            echo "❌ WHO data fetch failed"
+            echo "success=false" >> $GITHUB_OUTPUT
+          fi
+        env:
+          NODE_ENV: production
+        continue-on-error: true
+      
+      # 6. Fetch UNRWA data
+      - name: Fetch UNRWA data
+        id: fetch_unrwa
+        run: |
+          echo "Checking for UNRWA data fetcher..."
+          if [ -f "scripts/fetch-unrwa-data.js" ]; then
+            echo "Fetching UNRWA data..."
+            if node scripts/fetch-unrwa-data.js; then
+              echo "✅ UNRWA data fetched successfully"
+              echo "success=true" >> $GITHUB_OUTPUT
+            else
+              echo "❌ UNRWA data fetch failed"
+              echo "success=false" >> $GITHUB_OUTPUT
+            fi
+          else
+            echo "⚠️ UNRWA data fetcher not yet implemented"
+            echo "success=skipped" >> $GITHUB_OUTPUT
+          fi
+        env:
+          HDX_API_KEY: ${{ secrets.HDX_API_KEY }}
+          NODE_ENV: production
+        continue-on-error: true
+      
+      # 7. Fetch PCBS data
+      - name: Fetch PCBS data
+        id: fetch_pcbs
+        run: |
+          echo "Checking for PCBS data fetcher..."
+          if [ -f "scripts/fetch-pcbs-data.js" ]; then
+            echo "Fetching PCBS data..."
+            if node scripts/fetch-pcbs-data.js; then
+              echo "✅ PCBS data fetched successfully"
+              echo "success=true" >> $GITHUB_OUTPUT
+            else
+              echo "❌ PCBS data fetch failed"
+              echo "success=false" >> $GITHUB_OUTPUT
+            fi
+          else
+            echo "⚠️ PCBS data fetcher not yet implemented"
+            echo "success=skipped" >> $GITHUB_OUTPUT
+          fi
+        env:
+          NODE_ENV: production
+        continue-on-error: true
+      
+      # 8. Transform to unified format
+      - name: Populate unified data
+        run: npm run populate-unified
+        continue-on-error: true
+      
+      # 9. Run data validation
+      - name: Validate data quality
+        run: node scripts/validate-data.js
+        continue-on-error: true
+      
+      # 10. Update global manifest
+      - name: Update manifest
+        run: node scripts/generate-manifest.js
+        continue-on-error: true
+      
+      # 11. Check if data changed
+      - name: Check for changes
+        id: check_changes
+        run: |
+          if git diff --quiet public/data/worldbank/ public/data/who/ public/data/unrwa/ public/data/pcbs/ public/data/unified/ public/data/manifest.json; then
+            echo "changed=false" >> $GITHUB_OUTPUT
+            echo "ℹ️ No data changes detected"
+          else
+            echo "changed=true" >> $GITHUB_OUTPUT
+            echo "✅ Data changes detected"
+            # Show what changed
+            git diff --stat public/data/worldbank/ public/data/who/ public/data/unrwa/ public/data/pcbs/ public/data/unified/ public/data/manifest.json
+          fi
+      
+      # 12. Commit and push if data changed
+      - name: Commit and push changes
+        if: steps.check_changes.outputs.changed == 'true'
+        run: |
+          git config --local user.name "Monthly Data Bot"
+          git config --local user.email "monthly-bot@palboard.net"
+          git add public/data/worldbank/
+          git add public/data/who/
+          git add public/data/unrwa/
+          git add public/data/pcbs/
+          git add public/data/unified/
+          git add public/data/manifest.json
+          git add public/data/validation-report.json
+          git add public/data/data-collection-summary.json
+          git commit -m "🤖 Auto-update monthly data (World Bank, WHO, UNRWA, PCBS + Unified): $(date -u '+%Y-%m-%d %H:%M UTC')"
+          git push
+      
+      # 13. Summary
+      - name: Summary
+        run: |
+          echo "📊 Monthly Data Update Summary"
+          echo "================================"
+          
+          if [ "${{ steps.fetch_worldbank.outputs.success }}" == "true" ]; then
+            echo "✅ World Bank: Success"
+          else
+            echo "❌ World Bank: Failed (check logs)"
+          fi
+          
+          if [ "${{ steps.fetch_who.outputs.success }}" == "true" ]; then
+            echo "✅ WHO: Success"
+          else
+            echo "❌ WHO: Failed (check logs)"
+          fi
+          
+          if [ "${{ steps.fetch_unrwa.outputs.success }}" == "true" ]; then
+            echo "✅ UNRWA: Success"
+          elif [ "${{ steps.fetch_unrwa.outputs.success }}" == "skipped" ]; then
+            echo "⚠️ UNRWA: Skipped (not implemented)"
+          else
+            echo "❌ UNRWA: Failed (check logs)"
+          fi
+          
+          if [ "${{ steps.fetch_pcbs.outputs.success }}" == "true" ]; then
+            echo "✅ PCBS: Success"
+          elif [ "${{ steps.fetch_pcbs.outputs.success }}" == "skipped" ]; then
+            echo "⚠️ PCBS: Skipped (not implemented)"
+          else
+            echo "❌ PCBS: Failed (check logs)"
+          fi
+          
+          echo "================================"
+          
+          if [ "${{ steps.check_changes.outputs.changed }}" == "true" ]; then
+            echo "✅ Data updated and pushed to repository"
+            echo "📊 Netlify will automatically deploy the changes"
+            echo "🔄 Unified data transformed and enriched"
+          else
+            echo "ℹ️ No data changes - skipping commit"
+          fi
+      
+      # 14. Upload validation report as artifact
+      - name: Upload validation report
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: validation-report-monthly
+          path: public/data/validation-report.json
+          retention-days: 30
+      
+      # 15. Upload summary report as artifact
+      - name: Upload summary report
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: summary-report-monthly
+          path: public/data/data-collection-summary.json
+          retention-days: 30
+      
+      # 16. Upload logs as artifact
+      - name: Upload logs
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: logs-monthly
+          path: data-collection.log
+          retention-days: 30

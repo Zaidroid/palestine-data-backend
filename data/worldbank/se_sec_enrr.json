@@ -1,0 +1,132 @@
+{
+  "indicator": "SE.SEC.ENRR",
+  "indicator_name": "School enrollment, secondary (% gross)",
+  "data": [
+    {
+      "year": 2010,
+      "value": 89.1773371332236,
+      "indicator": "SE.SEC.ENRR",
+      "indicator_name": "School enrollment, secondary (% gross)",
+      "country": "West Bank and Gaza",
+      "source": "worldbank"
+    },
+    {
+      "year": 2011,
+      "value": 88.2808414383622,
+      "indicator": "SE.SEC.ENRR",
+      "indicator_name": "School enrollment, secondary (% gross)",
+      "country": "West Bank and Gaza",
+      "source": "worldbank"
+    },
+    {
+      "year": 2012,
+      "value": 88.0041466962408,
+      "indicator": "SE.SEC.ENRR",
+      "indicator_name": "School enrollment, secondary (% gross)",
+      "country": "West Bank and Gaza",
+      "source": "worldbank"
+    },
+    {
+      "year": 2013,
+      "value": 87.7419851728182,
+      "indicator": "SE.SEC.ENRR",
+      "indicator_name": "School enrollment, secondary (% gross)",
+      "country": "West Bank and Gaza",
+      "source": "worldbank"
+    },
+    {
+      "year": 2014,
+      "value": 87.618042824034,
+      "indicator": "SE.SEC.ENRR",
+      "indicator_name": "School enrollment, secondary (% gross)",
+      "country": "West Bank and Gaza",
+      "source": "worldbank"
+    },
+    {
+      "year": 2015,
+      "value": 88.3909219114319,
+      "indicator": "SE.SEC.ENRR",
+      "indicator_name": "School enrollment, secondary (% gross)",
+      "country": "West Bank and Gaza",
+      "source": "worldbank"
+    },
+    {
+      "year": 2016,
+      "value": 88.6612882360835,
+      "indicator": "SE.SEC.ENRR",
+      "indicator_name": "School enrollment, secondary (% gross)",
+      "country": "West Bank and Gaza",
+      "source": "worldbank"
+    },
+    {
+      "year": 2017,
+      "value": 89.7461522132674,
+      "indicator": "SE.SEC.ENRR",
+      "indicator_name": "School enrollment, secondary (% gross)",
+      "country": "West Bank and Gaza",
+      "source": "worldbank"
+    },
+    {
+      "year": 2018,
+      "value": 89.6454662001111,
+      "indicator": "SE.SEC.ENRR",
+      "indicator_name": "School enrollment, secondary (% gross)",
+      "country": "West Bank and Gaza",
+      "source": "worldbank"
+    },
+    {
+      "year": 2019,
+      "value": 90.3135207321564,
+      "indicator": "SE.SEC.ENRR",
+      "indicator_name": "School enrollment, secondary (% gross)",
+      "country": "West Bank and Gaza",
+      "source": "worldbank"
+    },
+    {
+      "year": 2020,
+      "value": 90.2544056722155,
+      "indicator": "SE.SEC.ENRR",
+      "indicator_name": "School enrollment, secondary (% gross)",
+      "country": "West Bank and Gaza",
+      "source": "worldbank"
+    },
+    {
+      "year": 2021,
+      "value": 91.0094011735985,
+      "indicator": "SE.SEC.ENRR",
+      "indicator_name": "School enrollment, secondary (% gross)",
+      "country": "West Bank and Gaza",
+      "source": "worldbank"
+    },
+    {
+      "year": 2022,
+      "value": 90.1364802874113,
+      "indicator": "SE.SEC.ENRR",
+      "indicator_name": "School enrollment, secondary (% gross)",
+      "country": "West Bank and Gaza",
+      "source": "worldbank"
+    },
+    {
+      "year": 2023,
+      "value": 89.1210984011759,
+      "indicator": "SE.SEC.ENRR",
+      "indicator_name": "School enrollment, secondary (% gross)",
+      "country": "West Bank and Gaza",
+      "source": "worldbank"
+    }
+  ],
+  "metadata": {
+    "source": "World Bank Open Data",
+    "last_updated": "2025-10-29T21:02:07.436Z",
+    "total_points": 14
+  },
+  "validation": {
+    "qualityScore": 1,
+    "completeness": 1,
+    "consistency": 1,
+    "accuracy": 1,
+    "meetsThreshold": true,
+    "errorCount": 0,
+    "warningCount": 0
+  }
+}

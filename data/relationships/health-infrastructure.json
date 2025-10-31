@@ -1,0 +1,10 @@
+{
+  "relationship_type": "health-infrastructure",
+  "description": "Links between health and infrastructure datasets",
+  "links": [],
+  "metadata": {
+    "total_links": 0,
+    "last_updated": "2025-10-29T19:32:29.173Z",
+    "confidence_threshold": 0.7
+  }
+}

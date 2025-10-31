@@ -1,0 +1,130 @@
+{
+  "indicator": "SL.TLF.CACT.ZS",
+  "indicator_name": "Labor force participation rate, total (% of total population ages 15+)",
+  "category": "labor",
+  "data": [
+    {
+      "year": 2010,
+      "value": 39.997,
+      "indicator": "SL.TLF.CACT.ZS",
+      "indicator_name": "Labor force participation rate, total (% of total population ages 15+)",
+      "country": "West Bank and Gaza",
+      "source": "pcbs",
+      "source_detail": "PCBS via World Bank API"
+    },
+    {
+      "year": 2011,
+      "value": 41.362,
+      "indicator": "SL.TLF.CACT.ZS",
+      "indicator_name": "Labor force participation rate, total (% of total population ages 15+)",
+      "country": "West Bank and Gaza",
+      "source": "pcbs",
+      "source_detail": "PCBS via World Bank API"
+    },
+    {
+      "year": 2012,
+      "value": 41.679,
+      "indicator": "SL.TLF.CACT.ZS",
+      "indicator_name": "Labor force participation rate, total (% of total population ages 15+)",
+      "country": "West Bank and Gaza",
+      "source": "pcbs",
+      "source_detail": "PCBS via World Bank API"
+    },
+    {
+      "year": 2013,
+      "value": 41.801,
+      "indicator": "SL.TLF.CACT.ZS",
+      "indicator_name": "Labor force participation rate, total (% of total population ages 15+)",
+      "country": "West Bank and Gaza",
+      "source": "pcbs",
+      "source_detail": "PCBS via World Bank API"
+    },
+    {
+      "year": 2014,
+      "value": 42.118,
+      "indicator": "SL.TLF.CACT.ZS",
+      "indicator_name": "Labor force participation rate, total (% of total population ages 15+)",
+      "country": "West Bank and Gaza",
+      "source": "pcbs",
+      "source_detail": "PCBS via World Bank API"
+    },
+    {
+      "year": 2015,
+      "value": 43.967,
+      "indicator": "SL.TLF.CACT.ZS",
+      "indicator_name": "Labor force participation rate, total (% of total population ages 15+)",
+      "country": "West Bank and Gaza",
+      "source": "pcbs",
+      "source_detail": "PCBS via World Bank API"
+    },
+    {
+      "year": 2016,
+      "value": 43.769,
+      "indicator": "SL.TLF.CACT.ZS",
+      "indicator_name": "Labor force participation rate, total (% of total population ages 15+)",
+      "country": "West Bank and Gaza",
+      "source": "pcbs",
+      "source_detail": "PCBS via World Bank API"
+    },
+    {
+      "year": 2017,
+      "value": 44.004,
+      "indicator": "SL.TLF.CACT.ZS",
+      "indicator_name": "Labor force participation rate, total (% of total population ages 15+)",
+      "country": "West Bank and Gaza",
+      "source": "pcbs",
+      "source_detail": "PCBS via World Bank API"
+    },
+    {
+      "year": 2018,
+      "value": 43.452,
+      "indicator": "SL.TLF.CACT.ZS",
+      "indicator_name": "Labor force participation rate, total (% of total population ages 15+)",
+      "country": "West Bank and Gaza",
+      "source": "pcbs",
+      "source_detail": "PCBS via World Bank API"
+    },
+    {
+      "year": 2019,
+      "value": 44.271,
+      "indicator": "SL.TLF.CACT.ZS",
+      "indicator_name": "Labor force participation rate, total (% of total population ages 15+)",
+      "country": "West Bank and Gaza",
+      "source": "pcbs",
+      "source_detail": "PCBS via World Bank API"
+    },
+    {
+      "year": 2020,
+      "value": 40.936,
+      "indicator": "SL.TLF.CACT.ZS",
+      "indicator_name": "Labor force participation rate, total (% of total population ages 15+)",
+      "country": "West Bank and Gaza",
+      "source": "pcbs",
+      "source_detail": "PCBS via World Bank API"
+    },
+    {
+      "year": 2021,
+      "value": 43.367,
+      "indicator": "SL.TLF.CACT.ZS",
+      "indicator_name": "Labor force participation rate, total (% of total population ages 15+)",
+      "country": "West Bank and Gaza",
+      "source": "pcbs",
+      "source_detail": "PCBS via World Bank API"
+    },
+    {
+      "year": 2022,
+      "value": 44.991,
+      "indicator": "SL.TLF.CACT.ZS",
+      "indicator_name": "Labor force participation rate, total (% of total population ages 15+)",
+      "country": "West Bank and Gaza",
+      "source": "pcbs",
+      "source_detail": "PCBS via World Bank API"
+    }
+  ],
+  "metadata": {
+    "source": "Palestinian Central Bureau of Statistics (PCBS)",
+    "source_detail": "Data accessed via World Bank Open Data API",
+    "last_updated": "2025-10-30T09:42:58.099Z",
+    "total_points": 13
+  }
+}

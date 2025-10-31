@@ -1,0 +1,49 @@
+{
+  "indicator": "SI.POV.GINI",
+  "indicator_name": "Gini index",
+  "category": "poverty",
+  "data": [
+    {
+      "year": 2010,
+      "value": 35.3,
+      "indicator": "SI.POV.GINI",
+      "indicator_name": "Gini index",
+      "country": "West Bank and Gaza",
+      "source": "pcbs",
+      "source_detail": "PCBS via World Bank API"
+    },
+    {
+      "year": 2011,
+      "value": 34.4,
+      "indicator": "SI.POV.GINI",
+      "indicator_name": "Gini index",
+      "country": "West Bank and Gaza",
+      "source": "pcbs",
+      "source_detail": "PCBS via World Bank API"
+    },
+    {
+      "year": 2016,
+      "value": 33.7,
+      "indicator": "SI.POV.GINI",
+      "indicator_name": "Gini index",
+      "country": "West Bank and Gaza",
+      "source": "pcbs",
+      "source_detail": "PCBS via World Bank API"
+    },
+    {
+      "year": 2023,
+      "value": 36.4,
+      "indicator": "SI.POV.GINI",
+      "indicator_name": "Gini index",
+      "country": "West Bank and Gaza",
+      "source": "pcbs",
+      "source_detail": "PCBS via World Bank API"
+    }
+  ],
+  "metadata": {
+    "source": "Palestinian Central Bureau of Statistics (PCBS)",
+    "source_detail": "Data accessed via World Bank Open Data API",
+    "last_updated": "2025-10-30T09:43:39.265Z",
+    "total_points": 4
+  }
+}

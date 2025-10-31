@@ -1,0 +1,53 @@
+{
+  "id": "121c6bdd-1638-4c46-8842-d89603ad8396",
+  "name": "unicef-ed-anar-l1",
+  "title": "Adjusted net attendance rate for children of primary school age",
+  "description": "Percentage of students of the official primary school age group who attended primary education or higher at any time during the reference academic year",
+  "category": "education",
+  "organization": {
+    "name": "unicef-data",
+    "title": "UNICEF Data and Analytics (HQ)"
+  },
+  "tags": [
+    "children",
+    "education",
+    "indicators",
+    "youth"
+  ],
+  "license": "Creative Commons Attribution for Intergovernmental Organisations (CC BY-IGO)",
+  "dataset_date": "[2010-01-01T00:00:00 TO 2022-12-31T23:59:59]",
+  "last_modified": "2025-10-28T09:06:20.904999",
+  "data_update_frequency": "-2",
+  "num_resources": 2,
+  "resources": [
+    {
+      "id": "7ef42a97-771e-4b3b-8acc-8ea160638e5e",
+      "name": "Adjusted net attendance rate for children of primary school age (CSV)",
+      "format": "CSV",
+      "size": null,
+      "last_modified": "2020-04-14T09:43:36.215389",
+      "url": "https://sdmx.data.unicef.org/ws/public/sdmxapi/rest/data/UNICEF,EDUCATION,1.0/.ED_ANAR_L1.....?format=csv"
+    },
+    {
+      "id": "0ac1dc88-33f4-4821-9fde-1ae4cda7ab62",
+      "name": "Adjusted net attendance rate for children of primary school age (XML)",
+      "format": "XML",
+      "size": null,
+      "last_modified": "2020-04-14T09:43:36.215389",
+      "url": "https://sdmx.data.unicef.org/ws/public/sdmxapi/rest/data/UNICEF,EDUCATION,1.0/.ED_ANAR_L1....."
+    }
+  ],
+  "source_url": "https://data.humdata.org/dataset/unicef-ed-anar-l1",
+  "extracted_at": "2025-10-29T21:10:20.583Z",
+  "palestine_context": {
+    "regions_covered": [],
+    "governorates": [],
+    "conflict_related": false,
+    "baseline_comparison_available": false
+  },
+  "data_quality": {
+    "update_frequency": "-2",
+    "last_updated": "2025-10-28T09:06:20.904999",
+    "source_reliability": "high"
+  }
+}

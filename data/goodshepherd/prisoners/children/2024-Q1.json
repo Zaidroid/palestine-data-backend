@@ -1,0 +1,299 @@
+{
+  "metadata": {
+    "source": "goodshepherd",
+    "dataset": "child-prisoners",
+    "quarter": "2024-Q1",
+    "record_count": 32,
+    "last_updated": "2025-10-24T18:03:09.533Z"
+  },
+  "data": [
+    {
+      "date": "2024-01-05T00:00:00.000",
+      "name": "Usayed Tareq Anis Rimawi",
+      "age": 17,
+      "location": "Beit Rima",
+      "status": "detained",
+      "notes": "Wounded in the abdomen by soldiers’ gunfire while trying to evacuate a wounded man together with another young man, who was also wounded. Died of his wounds shortly after. Security camera footage shows Rimawi and other youths being shot by soldiers in ambush while standing on the road. Two other young men were wounded by gunfire while trying to escape. About 90 minutes before the ambush shooting, village residents threw stones and Molotov cocktails at military jeeps and set tires on fire throughout the village.",
+      "source": "goodshepherd-fallback"
+    },
+    {
+      "date": "2024-01-07T00:00:00.000",
+      "name": "Wadi' Yasser Hassan 'As'us",
+      "age": 17,
+      "location": "a-Shuhada (Ganzour)",
+      "status": "detained",
+      "notes": "Injured by a missile fired from an aircraft while participating in clashes that included stone, improvised explosive device and Molotov cocktail throwing as well as shooting at military and Border Police vehicles that entered the camp. Died of his wounds shortly after. Six other Palestinians were killed on scene by the missile strike, including his brother. During the clashes, a Border Police officer was killed by an explosive device and three others were injured.",
+      "source": "goodshepherd-fallback"
+    },
+    {
+      "date": "2024-01-07T00:00:00.000",
+      "name": "Ruqayah Ahmad 'Odeh Jahalin",
+      "age": 4,
+      "location": "Beit Iksa",
+      "status": "detained",
+      "notes": "Wounded by Border Police officers’ gunfire at a checkpoint while riding in a shared taxi with her mother and siblings. The officers fired at a couple who broke through the checkpoint in their car and ran over a female officer, who was lightly injured. The couple were killed on scene. Israel held her body until 16 January 2024.",
+      "source": "goodshepherd-fallback"
+    },
+    {
+      "date": "2024-01-12T00:00:00.000",
+      "name": "Mahmoud 'Arafat Yusef Abu Jheishah",
+      "age": 15,
+      "location": "Idhna",
+      "status": "detained",
+      "notes": "Fatally shot by soldiers along with his two cousins, one of whom was also a minor, after they entered the settlement and, according to the military, fired at soldiers patrolling there, causing light to moderate injuries to one of them. Israel is holding his body.",
+      "source": "goodshepherd-fallback"
+    },
+    {
+      "date": "2024-01-12T00:00:00.000",
+      "name": "'Udai Isma'il Yusef Abu Jheishah",
+      "age": 17,
+      "location": "Idhna",
+      "status": "detained",
+      "notes": "Fatally shot by soldiers along with his two cousins, one of whom was also a minor, after they entered the settlement and, according to the military, fired at soldiers patrolling there, causing light to moderate injuries to one of them. Israel is holding his body.",
+      "source": "goodshepherd-fallback"
+    },
+    {
+      "date": "2024-01-14T00:00:00.000",
+      "name": "Suliman Muhammad Suliman Kan'an",
+      "age": 17,
+      "location": "Bir Zeit",
+      "status": "detained",
+      "notes": "Wounded by soldiers’ gunfire when he tried to get out of a car to evacuate his friend who was fatally shot by soldiers in ambush after throwing an improvised explosive device at a military base. Died of his wounds shortly after.",
+      "source": "goodshepherd-fallback"
+    },
+    {
+      "date": "2024-01-14T00:00:00.000",
+      "name": "Khaled 'Amer Khaled Hmeidat",
+      "age": 16,
+      "location": "Bir Zeit",
+      "status": "detained",
+      "notes": "Fatally shot by soldiers in ambush, after getting out of a car near a military base and throwing an improvised explosive device at the base. His friend, a minor, who remained in the car, tried to get out to evacuate him. He was shot and taken to hospital, where he died of his wounds shortly after. Two ambulances arrived at the scene but soldiers prevented their teams from evacuating Hmeidat and fired at them, smashing a light in one of the ambulances. Israel is holding his body.",
+      "source": "goodshepherd-fallback"
+    },
+    {
+      "date": "2024-01-14T00:00:00.000",
+      "name": "Luai Majed Salim a-Sufi",
+      "age": 14,
+      "location": "'Ein a-Sultan R.C.",
+      "status": "detained",
+      "notes": "Resident of Jordan. Shot in the chest by soldiers while on the street in an area where clashes broke out. A-Sufi did not participate in the clashes. During the clashes, youths threw stones at soldiers who had entered the camp and arrested Palestinians. A-Sufi was visiting relatives in the camp with his mother.",
+      "source": "goodshepherd-fallback"
+    },
+    {
+      "date": "2024-01-17T00:00:00.000",
+      "name": "Ahmad Musa Mutlaq al-Bidu",
+      "age": 17,
+      "location": "Tulkarm R.C.",
+      "status": "detained",
+      "notes": "Killed along with three other Palestinians, including two other minors, by a missile fired from an aircraft when they were near armed Palestinians who fired and threw explosive devices at soldiers, Border Police officers and Shin Bet personnel who raided the camp and the city of Tulkarm. During the raid, which lasted about two days, the forces arrested at least seven Palestinians and killed four others in the city and the refugee camp, including a Hamas military wing operative, who was shot during a fire exchange, a Palestinian who was standing on his rooftop watching the clashes that developed following the raid, a Palestinian who threw an explosive device during the clashes, and a Palestinian who drove through the area where the clashes were taking place. According to media reports, a soldier was severely wounded by shots fired by armed Palestinians during the clashes.",
+      "source": "goodshepherd-fallback"
+    },
+    {
+      "date": "2024-01-17T00:00:00.000",
+      "name": "Ahmad Tareq Nu'man Faraj",
+      "age": 17,
+      "location": "Tulkarm R.C.",
+      "status": "detained",
+      "notes": "Killed along with three other Palestinians, including two other minors, by a missile fired from an aircraft when they were near armed Palestinians who fired and threw explosive devices at soldiers, Border Police officers and Shin Bet personnel who raided the camp and the city of Tulkarm. During the raid, which lasted about two days, the forces arrested at least seven Palestinians and killed four others in the city and the refugee camp, including a Hamas military wing operative, who was shot during a fire exchange, a Palestinian who was standing on his rooftop watching the clashes that developed following the raid, a Palestinian who threw an explosive device during the clashes, and a Palestinian who drove through the area where the clashes were taking place. According to media reports, a soldier was severely wounded by shots fired by armed Palestinians during the clashes.",
+      "source": "goodshepherd-fallback"
+    },
+    {
+      "date": "2024-01-17T00:00:00.000",
+      "name": "Walid Ibrahim Muhammad Ghanem",
+      "age": 17,
+      "location": "Tulkarm R.C.",
+      "status": "detained",
+      "notes": "Killed along with three other Palestinians, including two other minors, by a missile fired from an aircraft when they were near armed Palestinians who fired and threw explosive devices at soldiers, Border Police officers and Shin Bet personnel who raided the camp and the city of Tulkarm. During the raid, which lasted about two days, the forces arrested at least seven Palestinians and killed four others in the city and the refugee camp, including a Hamas military wing operative, who was shot during a fire exchange, a Palestinian who was standing on his rooftop watching the clashes that developed following the raid, a Palestinian who threw an explosive device during the clashes, and a Palestinian who drove through the area where the clashes were taking place. According to media reports, a soldier was severely wounded by shots fired by armed Palestinians during the clashes.",
+      "source": "goodshepherd-fallback"
+    },
+    {
+      "date": "2024-01-22T00:00:00.000",
+      "name": "Yamen Muhammad Mustafa As'ad Lahluh",
+      "age": 16,
+      "location": "Araba",
+      "status": "detained",
+      "notes": "Shot in the abdomen by soldiers when throwing stones at them during clashes in which other Palestinians threw improvised explosive devices at the soldiers.",
+      "source": "goodshepherd-fallback"
+    },
+    {
+      "date": "2024-01-29T00:00:00.000",
+      "name": "'Abd a-Rahman 'Abd a-Rahim Suliman Hamed",
+      "age": 17,
+      "location": "Silwad",
+      "status": "detained",
+      "notes": "Fatally shot by a police officer from a jeep, from about 100 meters away, while walking home from school. Hamed was shot on the street, near the hiding spot of some youths who, shortly before, threw stones at Israel Police, Border Police and military forces that entered the city. The Israeli forces were roaming the streets of the town, shouting provocations on a loudspeaker, stopping residents and passersby and firing tear gas. The police claimed Hamed threw a Molotov cocktail at the Israeli forces.",
+      "source": "goodshepherd-fallback"
+    },
+    {
+      "date": "2024-02-05T00:00:00.000",
+      "name": "Wadi' Shadi Sa'ed 'Alian",
+      "age": 14,
+      "location": "Jabal al-Mukabber",
+      "status": "detained",
+      "notes": "Fatally shot by Border Police officers while fleeing them after attempting to stab one of them when the two officers were standing on the road next to their vehicle. Security camera footage shows the officers firing at ‘Alian as he lies wounded on the ground. Israel is holding his body.",
+      "source": "goodshepherd-fallback"
+    },
+    {
+      "date": "2024-02-09T00:00:00.000",
+      "name": "Mu'az Ashraf Fateh Bani Shamsah",
+      "age": 17,
+      "location": "Beita",
+      "status": "detained",
+      "notes": "Wounded by soldiers’ gunfire while throwing stones at them along with other youths after the soldiers entered the town. While in the town, the soldiers shot and wounded two other youths and arrested two others. Died of his wounds shortly after.",
+      "source": "goodshepherd-fallback"
+    },
+    {
+      "date": "2024-02-10T00:00:00.000",
+      "name": "Muhammad Ahmad Muhammad Khaddur",
+      "age": 17,
+      "location": "Bidu",
+      "status": "detained",
+      "notes": "Shot in the head by Israeli armed forces who were on the other side of the separation fence while driving home with a friend who is a minor from a hike in woods located about 100-150 meters from the separation barrier. The friend fled on foot to a nearby village and returned to the car with some youths who helped him take al-Khaddur to an ambulance that was waiting for them. He was pronounced dead at the hospital.",
+      "source": "goodshepherd-fallback"
+    },
+    {
+      "date": "2024-02-11T00:00:00.000",
+      "name": "Muhammad Tareq Salim Abu Sneineh",
+      "age": 16,
+      "location": "al-'Eizariyah",
+      "status": "detained",
+      "notes": "Wounded by Border Police officers’ fire after, according to the police, trying to stab them on al-Wad (HaGuy) Street. Israel is holding his body.",
+      "source": "goodshepherd-fallback"
+    },
+    {
+      "date": "2024-02-14T00:00:00.000",
+      "name": "Nayhal Ziad Muhammad Breighith",
+      "age": 16,
+      "location": "Beit Ummar",
+      "status": "detained",
+      "notes": "Wounded in the head by shots fired by soldiers and Border Police officers who entered the town when school let out and students threw stones at the Israeli forces. Died of his wounds shortly after. According to media reports, 18 more Palestinians were wounded by the Israeli forces' fire, at least nine of them minors. 11 were wounded by live fire and seven by rubber coated metal bullets.",
+      "source": "goodshepherd-fallback"
+    },
+    {
+      "date": "2024-02-21T00:00:00.000",
+      "name": "Fadi Sa'id Kamal Suliman",
+      "age": 15,
+      "location": "Azzun",
+      "status": "detained",
+      "notes": "Shot in the shoulder by soldiers while on the street throwing stones at them from a rooftop. The soldiers entered the town after some youths threw an improvised explosive device at Route 55. After the shooting, the soldiers prevented his evacuation for at least half an hour. Died of his wounds shortly after.",
+      "source": "goodshepherd-fallback"
+    },
+    {
+      "date": "2024-02-22T00:00:00.000",
+      "name": "Sa'id Raed Muhammad Jaradat",
+      "age": 16,
+      "location": "Jenin R.C.",
+      "status": "detained",
+      "notes": "Wounded on the street by a missile fired from an aircraft at a car in which a senior Islamic Jihad operative was traveling. The operative died on the spot. 16 other Palestinians were wounded by the gunfire, including an Islamic Jihad military wing operative. Died of his wounds on 26 February 2024.",
+      "source": "goodshepherd-fallback"
+    },
+    {
+      "date": "2024-02-29T00:00:00.000",
+      "name": "Bashar Nihad 'Abd a-Latif Hanani",
+      "age": 17,
+      "location": "Beit Furik",
+      "status": "detained",
+      "notes": "Wounded by Israeli soldiers’ gunfire while throwing stones at them along with other youths as the soldiers were entering the village.",
+      "source": "goodshepherd-fallback"
+    },
+    {
+      "date": "2024-02-29T00:00:00.000",
+      "name": "Nur a-Din Ibrahim Muhammad Yasin",
+      "age": 17,
+      "location": "Deir Abu Da'if",
+      "status": "detained",
+      "notes": "Wounded by Israeli forces’ gunfire while participating in clashes that developed after they entered the camp and arrested a Palestinian. During the clashes, Palestinians threw stones and improvised explosive devices at the Israeli forces and fired at them.",
+      "source": "goodshepherd-fallback"
+    },
+    {
+      "date": "2024-03-02T00:00:00.000",
+      "name": "Muhammad Murad Hassan Ghneim",
+      "age": 15,
+      "location": "Kafr Ni'ma",
+      "status": "detained",
+      "notes": "Wounded in the head by shots fired by soldiers in ambush, while standing and talking to his brother and another minor, on their way home, thinking the military had withdrawn from the village. Earlier, Palestinian youths gathered and some of them threw stones at military jeeps that entered the village and drove around in it. The soldiers prevented Ghneim’s evacuation for several minutes. Died of his wounds shortly after.",
+      "source": "goodshepherd-fallback"
+    },
+    {
+      "date": "2024-03-02T00:00:00.000",
+      "name": "Muhammad Khaled Taher Zeid",
+      "age": 13,
+      "location": "al-Jalazun R.C.",
+      "status": "detained",
+      "notes": "Fatally shot by soldiers from inside the settlement of Beit El. According to a friend who was with him and was injured by fragments, the two were sitting near the fence. According to the military, Zeid was shot after he threw a Molotov cocktail into the area of the settlement. The military held his body for about an hour, and then left it on the ground and notified the Palestinian DCO about its location.",
+      "source": "goodshepherd-fallback"
+    },
+    {
+      "date": "2024-03-04T00:00:00.000",
+      "name": "'Amru Muhammad Ghaleb Najjar",
+      "age": 10,
+      "location": "Burin",
+      "status": "detained",
+      "notes": "Wounded by soldiers’ gunfire, while traveling in a car with his father and younger brother. Some youths threw stones at the soldiers, who entered the village in three military jeeps, and responded with gunfire that hit a-Najar. The soldiers held up the car in which residents tried to take him to get medical treatment, and he died shortly after. During their incursion into the village, the soldiers shot and wounded another youth, who died on 7 March 2024, assaulted three other residents, including a minor, and arrested a minor.",
+      "source": "goodshepherd-fallback"
+    },
+    {
+      "date": "2024-03-05T00:00:00.000",
+      "name": "Muhammad Hisham Shihadah",
+      "age": 16,
+      "location": "Urif",
+      "status": "detained",
+      "notes": "Fatally shot by soldiers staffing a military post at the intersection, after, according to the military, stabbing one of them and severely wounding him. Israel is holding his body.",
+      "source": "goodshepherd-fallback"
+    },
+    {
+      "date": "2024-03-12T00:00:00.000",
+      "name": "'Abdallah Maamun Hassan 'Assaf",
+      "age": 16,
+      "location": "al-Jib",
+      "status": "detained",
+      "notes": "Wounded by Border Police officers, while he and four other Palestinians who had arrived at the Separation Fence near Route 436 by car began unloading Molotov cocktails. All four were wounded by the gunfire. One of them was killed instantly. The Border Police officers fired from an ambush, at close range, and from several directions. ‘Assaf and the remaining wounded were detained for several hours before being transferred to Palestinian ambulances at al-Jib Checkpoint (Giv'at Ze’ev). ‘Assaf died of his wounds shortly after.",
+      "source": "goodshepherd-fallback"
+    },
+    {
+      "date": "2024-03-12T00:00:00.000",
+      "name": "Rami 'Ali Muhammad Hamdan",
+      "age": 12,
+      "location": "Shu'fat R.C.",
+      "status": "detained",
+      "notes": "Wounded by Border Police officers’ gunfire while launching fireworks at the military tower at the checkpoint along with other minors. In video footage posted on social media, Hamdan is seen lighting a firework, and then being shot and falling to the ground. Died of his wounds shortly after. Israel held his body until 18 March 2024.",
+      "source": "goodshepherd-fallback"
+    },
+    {
+      "date": "2024-03-13T00:00:00.000",
+      "name": "Mustafa Taleb Ahmad Ahmad",
+      "age": 17,
+      "location": "al-Walajah",
+      "status": "detained",
+      "notes": "Fatally shot by soldiers after, according to the military, arriving at a checkpoint on an electric bicycle, stabbing a soldier and a security guard who, according to the media, were lightly to moderately wounded. Israel is holding his body.",
+      "source": "goodshepherd-fallback"
+    },
+    {
+      "date": "2024-03-21T00:00:00.000",
+      "name": "'Abdallah Mahmoud Muhammad Rashid (al-Qaysi)",
+      "age": 17,
+      "location": "Nur Shams R.C.",
+      "status": "detained",
+      "notes": "Wounded by Israeli forces’ fire, while participating in a fire exchange. During the fire exchange, Palestinians fired and threw stones and explosive devices at soldiers, Border Police officers and Shin Bet personnel who entered the camp and arrested Palestinians. Another Islamic Jihad military wing operative, who was a Palestinian citizen of Israel, was also wounded in the fire exchange. Both were pronounced dead shortly after. Two other operatives, including a minor, were killed by a missile fired from an aircraft, after, according to the military, throwing explosive devices.",
+      "source": "goodshepherd-fallback"
+    },
+    {
+      "date": "2024-03-21T00:00:00.000",
+      "name": "Iyad Nidal 'Azmi Kanuh",
+      "age": 17,
+      "location": "Nur Shams R.C.",
+      "status": "detained",
+      "notes": "Killed by a missile fired from an aircraft together with another Islamic Jihad military wing operative, while participating in clashes, during which Palestinians fired and threw stones and explosive devices at soldiers, Border Police officers and Shin Bet personnel who entered the camp and arrested Palestinians. According to the military, the two had thrown explosive devices. Two other operatives, one of them a minor and the other a Palestinian citizen of Israel, were wounded in the clashes and died shortly after.",
+      "source": "goodshepherd-fallback"
+    },
+    {
+      "date": "2024-03-30T00:00:00.000",
+      "name": "al-Mu'tasem bi-Allah Nabil Subhi Hamamdi",
+      "age": 14,
+      "location": "Qabatiyah",
+      "status": "detained",
+      "notes": "Fatally shot by soldiers, while participating in clashes during which Palestinian youths threw stones, improvised explosive devices and Molotov cocktails at soldiers who had entered the town and arrested Palestinians. At least two more Palestinians were wounded by Israeli forces’ gunfire in the clashes. One of them died of his wounds on 2 April 2024.",
+      "source": "goodshepherd-fallback"
+    }
+  ]
+}

@@ -1,0 +1,139 @@
+{
+  "indicator": "SP.DYN.LE00.IN",
+  "indicator_name": "Life expectancy at birth, total (years)",
+  "category": "population",
+  "data": [
+    {
+      "year": 2010,
+      "value": 73.302,
+      "indicator": "SP.DYN.LE00.IN",
+      "indicator_name": "Life expectancy at birth, total (years)",
+      "country": "West Bank and Gaza",
+      "source": "pcbs",
+      "source_detail": "PCBS via World Bank API"
+    },
+    {
+      "year": 2011,
+      "value": 73.557,
+      "indicator": "SP.DYN.LE00.IN",
+      "indicator_name": "Life expectancy at birth, total (years)",
+      "country": "West Bank and Gaza",
+      "source": "pcbs",
+      "source_detail": "PCBS via World Bank API"
+    },
+    {
+      "year": 2012,
+      "value": 73.722,
+      "indicator": "SP.DYN.LE00.IN",
+      "indicator_name": "Life expectancy at birth, total (years)",
+      "country": "West Bank and Gaza",
+      "source": "pcbs",
+      "source_detail": "PCBS via World Bank API"
+    },
+    {
+      "year": 2013,
+      "value": 74.14,
+      "indicator": "SP.DYN.LE00.IN",
+      "indicator_name": "Life expectancy at birth, total (years)",
+      "country": "West Bank and Gaza",
+      "source": "pcbs",
+      "source_detail": "PCBS via World Bank API"
+    },
+    {
+      "year": 2014,
+      "value": 72.781,
+      "indicator": "SP.DYN.LE00.IN",
+      "indicator_name": "Life expectancy at birth, total (years)",
+      "country": "West Bank and Gaza",
+      "source": "pcbs",
+      "source_detail": "PCBS via World Bank API"
+    },
+    {
+      "year": 2015,
+      "value": 74.577,
+      "indicator": "SP.DYN.LE00.IN",
+      "indicator_name": "Life expectancy at birth, total (years)",
+      "country": "West Bank and Gaza",
+      "source": "pcbs",
+      "source_detail": "PCBS via World Bank API"
+    },
+    {
+      "year": 2016,
+      "value": 74.917,
+      "indicator": "SP.DYN.LE00.IN",
+      "indicator_name": "Life expectancy at birth, total (years)",
+      "country": "West Bank and Gaza",
+      "source": "pcbs",
+      "source_detail": "PCBS via World Bank API"
+    },
+    {
+      "year": 2017,
+      "value": 75.216,
+      "indicator": "SP.DYN.LE00.IN",
+      "indicator_name": "Life expectancy at birth, total (years)",
+      "country": "West Bank and Gaza",
+      "source": "pcbs",
+      "source_detail": "PCBS via World Bank API"
+    },
+    {
+      "year": 2018,
+      "value": 75.38,
+      "indicator": "SP.DYN.LE00.IN",
+      "indicator_name": "Life expectancy at birth, total (years)",
+      "country": "West Bank and Gaza",
+      "source": "pcbs",
+      "source_detail": "PCBS via World Bank API"
+    },
+    {
+      "year": 2019,
+      "value": 75.811,
+      "indicator": "SP.DYN.LE00.IN",
+      "indicator_name": "Life expectancy at birth, total (years)",
+      "country": "West Bank and Gaza",
+      "source": "pcbs",
+      "source_detail": "PCBS via World Bank API"
+    },
+    {
+      "year": 2020,
+      "value": 74.998,
+      "indicator": "SP.DYN.LE00.IN",
+      "indicator_name": "Life expectancy at birth, total (years)",
+      "country": "West Bank and Gaza",
+      "source": "pcbs",
+      "source_detail": "PCBS via World Bank API"
+    },
+    {
+      "year": 2021,
+      "value": 73.89,
+      "indicator": "SP.DYN.LE00.IN",
+      "indicator_name": "Life expectancy at birth, total (years)",
+      "country": "West Bank and Gaza",
+      "source": "pcbs",
+      "source_detail": "PCBS via World Bank API"
+    },
+    {
+      "year": 2022,
+      "value": 76.662,
+      "indicator": "SP.DYN.LE00.IN",
+      "indicator_name": "Life expectancy at birth, total (years)",
+      "country": "West Bank and Gaza",
+      "source": "pcbs",
+      "source_detail": "PCBS via World Bank API"
+    },
+    {
+      "year": 2023,
+      "value": 65.17,
+      "indicator": "SP.DYN.LE00.IN",
+      "indicator_name": "Life expectancy at birth, total (years)",
+      "country": "West Bank and Gaza",
+      "source": "pcbs",
+      "source_detail": "PCBS via World Bank API"
+    }
+  ],
+  "metadata": {
+    "source": "Palestinian Central Bureau of Statistics (PCBS)",
+    "source_detail": "Data accessed via World Bank Open Data API",
+    "last_updated": "2025-10-30T09:42:37.507Z",
+    "total_points": 14
+  }
+}

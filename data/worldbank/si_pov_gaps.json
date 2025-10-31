@@ -1,0 +1,52 @@
+{
+  "indicator": "SI.POV.GAPS",
+  "indicator_name": "Poverty gap at $2.15 a day (2017 PPP) (%)",
+  "data": [
+    {
+      "year": 2010,
+      "value": 0.1,
+      "indicator": "SI.POV.GAPS",
+      "indicator_name": "Poverty gap at $2.15 a day (2017 PPP) (%)",
+      "country": "West Bank and Gaza",
+      "source": "worldbank"
+    },
+    {
+      "year": 2011,
+      "value": 0.1,
+      "indicator": "SI.POV.GAPS",
+      "indicator_name": "Poverty gap at $2.15 a day (2017 PPP) (%)",
+      "country": "West Bank and Gaza",
+      "source": "worldbank"
+    },
+    {
+      "year": 2016,
+      "value": 0.3,
+      "indicator": "SI.POV.GAPS",
+      "indicator_name": "Poverty gap at $2.15 a day (2017 PPP) (%)",
+      "country": "West Bank and Gaza",
+      "source": "worldbank"
+    },
+    {
+      "year": 2023,
+      "value": 0.3,
+      "indicator": "SI.POV.GAPS",
+      "indicator_name": "Poverty gap at $2.15 a day (2017 PPP) (%)",
+      "country": "West Bank and Gaza",
+      "source": "worldbank"
+    }
+  ],
+  "metadata": {
+    "source": "World Bank Open Data",
+    "last_updated": "2025-10-29T21:01:47.275Z",
+    "total_points": 4
+  },
+  "validation": {
+    "qualityScore": 1,
+    "completeness": 1,
+    "consistency": 1,
+    "accuracy": 1,
+    "meetsThreshold": true,
+    "errorCount": 0,
+    "warningCount": 0
+  }
+}

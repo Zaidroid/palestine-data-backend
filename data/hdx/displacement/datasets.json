@@ -1,0 +1,147 @@
+{
+  "category": "displacement",
+  "generated_at": "2025-10-24T15:26:52.640Z",
+  "datasets": [
+    {
+      "id": "ee8a93f0-2cbe-4ac7-bd30-51a1fabae9f6",
+      "name": "data-on-displaced-persons-in-unrwa-shelters",
+      "title": "Escalations in Gaza - Displaced Persons in UNRWA Shelters in Gaza",
+      "organization": "United Nations Relief and Works Agency for Palestine Refugees in the Near East",
+      "last_modified": "2025-08-28T01:24:55.915491",
+      "resources": [
+        {
+          "id": "51e287dd-4454-4e8f-884e-c183b7f99023",
+          "name": "Data on Displaced Persons in UNRWA Shelters - Gaza 2023.xlsx",
+          "format": "XLSX",
+          "url": "https://drive.google.com/file/d/19a3KG3J5FcOkrz9l72D3e-ifpicEZ7nY/view?usp=drive_web",
+          "last_modified": "2023-10-12T18:26:12.879982"
+        },
+        {
+          "id": "70f647af-d05b-4038-8c74-e925da8d333d",
+          "name": "[Admin2] Data on displaced persons in UNRWA shelters by governorate",
+          "format": "CSV",
+          "url": "https://proxy.hxlstandard.org/data/download/Data_on_displaced_persons_in_UNRWA_shelters_by_governorate.csv?dest=data_edit&filter01=select&filter-label01=remove+adm1&select-query01-01=%23adm2%3DGaza+Strip&select-reverse01=on&filter02=add&filter-label02=adm2+code&add-tag02=%23adm2%2Bcode&add-header02=Governorate+p-code&add-before02=on&filter03=add&filter-label03=adm2+name&add-tag03=%23adm2%2Bname&add-value03=%7B%7B%23adm2%2Bname%2Borig%7D%7D&add-header03=Governorate&add-before03=on&filter04=add&filter-label04=adm1+code&add-tag04=%23adm1%2Bcode&add-value04=PS02&add-header04=Territory+p-code&add-before04=on&filter05=add&filter-label05=adm1+name&add-tag05=%23adm1%2Bname&add-value05=Gaza+Strip&add-header05=Territory&add-before05=on&filter06=add&filter-label06=date&add-tag06=%23date&add-value06=%7B%7B%23date%7D%7D&add-header06=Date&add-before06=on&filter07=merge&filter-label07=add+pcodes&merge-url07=https://docs.google.com/spreadsheets/d/1iH7HYkHXtiv6_1PO-MeaUMJa4dALVhRnOj3pMqkEslg/edit?usp%3Dsharing&merge-keys07=%23adm2%2Bname&merge-tags07=%23adm2%2Bcode&merge-replace07=on&merge-overwrite07=on&filter08=add&filter-label08=uncertain&add-tag08=%23meta%2Buncertain&add-header08=Uncertain&filter09=replace&filter-label09=flag+uncertain&replace-pattern09=%5E$&replace-regex09=on&replace-value09=y&replace-tags09=%23meta%2Buncertain&replace-where09=%23*~%5C*&filter10=clean&filter-label10=fix+dates+and+numbers&clean-date-tags10=%23date&clean-num-tags10=%23affected,%23capacity&filter11=replace&filter-label11=remove+dashes&replace-pattern11=-&replace-regex11=on&replace-tags11=%23affected,%23capacity&filter12=cut&filter-label12=remove+%2Borig&cut-exclude-tags12=%23*%2Borig&filter13=select&filter-label13=remove+comment+rows&select-query13-01=%23date~%5Cd%7B4%7D-%5Cd%7B2%7D-%5Cd%7B2%7D&tagger-match-all=on&tagger-01-header=date&tagger-01-tag=%23date%2Borig&tagger-02-header=governorate&tagger-02-tag=%23adm2%2Bname%2Borig&tagger-03-header=cumulative+displaced+persons+in+unrwa+shelters&tagger-03-tag=%23affected%2Bdisplaced%2Bshelters%2Bcumulative&tagger-04-header=daily+displaced+persons+in+unrwa+shelters&tagger-04-tag=%23affected%2Bdisplaced%2Bshelters%2Bdaily&tagger-05-header=cumulative+unrwa+shelters&tagger-05-tag=%23capacity%2Bshelters%2Bcumulative&tagger-06-header=daily+unrwa+shelters&tagger-06-tag=%23capacity%2Bshelters%2Bdaily&header-row=1&url=https://drive.google.com/file/d/19a3KG3J5FcOkrz9l72D3e-ifpicEZ7nY/view?usp%3Ddrive_web",
+          "last_modified": "2023-10-25T15:53:57.043500"
+        },
+        {
+          "id": "92848e08-f8da-4c5c-a33d-26d525589290",
+          "name": "[Admin1] Data on displaced persons in UNRWA shelters by territory",
+          "format": "CSV",
+          "url": "https://proxy.hxlstandard.org/data/download/Data_on_displaced_persons_in_UNRWA_shelters_by_territory.csv?dest=data_edit&filter01=select&filter-label01=remove+admin2&select-query01-01=%23adm2%2Bname%3DGaza+Strip&filter02=add&filter-label02=adm1+code&add-tag02=%23adm1%2Bcode&add-value02=PS02&add-header02=Territory+p-code&add-before02=on&filter03=add&filter-label03=adm1+name&add-tag03=%23adm1%2Bname&add-value03=Gaza+Strip&add-header03=Territory&add-before03=on&filter04=add&filter-label04=date&add-tag04=%23date&add-value04=%7B%7B%23date%7D%7D&add-header04=Date&add-before04=on&filter05=add&filter-label05=uncertain&add-tag05=%23meta%2Buncertain&add-header05=Uncertain&filter06=replace&filter-label06=flag+uncertain&replace-pattern06=%5E$&replace-regex06=on&replace-value06=y&replace-tags06=%23meta%2Buncertain&replace-where06=%23*~%5C*&filter07=clean&filter-label07=fix+dates+and+numbers&clean-date-tags07=%23date&clean-num-tags07=%23affected,%23capacity&filter08=replace&filter-label08=remove+dashes&replace-pattern08=-&replace-tags08=%23affected,%23capacity&filter09=cut&filter-label09=remove+%2Borig&cut-exclude-tags09=%23*%2Borig&filter10=select&filter-label10=remove+comment+rows&select-query10-01=%23date~%5Cd%7B4%7D-%5Cd%7B2%7D-%5Cd%7B2%7D&tagger-match-all=on&tagger-01-header=date&tagger-01-tag=%23date%2Borig&tagger-02-header=governorate&tagger-02-tag=%23adm2%2Bname%2Borig&tagger-03-header=cumulative+displaced+persons+in+unrwa+shelters&tagger-03-tag=%23affected%2Bdisplaced%2Bshelters%2Bcumulative&tagger-04-header=daily+displaced+persons+in+unrwa+shelters&tagger-04-tag=%23affected%2Bdisplaced%2Bshelters%2Bdaily&tagger-05-header=cumulative+unrwa+shelters&tagger-05-tag=%23capacity%2Bshelters%2Bcumulative&tagger-06-header=daily+unrwa+shelters&tagger-06-tag=%23capacity%2Bshelters%2Bdaily&header-row=1&url=https://drive.google.com/file/d/19a3KG3J5FcOkrz9l72D3e-ifpicEZ7nY/view?usp%3Ddrive_web",
+          "last_modified": "2024-06-26T01:02:30.018393"
+        },
+        {
+          "id": "618b6966-a85b-4492-9c03-3d3b58f65207",
+          "name": "[Admin2] Data on displaced persons in UNRWA shelters by governorate",
+          "format": "JSON",
+          "url": "https://proxy.hxlstandard.org/data/download/Data_on_displaced_persons_in_UNRWA_shelters_by_governorate.objects.json?dest=data_edit&filter01=select&filter-label01=remove+adm1&select-query01-01=%23adm2%3DGaza+Strip&select-reverse01=on&filter02=add&filter-label02=adm2+code&add-tag02=%23adm2%2Bcode&add-header02=Governorate+p-code&add-before02=on&filter03=add&filter-label03=adm2+name&add-tag03=%23adm2%2Bname&add-value03=%7B%7B%23adm2%2Bname%2Borig%7D%7D&add-header03=Governorate&add-before03=on&filter04=add&filter-label04=adm1+code&add-tag04=%23adm1%2Bcode&add-value04=PS02&add-header04=Territory+p-code&add-before04=on&filter05=add&filter-label05=adm1+name&add-tag05=%23adm1%2Bname&add-value05=Gaza+Strip&add-header05=Territory&add-before05=on&filter06=add&filter-label06=date&add-tag06=%23date&add-value06=%7B%7B%23date%7D%7D&add-header06=Date&add-before06=on&filter07=merge&filter-label07=add+pcodes&merge-url07=https://docs.google.com/spreadsheets/d/1iH7HYkHXtiv6_1PO-MeaUMJa4dALVhRnOj3pMqkEslg/edit?usp%3Dsharing&merge-keys07=%23adm2%2Bname&merge-tags07=%23adm2%2Bcode&merge-replace07=on&merge-overwrite07=on&filter08=add&filter-label08=uncertain&add-tag08=%23meta%2Buncertain&add-header08=Uncertain&filter09=replace&filter-label09=flag+uncertain&replace-pattern09=%5E$&replace-regex09=on&replace-value09=y&replace-tags09=%23meta%2Buncertain&replace-where09=%23*~%5C*&filter10=clean&filter-label10=fix+dates+and+numbers&clean-date-tags10=%23date&clean-num-tags10=%23affected,%23capacity&filter11=replace&filter-label11=remove+dashes&replace-pattern11=-&replace-regex11=on&replace-tags11=%23affected,%23capacity&filter12=cut&filter-label12=remove+%2Borig&cut-exclude-tags12=%23*%2Borig&filter13=select&filter-label13=remove+comment+rows&select-query13-01=%23date~%5Cd%7B4%7D-%5Cd%7B2%7D-%5Cd%7B2%7D&tagger-match-all=on&tagger-01-header=date&tagger-01-tag=%23date%2Borig&tagger-02-header=governorate&tagger-02-tag=%23adm2%2Bname%2Borig&tagger-03-header=cumulative+displaced+persons+in+unrwa+shelters&tagger-03-tag=%23affected%2Bdisplaced%2Bshelters%2Bcumulative&tagger-04-header=daily+displaced+persons+in+unrwa+shelters&tagger-04-tag=%23affected%2Bdisplaced%2Bshelters%2Bdaily&tagger-05-header=cumulative+unrwa+shelters&tagger-05-tag=%23capacity%2Bshelters%2Bcumulative&tagger-06-header=daily+unrwa+shelters&tagger-06-tag=%23capacity%2Bshelters%2Bdaily&header-row=1&url=https://drive.google.com/file/d/19a3KG3J5FcOkrz9l72D3e-ifpicEZ7nY/view?usp%3Ddrive_web",
+          "last_modified": "2023-10-25T15:53:58.630154"
+        },
+        {
+          "id": "64c3d19d-2511-4bdd-a8d5-c98059cc70f4",
+          "name": "[Admin1] Data on displaced persons in UNRWA shelters by territory",
+          "format": "JSON",
+          "url": "https://proxy.hxlstandard.org/data/download/Data_on_displaced_persons_in_UNRWA_shelters_by_territory.objects.json?dest=data_edit&filter01=select&filter-label01=remove+admin2&select-query01-01=%23adm2%2Bname%3DGaza+Strip&filter02=add&filter-label02=adm1+code&add-tag02=%23adm1%2Bcode&add-value02=PS02&add-header02=Territory+p-code&add-before02=on&filter03=add&filter-label03=adm1+name&add-tag03=%23adm1%2Bname&add-value03=Gaza+Strip&add-header03=Territory&add-before03=on&filter04=add&filter-label04=date&add-tag04=%23date&add-value04=%7B%7B%23date%7D%7D&add-header04=Date&add-before04=on&filter05=add&filter-label05=uncertain&add-tag05=%23meta%2Buncertain&add-header05=Uncertain&filter06=replace&filter-label06=flag+uncertain&replace-pattern06=%5E$&replace-regex06=on&replace-value06=y&replace-tags06=%23meta%2Buncertain&replace-where06=%23*~%5C*&filter07=clean&filter-label07=fix+dates+and+numbers&clean-date-tags07=%23date&clean-num-tags07=%23affected,%23capacity&filter08=replace&filter-label08=remove+dashes&replace-pattern08=-&replace-tags08=%23affected,%23capacity&filter09=cut&filter-label09=remove+%2Borig&cut-exclude-tags09=%23*%2Borig&filter10=select&filter-label10=remove+comment+rows&select-query10-01=%23date~%5Cd%7B4%7D-%5Cd%7B2%7D-%5Cd%7B2%7D&tagger-match-all=on&tagger-01-header=date&tagger-01-tag=%23date%2Borig&tagger-02-header=governorate&tagger-02-tag=%23adm2%2Bname%2Borig&tagger-03-header=cumulative+displaced+persons+in+unrwa+shelters&tagger-03-tag=%23affected%2Bdisplaced%2Bshelters%2Bcumulative&tagger-04-header=daily+displaced+persons+in+unrwa+shelters&tagger-04-tag=%23affected%2Bdisplaced%2Bshelters%2Bdaily&tagger-05-header=cumulative+unrwa+shelters&tagger-05-tag=%23capacity%2Bshelters%2Bcumulative&tagger-06-header=daily+unrwa+shelters&tagger-06-tag=%23capacity%2Bshelters%2Bdaily&header-row=1&url=https://drive.google.com/file/d/19a3KG3J5FcOkrz9l72D3e-ifpicEZ7nY/view?usp%3Ddrive_web",
+          "last_modified": "2024-06-26T01:02:30.018393"
+        }
+      ]
+    },
+    {
+      "id": "186d8411-6517-4519-af19-df5a0645f566",
+      "name": "idmc-idp-data-pse",
+      "title": "State of Palestine - Internal Displacements (New Displacements) – IDPs",
+      "organization": "Internal Displacement Monitoring Centre (IDMC)",
+      "last_modified": "2025-07-21T07:52:41.441973",
+      "resources": [
+        {
+          "id": "2ee8b186-6755-4978-a55d-16bcb7b61e21",
+          "name": "Internal Displacements (New Displacements) – IDPs",
+          "format": "CSV",
+          "url": "https://data.humdata.org/dataset/186d8411-6517-4519-af19-df5a0645f566/resource/2ee8b186-6755-4978-a55d-16bcb7b61e21/download/internal-displacements-new-displacements-idps_pse.csv",
+          "last_modified": "2025-07-21T07:52:38.978919"
+        },
+        {
+          "id": "5ea5cc41-91be-45b0-8c31-3ba7cd9dc67b",
+          "name": "Internal displacements (new displacements) associated with disasters",
+          "format": "CSV",
+          "url": "https://data.humdata.org/dataset/186d8411-6517-4519-af19-df5a0645f566/resource/5ea5cc41-91be-45b0-8c31-3ba7cd9dc67b/download/internal-displacements-new-displacements-associated-with-disasters_pse.csv",
+          "last_modified": "2025-07-21T07:52:39.310241"
+        }
+      ]
+    },
+    {
+      "id": "6a1e00b3-0ff2-42ba-ba8c-efc06b0bc930",
+      "name": "unhcr-population-data-for-pse",
+      "title": "State of Palestine - Data on forcibly displaced populations and stateless persons",
+      "organization": "UNHCR - The UN Refugee Agency",
+      "last_modified": "2025-07-02T22:17:15.342757",
+      "resources": [
+        {
+          "id": "7cc2945a-2498-4180-b04b-089959691339",
+          "name": "End-year stock population figures for forcibly displaced persons originating from State of Palestine",
+          "format": "CSV",
+          "url": "https://data.humdata.org/dataset/6a1e00b3-0ff2-42ba-ba8c-efc06b0bc930/resource/7cc2945a-2498-4180-b04b-089959691339/download/end_year_population_totals_originating_pse.csv",
+          "last_modified": "2025-06-13T14:29:17.781716"
+        },
+        {
+          "id": "706aa04e-4500-4cca-a03c-2186be7ca7c8",
+          "name": "Demographics and locations of forcibly displaced people originating from State of Palestine",
+          "format": "CSV",
+          "url": "https://data.humdata.org/dataset/6a1e00b3-0ff2-42ba-ba8c-efc06b0bc930/resource/706aa04e-4500-4cca-a03c-2186be7ca7c8/download/demographics_originating_pse.csv",
+          "last_modified": "2025-06-13T14:29:18.728739"
+        },
+        {
+          "id": "6493a39a-a466-4f3c-bef4-b92cb9347a94",
+          "name": "Demographics and locations of forcibly displaced and stateless people residing in State of Palestine",
+          "format": "CSV",
+          "url": "https://data.humdata.org/dataset/6a1e00b3-0ff2-42ba-ba8c-efc06b0bc930/resource/6493a39a-a466-4f3c-bef4-b92cb9347a94/download/demographics_residing_pse.csv",
+          "last_modified": "2025-06-13T14:29:19.066002"
+        },
+        {
+          "id": "d14256f6-cf14-4014-a633-fa3abc333667",
+          "name": "Asylum applications by asylum seekers originating from State of Palestine",
+          "format": "CSV",
+          "url": "https://data.humdata.org/dataset/6a1e00b3-0ff2-42ba-ba8c-efc06b0bc930/resource/d14256f6-cf14-4014-a633-fa3abc333667/download/asylum_applications_originating_pse.csv",
+          "last_modified": "2025-06-13T14:29:17.933366"
+        },
+        {
+          "id": "6f99d9f9-5d09-4752-9830-d1e4e675c275",
+          "name": "Asylum decisions taken on asylum claims of asylum seekers originating from State of Palestine",
+          "format": "CSV",
+          "url": "https://data.humdata.org/dataset/6a1e00b3-0ff2-42ba-ba8c-efc06b0bc930/resource/6f99d9f9-5d09-4752-9830-d1e4e675c275/download/asylum_decisions_originating_pse.csv",
+          "last_modified": "2025-06-13T14:29:18.066243"
+        },
+        {
+          "id": "9fc3830d-149e-45ee-b30b-bc0ede745e12",
+          "name": "Solutions for refugees and IDPs originating from State of Palestine",
+          "format": "CSV",
+          "url": "https://data.humdata.org/dataset/6a1e00b3-0ff2-42ba-ba8c-efc06b0bc930/resource/9fc3830d-149e-45ee-b30b-bc0ede745e12/download/solutions_originating_pse.csv",
+          "last_modified": "2025-06-13T14:29:18.415018"
+        },
+        {
+          "id": "53c70e58-1664-4d36-b57f-06b1c04deea3",
+          "name": "qc_data.csv",
+          "format": "CSV",
+          "url": "https://data.humdata.org/dataset/6a1e00b3-0ff2-42ba-ba8c-efc06b0bc930/resource/53c70e58-1664-4d36-b57f-06b1c04deea3/download/qc_data.csv",
+          "last_modified": "2025-06-13T14:29:18.573632"
+        }
+      ]
+    },
+    {
+      "id": "9f98ac4f-f61b-4e2a-b1f4-3394a826dbbb",
+      "name": "people-in-need-idps-refugees-and-returnees-in-2020",
+      "title": "People in Need, IDPs, Refugees and Returnees figures in 2020",
+      "organization": "OCHA HQ",
+      "last_modified": "2025-05-05T11:15:00.844857",
+      "resources": [
+        {
+          "id": "e0da0453-eae1-412e-a84b-016c8e87b758",
+          "name": "PiN, IDPs, Refugees & Returnees 2020 figures",
+          "format": "XLSX",
+          "url": "https://data.humdata.org/dataset/9f98ac4f-f61b-4e2a-b1f4-3394a826dbbb/resource/e0da0453-eae1-412e-a84b-016c8e87b758/download/pin-idps-refugees-returnees-2020-figures.xlsx",
+          "last_modified": "2020-05-06T13:36:48.498358"
+        }
+      ]
+    }
+  ]
+}

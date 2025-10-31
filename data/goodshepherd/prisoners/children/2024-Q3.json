@@ -1,0 +1,245 @@
+{
+  "metadata": {
+    "source": "goodshepherd",
+    "dataset": "child-prisoners",
+    "quarter": "2024-Q3",
+    "record_count": 26,
+    "last_updated": "2025-10-24T18:03:09.534Z"
+  },
+  "data": [
+    {
+      "date": "2024-07-01T00:00:00.000",
+      "name": "Muhammad Sarhan 'Ali 'Omar Sarhan",
+      "age": 15,
+      "location": "Tulkarm",
+      "status": "detained",
+      "notes": "Shot by Israeli armed forces on the street. Security camera footage shows Sarhan, masked, attempting to find cover and then being shot and falling. The forces destroyed infrastructure in nearby Nur Shams Refugee Camp earlier, where a soldier was killed by and IED at the start of the raid. Clashes developed between them and Palestinians, during which armed Palestinians fired at the forces. During the raid, in nearby Tulkarm Refugee Camp, a woman was killed and another was injured by a missile that was fired from an aircraft and landed on their roof.",
+      "source": "goodshepherd-fallback"
+    },
+    {
+      "date": "2024-07-11T00:00:00.000",
+      "name": "'Ali Hassan 'Ali Rabaiya'h",
+      "age": 13,
+      "location": "Meithalun",
+      "status": "detained",
+      "notes": "Shot while throwing stones along with other minors at military jeeps passing through the western entrance to the village after having arrested Palestinians in a nearby village. Two of the jeeps stopped when an armed Palestinian located far from the minors fired at them and fled. The soldiers fired at the group of minors. Another teen was wounded and died of his wounds on 23 July 2024, and, according to the media, five other teens were wounded.",
+      "source": "goodshepherd-fallback"
+    },
+    {
+      "date": "2024-07-11T00:00:00.000",
+      "name": "Seif Ziad 'Ali 'Amer",
+      "age": 13,
+      "location": "Bal'a",
+      "status": "detained",
+      "notes": "Shot while throwing stones along with other minors at military jeeps passing through the western entrance to the village after having arrested Palestinians in a nearby village. Two of the jeeps stopped when an armed Palestinian located far from the minors fired at them and fled. The soldiers fired at the group of minors. Another teen was wounded and died of his wounds shortly after, and, according to the media, five other teens were wounded.",
+      "source": "goodshepherd-fallback"
+    },
+    {
+      "date": "2024-07-27T00:00:00.000",
+      "name": "Luai Muhammad Mustafa Masheh",
+      "age": 17,
+      "location": "Balata R.C.",
+      "status": "detained",
+      "notes": "Wounded on the street by a missile fired from an aircraft during a raid of the camp. The military claims the missile was fired at armed operatives. A volunteer paramedic was also killed by the missile strike, and 27 Palestinians were injured by the missile or by soldier gunfire in clashes that developed at various locations during the raid. One of them also died of his wounds shortly after. Mashah was an Islamic Jihad military wing operative.",
+      "source": "goodshepherd-fallback"
+    },
+    {
+      "date": "2024-07-30T00:00:00.000",
+      "name": "Muhammad Murad Muhammad Jaradat",
+      "age": 15,
+      "location": "Sa'ir",
+      "status": "detained",
+      "notes": "Shot in the head by soldiers, according to the military, after trying to stab them at the Beit ‘Einun junction. Israel is holding his body.",
+      "source": "goodshepherd-fallback"
+    },
+    {
+      "date": "2024-08-06T00:00:00.000",
+      "name": "Khatab Majdi As'ad Abu Badawiyah",
+      "age": 15,
+      "location": "Jenin",
+      "status": "detained",
+      "notes": "Killed by missiles fired from an aircraft while on the street with other Palestinians, four of whom were instantly killed. Another was injured and died of wounds the next day. All six fired or threw IEDs. Video footage released by the military shows two of the dead on a scooter and two injured armed men near them. Clashes broke out in the camp, during which Palestinians threw IEDs and fired at the Israeli forces.",
+      "source": "goodshepherd-fallback"
+    },
+    {
+      "date": "2024-08-06T00:00:00.000",
+      "name": "Bilal 'Iz a-Din Ahmad Sawaftah",
+      "age": 16,
+      "location": "Tubas",
+      "status": "detained",
+      "notes": "Shot in the abdomen and shoulder by soldiers and undercover Border Police officers near the Turkish Hospital in the city, while waiting, along with other locals, in the hospital’s square, for the bodies of three Palestinians killed by Israeli forces in the nearby town of ‘Aqqabah. Clashes broke out in the area between residents and retreating Israeli forces.",
+      "source": "goodshepherd-fallback"
+    },
+    {
+      "date": "2024-08-12T00:00:00.000",
+      "name": "Tareq Ziad 'Abd a-Rahim Dawood",
+      "age": 17,
+      "location": "Qalqiliya",
+      "status": "detained",
+      "notes": "Fatally shot by soldiers at the end of a chase after shooting and wounding an Israeli citizen who entered Qalqiliyah to have his car fixed. According to media reports, he also killed two Palestinians who were at the site. Dawood was a Hamas military wing operative. Israel is holding his body.",
+      "source": "goodshepherd-fallback"
+    },
+    {
+      "date": "2024-08-13T00:00:00.000",
+      "name": "Shadi Wisam Muhammad Shiha",
+      "age": 16,
+      "location": "Anata",
+      "status": "detained",
+      "notes": "Wounded by a Border Police officer’s gunfire at his family’s car wash, where he was watching a fire that broke out near the separation fence as a result of Molotov cocktails thrown from somewhere nearby. Taken to hospital, where he died of his wounds. The military claims he was shot while climbing the separation fence and throwing Molotov cocktails. Israel is holding his body.",
+      "source": "goodshepherd-fallback"
+    },
+    {
+      "date": "2024-08-14T00:00:00.000",
+      "name": "Muhammad Bashar Hassan Bani 'Odeh",
+      "age": 17,
+      "location": "Tammun",
+      "status": "detained",
+      "notes": "Killed by a missile fired from an aircraft along with three other Palestinians, who, according to the military, were armed, during a raid by soldiers, Border Police officers and Shin Bet personnel on the town and the nearby city of Tubas and al-Far'ah R.C. During the raid, the Israeli forces killed another Palestinian in Tubas, after surrounding his house and arresting three Palestinians. According to the military, four soldiers were injured in the clashes that developed due to the raid. The media reported their injuries were light to moderate. Israel is holding his body.",
+      "source": "goodshepherd-fallback"
+    },
+    {
+      "date": "2024-08-24T00:00:00.000",
+      "name": "Ahmad Muhammad Khalil al-'Antir",
+      "age": 16,
+      "location": "Birqin",
+      "status": "detained",
+      "notes": "Shot by soldiers after arriving by car with two other Palestinians, who were arrested. The three stopped the vehicle and fired at a military base near the checkpoint. Israel apprised the Palestinian DCO that he had died of his wounds a short while later. Israel is holding his body.",
+      "source": "goodshepherd-fallback"
+    },
+    {
+      "date": "2024-08-25T00:00:00.000",
+      "name": "Mus'ab Hassan 'Ali Mqasqas",
+      "age": 17,
+      "location": "Jenin R.C.",
+      "status": "detained",
+      "notes": "Fatally shot by soldiers along with his friend while driving through Ariel Junction. According to the military, the two had driven against traffic and tried to run over soldiers, injuring one lightly. In a recorded message his friend posted minutes before his killing, he said they were lured to the site by a request for help from a man who said he was a Palestinian citizen of Israel, but discovered that he was actually an Israeli Jew. The friend said that at that point, the forces on site began chasing them. Mqasqas was an Islamic Jihad military wing operative. Israel is holding his body.",
+      "source": "goodshepherd-fallback"
+    },
+    {
+      "date": "2024-08-26T00:00:00.000",
+      "name": "'Adnan Aysar 'Adnan Jaber",
+      "age": 15,
+      "location": "Nur Shams R.C.",
+      "status": "detained",
+      "notes": "Killed by a missile fired from an aircraft along with four other armed Palestinians, including another minor, in the camp’s al-Manshiyah neighborhood. No Israeli forces were present in the area and no clashes or fire exchanges were taking place. The military claims the attack targeted a “war room in the area.”",
+      "source": "goodshepherd-fallback"
+    },
+    {
+      "date": "2024-08-26T00:00:00.000",
+      "name": "Muhammad Ahmad Muhammad 'Alian",
+      "age": 13,
+      "location": "Nur Shams R.C.",
+      "status": "detained",
+      "notes": "Killed by a missile fired from an aircraft along with four other armed Palestinians, including another minor, in the camp’s al-Manshiyah neighborhood. No Israeli forces were present in the area and no clashes or fire exchanges were taking place. The military claims the attack targeted a “war room in the area.”",
+      "source": "goodshepherd-fallback"
+    },
+    {
+      "date": "2024-08-28T00:00:00.000",
+      "name": "Muhammad Ma'sud Muhammad Na'jah",
+      "age": 17,
+      "location": "al-Far'a Camp",
+      "status": "detained",
+      "notes": "Killed along with his brother, also a minor, by a missile fired at their house from an aircraft, while they were sleeping on the roof due to the summer heat. Their adult brother, who was sleeping next to them, was injured in the strike, and their father was injured by missile fragments on the first floor. Two more Palestinians who were near the home were also killed in the strike and six were injured. The attack was carried out as part of Operation Summar Camps in the northern West Bank. The military claims the four dead men were armed and posed a threat to Israeli forces on the ground. B’Tselem’s research indicates otherwise. Their bodies were removed about six hours later, after soldiers arrived, went up to the roof to look at them.",
+      "source": "goodshepherd-fallback"
+    },
+    {
+      "date": "2024-08-28T00:00:00.000",
+      "name": "Murad Ma'sud Muhammad Na'jah",
+      "age": 13,
+      "location": "al-Far'a Camp",
+      "status": "detained",
+      "notes": "Killed along with his brother, also a minor, by a missile fired at their house from an aircraft, while they were sleeping on the roof due to the summer heat. Their adult brother, who was sleeping next to them, was injured in the strike, and their father was injured by missile fragments on the first floor. Two more Palestinians who were near the home were also killed in the strike and six were injured. The attack was carried out as part of Operation Summar Camps in the northern West Bank. The military claims the four dead men were armed and posed a threat to Israeli forces on the ground. B’Tselem’s research indicates otherwise. Their bodies were removed about six hours later, after soldiers arrived, went up to the roof to look at them.",
+      "source": "goodshepherd-fallback"
+    },
+    {
+      "date": "2024-09-01T00:00:00.000",
+      "name": "Layth Marwan 'Abdallah Shawahaneh",
+      "age": 17,
+      "location": "Silat al-Harithiya",
+      "status": "detained",
+      "notes": "Killed by a missile fired from an aircraft while on the street with another Palestinian who was seriously injured in an attack that took place as part of Operation Summar Camps in the northern West Bank. According to the military, the two had thrown explosives at Israeli forces that had entered the village.",
+      "source": "goodshepherd-fallback"
+    },
+    {
+      "date": "2024-09-01T00:00:00.000",
+      "name": "'Abdallah Naser 'Abdallah Ma'sud",
+      "age": 17,
+      "location": "al-Yamun",
+      "status": "detained",
+      "notes": "Shot all over his body, including the head, by Israeli soldiers when he, his adult brother and his cousin who is a minor and was also killed, flipped over on a motorcycle on which they were fleeing from military vehicles that were chasing them during a raid of the area as part of Operation Summer Camps. The three were on their way home after buying bread. The soldiers prevented a Red Crescent ambulance team from reaching him and his cousin and arrested his adult brother.",
+      "source": "goodshepherd-fallback"
+    },
+    {
+      "date": "2024-09-01T00:00:00.000",
+      "name": "Muhammad Mahmoud 'Abdallah Ma'sud",
+      "age": 12,
+      "location": "al-Yamun",
+      "status": "detained",
+      "notes": "Shot in the face and upper body by Israeli soldiers when he, and his two cousins, one a minor who was also killed, flipped over on a motorcycle on which they were fleeing from military vehicles that were chasing them during a raid of the area as part of Operation Summer Camps. The three were on their way home after buying bread. The soldiers prevented a Red Crescent ambulance team from reaching him and his cousin (a minor) and arrested his adult cousin.",
+      "source": "goodshepherd-fallback"
+    },
+    {
+      "date": "2024-09-03T00:00:00.000",
+      "name": "Lujayn Ousamah 'Abd a-Ra'uf Musleh",
+      "age": 16,
+      "location": "Kfar Dan",
+      "status": "detained",
+      "notes": "Fatally shot by soldiers who surrounded her neighbors' house during Operation Summer Camps, while watching events on the street from her window. The ambulance that took her to the hospital was detained by Israeli forces for several minutes on the way to her home and again on the way to the hospital.",
+      "source": "goodshepherd-fallback"
+    },
+    {
+      "date": "2024-09-03T00:00:00.000",
+      "name": "Muhammad 'Abdallah Muhammad Kan'an",
+      "age": 14,
+      "location": "Tulkarm R.C.",
+      "status": "detained",
+      "notes": "Shot in the head and torso by Israeli armed forces while returning with his father, who was injured on the side of his body, to their home in Tulkarm R.C., having thought the Israeli forces that raided it as part of Operation Summer Camps had retreated.",
+      "source": "goodshepherd-fallback"
+    },
+    {
+      "date": "2024-09-05T00:00:00.000",
+      "name": "Majed Fidaa 'Abd al-Qader Abu Zeinah",
+      "age": 16,
+      "location": "al-Far'a Camp",
+      "status": "detained",
+      "notes": "Fatally shot by a member of an IPS special unit during a night raid by Israeli armed forces on the city, as he left his home with another person, who escaped. The IPS officer first shot Abu Zeinah in the leg. After he fell down, he forced him to remove some of his clothing and then shot him again. The Israeli forces prevented an ambulance that arrived at the scene from approaching Abu Zeinah. Then his body was removed from the site by a military bulldozer and abandoned at a remote location. According to the military, Abu Zeinah was carrying an explosive device and was killed in a fire exchange. B'Tselem's investigation indicates that clashes developed during the raid on the city of Tubas and al-Far’ah R.C., including, among other things, explosive-device throwing and fire exchanges, but no fire exchange was taking place at the site where Abu Zeinah was killed. Five other Palestinians were killed that day in the city of Tubas by a missile fired from an aircraft. Others were injured, and one died of his wounds several days later.",
+      "source": "goodshepherd-fallback"
+    },
+    {
+      "date": "2024-09-06T00:00:00.000",
+      "name": "Bana Amjad Baker Lbum",
+      "age": 13,
+      "location": "Qaryut",
+      "status": "detained",
+      "notes": "Wounded in the chest by soldiers’ gunfire while watching clashes between Palestinians and Israeli soldiers on a nearby street. The soldiers had entered the village after settlers attacked it with stones, injuring a local Palestinian resident. Another Palestinian was wounded by soldiers’ gunfire earlier. She was pronounced dead at the hospital soon after. ",
+      "source": "goodshepherd-fallback"
+    },
+    {
+      "date": "2024-09-11T00:00:00.000",
+      "name": "Tawalbah Mahmoud Jamil Bsharat",
+      "age": 17,
+      "location": "Tammun",
+      "status": "detained",
+      "notes": "Killed together with four other Palestinians by a missile fired from an aircraft while they were gathered in the street during a raid by military, Border Police, Shin Bet and IPS forces on the nearby city of Tubas, town of Tammun and al-Far’ah R.C. According to the military, they were armed with explosive devices. Eight other people were wounded in the attack, and at least two more Palestinians were wounded and one was killed by Israeli armed forces’ fire in al-Far’ah R.C. during the raid, which lasted two days. The forces also arrested five Palestinians in Tubas and Tammun. Bsharat was an Islamic Jihad military wing operative.",
+      "source": "goodshepherd-fallback"
+    },
+    {
+      "date": "2024-09-18T00:00:00.000",
+      "name": "Hassan Yusef Hassan a-Sha'er",
+      "age": 17,
+      "location": "Hablah",
+      "status": "detained",
+      "notes": "Fatally shot by Israeli forces or security guards near the Ni’lin/Hashmonaim checkpoint. B’Tselem has no information about the circumstances of the case. Israel held his body until 15 October 2024.",
+      "source": "goodshepherd-fallback"
+    },
+    {
+      "date": "2024-09-18T00:00:00.000",
+      "name": "Hani Majdi Majed Taha",
+      "age": 15,
+      "location": "Shu'fat R.C.",
+      "status": "detained",
+      "notes": "Shot in the chest by a Border Police officer while he and a friend were in an alley near an area where clashes broke out between youths from the camp and Israeli armed forces who entered it and arrested two Palestinians. Another Palestinian was wounded during the clashes. According to the police, the forces fired at youths who had fired and thrown an explosive device at them.",
+      "source": "goodshepherd-fallback"
+    }
+  ]
+}

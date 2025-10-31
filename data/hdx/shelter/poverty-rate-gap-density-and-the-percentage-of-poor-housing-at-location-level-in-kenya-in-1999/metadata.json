@@ -1,0 +1,52 @@
+{
+  "id": "6ff93c3d-9c62-4eca-9873-ef1647166f35",
+  "name": "poverty-rate-gap-density-and-the-percentage-of-poor-housing-at-location-level-in-kenya-in-1999",
+  "title": "Poverty rate, gap, density and the percentage of poor housing at Location level in Kenya in 1999.",
+  "description": "This dataset shows the Poverty rate, poverty gap, poverty density and the percentage of poor housing at Location level in Kenya  in 1999. This dataset was originally collected by Kenya National Bureau of Statistics",
+  "category": "shelter",
+  "organization": {
+    "name": "world-resources-institute-wri",
+    "title": "World Resources Institute (inactive)"
+  },
+  "tags": [
+    "geodata",
+    "humanitarian needs overview-hno",
+    "poverty"
+  ],
+  "license": "Public Domain / No restrictions (CC0)",
+  "dataset_date": "[1999-12-30T00:00:00 TO 1999-12-30T23:59:59]",
+  "last_modified": "2025-08-26T13:29:46.429365",
+  "data_update_frequency": "-1",
+  "num_resources": 2,
+  "resources": [
+    {
+      "id": "4821c9f5-393a-4a43-b2ec-93f58ce17b4e",
+      "name": "poverty rate gap density and the percentage of poor housing at location level in kenya in 1999",
+      "format": "SHP",
+      "size": null,
+      "last_modified": "2015-09-24T15:29:22.600899",
+      "url": "http://docs.wri.org/ke_poverty1999-cbs_location.zip"
+    },
+    {
+      "id": "22509e7c-58ad-4c88-b995-004b30848e5d",
+      "name": "Poverty rate gap density and the percentage of poor housing at Location level in Kenya in 1999.csv",
+      "format": "CSV",
+      "size": 149677,
+      "last_modified": "2015-11-24T23:45:49.400576",
+      "url": "https://data.humdata.org/dataset/6ff93c3d-9c62-4eca-9873-ef1647166f35/resource/22509e7c-58ad-4c88-b995-004b30848e5d/download/poverty-rate-gap-density-and-the-percentage-of-poor-housing-at-location-level-in-kenya-in-1999.csv"
+    }
+  ],
+  "source_url": "https://data.humdata.org/dataset/poverty-rate-gap-density-and-the-percentage-of-poor-housing-at-location-level-in-kenya-in-1999",
+  "extracted_at": "2025-10-29T21:12:16.371Z",
+  "palestine_context": {
+    "regions_covered": [],
+    "governorates": [],
+    "conflict_related": false,
+    "baseline_comparison_available": false
+  },
+  "data_quality": {
+    "update_frequency": "-1",
+    "last_updated": "2025-08-26T13:29:46.429365",
+    "source_reliability": "unknown"
+  }
+}

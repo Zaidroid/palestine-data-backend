@@ -1,0 +1,9 @@
+{
+  "dataset": "who-data-for-turkey",
+  "totalPartitions": 0,
+  "totalRecords": 0,
+  "partitions": [],
+  "hasRecentFile": true,
+  "recentFileName": "recent.json",
+  "generated_at": "2025-10-29T16:52:59.705Z"
+}

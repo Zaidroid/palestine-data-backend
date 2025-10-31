@@ -1,0 +1,38 @@
+{
+  "dataset": "ngo-data",
+  "total_organizations": 177,
+  "total_funding": 2117081214,
+  "years": [
+    2011,
+    2012,
+    2013,
+    2014,
+    2015,
+    2016,
+    2017,
+    2018,
+    2019,
+    2020,
+    2021,
+    2022,
+    2025
+  ],
+  "files": [
+    {
+      "file": "organizations.json",
+      "records": 177
+    },
+    {
+      "file": "funding-by-year.json",
+      "records": 13
+    }
+  ],
+  "validation": {
+    "qualityScore": 0,
+    "completeness": 0,
+    "meetsThreshold": false,
+    "errorCount": 177,
+    "warningCount": 0
+  },
+  "last_updated": "2025-10-29T21:01:30.698Z"
+}

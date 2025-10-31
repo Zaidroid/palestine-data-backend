@@ -1,0 +1,43 @@
+{
+  "id": "eeb91a9f-349a-4c46-aec2-4216a7b572bc",
+  "name": "disease-outbreaks",
+  "title": "Disease Outbreaks in Afghanistan",
+  "description": "The number of infectious disease outbreaks as reported by the Disease Early Warning System (DEWS), MoPH. Outbreaks are reported for ABD, Anthrax, ARI, AVH, AWD, Brucellosis, CCHF, Chickenpox, Cholera, Conjunctivitis, Dengue Fever, Dermatitis, Diphtheria, Gulran Disease, Leishmaniasis, Malaria, Measles, Mumps, Pertussis, Poisoning, Rabies, Scabies, Tenia Capitis and Typhoid.",
+  "category": "health",
+  "organization": {
+    "name": "ocha-afghanistan",
+    "title": "OCHA Afghanistan"
+  },
+  "tags": [
+    "disease",
+    "epidemics-outbreaks"
+  ],
+  "license": "Creative Commons Attribution International (CC BY)",
+  "dataset_date": "[2012-01-01T00:00:00 TO 2014-12-31T23:59:59]",
+  "last_modified": "2023-03-02T23:34:08.199490",
+  "data_update_frequency": "-1",
+  "num_resources": 1,
+  "resources": [
+    {
+      "id": "0434ac8f-55a6-4fee-a223-d832d6de3961",
+      "name": "afg_disease_outbreaks_20150708.csv",
+      "format": "CSV",
+      "size": 847,
+      "last_modified": "2019-11-10T07:14:41",
+      "url": "https://data.humdata.org/dataset/eeb91a9f-349a-4c46-aec2-4216a7b572bc/resource/0434ac8f-55a6-4fee-a223-d832d6de3961/download/afg-disease-outbreaks-20150708.csv"
+    }
+  ],
+  "source_url": "https://data.humdata.org/dataset/disease-outbreaks",
+  "extracted_at": "2025-10-29T21:11:41.375Z",
+  "palestine_context": {
+    "regions_covered": [],
+    "governorates": [],
+    "conflict_related": true,
+    "baseline_comparison_available": false
+  },
+  "data_quality": {
+    "update_frequency": "-1",
+    "last_updated": "2023-03-02T23:34:08.199490",
+    "source_reliability": "unknown"
+  }
+}

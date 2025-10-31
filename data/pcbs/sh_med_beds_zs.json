@@ -1,0 +1,12 @@
+{
+  "indicator": "SH.MED.BEDS.ZS",
+  "indicator_name": "Hospital beds (per 1,000 people)",
+  "category": "health",
+  "data": [],
+  "metadata": {
+    "source": "Palestinian Central Bureau of Statistics (PCBS)",
+    "source_detail": "Data accessed via World Bank Open Data API",
+    "last_updated": "2025-10-30T09:43:48.789Z",
+    "total_points": 0
+  }
+}

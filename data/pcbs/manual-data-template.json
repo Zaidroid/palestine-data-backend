@@ -1,0 +1,51 @@
+{
+  "_instructions": {
+    "description": "Manual data entry template for PCBS indicators not available via API",
+    "usage": "Fill in the data array with values from PCBS official reports",
+    "source": "Palestinian Central Bureau of Statistics (www.pcbs.gov.ps)",
+    "date_format": "YYYY",
+    "notes": [
+      "Download official PCBS reports from www.pcbs.gov.ps",
+      "Extract data from PDF/Excel reports",
+      "Enter data in the format shown below",
+      "Run the fetch script again to process manual entries"
+    ]
+  },
+  "manual_indicators": [
+    {
+      "indicator_code": "PCBS_WAGES_AVG",
+      "indicator_name": "Average daily wage (NIS)",
+      "category": "labor",
+      "unit": "NIS",
+      "data": []
+    },
+    {
+      "indicator_code": "PCBS_POVERTY_RATE",
+      "indicator_name": "Poverty rate (%)",
+      "category": "poverty",
+      "unit": "percentage",
+      "data": []
+    },
+    {
+      "indicator_code": "PCBS_HOUSING_DENSITY",
+      "indicator_name": "Average household size (persons)",
+      "category": "housing",
+      "unit": "persons",
+      "data": []
+    },
+    {
+      "indicator_code": "PCBS_CONSUMER_PRICE_INDEX",
+      "indicator_name": "Consumer Price Index (base year = 100)",
+      "category": "economic",
+      "unit": "index",
+      "data": []
+    },
+    {
+      "indicator_code": "PCBS_TRADE_BALANCE",
+      "indicator_name": "Trade balance (million USD)",
+      "category": "economic",
+      "unit": "million_usd",
+      "data": []
+    }
+  ]
+}

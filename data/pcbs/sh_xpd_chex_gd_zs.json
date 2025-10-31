@@ -1,0 +1,130 @@
+{
+  "indicator": "SH.XPD.CHEX.GD.ZS",
+  "indicator_name": "Current health expenditure (% of GDP)",
+  "category": "health",
+  "data": [
+    {
+      "year": 2010,
+      "value": 9.10499382,
+      "indicator": "SH.XPD.CHEX.GD.ZS",
+      "indicator_name": "Current health expenditure (% of GDP)",
+      "country": "West Bank and Gaza",
+      "source": "pcbs",
+      "source_detail": "PCBS via World Bank API"
+    },
+    {
+      "year": 2011,
+      "value": 11.34622478,
+      "indicator": "SH.XPD.CHEX.GD.ZS",
+      "indicator_name": "Current health expenditure (% of GDP)",
+      "country": "West Bank and Gaza",
+      "source": "pcbs",
+      "source_detail": "PCBS via World Bank API"
+    },
+    {
+      "year": 2012,
+      "value": 10.30110455,
+      "indicator": "SH.XPD.CHEX.GD.ZS",
+      "indicator_name": "Current health expenditure (% of GDP)",
+      "country": "West Bank and Gaza",
+      "source": "pcbs",
+      "source_detail": "PCBS via World Bank API"
+    },
+    {
+      "year": 2013,
+      "value": 10.44874382,
+      "indicator": "SH.XPD.CHEX.GD.ZS",
+      "indicator_name": "Current health expenditure (% of GDP)",
+      "country": "West Bank and Gaza",
+      "source": "pcbs",
+      "source_detail": "PCBS via World Bank API"
+    },
+    {
+      "year": 2014,
+      "value": 9.92015553,
+      "indicator": "SH.XPD.CHEX.GD.ZS",
+      "indicator_name": "Current health expenditure (% of GDP)",
+      "country": "West Bank and Gaza",
+      "source": "pcbs",
+      "source_detail": "PCBS via World Bank API"
+    },
+    {
+      "year": 2015,
+      "value": 9.28473282,
+      "indicator": "SH.XPD.CHEX.GD.ZS",
+      "indicator_name": "Current health expenditure (% of GDP)",
+      "country": "West Bank and Gaza",
+      "source": "pcbs",
+      "source_detail": "PCBS via World Bank API"
+    },
+    {
+      "year": 2016,
+      "value": 9.0039854,
+      "indicator": "SH.XPD.CHEX.GD.ZS",
+      "indicator_name": "Current health expenditure (% of GDP)",
+      "country": "West Bank and Gaza",
+      "source": "pcbs",
+      "source_detail": "PCBS via World Bank API"
+    },
+    {
+      "year": 2017,
+      "value": 9.1223526,
+      "indicator": "SH.XPD.CHEX.GD.ZS",
+      "indicator_name": "Current health expenditure (% of GDP)",
+      "country": "West Bank and Gaza",
+      "source": "pcbs",
+      "source_detail": "PCBS via World Bank API"
+    },
+    {
+      "year": 2018,
+      "value": 9.65617657,
+      "indicator": "SH.XPD.CHEX.GD.ZS",
+      "indicator_name": "Current health expenditure (% of GDP)",
+      "country": "West Bank and Gaza",
+      "source": "pcbs",
+      "source_detail": "PCBS via World Bank API"
+    },
+    {
+      "year": 2019,
+      "value": 9.18576908,
+      "indicator": "SH.XPD.CHEX.GD.ZS",
+      "indicator_name": "Current health expenditure (% of GDP)",
+      "country": "West Bank and Gaza",
+      "source": "pcbs",
+      "source_detail": "PCBS via World Bank API"
+    },
+    {
+      "year": 2020,
+      "value": 10.27610207,
+      "indicator": "SH.XPD.CHEX.GD.ZS",
+      "indicator_name": "Current health expenditure (% of GDP)",
+      "country": "West Bank and Gaza",
+      "source": "pcbs",
+      "source_detail": "PCBS via World Bank API"
+    },
+    {
+      "year": 2021,
+      "value": 10.4347353,
+      "indicator": "SH.XPD.CHEX.GD.ZS",
+      "indicator_name": "Current health expenditure (% of GDP)",
+      "country": "West Bank and Gaza",
+      "source": "pcbs",
+      "source_detail": "PCBS via World Bank API"
+    },
+    {
+      "year": 2022,
+      "value": 9.73336029,
+      "indicator": "SH.XPD.CHEX.GD.ZS",
+      "indicator_name": "Current health expenditure (% of GDP)",
+      "country": "West Bank and Gaza",
+      "source": "pcbs",
+      "source_detail": "PCBS via World Bank API"
+    }
+  ],
+  "metadata": {
+    "source": "Palestinian Central Bureau of Statistics (PCBS)",
+    "source_detail": "Data accessed via World Bank Open Data API",
+    "last_updated": "2025-10-30T09:43:49.813Z",
+    "total_points": 13
+  }
+}

@@ -1,0 +1,1994 @@
+{
+  "generated_at": "2025-10-29T21:02:58.970Z",
+  "total_indicators": 284,
+  "indicators": [
+    {
+      "code": "FP.CPI.TOTL.ZG",
+      "name": "Inflation, consumer prices (annual %)",
+      "category": "economic",
+      "data_points": 15,
+      "unit": "number"
+    },
+    {
+      "code": "FP.CPI.TOTL.ZG.VALIDATION",
+      "name": "FP.CPI.TOTL.ZG.VALIDATION",
+      "category": "economic",
+      "data_points": 0,
+      "unit": "number"
+    },
+    {
+      "code": "NE.EXP.GNFS.ZS",
+      "name": "Exports of goods and services (% of GDP)",
+      "category": "economic",
+      "data_points": 15,
+      "unit": "percentage"
+    },
+    {
+      "code": "NE.EXP.GNFS.ZS.VALIDATION",
+      "name": "NE.EXP.GNFS.ZS.VALIDATION",
+      "category": "economic",
+      "data_points": 0,
+      "unit": "number"
+    },
+    {
+      "code": "NE.IMP.GNFS.ZS",
+      "name": "Imports of goods and services (% of GDP)",
+      "category": "economic",
+      "data_points": 15,
+      "unit": "percentage"
+    },
+    {
+      "code": "NE.IMP.GNFS.ZS.VALIDATION",
+      "name": "NE.IMP.GNFS.ZS.VALIDATION",
+      "category": "economic",
+      "data_points": 0,
+      "unit": "number"
+    },
+    {
+      "code": "NE.TRD.GNFS.ZS",
+      "name": "Trade (% of GDP)",
+      "category": "economic",
+      "data_points": 15,
+      "unit": "percentage"
+    },
+    {
+      "code": "NE.TRD.GNFS.ZS.VALIDATION",
+      "name": "NE.TRD.GNFS.ZS.VALIDATION",
+      "category": "economic",
+      "data_points": 0,
+      "unit": "number"
+    },
+    {
+      "code": "NY.GDP.MKTP.CD",
+      "name": "GDP (current US$)",
+      "category": "economic",
+      "data_points": 15,
+      "unit": "currency_usd"
+    },
+    {
+      "code": "NY.GDP.MKTP.CD.VALIDATION",
+      "name": "NY.GDP.MKTP.CD.VALIDATION",
+      "category": "economic",
+      "data_points": 0,
+      "unit": "number"
+    },
+    {
+      "code": "NY.GDP.MKTP.KD.ZG",
+      "name": "GDP growth (annual %)",
+      "category": "economic",
+      "data_points": 15,
+      "unit": "number"
+    },
+    {
+      "code": "NY.GDP.MKTP.KD.ZG.VALIDATION",
+      "name": "NY.GDP.MKTP.KD.ZG.VALIDATION",
+      "category": "economic",
+      "data_points": 0,
+      "unit": "number"
+    },
+    {
+      "code": "NY.GDP.PCAP.CD",
+      "name": "GDP per capita (current US$)",
+      "category": "economic",
+      "data_points": 15,
+      "unit": "currency_usd"
+    },
+    {
+      "code": "NY.GDP.PCAP.CD.VALIDATION",
+      "name": "NY.GDP.PCAP.CD.VALIDATION",
+      "category": "economic",
+      "data_points": 0,
+      "unit": "number"
+    },
+    {
+      "code": "NY.GDP.PCAP.KD.ZG",
+      "name": "GDP per capita growth (annual %)",
+      "category": "economic",
+      "data_points": 15,
+      "unit": "number"
+    },
+    {
+      "code": "NY.GDP.PCAP.KD.ZG.VALIDATION",
+      "name": "NY.GDP.PCAP.KD.ZG.VALIDATION",
+      "category": "economic",
+      "data_points": 0,
+      "unit": "number"
+    },
+    {
+      "code": "NY.GNP.PCAP.CD",
+      "name": "GNI per capita, Atlas method (current US$)",
+      "category": "economic",
+      "data_points": 15,
+      "unit": "currency_usd"
+    },
+    {
+      "code": "NY.GNP.PCAP.CD.VALIDATION",
+      "name": "NY.GNP.PCAP.CD.VALIDATION",
+      "category": "economic",
+      "data_points": 0,
+      "unit": "number"
+    },
+    {
+      "code": "SE.ADT.LITR.ZS",
+      "name": "Literacy rate, adult total (% of people ages 15 and above)",
+      "category": "education",
+      "data_points": 14,
+      "unit": "percentage"
+    },
+    {
+      "code": "SE.ADT.LITR.ZS.VALIDATION",
+      "name": "SE.ADT.LITR.ZS.VALIDATION",
+      "category": "education",
+      "data_points": 0,
+      "unit": "number"
+    },
+    {
+      "code": "SE.PRM.CMPT.ZS",
+      "name": "Primary completion rate, total (% of relevant age group)",
+      "category": "education",
+      "data_points": 14,
+      "unit": "percentage"
+    },
+    {
+      "code": "SE.PRM.CMPT.ZS.VALIDATION",
+      "name": "SE.PRM.CMPT.ZS.VALIDATION",
+      "category": "education",
+      "data_points": 0,
+      "unit": "number"
+    },
+    {
+      "code": "SE.PRM.DURS",
+      "name": "Primary education, duration (years)",
+      "category": "education",
+      "data_points": 14,
+      "unit": "years"
+    },
+    {
+      "code": "SE.PRM.DURS.VALIDATION",
+      "name": "SE.PRM.DURS.VALIDATION",
+      "category": "education",
+      "data_points": 0,
+      "unit": "number"
+    },
+    {
+      "code": "SE.PRM.ENRL.TC.ZS",
+      "name": "Pupil-teacher ratio, primary",
+      "category": "education",
+      "data_points": 9,
+      "unit": "number"
+    },
+    {
+      "code": "SE.PRM.ENRL.TC.ZS.VALIDATION",
+      "name": "SE.PRM.ENRL.TC.ZS.VALIDATION",
+      "category": "education",
+      "data_points": 0,
+      "unit": "number"
+    },
+    {
+      "code": "SE.PRM.ENRR",
+      "name": "School enrollment, primary (% gross)",
+      "category": "education",
+      "data_points": 14,
+      "unit": "number"
+    },
+    {
+      "code": "SE.PRM.ENRR.FE",
+      "name": "School enrollment, primary, female (% gross)",
+      "category": "education",
+      "data_points": 14,
+      "unit": "number"
+    },
+    {
+      "code": "SE.PRM.ENRR.FE.VALIDATION",
+      "name": "SE.PRM.ENRR.FE.VALIDATION",
+      "category": "education",
+      "data_points": 0,
+      "unit": "number"
+    },
+    {
+      "code": "SE.PRM.ENRR.VALIDATION",
+      "name": "SE.PRM.ENRR.VALIDATION",
+      "category": "education",
+      "data_points": 0,
+      "unit": "number"
+    },
+    {
+      "code": "SE.PRM.TENR",
+      "name": "Adjusted net enrollment rate, primary (% of primary school age children)",
+      "category": "education",
+      "data_points": 9,
+      "unit": "percentage"
+    },
+    {
+      "code": "SE.PRM.TENR.VALIDATION",
+      "name": "SE.PRM.TENR.VALIDATION",
+      "category": "education",
+      "data_points": 0,
+      "unit": "number"
+    },
+    {
+      "code": "SE.SEC.DURS",
+      "name": "Secondary education, duration (years)",
+      "category": "education",
+      "data_points": 14,
+      "unit": "years"
+    },
+    {
+      "code": "SE.SEC.DURS.VALIDATION",
+      "name": "SE.SEC.DURS.VALIDATION",
+      "category": "education",
+      "data_points": 0,
+      "unit": "number"
+    },
+    {
+      "code": "SE.SEC.ENRL.TC.ZS",
+      "name": "Pupil-teacher ratio, secondary",
+      "category": "education",
+      "data_points": 9,
+      "unit": "number"
+    },
+    {
+      "code": "SE.SEC.ENRL.TC.ZS.VALIDATION",
+      "name": "SE.SEC.ENRL.TC.ZS.VALIDATION",
+      "category": "education",
+      "data_points": 0,
+      "unit": "number"
+    },
+    {
+      "code": "SE.SEC.ENRR",
+      "name": "School enrollment, secondary (% gross)",
+      "category": "education",
+      "data_points": 14,
+      "unit": "number"
+    },
+    {
+      "code": "SE.SEC.ENRR.FE",
+      "name": "School enrollment, secondary, female (% gross)",
+      "category": "education",
+      "data_points": 14,
+      "unit": "number"
+    },
+    {
+      "code": "SE.SEC.ENRR.FE.VALIDATION",
+      "name": "SE.SEC.ENRR.FE.VALIDATION",
+      "category": "education",
+      "data_points": 0,
+      "unit": "number"
+    },
+    {
+      "code": "SE.SEC.ENRR.VALIDATION",
+      "name": "SE.SEC.ENRR.VALIDATION",
+      "category": "education",
+      "data_points": 0,
+      "unit": "number"
+    },
+    {
+      "code": "SE.SEC.PROG.ZS",
+      "name": "Progression to secondary school (%)",
+      "category": "education",
+      "data_points": 8,
+      "unit": "percentage"
+    },
+    {
+      "code": "SE.SEC.PROG.ZS.VALIDATION",
+      "name": "SE.SEC.PROG.ZS.VALIDATION",
+      "category": "education",
+      "data_points": 0,
+      "unit": "number"
+    },
+    {
+      "code": "SE.TER.ENRR",
+      "name": "School enrollment, tertiary (% gross)",
+      "category": "education",
+      "data_points": 14,
+      "unit": "number"
+    },
+    {
+      "code": "SE.TER.ENRR.FE",
+      "name": "School enrollment, tertiary, female (% gross)",
+      "category": "education",
+      "data_points": 14,
+      "unit": "number"
+    },
+    {
+      "code": "SE.TER.ENRR.FE.VALIDATION",
+      "name": "SE.TER.ENRR.FE.VALIDATION",
+      "category": "education",
+      "data_points": 0,
+      "unit": "number"
+    },
+    {
+      "code": "SE.TER.ENRR.VALIDATION",
+      "name": "SE.TER.ENRR.VALIDATION",
+      "category": "education",
+      "data_points": 0,
+      "unit": "number"
+    },
+    {
+      "code": "SE.TER.GRAD.FE.SI.ZS",
+      "name": "Female graduates from tertiary education (% of total graduates)",
+      "category": "education",
+      "data_points": 12,
+      "unit": "percentage"
+    },
+    {
+      "code": "SE.TER.GRAD.FE.SI.ZS.VALIDATION",
+      "name": "SE.TER.GRAD.FE.SI.ZS.VALIDATION",
+      "category": "education",
+      "data_points": 0,
+      "unit": "number"
+    },
+    {
+      "code": "SE.XPD.TOTL.GD.ZS",
+      "name": "Government expenditure on education, total (% of GDP)",
+      "category": "education",
+      "data_points": 8,
+      "unit": "percentage"
+    },
+    {
+      "code": "SE.XPD.TOTL.GD.ZS.VALIDATION",
+      "name": "SE.XPD.TOTL.GD.ZS.VALIDATION",
+      "category": "education",
+      "data_points": 0,
+      "unit": "number"
+    },
+    {
+      "code": "AG.CON.FERT.ZS",
+      "name": "Fertilizer consumption (kilograms per hectare of arable land)",
+      "category": "environment",
+      "data_points": 14,
+      "unit": "number"
+    },
+    {
+      "code": "AG.CON.FERT.ZS.VALIDATION",
+      "name": "AG.CON.FERT.ZS.VALIDATION",
+      "category": "environment",
+      "data_points": 0,
+      "unit": "number"
+    },
+    {
+      "code": "AG.LND.AGRI.ZS",
+      "name": "Agricultural land (% of land area)",
+      "category": "environment",
+      "data_points": 14,
+      "unit": "percentage"
+    },
+    {
+      "code": "AG.LND.AGRI.ZS.VALIDATION",
+      "name": "AG.LND.AGRI.ZS.VALIDATION",
+      "category": "environment",
+      "data_points": 0,
+      "unit": "number"
+    },
+    {
+      "code": "AG.LND.ARBL.ZS",
+      "name": "Arable land (% of land area)",
+      "category": "environment",
+      "data_points": 14,
+      "unit": "percentage"
+    },
+    {
+      "code": "AG.LND.ARBL.ZS.VALIDATION",
+      "name": "AG.LND.ARBL.ZS.VALIDATION",
+      "category": "environment",
+      "data_points": 0,
+      "unit": "number"
+    },
+    {
+      "code": "AG.LND.CROP.ZS",
+      "name": "Permanent cropland (% of land area)",
+      "category": "environment",
+      "data_points": 14,
+      "unit": "percentage"
+    },
+    {
+      "code": "AG.LND.CROP.ZS.VALIDATION",
+      "name": "AG.LND.CROP.ZS.VALIDATION",
+      "category": "environment",
+      "data_points": 0,
+      "unit": "number"
+    },
+    {
+      "code": "AG.LND.FRST.ZS",
+      "name": "Forest area (% of land area)",
+      "category": "environment",
+      "data_points": 14,
+      "unit": "percentage"
+    },
+    {
+      "code": "AG.LND.FRST.ZS.VALIDATION",
+      "name": "AG.LND.FRST.ZS.VALIDATION",
+      "category": "environment",
+      "data_points": 0,
+      "unit": "number"
+    },
+    {
+      "code": "AG.LND.IRIG.AG.ZS",
+      "name": "Agricultural irrigated land (% of total agricultural land)",
+      "category": "environment",
+      "data_points": 4,
+      "unit": "percentage"
+    },
+    {
+      "code": "AG.LND.IRIG.AG.ZS.VALIDATION",
+      "name": "AG.LND.IRIG.AG.ZS.VALIDATION",
+      "category": "environment",
+      "data_points": 0,
+      "unit": "number"
+    },
+    {
+      "code": "AG.PRD.CROP.XD",
+      "name": "Crop production index (2014-2016 = 100)",
+      "category": "environment",
+      "data_points": 13,
+      "unit": "number"
+    },
+    {
+      "code": "AG.PRD.CROP.XD.VALIDATION",
+      "name": "AG.PRD.CROP.XD.VALIDATION",
+      "category": "environment",
+      "data_points": 0,
+      "unit": "number"
+    },
+    {
+      "code": "AG.PRD.FOOD.XD",
+      "name": "Food production index (2014-2016 = 100)",
+      "category": "environment",
+      "data_points": 13,
+      "unit": "number"
+    },
+    {
+      "code": "AG.PRD.FOOD.XD.VALIDATION",
+      "name": "AG.PRD.FOOD.XD.VALIDATION",
+      "category": "environment",
+      "data_points": 0,
+      "unit": "number"
+    },
+    {
+      "code": "AG.PRD.LVSK.XD",
+      "name": "Livestock production index (2014-2016 = 100)",
+      "category": "environment",
+      "data_points": 13,
+      "unit": "number"
+    },
+    {
+      "code": "AG.PRD.LVSK.XD.VALIDATION",
+      "name": "AG.PRD.LVSK.XD.VALIDATION",
+      "category": "environment",
+      "data_points": 0,
+      "unit": "number"
+    },
+    {
+      "code": "AG.YLD.CREL.KG",
+      "name": "Cereal yield (kg per hectare)",
+      "category": "environment",
+      "data_points": 14,
+      "unit": "number"
+    },
+    {
+      "code": "AG.YLD.CREL.KG.VALIDATION",
+      "name": "AG.YLD.CREL.KG.VALIDATION",
+      "category": "environment",
+      "data_points": 0,
+      "unit": "number"
+    },
+    {
+      "code": "ER.H2O.FWST.ZS",
+      "name": "Annual freshwater withdrawals, total (% of internal resources)",
+      "category": "environment",
+      "data_points": 12,
+      "unit": "percentage"
+    },
+    {
+      "code": "ER.H2O.FWST.ZS.VALIDATION",
+      "name": "ER.H2O.FWST.ZS.VALIDATION",
+      "category": "environment",
+      "data_points": 0,
+      "unit": "number"
+    },
+    {
+      "code": "ER.H2O.FWTL.ZS",
+      "name": "Annual freshwater withdrawals, total (% of internal resources)",
+      "category": "environment",
+      "data_points": 12,
+      "unit": "percentage"
+    },
+    {
+      "code": "ER.H2O.FWTL.ZS.VALIDATION",
+      "name": "ER.H2O.FWTL.ZS.VALIDATION",
+      "category": "environment",
+      "data_points": 0,
+      "unit": "number"
+    },
+    {
+      "code": "FB.AST.NPER.ZS",
+      "name": "Bank nonperforming loans to total gross loans (%)",
+      "category": "financial",
+      "data_points": 12,
+      "unit": "percentage"
+    },
+    {
+      "code": "FB.AST.NPER.ZS.VALIDATION",
+      "name": "FB.AST.NPER.ZS.VALIDATION",
+      "category": "financial",
+      "data_points": 0,
+      "unit": "number"
+    },
+    {
+      "code": "FB.BNK.CAPA.ZS",
+      "name": "Bank capital to assets ratio (%)",
+      "category": "financial",
+      "data_points": 12,
+      "unit": "percentage"
+    },
+    {
+      "code": "FB.BNK.CAPA.ZS.VALIDATION",
+      "name": "FB.BNK.CAPA.ZS.VALIDATION",
+      "category": "financial",
+      "data_points": 0,
+      "unit": "number"
+    },
+    {
+      "code": "FM.LBL.BMNY.GD.ZS",
+      "name": "Broad money (% of GDP)",
+      "category": "financial",
+      "data_points": 15,
+      "unit": "percentage"
+    },
+    {
+      "code": "FM.LBL.BMNY.GD.ZS.VALIDATION",
+      "name": "FM.LBL.BMNY.GD.ZS.VALIDATION",
+      "category": "financial",
+      "data_points": 0,
+      "unit": "number"
+    },
+    {
+      "code": "FS.AST.DOMS.GD.ZS",
+      "name": "Domestic credit to private sector (% of GDP)",
+      "category": "financial",
+      "data_points": 0,
+      "unit": "percentage"
+    },
+    {
+      "code": "FS.AST.DOMS.GD.ZS.VALIDATION",
+      "name": "FS.AST.DOMS.GD.ZS.VALIDATION",
+      "category": "financial",
+      "data_points": 0,
+      "unit": "number"
+    },
+    {
+      "code": "FS.AST.PRVT.GD.ZS",
+      "name": "Domestic credit to private sector by banks (% of GDP)",
+      "category": "financial",
+      "data_points": 15,
+      "unit": "percentage"
+    },
+    {
+      "code": "FS.AST.PRVT.GD.ZS.VALIDATION",
+      "name": "FS.AST.PRVT.GD.ZS.VALIDATION",
+      "category": "financial",
+      "data_points": 0,
+      "unit": "number"
+    },
+    {
+      "code": "SH.DYN.MORT",
+      "name": "Mortality rate, under-5 (per 1,000 live births)",
+      "category": "health",
+      "data_points": 14,
+      "unit": "per_1000"
+    },
+    {
+      "code": "SH.DYN.MORT.VALIDATION",
+      "name": "SH.DYN.MORT.VALIDATION",
+      "category": "health",
+      "data_points": 0,
+      "unit": "number"
+    },
+    {
+      "code": "SH.DYN.NMRT",
+      "name": "Mortality rate, neonatal (per 1,000 live births)",
+      "category": "health",
+      "data_points": 14,
+      "unit": "per_1000"
+    },
+    {
+      "code": "SH.DYN.NMRT.VALIDATION",
+      "name": "SH.DYN.NMRT.VALIDATION",
+      "category": "health",
+      "data_points": 0,
+      "unit": "number"
+    },
+    {
+      "code": "SH.H2O.BASW.ZS",
+      "name": "People using at least basic drinking water services (% of population)",
+      "category": "health",
+      "data_points": 13,
+      "unit": "percentage"
+    },
+    {
+      "code": "SH.H2O.BASW.ZS.VALIDATION",
+      "name": "SH.H2O.BASW.ZS.VALIDATION",
+      "category": "health",
+      "data_points": 0,
+      "unit": "number"
+    },
+    {
+      "code": "SH.H2O.SMDW.RU.ZS",
+      "name": "People using safely managed drinking water services, rural (% of rural population)",
+      "category": "health",
+      "data_points": 13,
+      "unit": "percentage"
+    },
+    {
+      "code": "SH.H2O.SMDW.RU.ZS.VALIDATION",
+      "name": "SH.H2O.SMDW.RU.ZS.VALIDATION",
+      "category": "health",
+      "data_points": 0,
+      "unit": "number"
+    },
+    {
+      "code": "SH.H2O.SMDW.UR.ZS",
+      "name": "People using safely managed drinking water services, urban (% of urban population)",
+      "category": "health",
+      "data_points": 13,
+      "unit": "percentage"
+    },
+    {
+      "code": "SH.H2O.SMDW.UR.ZS.VALIDATION",
+      "name": "SH.H2O.SMDW.UR.ZS.VALIDATION",
+      "category": "health",
+      "data_points": 0,
+      "unit": "number"
+    },
+    {
+      "code": "SH.H2O.SMDW.ZS",
+      "name": "People using safely managed drinking water services (% of population)",
+      "category": "health",
+      "data_points": 13,
+      "unit": "percentage"
+    },
+    {
+      "code": "SH.H2O.SMDW.ZS.VALIDATION",
+      "name": "SH.H2O.SMDW.ZS.VALIDATION",
+      "category": "health",
+      "data_points": 0,
+      "unit": "number"
+    },
+    {
+      "code": "SH.IMM.HEPB",
+      "name": "Immunization, HepB3 (% of one-year-old children)",
+      "category": "health",
+      "data_points": 15,
+      "unit": "percentage"
+    },
+    {
+      "code": "SH.IMM.HEPB.VALIDATION",
+      "name": "SH.IMM.HEPB.VALIDATION",
+      "category": "health",
+      "data_points": 0,
+      "unit": "number"
+    },
+    {
+      "code": "SH.IMM.IDPT",
+      "name": "Immunization, DPT (% of children ages 12-23 months)",
+      "category": "health",
+      "data_points": 15,
+      "unit": "percentage"
+    },
+    {
+      "code": "SH.IMM.IDPT.VALIDATION",
+      "name": "SH.IMM.IDPT.VALIDATION",
+      "category": "health",
+      "data_points": 0,
+      "unit": "number"
+    },
+    {
+      "code": "SH.IMM.MEAS",
+      "name": "Immunization, measles (% of children ages 12-23 months)",
+      "category": "health",
+      "data_points": 15,
+      "unit": "percentage"
+    },
+    {
+      "code": "SH.IMM.MEAS.VALIDATION",
+      "name": "SH.IMM.MEAS.VALIDATION",
+      "category": "health",
+      "data_points": 0,
+      "unit": "number"
+    },
+    {
+      "code": "SH.MED.BEDS.ZS",
+      "name": "Hospital beds (per 1,000 people)",
+      "category": "health",
+      "data_points": 0,
+      "unit": "per_1000"
+    },
+    {
+      "code": "SH.MED.BEDS.ZS.VALIDATION",
+      "name": "SH.MED.BEDS.ZS.VALIDATION",
+      "category": "health",
+      "data_points": 0,
+      "unit": "number"
+    },
+    {
+      "code": "SH.MED.NUMW.P3",
+      "name": "Nurses and midwives (per 1,000 people)",
+      "category": "health",
+      "data_points": 2,
+      "unit": "per_1000"
+    },
+    {
+      "code": "SH.MED.NUMW.P3.VALIDATION",
+      "name": "SH.MED.NUMW.P3.VALIDATION",
+      "category": "health",
+      "data_points": 0,
+      "unit": "number"
+    },
+    {
+      "code": "SH.MED.PHYS.ZS",
+      "name": "Physicians (per 1,000 people)",
+      "category": "health",
+      "data_points": 2,
+      "unit": "per_1000"
+    },
+    {
+      "code": "SH.MED.PHYS.ZS.VALIDATION",
+      "name": "SH.MED.PHYS.ZS.VALIDATION",
+      "category": "health",
+      "data_points": 0,
+      "unit": "number"
+    },
+    {
+      "code": "SH.PRV.SMOK",
+      "name": "Smoking prevalence, total (ages 15+)",
+      "category": "health",
+      "data_points": 0,
+      "unit": "number"
+    },
+    {
+      "code": "SH.PRV.SMOK.VALIDATION",
+      "name": "SH.PRV.SMOK.VALIDATION",
+      "category": "health",
+      "data_points": 0,
+      "unit": "number"
+    },
+    {
+      "code": "SH.STA.BASS.RU.ZS",
+      "name": "People using at least basic sanitation services, rural (% of rural population)",
+      "category": "health",
+      "data_points": 13,
+      "unit": "percentage"
+    },
+    {
+      "code": "SH.STA.BASS.RU.ZS.VALIDATION",
+      "name": "SH.STA.BASS.RU.ZS.VALIDATION",
+      "category": "health",
+      "data_points": 0,
+      "unit": "number"
+    },
+    {
+      "code": "SH.STA.BASS.UR.ZS",
+      "name": "People using at least basic sanitation services, urban (% of urban population)",
+      "category": "health",
+      "data_points": 13,
+      "unit": "percentage"
+    },
+    {
+      "code": "SH.STA.BASS.UR.ZS.VALIDATION",
+      "name": "SH.STA.BASS.UR.ZS.VALIDATION",
+      "category": "health",
+      "data_points": 0,
+      "unit": "number"
+    },
+    {
+      "code": "SH.STA.BASS.ZS",
+      "name": "People using at least basic sanitation services (% of population)",
+      "category": "health",
+      "data_points": 13,
+      "unit": "percentage"
+    },
+    {
+      "code": "SH.STA.BASS.ZS.VALIDATION",
+      "name": "SH.STA.BASS.ZS.VALIDATION",
+      "category": "health",
+      "data_points": 0,
+      "unit": "number"
+    },
+    {
+      "code": "SH.STA.DIAB.ZS",
+      "name": "Diabetes prevalence (% of population ages 20 to 79)",
+      "category": "health",
+      "data_points": 2,
+      "unit": "percentage"
+    },
+    {
+      "code": "SH.STA.DIAB.ZS.VALIDATION",
+      "name": "SH.STA.DIAB.ZS.VALIDATION",
+      "category": "health",
+      "data_points": 0,
+      "unit": "number"
+    },
+    {
+      "code": "SH.STA.MALR",
+      "name": "Malaria cases reported",
+      "category": "health",
+      "data_points": 0,
+      "unit": "number"
+    },
+    {
+      "code": "SH.STA.MALR.VALIDATION",
+      "name": "SH.STA.MALR.VALIDATION",
+      "category": "health",
+      "data_points": 0,
+      "unit": "number"
+    },
+    {
+      "code": "SH.STA.MMRT",
+      "name": "Maternal mortality ratio (per 100,000 live births)",
+      "category": "health",
+      "data_points": 14,
+      "unit": "per_100000"
+    },
+    {
+      "code": "SH.STA.MMRT.VALIDATION",
+      "name": "SH.STA.MMRT.VALIDATION",
+      "category": "health",
+      "data_points": 0,
+      "unit": "number"
+    },
+    {
+      "code": "SH.STA.OWAD.ZS",
+      "name": "Prevalence of overweight (% of adults)",
+      "category": "health",
+      "data_points": 13,
+      "unit": "percentage"
+    },
+    {
+      "code": "SH.STA.OWAD.ZS.VALIDATION",
+      "name": "SH.STA.OWAD.ZS.VALIDATION",
+      "category": "health",
+      "data_points": 0,
+      "unit": "number"
+    },
+    {
+      "code": "SH.STA.SMSS.RU.ZS",
+      "name": "People using safely managed sanitation services, rural (% of rural population)",
+      "category": "health",
+      "data_points": 13,
+      "unit": "percentage"
+    },
+    {
+      "code": "SH.STA.SMSS.RU.ZS.VALIDATION",
+      "name": "SH.STA.SMSS.RU.ZS.VALIDATION",
+      "category": "health",
+      "data_points": 0,
+      "unit": "number"
+    },
+    {
+      "code": "SH.STA.SMSS.UR.ZS",
+      "name": "People using safely managed sanitation services, urban (% of urban population)",
+      "category": "health",
+      "data_points": 13,
+      "unit": "percentage"
+    },
+    {
+      "code": "SH.STA.SMSS.UR.ZS.VALIDATION",
+      "name": "SH.STA.SMSS.UR.ZS.VALIDATION",
+      "category": "health",
+      "data_points": 0,
+      "unit": "number"
+    },
+    {
+      "code": "SH.STA.SMSS.ZS",
+      "name": "People using safely managed sanitation services (% of population)",
+      "category": "health",
+      "data_points": 13,
+      "unit": "percentage"
+    },
+    {
+      "code": "SH.STA.SMSS.ZS.VALIDATION",
+      "name": "SH.STA.SMSS.ZS.VALIDATION",
+      "category": "health",
+      "data_points": 0,
+      "unit": "number"
+    },
+    {
+      "code": "SH.STA.STNT.ZS",
+      "name": "Prevalence of stunting, height for age (% of children under 5)",
+      "category": "health",
+      "data_points": 3,
+      "unit": "percentage"
+    },
+    {
+      "code": "SH.STA.STNT.ZS.VALIDATION",
+      "name": "SH.STA.STNT.ZS.VALIDATION",
+      "category": "health",
+      "data_points": 0,
+      "unit": "number"
+    },
+    {
+      "code": "SH.STA.SUIC.P5",
+      "name": "Suicide mortality rate (per 100,000 population)",
+      "category": "health",
+      "data_points": 12,
+      "unit": "per_100000"
+    },
+    {
+      "code": "SH.STA.SUIC.P5.VALIDATION",
+      "name": "SH.STA.SUIC.P5.VALIDATION",
+      "category": "health",
+      "data_points": 0,
+      "unit": "number"
+    },
+    {
+      "code": "SH.STA.WASH.P5",
+      "name": "Mortality rate attributed to unsafe water, unsafe sanitation and lack of hygiene (per 100,000 population)",
+      "category": "health",
+      "data_points": 0,
+      "unit": "per_100000"
+    },
+    {
+      "code": "SH.STA.WASH.P5.VALIDATION",
+      "name": "SH.STA.WASH.P5.VALIDATION",
+      "category": "health",
+      "data_points": 0,
+      "unit": "number"
+    },
+    {
+      "code": "SH.XPD.CHEX.GD.ZS",
+      "name": "Current health expenditure (% of GDP)",
+      "category": "health",
+      "data_points": 13,
+      "unit": "percentage"
+    },
+    {
+      "code": "SH.XPD.CHEX.GD.ZS.VALIDATION",
+      "name": "SH.XPD.CHEX.GD.ZS.VALIDATION",
+      "category": "health",
+      "data_points": 0,
+      "unit": "number"
+    },
+    {
+      "code": "SH.XPD.CHEX.PC.CD",
+      "name": "Current health expenditure per capita (current US$)",
+      "category": "health",
+      "data_points": 13,
+      "unit": "currency_usd"
+    },
+    {
+      "code": "SH.XPD.CHEX.PC.CD.VALIDATION",
+      "name": "SH.XPD.CHEX.PC.CD.VALIDATION",
+      "category": "health",
+      "data_points": 0,
+      "unit": "number"
+    },
+    {
+      "code": "SH.XPD.CHEX.PP.CD",
+      "name": "Current health expenditure per capita, PPP (current international $)",
+      "category": "health",
+      "data_points": 13,
+      "unit": "number"
+    },
+    {
+      "code": "SH.XPD.CHEX.PP.CD.VALIDATION",
+      "name": "SH.XPD.CHEX.PP.CD.VALIDATION",
+      "category": "health",
+      "data_points": 0,
+      "unit": "number"
+    },
+    {
+      "code": "EG.ELC.ACCS.RU.ZS",
+      "name": "Access to electricity, rural (% of rural population)",
+      "category": "infrastructure",
+      "data_points": 14,
+      "unit": "percentage"
+    },
+    {
+      "code": "EG.ELC.ACCS.RU.ZS.VALIDATION",
+      "name": "EG.ELC.ACCS.RU.ZS.VALIDATION",
+      "category": "infrastructure",
+      "data_points": 0,
+      "unit": "number"
+    },
+    {
+      "code": "EG.ELC.ACCS.UR.ZS",
+      "name": "Access to electricity, urban (% of urban population)",
+      "category": "infrastructure",
+      "data_points": 14,
+      "unit": "percentage"
+    },
+    {
+      "code": "EG.ELC.ACCS.UR.ZS.VALIDATION",
+      "name": "EG.ELC.ACCS.UR.ZS.VALIDATION",
+      "category": "infrastructure",
+      "data_points": 0,
+      "unit": "number"
+    },
+    {
+      "code": "EG.ELC.ACCS.ZS",
+      "name": "Access to electricity (% of population)",
+      "category": "infrastructure",
+      "data_points": 14,
+      "unit": "percentage"
+    },
+    {
+      "code": "EG.ELC.ACCS.ZS.VALIDATION",
+      "name": "EG.ELC.ACCS.ZS.VALIDATION",
+      "category": "infrastructure",
+      "data_points": 0,
+      "unit": "number"
+    },
+    {
+      "code": "EG.ELC.LOSS.ZS",
+      "name": "Electric power transmission and distribution losses (% of output)",
+      "category": "infrastructure",
+      "data_points": 0,
+      "unit": "percentage"
+    },
+    {
+      "code": "EG.ELC.LOSS.ZS.VALIDATION",
+      "name": "EG.ELC.LOSS.ZS.VALIDATION",
+      "category": "infrastructure",
+      "data_points": 0,
+      "unit": "number"
+    },
+    {
+      "code": "EG.ELC.RNEW.ZS",
+      "name": "Renewable electricity output (% of total electricity output)",
+      "category": "infrastructure",
+      "data_points": 12,
+      "unit": "percentage"
+    },
+    {
+      "code": "EG.ELC.RNEW.ZS.VALIDATION",
+      "name": "EG.ELC.RNEW.ZS.VALIDATION",
+      "category": "infrastructure",
+      "data_points": 0,
+      "unit": "number"
+    },
+    {
+      "code": "EG.ELC.RNWX.ZS",
+      "name": "Renewable energy consumption (% of total final energy consumption)",
+      "category": "infrastructure",
+      "data_points": 12,
+      "unit": "percentage"
+    },
+    {
+      "code": "EG.ELC.RNWX.ZS.VALIDATION",
+      "name": "EG.ELC.RNWX.ZS.VALIDATION",
+      "category": "infrastructure",
+      "data_points": 0,
+      "unit": "number"
+    },
+    {
+      "code": "EG.FEC.RNEW.ZS",
+      "name": "Renewable energy consumption (% of total final energy consumption)",
+      "category": "infrastructure",
+      "data_points": 13,
+      "unit": "percentage"
+    },
+    {
+      "code": "EG.FEC.RNEW.ZS.VALIDATION",
+      "name": "EG.FEC.RNEW.ZS.VALIDATION",
+      "category": "infrastructure",
+      "data_points": 0,
+      "unit": "number"
+    },
+    {
+      "code": "EG.IMP.CONS.ZS",
+      "name": "Energy imports, net (% of energy use)",
+      "category": "infrastructure",
+      "data_points": 0,
+      "unit": "percentage"
+    },
+    {
+      "code": "EG.IMP.CONS.ZS.VALIDATION",
+      "name": "EG.IMP.CONS.ZS.VALIDATION",
+      "category": "infrastructure",
+      "data_points": 0,
+      "unit": "number"
+    },
+    {
+      "code": "EG.USE.COMM.GD.PP.KD",
+      "name": "Energy use (kg of oil equivalent) per $1,000 GDP (constant 2017 PPP)",
+      "category": "infrastructure",
+      "data_points": 0,
+      "unit": "number"
+    },
+    {
+      "code": "EG.USE.COMM.GD.PP.KD.VALIDATION",
+      "name": "EG.USE.COMM.GD.PP.KD.VALIDATION",
+      "category": "infrastructure",
+      "data_points": 0,
+      "unit": "number"
+    },
+    {
+      "code": "EG.USE.ELEC.KH.PC",
+      "name": "Electric power consumption (kWh per capita)",
+      "category": "infrastructure",
+      "data_points": 0,
+      "unit": "kwh"
+    },
+    {
+      "code": "EG.USE.ELEC.KH.PC.VALIDATION",
+      "name": "EG.USE.ELEC.KH.PC.VALIDATION",
+      "category": "infrastructure",
+      "data_points": 0,
+      "unit": "number"
+    },
+    {
+      "code": "IS.AIR.DPRT",
+      "name": "Air transport, registered carrier departures worldwide",
+      "category": "infrastructure",
+      "data_points": 0,
+      "unit": "number"
+    },
+    {
+      "code": "IS.AIR.DPRT.VALIDATION",
+      "name": "IS.AIR.DPRT.VALIDATION",
+      "category": "infrastructure",
+      "data_points": 0,
+      "unit": "number"
+    },
+    {
+      "code": "IS.SHP.GOOD.TU",
+      "name": "Container port traffic (TEU: 20 foot equivalent units)",
+      "category": "infrastructure",
+      "data_points": 0,
+      "unit": "teu"
+    },
+    {
+      "code": "IS.SHP.GOOD.TU.VALIDATION",
+      "name": "IS.SHP.GOOD.TU.VALIDATION",
+      "category": "infrastructure",
+      "data_points": 0,
+      "unit": "number"
+    },
+    {
+      "code": "IT.CEL.SETS.P2",
+      "name": "Mobile cellular subscriptions (per 100 people)",
+      "category": "infrastructure",
+      "data_points": 14,
+      "unit": "per_100"
+    },
+    {
+      "code": "IT.CEL.SETS.P2.VALIDATION",
+      "name": "IT.CEL.SETS.P2.VALIDATION",
+      "category": "infrastructure",
+      "data_points": 0,
+      "unit": "number"
+    },
+    {
+      "code": "IT.MLT.MAIN.P2",
+      "name": "Fixed telephone subscriptions (per 100 people)",
+      "category": "infrastructure",
+      "data_points": 14,
+      "unit": "per_100"
+    },
+    {
+      "code": "IT.MLT.MAIN.P2.VALIDATION",
+      "name": "IT.MLT.MAIN.P2.VALIDATION",
+      "category": "infrastructure",
+      "data_points": 0,
+      "unit": "number"
+    },
+    {
+      "code": "IT.NET.BBND.P2",
+      "name": "Fixed broadband subscriptions (per 100 people)",
+      "category": "infrastructure",
+      "data_points": 13,
+      "unit": "per_100"
+    },
+    {
+      "code": "IT.NET.BBND.P2.VALIDATION",
+      "name": "IT.NET.BBND.P2.VALIDATION",
+      "category": "infrastructure",
+      "data_points": 0,
+      "unit": "number"
+    },
+    {
+      "code": "IT.NET.SECR.P6",
+      "name": "Secure Internet servers (per 1 million people)",
+      "category": "infrastructure",
+      "data_points": 15,
+      "unit": "number"
+    },
+    {
+      "code": "IT.NET.SECR.P6.VALIDATION",
+      "name": "IT.NET.SECR.P6.VALIDATION",
+      "category": "infrastructure",
+      "data_points": 0,
+      "unit": "number"
+    },
+    {
+      "code": "IT.NET.USER.ZS",
+      "name": "Individuals using the Internet (% of population)",
+      "category": "infrastructure",
+      "data_points": 14,
+      "unit": "percentage"
+    },
+    {
+      "code": "IT.NET.USER.ZS.VALIDATION",
+      "name": "IT.NET.USER.ZS.VALIDATION",
+      "category": "infrastructure",
+      "data_points": 0,
+      "unit": "number"
+    },
+    {
+      "code": "SL.EMP.VULN.ZS",
+      "name": "Vulnerable employment, total (% of total employment)",
+      "category": "labor",
+      "data_points": 13,
+      "unit": "percentage"
+    },
+    {
+      "code": "SL.EMP.VULN.ZS.VALIDATION",
+      "name": "SL.EMP.VULN.ZS.VALIDATION",
+      "category": "labor",
+      "data_points": 0,
+      "unit": "number"
+    },
+    {
+      "code": "SL.TLF.CACT.FE.ZS",
+      "name": "Labor force participation rate, female (% of female population ages 15+)",
+      "category": "labor",
+      "data_points": 13,
+      "unit": "percentage"
+    },
+    {
+      "code": "SL.TLF.CACT.FE.ZS.VALIDATION",
+      "name": "SL.TLF.CACT.FE.ZS.VALIDATION",
+      "category": "labor",
+      "data_points": 0,
+      "unit": "number"
+    },
+    {
+      "code": "SL.TLF.CACT.MA.ZS",
+      "name": "Labor force participation rate, male (% of male population ages 15+)",
+      "category": "labor",
+      "data_points": 13,
+      "unit": "percentage"
+    },
+    {
+      "code": "SL.TLF.CACT.MA.ZS.VALIDATION",
+      "name": "SL.TLF.CACT.MA.ZS.VALIDATION",
+      "category": "labor",
+      "data_points": 0,
+      "unit": "number"
+    },
+    {
+      "code": "SL.TLF.CACT.ZS",
+      "name": "Labor force participation rate, total (% of total population ages 15+)",
+      "category": "labor",
+      "data_points": 13,
+      "unit": "percentage"
+    },
+    {
+      "code": "SL.TLF.CACT.ZS.VALIDATION",
+      "name": "SL.TLF.CACT.ZS.VALIDATION",
+      "category": "labor",
+      "data_points": 0,
+      "unit": "number"
+    },
+    {
+      "code": "SL.TLF.TOTL.IN",
+      "name": "Labor force, total",
+      "category": "labor",
+      "data_points": 13,
+      "unit": "number"
+    },
+    {
+      "code": "SL.TLF.TOTL.IN.VALIDATION",
+      "name": "SL.TLF.TOTL.IN.VALIDATION",
+      "category": "labor",
+      "data_points": 0,
+      "unit": "number"
+    },
+    {
+      "code": "SL.UEM.1524.ZS",
+      "name": "Unemployment, youth total (% of total labor force ages 15-24)",
+      "category": "labor",
+      "data_points": 13,
+      "unit": "percentage"
+    },
+    {
+      "code": "SL.UEM.1524.ZS.VALIDATION",
+      "name": "SL.UEM.1524.ZS.VALIDATION",
+      "category": "labor",
+      "data_points": 0,
+      "unit": "number"
+    },
+    {
+      "code": "SL.UEM.ADVN.ZS",
+      "name": "Unemployment with advanced education (% of total labor force)",
+      "category": "labor",
+      "data_points": 14,
+      "unit": "percentage"
+    },
+    {
+      "code": "SL.UEM.ADVN.ZS.VALIDATION",
+      "name": "SL.UEM.ADVN.ZS.VALIDATION",
+      "category": "labor",
+      "data_points": 0,
+      "unit": "number"
+    },
+    {
+      "code": "SL.UEM.TOTL.FE.ZS",
+      "name": "Unemployment, female (% of female labor force)",
+      "category": "labor",
+      "data_points": 13,
+      "unit": "percentage"
+    },
+    {
+      "code": "SL.UEM.TOTL.FE.ZS.VALIDATION",
+      "name": "SL.UEM.TOTL.FE.ZS.VALIDATION",
+      "category": "labor",
+      "data_points": 0,
+      "unit": "number"
+    },
+    {
+      "code": "SL.UEM.TOTL.MA.ZS",
+      "name": "Unemployment, male (% of male labor force)",
+      "category": "labor",
+      "data_points": 13,
+      "unit": "percentage"
+    },
+    {
+      "code": "SL.UEM.TOTL.MA.ZS.VALIDATION",
+      "name": "SL.UEM.TOTL.MA.ZS.VALIDATION",
+      "category": "labor",
+      "data_points": 0,
+      "unit": "number"
+    },
+    {
+      "code": "SL.UEM.TOTL.ZS",
+      "name": "Unemployment, total (% of total labor force)",
+      "category": "labor",
+      "data_points": 13,
+      "unit": "percentage"
+    },
+    {
+      "code": "SL.UEM.TOTL.ZS.VALIDATION",
+      "name": "SL.UEM.TOTL.ZS.VALIDATION",
+      "category": "labor",
+      "data_points": 0,
+      "unit": "number"
+    },
+    {
+      "code": "EN.ATM.PM25.MC.M3",
+      "name": "PM2.5 air pollution, mean annual exposure (micrograms per cubic meter)",
+      "category": "other",
+      "data_points": 11,
+      "unit": "number"
+    },
+    {
+      "code": "EN.ATM.PM25.MC.M3.VALIDATION",
+      "name": "EN.ATM.PM25.MC.M3.VALIDATION",
+      "category": "other",
+      "data_points": 0,
+      "unit": "number"
+    },
+    {
+      "code": "GC.TAX.TOTL.GD.ZS",
+      "name": "Tax revenue (% of GDP)",
+      "category": "other",
+      "data_points": 0,
+      "unit": "percentage"
+    },
+    {
+      "code": "GC.TAX.TOTL.GD.ZS.VALIDATION",
+      "name": "GC.TAX.TOTL.GD.ZS.VALIDATION",
+      "category": "other",
+      "data_points": 0,
+      "unit": "number"
+    },
+    {
+      "code": "MS.MIL.XPND.GD.ZS",
+      "name": "Military expenditure (% of GDP)",
+      "category": "other",
+      "data_points": 0,
+      "unit": "percentage"
+    },
+    {
+      "code": "MS.MIL.XPND.GD.ZS.VALIDATION",
+      "name": "MS.MIL.XPND.GD.ZS.VALIDATION",
+      "category": "other",
+      "data_points": 0,
+      "unit": "number"
+    },
+    {
+      "code": "NV.AGR.TOTL.CD",
+      "name": "Agriculture, forestry, and fishing, value added (current US$)",
+      "category": "other",
+      "data_points": 13,
+      "unit": "currency_usd"
+    },
+    {
+      "code": "NV.AGR.TOTL.CD.VALIDATION",
+      "name": "NV.AGR.TOTL.CD.VALIDATION",
+      "category": "other",
+      "data_points": 0,
+      "unit": "number"
+    },
+    {
+      "code": "NV.AGR.TOTL.ZS",
+      "name": "Agriculture, forestry, and fishing, value added (% of GDP)",
+      "category": "other",
+      "data_points": 13,
+      "unit": "percentage"
+    },
+    {
+      "code": "NV.AGR.TOTL.ZS.VALIDATION",
+      "name": "NV.AGR.TOTL.ZS.VALIDATION",
+      "category": "other",
+      "data_points": 0,
+      "unit": "number"
+    },
+    {
+      "code": "NV.IND.MANF.ZS",
+      "name": "Manufacturing, value added (% of GDP)",
+      "category": "other",
+      "data_points": 13,
+      "unit": "percentage"
+    },
+    {
+      "code": "NV.IND.MANF.ZS.VALIDATION",
+      "name": "NV.IND.MANF.ZS.VALIDATION",
+      "category": "other",
+      "data_points": 0,
+      "unit": "number"
+    },
+    {
+      "code": "NV.IND.TOTL.ZS",
+      "name": "Industry (including construction), value added (% of GDP)",
+      "category": "other",
+      "data_points": 13,
+      "unit": "percentage"
+    },
+    {
+      "code": "NV.IND.TOTL.ZS.VALIDATION",
+      "name": "NV.IND.TOTL.ZS.VALIDATION",
+      "category": "other",
+      "data_points": 0,
+      "unit": "number"
+    },
+    {
+      "code": "NV.SRV.TOTL.ZS",
+      "name": "Services, value added (% of GDP)",
+      "category": "other",
+      "data_points": 13,
+      "unit": "percentage"
+    },
+    {
+      "code": "NV.SRV.TOTL.ZS.VALIDATION",
+      "name": "NV.SRV.TOTL.ZS.VALIDATION",
+      "category": "other",
+      "data_points": 0,
+      "unit": "number"
+    },
+    {
+      "code": "SG.GEN.PARL.ZS",
+      "name": "Proportion of seats held by women in parliament (%)",
+      "category": "other",
+      "data_points": 0,
+      "unit": "percentage"
+    },
+    {
+      "code": "SG.GEN.PARL.ZS.VALIDATION",
+      "name": "SG.GEN.PARL.ZS.VALIDATION",
+      "category": "other",
+      "data_points": 0,
+      "unit": "number"
+    },
+    {
+      "code": "SN.ITK.DEFC.ZS",
+      "name": "Prevalence of undernourishment (% of population)",
+      "category": "other",
+      "data_points": 0,
+      "unit": "percentage"
+    },
+    {
+      "code": "SN.ITK.DEFC.ZS.VALIDATION",
+      "name": "SN.ITK.DEFC.ZS.VALIDATION",
+      "category": "other",
+      "data_points": 0,
+      "unit": "number"
+    },
+    {
+      "code": "VC.BTL.DETH",
+      "name": "Battle-related deaths (number of people)",
+      "category": "other",
+      "data_points": 0,
+      "unit": "number"
+    },
+    {
+      "code": "VC.BTL.DETH.VALIDATION",
+      "name": "VC.BTL.DETH.VALIDATION",
+      "category": "other",
+      "data_points": 0,
+      "unit": "number"
+    },
+    {
+      "code": "VC.IHR.PSRC.P5",
+      "name": "Intentional homicides (per 100,000 people)",
+      "category": "other",
+      "data_points": 13,
+      "unit": "per_100000"
+    },
+    {
+      "code": "VC.IHR.PSRC.P5.VALIDATION",
+      "name": "VC.IHR.PSRC.P5.VALIDATION",
+      "category": "other",
+      "data_points": 0,
+      "unit": "number"
+    },
+    {
+      "code": "SP.DYN.CBRT.IN",
+      "name": "Birth rate, crude (per 1,000 people)",
+      "category": "population",
+      "data_points": 14,
+      "unit": "per_1000"
+    },
+    {
+      "code": "SP.DYN.CBRT.IN.VALIDATION",
+      "name": "SP.DYN.CBRT.IN.VALIDATION",
+      "category": "population",
+      "data_points": 0,
+      "unit": "number"
+    },
+    {
+      "code": "SP.DYN.CDRT.IN",
+      "name": "Death rate, crude (per 1,000 people)",
+      "category": "population",
+      "data_points": 14,
+      "unit": "per_1000"
+    },
+    {
+      "code": "SP.DYN.CDRT.IN.VALIDATION",
+      "name": "SP.DYN.CDRT.IN.VALIDATION",
+      "category": "population",
+      "data_points": 0,
+      "unit": "number"
+    },
+    {
+      "code": "SP.DYN.LE00.FE.IN",
+      "name": "Life expectancy at birth, female (years)",
+      "category": "population",
+      "data_points": 14,
+      "unit": "years"
+    },
+    {
+      "code": "SP.DYN.LE00.FE.IN.VALIDATION",
+      "name": "SP.DYN.LE00.FE.IN.VALIDATION",
+      "category": "population",
+      "data_points": 0,
+      "unit": "number"
+    },
+    {
+      "code": "SP.DYN.LE00.IN",
+      "name": "Life expectancy at birth, total (years)",
+      "category": "population",
+      "data_points": 14,
+      "unit": "years"
+    },
+    {
+      "code": "SP.DYN.LE00.IN.VALIDATION",
+      "name": "SP.DYN.LE00.IN.VALIDATION",
+      "category": "population",
+      "data_points": 0,
+      "unit": "number"
+    },
+    {
+      "code": "SP.DYN.LE00.MA.IN",
+      "name": "Life expectancy at birth, male (years)",
+      "category": "population",
+      "data_points": 14,
+      "unit": "years"
+    },
+    {
+      "code": "SP.DYN.LE00.MA.IN.VALIDATION",
+      "name": "SP.DYN.LE00.MA.IN.VALIDATION",
+      "category": "population",
+      "data_points": 0,
+      "unit": "number"
+    },
+    {
+      "code": "SP.DYN.TFRT.IN",
+      "name": "Fertility rate, total (births per woman)",
+      "category": "population",
+      "data_points": 14,
+      "unit": "births_per_woman"
+    },
+    {
+      "code": "SP.DYN.TFRT.IN.VALIDATION",
+      "name": "SP.DYN.TFRT.IN.VALIDATION",
+      "category": "population",
+      "data_points": 0,
+      "unit": "number"
+    },
+    {
+      "code": "SP.POP.0014.TO.ZS",
+      "name": "Population ages 0-14 (% of total)",
+      "category": "population",
+      "data_points": 15,
+      "unit": "percentage"
+    },
+    {
+      "code": "SP.POP.0014.TO.ZS.VALIDATION",
+      "name": "SP.POP.0014.TO.ZS.VALIDATION",
+      "category": "population",
+      "data_points": 0,
+      "unit": "number"
+    },
+    {
+      "code": "SP.POP.1564.TO.ZS",
+      "name": "Population ages 15-64 (% of total)",
+      "category": "population",
+      "data_points": 15,
+      "unit": "percentage"
+    },
+    {
+      "code": "SP.POP.1564.TO.ZS.VALIDATION",
+      "name": "SP.POP.1564.TO.ZS.VALIDATION",
+      "category": "population",
+      "data_points": 0,
+      "unit": "number"
+    },
+    {
+      "code": "SP.POP.65UP.TO.ZS",
+      "name": "Population ages 65 and above (% of total)",
+      "category": "population",
+      "data_points": 15,
+      "unit": "percentage"
+    },
+    {
+      "code": "SP.POP.65UP.TO.ZS.VALIDATION",
+      "name": "SP.POP.65UP.TO.ZS.VALIDATION",
+      "category": "population",
+      "data_points": 0,
+      "unit": "number"
+    },
+    {
+      "code": "SP.POP.GROW",
+      "name": "Population growth (annual %)",
+      "category": "population",
+      "data_points": 15,
+      "unit": "number"
+    },
+    {
+      "code": "SP.POP.GROW.VALIDATION",
+      "name": "SP.POP.GROW.VALIDATION",
+      "category": "population",
+      "data_points": 0,
+      "unit": "number"
+    },
+    {
+      "code": "SP.POP.TOTL",
+      "name": "Population, total",
+      "category": "population",
+      "data_points": 15,
+      "unit": "number"
+    },
+    {
+      "code": "SP.POP.TOTL.VALIDATION",
+      "name": "SP.POP.TOTL.VALIDATION",
+      "category": "population",
+      "data_points": 0,
+      "unit": "number"
+    },
+    {
+      "code": "SP.URB.GROW",
+      "name": "Urban population growth (annual %)",
+      "category": "population",
+      "data_points": 15,
+      "unit": "number"
+    },
+    {
+      "code": "SP.URB.GROW.VALIDATION",
+      "name": "SP.URB.GROW.VALIDATION",
+      "category": "population",
+      "data_points": 0,
+      "unit": "number"
+    },
+    {
+      "code": "SP.URB.TOTL.IN.ZS",
+      "name": "Urban population (% of total)",
+      "category": "population",
+      "data_points": 15,
+      "unit": "percentage"
+    },
+    {
+      "code": "SP.URB.TOTL.IN.ZS.VALIDATION",
+      "name": "SP.URB.TOTL.IN.ZS.VALIDATION",
+      "category": "population",
+      "data_points": 0,
+      "unit": "number"
+    },
+    {
+      "code": "SI.DST.05TH.20",
+      "name": "Income share held by highest 20%",
+      "category": "poverty",
+      "data_points": 4,
+      "unit": "number"
+    },
+    {
+      "code": "SI.DST.05TH.20.VALIDATION",
+      "name": "SI.DST.05TH.20.VALIDATION",
+      "category": "poverty",
+      "data_points": 0,
+      "unit": "number"
+    },
+    {
+      "code": "SI.DST.FRST.20",
+      "name": "Income share held by lowest 20%",
+      "category": "poverty",
+      "data_points": 4,
+      "unit": "number"
+    },
+    {
+      "code": "SI.DST.FRST.20.VALIDATION",
+      "name": "SI.DST.FRST.20.VALIDATION",
+      "category": "poverty",
+      "data_points": 0,
+      "unit": "number"
+    },
+    {
+      "code": "SI.POV.DDAY",
+      "name": "Poverty headcount ratio at $2.15 a day (2017 PPP) (% of population)",
+      "category": "poverty",
+      "data_points": 4,
+      "unit": "percentage"
+    },
+    {
+      "code": "SI.POV.DDAY.VALIDATION",
+      "name": "SI.POV.DDAY.VALIDATION",
+      "category": "poverty",
+      "data_points": 0,
+      "unit": "number"
+    },
+    {
+      "code": "SI.POV.GAPS",
+      "name": "Poverty gap at $2.15 a day (2017 PPP) (%)",
+      "category": "poverty",
+      "data_points": 4,
+      "unit": "percentage"
+    },
+    {
+      "code": "SI.POV.GAPS.VALIDATION",
+      "name": "SI.POV.GAPS.VALIDATION",
+      "category": "poverty",
+      "data_points": 0,
+      "unit": "number"
+    },
+    {
+      "code": "SI.POV.GINI",
+      "name": "Gini index",
+      "category": "poverty",
+      "data_points": 4,
+      "unit": "number"
+    },
+    {
+      "code": "SI.POV.GINI.VALIDATION",
+      "name": "SI.POV.GINI.VALIDATION",
+      "category": "poverty",
+      "data_points": 0,
+      "unit": "number"
+    },
+    {
+      "code": "SI.POV.LMIC",
+      "name": "Poverty headcount ratio at $3.65 a day (2017 PPP) (% of population)",
+      "category": "poverty",
+      "data_points": 4,
+      "unit": "percentage"
+    },
+    {
+      "code": "SI.POV.LMIC.GP",
+      "name": "Poverty gap at $3.65 a day (2017 PPP) (%)",
+      "category": "poverty",
+      "data_points": 4,
+      "unit": "percentage"
+    },
+    {
+      "code": "SI.POV.LMIC.GP.VALIDATION",
+      "name": "SI.POV.LMIC.GP.VALIDATION",
+      "category": "poverty",
+      "data_points": 0,
+      "unit": "number"
+    },
+    {
+      "code": "SI.POV.LMIC.VALIDATION",
+      "name": "SI.POV.LMIC.VALIDATION",
+      "category": "poverty",
+      "data_points": 0,
+      "unit": "number"
+    },
+    {
+      "code": "SI.POV.NAHC",
+      "name": "Poverty headcount ratio at national poverty lines (% of population)",
+      "category": "poverty",
+      "data_points": 3,
+      "unit": "percentage"
+    },
+    {
+      "code": "SI.POV.NAHC.VALIDATION",
+      "name": "SI.POV.NAHC.VALIDATION",
+      "category": "poverty",
+      "data_points": 0,
+      "unit": "number"
+    },
+    {
+      "code": "SI.POV.UMIC",
+      "name": "Poverty headcount ratio at $6.85 a day (2017 PPP) (% of population)",
+      "category": "poverty",
+      "data_points": 4,
+      "unit": "percentage"
+    },
+    {
+      "code": "SI.POV.UMIC.VALIDATION",
+      "name": "SI.POV.UMIC.VALIDATION",
+      "category": "poverty",
+      "data_points": 0,
+      "unit": "number"
+    },
+    {
+      "code": "BM.GSR.GNFS.CD",
+      "name": "Imports of goods and services (BoP, current US$)",
+      "category": "trade",
+      "data_points": 15,
+      "unit": "currency_usd"
+    },
+    {
+      "code": "BM.GSR.GNFS.CD.VALIDATION",
+      "name": "BM.GSR.GNFS.CD.VALIDATION",
+      "category": "trade",
+      "data_points": 0,
+      "unit": "number"
+    },
+    {
+      "code": "BN.CAB.XOKA.GD.ZS",
+      "name": "Current account balance (% of GDP)",
+      "category": "trade",
+      "data_points": 15,
+      "unit": "percentage"
+    },
+    {
+      "code": "BN.CAB.XOKA.GD.ZS.VALIDATION",
+      "name": "BN.CAB.XOKA.GD.ZS.VALIDATION",
+      "category": "trade",
+      "data_points": 0,
+      "unit": "number"
+    },
+    {
+      "code": "BX.GSR.GNFS.CD",
+      "name": "Exports of goods and services (BoP, current US$)",
+      "category": "trade",
+      "data_points": 15,
+      "unit": "currency_usd"
+    },
+    {
+      "code": "BX.GSR.GNFS.CD.VALIDATION",
+      "name": "BX.GSR.GNFS.CD.VALIDATION",
+      "category": "trade",
+      "data_points": 0,
+      "unit": "number"
+    },
+    {
+      "code": "BX.KLT.DINV.CD.WD",
+      "name": "Foreign direct investment, net inflows (BoP, current US$)",
+      "category": "trade",
+      "data_points": 15,
+      "unit": "currency_usd"
+    },
+    {
+      "code": "BX.KLT.DINV.CD.WD.VALIDATION",
+      "name": "BX.KLT.DINV.CD.WD.VALIDATION",
+      "category": "trade",
+      "data_points": 0,
+      "unit": "number"
+    },
+    {
+      "code": "BX.KLT.DINV.WD.GD.ZS",
+      "name": "Foreign direct investment, net inflows (% of GDP)",
+      "category": "trade",
+      "data_points": 15,
+      "unit": "percentage"
+    },
+    {
+      "code": "BX.KLT.DINV.WD.GD.ZS.VALIDATION",
+      "name": "BX.KLT.DINV.WD.GD.ZS.VALIDATION",
+      "category": "trade",
+      "data_points": 0,
+      "unit": "number"
+    },
+    {
+      "code": "BX.TRF.PWKR.CD.DT",
+      "name": "Personal remittances, received (current US$)",
+      "category": "trade",
+      "data_points": 15,
+      "unit": "currency_usd"
+    },
+    {
+      "code": "BX.TRF.PWKR.CD.DT.VALIDATION",
+      "name": "BX.TRF.PWKR.CD.DT.VALIDATION",
+      "category": "trade",
+      "data_points": 0,
+      "unit": "number"
+    },
+    {
+      "code": "TG.VAL.TOTL.GD.ZS",
+      "name": "Merchandise trade (% of GDP)",
+      "category": "trade",
+      "data_points": 0,
+      "unit": "percentage"
+    },
+    {
+      "code": "TG.VAL.TOTL.GD.ZS.VALIDATION",
+      "name": "TG.VAL.TOTL.GD.ZS.VALIDATION",
+      "category": "trade",
+      "data_points": 0,
+      "unit": "number"
+    },
+    {
+      "code": "TM.VAL.MRCH.CD.WT",
+      "name": "Merchandise imports (current US$)",
+      "category": "trade",
+      "data_points": 0,
+      "unit": "currency_usd"
+    },
+    {
+      "code": "TM.VAL.MRCH.CD.WT.VALIDATION",
+      "name": "TM.VAL.MRCH.CD.WT.VALIDATION",
+      "category": "trade",
+      "data_points": 0,
+      "unit": "number"
+    },
+    {
+      "code": "TX.VAL.MRCH.CD.WT",
+      "name": "Merchandise exports (current US$)",
+      "category": "trade",
+      "data_points": 0,
+      "unit": "currency_usd"
+    },
+    {
+      "code": "TX.VAL.MRCH.CD.WT.VALIDATION",
+      "name": "TX.VAL.MRCH.CD.WT.VALIDATION",
+      "category": "trade",
+      "data_points": 0,
+      "unit": "number"
+    },
+    {
+      "code": "TX.VAL.TECH.CD",
+      "name": "High-technology exports (current US$)",
+      "category": "trade",
+      "data_points": 14,
+      "unit": "currency_usd"
+    },
+    {
+      "code": "TX.VAL.TECH.CD.VALIDATION",
+      "name": "TX.VAL.TECH.CD.VALIDATION",
+      "category": "trade",
+      "data_points": 0,
+      "unit": "number"
+    }
+  ]
+}

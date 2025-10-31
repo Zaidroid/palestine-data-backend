@@ -1,0 +1,140 @@
+{
+  "indicator": "SP.URB.TOTL.IN.ZS",
+  "indicator_name": "Urban population (% of total)",
+  "data": [
+    {
+      "year": 2010,
+      "value": 74.149,
+      "indicator": "SP.URB.TOTL.IN.ZS",
+      "indicator_name": "Urban population (% of total)",
+      "country": "West Bank and Gaza",
+      "source": "worldbank"
+    },
+    {
+      "year": 2011,
+      "value": 74.381,
+      "indicator": "SP.URB.TOTL.IN.ZS",
+      "indicator_name": "Urban population (% of total)",
+      "country": "West Bank and Gaza",
+      "source": "worldbank"
+    },
+    {
+      "year": 2012,
+      "value": 74.619,
+      "indicator": "SP.URB.TOTL.IN.ZS",
+      "indicator_name": "Urban population (% of total)",
+      "country": "West Bank and Gaza",
+      "source": "worldbank"
+    },
+    {
+      "year": 2013,
+      "value": 74.863,
+      "indicator": "SP.URB.TOTL.IN.ZS",
+      "indicator_name": "Urban population (% of total)",
+      "country": "West Bank and Gaza",
+      "source": "worldbank"
+    },
+    {
+      "year": 2014,
+      "value": 75.113,
+      "indicator": "SP.URB.TOTL.IN.ZS",
+      "indicator_name": "Urban population (% of total)",
+      "country": "West Bank and Gaza",
+      "source": "worldbank"
+    },
+    {
+      "year": 2015,
+      "value": 75.368,
+      "indicator": "SP.URB.TOTL.IN.ZS",
+      "indicator_name": "Urban population (% of total)",
+      "country": "West Bank and Gaza",
+      "source": "worldbank"
+    },
+    {
+      "year": 2016,
+      "value": 75.628,
+      "indicator": "SP.URB.TOTL.IN.ZS",
+      "indicator_name": "Urban population (% of total)",
+      "country": "West Bank and Gaza",
+      "source": "worldbank"
+    },
+    {
+      "year": 2017,
+      "value": 75.894,
+      "indicator": "SP.URB.TOTL.IN.ZS",
+      "indicator_name": "Urban population (% of total)",
+      "country": "West Bank and Gaza",
+      "source": "worldbank"
+    },
+    {
+      "year": 2018,
+      "value": 76.164,
+      "indicator": "SP.URB.TOTL.IN.ZS",
+      "indicator_name": "Urban population (% of total)",
+      "country": "West Bank and Gaza",
+      "source": "worldbank"
+    },
+    {
+      "year": 2019,
+      "value": 76.44,
+      "indicator": "SP.URB.TOTL.IN.ZS",
+      "indicator_name": "Urban population (% of total)",
+      "country": "West Bank and Gaza",
+      "source": "worldbank"
+    },
+    {
+      "year": 2020,
+      "value": 76.719,
+      "indicator": "SP.URB.TOTL.IN.ZS",
+      "indicator_name": "Urban population (% of total)",
+      "country": "West Bank and Gaza",
+      "source": "worldbank"
+    },
+    {
+      "year": 2021,
+      "value": 77.003,
+      "indicator": "SP.URB.TOTL.IN.ZS",
+      "indicator_name": "Urban population (% of total)",
+      "country": "West Bank and Gaza",
+      "source": "worldbank"
+    },
+    {
+      "year": 2022,
+      "value": 77.291,
+      "indicator": "SP.URB.TOTL.IN.ZS",
+      "indicator_name": "Urban population (% of total)",
+      "country": "West Bank and Gaza",
+      "source": "worldbank"
+    },
+    {
+      "year": 2023,
+      "value": 77.582,
+      "indicator": "SP.URB.TOTL.IN.ZS",
+      "indicator_name": "Urban population (% of total)",
+      "country": "West Bank and Gaza",
+      "source": "worldbank"
+    },
+    {
+      "year": 2024,
+      "value": 77.877,
+      "indicator": "SP.URB.TOTL.IN.ZS",
+      "indicator_name": "Urban population (% of total)",
+      "country": "West Bank and Gaza",
+      "source": "worldbank"
+    }
+  ],
+  "metadata": {
+    "source": "World Bank Open Data",
+    "last_updated": "2025-10-29T21:01:37.093Z",
+    "total_points": 15
+  },
+  "validation": {
+    "qualityScore": 1,
+    "completeness": 1,
+    "consistency": 1,
+    "accuracy": 1,
+    "meetsThreshold": true,
+    "errorCount": 0,
+    "warningCount": 0
+  }
+}

@@ -1,0 +1,52 @@
+{
+  "indicator": "SI.POV.GINI",
+  "indicator_name": "Gini index",
+  "data": [
+    {
+      "year": 2010,
+      "value": 35.3,
+      "indicator": "SI.POV.GINI",
+      "indicator_name": "Gini index",
+      "country": "West Bank and Gaza",
+      "source": "worldbank"
+    },
+    {
+      "year": 2011,
+      "value": 34.4,
+      "indicator": "SI.POV.GINI",
+      "indicator_name": "Gini index",
+      "country": "West Bank and Gaza",
+      "source": "worldbank"
+    },
+    {
+      "year": 2016,
+      "value": 33.7,
+      "indicator": "SI.POV.GINI",
+      "indicator_name": "Gini index",
+      "country": "West Bank and Gaza",
+      "source": "worldbank"
+    },
+    {
+      "year": 2023,
+      "value": 36.4,
+      "indicator": "SI.POV.GINI",
+      "indicator_name": "Gini index",
+      "country": "West Bank and Gaza",
+      "source": "worldbank"
+    }
+  ],
+  "metadata": {
+    "source": "World Bank Open Data",
+    "last_updated": "2025-10-29T21:01:45.594Z",
+    "total_points": 4
+  },
+  "validation": {
+    "qualityScore": 1,
+    "completeness": 1,
+    "consistency": 1,
+    "accuracy": 1,
+    "meetsThreshold": true,
+    "errorCount": 0,
+    "warningCount": 0
+  }
+}

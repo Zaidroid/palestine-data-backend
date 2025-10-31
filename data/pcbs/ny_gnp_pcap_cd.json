@@ -1,0 +1,148 @@
+{
+  "indicator": "NY.GNP.PCAP.CD",
+  "indicator_name": "GNI per capita, Atlas method (current US$)",
+  "category": "economic",
+  "data": [
+    {
+      "year": 2010,
+      "value": 2510,
+      "indicator": "NY.GNP.PCAP.CD",
+      "indicator_name": "GNI per capita, Atlas method (current US$)",
+      "country": "West Bank and Gaza",
+      "source": "pcbs",
+      "source_detail": "PCBS via World Bank API"
+    },
+    {
+      "year": 2011,
+      "value": 2880,
+      "indicator": "NY.GNP.PCAP.CD",
+      "indicator_name": "GNI per capita, Atlas method (current US$)",
+      "country": "West Bank and Gaza",
+      "source": "pcbs",
+      "source_detail": "PCBS via World Bank API"
+    },
+    {
+      "year": 2012,
+      "value": 3210,
+      "indicator": "NY.GNP.PCAP.CD",
+      "indicator_name": "GNI per capita, Atlas method (current US$)",
+      "country": "West Bank and Gaza",
+      "source": "pcbs",
+      "source_detail": "PCBS via World Bank API"
+    },
+    {
+      "year": 2013,
+      "value": 3470,
+      "indicator": "NY.GNP.PCAP.CD",
+      "indicator_name": "GNI per capita, Atlas method (current US$)",
+      "country": "West Bank and Gaza",
+      "source": "pcbs",
+      "source_detail": "PCBS via World Bank API"
+    },
+    {
+      "year": 2014,
+      "value": 3560,
+      "indicator": "NY.GNP.PCAP.CD",
+      "indicator_name": "GNI per capita, Atlas method (current US$)",
+      "country": "West Bank and Gaza",
+      "source": "pcbs",
+      "source_detail": "PCBS via World Bank API"
+    },
+    {
+      "year": 2015,
+      "value": 3670,
+      "indicator": "NY.GNP.PCAP.CD",
+      "indicator_name": "GNI per capita, Atlas method (current US$)",
+      "country": "West Bank and Gaza",
+      "source": "pcbs",
+      "source_detail": "PCBS via World Bank API"
+    },
+    {
+      "year": 2016,
+      "value": 3900,
+      "indicator": "NY.GNP.PCAP.CD",
+      "indicator_name": "GNI per capita, Atlas method (current US$)",
+      "country": "West Bank and Gaza",
+      "source": "pcbs",
+      "source_detail": "PCBS via World Bank API"
+    },
+    {
+      "year": 2017,
+      "value": 3930,
+      "indicator": "NY.GNP.PCAP.CD",
+      "indicator_name": "GNI per capita, Atlas method (current US$)",
+      "country": "West Bank and Gaza",
+      "source": "pcbs",
+      "source_detail": "PCBS via World Bank API"
+    },
+    {
+      "year": 2018,
+      "value": 4190,
+      "indicator": "NY.GNP.PCAP.CD",
+      "indicator_name": "GNI per capita, Atlas method (current US$)",
+      "country": "West Bank and Gaza",
+      "source": "pcbs",
+      "source_detail": "PCBS via World Bank API"
+    },
+    {
+      "year": 2019,
+      "value": 4200,
+      "indicator": "NY.GNP.PCAP.CD",
+      "indicator_name": "GNI per capita, Atlas method (current US$)",
+      "country": "West Bank and Gaza",
+      "source": "pcbs",
+      "source_detail": "PCBS via World Bank API"
+    },
+    {
+      "year": 2020,
+      "value": 3700,
+      "indicator": "NY.GNP.PCAP.CD",
+      "indicator_name": "GNI per capita, Atlas method (current US$)",
+      "country": "West Bank and Gaza",
+      "source": "pcbs",
+      "source_detail": "PCBS via World Bank API"
+    },
+    {
+      "year": 2021,
+      "value": 4270,
+      "indicator": "NY.GNP.PCAP.CD",
+      "indicator_name": "GNI per capita, Atlas method (current US$)",
+      "country": "West Bank and Gaza",
+      "source": "pcbs",
+      "source_detail": "PCBS via World Bank API"
+    },
+    {
+      "year": 2022,
+      "value": 4720,
+      "indicator": "NY.GNP.PCAP.CD",
+      "indicator_name": "GNI per capita, Atlas method (current US$)",
+      "country": "West Bank and Gaza",
+      "source": "pcbs",
+      "source_detail": "PCBS via World Bank API"
+    },
+    {
+      "year": 2023,
+      "value": 4310,
+      "indicator": "NY.GNP.PCAP.CD",
+      "indicator_name": "GNI per capita, Atlas method (current US$)",
+      "country": "West Bank and Gaza",
+      "source": "pcbs",
+      "source_detail": "PCBS via World Bank API"
+    },
+    {
+      "year": 2024,
+      "value": 3080,
+      "indicator": "NY.GNP.PCAP.CD",
+      "indicator_name": "GNI per capita, Atlas method (current US$)",
+      "country": "West Bank and Gaza",
+      "source": "pcbs",
+      "source_detail": "PCBS via World Bank API"
+    }
+  ],
+  "metadata": {
+    "source": "Palestinian Central Bureau of Statistics (PCBS)",
+    "source_detail": "Data accessed via World Bank Open Data API",
+    "last_updated": "2025-10-30T09:43:37.605Z",
+    "total_points": 15
+  }
+}

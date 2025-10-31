@@ -1,0 +1,1347 @@
+{
+  "source": "hdx-ckan",
+  "category": "education",
+  "transformed_at": "2025-10-29T21:10:16.978Z",
+  "record_count": 70,
+  "validation": {
+    "qualityScore": 1,
+    "completeness": 1,
+    "consistency": 1,
+    "accuracy": 1,
+    "meetsThreshold": true,
+    "errorCount": 0,
+    "warningCount": 0
+  },
+  "data": [
+    {
+      "year": 2013,
+      "gender": "Female",
+      "institution": "Eldoret Polytechnic",
+      "students": 1949,
+      "facility_id": null,
+      "name": "unknown",
+      "type": "school",
+      "location": {
+        "name": "unknown",
+        "latitude": null,
+        "longitude": null
+      },
+      "status": "unknown",
+      "damage_level": null,
+      "staff": 0,
+      "last_assessed": null,
+      "source": "Kenya National Bureau of Statistics (inactive)"
+    },
+    {
+      "year": 2013,
+      "gender": "Female",
+      "institution": "Institutes of Technology",
+      "students": 8582,
+      "facility_id": null,
+      "name": "unknown",
+      "type": "school",
+      "location": {
+        "name": "unknown",
+        "latitude": null,
+        "longitude": null
+      },
+      "status": "unknown",
+      "damage_level": null,
+      "staff": 0,
+      "last_assessed": null,
+      "source": "Kenya National Bureau of Statistics (inactive)"
+    },
+    {
+      "year": 2013,
+      "gender": "Female",
+      "institution": "Kisumu Polytechnic",
+      "students": 1267,
+      "facility_id": null,
+      "name": "unknown",
+      "type": "school",
+      "location": {
+        "name": "unknown",
+        "latitude": null,
+        "longitude": null
+      },
+      "status": "unknown",
+      "damage_level": null,
+      "staff": 0,
+      "last_assessed": null,
+      "source": "Kenya National Bureau of Statistics (inactive)"
+    },
+    {
+      "year": 2013,
+      "gender": "Female",
+      "institution": "Technical Training Institutes",
+      "students": 15407,
+      "facility_id": null,
+      "name": "unknown",
+      "type": "school",
+      "location": {
+        "name": "unknown",
+        "latitude": null,
+        "longitude": null
+      },
+      "status": "unknown",
+      "damage_level": null,
+      "staff": 0,
+      "last_assessed": null,
+      "source": "Kenya National Bureau of Statistics (inactive)"
+    },
+    {
+      "year": 2013,
+      "gender": "Female",
+      "institution": "Technical University of Kenya",
+      "students": 2607,
+      "facility_id": null,
+      "name": "unknown",
+      "type": "school",
+      "location": {
+        "name": "unknown",
+        "latitude": null,
+        "longitude": null
+      },
+      "status": "unknown",
+      "damage_level": null,
+      "staff": 0,
+      "last_assessed": null,
+      "source": "Kenya National Bureau of Statistics (inactive)"
+    },
+    {
+      "year": 2013,
+      "gender": "Female",
+      "institution": "Technical University of Mombasa",
+      "students": 1506,
+      "facility_id": null,
+      "name": "unknown",
+      "type": "school",
+      "location": {
+        "name": "unknown",
+        "latitude": null,
+        "longitude": null
+      },
+      "status": "unknown",
+      "damage_level": null,
+      "staff": 0,
+      "last_assessed": null,
+      "source": "Kenya National Bureau of Statistics (inactive)"
+    },
+    {
+      "year": 2013,
+      "gender": "Female",
+      "institution": "Youth Polytechnics",
+      "students": 28627,
+      "facility_id": null,
+      "name": "unknown",
+      "type": "school",
+      "location": {
+        "name": "unknown",
+        "latitude": null,
+        "longitude": null
+      },
+      "status": "unknown",
+      "damage_level": null,
+      "staff": 0,
+      "last_assessed": null,
+      "source": "Kenya National Bureau of Statistics (inactive)"
+    },
+    {
+      "year": 2013,
+      "gender": "Male",
+      "institution": "Eldoret Polytechnic",
+      "students": 3081,
+      "facility_id": null,
+      "name": "unknown",
+      "type": "school",
+      "location": {
+        "name": "unknown",
+        "latitude": null,
+        "longitude": null
+      },
+      "status": "unknown",
+      "damage_level": null,
+      "staff": 0,
+      "last_assessed": null,
+      "source": "Kenya National Bureau of Statistics (inactive)"
+    },
+    {
+      "year": 2013,
+      "gender": "Male",
+      "institution": "Institutes of Technology",
+      "students": 13020,
+      "facility_id": null,
+      "name": "unknown",
+      "type": "school",
+      "location": {
+        "name": "unknown",
+        "latitude": null,
+        "longitude": null
+      },
+      "status": "unknown",
+      "damage_level": null,
+      "staff": 0,
+      "last_assessed": null,
+      "source": "Kenya National Bureau of Statistics (inactive)"
+    },
+    {
+      "year": 2013,
+      "gender": "Male",
+      "institution": "Kisumu Polytechnic",
+      "students": 2223,
+      "facility_id": null,
+      "name": "unknown",
+      "type": "school",
+      "location": {
+        "name": "unknown",
+        "latitude": null,
+        "longitude": null
+      },
+      "status": "unknown",
+      "damage_level": null,
+      "staff": 0,
+      "last_assessed": null,
+      "source": "Kenya National Bureau of Statistics (inactive)"
+    },
+    {
+      "year": 2013,
+      "gender": "Male",
+      "institution": "Technical Training Institutes",
+      "students": 18936,
+      "facility_id": null,
+      "name": "unknown",
+      "type": "school",
+      "location": {
+        "name": "unknown",
+        "latitude": null,
+        "longitude": null
+      },
+      "status": "unknown",
+      "damage_level": null,
+      "staff": 0,
+      "last_assessed": null,
+      "source": "Kenya National Bureau of Statistics (inactive)"
+    },
+    {
+      "year": 2013,
+      "gender": "Male",
+      "institution": "Technical University of Kenya",
+      "students": 4814,
+      "facility_id": null,
+      "name": "unknown",
+      "type": "school",
+      "location": {
+        "name": "unknown",
+        "latitude": null,
+        "longitude": null
+      },
+      "status": "unknown",
+      "damage_level": null,
+      "staff": 0,
+      "last_assessed": null,
+      "source": "Kenya National Bureau of Statistics (inactive)"
+    },
+    {
+      "year": 2013,
+      "gender": "Male",
+      "institution": "Technical University of Mombasa",
+      "students": 3048,
+      "facility_id": null,
+      "name": "unknown",
+      "type": "school",
+      "location": {
+        "name": "unknown",
+        "latitude": null,
+        "longitude": null
+      },
+      "status": "unknown",
+      "damage_level": null,
+      "staff": 0,
+      "last_assessed": null,
+      "source": "Kenya National Bureau of Statistics (inactive)"
+    },
+    {
+      "year": 2013,
+      "gender": "Male",
+      "institution": "Youth Polytechnics",
+      "students": 42942,
+      "facility_id": null,
+      "name": "unknown",
+      "type": "school",
+      "location": {
+        "name": "unknown",
+        "latitude": null,
+        "longitude": null
+      },
+      "status": "unknown",
+      "damage_level": null,
+      "staff": 0,
+      "last_assessed": null,
+      "source": "Kenya National Bureau of Statistics (inactive)"
+    },
+    {
+      "year": 2012,
+      "gender": "Female",
+      "institution": "Eldoret Polytechnic",
+      "students": 1669,
+      "facility_id": null,
+      "name": "unknown",
+      "type": "school",
+      "location": {
+        "name": "unknown",
+        "latitude": null,
+        "longitude": null
+      },
+      "status": "unknown",
+      "damage_level": null,
+      "staff": 0,
+      "last_assessed": null,
+      "source": "Kenya National Bureau of Statistics (inactive)"
+    },
+    {
+      "year": 2012,
+      "gender": "Female",
+      "institution": "Institutes of Technology",
+      "students": 6126,
+      "facility_id": null,
+      "name": "unknown",
+      "type": "school",
+      "location": {
+        "name": "unknown",
+        "latitude": null,
+        "longitude": null
+      },
+      "status": "unknown",
+      "damage_level": null,
+      "staff": 0,
+      "last_assessed": null,
+      "source": "Kenya National Bureau of Statistics (inactive)"
+    },
+    {
+      "year": 2012,
+      "gender": "Female",
+      "institution": "Kisumu Polytechnic",
+      "students": 1136,
+      "facility_id": null,
+      "name": "unknown",
+      "type": "school",
+      "location": {
+        "name": "unknown",
+        "latitude": null,
+        "longitude": null
+      },
+      "status": "unknown",
+      "damage_level": null,
+      "staff": 0,
+      "last_assessed": null,
+      "source": "Kenya National Bureau of Statistics (inactive)"
+    },
+    {
+      "year": 2012,
+      "gender": "Female",
+      "institution": "Technical Training Institutes",
+      "students": 12505,
+      "facility_id": null,
+      "name": "unknown",
+      "type": "school",
+      "location": {
+        "name": "unknown",
+        "latitude": null,
+        "longitude": null
+      },
+      "status": "unknown",
+      "damage_level": null,
+      "staff": 0,
+      "last_assessed": null,
+      "source": "Kenya National Bureau of Statistics (inactive)"
+    },
+    {
+      "year": 2012,
+      "gender": "Female",
+      "institution": "Technical University of Kenya",
+      "students": 1024,
+      "facility_id": null,
+      "name": "unknown",
+      "type": "school",
+      "location": {
+        "name": "unknown",
+        "latitude": null,
+        "longitude": null
+      },
+      "status": "unknown",
+      "damage_level": null,
+      "staff": 0,
+      "last_assessed": null,
+      "source": "Kenya National Bureau of Statistics (inactive)"
+    },
+    {
+      "year": 2012,
+      "gender": "Female",
+      "institution": "Technical University of Mombasa",
+      "students": 1150,
+      "facility_id": null,
+      "name": "unknown",
+      "type": "school",
+      "location": {
+        "name": "unknown",
+        "latitude": null,
+        "longitude": null
+      },
+      "status": "unknown",
+      "damage_level": null,
+      "staff": 0,
+      "last_assessed": null,
+      "source": "Kenya National Bureau of Statistics (inactive)"
+    },
+    {
+      "year": 2012,
+      "gender": "Female",
+      "institution": "Youth Polytechnics",
+      "students": 26821,
+      "facility_id": null,
+      "name": "unknown",
+      "type": "school",
+      "location": {
+        "name": "unknown",
+        "latitude": null,
+        "longitude": null
+      },
+      "status": "unknown",
+      "damage_level": null,
+      "staff": 0,
+      "last_assessed": null,
+      "source": "Kenya National Bureau of Statistics (inactive)"
+    },
+    {
+      "year": 2012,
+      "gender": "Male",
+      "institution": "Eldoret Polytechnic",
+      "students": 2730,
+      "facility_id": null,
+      "name": "unknown",
+      "type": "school",
+      "location": {
+        "name": "unknown",
+        "latitude": null,
+        "longitude": null
+      },
+      "status": "unknown",
+      "damage_level": null,
+      "staff": 0,
+      "last_assessed": null,
+      "source": "Kenya National Bureau of Statistics (inactive)"
+    },
+    {
+      "year": 2012,
+      "gender": "Male",
+      "institution": "Institutes of Technology",
+      "students": 11890,
+      "facility_id": null,
+      "name": "unknown",
+      "type": "school",
+      "location": {
+        "name": "unknown",
+        "latitude": null,
+        "longitude": null
+      },
+      "status": "unknown",
+      "damage_level": null,
+      "staff": 0,
+      "last_assessed": null,
+      "source": "Kenya National Bureau of Statistics (inactive)"
+    },
+    {
+      "year": 2012,
+      "gender": "Male",
+      "institution": "Kisumu Polytechnic",
+      "students": 2256,
+      "facility_id": null,
+      "name": "unknown",
+      "type": "school",
+      "location": {
+        "name": "unknown",
+        "latitude": null,
+        "longitude": null
+      },
+      "status": "unknown",
+      "damage_level": null,
+      "staff": 0,
+      "last_assessed": null,
+      "source": "Kenya National Bureau of Statistics (inactive)"
+    },
+    {
+      "year": 2012,
+      "gender": "Male",
+      "institution": "Technical Training Institutes",
+      "students": 16263,
+      "facility_id": null,
+      "name": "unknown",
+      "type": "school",
+      "location": {
+        "name": "unknown",
+        "latitude": null,
+        "longitude": null
+      },
+      "status": "unknown",
+      "damage_level": null,
+      "staff": 0,
+      "last_assessed": null,
+      "source": "Kenya National Bureau of Statistics (inactive)"
+    },
+    {
+      "year": 2012,
+      "gender": "Male",
+      "institution": "Technical University of Kenya",
+      "students": 1698,
+      "facility_id": null,
+      "name": "unknown",
+      "type": "school",
+      "location": {
+        "name": "unknown",
+        "latitude": null,
+        "longitude": null
+      },
+      "status": "unknown",
+      "damage_level": null,
+      "staff": 0,
+      "last_assessed": null,
+      "source": "Kenya National Bureau of Statistics (inactive)"
+    },
+    {
+      "year": 2012,
+      "gender": "Male",
+      "institution": "Technical University of Mombasa",
+      "students": 2190,
+      "facility_id": null,
+      "name": "unknown",
+      "type": "school",
+      "location": {
+        "name": "unknown",
+        "latitude": null,
+        "longitude": null
+      },
+      "status": "unknown",
+      "damage_level": null,
+      "staff": 0,
+      "last_assessed": null,
+      "source": "Kenya National Bureau of Statistics (inactive)"
+    },
+    {
+      "year": 2012,
+      "gender": "Male",
+      "institution": "Youth Polytechnics",
+      "students": 40233,
+      "facility_id": null,
+      "name": "unknown",
+      "type": "school",
+      "location": {
+        "name": "unknown",
+        "latitude": null,
+        "longitude": null
+      },
+      "status": "unknown",
+      "damage_level": null,
+      "staff": 0,
+      "last_assessed": null,
+      "source": "Kenya National Bureau of Statistics (inactive)"
+    },
+    {
+      "year": 2011,
+      "gender": "Female",
+      "institution": "Eldoret Polytechnic",
+      "students": 2145,
+      "facility_id": null,
+      "name": "unknown",
+      "type": "school",
+      "location": {
+        "name": "unknown",
+        "latitude": null,
+        "longitude": null
+      },
+      "status": "unknown",
+      "damage_level": null,
+      "staff": 0,
+      "last_assessed": null,
+      "source": "Kenya National Bureau of Statistics (inactive)"
+    },
+    {
+      "year": 2011,
+      "gender": "Female",
+      "institution": "Institutes of Technology",
+      "students": 8607,
+      "facility_id": null,
+      "name": "unknown",
+      "type": "school",
+      "location": {
+        "name": "unknown",
+        "latitude": null,
+        "longitude": null
+      },
+      "status": "unknown",
+      "damage_level": null,
+      "staff": 0,
+      "last_assessed": null,
+      "source": "Kenya National Bureau of Statistics (inactive)"
+    },
+    {
+      "year": 2011,
+      "gender": "Female",
+      "institution": "Kisumu Polytechnic",
+      "students": 936,
+      "facility_id": null,
+      "name": "unknown",
+      "type": "school",
+      "location": {
+        "name": "unknown",
+        "latitude": null,
+        "longitude": null
+      },
+      "status": "unknown",
+      "damage_level": null,
+      "staff": 0,
+      "last_assessed": null,
+      "source": "Kenya National Bureau of Statistics (inactive)"
+    },
+    {
+      "year": 2011,
+      "gender": "Female",
+      "institution": "Technical Training Institutes",
+      "students": 13255,
+      "facility_id": null,
+      "name": "unknown",
+      "type": "school",
+      "location": {
+        "name": "unknown",
+        "latitude": null,
+        "longitude": null
+      },
+      "status": "unknown",
+      "damage_level": null,
+      "staff": 0,
+      "last_assessed": null,
+      "source": "Kenya National Bureau of Statistics (inactive)"
+    },
+    {
+      "year": 2011,
+      "gender": "Female",
+      "institution": "Technical University of Kenya",
+      "students": 4512,
+      "facility_id": null,
+      "name": "unknown",
+      "type": "school",
+      "location": {
+        "name": "unknown",
+        "latitude": null,
+        "longitude": null
+      },
+      "status": "unknown",
+      "damage_level": null,
+      "staff": 0,
+      "last_assessed": null,
+      "source": "Kenya National Bureau of Statistics (inactive)"
+    },
+    {
+      "year": 2011,
+      "gender": "Female",
+      "institution": "Technical University of Mombasa",
+      "students": 1794,
+      "facility_id": null,
+      "name": "unknown",
+      "type": "school",
+      "location": {
+        "name": "unknown",
+        "latitude": null,
+        "longitude": null
+      },
+      "status": "unknown",
+      "damage_level": null,
+      "staff": 0,
+      "last_assessed": null,
+      "source": "Kenya National Bureau of Statistics (inactive)"
+    },
+    {
+      "year": 2011,
+      "gender": "Female",
+      "institution": "Youth Polytechnics",
+      "students": 19338,
+      "facility_id": null,
+      "name": "unknown",
+      "type": "school",
+      "location": {
+        "name": "unknown",
+        "latitude": null,
+        "longitude": null
+      },
+      "status": "unknown",
+      "damage_level": null,
+      "staff": 0,
+      "last_assessed": null,
+      "source": "Kenya National Bureau of Statistics (inactive)"
+    },
+    {
+      "year": 2011,
+      "gender": "Male",
+      "institution": "Eldoret Polytechnic",
+      "students": 3132,
+      "facility_id": null,
+      "name": "unknown",
+      "type": "school",
+      "location": {
+        "name": "unknown",
+        "latitude": null,
+        "longitude": null
+      },
+      "status": "unknown",
+      "damage_level": null,
+      "staff": 0,
+      "last_assessed": null,
+      "source": "Kenya National Bureau of Statistics (inactive)"
+    },
+    {
+      "year": 2011,
+      "gender": "Male",
+      "institution": "Institutes of Technology",
+      "students": 10179,
+      "facility_id": null,
+      "name": "unknown",
+      "type": "school",
+      "location": {
+        "name": "unknown",
+        "latitude": null,
+        "longitude": null
+      },
+      "status": "unknown",
+      "damage_level": null,
+      "staff": 0,
+      "last_assessed": null,
+      "source": "Kenya National Bureau of Statistics (inactive)"
+    },
+    {
+      "year": 2011,
+      "gender": "Male",
+      "institution": "Kisumu Polytechnic",
+      "students": 1990,
+      "facility_id": null,
+      "name": "unknown",
+      "type": "school",
+      "location": {
+        "name": "unknown",
+        "latitude": null,
+        "longitude": null
+      },
+      "status": "unknown",
+      "damage_level": null,
+      "staff": 0,
+      "last_assessed": null,
+      "source": "Kenya National Bureau of Statistics (inactive)"
+    },
+    {
+      "year": 2011,
+      "gender": "Male",
+      "institution": "Technical Training Institutes",
+      "students": 16719,
+      "facility_id": null,
+      "name": "unknown",
+      "type": "school",
+      "location": {
+        "name": "unknown",
+        "latitude": null,
+        "longitude": null
+      },
+      "status": "unknown",
+      "damage_level": null,
+      "staff": 0,
+      "last_assessed": null,
+      "source": "Kenya National Bureau of Statistics (inactive)"
+    },
+    {
+      "year": 2011,
+      "gender": "Male",
+      "institution": "Technical University of Kenya",
+      "students": 2360,
+      "facility_id": null,
+      "name": "unknown",
+      "type": "school",
+      "location": {
+        "name": "unknown",
+        "latitude": null,
+        "longitude": null
+      },
+      "status": "unknown",
+      "damage_level": null,
+      "staff": 0,
+      "last_assessed": null,
+      "source": "Kenya National Bureau of Statistics (inactive)"
+    },
+    {
+      "year": 2011,
+      "gender": "Male",
+      "institution": "Technical University of Mombasa",
+      "students": 3558,
+      "facility_id": null,
+      "name": "unknown",
+      "type": "school",
+      "location": {
+        "name": "unknown",
+        "latitude": null,
+        "longitude": null
+      },
+      "status": "unknown",
+      "damage_level": null,
+      "staff": 0,
+      "last_assessed": null,
+      "source": "Kenya National Bureau of Statistics (inactive)"
+    },
+    {
+      "year": 2011,
+      "gender": "Male",
+      "institution": "Youth Polytechnics",
+      "students": 15648,
+      "facility_id": null,
+      "name": "unknown",
+      "type": "school",
+      "location": {
+        "name": "unknown",
+        "latitude": null,
+        "longitude": null
+      },
+      "status": "unknown",
+      "damage_level": null,
+      "staff": 0,
+      "last_assessed": null,
+      "source": "Kenya National Bureau of Statistics (inactive)"
+    },
+    {
+      "year": 2010,
+      "gender": "Female",
+      "institution": "Eldoret Polytechnic",
+      "students": 1718,
+      "facility_id": null,
+      "name": "unknown",
+      "type": "school",
+      "location": {
+        "name": "unknown",
+        "latitude": null,
+        "longitude": null
+      },
+      "status": "unknown",
+      "damage_level": null,
+      "staff": 0,
+      "last_assessed": null,
+      "source": "Kenya National Bureau of Statistics (inactive)"
+    },
+    {
+      "year": 2010,
+      "gender": "Female",
+      "institution": "Institutes of Technology",
+      "students": 4858,
+      "facility_id": null,
+      "name": "unknown",
+      "type": "school",
+      "location": {
+        "name": "unknown",
+        "latitude": null,
+        "longitude": null
+      },
+      "status": "unknown",
+      "damage_level": null,
+      "staff": 0,
+      "last_assessed": null,
+      "source": "Kenya National Bureau of Statistics (inactive)"
+    },
+    {
+      "year": 2010,
+      "gender": "Female",
+      "institution": "Kisumu Polytechnic",
+      "students": 781,
+      "facility_id": null,
+      "name": "unknown",
+      "type": "school",
+      "location": {
+        "name": "unknown",
+        "latitude": null,
+        "longitude": null
+      },
+      "status": "unknown",
+      "damage_level": null,
+      "staff": 0,
+      "last_assessed": null,
+      "source": "Kenya National Bureau of Statistics (inactive)"
+    },
+    {
+      "year": 2010,
+      "gender": "Female",
+      "institution": "Technical Training Institutes",
+      "students": 9970,
+      "facility_id": null,
+      "name": "unknown",
+      "type": "school",
+      "location": {
+        "name": "unknown",
+        "latitude": null,
+        "longitude": null
+      },
+      "status": "unknown",
+      "damage_level": null,
+      "staff": 0,
+      "last_assessed": null,
+      "source": "Kenya National Bureau of Statistics (inactive)"
+    },
+    {
+      "year": 2010,
+      "gender": "Female",
+      "institution": "Technical University of Kenya",
+      "students": 1357,
+      "facility_id": null,
+      "name": "unknown",
+      "type": "school",
+      "location": {
+        "name": "unknown",
+        "latitude": null,
+        "longitude": null
+      },
+      "status": "unknown",
+      "damage_level": null,
+      "staff": 0,
+      "last_assessed": null,
+      "source": "Kenya National Bureau of Statistics (inactive)"
+    },
+    {
+      "year": 2010,
+      "gender": "Female",
+      "institution": "Technical University of Mombasa",
+      "students": 3276,
+      "facility_id": null,
+      "name": "unknown",
+      "type": "school",
+      "location": {
+        "name": "unknown",
+        "latitude": null,
+        "longitude": null
+      },
+      "status": "unknown",
+      "damage_level": null,
+      "staff": 0,
+      "last_assessed": null,
+      "source": "Kenya National Bureau of Statistics (inactive)"
+    },
+    {
+      "year": 2010,
+      "gender": "Female",
+      "institution": "Youth Polytechnics",
+      "students": 18720,
+      "facility_id": null,
+      "name": "unknown",
+      "type": "school",
+      "location": {
+        "name": "unknown",
+        "latitude": null,
+        "longitude": null
+      },
+      "status": "unknown",
+      "damage_level": null,
+      "staff": 0,
+      "last_assessed": null,
+      "source": "Kenya National Bureau of Statistics (inactive)"
+    },
+    {
+      "year": 2010,
+      "gender": "Male",
+      "institution": "Eldoret Polytechnic",
+      "students": 1903,
+      "facility_id": null,
+      "name": "unknown",
+      "type": "school",
+      "location": {
+        "name": "unknown",
+        "latitude": null,
+        "longitude": null
+      },
+      "status": "unknown",
+      "damage_level": null,
+      "staff": 0,
+      "last_assessed": null,
+      "source": "Kenya National Bureau of Statistics (inactive)"
+    },
+    {
+      "year": 2010,
+      "gender": "Male",
+      "institution": "Institutes of Technology",
+      "students": 6035,
+      "facility_id": null,
+      "name": "unknown",
+      "type": "school",
+      "location": {
+        "name": "unknown",
+        "latitude": null,
+        "longitude": null
+      },
+      "status": "unknown",
+      "damage_level": null,
+      "staff": 0,
+      "last_assessed": null,
+      "source": "Kenya National Bureau of Statistics (inactive)"
+    },
+    {
+      "year": 2010,
+      "gender": "Male",
+      "institution": "Kisumu Polytechnic",
+      "students": 1798,
+      "facility_id": null,
+      "name": "unknown",
+      "type": "school",
+      "location": {
+        "name": "unknown",
+        "latitude": null,
+        "longitude": null
+      },
+      "status": "unknown",
+      "damage_level": null,
+      "staff": 0,
+      "last_assessed": null,
+      "source": "Kenya National Bureau of Statistics (inactive)"
+    },
+    {
+      "year": 2010,
+      "gender": "Male",
+      "institution": "Technical Training Institutes",
+      "students": 12908,
+      "facility_id": null,
+      "name": "unknown",
+      "type": "school",
+      "location": {
+        "name": "unknown",
+        "latitude": null,
+        "longitude": null
+      },
+      "status": "unknown",
+      "damage_level": null,
+      "staff": 0,
+      "last_assessed": null,
+      "source": "Kenya National Bureau of Statistics (inactive)"
+    },
+    {
+      "year": 2010,
+      "gender": "Male",
+      "institution": "Technical University of Kenya",
+      "students": 2904,
+      "facility_id": null,
+      "name": "unknown",
+      "type": "school",
+      "location": {
+        "name": "unknown",
+        "latitude": null,
+        "longitude": null
+      },
+      "status": "unknown",
+      "damage_level": null,
+      "staff": 0,
+      "last_assessed": null,
+      "source": "Kenya National Bureau of Statistics (inactive)"
+    },
+    {
+      "year": 2010,
+      "gender": "Male",
+      "institution": "Technical University of Mombasa",
+      "students": 2041,
+      "facility_id": null,
+      "name": "unknown",
+      "type": "school",
+      "location": {
+        "name": "unknown",
+        "latitude": null,
+        "longitude": null
+      },
+      "status": "unknown",
+      "damage_level": null,
+      "staff": 0,
+      "last_assessed": null,
+      "source": "Kenya National Bureau of Statistics (inactive)"
+    },
+    {
+      "year": 2010,
+      "gender": "Male",
+      "institution": "Youth Polytechnics",
+      "students": 14384,
+      "facility_id": null,
+      "name": "unknown",
+      "type": "school",
+      "location": {
+        "name": "unknown",
+        "latitude": null,
+        "longitude": null
+      },
+      "status": "unknown",
+      "damage_level": null,
+      "staff": 0,
+      "last_assessed": null,
+      "source": "Kenya National Bureau of Statistics (inactive)"
+    },
+    {
+      "year": 2009,
+      "gender": "Female",
+      "institution": "Eldoret Polytechnic",
+      "students": 1302,
+      "facility_id": null,
+      "name": "unknown",
+      "type": "school",
+      "location": {
+        "name": "unknown",
+        "latitude": null,
+        "longitude": null
+      },
+      "status": "unknown",
+      "damage_level": null,
+      "staff": 0,
+      "last_assessed": null,
+      "source": "Kenya National Bureau of Statistics (inactive)"
+    },
+    {
+      "year": 2009,
+      "gender": "Female",
+      "institution": "Institutes of Technology",
+      "students": 4813,
+      "facility_id": null,
+      "name": "unknown",
+      "type": "school",
+      "location": {
+        "name": "unknown",
+        "latitude": null,
+        "longitude": null
+      },
+      "status": "unknown",
+      "damage_level": null,
+      "staff": 0,
+      "last_assessed": null,
+      "source": "Kenya National Bureau of Statistics (inactive)"
+    },
+    {
+      "year": 2009,
+      "gender": "Female",
+      "institution": "Kisumu Polytechnic",
+      "students": 1472,
+      "facility_id": null,
+      "name": "unknown",
+      "type": "school",
+      "location": {
+        "name": "unknown",
+        "latitude": null,
+        "longitude": null
+      },
+      "status": "unknown",
+      "damage_level": null,
+      "staff": 0,
+      "last_assessed": null,
+      "source": "Kenya National Bureau of Statistics (inactive)"
+    },
+    {
+      "year": 2009,
+      "gender": "Female",
+      "institution": "Technical Training Institutes",
+      "students": 9923,
+      "facility_id": null,
+      "name": "unknown",
+      "type": "school",
+      "location": {
+        "name": "unknown",
+        "latitude": null,
+        "longitude": null
+      },
+      "status": "unknown",
+      "damage_level": null,
+      "staff": 0,
+      "last_assessed": null,
+      "source": "Kenya National Bureau of Statistics (inactive)"
+    },
+    {
+      "year": 2009,
+      "gender": "Female",
+      "institution": "Technical University of Kenya",
+      "students": 1156,
+      "facility_id": null,
+      "name": "unknown",
+      "type": "school",
+      "location": {
+        "name": "unknown",
+        "latitude": null,
+        "longitude": null
+      },
+      "status": "unknown",
+      "damage_level": null,
+      "staff": 0,
+      "last_assessed": null,
+      "source": "Kenya National Bureau of Statistics (inactive)"
+    },
+    {
+      "year": 2009,
+      "gender": "Female",
+      "institution": "Technical University of Mombasa",
+      "students": 2152,
+      "facility_id": null,
+      "name": "unknown",
+      "type": "school",
+      "location": {
+        "name": "unknown",
+        "latitude": null,
+        "longitude": null
+      },
+      "status": "unknown",
+      "damage_level": null,
+      "staff": 0,
+      "last_assessed": null,
+      "source": "Kenya National Bureau of Statistics (inactive)"
+    },
+    {
+      "year": 2009,
+      "gender": "Female",
+      "institution": "Youth Polytechnics",
+      "students": 18122,
+      "facility_id": null,
+      "name": "unknown",
+      "type": "school",
+      "location": {
+        "name": "unknown",
+        "latitude": null,
+        "longitude": null
+      },
+      "status": "unknown",
+      "damage_level": null,
+      "staff": 0,
+      "last_assessed": null,
+      "source": "Kenya National Bureau of Statistics (inactive)"
+    },
+    {
+      "year": 2009,
+      "gender": "Male",
+      "institution": "Eldoret Polytechnic",
+      "students": 1949,
+      "facility_id": null,
+      "name": "unknown",
+      "type": "school",
+      "location": {
+        "name": "unknown",
+        "latitude": null,
+        "longitude": null
+      },
+      "status": "unknown",
+      "damage_level": null,
+      "staff": 0,
+      "last_assessed": null,
+      "source": "Kenya National Bureau of Statistics (inactive)"
+    },
+    {
+      "year": 2009,
+      "gender": "Male",
+      "institution": "Institutes of Technology",
+      "students": 5920,
+      "facility_id": null,
+      "name": "unknown",
+      "type": "school",
+      "location": {
+        "name": "unknown",
+        "latitude": null,
+        "longitude": null
+      },
+      "status": "unknown",
+      "damage_level": null,
+      "staff": 0,
+      "last_assessed": null,
+      "source": "Kenya National Bureau of Statistics (inactive)"
+    },
+    {
+      "year": 2009,
+      "gender": "Male",
+      "institution": "Kisumu Polytechnic",
+      "students": 2276,
+      "facility_id": null,
+      "name": "unknown",
+      "type": "school",
+      "location": {
+        "name": "unknown",
+        "latitude": null,
+        "longitude": null
+      },
+      "status": "unknown",
+      "damage_level": null,
+      "staff": 0,
+      "last_assessed": null,
+      "source": "Kenya National Bureau of Statistics (inactive)"
+    },
+    {
+      "year": 2009,
+      "gender": "Male",
+      "institution": "Technical Training Institutes",
+      "students": 12514,
+      "facility_id": null,
+      "name": "unknown",
+      "type": "school",
+      "location": {
+        "name": "unknown",
+        "latitude": null,
+        "longitude": null
+      },
+      "status": "unknown",
+      "damage_level": null,
+      "staff": 0,
+      "last_assessed": null,
+      "source": "Kenya National Bureau of Statistics (inactive)"
+    },
+    {
+      "year": 2009,
+      "gender": "Male",
+      "institution": "Technical University of Kenya",
+      "students": 2642,
+      "facility_id": null,
+      "name": "unknown",
+      "type": "school",
+      "location": {
+        "name": "unknown",
+        "latitude": null,
+        "longitude": null
+      },
+      "status": "unknown",
+      "damage_level": null,
+      "staff": 0,
+      "last_assessed": null,
+      "source": "Kenya National Bureau of Statistics (inactive)"
+    },
+    {
+      "year": 2009,
+      "gender": "Male",
+      "institution": "Technical University of Mombasa",
+      "students": 3518,
+      "facility_id": null,
+      "name": "unknown",
+      "type": "school",
+      "location": {
+        "name": "unknown",
+        "latitude": null,
+        "longitude": null
+      },
+      "status": "unknown",
+      "damage_level": null,
+      "staff": 0,
+      "last_assessed": null,
+      "source": "Kenya National Bureau of Statistics (inactive)"
+    },
+    {
+      "year": 2009,
+      "gender": "Male",
+      "institution": "Youth Polytechnics",
+      "students": 13222,
+      "facility_id": null,
+      "name": "unknown",
+      "type": "school",
+      "location": {
+        "name": "unknown",
+        "latitude": null,
+        "longitude": null
+      },
+      "status": "unknown",
+      "damage_level": null,
+      "staff": 0,
+      "last_assessed": null,
+      "source": "Kenya National Bureau of Statistics (inactive)"
+    }
+  ]
+}

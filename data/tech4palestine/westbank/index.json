@@ -1,0 +1,56 @@
+{
+  "dataset": "westbank",
+  "date_range": {
+    "start": "2023-10-07",
+    "end": "2025-10-29",
+    "baseline_date": "2023-10-07"
+  },
+  "files": [
+    {
+      "file": "2023-Q4.json",
+      "quarter": "2023-Q4",
+      "records": 86
+    },
+    {
+      "file": "2024-Q1.json",
+      "quarter": "2024-Q1",
+      "records": 91
+    },
+    {
+      "file": "2024-Q2.json",
+      "quarter": "2024-Q2",
+      "records": 91
+    },
+    {
+      "file": "2024-Q3.json",
+      "quarter": "2024-Q3",
+      "records": 92
+    },
+    {
+      "file": "2024-Q4.json",
+      "quarter": "2024-Q4",
+      "records": 92
+    },
+    {
+      "file": "2025-Q1.json",
+      "quarter": "2025-Q1",
+      "records": 90
+    },
+    {
+      "file": "2025-Q2.json",
+      "quarter": "2025-Q2",
+      "records": 91
+    },
+    {
+      "file": "2025-Q3.json",
+      "quarter": "2025-Q3",
+      "records": 92
+    },
+    {
+      "file": "2025-Q4.json",
+      "quarter": "2025-Q4",
+      "records": 29
+    }
+  ],
+  "last_updated": "2025-10-29T21:02:48.990Z"
+}

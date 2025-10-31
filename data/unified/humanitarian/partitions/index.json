@@ -1,0 +1,19 @@
+{
+  "dataset": "dataset",
+  "totalPartitions": 1,
+  "totalRecords": 24148,
+  "partitions": [
+    {
+      "quarter": "2025-Q4",
+      "recordCount": 24148,
+      "dateRange": {
+        "start": "2025-10-29",
+        "end": "2025-10-29"
+      },
+      "fileName": "2025-Q4.json"
+    }
+  ],
+  "hasRecentFile": true,
+  "recentFileName": "recent.json",
+  "generated_at": "2025-10-29T21:14:45.632Z"
+}

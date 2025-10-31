@@ -1,0 +1,52 @@
+{
+  "indicator": "SI.POV.LMIC",
+  "indicator_name": "Poverty headcount ratio at $3.65 a day (2017 PPP) (% of population)",
+  "data": [
+    {
+      "year": 2010,
+      "value": 3,
+      "indicator": "SI.POV.LMIC",
+      "indicator_name": "Poverty headcount ratio at $3.65 a day (2017 PPP) (% of population)",
+      "country": "West Bank and Gaza",
+      "source": "worldbank"
+    },
+    {
+      "year": 2011,
+      "value": 2.9,
+      "indicator": "SI.POV.LMIC",
+      "indicator_name": "Poverty headcount ratio at $3.65 a day (2017 PPP) (% of population)",
+      "country": "West Bank and Gaza",
+      "source": "worldbank"
+    },
+    {
+      "year": 2016,
+      "value": 4.4,
+      "indicator": "SI.POV.LMIC",
+      "indicator_name": "Poverty headcount ratio at $3.65 a day (2017 PPP) (% of population)",
+      "country": "West Bank and Gaza",
+      "source": "worldbank"
+    },
+    {
+      "year": 2023,
+      "value": 6.1,
+      "indicator": "SI.POV.LMIC",
+      "indicator_name": "Poverty headcount ratio at $3.65 a day (2017 PPP) (% of population)",
+      "country": "West Bank and Gaza",
+      "source": "worldbank"
+    }
+  ],
+  "metadata": {
+    "source": "World Bank Open Data",
+    "last_updated": "2025-10-29T21:01:47.718Z",
+    "total_points": 4
+  },
+  "validation": {
+    "qualityScore": 1,
+    "completeness": 1,
+    "consistency": 1,
+    "accuracy": 1,
+    "meetsThreshold": true,
+    "errorCount": 0,
+    "warningCount": 0
+  }
+}

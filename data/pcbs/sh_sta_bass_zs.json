@@ -1,0 +1,130 @@
+{
+  "indicator": "SH.STA.BASS.ZS",
+  "indicator_name": "People using at least basic sanitation services (% of population)",
+  "category": "health",
+  "data": [
+    {
+      "year": 2010,
+      "value": 93.8645690292441,
+      "indicator": "SH.STA.BASS.ZS",
+      "indicator_name": "People using at least basic sanitation services (% of population)",
+      "country": "West Bank and Gaza",
+      "source": "pcbs",
+      "source_detail": "PCBS via World Bank API"
+    },
+    {
+      "year": 2011,
+      "value": 94.3436437339842,
+      "indicator": "SH.STA.BASS.ZS",
+      "indicator_name": "People using at least basic sanitation services (% of population)",
+      "country": "West Bank and Gaza",
+      "source": "pcbs",
+      "source_detail": "PCBS via World Bank API"
+    },
+    {
+      "year": 2012,
+      "value": 94.8221822413534,
+      "indicator": "SH.STA.BASS.ZS",
+      "indicator_name": "People using at least basic sanitation services (% of population)",
+      "country": "West Bank and Gaza",
+      "source": "pcbs",
+      "source_detail": "PCBS via World Bank API"
+    },
+    {
+      "year": 2013,
+      "value": 95.3001447634869,
+      "indicator": "SH.STA.BASS.ZS",
+      "indicator_name": "People using at least basic sanitation services (% of population)",
+      "country": "West Bank and Gaza",
+      "source": "pcbs",
+      "source_detail": "PCBS via World Bank API"
+    },
+    {
+      "year": 2014,
+      "value": 95.7774809661487,
+      "indicator": "SH.STA.BASS.ZS",
+      "indicator_name": "People using at least basic sanitation services (% of population)",
+      "country": "West Bank and Gaza",
+      "source": "pcbs",
+      "source_detail": "PCBS via World Bank API"
+    },
+    {
+      "year": 2015,
+      "value": 96.2541336449433,
+      "indicator": "SH.STA.BASS.ZS",
+      "indicator_name": "People using at least basic sanitation services (% of population)",
+      "country": "West Bank and Gaza",
+      "source": "pcbs",
+      "source_detail": "PCBS via World Bank API"
+    },
+    {
+      "year": 2016,
+      "value": 96.7300603462282,
+      "indicator": "SH.STA.BASS.ZS",
+      "indicator_name": "People using at least basic sanitation services (% of population)",
+      "country": "West Bank and Gaza",
+      "source": "pcbs",
+      "source_detail": "PCBS via World Bank API"
+    },
+    {
+      "year": 2017,
+      "value": 97.205232542171,
+      "indicator": "SH.STA.BASS.ZS",
+      "indicator_name": "People using at least basic sanitation services (% of population)",
+      "country": "West Bank and Gaza",
+      "source": "pcbs",
+      "source_detail": "PCBS via World Bank API"
+    },
+    {
+      "year": 2018,
+      "value": 97.6795907376403,
+      "indicator": "SH.STA.BASS.ZS",
+      "indicator_name": "People using at least basic sanitation services (% of population)",
+      "country": "West Bank and Gaza",
+      "source": "pcbs",
+      "source_detail": "PCBS via World Bank API"
+    },
+    {
+      "year": 2019,
+      "value": 98.153109880908,
+      "indicator": "SH.STA.BASS.ZS",
+      "indicator_name": "People using at least basic sanitation services (% of population)",
+      "country": "West Bank and Gaza",
+      "source": "pcbs",
+      "source_detail": "PCBS via World Bank API"
+    },
+    {
+      "year": 2020,
+      "value": 98.625737167693,
+      "indicator": "SH.STA.BASS.ZS",
+      "indicator_name": "People using at least basic sanitation services (% of population)",
+      "country": "West Bank and Gaza",
+      "source": "pcbs",
+      "source_detail": "PCBS via World Bank API"
+    },
+    {
+      "year": 2021,
+      "value": 99.0974398871494,
+      "indicator": "SH.STA.BASS.ZS",
+      "indicator_name": "People using at least basic sanitation services (% of population)",
+      "country": "West Bank and Gaza",
+      "source": "pcbs",
+      "source_detail": "PCBS via World Bank API"
+    },
+    {
+      "year": 2022,
+      "value": 99.4416057169053,
+      "indicator": "SH.STA.BASS.ZS",
+      "indicator_name": "People using at least basic sanitation services (% of population)",
+      "country": "West Bank and Gaza",
+      "source": "pcbs",
+      "source_detail": "PCBS via World Bank API"
+    }
+  ],
+  "metadata": {
+    "source": "Palestinian Central Bureau of Statistics (PCBS)",
+    "source_detail": "Data accessed via World Bank Open Data API",
+    "last_updated": "2025-10-30T09:43:52.248Z",
+    "total_points": 13
+  }
+}

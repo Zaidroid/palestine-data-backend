@@ -1,0 +1,19 @@
+{
+  "indicator": "TG.VAL.TOTL.GD.ZS",
+  "indicator_name": "Merchandise trade (% of GDP)",
+  "data": [],
+  "metadata": {
+    "source": "World Bank Open Data",
+    "last_updated": "2025-10-29T21:02:35.980Z",
+    "total_points": 0
+  },
+  "validation": {
+    "qualityScore": 0,
+    "completeness": 0,
+    "consistency": 0,
+    "accuracy": 0,
+    "meetsThreshold": false,
+    "errorCount": 0,
+    "warningCount": 1
+  }
+}

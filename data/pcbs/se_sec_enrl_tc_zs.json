@@ -1,0 +1,94 @@
+{
+  "indicator": "SE.SEC.ENRL.TC.ZS",
+  "indicator_name": "Pupil-teacher ratio, secondary",
+  "category": "education",
+  "data": [
+    {
+      "year": 2010,
+      "value": 22.50795,
+      "indicator": "SE.SEC.ENRL.TC.ZS",
+      "indicator_name": "Pupil-teacher ratio, secondary",
+      "country": "West Bank and Gaza",
+      "source": "pcbs",
+      "source_detail": "PCBS via World Bank API"
+    },
+    {
+      "year": 2011,
+      "value": 20.49871,
+      "indicator": "SE.SEC.ENRL.TC.ZS",
+      "indicator_name": "Pupil-teacher ratio, secondary",
+      "country": "West Bank and Gaza",
+      "source": "pcbs",
+      "source_detail": "PCBS via World Bank API"
+    },
+    {
+      "year": 2012,
+      "value": 20.18146,
+      "indicator": "SE.SEC.ENRL.TC.ZS",
+      "indicator_name": "Pupil-teacher ratio, secondary",
+      "country": "West Bank and Gaza",
+      "source": "pcbs",
+      "source_detail": "PCBS via World Bank API"
+    },
+    {
+      "year": 2013,
+      "value": 19.86081,
+      "indicator": "SE.SEC.ENRL.TC.ZS",
+      "indicator_name": "Pupil-teacher ratio, secondary",
+      "country": "West Bank and Gaza",
+      "source": "pcbs",
+      "source_detail": "PCBS via World Bank API"
+    },
+    {
+      "year": 2014,
+      "value": 19.71825,
+      "indicator": "SE.SEC.ENRL.TC.ZS",
+      "indicator_name": "Pupil-teacher ratio, secondary",
+      "country": "West Bank and Gaza",
+      "source": "pcbs",
+      "source_detail": "PCBS via World Bank API"
+    },
+    {
+      "year": 2015,
+      "value": 19.9462,
+      "indicator": "SE.SEC.ENRL.TC.ZS",
+      "indicator_name": "Pupil-teacher ratio, secondary",
+      "country": "West Bank and Gaza",
+      "source": "pcbs",
+      "source_detail": "PCBS via World Bank API"
+    },
+    {
+      "year": 2016,
+      "value": 19.64335,
+      "indicator": "SE.SEC.ENRL.TC.ZS",
+      "indicator_name": "Pupil-teacher ratio, secondary",
+      "country": "West Bank and Gaza",
+      "source": "pcbs",
+      "source_detail": "PCBS via World Bank API"
+    },
+    {
+      "year": 2017,
+      "value": 20.08626,
+      "indicator": "SE.SEC.ENRL.TC.ZS",
+      "indicator_name": "Pupil-teacher ratio, secondary",
+      "country": "West Bank and Gaza",
+      "source": "pcbs",
+      "source_detail": "PCBS via World Bank API"
+    },
+    {
+      "year": 2018,
+      "value": 17.33404,
+      "indicator": "SE.SEC.ENRL.TC.ZS",
+      "indicator_name": "Pupil-teacher ratio, secondary",
+      "country": "West Bank and Gaza",
+      "source": "pcbs",
+      "source_detail": "PCBS via World Bank API"
+    }
+  ],
+  "metadata": {
+    "source": "Palestinian Central Bureau of Statistics (PCBS)",
+    "source_detail": "Data accessed via World Bank Open Data API",
+    "last_updated": "2025-10-30T09:43:46.211Z",
+    "total_points": 9
+  }
+}

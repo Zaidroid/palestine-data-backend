@@ -1,0 +1,4654 @@
+{
+  "category": "health",
+  "metadata": {
+    "source": "pcbs",
+    "record_count": 76,
+    "indicators": [
+      "SH.DYN.MORT",
+      "SH.DYN.NMRT",
+      "SH.STA.MMRT",
+      "SH.IMM.IDPT",
+      "SH.IMM.MEAS",
+      "SH.MED.PHYS.ZS",
+      "SH.MED.NUMW.P3"
+    ]
+  },
+  "data": [
+    {
+      "id": "pcbs-fanxqk",
+      "type": "health",
+      "category": "health",
+      "date": "2010-01-01",
+      "timestamp": "2010-01-01T00:00:00.000Z",
+      "period": {
+        "type": "year",
+        "value": "2010"
+      },
+      "location": {
+        "name": "Palestine",
+        "admin_levels": {
+          "level1": "Palestine"
+        },
+        "region": "palestine"
+      },
+      "value": 22,
+      "unit": "per_1000",
+      "quality": {
+        "score": 0.8333333333333333,
+        "completeness": 0.6666666666666666,
+        "consistency": 1,
+        "verified": false,
+        "confidence": 0.8
+      },
+      "sources": [
+        {
+          "name": "Palestinian Central Bureau of Statistics (PCBS)",
+          "organization": "PCBS",
+          "url": "https://api.worldbank.org/v2",
+          "fetched_at": "2025-10-30T09:46:35.090Z",
+          "reliability_score": 0.95
+        }
+      ],
+      "created_at": "2025-10-30T09:46:35.090Z",
+      "updated_at": "2025-10-30T09:46:35.090Z",
+      "version": 1,
+      "indicator_code": "SH.DYN.MORT",
+      "indicator_name": "Mortality rate, under-5 (per 1,000 live births)",
+      "analysis": {
+        "trend": {
+          "slope": -0.31230769230769256,
+          "direction": "decreasing"
+        },
+        "growth_rate": 3.4090505541048084,
+        "volatility": 3.3533489200487083,
+        "recent_change": 0,
+        "baseline_comparison": -16.34980988593156,
+        "data_points": 14,
+        "date_range": {
+          "start": "2010-01-01",
+          "end": "2023-01-01"
+        }
+      },
+      "pcbs_metadata": {
+        "official_source": true,
+        "data_quality": "high",
+        "update_frequency": "annual"
+      }
+    },
+    {
+      "id": "pcbs-xf4uw4",
+      "type": "health",
+      "category": "health",
+      "date": "2010-01-01",
+      "timestamp": "2010-01-01T00:00:00.000Z",
+      "period": {
+        "type": "year",
+        "value": "2010"
+      },
+      "location": {
+        "name": "Palestine",
+        "admin_levels": {
+          "level1": "Palestine"
+        },
+        "region": "palestine"
+      },
+      "value": 13.1,
+      "unit": "per_1000",
+      "quality": {
+        "score": 0.8333333333333333,
+        "completeness": 0.6666666666666666,
+        "consistency": 1,
+        "verified": false,
+        "confidence": 0.8
+      },
+      "sources": [
+        {
+          "name": "Palestinian Central Bureau of Statistics (PCBS)",
+          "organization": "PCBS",
+          "url": "https://api.worldbank.org/v2",
+          "fetched_at": "2025-10-30T09:46:35.090Z",
+          "reliability_score": 0.95
+        }
+      ],
+      "created_at": "2025-10-30T09:46:35.090Z",
+      "updated_at": "2025-10-30T09:46:35.090Z",
+      "version": 1,
+      "indicator_code": "SH.DYN.NMRT",
+      "indicator_name": "Mortality rate, neonatal (per 1,000 live births)",
+      "analysis": {
+        "trend": {
+          "slope": -0.3520879120879114,
+          "direction": "decreasing"
+        },
+        "growth_rate": -3.0969339228938804,
+        "volatility": 1.4227022290883857,
+        "recent_change": 0,
+        "baseline_comparison": 50.57471264367817,
+        "data_points": 14,
+        "date_range": {
+          "start": "2010-01-01",
+          "end": "2023-01-01"
+        }
+      },
+      "pcbs_metadata": {
+        "official_source": true,
+        "data_quality": "high",
+        "update_frequency": "annual"
+      }
+    },
+    {
+      "id": "pcbs-j1ts4y",
+      "type": "health",
+      "category": "health",
+      "date": "2010-01-01",
+      "timestamp": "2010-01-01T00:00:00.000Z",
+      "period": {
+        "type": "year",
+        "value": "2010"
+      },
+      "location": {
+        "name": "Palestine",
+        "admin_levels": {
+          "level1": "Palestine"
+        },
+        "region": "palestine"
+      },
+      "value": 42,
+      "unit": "per_100000",
+      "quality": {
+        "score": 0.8333333333333333,
+        "completeness": 0.6666666666666666,
+        "consistency": 1,
+        "verified": false,
+        "confidence": 0.8
+      },
+      "sources": [
+        {
+          "name": "Palestinian Central Bureau of Statistics (PCBS)",
+          "organization": "PCBS",
+          "url": "https://api.worldbank.org/v2",
+          "fetched_at": "2025-10-30T09:46:35.090Z",
+          "reliability_score": 0.95
+        }
+      ],
+      "created_at": "2025-10-30T09:46:35.090Z",
+      "updated_at": "2025-10-30T09:46:35.090Z",
+      "version": 1,
+      "indicator_code": "SH.STA.MMRT",
+      "indicator_name": "Maternal mortality ratio (per 100,000 live births)",
+      "analysis": {
+        "trend": {
+          "slope": -1.7692307692307692,
+          "direction": "decreasing"
+        },
+        "growth_rate": -5.525979756792055,
+        "volatility": 8.20434180722597,
+        "recent_change": 0,
+        "baseline_comparison": 162.5,
+        "data_points": 14,
+        "date_range": {
+          "start": "2010-01-01",
+          "end": "2023-01-01"
+        }
+      },
+      "pcbs_metadata": {
+        "official_source": true,
+        "data_quality": "high",
+        "update_frequency": "annual"
+      }
+    },
+    {
+      "id": "pcbs-ten1jx",
+      "type": "health",
+      "category": "health",
+      "date": "2010-01-01",
+      "timestamp": "2010-01-01T00:00:00.000Z",
+      "period": {
+        "type": "year",
+        "value": "2010"
+      },
+      "location": {
+        "name": "Palestine",
+        "admin_levels": {
+          "level1": "Palestine"
+        },
+        "region": "palestine"
+      },
+      "value": 99,
+      "unit": "percentage",
+      "quality": {
+        "score": 0.8333333333333333,
+        "completeness": 0.6666666666666666,
+        "consistency": 1,
+        "verified": false,
+        "confidence": 0.8
+      },
+      "sources": [
+        {
+          "name": "Palestinian Central Bureau of Statistics (PCBS)",
+          "organization": "PCBS",
+          "url": "https://api.worldbank.org/v2",
+          "fetched_at": "2025-10-30T09:46:35.090Z",
+          "reliability_score": 0.95
+        }
+      ],
+      "created_at": "2025-10-30T09:46:35.090Z",
+      "updated_at": "2025-10-30T09:46:35.090Z",
+      "version": 1,
+      "indicator_code": "SH.IMM.IDPT",
+      "indicator_name": "Immunization, DPT (% of children ages 12-23 months)",
+      "analysis": {
+        "trend": {
+          "slope": -0.5607142857142857,
+          "direction": "decreasing"
+        },
+        "growth_rate": -0.7911327675576294,
+        "volatility": 3.687817782917155,
+        "recent_change": 0,
+        "baseline_comparison": 12.5,
+        "data_points": 15,
+        "date_range": {
+          "start": "2010-01-01",
+          "end": "2024-01-01"
+        }
+      },
+      "pcbs_metadata": {
+        "official_source": true,
+        "data_quality": "high",
+        "update_frequency": "annual"
+      }
+    },
+    {
+      "id": "pcbs-a2e4v5",
+      "type": "health",
+      "category": "health",
+      "date": "2010-01-01",
+      "timestamp": "2010-01-01T00:00:00.000Z",
+      "period": {
+        "type": "year",
+        "value": "2010"
+      },
+      "location": {
+        "name": "Palestine",
+        "admin_levels": {
+          "level1": "Palestine"
+        },
+        "region": "palestine"
+      },
+      "value": 98,
+      "unit": "percentage",
+      "quality": {
+        "score": 0.8333333333333333,
+        "completeness": 0.6666666666666666,
+        "consistency": 1,
+        "verified": false,
+        "confidence": 0.8
+      },
+      "sources": [
+        {
+          "name": "Palestinian Central Bureau of Statistics (PCBS)",
+          "organization": "PCBS",
+          "url": "https://api.worldbank.org/v2",
+          "fetched_at": "2025-10-30T09:46:35.091Z",
+          "reliability_score": 0.95
+        }
+      ],
+      "created_at": "2025-10-30T09:46:35.091Z",
+      "updated_at": "2025-10-30T09:46:35.091Z",
+      "version": 1,
+      "indicator_code": "SH.IMM.MEAS",
+      "indicator_name": "Immunization, measles (% of children ages 12-23 months)",
+      "analysis": {
+        "trend": {
+          "slope": -0.4714285714285714,
+          "direction": "decreasing"
+        },
+        "growth_rate": -0.660515466953506,
+        "volatility": 3.3199732261303287,
+        "recent_change": 0,
+        "baseline_comparison": 10.112359550561797,
+        "data_points": 15,
+        "date_range": {
+          "start": "2010-01-01",
+          "end": "2024-01-01"
+        }
+      },
+      "pcbs_metadata": {
+        "official_source": true,
+        "data_quality": "high",
+        "update_frequency": "annual"
+      }
+    },
+    {
+      "id": "pcbs-uiju7m",
+      "type": "health",
+      "category": "health",
+      "date": "2011-01-01",
+      "timestamp": "2011-01-01T00:00:00.000Z",
+      "period": {
+        "type": "year",
+        "value": "2011"
+      },
+      "location": {
+        "name": "Palestine",
+        "admin_levels": {
+          "level1": "Palestine"
+        },
+        "region": "palestine"
+      },
+      "value": 21.2,
+      "unit": "per_1000",
+      "quality": {
+        "score": 0.8333333333333333,
+        "completeness": 0.6666666666666666,
+        "consistency": 1,
+        "verified": false,
+        "confidence": 0.8
+      },
+      "sources": [
+        {
+          "name": "Palestinian Central Bureau of Statistics (PCBS)",
+          "organization": "PCBS",
+          "url": "https://api.worldbank.org/v2",
+          "fetched_at": "2025-10-30T09:46:35.091Z",
+          "reliability_score": 0.95
+        }
+      ],
+      "created_at": "2025-10-30T09:46:35.091Z",
+      "updated_at": "2025-10-30T09:46:35.091Z",
+      "version": 1,
+      "indicator_code": "SH.DYN.MORT",
+      "indicator_name": "Mortality rate, under-5 (per 1,000 live births)",
+      "analysis": {
+        "trend": {
+          "slope": -0.31230769230769256,
+          "direction": "decreasing"
+        },
+        "growth_rate": 3.4090505541048084,
+        "volatility": 3.3533489200487083,
+        "recent_change": -3.63636363636364,
+        "baseline_comparison": -19.3916349809886,
+        "data_points": 14,
+        "date_range": {
+          "start": "2010-01-01",
+          "end": "2023-01-01"
+        }
+      },
+      "pcbs_metadata": {
+        "official_source": true,
+        "data_quality": "high",
+        "update_frequency": "annual"
+      }
+    },
+    {
+      "id": "pcbs-llzuv6",
+      "type": "health",
+      "category": "health",
+      "date": "2011-01-01",
+      "timestamp": "2011-01-01T00:00:00.000Z",
+      "period": {
+        "type": "year",
+        "value": "2011"
+      },
+      "location": {
+        "name": "Palestine",
+        "admin_levels": {
+          "level1": "Palestine"
+        },
+        "region": "palestine"
+      },
+      "value": 12.7,
+      "unit": "per_1000",
+      "quality": {
+        "score": 0.8333333333333333,
+        "completeness": 0.6666666666666666,
+        "consistency": 1,
+        "verified": false,
+        "confidence": 0.8
+      },
+      "sources": [
+        {
+          "name": "Palestinian Central Bureau of Statistics (PCBS)",
+          "organization": "PCBS",
+          "url": "https://api.worldbank.org/v2",
+          "fetched_at": "2025-10-30T09:46:35.091Z",
+          "reliability_score": 0.95
+        }
+      ],
+      "created_at": "2025-10-30T09:46:35.091Z",
+      "updated_at": "2025-10-30T09:46:35.091Z",
+      "version": 1,
+      "indicator_code": "SH.DYN.NMRT",
+      "indicator_name": "Mortality rate, neonatal (per 1,000 live births)",
+      "analysis": {
+        "trend": {
+          "slope": -0.3520879120879114,
+          "direction": "decreasing"
+        },
+        "growth_rate": -3.0969339228938804,
+        "volatility": 1.4227022290883857,
+        "recent_change": -3.0534351145038197,
+        "baseline_comparison": 45.97701149425288,
+        "data_points": 14,
+        "date_range": {
+          "start": "2010-01-01",
+          "end": "2023-01-01"
+        }
+      },
+      "pcbs_metadata": {
+        "official_source": true,
+        "data_quality": "high",
+        "update_frequency": "annual"
+      }
+    },
+    {
+      "id": "pcbs-gcw82f",
+      "type": "health",
+      "category": "health",
+      "date": "2011-01-01",
+      "timestamp": "2011-01-01T00:00:00.000Z",
+      "period": {
+        "type": "year",
+        "value": "2011"
+      },
+      "location": {
+        "name": "Palestine",
+        "admin_levels": {
+          "level1": "Palestine"
+        },
+        "region": "palestine"
+      },
+      "value": 39,
+      "unit": "per_100000",
+      "quality": {
+        "score": 0.8333333333333333,
+        "completeness": 0.6666666666666666,
+        "consistency": 1,
+        "verified": false,
+        "confidence": 0.8
+      },
+      "sources": [
+        {
+          "name": "Palestinian Central Bureau of Statistics (PCBS)",
+          "organization": "PCBS",
+          "url": "https://api.worldbank.org/v2",
+          "fetched_at": "2025-10-30T09:46:35.091Z",
+          "reliability_score": 0.95
+        }
+      ],
+      "created_at": "2025-10-30T09:46:35.091Z",
+      "updated_at": "2025-10-30T09:46:35.091Z",
+      "version": 1,
+      "indicator_code": "SH.STA.MMRT",
+      "indicator_name": "Maternal mortality ratio (per 100,000 live births)",
+      "analysis": {
+        "trend": {
+          "slope": -1.7692307692307692,
+          "direction": "decreasing"
+        },
+        "growth_rate": -5.525979756792055,
+        "volatility": 8.20434180722597,
+        "recent_change": -7.142857142857142,
+        "baseline_comparison": 143.75,
+        "data_points": 14,
+        "date_range": {
+          "start": "2010-01-01",
+          "end": "2023-01-01"
+        }
+      },
+      "pcbs_metadata": {
+        "official_source": true,
+        "data_quality": "high",
+        "update_frequency": "annual"
+      }
+    },
+    {
+      "id": "pcbs-3nk7we",
+      "type": "health",
+      "category": "health",
+      "date": "2011-01-01",
+      "timestamp": "2011-01-01T00:00:00.000Z",
+      "period": {
+        "type": "year",
+        "value": "2011"
+      },
+      "location": {
+        "name": "Palestine",
+        "admin_levels": {
+          "level1": "Palestine"
+        },
+        "region": "palestine"
+      },
+      "value": 99,
+      "unit": "percentage",
+      "quality": {
+        "score": 0.8333333333333333,
+        "completeness": 0.6666666666666666,
+        "consistency": 1,
+        "verified": false,
+        "confidence": 0.8
+      },
+      "sources": [
+        {
+          "name": "Palestinian Central Bureau of Statistics (PCBS)",
+          "organization": "PCBS",
+          "url": "https://api.worldbank.org/v2",
+          "fetched_at": "2025-10-30T09:46:35.091Z",
+          "reliability_score": 0.95
+        }
+      ],
+      "created_at": "2025-10-30T09:46:35.091Z",
+      "updated_at": "2025-10-30T09:46:35.091Z",
+      "version": 1,
+      "indicator_code": "SH.IMM.IDPT",
+      "indicator_name": "Immunization, DPT (% of children ages 12-23 months)",
+      "analysis": {
+        "trend": {
+          "slope": -0.5607142857142857,
+          "direction": "decreasing"
+        },
+        "growth_rate": -0.7911327675576294,
+        "volatility": 3.687817782917155,
+        "recent_change": 0,
+        "baseline_comparison": 12.5,
+        "data_points": 15,
+        "date_range": {
+          "start": "2010-01-01",
+          "end": "2024-01-01"
+        }
+      },
+      "pcbs_metadata": {
+        "official_source": true,
+        "data_quality": "high",
+        "update_frequency": "annual"
+      }
+    },
+    {
+      "id": "pcbs-f2yjtt",
+      "type": "health",
+      "category": "health",
+      "date": "2011-01-01",
+      "timestamp": "2011-01-01T00:00:00.000Z",
+      "period": {
+        "type": "year",
+        "value": "2011"
+      },
+      "location": {
+        "name": "Palestine",
+        "admin_levels": {
+          "level1": "Palestine"
+        },
+        "region": "palestine"
+      },
+      "value": 99,
+      "unit": "percentage",
+      "quality": {
+        "score": 0.8333333333333333,
+        "completeness": 0.6666666666666666,
+        "consistency": 1,
+        "verified": false,
+        "confidence": 0.8
+      },
+      "sources": [
+        {
+          "name": "Palestinian Central Bureau of Statistics (PCBS)",
+          "organization": "PCBS",
+          "url": "https://api.worldbank.org/v2",
+          "fetched_at": "2025-10-30T09:46:35.091Z",
+          "reliability_score": 0.95
+        }
+      ],
+      "created_at": "2025-10-30T09:46:35.091Z",
+      "updated_at": "2025-10-30T09:46:35.091Z",
+      "version": 1,
+      "indicator_code": "SH.IMM.MEAS",
+      "indicator_name": "Immunization, measles (% of children ages 12-23 months)",
+      "analysis": {
+        "trend": {
+          "slope": -0.4714285714285714,
+          "direction": "decreasing"
+        },
+        "growth_rate": -0.660515466953506,
+        "volatility": 3.3199732261303287,
+        "recent_change": 1.0204081632653061,
+        "baseline_comparison": 11.235955056179774,
+        "data_points": 15,
+        "date_range": {
+          "start": "2010-01-01",
+          "end": "2024-01-01"
+        }
+      },
+      "pcbs_metadata": {
+        "official_source": true,
+        "data_quality": "high",
+        "update_frequency": "annual"
+      }
+    },
+    {
+      "id": "pcbs-bg5lpu",
+      "type": "health",
+      "category": "health",
+      "date": "2012-01-01",
+      "timestamp": "2012-01-01T00:00:00.000Z",
+      "period": {
+        "type": "year",
+        "value": "2012"
+      },
+      "location": {
+        "name": "Palestine",
+        "admin_levels": {
+          "level1": "Palestine"
+        },
+        "region": "palestine"
+      },
+      "value": 20.4,
+      "unit": "per_1000",
+      "quality": {
+        "score": 0.8333333333333333,
+        "completeness": 0.6666666666666666,
+        "consistency": 1,
+        "verified": false,
+        "confidence": 0.8
+      },
+      "sources": [
+        {
+          "name": "Palestinian Central Bureau of Statistics (PCBS)",
+          "organization": "PCBS",
+          "url": "https://api.worldbank.org/v2",
+          "fetched_at": "2025-10-30T09:46:35.092Z",
+          "reliability_score": 0.95
+        }
+      ],
+      "created_at": "2025-10-30T09:46:35.092Z",
+      "updated_at": "2025-10-30T09:46:35.092Z",
+      "version": 1,
+      "indicator_code": "SH.DYN.MORT",
+      "indicator_name": "Mortality rate, under-5 (per 1,000 live births)",
+      "analysis": {
+        "trend": {
+          "slope": -0.31230769230769256,
+          "direction": "decreasing"
+        },
+        "growth_rate": 3.4090505541048084,
+        "volatility": 3.3533489200487083,
+        "recent_change": -3.7735849056603805,
+        "baseline_comparison": -22.433460076045638,
+        "data_points": 14,
+        "date_range": {
+          "start": "2010-01-01",
+          "end": "2023-01-01"
+        }
+      },
+      "pcbs_metadata": {
+        "official_source": true,
+        "data_quality": "high",
+        "update_frequency": "annual"
+      }
+    },
+    {
+      "id": "pcbs-mjupwf",
+      "type": "health",
+      "category": "health",
+      "date": "2012-01-01",
+      "timestamp": "2012-01-01T00:00:00.000Z",
+      "period": {
+        "type": "year",
+        "value": "2012"
+      },
+      "location": {
+        "name": "Palestine",
+        "admin_levels": {
+          "level1": "Palestine"
+        },
+        "region": "palestine"
+      },
+      "value": 12.3,
+      "unit": "per_1000",
+      "quality": {
+        "score": 0.8333333333333333,
+        "completeness": 0.6666666666666666,
+        "consistency": 1,
+        "verified": false,
+        "confidence": 0.8
+      },
+      "sources": [
+        {
+          "name": "Palestinian Central Bureau of Statistics (PCBS)",
+          "organization": "PCBS",
+          "url": "https://api.worldbank.org/v2",
+          "fetched_at": "2025-10-30T09:46:35.092Z",
+          "reliability_score": 0.95
+        }
+      ],
+      "created_at": "2025-10-30T09:46:35.092Z",
+      "updated_at": "2025-10-30T09:46:35.092Z",
+      "version": 1,
+      "indicator_code": "SH.DYN.NMRT",
+      "indicator_name": "Mortality rate, neonatal (per 1,000 live births)",
+      "analysis": {
+        "trend": {
+          "slope": -0.3520879120879114,
+          "direction": "decreasing"
+        },
+        "growth_rate": -3.0969339228938804,
+        "volatility": 1.4227022290883857,
+        "recent_change": -3.1496062992125875,
+        "baseline_comparison": 41.37931034482761,
+        "data_points": 14,
+        "date_range": {
+          "start": "2010-01-01",
+          "end": "2023-01-01"
+        }
+      },
+      "pcbs_metadata": {
+        "official_source": true,
+        "data_quality": "high",
+        "update_frequency": "annual"
+      }
+    },
+    {
+      "id": "pcbs-2e1o3v",
+      "type": "health",
+      "category": "health",
+      "date": "2012-01-01",
+      "timestamp": "2012-01-01T00:00:00.000Z",
+      "period": {
+        "type": "year",
+        "value": "2012"
+      },
+      "location": {
+        "name": "Palestine",
+        "admin_levels": {
+          "level1": "Palestine"
+        },
+        "region": "palestine"
+      },
+      "value": 36,
+      "unit": "per_100000",
+      "quality": {
+        "score": 0.8333333333333333,
+        "completeness": 0.6666666666666666,
+        "consistency": 1,
+        "verified": false,
+        "confidence": 0.8
+      },
+      "sources": [
+        {
+          "name": "Palestinian Central Bureau of Statistics (PCBS)",
+          "organization": "PCBS",
+          "url": "https://api.worldbank.org/v2",
+          "fetched_at": "2025-10-30T09:46:35.092Z",
+          "reliability_score": 0.95
+        }
+      ],
+      "created_at": "2025-10-30T09:46:35.092Z",
+      "updated_at": "2025-10-30T09:46:35.092Z",
+      "version": 1,
+      "indicator_code": "SH.STA.MMRT",
+      "indicator_name": "Maternal mortality ratio (per 100,000 live births)",
+      "analysis": {
+        "trend": {
+          "slope": -1.7692307692307692,
+          "direction": "decreasing"
+        },
+        "growth_rate": -5.525979756792055,
+        "volatility": 8.20434180722597,
+        "recent_change": -7.6923076923076925,
+        "baseline_comparison": 125,
+        "data_points": 14,
+        "date_range": {
+          "start": "2010-01-01",
+          "end": "2023-01-01"
+        }
+      },
+      "pcbs_metadata": {
+        "official_source": true,
+        "data_quality": "high",
+        "update_frequency": "annual"
+      }
+    },
+    {
+      "id": "pcbs-7ncx27",
+      "type": "health",
+      "category": "health",
+      "date": "2012-01-01",
+      "timestamp": "2012-01-01T00:00:00.000Z",
+      "period": {
+        "type": "year",
+        "value": "2012"
+      },
+      "location": {
+        "name": "Palestine",
+        "admin_levels": {
+          "level1": "Palestine"
+        },
+        "region": "palestine"
+      },
+      "value": 97,
+      "unit": "percentage",
+      "quality": {
+        "score": 0.8333333333333333,
+        "completeness": 0.6666666666666666,
+        "consistency": 1,
+        "verified": false,
+        "confidence": 0.8
+      },
+      "sources": [
+        {
+          "name": "Palestinian Central Bureau of Statistics (PCBS)",
+          "organization": "PCBS",
+          "url": "https://api.worldbank.org/v2",
+          "fetched_at": "2025-10-30T09:46:35.092Z",
+          "reliability_score": 0.95
+        }
+      ],
+      "created_at": "2025-10-30T09:46:35.092Z",
+      "updated_at": "2025-10-30T09:46:35.092Z",
+      "version": 1,
+      "indicator_code": "SH.IMM.IDPT",
+      "indicator_name": "Immunization, DPT (% of children ages 12-23 months)",
+      "analysis": {
+        "trend": {
+          "slope": -0.5607142857142857,
+          "direction": "decreasing"
+        },
+        "growth_rate": -0.7911327675576294,
+        "volatility": 3.687817782917155,
+        "recent_change": -2.0202020202020203,
+        "baseline_comparison": 10.227272727272728,
+        "data_points": 15,
+        "date_range": {
+          "start": "2010-01-01",
+          "end": "2024-01-01"
+        }
+      },
+      "pcbs_metadata": {
+        "official_source": true,
+        "data_quality": "high",
+        "update_frequency": "annual"
+      }
+    },
+    {
+      "id": "pcbs-ojs44j",
+      "type": "health",
+      "category": "health",
+      "date": "2012-01-01",
+      "timestamp": "2012-01-01T00:00:00.000Z",
+      "period": {
+        "type": "year",
+        "value": "2012"
+      },
+      "location": {
+        "name": "Palestine",
+        "admin_levels": {
+          "level1": "Palestine"
+        },
+        "region": "palestine"
+      },
+      "value": 98,
+      "unit": "percentage",
+      "quality": {
+        "score": 0.8333333333333333,
+        "completeness": 0.6666666666666666,
+        "consistency": 1,
+        "verified": false,
+        "confidence": 0.8
+      },
+      "sources": [
+        {
+          "name": "Palestinian Central Bureau of Statistics (PCBS)",
+          "organization": "PCBS",
+          "url": "https://api.worldbank.org/v2",
+          "fetched_at": "2025-10-30T09:46:35.092Z",
+          "reliability_score": 0.95
+        }
+      ],
+      "created_at": "2025-10-30T09:46:35.092Z",
+      "updated_at": "2025-10-30T09:46:35.092Z",
+      "version": 1,
+      "indicator_code": "SH.IMM.MEAS",
+      "indicator_name": "Immunization, measles (% of children ages 12-23 months)",
+      "analysis": {
+        "trend": {
+          "slope": -0.4714285714285714,
+          "direction": "decreasing"
+        },
+        "growth_rate": -0.660515466953506,
+        "volatility": 3.3199732261303287,
+        "recent_change": -1.0101010101010102,
+        "baseline_comparison": 10.112359550561797,
+        "data_points": 15,
+        "date_range": {
+          "start": "2010-01-01",
+          "end": "2024-01-01"
+        }
+      },
+      "pcbs_metadata": {
+        "official_source": true,
+        "data_quality": "high",
+        "update_frequency": "annual"
+      }
+    },
+    {
+      "id": "pcbs-8gqr5m",
+      "type": "health",
+      "category": "health",
+      "date": "2013-01-01",
+      "timestamp": "2013-01-01T00:00:00.000Z",
+      "period": {
+        "type": "year",
+        "value": "2013"
+      },
+      "location": {
+        "name": "Palestine",
+        "admin_levels": {
+          "level1": "Palestine"
+        },
+        "region": "palestine"
+      },
+      "value": 19.7,
+      "unit": "per_1000",
+      "quality": {
+        "score": 0.8333333333333333,
+        "completeness": 0.6666666666666666,
+        "consistency": 1,
+        "verified": false,
+        "confidence": 0.8
+      },
+      "sources": [
+        {
+          "name": "Palestinian Central Bureau of Statistics (PCBS)",
+          "organization": "PCBS",
+          "url": "https://api.worldbank.org/v2",
+          "fetched_at": "2025-10-30T09:46:35.093Z",
+          "reliability_score": 0.95
+        }
+      ],
+      "created_at": "2025-10-30T09:46:35.093Z",
+      "updated_at": "2025-10-30T09:46:35.093Z",
+      "version": 1,
+      "indicator_code": "SH.DYN.MORT",
+      "indicator_name": "Mortality rate, under-5 (per 1,000 live births)",
+      "analysis": {
+        "trend": {
+          "slope": -0.31230769230769256,
+          "direction": "decreasing"
+        },
+        "growth_rate": 3.4090505541048084,
+        "volatility": 3.3533489200487083,
+        "recent_change": -3.4313725490196045,
+        "baseline_comparison": -25.095057034220535,
+        "data_points": 14,
+        "date_range": {
+          "start": "2010-01-01",
+          "end": "2023-01-01"
+        }
+      },
+      "pcbs_metadata": {
+        "official_source": true,
+        "data_quality": "high",
+        "update_frequency": "annual"
+      }
+    },
+    {
+      "id": "pcbs-v4dlol",
+      "type": "health",
+      "category": "health",
+      "date": "2013-01-01",
+      "timestamp": "2013-01-01T00:00:00.000Z",
+      "period": {
+        "type": "year",
+        "value": "2013"
+      },
+      "location": {
+        "name": "Palestine",
+        "admin_levels": {
+          "level1": "Palestine"
+        },
+        "region": "palestine"
+      },
+      "value": 12,
+      "unit": "per_1000",
+      "quality": {
+        "score": 0.8333333333333333,
+        "completeness": 0.6666666666666666,
+        "consistency": 1,
+        "verified": false,
+        "confidence": 0.8
+      },
+      "sources": [
+        {
+          "name": "Palestinian Central Bureau of Statistics (PCBS)",
+          "organization": "PCBS",
+          "url": "https://api.worldbank.org/v2",
+          "fetched_at": "2025-10-30T09:46:35.093Z",
+          "reliability_score": 0.95
+        }
+      ],
+      "created_at": "2025-10-30T09:46:35.093Z",
+      "updated_at": "2025-10-30T09:46:35.093Z",
+      "version": 1,
+      "indicator_code": "SH.DYN.NMRT",
+      "indicator_name": "Mortality rate, neonatal (per 1,000 live births)",
+      "analysis": {
+        "trend": {
+          "slope": -0.3520879120879114,
+          "direction": "decreasing"
+        },
+        "growth_rate": -3.0969339228938804,
+        "volatility": 1.4227022290883857,
+        "recent_change": -2.439024390243908,
+        "baseline_comparison": 37.93103448275863,
+        "data_points": 14,
+        "date_range": {
+          "start": "2010-01-01",
+          "end": "2023-01-01"
+        }
+      },
+      "pcbs_metadata": {
+        "official_source": true,
+        "data_quality": "high",
+        "update_frequency": "annual"
+      }
+    },
+    {
+      "id": "pcbs-f6dnse",
+      "type": "health",
+      "category": "health",
+      "date": "2013-01-01",
+      "timestamp": "2013-01-01T00:00:00.000Z",
+      "period": {
+        "type": "year",
+        "value": "2013"
+      },
+      "location": {
+        "name": "Palestine",
+        "admin_levels": {
+          "level1": "Palestine"
+        },
+        "region": "palestine"
+      },
+      "value": 32,
+      "unit": "per_100000",
+      "quality": {
+        "score": 0.8333333333333333,
+        "completeness": 0.6666666666666666,
+        "consistency": 1,
+        "verified": false,
+        "confidence": 0.8
+      },
+      "sources": [
+        {
+          "name": "Palestinian Central Bureau of Statistics (PCBS)",
+          "organization": "PCBS",
+          "url": "https://api.worldbank.org/v2",
+          "fetched_at": "2025-10-30T09:46:35.093Z",
+          "reliability_score": 0.95
+        }
+      ],
+      "created_at": "2025-10-30T09:46:35.093Z",
+      "updated_at": "2025-10-30T09:46:35.093Z",
+      "version": 1,
+      "indicator_code": "SH.STA.MMRT",
+      "indicator_name": "Maternal mortality ratio (per 100,000 live births)",
+      "analysis": {
+        "trend": {
+          "slope": -1.7692307692307692,
+          "direction": "decreasing"
+        },
+        "growth_rate": -5.525979756792055,
+        "volatility": 8.20434180722597,
+        "recent_change": -11.11111111111111,
+        "baseline_comparison": 100,
+        "data_points": 14,
+        "date_range": {
+          "start": "2010-01-01",
+          "end": "2023-01-01"
+        }
+      },
+      "pcbs_metadata": {
+        "official_source": true,
+        "data_quality": "high",
+        "update_frequency": "annual"
+      }
+    },
+    {
+      "id": "pcbs-n6imkg",
+      "type": "health",
+      "category": "health",
+      "date": "2013-01-01",
+      "timestamp": "2013-01-01T00:00:00.000Z",
+      "period": {
+        "type": "year",
+        "value": "2013"
+      },
+      "location": {
+        "name": "Palestine",
+        "admin_levels": {
+          "level1": "Palestine"
+        },
+        "region": "palestine"
+      },
+      "value": 99,
+      "unit": "percentage",
+      "quality": {
+        "score": 0.8333333333333333,
+        "completeness": 0.6666666666666666,
+        "consistency": 1,
+        "verified": false,
+        "confidence": 0.8
+      },
+      "sources": [
+        {
+          "name": "Palestinian Central Bureau of Statistics (PCBS)",
+          "organization": "PCBS",
+          "url": "https://api.worldbank.org/v2",
+          "fetched_at": "2025-10-30T09:46:35.093Z",
+          "reliability_score": 0.95
+        }
+      ],
+      "created_at": "2025-10-30T09:46:35.093Z",
+      "updated_at": "2025-10-30T09:46:35.093Z",
+      "version": 1,
+      "indicator_code": "SH.IMM.IDPT",
+      "indicator_name": "Immunization, DPT (% of children ages 12-23 months)",
+      "analysis": {
+        "trend": {
+          "slope": -0.5607142857142857,
+          "direction": "decreasing"
+        },
+        "growth_rate": -0.7911327675576294,
+        "volatility": 3.687817782917155,
+        "recent_change": 2.0618556701030926,
+        "baseline_comparison": 12.5,
+        "data_points": 15,
+        "date_range": {
+          "start": "2010-01-01",
+          "end": "2024-01-01"
+        }
+      },
+      "pcbs_metadata": {
+        "official_source": true,
+        "data_quality": "high",
+        "update_frequency": "annual"
+      }
+    },
+    {
+      "id": "pcbs-tkcj37",
+      "type": "health",
+      "category": "health",
+      "date": "2013-01-01",
+      "timestamp": "2013-01-01T00:00:00.000Z",
+      "period": {
+        "type": "year",
+        "value": "2013"
+      },
+      "location": {
+        "name": "Palestine",
+        "admin_levels": {
+          "level1": "Palestine"
+        },
+        "region": "palestine"
+      },
+      "value": 99,
+      "unit": "percentage",
+      "quality": {
+        "score": 0.8333333333333333,
+        "completeness": 0.6666666666666666,
+        "consistency": 1,
+        "verified": false,
+        "confidence": 0.8
+      },
+      "sources": [
+        {
+          "name": "Palestinian Central Bureau of Statistics (PCBS)",
+          "organization": "PCBS",
+          "url": "https://api.worldbank.org/v2",
+          "fetched_at": "2025-10-30T09:46:35.093Z",
+          "reliability_score": 0.95
+        }
+      ],
+      "created_at": "2025-10-30T09:46:35.093Z",
+      "updated_at": "2025-10-30T09:46:35.093Z",
+      "version": 1,
+      "indicator_code": "SH.IMM.MEAS",
+      "indicator_name": "Immunization, measles (% of children ages 12-23 months)",
+      "analysis": {
+        "trend": {
+          "slope": -0.4714285714285714,
+          "direction": "decreasing"
+        },
+        "growth_rate": -0.660515466953506,
+        "volatility": 3.3199732261303287,
+        "recent_change": 1.0204081632653061,
+        "baseline_comparison": 11.235955056179774,
+        "data_points": 15,
+        "date_range": {
+          "start": "2010-01-01",
+          "end": "2024-01-01"
+        }
+      },
+      "pcbs_metadata": {
+        "official_source": true,
+        "data_quality": "high",
+        "update_frequency": "annual"
+      }
+    },
+    {
+      "id": "pcbs-nojlrs",
+      "type": "health",
+      "category": "health",
+      "date": "2014-01-01",
+      "timestamp": "2014-01-01T00:00:00.000Z",
+      "period": {
+        "type": "year",
+        "value": "2014"
+      },
+      "location": {
+        "name": "Palestine",
+        "admin_levels": {
+          "level1": "Palestine"
+        },
+        "region": "palestine"
+      },
+      "value": 22,
+      "unit": "per_1000",
+      "quality": {
+        "score": 0.8333333333333333,
+        "completeness": 0.6666666666666666,
+        "consistency": 1,
+        "verified": false,
+        "confidence": 0.8
+      },
+      "sources": [
+        {
+          "name": "Palestinian Central Bureau of Statistics (PCBS)",
+          "organization": "PCBS",
+          "url": "https://api.worldbank.org/v2",
+          "fetched_at": "2025-10-30T09:46:35.095Z",
+          "reliability_score": 0.95
+        }
+      ],
+      "created_at": "2025-10-30T09:46:35.095Z",
+      "updated_at": "2025-10-30T09:46:35.095Z",
+      "version": 1,
+      "indicator_code": "SH.DYN.MORT",
+      "indicator_name": "Mortality rate, under-5 (per 1,000 live births)",
+      "analysis": {
+        "trend": {
+          "slope": -0.31230769230769256,
+          "direction": "decreasing"
+        },
+        "growth_rate": 3.4090505541048084,
+        "volatility": 3.3533489200487083,
+        "recent_change": 11.675126903553304,
+        "baseline_comparison": -16.34980988593156,
+        "data_points": 14,
+        "date_range": {
+          "start": "2010-01-01",
+          "end": "2023-01-01"
+        }
+      },
+      "pcbs_metadata": {
+        "official_source": true,
+        "data_quality": "high",
+        "update_frequency": "annual"
+      }
+    },
+    {
+      "id": "pcbs-1wfdgd",
+      "type": "health",
+      "category": "health",
+      "date": "2014-01-01",
+      "timestamp": "2014-01-01T00:00:00.000Z",
+      "period": {
+        "type": "year",
+        "value": "2014"
+      },
+      "location": {
+        "name": "Palestine",
+        "admin_levels": {
+          "level1": "Palestine"
+        },
+        "region": "palestine"
+      },
+      "value": 11.6,
+      "unit": "per_1000",
+      "quality": {
+        "score": 0.8333333333333333,
+        "completeness": 0.6666666666666666,
+        "consistency": 1,
+        "verified": false,
+        "confidence": 0.8
+      },
+      "sources": [
+        {
+          "name": "Palestinian Central Bureau of Statistics (PCBS)",
+          "organization": "PCBS",
+          "url": "https://api.worldbank.org/v2",
+          "fetched_at": "2025-10-30T09:46:35.095Z",
+          "reliability_score": 0.95
+        }
+      ],
+      "created_at": "2025-10-30T09:46:35.095Z",
+      "updated_at": "2025-10-30T09:46:35.095Z",
+      "version": 1,
+      "indicator_code": "SH.DYN.NMRT",
+      "indicator_name": "Mortality rate, neonatal (per 1,000 live births)",
+      "analysis": {
+        "trend": {
+          "slope": -0.3520879120879114,
+          "direction": "decreasing"
+        },
+        "growth_rate": -3.0969339228938804,
+        "volatility": 1.4227022290883857,
+        "recent_change": -3.333333333333336,
+        "baseline_comparison": 33.33333333333334,
+        "data_points": 14,
+        "date_range": {
+          "start": "2010-01-01",
+          "end": "2023-01-01"
+        }
+      },
+      "pcbs_metadata": {
+        "official_source": true,
+        "data_quality": "high",
+        "update_frequency": "annual"
+      }
+    },
+    {
+      "id": "pcbs-k8ccez",
+      "type": "health",
+      "category": "health",
+      "date": "2014-01-01",
+      "timestamp": "2014-01-01T00:00:00.000Z",
+      "period": {
+        "type": "year",
+        "value": "2014"
+      },
+      "location": {
+        "name": "Palestine",
+        "admin_levels": {
+          "level1": "Palestine"
+        },
+        "region": "palestine"
+      },
+      "value": 29,
+      "unit": "per_100000",
+      "quality": {
+        "score": 0.8333333333333333,
+        "completeness": 0.6666666666666666,
+        "consistency": 1,
+        "verified": false,
+        "confidence": 0.8
+      },
+      "sources": [
+        {
+          "name": "Palestinian Central Bureau of Statistics (PCBS)",
+          "organization": "PCBS",
+          "url": "https://api.worldbank.org/v2",
+          "fetched_at": "2025-10-30T09:46:35.095Z",
+          "reliability_score": 0.95
+        }
+      ],
+      "created_at": "2025-10-30T09:46:35.095Z",
+      "updated_at": "2025-10-30T09:46:35.095Z",
+      "version": 1,
+      "indicator_code": "SH.STA.MMRT",
+      "indicator_name": "Maternal mortality ratio (per 100,000 live births)",
+      "analysis": {
+        "trend": {
+          "slope": -1.7692307692307692,
+          "direction": "decreasing"
+        },
+        "growth_rate": -5.525979756792055,
+        "volatility": 8.20434180722597,
+        "recent_change": -9.375,
+        "baseline_comparison": 81.25,
+        "data_points": 14,
+        "date_range": {
+          "start": "2010-01-01",
+          "end": "2023-01-01"
+        }
+      },
+      "pcbs_metadata": {
+        "official_source": true,
+        "data_quality": "high",
+        "update_frequency": "annual"
+      }
+    },
+    {
+      "id": "pcbs-2kk733",
+      "type": "health",
+      "category": "health",
+      "date": "2014-01-01",
+      "timestamp": "2014-01-01T00:00:00.000Z",
+      "period": {
+        "type": "year",
+        "value": "2014"
+      },
+      "location": {
+        "name": "Palestine",
+        "admin_levels": {
+          "level1": "Palestine"
+        },
+        "region": "palestine"
+      },
+      "value": 99,
+      "unit": "percentage",
+      "quality": {
+        "score": 0.8333333333333333,
+        "completeness": 0.6666666666666666,
+        "consistency": 1,
+        "verified": false,
+        "confidence": 0.8
+      },
+      "sources": [
+        {
+          "name": "Palestinian Central Bureau of Statistics (PCBS)",
+          "organization": "PCBS",
+          "url": "https://api.worldbank.org/v2",
+          "fetched_at": "2025-10-30T09:46:35.095Z",
+          "reliability_score": 0.95
+        }
+      ],
+      "created_at": "2025-10-30T09:46:35.095Z",
+      "updated_at": "2025-10-30T09:46:35.095Z",
+      "version": 1,
+      "indicator_code": "SH.IMM.IDPT",
+      "indicator_name": "Immunization, DPT (% of children ages 12-23 months)",
+      "analysis": {
+        "trend": {
+          "slope": -0.5607142857142857,
+          "direction": "decreasing"
+        },
+        "growth_rate": -0.7911327675576294,
+        "volatility": 3.687817782917155,
+        "recent_change": 0,
+        "baseline_comparison": 12.5,
+        "data_points": 15,
+        "date_range": {
+          "start": "2010-01-01",
+          "end": "2024-01-01"
+        }
+      },
+      "pcbs_metadata": {
+        "official_source": true,
+        "data_quality": "high",
+        "update_frequency": "annual"
+      }
+    },
+    {
+      "id": "pcbs-y82j98",
+      "type": "health",
+      "category": "health",
+      "date": "2014-01-01",
+      "timestamp": "2014-01-01T00:00:00.000Z",
+      "period": {
+        "type": "year",
+        "value": "2014"
+      },
+      "location": {
+        "name": "Palestine",
+        "admin_levels": {
+          "level1": "Palestine"
+        },
+        "region": "palestine"
+      },
+      "value": 99,
+      "unit": "percentage",
+      "quality": {
+        "score": 0.8333333333333333,
+        "completeness": 0.6666666666666666,
+        "consistency": 1,
+        "verified": false,
+        "confidence": 0.8
+      },
+      "sources": [
+        {
+          "name": "Palestinian Central Bureau of Statistics (PCBS)",
+          "organization": "PCBS",
+          "url": "https://api.worldbank.org/v2",
+          "fetched_at": "2025-10-30T09:46:35.095Z",
+          "reliability_score": 0.95
+        }
+      ],
+      "created_at": "2025-10-30T09:46:35.095Z",
+      "updated_at": "2025-10-30T09:46:35.095Z",
+      "version": 1,
+      "indicator_code": "SH.IMM.MEAS",
+      "indicator_name": "Immunization, measles (% of children ages 12-23 months)",
+      "analysis": {
+        "trend": {
+          "slope": -0.4714285714285714,
+          "direction": "decreasing"
+        },
+        "growth_rate": -0.660515466953506,
+        "volatility": 3.3199732261303287,
+        "recent_change": 0,
+        "baseline_comparison": 11.235955056179774,
+        "data_points": 15,
+        "date_range": {
+          "start": "2010-01-01",
+          "end": "2024-01-01"
+        }
+      },
+      "pcbs_metadata": {
+        "official_source": true,
+        "data_quality": "high",
+        "update_frequency": "annual"
+      }
+    },
+    {
+      "id": "pcbs-3r1okt",
+      "type": "health",
+      "category": "health",
+      "date": "2015-01-01",
+      "timestamp": "2015-01-01T00:00:00.000Z",
+      "period": {
+        "type": "year",
+        "value": "2015"
+      },
+      "location": {
+        "name": "Palestine",
+        "admin_levels": {
+          "level1": "Palestine"
+        },
+        "region": "palestine"
+      },
+      "value": 18.3,
+      "unit": "per_1000",
+      "quality": {
+        "score": 0.8333333333333333,
+        "completeness": 0.6666666666666666,
+        "consistency": 1,
+        "verified": false,
+        "confidence": 0.8
+      },
+      "sources": [
+        {
+          "name": "Palestinian Central Bureau of Statistics (PCBS)",
+          "organization": "PCBS",
+          "url": "https://api.worldbank.org/v2",
+          "fetched_at": "2025-10-30T09:46:35.096Z",
+          "reliability_score": 0.95
+        }
+      ],
+      "created_at": "2025-10-30T09:46:35.096Z",
+      "updated_at": "2025-10-30T09:46:35.096Z",
+      "version": 1,
+      "indicator_code": "SH.DYN.MORT",
+      "indicator_name": "Mortality rate, under-5 (per 1,000 live births)",
+      "analysis": {
+        "trend": {
+          "slope": -0.31230769230769256,
+          "direction": "decreasing"
+        },
+        "growth_rate": 3.4090505541048084,
+        "volatility": 3.3533489200487083,
+        "recent_change": -16.818181818181817,
+        "baseline_comparison": -30.418250950570343,
+        "data_points": 14,
+        "date_range": {
+          "start": "2010-01-01",
+          "end": "2023-01-01"
+        }
+      },
+      "pcbs_metadata": {
+        "official_source": true,
+        "data_quality": "high",
+        "update_frequency": "annual"
+      }
+    },
+    {
+      "id": "pcbs-ykif4",
+      "type": "health",
+      "category": "health",
+      "date": "2015-01-01",
+      "timestamp": "2015-01-01T00:00:00.000Z",
+      "period": {
+        "type": "year",
+        "value": "2015"
+      },
+      "location": {
+        "name": "Palestine",
+        "admin_levels": {
+          "level1": "Palestine"
+        },
+        "region": "palestine"
+      },
+      "value": 11.2,
+      "unit": "per_1000",
+      "quality": {
+        "score": 0.8333333333333333,
+        "completeness": 0.6666666666666666,
+        "consistency": 1,
+        "verified": false,
+        "confidence": 0.8
+      },
+      "sources": [
+        {
+          "name": "Palestinian Central Bureau of Statistics (PCBS)",
+          "organization": "PCBS",
+          "url": "https://api.worldbank.org/v2",
+          "fetched_at": "2025-10-30T09:46:35.096Z",
+          "reliability_score": 0.95
+        }
+      ],
+      "created_at": "2025-10-30T09:46:35.096Z",
+      "updated_at": "2025-10-30T09:46:35.096Z",
+      "version": 1,
+      "indicator_code": "SH.DYN.NMRT",
+      "indicator_name": "Mortality rate, neonatal (per 1,000 live births)",
+      "analysis": {
+        "trend": {
+          "slope": -0.3520879120879114,
+          "direction": "decreasing"
+        },
+        "growth_rate": -3.0969339228938804,
+        "volatility": 1.4227022290883857,
+        "recent_change": -3.448275862068969,
+        "baseline_comparison": 28.73563218390805,
+        "data_points": 14,
+        "date_range": {
+          "start": "2010-01-01",
+          "end": "2023-01-01"
+        }
+      },
+      "pcbs_metadata": {
+        "official_source": true,
+        "data_quality": "high",
+        "update_frequency": "annual"
+      }
+    },
+    {
+      "id": "pcbs-1heg8p",
+      "type": "health",
+      "category": "health",
+      "date": "2015-01-01",
+      "timestamp": "2015-01-01T00:00:00.000Z",
+      "period": {
+        "type": "year",
+        "value": "2015"
+      },
+      "location": {
+        "name": "Palestine",
+        "admin_levels": {
+          "level1": "Palestine"
+        },
+        "region": "palestine"
+      },
+      "value": 26,
+      "unit": "per_100000",
+      "quality": {
+        "score": 0.8333333333333333,
+        "completeness": 0.6666666666666666,
+        "consistency": 1,
+        "verified": false,
+        "confidence": 0.8
+      },
+      "sources": [
+        {
+          "name": "Palestinian Central Bureau of Statistics (PCBS)",
+          "organization": "PCBS",
+          "url": "https://api.worldbank.org/v2",
+          "fetched_at": "2025-10-30T09:46:35.096Z",
+          "reliability_score": 0.95
+        }
+      ],
+      "created_at": "2025-10-30T09:46:35.096Z",
+      "updated_at": "2025-10-30T09:46:35.096Z",
+      "version": 1,
+      "indicator_code": "SH.STA.MMRT",
+      "indicator_name": "Maternal mortality ratio (per 100,000 live births)",
+      "analysis": {
+        "trend": {
+          "slope": -1.7692307692307692,
+          "direction": "decreasing"
+        },
+        "growth_rate": -5.525979756792055,
+        "volatility": 8.20434180722597,
+        "recent_change": -10.344827586206897,
+        "baseline_comparison": 62.5,
+        "data_points": 14,
+        "date_range": {
+          "start": "2010-01-01",
+          "end": "2023-01-01"
+        }
+      },
+      "pcbs_metadata": {
+        "official_source": true,
+        "data_quality": "high",
+        "update_frequency": "annual"
+      }
+    },
+    {
+      "id": "pcbs-sbn0qm",
+      "type": "health",
+      "category": "health",
+      "date": "2015-01-01",
+      "timestamp": "2015-01-01T00:00:00.000Z",
+      "period": {
+        "type": "year",
+        "value": "2015"
+      },
+      "location": {
+        "name": "Palestine",
+        "admin_levels": {
+          "level1": "Palestine"
+        },
+        "region": "palestine"
+      },
+      "value": 99,
+      "unit": "percentage",
+      "quality": {
+        "score": 0.8333333333333333,
+        "completeness": 0.6666666666666666,
+        "consistency": 1,
+        "verified": false,
+        "confidence": 0.8
+      },
+      "sources": [
+        {
+          "name": "Palestinian Central Bureau of Statistics (PCBS)",
+          "organization": "PCBS",
+          "url": "https://api.worldbank.org/v2",
+          "fetched_at": "2025-10-30T09:46:35.096Z",
+          "reliability_score": 0.95
+        }
+      ],
+      "created_at": "2025-10-30T09:46:35.096Z",
+      "updated_at": "2025-10-30T09:46:35.096Z",
+      "version": 1,
+      "indicator_code": "SH.IMM.IDPT",
+      "indicator_name": "Immunization, DPT (% of children ages 12-23 months)",
+      "analysis": {
+        "trend": {
+          "slope": -0.5607142857142857,
+          "direction": "decreasing"
+        },
+        "growth_rate": -0.7911327675576294,
+        "volatility": 3.687817782917155,
+        "recent_change": 0,
+        "baseline_comparison": 12.5,
+        "data_points": 15,
+        "date_range": {
+          "start": "2010-01-01",
+          "end": "2024-01-01"
+        }
+      },
+      "pcbs_metadata": {
+        "official_source": true,
+        "data_quality": "high",
+        "update_frequency": "annual"
+      }
+    },
+    {
+      "id": "pcbs-qzdjmj",
+      "type": "health",
+      "category": "health",
+      "date": "2015-01-01",
+      "timestamp": "2015-01-01T00:00:00.000Z",
+      "period": {
+        "type": "year",
+        "value": "2015"
+      },
+      "location": {
+        "name": "Palestine",
+        "admin_levels": {
+          "level1": "Palestine"
+        },
+        "region": "palestine"
+      },
+      "value": 99,
+      "unit": "percentage",
+      "quality": {
+        "score": 0.8333333333333333,
+        "completeness": 0.6666666666666666,
+        "consistency": 1,
+        "verified": false,
+        "confidence": 0.8
+      },
+      "sources": [
+        {
+          "name": "Palestinian Central Bureau of Statistics (PCBS)",
+          "organization": "PCBS",
+          "url": "https://api.worldbank.org/v2",
+          "fetched_at": "2025-10-30T09:46:35.096Z",
+          "reliability_score": 0.95
+        }
+      ],
+      "created_at": "2025-10-30T09:46:35.096Z",
+      "updated_at": "2025-10-30T09:46:35.096Z",
+      "version": 1,
+      "indicator_code": "SH.IMM.MEAS",
+      "indicator_name": "Immunization, measles (% of children ages 12-23 months)",
+      "analysis": {
+        "trend": {
+          "slope": -0.4714285714285714,
+          "direction": "decreasing"
+        },
+        "growth_rate": -0.660515466953506,
+        "volatility": 3.3199732261303287,
+        "recent_change": 0,
+        "baseline_comparison": 11.235955056179774,
+        "data_points": 15,
+        "date_range": {
+          "start": "2010-01-01",
+          "end": "2024-01-01"
+        }
+      },
+      "pcbs_metadata": {
+        "official_source": true,
+        "data_quality": "high",
+        "update_frequency": "annual"
+      }
+    },
+    {
+      "id": "pcbs-mhpwfo",
+      "type": "health",
+      "category": "health",
+      "date": "2016-01-01",
+      "timestamp": "2016-01-01T00:00:00.000Z",
+      "period": {
+        "type": "year",
+        "value": "2016"
+      },
+      "location": {
+        "name": "Palestine",
+        "admin_levels": {
+          "level1": "Palestine"
+        },
+        "region": "palestine"
+      },
+      "value": 17.6,
+      "unit": "per_1000",
+      "quality": {
+        "score": 0.8333333333333333,
+        "completeness": 0.6666666666666666,
+        "consistency": 1,
+        "verified": false,
+        "confidence": 0.8
+      },
+      "sources": [
+        {
+          "name": "Palestinian Central Bureau of Statistics (PCBS)",
+          "organization": "PCBS",
+          "url": "https://api.worldbank.org/v2",
+          "fetched_at": "2025-10-30T09:46:35.097Z",
+          "reliability_score": 0.95
+        }
+      ],
+      "created_at": "2025-10-30T09:46:35.097Z",
+      "updated_at": "2025-10-30T09:46:35.097Z",
+      "version": 1,
+      "indicator_code": "SH.DYN.MORT",
+      "indicator_name": "Mortality rate, under-5 (per 1,000 live births)",
+      "analysis": {
+        "trend": {
+          "slope": -0.31230769230769256,
+          "direction": "decreasing"
+        },
+        "growth_rate": 3.4090505541048084,
+        "volatility": 3.3533489200487083,
+        "recent_change": -3.8251366120218537,
+        "baseline_comparison": -33.07984790874524,
+        "data_points": 14,
+        "date_range": {
+          "start": "2010-01-01",
+          "end": "2023-01-01"
+        }
+      },
+      "pcbs_metadata": {
+        "official_source": true,
+        "data_quality": "high",
+        "update_frequency": "annual"
+      }
+    },
+    {
+      "id": "pcbs-gyjumy",
+      "type": "health",
+      "category": "health",
+      "date": "2016-01-01",
+      "timestamp": "2016-01-01T00:00:00.000Z",
+      "period": {
+        "type": "year",
+        "value": "2016"
+      },
+      "location": {
+        "name": "Palestine",
+        "admin_levels": {
+          "level1": "Palestine"
+        },
+        "region": "palestine"
+      },
+      "value": 10.8,
+      "unit": "per_1000",
+      "quality": {
+        "score": 0.8333333333333333,
+        "completeness": 0.6666666666666666,
+        "consistency": 1,
+        "verified": false,
+        "confidence": 0.8
+      },
+      "sources": [
+        {
+          "name": "Palestinian Central Bureau of Statistics (PCBS)",
+          "organization": "PCBS",
+          "url": "https://api.worldbank.org/v2",
+          "fetched_at": "2025-10-30T09:46:35.097Z",
+          "reliability_score": 0.95
+        }
+      ],
+      "created_at": "2025-10-30T09:46:35.097Z",
+      "updated_at": "2025-10-30T09:46:35.097Z",
+      "version": 1,
+      "indicator_code": "SH.DYN.NMRT",
+      "indicator_name": "Mortality rate, neonatal (per 1,000 live births)",
+      "analysis": {
+        "trend": {
+          "slope": -0.3520879120879114,
+          "direction": "decreasing"
+        },
+        "growth_rate": -3.0969339228938804,
+        "volatility": 1.4227022290883857,
+        "recent_change": -3.5714285714285587,
+        "baseline_comparison": 24.137931034482776,
+        "data_points": 14,
+        "date_range": {
+          "start": "2010-01-01",
+          "end": "2023-01-01"
+        }
+      },
+      "pcbs_metadata": {
+        "official_source": true,
+        "data_quality": "high",
+        "update_frequency": "annual"
+      }
+    },
+    {
+      "id": "pcbs-h9jfxl",
+      "type": "health",
+      "category": "health",
+      "date": "2016-01-01",
+      "timestamp": "2016-01-01T00:00:00.000Z",
+      "period": {
+        "type": "year",
+        "value": "2016"
+      },
+      "location": {
+        "name": "Palestine",
+        "admin_levels": {
+          "level1": "Palestine"
+        },
+        "region": "palestine"
+      },
+      "value": 23,
+      "unit": "per_100000",
+      "quality": {
+        "score": 0.8333333333333333,
+        "completeness": 0.6666666666666666,
+        "consistency": 1,
+        "verified": false,
+        "confidence": 0.8
+      },
+      "sources": [
+        {
+          "name": "Palestinian Central Bureau of Statistics (PCBS)",
+          "organization": "PCBS",
+          "url": "https://api.worldbank.org/v2",
+          "fetched_at": "2025-10-30T09:46:35.097Z",
+          "reliability_score": 0.95
+        }
+      ],
+      "created_at": "2025-10-30T09:46:35.097Z",
+      "updated_at": "2025-10-30T09:46:35.097Z",
+      "version": 1,
+      "indicator_code": "SH.STA.MMRT",
+      "indicator_name": "Maternal mortality ratio (per 100,000 live births)",
+      "analysis": {
+        "trend": {
+          "slope": -1.7692307692307692,
+          "direction": "decreasing"
+        },
+        "growth_rate": -5.525979756792055,
+        "volatility": 8.20434180722597,
+        "recent_change": -11.538461538461538,
+        "baseline_comparison": 43.75,
+        "data_points": 14,
+        "date_range": {
+          "start": "2010-01-01",
+          "end": "2023-01-01"
+        }
+      },
+      "pcbs_metadata": {
+        "official_source": true,
+        "data_quality": "high",
+        "update_frequency": "annual"
+      }
+    },
+    {
+      "id": "pcbs-gye7kz",
+      "type": "health",
+      "category": "health",
+      "date": "2016-01-01",
+      "timestamp": "2016-01-01T00:00:00.000Z",
+      "period": {
+        "type": "year",
+        "value": "2016"
+      },
+      "location": {
+        "name": "Palestine",
+        "admin_levels": {
+          "level1": "Palestine"
+        },
+        "region": "palestine"
+      },
+      "value": 99,
+      "unit": "percentage",
+      "quality": {
+        "score": 0.8333333333333333,
+        "completeness": 0.6666666666666666,
+        "consistency": 1,
+        "verified": false,
+        "confidence": 0.8
+      },
+      "sources": [
+        {
+          "name": "Palestinian Central Bureau of Statistics (PCBS)",
+          "organization": "PCBS",
+          "url": "https://api.worldbank.org/v2",
+          "fetched_at": "2025-10-30T09:46:35.097Z",
+          "reliability_score": 0.95
+        }
+      ],
+      "created_at": "2025-10-30T09:46:35.097Z",
+      "updated_at": "2025-10-30T09:46:35.097Z",
+      "version": 1,
+      "indicator_code": "SH.IMM.IDPT",
+      "indicator_name": "Immunization, DPT (% of children ages 12-23 months)",
+      "analysis": {
+        "trend": {
+          "slope": -0.5607142857142857,
+          "direction": "decreasing"
+        },
+        "growth_rate": -0.7911327675576294,
+        "volatility": 3.687817782917155,
+        "recent_change": 0,
+        "baseline_comparison": 12.5,
+        "data_points": 15,
+        "date_range": {
+          "start": "2010-01-01",
+          "end": "2024-01-01"
+        }
+      },
+      "pcbs_metadata": {
+        "official_source": true,
+        "data_quality": "high",
+        "update_frequency": "annual"
+      }
+    },
+    {
+      "id": "pcbs-jqojzu",
+      "type": "health",
+      "category": "health",
+      "date": "2016-01-01",
+      "timestamp": "2016-01-01T00:00:00.000Z",
+      "period": {
+        "type": "year",
+        "value": "2016"
+      },
+      "location": {
+        "name": "Palestine",
+        "admin_levels": {
+          "level1": "Palestine"
+        },
+        "region": "palestine"
+      },
+      "value": 99,
+      "unit": "percentage",
+      "quality": {
+        "score": 0.8333333333333333,
+        "completeness": 0.6666666666666666,
+        "consistency": 1,
+        "verified": false,
+        "confidence": 0.8
+      },
+      "sources": [
+        {
+          "name": "Palestinian Central Bureau of Statistics (PCBS)",
+          "organization": "PCBS",
+          "url": "https://api.worldbank.org/v2",
+          "fetched_at": "2025-10-30T09:46:35.097Z",
+          "reliability_score": 0.95
+        }
+      ],
+      "created_at": "2025-10-30T09:46:35.097Z",
+      "updated_at": "2025-10-30T09:46:35.097Z",
+      "version": 1,
+      "indicator_code": "SH.IMM.MEAS",
+      "indicator_name": "Immunization, measles (% of children ages 12-23 months)",
+      "analysis": {
+        "trend": {
+          "slope": -0.4714285714285714,
+          "direction": "decreasing"
+        },
+        "growth_rate": -0.660515466953506,
+        "volatility": 3.3199732261303287,
+        "recent_change": 0,
+        "baseline_comparison": 11.235955056179774,
+        "data_points": 15,
+        "date_range": {
+          "start": "2010-01-01",
+          "end": "2024-01-01"
+        }
+      },
+      "pcbs_metadata": {
+        "official_source": true,
+        "data_quality": "high",
+        "update_frequency": "annual"
+      }
+    },
+    {
+      "id": "pcbs-mamkiz",
+      "type": "health",
+      "category": "health",
+      "date": "2017-01-01",
+      "timestamp": "2017-01-01T00:00:00.000Z",
+      "period": {
+        "type": "year",
+        "value": "2017"
+      },
+      "location": {
+        "name": "Palestine",
+        "admin_levels": {
+          "level1": "Palestine"
+        },
+        "region": "palestine"
+      },
+      "value": 16.9,
+      "unit": "per_1000",
+      "quality": {
+        "score": 0.8333333333333333,
+        "completeness": 0.6666666666666666,
+        "consistency": 1,
+        "verified": false,
+        "confidence": 0.8
+      },
+      "sources": [
+        {
+          "name": "Palestinian Central Bureau of Statistics (PCBS)",
+          "organization": "PCBS",
+          "url": "https://api.worldbank.org/v2",
+          "fetched_at": "2025-10-30T09:46:35.098Z",
+          "reliability_score": 0.95
+        }
+      ],
+      "created_at": "2025-10-30T09:46:35.098Z",
+      "updated_at": "2025-10-30T09:46:35.098Z",
+      "version": 1,
+      "indicator_code": "SH.DYN.MORT",
+      "indicator_name": "Mortality rate, under-5 (per 1,000 live births)",
+      "analysis": {
+        "trend": {
+          "slope": -0.31230769230769256,
+          "direction": "decreasing"
+        },
+        "growth_rate": 3.4090505541048084,
+        "volatility": 3.3533489200487083,
+        "recent_change": -3.977272727272743,
+        "baseline_comparison": -35.741444866920155,
+        "data_points": 14,
+        "date_range": {
+          "start": "2010-01-01",
+          "end": "2023-01-01"
+        }
+      },
+      "pcbs_metadata": {
+        "official_source": true,
+        "data_quality": "high",
+        "update_frequency": "annual"
+      }
+    },
+    {
+      "id": "pcbs-peulrw",
+      "type": "health",
+      "category": "health",
+      "date": "2017-01-01",
+      "timestamp": "2017-01-01T00:00:00.000Z",
+      "period": {
+        "type": "year",
+        "value": "2017"
+      },
+      "location": {
+        "name": "Palestine",
+        "admin_levels": {
+          "level1": "Palestine"
+        },
+        "region": "palestine"
+      },
+      "value": 10.5,
+      "unit": "per_1000",
+      "quality": {
+        "score": 0.8333333333333333,
+        "completeness": 0.6666666666666666,
+        "consistency": 1,
+        "verified": false,
+        "confidence": 0.8
+      },
+      "sources": [
+        {
+          "name": "Palestinian Central Bureau of Statistics (PCBS)",
+          "organization": "PCBS",
+          "url": "https://api.worldbank.org/v2",
+          "fetched_at": "2025-10-30T09:46:35.098Z",
+          "reliability_score": 0.95
+        }
+      ],
+      "created_at": "2025-10-30T09:46:35.098Z",
+      "updated_at": "2025-10-30T09:46:35.098Z",
+      "version": 1,
+      "indicator_code": "SH.DYN.NMRT",
+      "indicator_name": "Mortality rate, neonatal (per 1,000 live births)",
+      "analysis": {
+        "trend": {
+          "slope": -0.3520879120879114,
+          "direction": "decreasing"
+        },
+        "growth_rate": -3.0969339228938804,
+        "volatility": 1.4227022290883857,
+        "recent_change": -2.7777777777777843,
+        "baseline_comparison": 20.689655172413804,
+        "data_points": 14,
+        "date_range": {
+          "start": "2010-01-01",
+          "end": "2023-01-01"
+        }
+      },
+      "pcbs_metadata": {
+        "official_source": true,
+        "data_quality": "high",
+        "update_frequency": "annual"
+      }
+    },
+    {
+      "id": "pcbs-t20tdi",
+      "type": "health",
+      "category": "health",
+      "date": "2017-01-01",
+      "timestamp": "2017-01-01T00:00:00.000Z",
+      "period": {
+        "type": "year",
+        "value": "2017"
+      },
+      "location": {
+        "name": "Palestine",
+        "admin_levels": {
+          "level1": "Palestine"
+        },
+        "region": "palestine"
+      },
+      "value": 21,
+      "unit": "per_100000",
+      "quality": {
+        "score": 0.8333333333333333,
+        "completeness": 0.6666666666666666,
+        "consistency": 1,
+        "verified": false,
+        "confidence": 0.8
+      },
+      "sources": [
+        {
+          "name": "Palestinian Central Bureau of Statistics (PCBS)",
+          "organization": "PCBS",
+          "url": "https://api.worldbank.org/v2",
+          "fetched_at": "2025-10-30T09:46:35.098Z",
+          "reliability_score": 0.95
+        }
+      ],
+      "created_at": "2025-10-30T09:46:35.098Z",
+      "updated_at": "2025-10-30T09:46:35.098Z",
+      "version": 1,
+      "indicator_code": "SH.STA.MMRT",
+      "indicator_name": "Maternal mortality ratio (per 100,000 live births)",
+      "analysis": {
+        "trend": {
+          "slope": -1.7692307692307692,
+          "direction": "decreasing"
+        },
+        "growth_rate": -5.525979756792055,
+        "volatility": 8.20434180722597,
+        "recent_change": -8.695652173913043,
+        "baseline_comparison": 31.25,
+        "data_points": 14,
+        "date_range": {
+          "start": "2010-01-01",
+          "end": "2023-01-01"
+        }
+      },
+      "pcbs_metadata": {
+        "official_source": true,
+        "data_quality": "high",
+        "update_frequency": "annual"
+      }
+    },
+    {
+      "id": "pcbs-52rpxf",
+      "type": "health",
+      "category": "health",
+      "date": "2017-01-01",
+      "timestamp": "2017-01-01T00:00:00.000Z",
+      "period": {
+        "type": "year",
+        "value": "2017"
+      },
+      "location": {
+        "name": "Palestine",
+        "admin_levels": {
+          "level1": "Palestine"
+        },
+        "region": "palestine"
+      },
+      "value": 1.774,
+      "unit": "per_1000",
+      "quality": {
+        "score": 0.8333333333333333,
+        "completeness": 0.6666666666666666,
+        "consistency": 1,
+        "verified": false,
+        "confidence": 0.8
+      },
+      "sources": [
+        {
+          "name": "Palestinian Central Bureau of Statistics (PCBS)",
+          "organization": "PCBS",
+          "url": "https://api.worldbank.org/v2",
+          "fetched_at": "2025-10-30T09:46:35.098Z",
+          "reliability_score": 0.95
+        }
+      ],
+      "created_at": "2025-10-30T09:46:35.098Z",
+      "updated_at": "2025-10-30T09:46:35.098Z",
+      "version": 1,
+      "indicator_code": "SH.MED.PHYS.ZS",
+      "indicator_name": "Physicians (per 1,000 people)",
+      "analysis": {
+        "trend": {
+          "slope": 0.39400000000000013,
+          "direction": "increasing"
+        },
+        "growth_rate": 22.209695603156714,
+        "volatility": 0.19700000000000006,
+        "recent_change": 0,
+        "baseline_comparison": -18.173431734317347,
+        "data_points": 2,
+        "date_range": {
+          "start": "2017-01-01",
+          "end": "2018-01-01"
+        }
+      },
+      "pcbs_metadata": {
+        "official_source": true,
+        "data_quality": "high",
+        "update_frequency": "annual"
+      }
+    },
+    {
+      "id": "pcbs-gic6qe",
+      "type": "health",
+      "category": "health",
+      "date": "2017-01-01",
+      "timestamp": "2017-01-01T00:00:00.000Z",
+      "period": {
+        "type": "year",
+        "value": "2017"
+      },
+      "location": {
+        "name": "Palestine",
+        "admin_levels": {
+          "level1": "Palestine"
+        },
+        "region": "palestine"
+      },
+      "value": 2.573,
+      "unit": "per_1000",
+      "quality": {
+        "score": 0.8333333333333333,
+        "completeness": 0.6666666666666666,
+        "consistency": 1,
+        "verified": false,
+        "confidence": 0.8
+      },
+      "sources": [
+        {
+          "name": "Palestinian Central Bureau of Statistics (PCBS)",
+          "organization": "PCBS",
+          "url": "https://api.worldbank.org/v2",
+          "fetched_at": "2025-10-30T09:46:35.098Z",
+          "reliability_score": 0.95
+        }
+      ],
+      "created_at": "2025-10-30T09:46:35.098Z",
+      "updated_at": "2025-10-30T09:46:35.098Z",
+      "version": 1,
+      "indicator_code": "SH.MED.NUMW.P3",
+      "indicator_name": "Nurses and midwives (per 1,000 people)",
+      "analysis": {
+        "trend": {
+          "slope": -0.6199999999999997,
+          "direction": "decreasing"
+        },
+        "growth_rate": -24.096385542168672,
+        "volatility": 0.30999999999999994,
+        "recent_change": 0,
+        "baseline_comparison": 31.74603174603174,
+        "data_points": 2,
+        "date_range": {
+          "start": "2017-01-01",
+          "end": "2018-01-01"
+        }
+      },
+      "pcbs_metadata": {
+        "official_source": true,
+        "data_quality": "high",
+        "update_frequency": "annual"
+      }
+    },
+    {
+      "id": "pcbs-8som2k",
+      "type": "health",
+      "category": "health",
+      "date": "2017-01-01",
+      "timestamp": "2017-01-01T00:00:00.000Z",
+      "period": {
+        "type": "year",
+        "value": "2017"
+      },
+      "location": {
+        "name": "Palestine",
+        "admin_levels": {
+          "level1": "Palestine"
+        },
+        "region": "palestine"
+      },
+      "value": 99,
+      "unit": "percentage",
+      "quality": {
+        "score": 0.8333333333333333,
+        "completeness": 0.6666666666666666,
+        "consistency": 1,
+        "verified": false,
+        "confidence": 0.8
+      },
+      "sources": [
+        {
+          "name": "Palestinian Central Bureau of Statistics (PCBS)",
+          "organization": "PCBS",
+          "url": "https://api.worldbank.org/v2",
+          "fetched_at": "2025-10-30T09:46:35.098Z",
+          "reliability_score": 0.95
+        }
+      ],
+      "created_at": "2025-10-30T09:46:35.098Z",
+      "updated_at": "2025-10-30T09:46:35.098Z",
+      "version": 1,
+      "indicator_code": "SH.IMM.IDPT",
+      "indicator_name": "Immunization, DPT (% of children ages 12-23 months)",
+      "analysis": {
+        "trend": {
+          "slope": -0.5607142857142857,
+          "direction": "decreasing"
+        },
+        "growth_rate": -0.7911327675576294,
+        "volatility": 3.687817782917155,
+        "recent_change": 0,
+        "baseline_comparison": 12.5,
+        "data_points": 15,
+        "date_range": {
+          "start": "2010-01-01",
+          "end": "2024-01-01"
+        }
+      },
+      "pcbs_metadata": {
+        "official_source": true,
+        "data_quality": "high",
+        "update_frequency": "annual"
+      }
+    },
+    {
+      "id": "pcbs-chzkd5",
+      "type": "health",
+      "category": "health",
+      "date": "2017-01-01",
+      "timestamp": "2017-01-01T00:00:00.000Z",
+      "period": {
+        "type": "year",
+        "value": "2017"
+      },
+      "location": {
+        "name": "Palestine",
+        "admin_levels": {
+          "level1": "Palestine"
+        },
+        "region": "palestine"
+      },
+      "value": 99,
+      "unit": "percentage",
+      "quality": {
+        "score": 0.8333333333333333,
+        "completeness": 0.6666666666666666,
+        "consistency": 1,
+        "verified": false,
+        "confidence": 0.8
+      },
+      "sources": [
+        {
+          "name": "Palestinian Central Bureau of Statistics (PCBS)",
+          "organization": "PCBS",
+          "url": "https://api.worldbank.org/v2",
+          "fetched_at": "2025-10-30T09:46:35.098Z",
+          "reliability_score": 0.95
+        }
+      ],
+      "created_at": "2025-10-30T09:46:35.098Z",
+      "updated_at": "2025-10-30T09:46:35.098Z",
+      "version": 1,
+      "indicator_code": "SH.IMM.MEAS",
+      "indicator_name": "Immunization, measles (% of children ages 12-23 months)",
+      "analysis": {
+        "trend": {
+          "slope": -0.4714285714285714,
+          "direction": "decreasing"
+        },
+        "growth_rate": -0.660515466953506,
+        "volatility": 3.3199732261303287,
+        "recent_change": 0,
+        "baseline_comparison": 11.235955056179774,
+        "data_points": 15,
+        "date_range": {
+          "start": "2010-01-01",
+          "end": "2024-01-01"
+        }
+      },
+      "pcbs_metadata": {
+        "official_source": true,
+        "data_quality": "high",
+        "update_frequency": "annual"
+      }
+    },
+    {
+      "id": "pcbs-hgat7y",
+      "type": "health",
+      "category": "health",
+      "date": "2018-01-01",
+      "timestamp": "2018-01-01T00:00:00.000Z",
+      "period": {
+        "type": "year",
+        "value": "2018"
+      },
+      "location": {
+        "name": "Palestine",
+        "admin_levels": {
+          "level1": "Palestine"
+        },
+        "region": "palestine"
+      },
+      "value": 16.3,
+      "unit": "per_1000",
+      "quality": {
+        "score": 0.8333333333333333,
+        "completeness": 0.6666666666666666,
+        "consistency": 1,
+        "verified": false,
+        "confidence": 0.8
+      },
+      "sources": [
+        {
+          "name": "Palestinian Central Bureau of Statistics (PCBS)",
+          "organization": "PCBS",
+          "url": "https://api.worldbank.org/v2",
+          "fetched_at": "2025-10-30T09:46:35.100Z",
+          "reliability_score": 0.95
+        }
+      ],
+      "created_at": "2025-10-30T09:46:35.100Z",
+      "updated_at": "2025-10-30T09:46:35.100Z",
+      "version": 1,
+      "indicator_code": "SH.DYN.MORT",
+      "indicator_name": "Mortality rate, under-5 (per 1,000 live births)",
+      "analysis": {
+        "trend": {
+          "slope": -0.31230769230769256,
+          "direction": "decreasing"
+        },
+        "growth_rate": 3.4090505541048084,
+        "volatility": 3.3533489200487083,
+        "recent_change": -3.550295857988153,
+        "baseline_comparison": -38.02281368821293,
+        "data_points": 14,
+        "date_range": {
+          "start": "2010-01-01",
+          "end": "2023-01-01"
+        }
+      },
+      "pcbs_metadata": {
+        "official_source": true,
+        "data_quality": "high",
+        "update_frequency": "annual"
+      }
+    },
+    {
+      "id": "pcbs-ogzqqn",
+      "type": "health",
+      "category": "health",
+      "date": "2018-01-01",
+      "timestamp": "2018-01-01T00:00:00.000Z",
+      "period": {
+        "type": "year",
+        "value": "2018"
+      },
+      "location": {
+        "name": "Palestine",
+        "admin_levels": {
+          "level1": "Palestine"
+        },
+        "region": "palestine"
+      },
+      "value": 10.1,
+      "unit": "per_1000",
+      "quality": {
+        "score": 0.8333333333333333,
+        "completeness": 0.6666666666666666,
+        "consistency": 1,
+        "verified": false,
+        "confidence": 0.8
+      },
+      "sources": [
+        {
+          "name": "Palestinian Central Bureau of Statistics (PCBS)",
+          "organization": "PCBS",
+          "url": "https://api.worldbank.org/v2",
+          "fetched_at": "2025-10-30T09:46:35.100Z",
+          "reliability_score": 0.95
+        }
+      ],
+      "created_at": "2025-10-30T09:46:35.100Z",
+      "updated_at": "2025-10-30T09:46:35.100Z",
+      "version": 1,
+      "indicator_code": "SH.DYN.NMRT",
+      "indicator_name": "Mortality rate, neonatal (per 1,000 live births)",
+      "analysis": {
+        "trend": {
+          "slope": -0.3520879120879114,
+          "direction": "decreasing"
+        },
+        "growth_rate": -3.0969339228938804,
+        "volatility": 1.4227022290883857,
+        "recent_change": -3.809523809523813,
+        "baseline_comparison": 16.09195402298851,
+        "data_points": 14,
+        "date_range": {
+          "start": "2010-01-01",
+          "end": "2023-01-01"
+        }
+      },
+      "pcbs_metadata": {
+        "official_source": true,
+        "data_quality": "high",
+        "update_frequency": "annual"
+      }
+    },
+    {
+      "id": "pcbs-ciz4w0",
+      "type": "health",
+      "category": "health",
+      "date": "2018-01-01",
+      "timestamp": "2018-01-01T00:00:00.000Z",
+      "period": {
+        "type": "year",
+        "value": "2018"
+      },
+      "location": {
+        "name": "Palestine",
+        "admin_levels": {
+          "level1": "Palestine"
+        },
+        "region": "palestine"
+      },
+      "value": 19,
+      "unit": "per_100000",
+      "quality": {
+        "score": 0.8333333333333333,
+        "completeness": 0.6666666666666666,
+        "consistency": 1,
+        "verified": false,
+        "confidence": 0.8
+      },
+      "sources": [
+        {
+          "name": "Palestinian Central Bureau of Statistics (PCBS)",
+          "organization": "PCBS",
+          "url": "https://api.worldbank.org/v2",
+          "fetched_at": "2025-10-30T09:46:35.100Z",
+          "reliability_score": 0.95
+        }
+      ],
+      "created_at": "2025-10-30T09:46:35.100Z",
+      "updated_at": "2025-10-30T09:46:35.100Z",
+      "version": 1,
+      "indicator_code": "SH.STA.MMRT",
+      "indicator_name": "Maternal mortality ratio (per 100,000 live births)",
+      "analysis": {
+        "trend": {
+          "slope": -1.7692307692307692,
+          "direction": "decreasing"
+        },
+        "growth_rate": -5.525979756792055,
+        "volatility": 8.20434180722597,
+        "recent_change": -9.523809523809524,
+        "baseline_comparison": 18.75,
+        "data_points": 14,
+        "date_range": {
+          "start": "2010-01-01",
+          "end": "2023-01-01"
+        }
+      },
+      "pcbs_metadata": {
+        "official_source": true,
+        "data_quality": "high",
+        "update_frequency": "annual"
+      }
+    },
+    {
+      "id": "pcbs-neb0hw",
+      "type": "health",
+      "category": "health",
+      "date": "2018-01-01",
+      "timestamp": "2018-01-01T00:00:00.000Z",
+      "period": {
+        "type": "year",
+        "value": "2018"
+      },
+      "location": {
+        "name": "Palestine",
+        "admin_levels": {
+          "level1": "Palestine"
+        },
+        "region": "palestine"
+      },
+      "value": 2.168,
+      "unit": "per_1000",
+      "quality": {
+        "score": 0.8333333333333333,
+        "completeness": 0.6666666666666666,
+        "consistency": 1,
+        "verified": false,
+        "confidence": 0.8
+      },
+      "sources": [
+        {
+          "name": "Palestinian Central Bureau of Statistics (PCBS)",
+          "organization": "PCBS",
+          "url": "https://api.worldbank.org/v2",
+          "fetched_at": "2025-10-30T09:46:35.100Z",
+          "reliability_score": 0.95
+        }
+      ],
+      "created_at": "2025-10-30T09:46:35.100Z",
+      "updated_at": "2025-10-30T09:46:35.100Z",
+      "version": 1,
+      "indicator_code": "SH.MED.PHYS.ZS",
+      "indicator_name": "Physicians (per 1,000 people)",
+      "analysis": {
+        "trend": {
+          "slope": 0.39400000000000013,
+          "direction": "increasing"
+        },
+        "growth_rate": 22.209695603156714,
+        "volatility": 0.19700000000000006,
+        "recent_change": 22.209695603156714,
+        "baseline_comparison": 0,
+        "data_points": 2,
+        "date_range": {
+          "start": "2017-01-01",
+          "end": "2018-01-01"
+        }
+      },
+      "pcbs_metadata": {
+        "official_source": true,
+        "data_quality": "high",
+        "update_frequency": "annual"
+      }
+    },
+    {
+      "id": "pcbs-m1py2",
+      "type": "health",
+      "category": "health",
+      "date": "2018-01-01",
+      "timestamp": "2018-01-01T00:00:00.000Z",
+      "period": {
+        "type": "year",
+        "value": "2018"
+      },
+      "location": {
+        "name": "Palestine",
+        "admin_levels": {
+          "level1": "Palestine"
+        },
+        "region": "palestine"
+      },
+      "value": 1.953,
+      "unit": "per_1000",
+      "quality": {
+        "score": 0.8333333333333333,
+        "completeness": 0.6666666666666666,
+        "consistency": 1,
+        "verified": false,
+        "confidence": 0.8
+      },
+      "sources": [
+        {
+          "name": "Palestinian Central Bureau of Statistics (PCBS)",
+          "organization": "PCBS",
+          "url": "https://api.worldbank.org/v2",
+          "fetched_at": "2025-10-30T09:46:35.100Z",
+          "reliability_score": 0.95
+        }
+      ],
+      "created_at": "2025-10-30T09:46:35.100Z",
+      "updated_at": "2025-10-30T09:46:35.100Z",
+      "version": 1,
+      "indicator_code": "SH.MED.NUMW.P3",
+      "indicator_name": "Nurses and midwives (per 1,000 people)",
+      "analysis": {
+        "trend": {
+          "slope": -0.6199999999999997,
+          "direction": "decreasing"
+        },
+        "growth_rate": -24.096385542168672,
+        "volatility": 0.30999999999999994,
+        "recent_change": -24.096385542168672,
+        "baseline_comparison": 0,
+        "data_points": 2,
+        "date_range": {
+          "start": "2017-01-01",
+          "end": "2018-01-01"
+        }
+      },
+      "pcbs_metadata": {
+        "official_source": true,
+        "data_quality": "high",
+        "update_frequency": "annual"
+      }
+    },
+    {
+      "id": "pcbs-yjrfq3",
+      "type": "health",
+      "category": "health",
+      "date": "2018-01-01",
+      "timestamp": "2018-01-01T00:00:00.000Z",
+      "period": {
+        "type": "year",
+        "value": "2018"
+      },
+      "location": {
+        "name": "Palestine",
+        "admin_levels": {
+          "level1": "Palestine"
+        },
+        "region": "palestine"
+      },
+      "value": 99,
+      "unit": "percentage",
+      "quality": {
+        "score": 0.8333333333333333,
+        "completeness": 0.6666666666666666,
+        "consistency": 1,
+        "verified": false,
+        "confidence": 0.8
+      },
+      "sources": [
+        {
+          "name": "Palestinian Central Bureau of Statistics (PCBS)",
+          "organization": "PCBS",
+          "url": "https://api.worldbank.org/v2",
+          "fetched_at": "2025-10-30T09:46:35.100Z",
+          "reliability_score": 0.95
+        }
+      ],
+      "created_at": "2025-10-30T09:46:35.100Z",
+      "updated_at": "2025-10-30T09:46:35.100Z",
+      "version": 1,
+      "indicator_code": "SH.IMM.IDPT",
+      "indicator_name": "Immunization, DPT (% of children ages 12-23 months)",
+      "analysis": {
+        "trend": {
+          "slope": -0.5607142857142857,
+          "direction": "decreasing"
+        },
+        "growth_rate": -0.7911327675576294,
+        "volatility": 3.687817782917155,
+        "recent_change": 0,
+        "baseline_comparison": 12.5,
+        "data_points": 15,
+        "date_range": {
+          "start": "2010-01-01",
+          "end": "2024-01-01"
+        }
+      },
+      "pcbs_metadata": {
+        "official_source": true,
+        "data_quality": "high",
+        "update_frequency": "annual"
+      }
+    },
+    {
+      "id": "pcbs-59akqg",
+      "type": "health",
+      "category": "health",
+      "date": "2018-01-01",
+      "timestamp": "2018-01-01T00:00:00.000Z",
+      "period": {
+        "type": "year",
+        "value": "2018"
+      },
+      "location": {
+        "name": "Palestine",
+        "admin_levels": {
+          "level1": "Palestine"
+        },
+        "region": "palestine"
+      },
+      "value": 99,
+      "unit": "percentage",
+      "quality": {
+        "score": 0.8333333333333333,
+        "completeness": 0.6666666666666666,
+        "consistency": 1,
+        "verified": false,
+        "confidence": 0.8
+      },
+      "sources": [
+        {
+          "name": "Palestinian Central Bureau of Statistics (PCBS)",
+          "organization": "PCBS",
+          "url": "https://api.worldbank.org/v2",
+          "fetched_at": "2025-10-30T09:46:35.100Z",
+          "reliability_score": 0.95
+        }
+      ],
+      "created_at": "2025-10-30T09:46:35.100Z",
+      "updated_at": "2025-10-30T09:46:35.100Z",
+      "version": 1,
+      "indicator_code": "SH.IMM.MEAS",
+      "indicator_name": "Immunization, measles (% of children ages 12-23 months)",
+      "analysis": {
+        "trend": {
+          "slope": -0.4714285714285714,
+          "direction": "decreasing"
+        },
+        "growth_rate": -0.660515466953506,
+        "volatility": 3.3199732261303287,
+        "recent_change": 0,
+        "baseline_comparison": 11.235955056179774,
+        "data_points": 15,
+        "date_range": {
+          "start": "2010-01-01",
+          "end": "2024-01-01"
+        }
+      },
+      "pcbs_metadata": {
+        "official_source": true,
+        "data_quality": "high",
+        "update_frequency": "annual"
+      }
+    },
+    {
+      "id": "pcbs-k5ob80",
+      "type": "health",
+      "category": "health",
+      "date": "2019-01-01",
+      "timestamp": "2019-01-01T00:00:00.000Z",
+      "period": {
+        "type": "year",
+        "value": "2019"
+      },
+      "location": {
+        "name": "Palestine",
+        "admin_levels": {
+          "level1": "Palestine"
+        },
+        "region": "palestine"
+      },
+      "value": 15.7,
+      "unit": "per_1000",
+      "quality": {
+        "score": 0.8333333333333333,
+        "completeness": 0.6666666666666666,
+        "consistency": 1,
+        "verified": false,
+        "confidence": 0.8
+      },
+      "sources": [
+        {
+          "name": "Palestinian Central Bureau of Statistics (PCBS)",
+          "organization": "PCBS",
+          "url": "https://api.worldbank.org/v2",
+          "fetched_at": "2025-10-30T09:46:35.100Z",
+          "reliability_score": 0.95
+        }
+      ],
+      "created_at": "2025-10-30T09:46:35.100Z",
+      "updated_at": "2025-10-30T09:46:35.100Z",
+      "version": 1,
+      "indicator_code": "SH.DYN.MORT",
+      "indicator_name": "Mortality rate, under-5 (per 1,000 live births)",
+      "analysis": {
+        "trend": {
+          "slope": -0.31230769230769256,
+          "direction": "decreasing"
+        },
+        "growth_rate": 3.4090505541048084,
+        "volatility": 3.3533489200487083,
+        "recent_change": -3.680981595092033,
+        "baseline_comparison": -40.30418250950571,
+        "data_points": 14,
+        "date_range": {
+          "start": "2010-01-01",
+          "end": "2023-01-01"
+        }
+      },
+      "pcbs_metadata": {
+        "official_source": true,
+        "data_quality": "high",
+        "update_frequency": "annual"
+      }
+    },
+    {
+      "id": "pcbs-8f9xfw",
+      "type": "health",
+      "category": "health",
+      "date": "2019-01-01",
+      "timestamp": "2019-01-01T00:00:00.000Z",
+      "period": {
+        "type": "year",
+        "value": "2019"
+      },
+      "location": {
+        "name": "Palestine",
+        "admin_levels": {
+          "level1": "Palestine"
+        },
+        "region": "palestine"
+      },
+      "value": 9.7,
+      "unit": "per_1000",
+      "quality": {
+        "score": 0.8333333333333333,
+        "completeness": 0.6666666666666666,
+        "consistency": 1,
+        "verified": false,
+        "confidence": 0.8
+      },
+      "sources": [
+        {
+          "name": "Palestinian Central Bureau of Statistics (PCBS)",
+          "organization": "PCBS",
+          "url": "https://api.worldbank.org/v2",
+          "fetched_at": "2025-10-30T09:46:35.100Z",
+          "reliability_score": 0.95
+        }
+      ],
+      "created_at": "2025-10-30T09:46:35.100Z",
+      "updated_at": "2025-10-30T09:46:35.100Z",
+      "version": 1,
+      "indicator_code": "SH.DYN.NMRT",
+      "indicator_name": "Mortality rate, neonatal (per 1,000 live births)",
+      "analysis": {
+        "trend": {
+          "slope": -0.3520879120879114,
+          "direction": "decreasing"
+        },
+        "growth_rate": -3.0969339228938804,
+        "volatility": 1.4227022290883857,
+        "recent_change": -3.960396039603964,
+        "baseline_comparison": 11.49425287356322,
+        "data_points": 14,
+        "date_range": {
+          "start": "2010-01-01",
+          "end": "2023-01-01"
+        }
+      },
+      "pcbs_metadata": {
+        "official_source": true,
+        "data_quality": "high",
+        "update_frequency": "annual"
+      }
+    },
+    {
+      "id": "pcbs-rtz7xc",
+      "type": "health",
+      "category": "health",
+      "date": "2019-01-01",
+      "timestamp": "2019-01-01T00:00:00.000Z",
+      "period": {
+        "type": "year",
+        "value": "2019"
+      },
+      "location": {
+        "name": "Palestine",
+        "admin_levels": {
+          "level1": "Palestine"
+        },
+        "region": "palestine"
+      },
+      "value": 18,
+      "unit": "per_100000",
+      "quality": {
+        "score": 0.8333333333333333,
+        "completeness": 0.6666666666666666,
+        "consistency": 1,
+        "verified": false,
+        "confidence": 0.8
+      },
+      "sources": [
+        {
+          "name": "Palestinian Central Bureau of Statistics (PCBS)",
+          "organization": "PCBS",
+          "url": "https://api.worldbank.org/v2",
+          "fetched_at": "2025-10-30T09:46:35.100Z",
+          "reliability_score": 0.95
+        }
+      ],
+      "created_at": "2025-10-30T09:46:35.100Z",
+      "updated_at": "2025-10-30T09:46:35.100Z",
+      "version": 1,
+      "indicator_code": "SH.STA.MMRT",
+      "indicator_name": "Maternal mortality ratio (per 100,000 live births)",
+      "analysis": {
+        "trend": {
+          "slope": -1.7692307692307692,
+          "direction": "decreasing"
+        },
+        "growth_rate": -5.525979756792055,
+        "volatility": 8.20434180722597,
+        "recent_change": -5.263157894736842,
+        "baseline_comparison": 12.5,
+        "data_points": 14,
+        "date_range": {
+          "start": "2010-01-01",
+          "end": "2023-01-01"
+        }
+      },
+      "pcbs_metadata": {
+        "official_source": true,
+        "data_quality": "high",
+        "update_frequency": "annual"
+      }
+    },
+    {
+      "id": "pcbs-aq9sli",
+      "type": "health",
+      "category": "health",
+      "date": "2019-01-01",
+      "timestamp": "2019-01-01T00:00:00.000Z",
+      "period": {
+        "type": "year",
+        "value": "2019"
+      },
+      "location": {
+        "name": "Palestine",
+        "admin_levels": {
+          "level1": "Palestine"
+        },
+        "region": "palestine"
+      },
+      "value": 99,
+      "unit": "percentage",
+      "quality": {
+        "score": 0.8333333333333333,
+        "completeness": 0.6666666666666666,
+        "consistency": 1,
+        "verified": false,
+        "confidence": 0.8
+      },
+      "sources": [
+        {
+          "name": "Palestinian Central Bureau of Statistics (PCBS)",
+          "organization": "PCBS",
+          "url": "https://api.worldbank.org/v2",
+          "fetched_at": "2025-10-30T09:46:35.100Z",
+          "reliability_score": 0.95
+        }
+      ],
+      "created_at": "2025-10-30T09:46:35.100Z",
+      "updated_at": "2025-10-30T09:46:35.100Z",
+      "version": 1,
+      "indicator_code": "SH.IMM.IDPT",
+      "indicator_name": "Immunization, DPT (% of children ages 12-23 months)",
+      "analysis": {
+        "trend": {
+          "slope": -0.5607142857142857,
+          "direction": "decreasing"
+        },
+        "growth_rate": -0.7911327675576294,
+        "volatility": 3.687817782917155,
+        "recent_change": 0,
+        "baseline_comparison": 12.5,
+        "data_points": 15,
+        "date_range": {
+          "start": "2010-01-01",
+          "end": "2024-01-01"
+        }
+      },
+      "pcbs_metadata": {
+        "official_source": true,
+        "data_quality": "high",
+        "update_frequency": "annual"
+      }
+    },
+    {
+      "id": "pcbs-1zeew9",
+      "type": "health",
+      "category": "health",
+      "date": "2019-01-01",
+      "timestamp": "2019-01-01T00:00:00.000Z",
+      "period": {
+        "type": "year",
+        "value": "2019"
+      },
+      "location": {
+        "name": "Palestine",
+        "admin_levels": {
+          "level1": "Palestine"
+        },
+        "region": "palestine"
+      },
+      "value": 99,
+      "unit": "percentage",
+      "quality": {
+        "score": 0.8333333333333333,
+        "completeness": 0.6666666666666666,
+        "consistency": 1,
+        "verified": false,
+        "confidence": 0.8
+      },
+      "sources": [
+        {
+          "name": "Palestinian Central Bureau of Statistics (PCBS)",
+          "organization": "PCBS",
+          "url": "https://api.worldbank.org/v2",
+          "fetched_at": "2025-10-30T09:46:35.100Z",
+          "reliability_score": 0.95
+        }
+      ],
+      "created_at": "2025-10-30T09:46:35.100Z",
+      "updated_at": "2025-10-30T09:46:35.100Z",
+      "version": 1,
+      "indicator_code": "SH.IMM.MEAS",
+      "indicator_name": "Immunization, measles (% of children ages 12-23 months)",
+      "analysis": {
+        "trend": {
+          "slope": -0.4714285714285714,
+          "direction": "decreasing"
+        },
+        "growth_rate": -0.660515466953506,
+        "volatility": 3.3199732261303287,
+        "recent_change": 0,
+        "baseline_comparison": 11.235955056179774,
+        "data_points": 15,
+        "date_range": {
+          "start": "2010-01-01",
+          "end": "2024-01-01"
+        }
+      },
+      "pcbs_metadata": {
+        "official_source": true,
+        "data_quality": "high",
+        "update_frequency": "annual"
+      }
+    },
+    {
+      "id": "pcbs-a0047f",
+      "type": "health",
+      "category": "health",
+      "date": "2020-01-01",
+      "timestamp": "2020-01-01T00:00:00.000Z",
+      "period": {
+        "type": "year",
+        "value": "2020"
+      },
+      "location": {
+        "name": "Palestine",
+        "admin_levels": {
+          "level1": "Palestine"
+        },
+        "region": "palestine"
+      },
+      "value": 15.2,
+      "unit": "per_1000",
+      "quality": {
+        "score": 0.8333333333333333,
+        "completeness": 0.6666666666666666,
+        "consistency": 1,
+        "verified": false,
+        "confidence": 0.8
+      },
+      "sources": [
+        {
+          "name": "Palestinian Central Bureau of Statistics (PCBS)",
+          "organization": "PCBS",
+          "url": "https://api.worldbank.org/v2",
+          "fetched_at": "2025-10-30T09:46:35.102Z",
+          "reliability_score": 0.95
+        }
+      ],
+      "created_at": "2025-10-30T09:46:35.102Z",
+      "updated_at": "2025-10-30T09:46:35.102Z",
+      "version": 1,
+      "indicator_code": "SH.DYN.MORT",
+      "indicator_name": "Mortality rate, under-5 (per 1,000 live births)",
+      "analysis": {
+        "trend": {
+          "slope": -0.31230769230769256,
+          "direction": "decreasing"
+        },
+        "growth_rate": 3.4090505541048084,
+        "volatility": 3.3533489200487083,
+        "recent_change": -3.1847133757961785,
+        "baseline_comparison": -42.20532319391636,
+        "data_points": 14,
+        "date_range": {
+          "start": "2010-01-01",
+          "end": "2023-01-01"
+        }
+      },
+      "pcbs_metadata": {
+        "official_source": true,
+        "data_quality": "high",
+        "update_frequency": "annual"
+      }
+    },
+    {
+      "id": "pcbs-qac0jd",
+      "type": "health",
+      "category": "health",
+      "date": "2020-01-01",
+      "timestamp": "2020-01-01T00:00:00.000Z",
+      "period": {
+        "type": "year",
+        "value": "2020"
+      },
+      "location": {
+        "name": "Palestine",
+        "admin_levels": {
+          "level1": "Palestine"
+        },
+        "region": "palestine"
+      },
+      "value": 9.4,
+      "unit": "per_1000",
+      "quality": {
+        "score": 0.8333333333333333,
+        "completeness": 0.6666666666666666,
+        "consistency": 1,
+        "verified": false,
+        "confidence": 0.8
+      },
+      "sources": [
+        {
+          "name": "Palestinian Central Bureau of Statistics (PCBS)",
+          "organization": "PCBS",
+          "url": "https://api.worldbank.org/v2",
+          "fetched_at": "2025-10-30T09:46:35.102Z",
+          "reliability_score": 0.95
+        }
+      ],
+      "created_at": "2025-10-30T09:46:35.102Z",
+      "updated_at": "2025-10-30T09:46:35.102Z",
+      "version": 1,
+      "indicator_code": "SH.DYN.NMRT",
+      "indicator_name": "Mortality rate, neonatal (per 1,000 live births)",
+      "analysis": {
+        "trend": {
+          "slope": -0.3520879120879114,
+          "direction": "decreasing"
+        },
+        "growth_rate": -3.0969339228938804,
+        "volatility": 1.4227022290883857,
+        "recent_change": -3.0927835051546286,
+        "baseline_comparison": 8.045977011494266,
+        "data_points": 14,
+        "date_range": {
+          "start": "2010-01-01",
+          "end": "2023-01-01"
+        }
+      },
+      "pcbs_metadata": {
+        "official_source": true,
+        "data_quality": "high",
+        "update_frequency": "annual"
+      }
+    },
+    {
+      "id": "pcbs-87kxvx",
+      "type": "health",
+      "category": "health",
+      "date": "2020-01-01",
+      "timestamp": "2020-01-01T00:00:00.000Z",
+      "period": {
+        "type": "year",
+        "value": "2020"
+      },
+      "location": {
+        "name": "Palestine",
+        "admin_levels": {
+          "level1": "Palestine"
+        },
+        "region": "palestine"
+      },
+      "value": 20,
+      "unit": "per_100000",
+      "quality": {
+        "score": 0.8333333333333333,
+        "completeness": 0.6666666666666666,
+        "consistency": 1,
+        "verified": false,
+        "confidence": 0.8
+      },
+      "sources": [
+        {
+          "name": "Palestinian Central Bureau of Statistics (PCBS)",
+          "organization": "PCBS",
+          "url": "https://api.worldbank.org/v2",
+          "fetched_at": "2025-10-30T09:46:35.102Z",
+          "reliability_score": 0.95
+        }
+      ],
+      "created_at": "2025-10-30T09:46:35.102Z",
+      "updated_at": "2025-10-30T09:46:35.102Z",
+      "version": 1,
+      "indicator_code": "SH.STA.MMRT",
+      "indicator_name": "Maternal mortality ratio (per 100,000 live births)",
+      "analysis": {
+        "trend": {
+          "slope": -1.7692307692307692,
+          "direction": "decreasing"
+        },
+        "growth_rate": -5.525979756792055,
+        "volatility": 8.20434180722597,
+        "recent_change": 11.11111111111111,
+        "baseline_comparison": 25,
+        "data_points": 14,
+        "date_range": {
+          "start": "2010-01-01",
+          "end": "2023-01-01"
+        }
+      },
+      "pcbs_metadata": {
+        "official_source": true,
+        "data_quality": "high",
+        "update_frequency": "annual"
+      }
+    },
+    {
+      "id": "pcbs-fv12mb",
+      "type": "health",
+      "category": "health",
+      "date": "2020-01-01",
+      "timestamp": "2020-01-01T00:00:00.000Z",
+      "period": {
+        "type": "year",
+        "value": "2020"
+      },
+      "location": {
+        "name": "Palestine",
+        "admin_levels": {
+          "level1": "Palestine"
+        },
+        "region": "palestine"
+      },
+      "value": 98,
+      "unit": "percentage",
+      "quality": {
+        "score": 0.8333333333333333,
+        "completeness": 0.6666666666666666,
+        "consistency": 1,
+        "verified": false,
+        "confidence": 0.8
+      },
+      "sources": [
+        {
+          "name": "Palestinian Central Bureau of Statistics (PCBS)",
+          "organization": "PCBS",
+          "url": "https://api.worldbank.org/v2",
+          "fetched_at": "2025-10-30T09:46:35.102Z",
+          "reliability_score": 0.95
+        }
+      ],
+      "created_at": "2025-10-30T09:46:35.102Z",
+      "updated_at": "2025-10-30T09:46:35.102Z",
+      "version": 1,
+      "indicator_code": "SH.IMM.IDPT",
+      "indicator_name": "Immunization, DPT (% of children ages 12-23 months)",
+      "analysis": {
+        "trend": {
+          "slope": -0.5607142857142857,
+          "direction": "decreasing"
+        },
+        "growth_rate": -0.7911327675576294,
+        "volatility": 3.687817782917155,
+        "recent_change": -1.0101010101010102,
+        "baseline_comparison": 11.363636363636363,
+        "data_points": 15,
+        "date_range": {
+          "start": "2010-01-01",
+          "end": "2024-01-01"
+        }
+      },
+      "pcbs_metadata": {
+        "official_source": true,
+        "data_quality": "high",
+        "update_frequency": "annual"
+      }
+    },
+    {
+      "id": "pcbs-j8g2tb",
+      "type": "health",
+      "category": "health",
+      "date": "2020-01-01",
+      "timestamp": "2020-01-01T00:00:00.000Z",
+      "period": {
+        "type": "year",
+        "value": "2020"
+      },
+      "location": {
+        "name": "Palestine",
+        "admin_levels": {
+          "level1": "Palestine"
+        },
+        "region": "palestine"
+      },
+      "value": 99,
+      "unit": "percentage",
+      "quality": {
+        "score": 0.8333333333333333,
+        "completeness": 0.6666666666666666,
+        "consistency": 1,
+        "verified": false,
+        "confidence": 0.8
+      },
+      "sources": [
+        {
+          "name": "Palestinian Central Bureau of Statistics (PCBS)",
+          "organization": "PCBS",
+          "url": "https://api.worldbank.org/v2",
+          "fetched_at": "2025-10-30T09:46:35.102Z",
+          "reliability_score": 0.95
+        }
+      ],
+      "created_at": "2025-10-30T09:46:35.102Z",
+      "updated_at": "2025-10-30T09:46:35.102Z",
+      "version": 1,
+      "indicator_code": "SH.IMM.MEAS",
+      "indicator_name": "Immunization, measles (% of children ages 12-23 months)",
+      "analysis": {
+        "trend": {
+          "slope": -0.4714285714285714,
+          "direction": "decreasing"
+        },
+        "growth_rate": -0.660515466953506,
+        "volatility": 3.3199732261303287,
+        "recent_change": 0,
+        "baseline_comparison": 11.235955056179774,
+        "data_points": 15,
+        "date_range": {
+          "start": "2010-01-01",
+          "end": "2024-01-01"
+        }
+      },
+      "pcbs_metadata": {
+        "official_source": true,
+        "data_quality": "high",
+        "update_frequency": "annual"
+      }
+    },
+    {
+      "id": "pcbs-uli5ug",
+      "type": "health",
+      "category": "health",
+      "date": "2021-01-01",
+      "timestamp": "2021-01-01T00:00:00.000Z",
+      "period": {
+        "type": "year",
+        "value": "2021"
+      },
+      "location": {
+        "name": "Palestine",
+        "admin_levels": {
+          "level1": "Palestine"
+        },
+        "region": "palestine"
+      },
+      "value": 14.7,
+      "unit": "per_1000",
+      "quality": {
+        "score": 0.8333333333333333,
+        "completeness": 0.6666666666666666,
+        "consistency": 1,
+        "verified": false,
+        "confidence": 0.8
+      },
+      "sources": [
+        {
+          "name": "Palestinian Central Bureau of Statistics (PCBS)",
+          "organization": "PCBS",
+          "url": "https://api.worldbank.org/v2",
+          "fetched_at": "2025-10-30T09:46:35.104Z",
+          "reliability_score": 0.95
+        }
+      ],
+      "created_at": "2025-10-30T09:46:35.104Z",
+      "updated_at": "2025-10-30T09:46:35.104Z",
+      "version": 1,
+      "indicator_code": "SH.DYN.MORT",
+      "indicator_name": "Mortality rate, under-5 (per 1,000 live births)",
+      "analysis": {
+        "trend": {
+          "slope": -0.31230769230769256,
+          "direction": "decreasing"
+        },
+        "growth_rate": 3.4090505541048084,
+        "volatility": 3.3533489200487083,
+        "recent_change": -3.289473684210526,
+        "baseline_comparison": -44.106463878327,
+        "data_points": 14,
+        "date_range": {
+          "start": "2010-01-01",
+          "end": "2023-01-01"
+        }
+      },
+      "pcbs_metadata": {
+        "official_source": true,
+        "data_quality": "high",
+        "update_frequency": "annual"
+      }
+    },
+    {
+      "id": "pcbs-9vwkwr",
+      "type": "health",
+      "category": "health",
+      "date": "2021-01-01",
+      "timestamp": "2021-01-01T00:00:00.000Z",
+      "period": {
+        "type": "year",
+        "value": "2021"
+      },
+      "location": {
+        "name": "Palestine",
+        "admin_levels": {
+          "level1": "Palestine"
+        },
+        "region": "palestine"
+      },
+      "value": 9.1,
+      "unit": "per_1000",
+      "quality": {
+        "score": 0.8333333333333333,
+        "completeness": 0.6666666666666666,
+        "consistency": 1,
+        "verified": false,
+        "confidence": 0.8
+      },
+      "sources": [
+        {
+          "name": "Palestinian Central Bureau of Statistics (PCBS)",
+          "organization": "PCBS",
+          "url": "https://api.worldbank.org/v2",
+          "fetched_at": "2025-10-30T09:46:35.104Z",
+          "reliability_score": 0.95
+        }
+      ],
+      "created_at": "2025-10-30T09:46:35.104Z",
+      "updated_at": "2025-10-30T09:46:35.104Z",
+      "version": 1,
+      "indicator_code": "SH.DYN.NMRT",
+      "indicator_name": "Mortality rate, neonatal (per 1,000 live births)",
+      "analysis": {
+        "trend": {
+          "slope": -0.3520879120879114,
+          "direction": "decreasing"
+        },
+        "growth_rate": -3.0969339228938804,
+        "volatility": 1.4227022290883857,
+        "recent_change": -3.191489361702135,
+        "baseline_comparison": 4.597701149425292,
+        "data_points": 14,
+        "date_range": {
+          "start": "2010-01-01",
+          "end": "2023-01-01"
+        }
+      },
+      "pcbs_metadata": {
+        "official_source": true,
+        "data_quality": "high",
+        "update_frequency": "annual"
+      }
+    },
+    {
+      "id": "pcbs-b1jq89",
+      "type": "health",
+      "category": "health",
+      "date": "2021-01-01",
+      "timestamp": "2021-01-01T00:00:00.000Z",
+      "period": {
+        "type": "year",
+        "value": "2021"
+      },
+      "location": {
+        "name": "Palestine",
+        "admin_levels": {
+          "level1": "Palestine"
+        },
+        "region": "palestine"
+      },
+      "value": 29,
+      "unit": "per_100000",
+      "quality": {
+        "score": 0.8333333333333333,
+        "completeness": 0.6666666666666666,
+        "consistency": 1,
+        "verified": false,
+        "confidence": 0.8
+      },
+      "sources": [
+        {
+          "name": "Palestinian Central Bureau of Statistics (PCBS)",
+          "organization": "PCBS",
+          "url": "https://api.worldbank.org/v2",
+          "fetched_at": "2025-10-30T09:46:35.104Z",
+          "reliability_score": 0.95
+        }
+      ],
+      "created_at": "2025-10-30T09:46:35.104Z",
+      "updated_at": "2025-10-30T09:46:35.104Z",
+      "version": 1,
+      "indicator_code": "SH.STA.MMRT",
+      "indicator_name": "Maternal mortality ratio (per 100,000 live births)",
+      "analysis": {
+        "trend": {
+          "slope": -1.7692307692307692,
+          "direction": "decreasing"
+        },
+        "growth_rate": -5.525979756792055,
+        "volatility": 8.20434180722597,
+        "recent_change": 45,
+        "baseline_comparison": 81.25,
+        "data_points": 14,
+        "date_range": {
+          "start": "2010-01-01",
+          "end": "2023-01-01"
+        }
+      },
+      "pcbs_metadata": {
+        "official_source": true,
+        "data_quality": "high",
+        "update_frequency": "annual"
+      }
+    },
+    {
+      "id": "pcbs-fkonr5",
+      "type": "health",
+      "category": "health",
+      "date": "2021-01-01",
+      "timestamp": "2021-01-01T00:00:00.000Z",
+      "period": {
+        "type": "year",
+        "value": "2021"
+      },
+      "location": {
+        "name": "Palestine",
+        "admin_levels": {
+          "level1": "Palestine"
+        },
+        "region": "palestine"
+      },
+      "value": 95,
+      "unit": "percentage",
+      "quality": {
+        "score": 0.8333333333333333,
+        "completeness": 0.6666666666666666,
+        "consistency": 1,
+        "verified": false,
+        "confidence": 0.8
+      },
+      "sources": [
+        {
+          "name": "Palestinian Central Bureau of Statistics (PCBS)",
+          "organization": "PCBS",
+          "url": "https://api.worldbank.org/v2",
+          "fetched_at": "2025-10-30T09:46:35.104Z",
+          "reliability_score": 0.95
+        }
+      ],
+      "created_at": "2025-10-30T09:46:35.104Z",
+      "updated_at": "2025-10-30T09:46:35.104Z",
+      "version": 1,
+      "indicator_code": "SH.IMM.IDPT",
+      "indicator_name": "Immunization, DPT (% of children ages 12-23 months)",
+      "analysis": {
+        "trend": {
+          "slope": -0.5607142857142857,
+          "direction": "decreasing"
+        },
+        "growth_rate": -0.7911327675576294,
+        "volatility": 3.687817782917155,
+        "recent_change": -3.061224489795918,
+        "baseline_comparison": 7.954545454545454,
+        "data_points": 15,
+        "date_range": {
+          "start": "2010-01-01",
+          "end": "2024-01-01"
+        }
+      },
+      "pcbs_metadata": {
+        "official_source": true,
+        "data_quality": "high",
+        "update_frequency": "annual"
+      }
+    },
+    {
+      "id": "pcbs-sp9n41",
+      "type": "health",
+      "category": "health",
+      "date": "2021-01-01",
+      "timestamp": "2021-01-01T00:00:00.000Z",
+      "period": {
+        "type": "year",
+        "value": "2021"
+      },
+      "location": {
+        "name": "Palestine",
+        "admin_levels": {
+          "level1": "Palestine"
+        },
+        "region": "palestine"
+      },
+      "value": 98,
+      "unit": "percentage",
+      "quality": {
+        "score": 0.8333333333333333,
+        "completeness": 0.6666666666666666,
+        "consistency": 1,
+        "verified": false,
+        "confidence": 0.8
+      },
+      "sources": [
+        {
+          "name": "Palestinian Central Bureau of Statistics (PCBS)",
+          "organization": "PCBS",
+          "url": "https://api.worldbank.org/v2",
+          "fetched_at": "2025-10-30T09:46:35.104Z",
+          "reliability_score": 0.95
+        }
+      ],
+      "created_at": "2025-10-30T09:46:35.104Z",
+      "updated_at": "2025-10-30T09:46:35.104Z",
+      "version": 1,
+      "indicator_code": "SH.IMM.MEAS",
+      "indicator_name": "Immunization, measles (% of children ages 12-23 months)",
+      "analysis": {
+        "trend": {
+          "slope": -0.4714285714285714,
+          "direction": "decreasing"
+        },
+        "growth_rate": -0.660515466953506,
+        "volatility": 3.3199732261303287,
+        "recent_change": -1.0101010101010102,
+        "baseline_comparison": 10.112359550561797,
+        "data_points": 15,
+        "date_range": {
+          "start": "2010-01-01",
+          "end": "2024-01-01"
+        }
+      },
+      "pcbs_metadata": {
+        "official_source": true,
+        "data_quality": "high",
+        "update_frequency": "annual"
+      }
+    },
+    {
+      "id": "pcbs-6hou4y",
+      "type": "health",
+      "category": "health",
+      "date": "2022-01-01",
+      "timestamp": "2022-01-01T00:00:00.000Z",
+      "period": {
+        "type": "year",
+        "value": "2022"
+      },
+      "location": {
+        "name": "Palestine",
+        "admin_levels": {
+          "level1": "Palestine"
+        },
+        "region": "palestine"
+      },
+      "value": 14.2,
+      "unit": "per_1000",
+      "quality": {
+        "score": 0.8333333333333333,
+        "completeness": 0.6666666666666666,
+        "consistency": 1,
+        "verified": false,
+        "confidence": 0.8
+      },
+      "sources": [
+        {
+          "name": "Palestinian Central Bureau of Statistics (PCBS)",
+          "organization": "PCBS",
+          "url": "https://api.worldbank.org/v2",
+          "fetched_at": "2025-10-30T09:46:35.106Z",
+          "reliability_score": 0.95
+        }
+      ],
+      "created_at": "2025-10-30T09:46:35.106Z",
+      "updated_at": "2025-10-30T09:46:35.106Z",
+      "version": 1,
+      "indicator_code": "SH.DYN.MORT",
+      "indicator_name": "Mortality rate, under-5 (per 1,000 live births)",
+      "analysis": {
+        "trend": {
+          "slope": -0.31230769230769256,
+          "direction": "decreasing"
+        },
+        "growth_rate": 3.4090505541048084,
+        "volatility": 3.3533489200487083,
+        "recent_change": -3.4013605442176873,
+        "baseline_comparison": -46.00760456273765,
+        "data_points": 14,
+        "date_range": {
+          "start": "2010-01-01",
+          "end": "2023-01-01"
+        }
+      },
+      "pcbs_metadata": {
+        "official_source": true,
+        "data_quality": "high",
+        "update_frequency": "annual"
+      }
+    },
+    {
+      "id": "pcbs-afbcj8",
+      "type": "health",
+      "category": "health",
+      "date": "2022-01-01",
+      "timestamp": "2022-01-01T00:00:00.000Z",
+      "period": {
+        "type": "year",
+        "value": "2022"
+      },
+      "location": {
+        "name": "Palestine",
+        "admin_levels": {
+          "level1": "Palestine"
+        },
+        "region": "palestine"
+      },
+      "value": 8.8,
+      "unit": "per_1000",
+      "quality": {
+        "score": 0.8333333333333333,
+        "completeness": 0.6666666666666666,
+        "consistency": 1,
+        "verified": false,
+        "confidence": 0.8
+      },
+      "sources": [
+        {
+          "name": "Palestinian Central Bureau of Statistics (PCBS)",
+          "organization": "PCBS",
+          "url": "https://api.worldbank.org/v2",
+          "fetched_at": "2025-10-30T09:46:35.106Z",
+          "reliability_score": 0.95
+        }
+      ],
+      "created_at": "2025-10-30T09:46:35.106Z",
+      "updated_at": "2025-10-30T09:46:35.106Z",
+      "version": 1,
+      "indicator_code": "SH.DYN.NMRT",
+      "indicator_name": "Mortality rate, neonatal (per 1,000 live births)",
+      "analysis": {
+        "trend": {
+          "slope": -0.3520879120879114,
+          "direction": "decreasing"
+        },
+        "growth_rate": -3.0969339228938804,
+        "volatility": 1.4227022290883857,
+        "recent_change": -3.296703296703285,
+        "baseline_comparison": 1.1494252873563382,
+        "data_points": 14,
+        "date_range": {
+          "start": "2010-01-01",
+          "end": "2023-01-01"
+        }
+      },
+      "pcbs_metadata": {
+        "official_source": true,
+        "data_quality": "high",
+        "update_frequency": "annual"
+      }
+    },
+    {
+      "id": "pcbs-6zjcfr",
+      "type": "health",
+      "category": "health",
+      "date": "2022-01-01",
+      "timestamp": "2022-01-01T00:00:00.000Z",
+      "period": {
+        "type": "year",
+        "value": "2022"
+      },
+      "location": {
+        "name": "Palestine",
+        "admin_levels": {
+          "level1": "Palestine"
+        },
+        "region": "palestine"
+      },
+      "value": 17,
+      "unit": "per_100000",
+      "quality": {
+        "score": 0.8333333333333333,
+        "completeness": 0.6666666666666666,
+        "consistency": 1,
+        "verified": false,
+        "confidence": 0.8
+      },
+      "sources": [
+        {
+          "name": "Palestinian Central Bureau of Statistics (PCBS)",
+          "organization": "PCBS",
+          "url": "https://api.worldbank.org/v2",
+          "fetched_at": "2025-10-30T09:46:35.106Z",
+          "reliability_score": 0.95
+        }
+      ],
+      "created_at": "2025-10-30T09:46:35.106Z",
+      "updated_at": "2025-10-30T09:46:35.106Z",
+      "version": 1,
+      "indicator_code": "SH.STA.MMRT",
+      "indicator_name": "Maternal mortality ratio (per 100,000 live births)",
+      "analysis": {
+        "trend": {
+          "slope": -1.7692307692307692,
+          "direction": "decreasing"
+        },
+        "growth_rate": -5.525979756792055,
+        "volatility": 8.20434180722597,
+        "recent_change": -41.37931034482759,
+        "baseline_comparison": 6.25,
+        "data_points": 14,
+        "date_range": {
+          "start": "2010-01-01",
+          "end": "2023-01-01"
+        }
+      },
+      "pcbs_metadata": {
+        "official_source": true,
+        "data_quality": "high",
+        "update_frequency": "annual"
+      }
+    },
+    {
+      "id": "pcbs-3nxc1r",
+      "type": "health",
+      "category": "health",
+      "date": "2022-01-01",
+      "timestamp": "2022-01-01T00:00:00.000Z",
+      "period": {
+        "type": "year",
+        "value": "2022"
+      },
+      "location": {
+        "name": "Palestine",
+        "admin_levels": {
+          "level1": "Palestine"
+        },
+        "region": "palestine"
+      },
+      "value": 98,
+      "unit": "percentage",
+      "quality": {
+        "score": 0.8333333333333333,
+        "completeness": 0.6666666666666666,
+        "consistency": 1,
+        "verified": false,
+        "confidence": 0.8
+      },
+      "sources": [
+        {
+          "name": "Palestinian Central Bureau of Statistics (PCBS)",
+          "organization": "PCBS",
+          "url": "https://api.worldbank.org/v2",
+          "fetched_at": "2025-10-30T09:46:35.106Z",
+          "reliability_score": 0.95
+        }
+      ],
+      "created_at": "2025-10-30T09:46:35.106Z",
+      "updated_at": "2025-10-30T09:46:35.106Z",
+      "version": 1,
+      "indicator_code": "SH.IMM.IDPT",
+      "indicator_name": "Immunization, DPT (% of children ages 12-23 months)",
+      "analysis": {
+        "trend": {
+          "slope": -0.5607142857142857,
+          "direction": "decreasing"
+        },
+        "growth_rate": -0.7911327675576294,
+        "volatility": 3.687817782917155,
+        "recent_change": 3.1578947368421053,
+        "baseline_comparison": 11.363636363636363,
+        "data_points": 15,
+        "date_range": {
+          "start": "2010-01-01",
+          "end": "2024-01-01"
+        }
+      },
+      "pcbs_metadata": {
+        "official_source": true,
+        "data_quality": "high",
+        "update_frequency": "annual"
+      }
+    },
+    {
+      "id": "pcbs-wv0ukd",
+      "type": "health",
+      "category": "health",
+      "date": "2022-01-01",
+      "timestamp": "2022-01-01T00:00:00.000Z",
+      "period": {
+        "type": "year",
+        "value": "2022"
+      },
+      "location": {
+        "name": "Palestine",
+        "admin_levels": {
+          "level1": "Palestine"
+        },
+        "region": "palestine"
+      },
+      "value": 97,
+      "unit": "percentage",
+      "quality": {
+        "score": 0.8333333333333333,
+        "completeness": 0.6666666666666666,
+        "consistency": 1,
+        "verified": false,
+        "confidence": 0.8
+      },
+      "sources": [
+        {
+          "name": "Palestinian Central Bureau of Statistics (PCBS)",
+          "organization": "PCBS",
+          "url": "https://api.worldbank.org/v2",
+          "fetched_at": "2025-10-30T09:46:35.106Z",
+          "reliability_score": 0.95
+        }
+      ],
+      "created_at": "2025-10-30T09:46:35.106Z",
+      "updated_at": "2025-10-30T09:46:35.106Z",
+      "version": 1,
+      "indicator_code": "SH.IMM.MEAS",
+      "indicator_name": "Immunization, measles (% of children ages 12-23 months)",
+      "analysis": {
+        "trend": {
+          "slope": -0.4714285714285714,
+          "direction": "decreasing"
+        },
+        "growth_rate": -0.660515466953506,
+        "volatility": 3.3199732261303287,
+        "recent_change": -1.0204081632653061,
+        "baseline_comparison": 8.98876404494382,
+        "data_points": 15,
+        "date_range": {
+          "start": "2010-01-01",
+          "end": "2024-01-01"
+        }
+      },
+      "pcbs_metadata": {
+        "official_source": true,
+        "data_quality": "high",
+        "update_frequency": "annual"
+      }
+    },
+    {
+      "id": "pcbs-phmt2l",
+      "type": "health",
+      "category": "health",
+      "date": "2023-01-01",
+      "timestamp": "2023-01-01T00:00:00.000Z",
+      "period": {
+        "type": "year",
+        "value": "2023"
+      },
+      "location": {
+        "name": "Palestine",
+        "admin_levels": {
+          "level1": "Palestine"
+        },
+        "region": "palestine"
+      },
+      "value": 26.3,
+      "unit": "per_1000",
+      "quality": {
+        "score": 0.8333333333333333,
+        "completeness": 0.6666666666666666,
+        "consistency": 1,
+        "verified": false,
+        "confidence": 0.8
+      },
+      "sources": [
+        {
+          "name": "Palestinian Central Bureau of Statistics (PCBS)",
+          "organization": "PCBS",
+          "url": "https://api.worldbank.org/v2",
+          "fetched_at": "2025-10-30T09:46:35.107Z",
+          "reliability_score": 0.95
+        }
+      ],
+      "created_at": "2025-10-30T09:46:35.107Z",
+      "updated_at": "2025-10-30T09:46:35.107Z",
+      "version": 1,
+      "indicator_code": "SH.DYN.MORT",
+      "indicator_name": "Mortality rate, under-5 (per 1,000 live births)",
+      "analysis": {
+        "trend": {
+          "slope": -0.31230769230769256,
+          "direction": "decreasing"
+        },
+        "growth_rate": 3.4090505541048084,
+        "volatility": 3.3533489200487083,
+        "recent_change": 85.21126760563382,
+        "baseline_comparison": 0,
+        "data_points": 14,
+        "date_range": {
+          "start": "2010-01-01",
+          "end": "2023-01-01"
+        }
+      },
+      "pcbs_metadata": {
+        "official_source": true,
+        "data_quality": "high",
+        "update_frequency": "annual"
+      }
+    },
+    {
+      "id": "pcbs-ct7590",
+      "type": "health",
+      "category": "health",
+      "date": "2023-01-01",
+      "timestamp": "2023-01-01T00:00:00.000Z",
+      "period": {
+        "type": "year",
+        "value": "2023"
+      },
+      "location": {
+        "name": "Palestine",
+        "admin_levels": {
+          "level1": "Palestine"
+        },
+        "region": "palestine"
+      },
+      "value": 8.7,
+      "unit": "per_1000",
+      "quality": {
+        "score": 0.8333333333333333,
+        "completeness": 0.6666666666666666,
+        "consistency": 1,
+        "verified": false,
+        "confidence": 0.8
+      },
+      "sources": [
+        {
+          "name": "Palestinian Central Bureau of Statistics (PCBS)",
+          "organization": "PCBS",
+          "url": "https://api.worldbank.org/v2",
+          "fetched_at": "2025-10-30T09:46:35.107Z",
+          "reliability_score": 0.95
+        }
+      ],
+      "created_at": "2025-10-30T09:46:35.107Z",
+      "updated_at": "2025-10-30T09:46:35.107Z",
+      "version": 1,
+      "indicator_code": "SH.DYN.NMRT",
+      "indicator_name": "Mortality rate, neonatal (per 1,000 live births)",
+      "analysis": {
+        "trend": {
+          "slope": -0.3520879120879114,
+          "direction": "decreasing"
+        },
+        "growth_rate": -3.0969339228938804,
+        "volatility": 1.4227022290883857,
+        "recent_change": -1.1363636363636525,
+        "baseline_comparison": 0,
+        "data_points": 14,
+        "date_range": {
+          "start": "2010-01-01",
+          "end": "2023-01-01"
+        }
+      },
+      "pcbs_metadata": {
+        "official_source": true,
+        "data_quality": "high",
+        "update_frequency": "annual"
+      }
+    },
+    {
+      "id": "pcbs-nomcq1",
+      "type": "health",
+      "category": "health",
+      "date": "2023-01-01",
+      "timestamp": "2023-01-01T00:00:00.000Z",
+      "period": {
+        "type": "year",
+        "value": "2023"
+      },
+      "location": {
+        "name": "Palestine",
+        "admin_levels": {
+          "level1": "Palestine"
+        },
+        "region": "palestine"
+      },
+      "value": 16,
+      "unit": "per_100000",
+      "quality": {
+        "score": 0.8333333333333333,
+        "completeness": 0.6666666666666666,
+        "consistency": 1,
+        "verified": false,
+        "confidence": 0.8
+      },
+      "sources": [
+        {
+          "name": "Palestinian Central Bureau of Statistics (PCBS)",
+          "organization": "PCBS",
+          "url": "https://api.worldbank.org/v2",
+          "fetched_at": "2025-10-30T09:46:35.107Z",
+          "reliability_score": 0.95
+        }
+      ],
+      "created_at": "2025-10-30T09:46:35.107Z",
+      "updated_at": "2025-10-30T09:46:35.107Z",
+      "version": 1,
+      "indicator_code": "SH.STA.MMRT",
+      "indicator_name": "Maternal mortality ratio (per 100,000 live births)",
+      "analysis": {
+        "trend": {
+          "slope": -1.7692307692307692,
+          "direction": "decreasing"
+        },
+        "growth_rate": -5.525979756792055,
+        "volatility": 8.20434180722597,
+        "recent_change": -5.88235294117647,
+        "baseline_comparison": 0,
+        "data_points": 14,
+        "date_range": {
+          "start": "2010-01-01",
+          "end": "2023-01-01"
+        }
+      },
+      "pcbs_metadata": {
+        "official_source": true,
+        "data_quality": "high",
+        "update_frequency": "annual"
+      }
+    },
+    {
+      "id": "pcbs-oaii73",
+      "type": "health",
+      "category": "health",
+      "date": "2023-01-01",
+      "timestamp": "2023-01-01T00:00:00.000Z",
+      "period": {
+        "type": "year",
+        "value": "2023"
+      },
+      "location": {
+        "name": "Palestine",
+        "admin_levels": {
+          "level1": "Palestine"
+        },
+        "region": "palestine"
+      },
+      "value": 88,
+      "unit": "percentage",
+      "quality": {
+        "score": 0.8333333333333333,
+        "completeness": 0.6666666666666666,
+        "consistency": 1,
+        "verified": false,
+        "confidence": 0.8
+      },
+      "sources": [
+        {
+          "name": "Palestinian Central Bureau of Statistics (PCBS)",
+          "organization": "PCBS",
+          "url": "https://api.worldbank.org/v2",
+          "fetched_at": "2025-10-30T09:46:35.107Z",
+          "reliability_score": 0.95
+        }
+      ],
+      "created_at": "2025-10-30T09:46:35.107Z",
+      "updated_at": "2025-10-30T09:46:35.107Z",
+      "version": 1,
+      "indicator_code": "SH.IMM.IDPT",
+      "indicator_name": "Immunization, DPT (% of children ages 12-23 months)",
+      "analysis": {
+        "trend": {
+          "slope": -0.5607142857142857,
+          "direction": "decreasing"
+        },
+        "growth_rate": -0.7911327675576294,
+        "volatility": 3.687817782917155,
+        "recent_change": -10.204081632653061,
+        "baseline_comparison": 0,
+        "data_points": 15,
+        "date_range": {
+          "start": "2010-01-01",
+          "end": "2024-01-01"
+        }
+      },
+      "pcbs_metadata": {
+        "official_source": true,
+        "data_quality": "high",
+        "update_frequency": "annual"
+      }
+    },
+    {
+      "id": "pcbs-w3r9jz",
+      "type": "health",
+      "category": "health",
+      "date": "2023-01-01",
+      "timestamp": "2023-01-01T00:00:00.000Z",
+      "period": {
+        "type": "year",
+        "value": "2023"
+      },
+      "location": {
+        "name": "Palestine",
+        "admin_levels": {
+          "level1": "Palestine"
+        },
+        "region": "palestine"
+      },
+      "value": 89,
+      "unit": "percentage",
+      "quality": {
+        "score": 0.8333333333333333,
+        "completeness": 0.6666666666666666,
+        "consistency": 1,
+        "verified": false,
+        "confidence": 0.8
+      },
+      "sources": [
+        {
+          "name": "Palestinian Central Bureau of Statistics (PCBS)",
+          "organization": "PCBS",
+          "url": "https://api.worldbank.org/v2",
+          "fetched_at": "2025-10-30T09:46:35.108Z",
+          "reliability_score": 0.95
+        }
+      ],
+      "created_at": "2025-10-30T09:46:35.108Z",
+      "updated_at": "2025-10-30T09:46:35.108Z",
+      "version": 1,
+      "indicator_code": "SH.IMM.MEAS",
+      "indicator_name": "Immunization, measles (% of children ages 12-23 months)",
+      "analysis": {
+        "trend": {
+          "slope": -0.4714285714285714,
+          "direction": "decreasing"
+        },
+        "growth_rate": -0.660515466953506,
+        "volatility": 3.3199732261303287,
+        "recent_change": -8.24742268041237,
+        "baseline_comparison": 0,
+        "data_points": 15,
+        "date_range": {
+          "start": "2010-01-01",
+          "end": "2024-01-01"
+        }
+      },
+      "pcbs_metadata": {
+        "official_source": true,
+        "data_quality": "high",
+        "update_frequency": "annual"
+      }
+    },
+    {
+      "id": "pcbs-1gkbgg",
+      "type": "health",
+      "category": "health",
+      "date": "2024-01-01",
+      "timestamp": "2024-01-01T00:00:00.000Z",
+      "period": {
+        "type": "year",
+        "value": "2024"
+      },
+      "location": {
+        "name": "Palestine",
+        "admin_levels": {
+          "level1": "Palestine"
+        },
+        "region": "palestine"
+      },
+      "value": 88,
+      "unit": "percentage",
+      "quality": {
+        "score": 0.8333333333333333,
+        "completeness": 0.6666666666666666,
+        "consistency": 1,
+        "verified": false,
+        "confidence": 0.8
+      },
+      "sources": [
+        {
+          "name": "Palestinian Central Bureau of Statistics (PCBS)",
+          "organization": "PCBS",
+          "url": "https://api.worldbank.org/v2",
+          "fetched_at": "2025-10-30T09:46:35.108Z",
+          "reliability_score": 0.95
+        }
+      ],
+      "created_at": "2025-10-30T09:46:35.108Z",
+      "updated_at": "2025-10-30T09:46:35.108Z",
+      "version": 1,
+      "indicator_code": "SH.IMM.IDPT",
+      "indicator_name": "Immunization, DPT (% of children ages 12-23 months)",
+      "analysis": {
+        "trend": {
+          "slope": -0.5607142857142857,
+          "direction": "decreasing"
+        },
+        "growth_rate": -0.7911327675576294,
+        "volatility": 3.687817782917155,
+        "recent_change": 0,
+        "baseline_comparison": 0,
+        "data_points": 15,
+        "date_range": {
+          "start": "2010-01-01",
+          "end": "2024-01-01"
+        }
+      },
+      "pcbs_metadata": {
+        "official_source": true,
+        "data_quality": "high",
+        "update_frequency": "annual"
+      }
+    },
+    {
+      "id": "pcbs-ov29xa",
+      "type": "health",
+      "category": "health",
+      "date": "2024-01-01",
+      "timestamp": "2024-01-01T00:00:00.000Z",
+      "period": {
+        "type": "year",
+        "value": "2024"
+      },
+      "location": {
+        "name": "Palestine",
+        "admin_levels": {
+          "level1": "Palestine"
+        },
+        "region": "palestine"
+      },
+      "value": 89,
+      "unit": "percentage",
+      "quality": {
+        "score": 0.8333333333333333,
+        "completeness": 0.6666666666666666,
+        "consistency": 1,
+        "verified": false,
+        "confidence": 0.8
+      },
+      "sources": [
+        {
+          "name": "Palestinian Central Bureau of Statistics (PCBS)",
+          "organization": "PCBS",
+          "url": "https://api.worldbank.org/v2",
+          "fetched_at": "2025-10-30T09:46:35.108Z",
+          "reliability_score": 0.95
+        }
+      ],
+      "created_at": "2025-10-30T09:46:35.108Z",
+      "updated_at": "2025-10-30T09:46:35.108Z",
+      "version": 1,
+      "indicator_code": "SH.IMM.MEAS",
+      "indicator_name": "Immunization, measles (% of children ages 12-23 months)",
+      "analysis": {
+        "trend": {
+          "slope": -0.4714285714285714,
+          "direction": "decreasing"
+        },
+        "growth_rate": -0.660515466953506,
+        "volatility": 3.3199732261303287,
+        "recent_change": 0,
+        "baseline_comparison": 0,
+        "data_points": 15,
+        "date_range": {
+          "start": "2010-01-01",
+          "end": "2024-01-01"
+        }
+      },
+      "pcbs_metadata": {
+        "official_source": true,
+        "data_quality": "high",
+        "update_frequency": "annual"
+      }
+    }
+  ]
+}

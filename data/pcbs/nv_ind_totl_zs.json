@@ -1,0 +1,130 @@
+{
+  "indicator": "NV.IND.TOTL.ZS",
+  "indicator_name": "Industry (including construction), value added (% of GDP)",
+  "category": "economic",
+  "data": [
+    {
+      "year": 2010,
+      "value": 18.6262459329649,
+      "indicator": "NV.IND.TOTL.ZS",
+      "indicator_name": "Industry (including construction), value added (% of GDP)",
+      "country": "West Bank and Gaza",
+      "source": "pcbs",
+      "source_detail": "PCBS via World Bank API"
+    },
+    {
+      "year": 2011,
+      "value": 18.9342129964867,
+      "indicator": "NV.IND.TOTL.ZS",
+      "indicator_name": "Industry (including construction), value added (% of GDP)",
+      "country": "West Bank and Gaza",
+      "source": "pcbs",
+      "source_detail": "PCBS via World Bank API"
+    },
+    {
+      "year": 2012,
+      "value": 20.2360669702828,
+      "indicator": "NV.IND.TOTL.ZS",
+      "indicator_name": "Industry (including construction), value added (% of GDP)",
+      "country": "West Bank and Gaza",
+      "source": "pcbs",
+      "source_detail": "PCBS via World Bank API"
+    },
+    {
+      "year": 2013,
+      "value": 18.5586918722948,
+      "indicator": "NV.IND.TOTL.ZS",
+      "indicator_name": "Industry (including construction), value added (% of GDP)",
+      "country": "West Bank and Gaza",
+      "source": "pcbs",
+      "source_detail": "PCBS via World Bank API"
+    },
+    {
+      "year": 2014,
+      "value": 17.9717935338142,
+      "indicator": "NV.IND.TOTL.ZS",
+      "indicator_name": "Industry (including construction), value added (% of GDP)",
+      "country": "West Bank and Gaza",
+      "source": "pcbs",
+      "source_detail": "PCBS via World Bank API"
+    },
+    {
+      "year": 2015,
+      "value": 16.4252383269875,
+      "indicator": "NV.IND.TOTL.ZS",
+      "indicator_name": "Industry (including construction), value added (% of GDP)",
+      "country": "West Bank and Gaza",
+      "source": "pcbs",
+      "source_detail": "PCBS via World Bank API"
+    },
+    {
+      "year": 2016,
+      "value": 17.2627779869396,
+      "indicator": "NV.IND.TOTL.ZS",
+      "indicator_name": "Industry (including construction), value added (% of GDP)",
+      "country": "West Bank and Gaza",
+      "source": "pcbs",
+      "source_detail": "PCBS via World Bank API"
+    },
+    {
+      "year": 2017,
+      "value": 19.2317708333333,
+      "indicator": "NV.IND.TOTL.ZS",
+      "indicator_name": "Industry (including construction), value added (% of GDP)",
+      "country": "West Bank and Gaza",
+      "source": "pcbs",
+      "source_detail": "PCBS via World Bank API"
+    },
+    {
+      "year": 2018,
+      "value": 19.2841256773528,
+      "indicator": "NV.IND.TOTL.ZS",
+      "indicator_name": "Industry (including construction), value added (% of GDP)",
+      "country": "West Bank and Gaza",
+      "source": "pcbs",
+      "source_detail": "PCBS via World Bank API"
+    },
+    {
+      "year": 2019,
+      "value": 18.4328946216476,
+      "indicator": "NV.IND.TOTL.ZS",
+      "indicator_name": "Industry (including construction), value added (% of GDP)",
+      "country": "West Bank and Gaza",
+      "source": "pcbs",
+      "source_detail": "PCBS via World Bank API"
+    },
+    {
+      "year": 2020,
+      "value": 17.0283999819724,
+      "indicator": "NV.IND.TOTL.ZS",
+      "indicator_name": "Industry (including construction), value added (% of GDP)",
+      "country": "West Bank and Gaza",
+      "source": "pcbs",
+      "source_detail": "PCBS via World Bank API"
+    },
+    {
+      "year": 2021,
+      "value": 17.6851289414104,
+      "indicator": "NV.IND.TOTL.ZS",
+      "indicator_name": "Industry (including construction), value added (% of GDP)",
+      "country": "West Bank and Gaza",
+      "source": "pcbs",
+      "source_detail": "PCBS via World Bank API"
+    },
+    {
+      "year": 2022,
+      "value": 17.3927108606611,
+      "indicator": "NV.IND.TOTL.ZS",
+      "indicator_name": "Industry (including construction), value added (% of GDP)",
+      "country": "West Bank and Gaza",
+      "source": "pcbs",
+      "source_detail": "PCBS via World Bank API"
+    }
+  ],
+  "metadata": {
+    "source": "Palestinian Central Bureau of Statistics (PCBS)",
+    "source_detail": "Data accessed via World Bank Open Data API",
+    "last_updated": "2025-10-30T09:43:36.192Z",
+    "total_points": 13
+  }
+}

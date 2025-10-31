@@ -1,0 +1,132 @@
+{
+  "indicator": "SP.DYN.LE00.FE.IN",
+  "indicator_name": "Life expectancy at birth, female (years)",
+  "data": [
+    {
+      "year": 2010,
+      "value": 75.104,
+      "indicator": "SP.DYN.LE00.FE.IN",
+      "indicator_name": "Life expectancy at birth, female (years)",
+      "country": "West Bank and Gaza",
+      "source": "worldbank"
+    },
+    {
+      "year": 2011,
+      "value": 75.458,
+      "indicator": "SP.DYN.LE00.FE.IN",
+      "indicator_name": "Life expectancy at birth, female (years)",
+      "country": "West Bank and Gaza",
+      "source": "worldbank"
+    },
+    {
+      "year": 2012,
+      "value": 75.772,
+      "indicator": "SP.DYN.LE00.FE.IN",
+      "indicator_name": "Life expectancy at birth, female (years)",
+      "country": "West Bank and Gaza",
+      "source": "worldbank"
+    },
+    {
+      "year": 2013,
+      "value": 76.165,
+      "indicator": "SP.DYN.LE00.FE.IN",
+      "indicator_name": "Life expectancy at birth, female (years)",
+      "country": "West Bank and Gaza",
+      "source": "worldbank"
+    },
+    {
+      "year": 2014,
+      "value": 75.609,
+      "indicator": "SP.DYN.LE00.FE.IN",
+      "indicator_name": "Life expectancy at birth, female (years)",
+      "country": "West Bank and Gaza",
+      "source": "worldbank"
+    },
+    {
+      "year": 2015,
+      "value": 76.733,
+      "indicator": "SP.DYN.LE00.FE.IN",
+      "indicator_name": "Life expectancy at birth, female (years)",
+      "country": "West Bank and Gaza",
+      "source": "worldbank"
+    },
+    {
+      "year": 2016,
+      "value": 77.053,
+      "indicator": "SP.DYN.LE00.FE.IN",
+      "indicator_name": "Life expectancy at birth, female (years)",
+      "country": "West Bank and Gaza",
+      "source": "worldbank"
+    },
+    {
+      "year": 2017,
+      "value": 77.343,
+      "indicator": "SP.DYN.LE00.FE.IN",
+      "indicator_name": "Life expectancy at birth, female (years)",
+      "country": "West Bank and Gaza",
+      "source": "worldbank"
+    },
+    {
+      "year": 2018,
+      "value": 77.609,
+      "indicator": "SP.DYN.LE00.FE.IN",
+      "indicator_name": "Life expectancy at birth, female (years)",
+      "country": "West Bank and Gaza",
+      "source": "worldbank"
+    },
+    {
+      "year": 2019,
+      "value": 78.092,
+      "indicator": "SP.DYN.LE00.FE.IN",
+      "indicator_name": "Life expectancy at birth, female (years)",
+      "country": "West Bank and Gaza",
+      "source": "worldbank"
+    },
+    {
+      "year": 2020,
+      "value": 77.603,
+      "indicator": "SP.DYN.LE00.FE.IN",
+      "indicator_name": "Life expectancy at birth, female (years)",
+      "country": "West Bank and Gaza",
+      "source": "worldbank"
+    },
+    {
+      "year": 2021,
+      "value": 76.44,
+      "indicator": "SP.DYN.LE00.FE.IN",
+      "indicator_name": "Life expectancy at birth, female (years)",
+      "country": "West Bank and Gaza",
+      "source": "worldbank"
+    },
+    {
+      "year": 2022,
+      "value": 79.144,
+      "indicator": "SP.DYN.LE00.FE.IN",
+      "indicator_name": "Life expectancy at birth, female (years)",
+      "country": "West Bank and Gaza",
+      "source": "worldbank"
+    },
+    {
+      "year": 2023,
+      "value": 71.502,
+      "indicator": "SP.DYN.LE00.FE.IN",
+      "indicator_name": "Life expectancy at birth, female (years)",
+      "country": "West Bank and Gaza",
+      "source": "worldbank"
+    }
+  ],
+  "metadata": {
+    "source": "World Bank Open Data",
+    "last_updated": "2025-10-29T21:02:46.194Z",
+    "total_points": 14
+  },
+  "validation": {
+    "qualityScore": 1,
+    "completeness": 1,
+    "consistency": 1,
+    "accuracy": 1,
+    "meetsThreshold": true,
+    "errorCount": 0,
+    "warningCount": 0
+  }
+}

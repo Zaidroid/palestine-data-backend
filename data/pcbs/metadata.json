@@ -1,0 +1,333 @@
+{
+  "source": "pcbs",
+  "source_name": "Palestinian Central Bureau of Statistics",
+  "country": "Palestine",
+  "country_code": "PSE",
+  "last_updated": "2025-10-30T09:43:52.504Z",
+  "indicators": 67,
+  "total_data_points": 845,
+  "api_indicators": 67,
+  "manual_indicators": 0,
+  "categories": {
+    "population": {
+      "count": 14,
+      "indicators": [
+        {
+          "code": "SP.POP.TOTL",
+          "name": "Population, total"
+        },
+        {
+          "code": "SP.POP.GROW",
+          "name": "Population growth (annual %)"
+        },
+        {
+          "code": "SP.POP.0014.TO.ZS",
+          "name": "Population ages 0-14 (% of total)"
+        },
+        {
+          "code": "SP.POP.1564.TO.ZS",
+          "name": "Population ages 15-64 (% of total)"
+        },
+        {
+          "code": "SP.POP.65UP.TO.ZS",
+          "name": "Population ages 65 and above (% of total)"
+        },
+        {
+          "code": "SP.DYN.TFRT.IN",
+          "name": "Fertility rate, total (births per woman)"
+        },
+        {
+          "code": "SP.DYN.LE00.IN",
+          "name": "Life expectancy at birth, total (years)"
+        },
+        {
+          "code": "SP.DYN.LE00.FE.IN",
+          "name": "Life expectancy at birth, female (years)"
+        },
+        {
+          "code": "SP.DYN.LE00.MA.IN",
+          "name": "Life expectancy at birth, male (years)"
+        },
+        {
+          "code": "SP.DYN.CBRT.IN",
+          "name": "Birth rate, crude (per 1,000 people)"
+        },
+        {
+          "code": "SP.DYN.CDRT.IN",
+          "name": "Death rate, crude (per 1,000 people)"
+        },
+        {
+          "code": "SP.POP.DPND",
+          "name": "Age dependency ratio (% of working-age population)"
+        },
+        {
+          "code": "SP.POP.DPND.OL",
+          "name": "Age dependency ratio, old (% of working-age population)"
+        },
+        {
+          "code": "SP.POP.DPND.YG",
+          "name": "Age dependency ratio, young (% of working-age population)"
+        }
+      ]
+    },
+    "other": {
+      "count": 2,
+      "indicators": [
+        {
+          "code": "SP.URB.TOTL.IN.ZS",
+          "name": "Urban population (% of total)"
+        },
+        {
+          "code": "SP.URB.GROW",
+          "name": "Urban population growth (annual %)"
+        }
+      ]
+    },
+    "labor": {
+      "count": 13,
+      "indicators": [
+        {
+          "code": "SL.UEM.TOTL.ZS",
+          "name": "Unemployment, total (% of total labor force)"
+        },
+        {
+          "code": "SL.UEM.TOTL.FE.ZS",
+          "name": "Unemployment, female (% of female labor force)"
+        },
+        {
+          "code": "SL.UEM.TOTL.MA.ZS",
+          "name": "Unemployment, male (% of male labor force)"
+        },
+        {
+          "code": "SL.TLF.CACT.ZS",
+          "name": "Labor force participation rate, total (% of total population ages 15+)"
+        },
+        {
+          "code": "SL.TLF.CACT.FE.ZS",
+          "name": "Labor force participation rate, female (% of female population ages 15+)"
+        },
+        {
+          "code": "SL.TLF.CACT.MA.ZS",
+          "name": "Labor force participation rate, male (% of male population ages 15+)"
+        },
+        {
+          "code": "SL.UEM.1524.ZS",
+          "name": "Unemployment, youth total (% of total labor force ages 15-24)"
+        },
+        {
+          "code": "SL.UEM.ADVN.ZS",
+          "name": "Unemployment with advanced education (% of total labor force)"
+        },
+        {
+          "code": "SL.EMP.VULN.ZS",
+          "name": "Vulnerable employment, total (% of total employment)"
+        },
+        {
+          "code": "SL.TLF.TOTL.IN",
+          "name": "Labor force, total"
+        },
+        {
+          "code": "SL.EMP.TOTL.SP.ZS",
+          "name": "Employment to population ratio, 15+, total (%)"
+        },
+        {
+          "code": "SL.EMP.TOTL.SP.FE.ZS",
+          "name": "Employment to population ratio, 15+, female (%)"
+        },
+        {
+          "code": "SL.EMP.TOTL.SP.MA.ZS",
+          "name": "Employment to population ratio, 15+, male (%)"
+        }
+      ]
+    },
+    "economic": {
+      "count": 11,
+      "indicators": [
+        {
+          "code": "NY.GDP.MKTP.CD",
+          "name": "GDP (current US$)"
+        },
+        {
+          "code": "NY.GDP.MKTP.KD.ZG",
+          "name": "GDP growth (annual %)"
+        },
+        {
+          "code": "NY.GDP.PCAP.CD",
+          "name": "GDP per capita (current US$)"
+        },
+        {
+          "code": "NY.GDP.PCAP.KD.ZG",
+          "name": "GDP per capita growth (annual %)"
+        },
+        {
+          "code": "NV.AGR.TOTL.ZS",
+          "name": "Agriculture, forestry, and fishing, value added (% of GDP)"
+        },
+        {
+          "code": "NV.IND.TOTL.ZS",
+          "name": "Industry (including construction), value added (% of GDP)"
+        },
+        {
+          "code": "NV.SRV.TOTL.ZS",
+          "name": "Services, value added (% of GDP)"
+        },
+        {
+          "code": "FP.CPI.TOTL.ZG",
+          "name": "Inflation, consumer prices (annual %)"
+        },
+        {
+          "code": "NY.GNP.PCAP.CD",
+          "name": "GNI per capita, Atlas method (current US$)"
+        },
+        {
+          "code": "NE.EXP.GNFS.ZS",
+          "name": "Exports of goods and services (% of GDP)"
+        },
+        {
+          "code": "NE.IMP.GNFS.ZS",
+          "name": "Imports of goods and services (% of GDP)"
+        }
+      ]
+    },
+    "poverty": {
+      "count": 4,
+      "indicators": [
+        {
+          "code": "SI.POV.GINI",
+          "name": "Gini index"
+        },
+        {
+          "code": "SI.POV.NAHC",
+          "name": "Poverty headcount ratio at national poverty lines (% of population)"
+        },
+        {
+          "code": "SI.DST.FRST.20",
+          "name": "Income share held by lowest 20%"
+        },
+        {
+          "code": "SI.DST.05TH.20",
+          "name": "Income share held by highest 20%"
+        }
+      ]
+    },
+    "education": {
+      "count": 11,
+      "indicators": [
+        {
+          "code": "SE.PRM.ENRR",
+          "name": "School enrollment, primary (% gross)"
+        },
+        {
+          "code": "SE.SEC.ENRR",
+          "name": "School enrollment, secondary (% gross)"
+        },
+        {
+          "code": "SE.TER.ENRR",
+          "name": "School enrollment, tertiary (% gross)"
+        },
+        {
+          "code": "SE.PRM.ENRR.FE",
+          "name": "School enrollment, primary, female (% gross)"
+        },
+        {
+          "code": "SE.SEC.ENRR.FE",
+          "name": "School enrollment, secondary, female (% gross)"
+        },
+        {
+          "code": "SE.TER.ENRR.FE",
+          "name": "School enrollment, tertiary, female (% gross)"
+        },
+        {
+          "code": "SE.PRM.CMPT.ZS",
+          "name": "Primary completion rate, total (% of relevant age group)"
+        },
+        {
+          "code": "SE.ADT.LITR.ZS",
+          "name": "Literacy rate, adult total (% of people ages 15 and above)"
+        },
+        {
+          "code": "SE.XPD.TOTL.GD.ZS",
+          "name": "Government expenditure on education, total (% of GDP)"
+        },
+        {
+          "code": "SE.PRM.ENRL.TC.ZS",
+          "name": "Pupil-teacher ratio, primary"
+        },
+        {
+          "code": "SE.SEC.ENRL.TC.ZS",
+          "name": "Pupil-teacher ratio, secondary"
+        }
+      ]
+    },
+    "health": {
+      "count": 11,
+      "indicators": [
+        {
+          "code": "SH.DYN.MORT",
+          "name": "Mortality rate, under-5 (per 1,000 live births)"
+        },
+        {
+          "code": "SH.DYN.NMRT",
+          "name": "Mortality rate, neonatal (per 1,000 live births)"
+        },
+        {
+          "code": "SH.STA.MMRT",
+          "name": "Maternal mortality ratio (per 100,000 live births)"
+        },
+        {
+          "code": "SH.MED.PHYS.ZS",
+          "name": "Physicians (per 1,000 people)"
+        },
+        {
+          "code": "SH.MED.BEDS.ZS",
+          "name": "Hospital beds (per 1,000 people)"
+        },
+        {
+          "code": "SH.MED.NUMW.P3",
+          "name": "Nurses and midwives (per 1,000 people)"
+        },
+        {
+          "code": "SH.XPD.CHEX.GD.ZS",
+          "name": "Current health expenditure (% of GDP)"
+        },
+        {
+          "code": "SH.IMM.IDPT",
+          "name": "Immunization, DPT (% of children ages 12-23 months)"
+        },
+        {
+          "code": "SH.IMM.MEAS",
+          "name": "Immunization, measles (% of children ages 12-23 months)"
+        },
+        {
+          "code": "SH.H2O.BASW.ZS",
+          "name": "People using at least basic drinking water services (% of population)"
+        },
+        {
+          "code": "SH.STA.BASS.ZS",
+          "name": "People using at least basic sanitation services (% of population)"
+        }
+      ]
+    },
+    "housing": {
+      "count": 1,
+      "indicators": [
+        {
+          "code": "EG.ELC.ACCS.ZS",
+          "name": "Access to electricity (% of population)"
+        }
+      ]
+    }
+  },
+  "data_sources": [
+    {
+      "name": "World Bank Open Data API",
+      "description": "PCBS indicators republished by World Bank",
+      "url": "https://api.worldbank.org/v2"
+    },
+    {
+      "name": "PCBS Official Reports",
+      "description": "Manual data entry from official PCBS publications",
+      "url": "https://www.pcbs.gov.ps"
+    }
+  ]
+}

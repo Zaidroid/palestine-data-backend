@@ -1,0 +1,130 @@
+{
+  "indicator": "SL.UEM.TOTL.ZS",
+  "indicator_name": "Unemployment, total (% of total labor force)",
+  "category": "labor",
+  "data": [
+    {
+      "year": 2010,
+      "value": 21.416,
+      "indicator": "SL.UEM.TOTL.ZS",
+      "indicator_name": "Unemployment, total (% of total labor force)",
+      "country": "West Bank and Gaza",
+      "source": "pcbs",
+      "source_detail": "PCBS via World Bank API"
+    },
+    {
+      "year": 2011,
+      "value": 17.597,
+      "indicator": "SL.UEM.TOTL.ZS",
+      "indicator_name": "Unemployment, total (% of total labor force)",
+      "country": "West Bank and Gaza",
+      "source": "pcbs",
+      "source_detail": "PCBS via World Bank API"
+    },
+    {
+      "year": 2012,
+      "value": 19.202,
+      "indicator": "SL.UEM.TOTL.ZS",
+      "indicator_name": "Unemployment, total (% of total labor force)",
+      "country": "West Bank and Gaza",
+      "source": "pcbs",
+      "source_detail": "PCBS via World Bank API"
+    },
+    {
+      "year": 2013,
+      "value": 19.894,
+      "indicator": "SL.UEM.TOTL.ZS",
+      "indicator_name": "Unemployment, total (% of total labor force)",
+      "country": "West Bank and Gaza",
+      "source": "pcbs",
+      "source_detail": "PCBS via World Bank API"
+    },
+    {
+      "year": 2014,
+      "value": 20.526,
+      "indicator": "SL.UEM.TOTL.ZS",
+      "indicator_name": "Unemployment, total (% of total labor force)",
+      "country": "West Bank and Gaza",
+      "source": "pcbs",
+      "source_detail": "PCBS via World Bank API"
+    },
+    {
+      "year": 2015,
+      "value": 23.005,
+      "indicator": "SL.UEM.TOTL.ZS",
+      "indicator_name": "Unemployment, total (% of total labor force)",
+      "country": "West Bank and Gaza",
+      "source": "pcbs",
+      "source_detail": "PCBS via World Bank API"
+    },
+    {
+      "year": 2016,
+      "value": 23.939,
+      "indicator": "SL.UEM.TOTL.ZS",
+      "indicator_name": "Unemployment, total (% of total labor force)",
+      "country": "West Bank and Gaza",
+      "source": "pcbs",
+      "source_detail": "PCBS via World Bank API"
+    },
+    {
+      "year": 2017,
+      "value": 25.677,
+      "indicator": "SL.UEM.TOTL.ZS",
+      "indicator_name": "Unemployment, total (% of total labor force)",
+      "country": "West Bank and Gaza",
+      "source": "pcbs",
+      "source_detail": "PCBS via World Bank API"
+    },
+    {
+      "year": 2018,
+      "value": 26.256,
+      "indicator": "SL.UEM.TOTL.ZS",
+      "indicator_name": "Unemployment, total (% of total labor force)",
+      "country": "West Bank and Gaza",
+      "source": "pcbs",
+      "source_detail": "PCBS via World Bank API"
+    },
+    {
+      "year": 2019,
+      "value": 25.34,
+      "indicator": "SL.UEM.TOTL.ZS",
+      "indicator_name": "Unemployment, total (% of total labor force)",
+      "country": "West Bank and Gaza",
+      "source": "pcbs",
+      "source_detail": "PCBS via World Bank API"
+    },
+    {
+      "year": 2020,
+      "value": 25.895,
+      "indicator": "SL.UEM.TOTL.ZS",
+      "indicator_name": "Unemployment, total (% of total labor force)",
+      "country": "West Bank and Gaza",
+      "source": "pcbs",
+      "source_detail": "PCBS via World Bank API"
+    },
+    {
+      "year": 2021,
+      "value": 26.39,
+      "indicator": "SL.UEM.TOTL.ZS",
+      "indicator_name": "Unemployment, total (% of total labor force)",
+      "country": "West Bank and Gaza",
+      "source": "pcbs",
+      "source_detail": "PCBS via World Bank API"
+    },
+    {
+      "year": 2022,
+      "value": 24.42,
+      "indicator": "SL.UEM.TOTL.ZS",
+      "indicator_name": "Unemployment, total (% of total labor force)",
+      "country": "West Bank and Gaza",
+      "source": "pcbs",
+      "source_detail": "PCBS via World Bank API"
+    }
+  ],
+  "metadata": {
+    "source": "Palestinian Central Bureau of Statistics (PCBS)",
+    "source_detail": "Data accessed via World Bank Open Data API",
+    "last_updated": "2025-10-30T09:42:56.449Z",
+    "total_points": 13
+  }
+}

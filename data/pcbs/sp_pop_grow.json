@@ -1,0 +1,148 @@
+{
+  "indicator": "SP.POP.GROW",
+  "indicator_name": "Population growth (annual %)",
+  "category": "population",
+  "data": [
+    {
+      "year": 2010,
+      "value": 2.59703221798976,
+      "indicator": "SP.POP.GROW",
+      "indicator_name": "Population growth (annual %)",
+      "country": "West Bank and Gaza",
+      "source": "pcbs",
+      "source_detail": "PCBS via World Bank API"
+    },
+    {
+      "year": 2011,
+      "value": 2.52518683079236,
+      "indicator": "SP.POP.GROW",
+      "indicator_name": "Population growth (annual %)",
+      "country": "West Bank and Gaza",
+      "source": "pcbs",
+      "source_detail": "PCBS via World Bank API"
+    },
+    {
+      "year": 2012,
+      "value": 2.46768715003228,
+      "indicator": "SP.POP.GROW",
+      "indicator_name": "Population growth (annual %)",
+      "country": "West Bank and Gaza",
+      "source": "pcbs",
+      "source_detail": "PCBS via World Bank API"
+    },
+    {
+      "year": 2013,
+      "value": 2.40084831983677,
+      "indicator": "SP.POP.GROW",
+      "indicator_name": "Population growth (annual %)",
+      "country": "West Bank and Gaza",
+      "source": "pcbs",
+      "source_detail": "PCBS via World Bank API"
+    },
+    {
+      "year": 2014,
+      "value": 2.3440772109436,
+      "indicator": "SP.POP.GROW",
+      "indicator_name": "Population growth (annual %)",
+      "country": "West Bank and Gaza",
+      "source": "pcbs",
+      "source_detail": "PCBS via World Bank API"
+    },
+    {
+      "year": 2015,
+      "value": 2.29048005844149,
+      "indicator": "SP.POP.GROW",
+      "indicator_name": "Population growth (annual %)",
+      "country": "West Bank and Gaza",
+      "source": "pcbs",
+      "source_detail": "PCBS via World Bank API"
+    },
+    {
+      "year": 2016,
+      "value": 2.24610527580178,
+      "indicator": "SP.POP.GROW",
+      "indicator_name": "Population growth (annual %)",
+      "country": "West Bank and Gaza",
+      "source": "pcbs",
+      "source_detail": "PCBS via World Bank API"
+    },
+    {
+      "year": 2017,
+      "value": 1.98868634871278,
+      "indicator": "SP.POP.GROW",
+      "indicator_name": "Population growth (annual %)",
+      "country": "West Bank and Gaza",
+      "source": "pcbs",
+      "source_detail": "PCBS via World Bank API"
+    },
+    {
+      "year": 2018,
+      "value": 2.5330114844554,
+      "indicator": "SP.POP.GROW",
+      "indicator_name": "Population growth (annual %)",
+      "country": "West Bank and Gaza",
+      "source": "pcbs",
+      "source_detail": "PCBS via World Bank API"
+    },
+    {
+      "year": 2019,
+      "value": 2.51178246264674,
+      "indicator": "SP.POP.GROW",
+      "indicator_name": "Population growth (annual %)",
+      "country": "West Bank and Gaza",
+      "source": "pcbs",
+      "source_detail": "PCBS via World Bank API"
+    },
+    {
+      "year": 2020,
+      "value": 2.48654993848325,
+      "indicator": "SP.POP.GROW",
+      "indicator_name": "Population growth (annual %)",
+      "country": "West Bank and Gaza",
+      "source": "pcbs",
+      "source_detail": "PCBS via World Bank API"
+    },
+    {
+      "year": 2021,
+      "value": 2.45703865277568,
+      "indicator": "SP.POP.GROW",
+      "indicator_name": "Population growth (annual %)",
+      "country": "West Bank and Gaza",
+      "source": "pcbs",
+      "source_detail": "PCBS via World Bank API"
+    },
+    {
+      "year": 2022,
+      "value": 2.42553777623863,
+      "indicator": "SP.POP.GROW",
+      "indicator_name": "Population growth (annual %)",
+      "country": "West Bank and Gaza",
+      "source": "pcbs",
+      "source_detail": "PCBS via World Bank API"
+    },
+    {
+      "year": 2023,
+      "value": 2.39326476511584,
+      "indicator": "SP.POP.GROW",
+      "indicator_name": "Population growth (annual %)",
+      "country": "West Bank and Gaza",
+      "source": "pcbs",
+      "source_detail": "PCBS via World Bank API"
+    },
+    {
+      "year": 2024,
+      "value": 2.36027908447521,
+      "indicator": "SP.POP.GROW",
+      "indicator_name": "Population growth (annual %)",
+      "country": "West Bank and Gaza",
+      "source": "pcbs",
+      "source_detail": "PCBS via World Bank API"
+    }
+  ],
+  "metadata": {
+    "source": "Palestinian Central Bureau of Statistics (PCBS)",
+    "source_detail": "Data accessed via World Bank Open Data API",
+    "last_updated": "2025-10-30T09:42:33.720Z",
+    "total_points": 15
+  }
+}

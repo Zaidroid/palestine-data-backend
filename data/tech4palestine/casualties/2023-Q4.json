@@ -1,0 +1,785 @@
+{
+  "metadata": {
+    "source": "tech4palestine",
+    "dataset": "casualties",
+    "quarter": "2023-Q4",
+    "record_count": 86,
+    "last_updated": "2025-10-29T21:02:48.956Z"
+  },
+  "data": [
+    {
+      "report_date": "2023-10-07",
+      "date": "2023-10-07",
+      "ext_killed_cum": 232,
+      "killed": 232,
+      "ext_injured_cum": 1610,
+      "injured": 1610,
+      "source": "tech4palestine"
+    },
+    {
+      "report_date": "2023-10-08",
+      "date": "2023-10-08",
+      "ext_killed_cum": 370,
+      "killed": 370,
+      "ext_injured_cum": 1788,
+      "injured": 1788,
+      "source": "tech4palestine"
+    },
+    {
+      "report_date": "2023-10-09",
+      "date": "2023-10-09",
+      "ext_killed_cum": 560,
+      "killed": 560,
+      "ext_injured_cum": 2271,
+      "injured": 2271,
+      "source": "tech4palestine"
+    },
+    {
+      "report_date": "2023-10-10",
+      "date": "2023-10-10",
+      "ext_killed_cum": 900,
+      "killed": 900,
+      "ext_injured_cum": 4000,
+      "injured": 4000,
+      "source": "tech4palestine"
+    },
+    {
+      "report_date": "2023-10-11",
+      "date": "2023-10-11",
+      "ext_killed_cum": 1100,
+      "killed": 1100,
+      "ext_injured_cum": 5184,
+      "injured": 5184,
+      "source": "tech4palestine"
+    },
+    {
+      "report_date": "2023-10-12",
+      "date": "2023-10-12",
+      "ext_killed_cum": 1417,
+      "killed": 1417,
+      "ext_injured_cum": 5763,
+      "injured": 5763,
+      "source": "tech4palestine"
+    },
+    {
+      "report_date": "2023-10-13",
+      "date": "2023-10-13",
+      "ext_killed_cum": 1900,
+      "killed": 1900,
+      "ext_injured_cum": 7238,
+      "injured": 7238,
+      "source": "tech4palestine"
+    },
+    {
+      "report_date": "2023-10-14",
+      "date": "2023-10-14",
+      "ext_killed_cum": 2228,
+      "killed": 2228,
+      "ext_injured_cum": 8714,
+      "injured": 8714,
+      "source": "tech4palestine"
+    },
+    {
+      "report_date": "2023-10-15",
+      "date": "2023-10-15",
+      "ext_killed_cum": 2670,
+      "killed": 2670,
+      "ext_injured_cum": 9200,
+      "injured": 9200,
+      "source": "tech4palestine"
+    },
+    {
+      "report_date": "2023-10-16",
+      "date": "2023-10-16",
+      "ext_killed_cum": 2808,
+      "killed": 2808,
+      "ext_injured_cum": 10850,
+      "injured": 10850,
+      "source": "tech4palestine"
+    },
+    {
+      "report_date": "2023-10-17",
+      "date": "2023-10-17",
+      "ext_killed_cum": 3000,
+      "killed": 3000,
+      "ext_injured_cum": 11457,
+      "injured": 11457,
+      "source": "tech4palestine"
+    },
+    {
+      "report_date": "2023-10-18",
+      "date": "2023-10-18",
+      "ext_killed_cum": 3478,
+      "killed": 3478,
+      "ext_injured_cum": 12065,
+      "injured": 12065,
+      "source": "tech4palestine"
+    },
+    {
+      "report_date": "2023-10-19",
+      "date": "2023-10-19",
+      "ext_killed_cum": 3785,
+      "killed": 3785,
+      "ext_injured_cum": 12493,
+      "injured": 12493,
+      "source": "tech4palestine"
+    },
+    {
+      "report_date": "2023-10-20",
+      "date": "2023-10-20",
+      "ext_killed_cum": 4137,
+      "killed": 4137,
+      "ext_injured_cum": 13162,
+      "injured": 13162,
+      "source": "tech4palestine"
+    },
+    {
+      "report_date": "2023-10-21",
+      "date": "2023-10-21",
+      "ext_killed_cum": 4385,
+      "killed": 4385,
+      "ext_injured_cum": 13561,
+      "injured": 13561,
+      "source": "tech4palestine"
+    },
+    {
+      "report_date": "2023-10-22",
+      "date": "2023-10-22",
+      "ext_killed_cum": 4651,
+      "killed": 4651,
+      "ext_injured_cum": 14245,
+      "injured": 14245,
+      "source": "tech4palestine"
+    },
+    {
+      "report_date": "2023-10-23",
+      "date": "2023-10-23",
+      "ext_killed_cum": 5087,
+      "killed": 5087,
+      "ext_injured_cum": 15273,
+      "injured": 15273,
+      "source": "tech4palestine"
+    },
+    {
+      "report_date": "2023-10-24",
+      "date": "2023-10-24",
+      "ext_killed_cum": 5791,
+      "killed": 5791,
+      "ext_injured_cum": 16297,
+      "injured": 16297,
+      "source": "tech4palestine"
+    },
+    {
+      "report_date": "2023-10-25",
+      "date": "2023-10-25",
+      "ext_killed_cum": 6547,
+      "killed": 6547,
+      "ext_injured_cum": 17439,
+      "injured": 17439,
+      "source": "tech4palestine"
+    },
+    {
+      "report_date": "2023-10-26",
+      "date": "2023-10-26",
+      "ext_killed_cum": 7028,
+      "killed": 7028,
+      "ext_injured_cum": 18482,
+      "injured": 18482,
+      "source": "tech4palestine"
+    },
+    {
+      "report_date": "2023-10-27",
+      "date": "2023-10-27",
+      "ext_killed_cum": 7326,
+      "killed": 7326,
+      "ext_injured_cum": 18967,
+      "injured": 18967,
+      "source": "tech4palestine"
+    },
+    {
+      "report_date": "2023-10-28",
+      "date": "2023-10-28",
+      "ext_killed_cum": 7703,
+      "killed": 7703,
+      "ext_injured_cum": 19604,
+      "injured": 19604,
+      "source": "tech4palestine"
+    },
+    {
+      "report_date": "2023-10-29",
+      "date": "2023-10-29",
+      "ext_killed_cum": 8005,
+      "killed": 8005,
+      "ext_injured_cum": 20242,
+      "injured": 20242,
+      "source": "tech4palestine"
+    },
+    {
+      "report_date": "2023-10-30",
+      "date": "2023-10-30",
+      "ext_killed_cum": 8309,
+      "killed": 8309,
+      "ext_injured_cum": 21048,
+      "injured": 21048,
+      "source": "tech4palestine"
+    },
+    {
+      "report_date": "2023-10-31",
+      "date": "2023-10-31",
+      "ext_killed_cum": 8525,
+      "killed": 8525,
+      "ext_injured_cum": 21543,
+      "injured": 21543,
+      "source": "tech4palestine"
+    },
+    {
+      "report_date": "2023-11-01",
+      "date": "2023-11-01",
+      "ext_killed_cum": 8805,
+      "killed": 8805,
+      "ext_injured_cum": 22240,
+      "injured": 22240,
+      "source": "tech4palestine"
+    },
+    {
+      "report_date": "2023-11-02",
+      "date": "2023-11-02",
+      "ext_killed_cum": 9061,
+      "killed": 9061,
+      "ext_injured_cum": 22911,
+      "injured": 22911,
+      "source": "tech4palestine"
+    },
+    {
+      "report_date": "2023-11-03",
+      "date": "2023-11-03",
+      "ext_killed_cum": 9257,
+      "killed": 9257,
+      "ext_injured_cum": 23516,
+      "injured": 23516,
+      "source": "tech4palestine"
+    },
+    {
+      "report_date": "2023-11-04",
+      "date": "2023-11-04",
+      "ext_killed_cum": 9485,
+      "killed": 9485,
+      "ext_injured_cum": 24158,
+      "injured": 24158,
+      "source": "tech4palestine"
+    },
+    {
+      "report_date": "2023-11-05",
+      "date": "2023-11-05",
+      "ext_killed_cum": 9770,
+      "killed": 9770,
+      "ext_injured_cum": 24808,
+      "injured": 24808,
+      "source": "tech4palestine"
+    },
+    {
+      "report_date": "2023-11-06",
+      "date": "2023-11-06",
+      "ext_killed_cum": 10022,
+      "killed": 10022,
+      "ext_injured_cum": 25000,
+      "injured": 25000,
+      "source": "tech4palestine"
+    },
+    {
+      "report_date": "2023-11-07",
+      "date": "2023-11-07",
+      "ext_killed_cum": 10328,
+      "killed": 10328,
+      "ext_injured_cum": 25956,
+      "injured": 25956,
+      "source": "tech4palestine"
+    },
+    {
+      "report_date": "2023-11-08",
+      "date": "2023-11-08",
+      "ext_killed_cum": 10569,
+      "killed": 10569,
+      "ext_injured_cum": 26475,
+      "injured": 26475,
+      "source": "tech4palestine"
+    },
+    {
+      "report_date": "2023-11-09",
+      "date": "2023-11-09",
+      "ext_killed_cum": 10818,
+      "killed": 10818,
+      "ext_injured_cum": 26905,
+      "injured": 26905,
+      "source": "tech4palestine"
+    },
+    {
+      "report_date": "2023-11-10",
+      "date": "2023-11-10",
+      "ext_killed_cum": 11078,
+      "killed": 11078,
+      "ext_injured_cum": 27490,
+      "injured": 27490,
+      "source": "tech4palestine"
+    },
+    {
+      "report_date": "2023-11-11",
+      "date": "2023-11-11",
+      "ext_killed_cum": 11129,
+      "killed": 11129,
+      "ext_injured_cum": 27845,
+      "injured": 27845,
+      "source": "tech4palestine"
+    },
+    {
+      "report_date": "2023-11-12",
+      "date": "2023-11-12",
+      "ext_killed_cum": 11180,
+      "killed": 11180,
+      "ext_injured_cum": 28200,
+      "injured": 28200,
+      "source": "tech4palestine"
+    },
+    {
+      "report_date": "2023-11-13",
+      "date": "2023-11-13",
+      "ext_killed_cum": 11240,
+      "killed": 11240,
+      "ext_injured_cum": 29000,
+      "injured": 29000,
+      "source": "tech4palestine"
+    },
+    {
+      "report_date": "2023-11-14",
+      "date": "2023-11-14",
+      "ext_killed_cum": 11320,
+      "killed": 11320,
+      "ext_injured_cum": 29200,
+      "injured": 29200,
+      "source": "tech4palestine"
+    },
+    {
+      "report_date": "2023-11-15",
+      "date": "2023-11-15",
+      "ext_killed_cum": 11500,
+      "killed": 11500,
+      "ext_injured_cum": 29800,
+      "injured": 29800,
+      "source": "tech4palestine"
+    },
+    {
+      "report_date": "2023-11-16",
+      "date": "2023-11-16",
+      "ext_killed_cum": 12000,
+      "killed": 12000,
+      "ext_injured_cum": 29900,
+      "injured": 29900,
+      "source": "tech4palestine"
+    },
+    {
+      "report_date": "2023-11-17",
+      "date": "2023-11-17",
+      "ext_killed_cum": 12000,
+      "killed": 12000,
+      "ext_injured_cum": 30000,
+      "injured": 30000,
+      "source": "tech4palestine"
+    },
+    {
+      "report_date": "2023-11-18",
+      "date": "2023-11-18",
+      "ext_killed_cum": 12300,
+      "killed": 12300,
+      "ext_injured_cum": 30000,
+      "injured": 30000,
+      "source": "tech4palestine"
+    },
+    {
+      "report_date": "2023-11-19",
+      "date": "2023-11-19",
+      "ext_killed_cum": 13000,
+      "killed": 13000,
+      "ext_injured_cum": 30000,
+      "injured": 30000,
+      "source": "tech4palestine"
+    },
+    {
+      "report_date": "2023-11-20",
+      "date": "2023-11-20",
+      "ext_killed_cum": 13300,
+      "killed": 13300,
+      "ext_injured_cum": 31000,
+      "injured": 31000,
+      "source": "tech4palestine"
+    },
+    {
+      "report_date": "2023-11-21",
+      "date": "2023-11-21",
+      "ext_killed_cum": 14128,
+      "killed": 14128,
+      "ext_injured_cum": 33000,
+      "injured": 33000,
+      "source": "tech4palestine"
+    },
+    {
+      "report_date": "2023-11-22",
+      "date": "2023-11-22",
+      "ext_killed_cum": 14532,
+      "killed": 14532,
+      "ext_injured_cum": 35000,
+      "injured": 35000,
+      "source": "tech4palestine"
+    },
+    {
+      "report_date": "2023-11-23",
+      "date": "2023-11-23",
+      "ext_killed_cum": 14800,
+      "killed": 14800,
+      "ext_injured_cum": 36000,
+      "injured": 36000,
+      "source": "tech4palestine"
+    },
+    {
+      "report_date": "2023-11-24",
+      "date": "2023-11-24",
+      "ext_killed_cum": 14800,
+      "killed": 14800,
+      "ext_injured_cum": 36000,
+      "injured": 36000,
+      "source": "tech4palestine"
+    },
+    {
+      "report_date": "2023-11-25",
+      "date": "2023-11-25",
+      "ext_killed_cum": 14800,
+      "killed": 14800,
+      "ext_injured_cum": 36000,
+      "injured": 36000,
+      "source": "tech4palestine"
+    },
+    {
+      "report_date": "2023-11-26",
+      "date": "2023-11-26",
+      "ext_killed_cum": 14800,
+      "killed": 14800,
+      "ext_injured_cum": 36000,
+      "injured": 36000,
+      "source": "tech4palestine"
+    },
+    {
+      "report_date": "2023-11-27",
+      "date": "2023-11-27",
+      "ext_killed_cum": 14800,
+      "killed": 14800,
+      "ext_injured_cum": 36000,
+      "injured": 36000,
+      "source": "tech4palestine"
+    },
+    {
+      "report_date": "2023-11-28",
+      "date": "2023-11-28",
+      "ext_killed_cum": 14800,
+      "killed": 14800,
+      "ext_injured_cum": 36000,
+      "injured": 36000,
+      "source": "tech4palestine"
+    },
+    {
+      "report_date": "2023-11-29",
+      "date": "2023-11-29",
+      "ext_killed_cum": 14800,
+      "killed": 14800,
+      "ext_injured_cum": 36000,
+      "injured": 36000,
+      "source": "tech4palestine"
+    },
+    {
+      "report_date": "2023-11-30",
+      "date": "2023-11-30",
+      "ext_killed_cum": 14800,
+      "killed": 14800,
+      "ext_injured_cum": 36000,
+      "injured": 36000,
+      "source": "tech4palestine"
+    },
+    {
+      "report_date": "2023-12-01",
+      "date": "2023-12-01",
+      "ext_killed_cum": 14800,
+      "killed": 14800,
+      "ext_injured_cum": 37000,
+      "injured": 37000,
+      "source": "tech4palestine"
+    },
+    {
+      "report_date": "2023-12-02",
+      "date": "2023-12-02",
+      "ext_killed_cum": 15207,
+      "killed": 15207,
+      "ext_injured_cum": 40652,
+      "injured": 40652,
+      "source": "tech4palestine"
+    },
+    {
+      "report_date": "2023-12-03",
+      "date": "2023-12-03",
+      "ext_killed_cum": 15523,
+      "killed": 15523,
+      "ext_injured_cum": 41316,
+      "injured": 41316,
+      "source": "tech4palestine"
+    },
+    {
+      "report_date": "2023-12-04",
+      "date": "2023-12-04",
+      "ext_killed_cum": 15899,
+      "killed": 15899,
+      "ext_injured_cum": 42000,
+      "injured": 42000,
+      "source": "tech4palestine"
+    },
+    {
+      "report_date": "2023-12-05",
+      "date": "2023-12-05",
+      "ext_killed_cum": 16248,
+      "killed": 16248,
+      "ext_injured_cum": 43616,
+      "injured": 43616,
+      "source": "tech4palestine"
+    },
+    {
+      "report_date": "2023-12-06",
+      "date": "2023-12-06",
+      "ext_killed_cum": 16827,
+      "killed": 16827,
+      "ext_injured_cum": 44808,
+      "injured": 44808,
+      "source": "tech4palestine"
+    },
+    {
+      "report_date": "2023-12-07",
+      "date": "2023-12-07",
+      "ext_killed_cum": 17177,
+      "killed": 17177,
+      "ext_injured_cum": 46000,
+      "injured": 46000,
+      "source": "tech4palestine"
+    },
+    {
+      "report_date": "2023-12-08",
+      "date": "2023-12-08",
+      "ext_killed_cum": 17487,
+      "killed": 17487,
+      "ext_injured_cum": 46480,
+      "injured": 46480,
+      "source": "tech4palestine"
+    },
+    {
+      "report_date": "2023-12-09",
+      "date": "2023-12-09",
+      "ext_killed_cum": 17700,
+      "killed": 17700,
+      "ext_injured_cum": 48780,
+      "injured": 48780,
+      "source": "tech4palestine"
+    },
+    {
+      "report_date": "2023-12-10",
+      "date": "2023-12-10",
+      "ext_killed_cum": 17997,
+      "killed": 17997,
+      "ext_injured_cum": 49229,
+      "injured": 49229,
+      "source": "tech4palestine"
+    },
+    {
+      "report_date": "2023-12-11",
+      "date": "2023-12-11",
+      "ext_killed_cum": 18205,
+      "killed": 18205,
+      "ext_injured_cum": 49645,
+      "injured": 49645,
+      "source": "tech4palestine"
+    },
+    {
+      "report_date": "2023-12-12",
+      "date": "2023-12-12",
+      "ext_killed_cum": 18412,
+      "killed": 18412,
+      "ext_injured_cum": 50100,
+      "injured": 50100,
+      "source": "tech4palestine"
+    },
+    {
+      "report_date": "2023-12-13",
+      "date": "2023-12-13",
+      "ext_killed_cum": 18608,
+      "killed": 18608,
+      "ext_injured_cum": 50594,
+      "injured": 50594,
+      "source": "tech4palestine"
+    },
+    {
+      "report_date": "2023-12-14",
+      "date": "2023-12-14",
+      "ext_killed_cum": 18787,
+      "killed": 18787,
+      "ext_injured_cum": 50897,
+      "injured": 50897,
+      "source": "tech4palestine"
+    },
+    {
+      "report_date": "2023-12-15",
+      "date": "2023-12-15",
+      "ext_killed_cum": 18800,
+      "killed": 18800,
+      "ext_injured_cum": 51000,
+      "injured": 51000,
+      "source": "tech4palestine"
+    },
+    {
+      "report_date": "2023-12-16",
+      "date": "2023-12-16",
+      "ext_killed_cum": 19017,
+      "killed": 19017,
+      "ext_injured_cum": 51200,
+      "injured": 51200,
+      "source": "tech4palestine"
+    },
+    {
+      "report_date": "2023-12-17",
+      "date": "2023-12-17",
+      "ext_killed_cum": 19235,
+      "killed": 19235,
+      "ext_injured_cum": 51743,
+      "injured": 51743,
+      "source": "tech4palestine"
+    },
+    {
+      "report_date": "2023-12-18",
+      "date": "2023-12-18",
+      "ext_killed_cum": 19453,
+      "killed": 19453,
+      "ext_injured_cum": 52286,
+      "injured": 52286,
+      "source": "tech4palestine"
+    },
+    {
+      "report_date": "2023-12-19",
+      "date": "2023-12-19",
+      "ext_killed_cum": 19667,
+      "killed": 19667,
+      "ext_injured_cum": 52586,
+      "injured": 52586,
+      "source": "tech4palestine"
+    },
+    {
+      "report_date": "2023-12-20",
+      "date": "2023-12-20",
+      "ext_killed_cum": 19797,
+      "killed": 19797,
+      "ext_injured_cum": 52831,
+      "injured": 52831,
+      "source": "tech4palestine"
+    },
+    {
+      "report_date": "2023-12-21",
+      "date": "2023-12-21",
+      "ext_killed_cum": 19927,
+      "killed": 19927,
+      "ext_injured_cum": 53075,
+      "injured": 53075,
+      "source": "tech4palestine"
+    },
+    {
+      "report_date": "2023-12-22",
+      "date": "2023-12-22",
+      "ext_killed_cum": 20057,
+      "killed": 20057,
+      "ext_injured_cum": 53320,
+      "injured": 53320,
+      "source": "tech4palestine"
+    },
+    {
+      "report_date": "2023-12-23",
+      "date": "2023-12-23",
+      "ext_killed_cum": 20258,
+      "killed": 20258,
+      "ext_injured_cum": 53688,
+      "injured": 53688,
+      "source": "tech4palestine"
+    },
+    {
+      "report_date": "2023-12-24",
+      "date": "2023-12-24",
+      "ext_killed_cum": 20424,
+      "killed": 20424,
+      "ext_injured_cum": 54036,
+      "injured": 54036,
+      "source": "tech4palestine"
+    },
+    {
+      "report_date": "2023-12-25",
+      "date": "2023-12-25",
+      "ext_killed_cum": 20674,
+      "killed": 20674,
+      "ext_injured_cum": 54536,
+      "injured": 54536,
+      "source": "tech4palestine"
+    },
+    {
+      "report_date": "2023-12-26",
+      "date": "2023-12-26",
+      "ext_killed_cum": 20915,
+      "killed": 20915,
+      "ext_injured_cum": 54918,
+      "injured": 54918,
+      "source": "tech4palestine"
+    },
+    {
+      "report_date": "2023-12-27",
+      "date": "2023-12-27",
+      "ext_killed_cum": 21110,
+      "killed": 21110,
+      "ext_injured_cum": 55243,
+      "injured": 55243,
+      "source": "tech4palestine"
+    },
+    {
+      "report_date": "2023-12-28",
+      "date": "2023-12-28",
+      "ext_killed_cum": 21320,
+      "killed": 21320,
+      "ext_injured_cum": 55603,
+      "injured": 55603,
+      "source": "tech4palestine"
+    },
+    {
+      "report_date": "2023-12-29",
+      "date": "2023-12-29",
+      "ext_killed_cum": 21507,
+      "killed": 21507,
+      "ext_injured_cum": 55915,
+      "injured": 55915,
+      "source": "tech4palestine"
+    },
+    {
+      "report_date": "2023-12-30",
+      "date": "2023-12-30",
+      "ext_killed_cum": 21672,
+      "killed": 21672,
+      "ext_injured_cum": 56165,
+      "injured": 56165,
+      "source": "tech4palestine"
+    },
+    {
+      "report_date": "2023-12-31",
+      "date": "2023-12-31",
+      "ext_killed_cum": 21822,
+      "killed": 21822,
+      "ext_injured_cum": 56451,
+      "injured": 56451,
+      "source": "tech4palestine"
+    }
+  ]
+}

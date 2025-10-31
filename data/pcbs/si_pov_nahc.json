@@ -1,0 +1,40 @@
+{
+  "indicator": "SI.POV.NAHC",
+  "indicator_name": "Poverty headcount ratio at national poverty lines (% of population)",
+  "category": "poverty",
+  "data": [
+    {
+      "year": 2010,
+      "value": 25.7,
+      "indicator": "SI.POV.NAHC",
+      "indicator_name": "Poverty headcount ratio at national poverty lines (% of population)",
+      "country": "West Bank and Gaza",
+      "source": "pcbs",
+      "source_detail": "PCBS via World Bank API"
+    },
+    {
+      "year": 2011,
+      "value": 25.8,
+      "indicator": "SI.POV.NAHC",
+      "indicator_name": "Poverty headcount ratio at national poverty lines (% of population)",
+      "country": "West Bank and Gaza",
+      "source": "pcbs",
+      "source_detail": "PCBS via World Bank API"
+    },
+    {
+      "year": 2016,
+      "value": 29.2,
+      "indicator": "SI.POV.NAHC",
+      "indicator_name": "Poverty headcount ratio at national poverty lines (% of population)",
+      "country": "West Bank and Gaza",
+      "source": "pcbs",
+      "source_detail": "PCBS via World Bank API"
+    }
+  ],
+  "metadata": {
+    "source": "Palestinian Central Bureau of Statistics (PCBS)",
+    "source_detail": "Data accessed via World Bank Open Data API",
+    "last_updated": "2025-10-30T09:43:39.673Z",
+    "total_points": 3
+  }
+}

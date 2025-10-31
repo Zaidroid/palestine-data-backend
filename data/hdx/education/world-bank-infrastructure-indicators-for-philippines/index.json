@@ -1,0 +1,9 @@
+{
+  "dataset": "world-bank-infrastructure-indicators-for-philippines",
+  "totalPartitions": 0,
+  "totalRecords": 0,
+  "partitions": [],
+  "hasRecentFile": true,
+  "recentFileName": "recent.json",
+  "generated_at": "2025-10-29T21:10:19.168Z"
+}

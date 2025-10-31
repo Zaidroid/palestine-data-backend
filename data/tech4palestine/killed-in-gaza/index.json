@@ -1,0 +1,10 @@
+{
+  "dataset": "killed-in-gaza",
+  "date_range": {
+    "start": "2023-10-07",
+    "end": "2025-10-29",
+    "baseline_date": "2023-10-07"
+  },
+  "files": [],
+  "last_updated": "2025-10-29T21:02:48.995Z"
+}

@@ -1,0 +1,49 @@
+{
+  "source": "hdx-ckan",
+  "category": "humanitarian",
+  "transformed_at": "2025-10-29T21:11:21.807Z",
+  "record_count": 2,
+  "validation": {
+    "qualityScore": 0,
+    "completeness": 0,
+    "consistency": 0,
+    "accuracy": 0,
+    "meetsThreshold": false,
+    "errorCount": 6,
+    "warningCount": 0
+  },
+  "data": [
+    {
+      "description": "#sector+description",
+      "cluster": "#sector+cluster+code",
+      "category": "#category",
+      "population": "#population",
+      "in_need": "#inneed",
+      "targeted": "#targeted",
+      "affected": "#affected",
+      "reached": "#reached",
+      "info": "#meta+info",
+      "_category": "humanitarian",
+      "_source": "OCHA Humanitarian Programme Cycle Tools (HPC Tools)",
+      "_source_url": "https://data.humdata.org/dataset/ethiopia-humanitarian-needs",
+      "_dataset_id": "882d0746-ac2a-4471-b40d-a92dee832ee2",
+      "_dataset_name": "ethiopia-humanitarian-needs"
+    },
+    {
+      "description": "GHO Estimate",
+      "cluster": "ALL",
+      "category": null,
+      "population": 129700000,
+      "in_need": null,
+      "targeted": 10000000,
+      "affected": null,
+      "reached": null,
+      "info": null,
+      "_category": "humanitarian",
+      "_source": "OCHA Humanitarian Programme Cycle Tools (HPC Tools)",
+      "_source_url": "https://data.humdata.org/dataset/ethiopia-humanitarian-needs",
+      "_dataset_id": "882d0746-ac2a-4471-b40d-a92dee832ee2",
+      "_dataset_name": "ethiopia-humanitarian-needs"
+    }
+  ]
+}

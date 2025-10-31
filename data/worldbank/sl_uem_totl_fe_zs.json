@@ -1,0 +1,124 @@
+{
+  "indicator": "SL.UEM.TOTL.FE.ZS",
+  "indicator_name": "Unemployment, female (% of female labor force)",
+  "data": [
+    {
+      "year": 2010,
+      "value": 21.562,
+      "indicator": "SL.UEM.TOTL.FE.ZS",
+      "indicator_name": "Unemployment, female (% of female labor force)",
+      "country": "West Bank and Gaza",
+      "source": "worldbank"
+    },
+    {
+      "year": 2011,
+      "value": 22.39,
+      "indicator": "SL.UEM.TOTL.FE.ZS",
+      "indicator_name": "Unemployment, female (% of female labor force)",
+      "country": "West Bank and Gaza",
+      "source": "worldbank"
+    },
+    {
+      "year": 2012,
+      "value": 25.942,
+      "indicator": "SL.UEM.TOTL.FE.ZS",
+      "indicator_name": "Unemployment, female (% of female labor force)",
+      "country": "West Bank and Gaza",
+      "source": "worldbank"
+    },
+    {
+      "year": 2013,
+      "value": 27.325,
+      "indicator": "SL.UEM.TOTL.FE.ZS",
+      "indicator_name": "Unemployment, female (% of female labor force)",
+      "country": "West Bank and Gaza",
+      "source": "worldbank"
+    },
+    {
+      "year": 2014,
+      "value": 26.083,
+      "indicator": "SL.UEM.TOTL.FE.ZS",
+      "indicator_name": "Unemployment, female (% of female labor force)",
+      "country": "West Bank and Gaza",
+      "source": "worldbank"
+    },
+    {
+      "year": 2015,
+      "value": 34.123,
+      "indicator": "SL.UEM.TOTL.FE.ZS",
+      "indicator_name": "Unemployment, female (% of female labor force)",
+      "country": "West Bank and Gaza",
+      "source": "worldbank"
+    },
+    {
+      "year": 2016,
+      "value": 37.708,
+      "indicator": "SL.UEM.TOTL.FE.ZS",
+      "indicator_name": "Unemployment, female (% of female labor force)",
+      "country": "West Bank and Gaza",
+      "source": "worldbank"
+    },
+    {
+      "year": 2017,
+      "value": 42.485,
+      "indicator": "SL.UEM.TOTL.FE.ZS",
+      "indicator_name": "Unemployment, female (% of female labor force)",
+      "country": "West Bank and Gaza",
+      "source": "worldbank"
+    },
+    {
+      "year": 2018,
+      "value": 41.59,
+      "indicator": "SL.UEM.TOTL.FE.ZS",
+      "indicator_name": "Unemployment, female (% of female labor force)",
+      "country": "West Bank and Gaza",
+      "source": "worldbank"
+    },
+    {
+      "year": 2019,
+      "value": 40.86,
+      "indicator": "SL.UEM.TOTL.FE.ZS",
+      "indicator_name": "Unemployment, female (% of female labor force)",
+      "country": "West Bank and Gaza",
+      "source": "worldbank"
+    },
+    {
+      "year": 2020,
+      "value": 39.795,
+      "indicator": "SL.UEM.TOTL.FE.ZS",
+      "indicator_name": "Unemployment, female (% of female labor force)",
+      "country": "West Bank and Gaza",
+      "source": "worldbank"
+    },
+    {
+      "year": 2021,
+      "value": 42.508,
+      "indicator": "SL.UEM.TOTL.FE.ZS",
+      "indicator_name": "Unemployment, female (% of female labor force)",
+      "country": "West Bank and Gaza",
+      "source": "worldbank"
+    },
+    {
+      "year": 2022,
+      "value": 39.998,
+      "indicator": "SL.UEM.TOTL.FE.ZS",
+      "indicator_name": "Unemployment, female (% of female labor force)",
+      "country": "West Bank and Gaza",
+      "source": "worldbank"
+    }
+  ],
+  "metadata": {
+    "source": "World Bank Open Data",
+    "last_updated": "2025-10-29T21:01:41.083Z",
+    "total_points": 13
+  },
+  "validation": {
+    "qualityScore": 1,
+    "completeness": 1,
+    "consistency": 1,
+    "accuracy": 1,
+    "meetsThreshold": true,
+    "errorCount": 0,
+    "warningCount": 0
+  }
+}

@@ -1,0 +1,140 @@
+{
+  "indicator": "SP.POP.TOTL",
+  "indicator_name": "Population, total",
+  "data": [
+    {
+      "year": 2010,
+      "value": 3786161,
+      "indicator": "SP.POP.TOTL",
+      "indicator_name": "Population, total",
+      "country": "West Bank and Gaza",
+      "source": "worldbank"
+    },
+    {
+      "year": 2011,
+      "value": 3882986,
+      "indicator": "SP.POP.TOTL",
+      "indicator_name": "Population, total",
+      "country": "West Bank and Gaza",
+      "source": "worldbank"
+    },
+    {
+      "year": 2012,
+      "value": 3979998,
+      "indicator": "SP.POP.TOTL",
+      "indicator_name": "Population, total",
+      "country": "West Bank and Gaza",
+      "source": "worldbank"
+    },
+    {
+      "year": 2013,
+      "value": 4076708,
+      "indicator": "SP.POP.TOTL",
+      "indicator_name": "Population, total",
+      "country": "West Bank and Gaza",
+      "source": "worldbank"
+    },
+    {
+      "year": 2014,
+      "value": 4173398,
+      "indicator": "SP.POP.TOTL",
+      "indicator_name": "Population, total",
+      "country": "West Bank and Gaza",
+      "source": "worldbank"
+    },
+    {
+      "year": 2015,
+      "value": 4270092,
+      "indicator": "SP.POP.TOTL",
+      "indicator_name": "Population, total",
+      "country": "West Bank and Gaza",
+      "source": "worldbank"
+    },
+    {
+      "year": 2016,
+      "value": 4367088,
+      "indicator": "SP.POP.TOTL",
+      "indicator_name": "Population, total",
+      "country": "West Bank and Gaza",
+      "source": "worldbank"
+    },
+    {
+      "year": 2017,
+      "value": 4454805,
+      "indicator": "SP.POP.TOTL",
+      "indicator_name": "Population, total",
+      "country": "West Bank and Gaza",
+      "source": "worldbank"
+    },
+    {
+      "year": 2018,
+      "value": 4569087,
+      "indicator": "SP.POP.TOTL",
+      "indicator_name": "Population, total",
+      "country": "West Bank and Gaza",
+      "source": "worldbank"
+    },
+    {
+      "year": 2019,
+      "value": 4685306,
+      "indicator": "SP.POP.TOTL",
+      "indicator_name": "Population, total",
+      "country": "West Bank and Gaza",
+      "source": "worldbank"
+    },
+    {
+      "year": 2020,
+      "value": 4803269,
+      "indicator": "SP.POP.TOTL",
+      "indicator_name": "Population, total",
+      "country": "West Bank and Gaza",
+      "source": "worldbank"
+    },
+    {
+      "year": 2021,
+      "value": 4922749,
+      "indicator": "SP.POP.TOTL",
+      "indicator_name": "Population, total",
+      "country": "West Bank and Gaza",
+      "source": "worldbank"
+    },
+    {
+      "year": 2022,
+      "value": 5043612,
+      "indicator": "SP.POP.TOTL",
+      "indicator_name": "Population, total",
+      "country": "West Bank and Gaza",
+      "source": "worldbank"
+    },
+    {
+      "year": 2023,
+      "value": 5165775,
+      "indicator": "SP.POP.TOTL",
+      "indicator_name": "Population, total",
+      "country": "West Bank and Gaza",
+      "source": "worldbank"
+    },
+    {
+      "year": 2024,
+      "value": 5289152,
+      "indicator": "SP.POP.TOTL",
+      "indicator_name": "Population, total",
+      "country": "West Bank and Gaza",
+      "source": "worldbank"
+    }
+  ],
+  "metadata": {
+    "source": "World Bank Open Data",
+    "last_updated": "2025-10-29T21:01:36.070Z",
+    "total_points": 15
+  },
+  "validation": {
+    "qualityScore": 1,
+    "completeness": 1,
+    "consistency": 1,
+    "accuracy": 1,
+    "meetsThreshold": true,
+    "errorCount": 0,
+    "warningCount": 0
+  }
+}

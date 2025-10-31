@@ -1,0 +1,5630 @@
+{
+  "category": "labor",
+  "metadata": {
+    "source": "pcbs",
+    "record_count": 92,
+    "indicators": [
+      "SL.UEM.TOTL.ZS",
+      "SL.UEM.TOTL.FE.ZS",
+      "SL.UEM.TOTL.MA.ZS",
+      "SL.UEM.1524.ZS",
+      "SL.UEM.ADVN.ZS",
+      "SL.EMP.VULN.ZS",
+      "SL.TLF.TOTL.IN"
+    ]
+  },
+  "data": [
+    {
+      "id": "pcbs-1enfjb",
+      "type": "economic",
+      "category": "labor",
+      "date": "2010-01-01",
+      "timestamp": "2010-01-01T00:00:00.000Z",
+      "period": {
+        "type": "year",
+        "value": "2010"
+      },
+      "location": {
+        "name": "Palestine",
+        "admin_levels": {
+          "level1": "Palestine"
+        },
+        "region": "palestine"
+      },
+      "value": 21.416,
+      "unit": "percentage",
+      "quality": {
+        "score": 0.8333333333333333,
+        "completeness": 0.6666666666666666,
+        "consistency": 1,
+        "verified": false,
+        "confidence": 0.8
+      },
+      "sources": [
+        {
+          "name": "Palestinian Central Bureau of Statistics (PCBS)",
+          "organization": "PCBS",
+          "url": "https://api.worldbank.org/v2",
+          "fetched_at": "2025-10-30T09:46:35.088Z",
+          "reliability_score": 0.95
+        }
+      ],
+      "created_at": "2025-10-30T09:46:35.088Z",
+      "updated_at": "2025-10-30T09:46:35.088Z",
+      "version": 1,
+      "indicator_code": "SL.UEM.TOTL.ZS",
+      "indicator_name": "Unemployment, total (% of total labor force)",
+      "analysis": {
+        "trend": {
+          "slope": 0.6551153846153833,
+          "direction": "increasing"
+        },
+        "growth_rate": 1.4057959609732358,
+        "volatility": 2.8807724884442916,
+        "recent_change": 0,
+        "baseline_comparison": -12.301392301392305,
+        "data_points": 13,
+        "date_range": {
+          "start": "2010-01-01",
+          "end": "2022-01-01"
+        }
+      },
+      "pcbs_metadata": {
+        "official_source": true,
+        "data_quality": "high",
+        "update_frequency": "quarterly"
+      }
+    },
+    {
+      "id": "pcbs-3rketw",
+      "type": "economic",
+      "category": "labor",
+      "date": "2010-01-01",
+      "timestamp": "2010-01-01T00:00:00.000Z",
+      "period": {
+        "type": "year",
+        "value": "2010"
+      },
+      "location": {
+        "name": "Palestine",
+        "admin_levels": {
+          "level1": "Palestine"
+        },
+        "region": "palestine"
+      },
+      "value": 21.562,
+      "unit": "percentage",
+      "quality": {
+        "score": 0.8333333333333333,
+        "completeness": 0.6666666666666666,
+        "consistency": 1,
+        "verified": false,
+        "confidence": 0.8
+      },
+      "sources": [
+        {
+          "name": "Palestinian Central Bureau of Statistics (PCBS)",
+          "organization": "PCBS",
+          "url": "https://api.worldbank.org/v2",
+          "fetched_at": "2025-10-30T09:46:35.088Z",
+          "reliability_score": 0.95
+        }
+      ],
+      "created_at": "2025-10-30T09:46:35.088Z",
+      "updated_at": "2025-10-30T09:46:35.088Z",
+      "version": 1,
+      "indicator_code": "SL.UEM.TOTL.FE.ZS",
+      "indicator_name": "Unemployment, female (% of female labor force)",
+      "analysis": {
+        "trend": {
+          "slope": 1.9043901098901115,
+          "direction": "increasing"
+        },
+        "growth_rate": 5.7444738132556665,
+        "volatility": 7.815284625344616,
+        "recent_change": 0,
+        "baseline_comparison": -46.09230461523076,
+        "data_points": 13,
+        "date_range": {
+          "start": "2010-01-01",
+          "end": "2022-01-01"
+        }
+      },
+      "pcbs_metadata": {
+        "official_source": true,
+        "data_quality": "high",
+        "update_frequency": "quarterly"
+      }
+    },
+    {
+      "id": "pcbs-y2dpc8",
+      "type": "economic",
+      "category": "labor",
+      "date": "2010-01-01",
+      "timestamp": "2010-01-01T00:00:00.000Z",
+      "period": {
+        "type": "year",
+        "value": "2010"
+      },
+      "location": {
+        "name": "Palestine",
+        "admin_levels": {
+          "level1": "Palestine"
+        },
+        "region": "palestine"
+      },
+      "value": 21.385,
+      "unit": "percentage",
+      "quality": {
+        "score": 0.8333333333333333,
+        "completeness": 0.6666666666666666,
+        "consistency": 1,
+        "verified": false,
+        "confidence": 0.8
+      },
+      "sources": [
+        {
+          "name": "Palestinian Central Bureau of Statistics (PCBS)",
+          "organization": "PCBS",
+          "url": "https://api.worldbank.org/v2",
+          "fetched_at": "2025-10-30T09:46:35.088Z",
+          "reliability_score": 0.95
+        }
+      ],
+      "created_at": "2025-10-30T09:46:35.088Z",
+      "updated_at": "2025-10-30T09:46:35.088Z",
+      "version": 1,
+      "indicator_code": "SL.UEM.TOTL.MA.ZS",
+      "indicator_name": "Unemployment, male (% of male labor force)",
+      "analysis": {
+        "trend": {
+          "slope": 0.31371978021978114,
+          "direction": "increasing"
+        },
+        "growth_rate": -0.10808060271199575,
+        "volatility": 1.8165061561647997,
+        "recent_change": 0,
+        "baseline_comparison": 6.055346161475898,
+        "data_points": 13,
+        "date_range": {
+          "start": "2010-01-01",
+          "end": "2022-01-01"
+        }
+      },
+      "pcbs_metadata": {
+        "official_source": true,
+        "data_quality": "high",
+        "update_frequency": "quarterly"
+      }
+    },
+    {
+      "id": "pcbs-ghg4tn",
+      "type": "economic",
+      "category": "labor",
+      "date": "2010-01-01",
+      "timestamp": "2010-01-01T00:00:00.000Z",
+      "period": {
+        "type": "year",
+        "value": "2010"
+      },
+      "location": {
+        "name": "Palestine",
+        "admin_levels": {
+          "level1": "Palestine"
+        },
+        "region": "palestine"
+      },
+      "value": 36.178,
+      "unit": "percentage",
+      "quality": {
+        "score": 0.8333333333333333,
+        "completeness": 0.6666666666666666,
+        "consistency": 1,
+        "verified": false,
+        "confidence": 0.8
+      },
+      "sources": [
+        {
+          "name": "Palestinian Central Bureau of Statistics (PCBS)",
+          "organization": "PCBS",
+          "url": "https://api.worldbank.org/v2",
+          "fetched_at": "2025-10-30T09:46:35.088Z",
+          "reliability_score": 0.95
+        }
+      ],
+      "created_at": "2025-10-30T09:46:35.088Z",
+      "updated_at": "2025-10-30T09:46:35.088Z",
+      "version": 1,
+      "indicator_code": "SL.UEM.1524.ZS",
+      "indicator_name": "Unemployment, youth total (% of total labor force ages 15-24)",
+      "analysis": {
+        "trend": {
+          "slope": 0.5858901098901069,
+          "direction": "increasing"
+        },
+        "growth_rate": 0.2739699795806203,
+        "volatility": 3.2278809525425474,
+        "recent_change": 0,
+        "baseline_comparison": 0.23827995123572682,
+        "data_points": 13,
+        "date_range": {
+          "start": "2010-01-01",
+          "end": "2022-01-01"
+        }
+      },
+      "pcbs_metadata": {
+        "official_source": true,
+        "data_quality": "high",
+        "update_frequency": "quarterly"
+      }
+    },
+    {
+      "id": "pcbs-r3clki",
+      "type": "economic",
+      "category": "labor",
+      "date": "2010-01-01",
+      "timestamp": "2010-01-01T00:00:00.000Z",
+      "period": {
+        "type": "year",
+        "value": "2010"
+      },
+      "location": {
+        "name": "Palestine",
+        "admin_levels": {
+          "level1": "Palestine"
+        },
+        "region": "palestine"
+      },
+      "value": 19.919,
+      "unit": "percentage",
+      "quality": {
+        "score": 0.8333333333333333,
+        "completeness": 0.6666666666666666,
+        "consistency": 1,
+        "verified": false,
+        "confidence": 0.8
+      },
+      "sources": [
+        {
+          "name": "Palestinian Central Bureau of Statistics (PCBS)",
+          "organization": "PCBS",
+          "url": "https://api.worldbank.org/v2",
+          "fetched_at": "2025-10-30T09:46:35.088Z",
+          "reliability_score": 0.95
+        }
+      ],
+      "created_at": "2025-10-30T09:46:35.088Z",
+      "updated_at": "2025-10-30T09:46:35.088Z",
+      "version": 1,
+      "indicator_code": "SL.UEM.ADVN.ZS",
+      "indicator_name": "Unemployment with advanced education (% of total labor force)",
+      "analysis": {
+        "trend": {
+          "slope": 0.7917582417582417,
+          "direction": "increasing"
+        },
+        "growth_rate": 2.4562216454627412,
+        "volatility": 4.509178460402193,
+        "recent_change": 0,
+        "baseline_comparison": -32.612740620454005,
+        "data_points": 14,
+        "date_range": {
+          "start": "2010-01-01",
+          "end": "2024-01-01"
+        }
+      },
+      "pcbs_metadata": {
+        "official_source": true,
+        "data_quality": "high",
+        "update_frequency": "quarterly"
+      }
+    },
+    {
+      "id": "pcbs-j54x7m",
+      "type": "economic",
+      "category": "labor",
+      "date": "2010-01-01",
+      "timestamp": "2010-01-01T00:00:00.000Z",
+      "period": {
+        "type": "year",
+        "value": "2010"
+      },
+      "location": {
+        "name": "Palestine",
+        "admin_levels": {
+          "level1": "Palestine"
+        },
+        "region": "palestine"
+      },
+      "value": 26.0297110824219,
+      "unit": "percentage",
+      "quality": {
+        "score": 0.8333333333333333,
+        "completeness": 0.6666666666666666,
+        "consistency": 1,
+        "verified": false,
+        "confidence": 0.8
+      },
+      "sources": [
+        {
+          "name": "Palestinian Central Bureau of Statistics (PCBS)",
+          "organization": "PCBS",
+          "url": "https://api.worldbank.org/v2",
+          "fetched_at": "2025-10-30T09:46:35.088Z",
+          "reliability_score": 0.95
+        }
+      ],
+      "created_at": "2025-10-30T09:46:35.088Z",
+      "updated_at": "2025-10-30T09:46:35.088Z",
+      "version": 1,
+      "indicator_code": "SL.EMP.VULN.ZS",
+      "indicator_name": "Vulnerable employment, total (% of total employment)",
+      "analysis": {
+        "trend": {
+          "slope": -0.6080387051187662,
+          "direction": "decreasing"
+        },
+        "growth_rate": -2.7496489826893638,
+        "volatility": 2.4069115782998995,
+        "recent_change": 0,
+        "baseline_comparison": 41.61593786903852,
+        "data_points": 13,
+        "date_range": {
+          "start": "2010-01-01",
+          "end": "2022-01-01"
+        }
+      },
+      "pcbs_metadata": {
+        "official_source": true,
+        "data_quality": "high",
+        "update_frequency": "quarterly"
+      }
+    },
+    {
+      "id": "pcbs-qffl79",
+      "type": "economic",
+      "category": "labor",
+      "date": "2010-01-01",
+      "timestamp": "2010-01-01T00:00:00.000Z",
+      "period": {
+        "type": "year",
+        "value": "2010"
+      },
+      "location": {
+        "name": "Palestine",
+        "admin_levels": {
+          "level1": "Palestine"
+        },
+        "region": "palestine"
+      },
+      "value": 879814,
+      "unit": "count",
+      "quality": {
+        "score": 0.8333333333333333,
+        "completeness": 0.6666666666666666,
+        "consistency": 1,
+        "verified": false,
+        "confidence": 0.8
+      },
+      "sources": [
+        {
+          "name": "Palestinian Central Bureau of Statistics (PCBS)",
+          "organization": "PCBS",
+          "url": "https://api.worldbank.org/v2",
+          "fetched_at": "2025-10-30T09:46:35.088Z",
+          "reliability_score": 0.95
+        }
+      ],
+      "created_at": "2025-10-30T09:46:35.088Z",
+      "updated_at": "2025-10-30T09:46:35.088Z",
+      "version": 1,
+      "indicator_code": "SL.TLF.TOTL.IN",
+      "indicator_name": "Labor force, total",
+      "analysis": {
+        "trend": {
+          "slope": 37530.92857142857,
+          "direction": "increasing"
+        },
+        "growth_rate": 3.9515747777760843,
+        "volatility": 143532.23298053542,
+        "recent_change": 0,
+        "baseline_comparison": -36.75998936193153,
+        "data_points": 13,
+        "date_range": {
+          "start": "2010-01-01",
+          "end": "2022-01-01"
+        }
+      },
+      "pcbs_metadata": {
+        "official_source": true,
+        "data_quality": "high",
+        "update_frequency": "quarterly"
+      }
+    },
+    {
+      "id": "pcbs-sjon5l",
+      "type": "economic",
+      "category": "labor",
+      "date": "2011-01-01",
+      "timestamp": "2011-01-01T00:00:00.000Z",
+      "period": {
+        "type": "year",
+        "value": "2011"
+      },
+      "location": {
+        "name": "Palestine",
+        "admin_levels": {
+          "level1": "Palestine"
+        },
+        "region": "palestine"
+      },
+      "value": 17.597,
+      "unit": "percentage",
+      "quality": {
+        "score": 0.8333333333333333,
+        "completeness": 0.6666666666666666,
+        "consistency": 1,
+        "verified": false,
+        "confidence": 0.8
+      },
+      "sources": [
+        {
+          "name": "Palestinian Central Bureau of Statistics (PCBS)",
+          "organization": "PCBS",
+          "url": "https://api.worldbank.org/v2",
+          "fetched_at": "2025-10-30T09:46:35.091Z",
+          "reliability_score": 0.95
+        }
+      ],
+      "created_at": "2025-10-30T09:46:35.091Z",
+      "updated_at": "2025-10-30T09:46:35.091Z",
+      "version": 1,
+      "indicator_code": "SL.UEM.TOTL.ZS",
+      "indicator_name": "Unemployment, total (% of total labor force)",
+      "analysis": {
+        "trend": {
+          "slope": 0.6551153846153833,
+          "direction": "increasing"
+        },
+        "growth_rate": 1.4057959609732358,
+        "volatility": 2.8807724884442916,
+        "recent_change": -17.832461710870373,
+        "baseline_comparison": -27.940212940212938,
+        "data_points": 13,
+        "date_range": {
+          "start": "2010-01-01",
+          "end": "2022-01-01"
+        }
+      },
+      "pcbs_metadata": {
+        "official_source": true,
+        "data_quality": "high",
+        "update_frequency": "quarterly"
+      }
+    },
+    {
+      "id": "pcbs-e1mvqf",
+      "type": "economic",
+      "category": "labor",
+      "date": "2011-01-01",
+      "timestamp": "2011-01-01T00:00:00.000Z",
+      "period": {
+        "type": "year",
+        "value": "2011"
+      },
+      "location": {
+        "name": "Palestine",
+        "admin_levels": {
+          "level1": "Palestine"
+        },
+        "region": "palestine"
+      },
+      "value": 22.39,
+      "unit": "percentage",
+      "quality": {
+        "score": 0.8333333333333333,
+        "completeness": 0.6666666666666666,
+        "consistency": 1,
+        "verified": false,
+        "confidence": 0.8
+      },
+      "sources": [
+        {
+          "name": "Palestinian Central Bureau of Statistics (PCBS)",
+          "organization": "PCBS",
+          "url": "https://api.worldbank.org/v2",
+          "fetched_at": "2025-10-30T09:46:35.091Z",
+          "reliability_score": 0.95
+        }
+      ],
+      "created_at": "2025-10-30T09:46:35.091Z",
+      "updated_at": "2025-10-30T09:46:35.091Z",
+      "version": 1,
+      "indicator_code": "SL.UEM.TOTL.FE.ZS",
+      "indicator_name": "Unemployment, female (% of female labor force)",
+      "analysis": {
+        "trend": {
+          "slope": 1.9043901098901115,
+          "direction": "increasing"
+        },
+        "growth_rate": 5.7444738132556665,
+        "volatility": 7.815284625344616,
+        "recent_change": 3.8400890455430816,
+        "baseline_comparison": -44.0222011100555,
+        "data_points": 13,
+        "date_range": {
+          "start": "2010-01-01",
+          "end": "2022-01-01"
+        }
+      },
+      "pcbs_metadata": {
+        "official_source": true,
+        "data_quality": "high",
+        "update_frequency": "quarterly"
+      }
+    },
+    {
+      "id": "pcbs-6ct3m9",
+      "type": "economic",
+      "category": "labor",
+      "date": "2011-01-01",
+      "timestamp": "2011-01-01T00:00:00.000Z",
+      "period": {
+        "type": "year",
+        "value": "2011"
+      },
+      "location": {
+        "name": "Palestine",
+        "admin_levels": {
+          "level1": "Palestine"
+        },
+        "region": "palestine"
+      },
+      "value": 16.464,
+      "unit": "percentage",
+      "quality": {
+        "score": 0.8333333333333333,
+        "completeness": 0.6666666666666666,
+        "consistency": 1,
+        "verified": false,
+        "confidence": 0.8
+      },
+      "sources": [
+        {
+          "name": "Palestinian Central Bureau of Statistics (PCBS)",
+          "organization": "PCBS",
+          "url": "https://api.worldbank.org/v2",
+          "fetched_at": "2025-10-30T09:46:35.091Z",
+          "reliability_score": 0.95
+        }
+      ],
+      "created_at": "2025-10-30T09:46:35.091Z",
+      "updated_at": "2025-10-30T09:46:35.091Z",
+      "version": 1,
+      "indicator_code": "SL.UEM.TOTL.MA.ZS",
+      "indicator_name": "Unemployment, male (% of male labor force)",
+      "analysis": {
+        "trend": {
+          "slope": 0.31371978021978114,
+          "direction": "increasing"
+        },
+        "growth_rate": -0.10808060271199575,
+        "volatility": 1.8165061561647997,
+        "recent_change": -23.011456628477916,
+        "baseline_comparison": -18.349533822654248,
+        "data_points": 13,
+        "date_range": {
+          "start": "2010-01-01",
+          "end": "2022-01-01"
+        }
+      },
+      "pcbs_metadata": {
+        "official_source": true,
+        "data_quality": "high",
+        "update_frequency": "quarterly"
+      }
+    },
+    {
+      "id": "pcbs-coppoz",
+      "type": "economic",
+      "category": "labor",
+      "date": "2011-01-01",
+      "timestamp": "2011-01-01T00:00:00.000Z",
+      "period": {
+        "type": "year",
+        "value": "2011"
+      },
+      "location": {
+        "name": "Palestine",
+        "admin_levels": {
+          "level1": "Palestine"
+        },
+        "region": "palestine"
+      },
+      "value": 31.224,
+      "unit": "percentage",
+      "quality": {
+        "score": 0.8333333333333333,
+        "completeness": 0.6666666666666666,
+        "consistency": 1,
+        "verified": false,
+        "confidence": 0.8
+      },
+      "sources": [
+        {
+          "name": "Palestinian Central Bureau of Statistics (PCBS)",
+          "organization": "PCBS",
+          "url": "https://api.worldbank.org/v2",
+          "fetched_at": "2025-10-30T09:46:35.091Z",
+          "reliability_score": 0.95
+        }
+      ],
+      "created_at": "2025-10-30T09:46:35.091Z",
+      "updated_at": "2025-10-30T09:46:35.091Z",
+      "version": 1,
+      "indicator_code": "SL.UEM.1524.ZS",
+      "indicator_name": "Unemployment, youth total (% of total labor force ages 15-24)",
+      "analysis": {
+        "trend": {
+          "slope": 0.5858901098901069,
+          "direction": "increasing"
+        },
+        "growth_rate": 0.2739699795806203,
+        "volatility": 3.2278809525425474,
+        "recent_change": -13.693404831665646,
+        "baseline_comparison": -13.487753518785322,
+        "data_points": 13,
+        "date_range": {
+          "start": "2010-01-01",
+          "end": "2022-01-01"
+        }
+      },
+      "pcbs_metadata": {
+        "official_source": true,
+        "data_quality": "high",
+        "update_frequency": "quarterly"
+      }
+    },
+    {
+      "id": "pcbs-4vshj5",
+      "type": "economic",
+      "category": "labor",
+      "date": "2011-01-01",
+      "timestamp": "2011-01-01T00:00:00.000Z",
+      "period": {
+        "type": "year",
+        "value": "2011"
+      },
+      "location": {
+        "name": "Palestine",
+        "admin_levels": {
+          "level1": "Palestine"
+        },
+        "region": "palestine"
+      },
+      "value": 19.542,
+      "unit": "percentage",
+      "quality": {
+        "score": 0.8333333333333333,
+        "completeness": 0.6666666666666666,
+        "consistency": 1,
+        "verified": false,
+        "confidence": 0.8
+      },
+      "sources": [
+        {
+          "name": "Palestinian Central Bureau of Statistics (PCBS)",
+          "organization": "PCBS",
+          "url": "https://api.worldbank.org/v2",
+          "fetched_at": "2025-10-30T09:46:35.091Z",
+          "reliability_score": 0.95
+        }
+      ],
+      "created_at": "2025-10-30T09:46:35.091Z",
+      "updated_at": "2025-10-30T09:46:35.091Z",
+      "version": 1,
+      "indicator_code": "SL.UEM.ADVN.ZS",
+      "indicator_name": "Unemployment with advanced education (% of total labor force)",
+      "analysis": {
+        "trend": {
+          "slope": 0.7917582417582417,
+          "direction": "increasing"
+        },
+        "growth_rate": 2.4562216454627412,
+        "volatility": 4.509178460402193,
+        "recent_change": -1.8926652944424864,
+        "baseline_comparison": -33.888155891606615,
+        "data_points": 14,
+        "date_range": {
+          "start": "2010-01-01",
+          "end": "2024-01-01"
+        }
+      },
+      "pcbs_metadata": {
+        "official_source": true,
+        "data_quality": "high",
+        "update_frequency": "quarterly"
+      }
+    },
+    {
+      "id": "pcbs-5snlkb",
+      "type": "economic",
+      "category": "labor",
+      "date": "2011-01-01",
+      "timestamp": "2011-01-01T00:00:00.000Z",
+      "period": {
+        "type": "year",
+        "value": "2011"
+      },
+      "location": {
+        "name": "Palestine",
+        "admin_levels": {
+          "level1": "Palestine"
+        },
+        "region": "palestine"
+      },
+      "value": 27.0181048591358,
+      "unit": "percentage",
+      "quality": {
+        "score": 0.8333333333333333,
+        "completeness": 0.6666666666666666,
+        "consistency": 1,
+        "verified": false,
+        "confidence": 0.8
+      },
+      "sources": [
+        {
+          "name": "Palestinian Central Bureau of Statistics (PCBS)",
+          "organization": "PCBS",
+          "url": "https://api.worldbank.org/v2",
+          "fetched_at": "2025-10-30T09:46:35.091Z",
+          "reliability_score": 0.95
+        }
+      ],
+      "created_at": "2025-10-30T09:46:35.091Z",
+      "updated_at": "2025-10-30T09:46:35.091Z",
+      "version": 1,
+      "indicator_code": "SL.EMP.VULN.ZS",
+      "indicator_name": "Vulnerable employment, total (% of total employment)",
+      "analysis": {
+        "trend": {
+          "slope": -0.6080387051187662,
+          "direction": "decreasing"
+        },
+        "growth_rate": -2.7496489826893638,
+        "volatility": 2.4069115782998995,
+        "recent_change": 3.797175364660002,
+        "baseline_comparison": 46.993343374233866,
+        "data_points": 13,
+        "date_range": {
+          "start": "2010-01-01",
+          "end": "2022-01-01"
+        }
+      },
+      "pcbs_metadata": {
+        "official_source": true,
+        "data_quality": "high",
+        "update_frequency": "quarterly"
+      }
+    },
+    {
+      "id": "pcbs-e52glh",
+      "type": "economic",
+      "category": "labor",
+      "date": "2011-01-01",
+      "timestamp": "2011-01-01T00:00:00.000Z",
+      "period": {
+        "type": "year",
+        "value": "2011"
+      },
+      "location": {
+        "name": "Palestine",
+        "admin_levels": {
+          "level1": "Palestine"
+        },
+        "region": "palestine"
+      },
+      "value": 940188,
+      "unit": "count",
+      "quality": {
+        "score": 0.8333333333333333,
+        "completeness": 0.6666666666666666,
+        "consistency": 1,
+        "verified": false,
+        "confidence": 0.8
+      },
+      "sources": [
+        {
+          "name": "Palestinian Central Bureau of Statistics (PCBS)",
+          "organization": "PCBS",
+          "url": "https://api.worldbank.org/v2",
+          "fetched_at": "2025-10-30T09:46:35.091Z",
+          "reliability_score": 0.95
+        }
+      ],
+      "created_at": "2025-10-30T09:46:35.091Z",
+      "updated_at": "2025-10-30T09:46:35.091Z",
+      "version": 1,
+      "indicator_code": "SL.TLF.TOTL.IN",
+      "indicator_name": "Labor force, total",
+      "analysis": {
+        "trend": {
+          "slope": 37530.92857142857,
+          "direction": "increasing"
+        },
+        "growth_rate": 3.9515747777760843,
+        "volatility": 143532.23298053542,
+        "recent_change": 6.862132223401765,
+        "baseline_comparison": -32.42037621385393,
+        "data_points": 13,
+        "date_range": {
+          "start": "2010-01-01",
+          "end": "2022-01-01"
+        }
+      },
+      "pcbs_metadata": {
+        "official_source": true,
+        "data_quality": "high",
+        "update_frequency": "quarterly"
+      }
+    },
+    {
+      "id": "pcbs-c3d2p5",
+      "type": "economic",
+      "category": "labor",
+      "date": "2012-01-01",
+      "timestamp": "2012-01-01T00:00:00.000Z",
+      "period": {
+        "type": "year",
+        "value": "2012"
+      },
+      "location": {
+        "name": "Palestine",
+        "admin_levels": {
+          "level1": "Palestine"
+        },
+        "region": "palestine"
+      },
+      "value": 19.202,
+      "unit": "percentage",
+      "quality": {
+        "score": 0.8333333333333333,
+        "completeness": 0.6666666666666666,
+        "consistency": 1,
+        "verified": false,
+        "confidence": 0.8
+      },
+      "sources": [
+        {
+          "name": "Palestinian Central Bureau of Statistics (PCBS)",
+          "organization": "PCBS",
+          "url": "https://api.worldbank.org/v2",
+          "fetched_at": "2025-10-30T09:46:35.092Z",
+          "reliability_score": 0.95
+        }
+      ],
+      "created_at": "2025-10-30T09:46:35.092Z",
+      "updated_at": "2025-10-30T09:46:35.092Z",
+      "version": 1,
+      "indicator_code": "SL.UEM.TOTL.ZS",
+      "indicator_name": "Unemployment, total (% of total labor force)",
+      "analysis": {
+        "trend": {
+          "slope": 0.6551153846153833,
+          "direction": "increasing"
+        },
+        "growth_rate": 1.4057959609732358,
+        "volatility": 2.8807724884442916,
+        "recent_change": 9.12087287605842,
+        "baseline_comparison": -21.367731367731366,
+        "data_points": 13,
+        "date_range": {
+          "start": "2010-01-01",
+          "end": "2022-01-01"
+        }
+      },
+      "pcbs_metadata": {
+        "official_source": true,
+        "data_quality": "high",
+        "update_frequency": "quarterly"
+      }
+    },
+    {
+      "id": "pcbs-jzuq74",
+      "type": "economic",
+      "category": "labor",
+      "date": "2012-01-01",
+      "timestamp": "2012-01-01T00:00:00.000Z",
+      "period": {
+        "type": "year",
+        "value": "2012"
+      },
+      "location": {
+        "name": "Palestine",
+        "admin_levels": {
+          "level1": "Palestine"
+        },
+        "region": "palestine"
+      },
+      "value": 25.942,
+      "unit": "percentage",
+      "quality": {
+        "score": 0.8333333333333333,
+        "completeness": 0.6666666666666666,
+        "consistency": 1,
+        "verified": false,
+        "confidence": 0.8
+      },
+      "sources": [
+        {
+          "name": "Palestinian Central Bureau of Statistics (PCBS)",
+          "organization": "PCBS",
+          "url": "https://api.worldbank.org/v2",
+          "fetched_at": "2025-10-30T09:46:35.092Z",
+          "reliability_score": 0.95
+        }
+      ],
+      "created_at": "2025-10-30T09:46:35.092Z",
+      "updated_at": "2025-10-30T09:46:35.092Z",
+      "version": 1,
+      "indicator_code": "SL.UEM.TOTL.FE.ZS",
+      "indicator_name": "Unemployment, female (% of female labor force)",
+      "analysis": {
+        "trend": {
+          "slope": 1.9043901098901115,
+          "direction": "increasing"
+        },
+        "growth_rate": 5.7444738132556665,
+        "volatility": 7.815284625344616,
+        "recent_change": 15.86422510049129,
+        "baseline_comparison": -35.14175708785439,
+        "data_points": 13,
+        "date_range": {
+          "start": "2010-01-01",
+          "end": "2022-01-01"
+        }
+      },
+      "pcbs_metadata": {
+        "official_source": true,
+        "data_quality": "high",
+        "update_frequency": "quarterly"
+      }
+    },
+    {
+      "id": "pcbs-2448mk",
+      "type": "economic",
+      "category": "labor",
+      "date": "2012-01-01",
+      "timestamp": "2012-01-01T00:00:00.000Z",
+      "period": {
+        "type": "year",
+        "value": "2012"
+      },
+      "location": {
+        "name": "Palestine",
+        "admin_levels": {
+          "level1": "Palestine"
+        },
+        "region": "palestine"
+      },
+      "value": 17.553,
+      "unit": "percentage",
+      "quality": {
+        "score": 0.8333333333333333,
+        "completeness": 0.6666666666666666,
+        "consistency": 1,
+        "verified": false,
+        "confidence": 0.8
+      },
+      "sources": [
+        {
+          "name": "Palestinian Central Bureau of Statistics (PCBS)",
+          "organization": "PCBS",
+          "url": "https://api.worldbank.org/v2",
+          "fetched_at": "2025-10-30T09:46:35.092Z",
+          "reliability_score": 0.95
+        }
+      ],
+      "created_at": "2025-10-30T09:46:35.092Z",
+      "updated_at": "2025-10-30T09:46:35.092Z",
+      "version": 1,
+      "indicator_code": "SL.UEM.TOTL.MA.ZS",
+      "indicator_name": "Unemployment, male (% of male labor force)",
+      "analysis": {
+        "trend": {
+          "slope": 0.31371978021978114,
+          "direction": "increasing"
+        },
+        "growth_rate": -0.10808060271199575,
+        "volatility": 1.8165061561647997,
+        "recent_change": 6.6144314868804805,
+        "baseline_comparison": -12.948819678635193,
+        "data_points": 13,
+        "date_range": {
+          "start": "2010-01-01",
+          "end": "2022-01-01"
+        }
+      },
+      "pcbs_metadata": {
+        "official_source": true,
+        "data_quality": "high",
+        "update_frequency": "quarterly"
+      }
+    },
+    {
+      "id": "pcbs-xevgah",
+      "type": "economic",
+      "category": "labor",
+      "date": "2012-01-01",
+      "timestamp": "2012-01-01T00:00:00.000Z",
+      "period": {
+        "type": "year",
+        "value": "2012"
+      },
+      "location": {
+        "name": "Palestine",
+        "admin_levels": {
+          "level1": "Palestine"
+        },
+        "region": "palestine"
+      },
+      "value": 34.644,
+      "unit": "percentage",
+      "quality": {
+        "score": 0.8333333333333333,
+        "completeness": 0.6666666666666666,
+        "consistency": 1,
+        "verified": false,
+        "confidence": 0.8
+      },
+      "sources": [
+        {
+          "name": "Palestinian Central Bureau of Statistics (PCBS)",
+          "organization": "PCBS",
+          "url": "https://api.worldbank.org/v2",
+          "fetched_at": "2025-10-30T09:46:35.092Z",
+          "reliability_score": 0.95
+        }
+      ],
+      "created_at": "2025-10-30T09:46:35.092Z",
+      "updated_at": "2025-10-30T09:46:35.092Z",
+      "version": 1,
+      "indicator_code": "SL.UEM.1524.ZS",
+      "indicator_name": "Unemployment, youth total (% of total labor force ages 15-24)",
+      "analysis": {
+        "trend": {
+          "slope": 0.5858901098901069,
+          "direction": "increasing"
+        },
+        "growth_rate": 0.2739699795806203,
+        "volatility": 3.2278809525425474,
+        "recent_change": 10.95311299000768,
+        "baseline_comparison": -4.0119694115039355,
+        "data_points": 13,
+        "date_range": {
+          "start": "2010-01-01",
+          "end": "2022-01-01"
+        }
+      },
+      "pcbs_metadata": {
+        "official_source": true,
+        "data_quality": "high",
+        "update_frequency": "quarterly"
+      }
+    },
+    {
+      "id": "pcbs-3mlx50",
+      "type": "economic",
+      "category": "labor",
+      "date": "2012-01-01",
+      "timestamp": "2012-01-01T00:00:00.000Z",
+      "period": {
+        "type": "year",
+        "value": "2012"
+      },
+      "location": {
+        "name": "Palestine",
+        "admin_levels": {
+          "level1": "Palestine"
+        },
+        "region": "palestine"
+      },
+      "value": 22.742,
+      "unit": "percentage",
+      "quality": {
+        "score": 0.8333333333333333,
+        "completeness": 0.6666666666666666,
+        "consistency": 1,
+        "verified": false,
+        "confidence": 0.8
+      },
+      "sources": [
+        {
+          "name": "Palestinian Central Bureau of Statistics (PCBS)",
+          "organization": "PCBS",
+          "url": "https://api.worldbank.org/v2",
+          "fetched_at": "2025-10-30T09:46:35.092Z",
+          "reliability_score": 0.95
+        }
+      ],
+      "created_at": "2025-10-30T09:46:35.092Z",
+      "updated_at": "2025-10-30T09:46:35.092Z",
+      "version": 1,
+      "indicator_code": "SL.UEM.ADVN.ZS",
+      "indicator_name": "Unemployment with advanced education (% of total labor force)",
+      "analysis": {
+        "trend": {
+          "slope": 0.7917582417582417,
+          "direction": "increasing"
+        },
+        "growth_rate": 2.4562216454627412,
+        "volatility": 4.509178460402193,
+        "recent_change": 16.37498720704124,
+        "baseline_comparison": -23.06234987651815,
+        "data_points": 14,
+        "date_range": {
+          "start": "2010-01-01",
+          "end": "2024-01-01"
+        }
+      },
+      "pcbs_metadata": {
+        "official_source": true,
+        "data_quality": "high",
+        "update_frequency": "quarterly"
+      }
+    },
+    {
+      "id": "pcbs-1tgn9",
+      "type": "economic",
+      "category": "labor",
+      "date": "2012-01-01",
+      "timestamp": "2012-01-01T00:00:00.000Z",
+      "period": {
+        "type": "year",
+        "value": "2012"
+      },
+      "location": {
+        "name": "Palestine",
+        "admin_levels": {
+          "level1": "Palestine"
+        },
+        "region": "palestine"
+      },
+      "value": 26.7370255824156,
+      "unit": "percentage",
+      "quality": {
+        "score": 0.8333333333333333,
+        "completeness": 0.6666666666666666,
+        "consistency": 1,
+        "verified": false,
+        "confidence": 0.8
+      },
+      "sources": [
+        {
+          "name": "Palestinian Central Bureau of Statistics (PCBS)",
+          "organization": "PCBS",
+          "url": "https://api.worldbank.org/v2",
+          "fetched_at": "2025-10-30T09:46:35.092Z",
+          "reliability_score": 0.95
+        }
+      ],
+      "created_at": "2025-10-30T09:46:35.092Z",
+      "updated_at": "2025-10-30T09:46:35.092Z",
+      "version": 1,
+      "indicator_code": "SL.EMP.VULN.ZS",
+      "indicator_name": "Vulnerable employment, total (% of total employment)",
+      "analysis": {
+        "trend": {
+          "slope": -0.6080387051187662,
+          "direction": "decreasing"
+        },
+        "growth_rate": -2.7496489826893638,
+        "volatility": 2.4069115782998995,
+        "recent_change": -1.0403367600564914,
+        "baseline_comparison": 45.46411758827565,
+        "data_points": 13,
+        "date_range": {
+          "start": "2010-01-01",
+          "end": "2022-01-01"
+        }
+      },
+      "pcbs_metadata": {
+        "official_source": true,
+        "data_quality": "high",
+        "update_frequency": "quarterly"
+      }
+    },
+    {
+      "id": "pcbs-1twzc2",
+      "type": "economic",
+      "category": "labor",
+      "date": "2012-01-01",
+      "timestamp": "2012-01-01T00:00:00.000Z",
+      "period": {
+        "type": "year",
+        "value": "2012"
+      },
+      "location": {
+        "name": "Palestine",
+        "admin_levels": {
+          "level1": "Palestine"
+        },
+        "region": "palestine"
+      },
+      "value": 977472,
+      "unit": "count",
+      "quality": {
+        "score": 0.8333333333333333,
+        "completeness": 0.6666666666666666,
+        "consistency": 1,
+        "verified": false,
+        "confidence": 0.8
+      },
+      "sources": [
+        {
+          "name": "Palestinian Central Bureau of Statistics (PCBS)",
+          "organization": "PCBS",
+          "url": "https://api.worldbank.org/v2",
+          "fetched_at": "2025-10-30T09:46:35.092Z",
+          "reliability_score": 0.95
+        }
+      ],
+      "created_at": "2025-10-30T09:46:35.092Z",
+      "updated_at": "2025-10-30T09:46:35.092Z",
+      "version": 1,
+      "indicator_code": "SL.TLF.TOTL.IN",
+      "indicator_name": "Labor force, total",
+      "analysis": {
+        "trend": {
+          "slope": 37530.92857142857,
+          "direction": "increasing"
+        },
+        "growth_rate": 3.9515747777760843,
+        "volatility": 143532.23298053542,
+        "recent_change": 3.9655898607512543,
+        "baseline_comparison": -29.740445505056677,
+        "data_points": 13,
+        "date_range": {
+          "start": "2010-01-01",
+          "end": "2022-01-01"
+        }
+      },
+      "pcbs_metadata": {
+        "official_source": true,
+        "data_quality": "high",
+        "update_frequency": "quarterly"
+      }
+    },
+    {
+      "id": "pcbs-xyfse1",
+      "type": "economic",
+      "category": "labor",
+      "date": "2013-01-01",
+      "timestamp": "2013-01-01T00:00:00.000Z",
+      "period": {
+        "type": "year",
+        "value": "2013"
+      },
+      "location": {
+        "name": "Palestine",
+        "admin_levels": {
+          "level1": "Palestine"
+        },
+        "region": "palestine"
+      },
+      "value": 19.894,
+      "unit": "percentage",
+      "quality": {
+        "score": 0.8333333333333333,
+        "completeness": 0.6666666666666666,
+        "consistency": 1,
+        "verified": false,
+        "confidence": 0.8
+      },
+      "sources": [
+        {
+          "name": "Palestinian Central Bureau of Statistics (PCBS)",
+          "organization": "PCBS",
+          "url": "https://api.worldbank.org/v2",
+          "fetched_at": "2025-10-30T09:46:35.093Z",
+          "reliability_score": 0.95
+        }
+      ],
+      "created_at": "2025-10-30T09:46:35.093Z",
+      "updated_at": "2025-10-30T09:46:35.093Z",
+      "version": 1,
+      "indicator_code": "SL.UEM.TOTL.ZS",
+      "indicator_name": "Unemployment, total (% of total labor force)",
+      "analysis": {
+        "trend": {
+          "slope": 0.6551153846153833,
+          "direction": "increasing"
+        },
+        "growth_rate": 1.4057959609732358,
+        "volatility": 2.8807724884442916,
+        "recent_change": 3.603791271742509,
+        "baseline_comparison": -18.533988533988545,
+        "data_points": 13,
+        "date_range": {
+          "start": "2010-01-01",
+          "end": "2022-01-01"
+        }
+      },
+      "pcbs_metadata": {
+        "official_source": true,
+        "data_quality": "high",
+        "update_frequency": "quarterly"
+      }
+    },
+    {
+      "id": "pcbs-vfr3su",
+      "type": "economic",
+      "category": "labor",
+      "date": "2013-01-01",
+      "timestamp": "2013-01-01T00:00:00.000Z",
+      "period": {
+        "type": "year",
+        "value": "2013"
+      },
+      "location": {
+        "name": "Palestine",
+        "admin_levels": {
+          "level1": "Palestine"
+        },
+        "region": "palestine"
+      },
+      "value": 27.325,
+      "unit": "percentage",
+      "quality": {
+        "score": 0.8333333333333333,
+        "completeness": 0.6666666666666666,
+        "consistency": 1,
+        "verified": false,
+        "confidence": 0.8
+      },
+      "sources": [
+        {
+          "name": "Palestinian Central Bureau of Statistics (PCBS)",
+          "organization": "PCBS",
+          "url": "https://api.worldbank.org/v2",
+          "fetched_at": "2025-10-30T09:46:35.093Z",
+          "reliability_score": 0.95
+        }
+      ],
+      "created_at": "2025-10-30T09:46:35.093Z",
+      "updated_at": "2025-10-30T09:46:35.093Z",
+      "version": 1,
+      "indicator_code": "SL.UEM.TOTL.FE.ZS",
+      "indicator_name": "Unemployment, female (% of female labor force)",
+      "analysis": {
+        "trend": {
+          "slope": 1.9043901098901115,
+          "direction": "increasing"
+        },
+        "growth_rate": 5.7444738132556665,
+        "volatility": 7.815284625344616,
+        "recent_change": 5.331123274998069,
+        "baseline_comparison": -31.684084204210205,
+        "data_points": 13,
+        "date_range": {
+          "start": "2010-01-01",
+          "end": "2022-01-01"
+        }
+      },
+      "pcbs_metadata": {
+        "official_source": true,
+        "data_quality": "high",
+        "update_frequency": "quarterly"
+      }
+    },
+    {
+      "id": "pcbs-n060km",
+      "type": "economic",
+      "category": "labor",
+      "date": "2013-01-01",
+      "timestamp": "2013-01-01T00:00:00.000Z",
+      "period": {
+        "type": "year",
+        "value": "2013"
+      },
+      "location": {
+        "name": "Palestine",
+        "admin_levels": {
+          "level1": "Palestine"
+        },
+        "region": "palestine"
+      },
+      "value": 18.128,
+      "unit": "percentage",
+      "quality": {
+        "score": 0.8333333333333333,
+        "completeness": 0.6666666666666666,
+        "consistency": 1,
+        "verified": false,
+        "confidence": 0.8
+      },
+      "sources": [
+        {
+          "name": "Palestinian Central Bureau of Statistics (PCBS)",
+          "organization": "PCBS",
+          "url": "https://api.worldbank.org/v2",
+          "fetched_at": "2025-10-30T09:46:35.093Z",
+          "reliability_score": 0.95
+        }
+      ],
+      "created_at": "2025-10-30T09:46:35.093Z",
+      "updated_at": "2025-10-30T09:46:35.093Z",
+      "version": 1,
+      "indicator_code": "SL.UEM.TOTL.MA.ZS",
+      "indicator_name": "Unemployment, male (% of male labor force)",
+      "analysis": {
+        "trend": {
+          "slope": 0.31371978021978114,
+          "direction": "increasing"
+        },
+        "growth_rate": -0.10808060271199575,
+        "volatility": 1.8165061561647997,
+        "recent_change": 3.2757933116846085,
+        "baseline_comparison": -10.097202935925417,
+        "data_points": 13,
+        "date_range": {
+          "start": "2010-01-01",
+          "end": "2022-01-01"
+        }
+      },
+      "pcbs_metadata": {
+        "official_source": true,
+        "data_quality": "high",
+        "update_frequency": "quarterly"
+      }
+    },
+    {
+      "id": "pcbs-wdy6bo",
+      "type": "economic",
+      "category": "labor",
+      "date": "2013-01-01",
+      "timestamp": "2013-01-01T00:00:00.000Z",
+      "period": {
+        "type": "year",
+        "value": "2013"
+      },
+      "location": {
+        "name": "Palestine",
+        "admin_levels": {
+          "level1": "Palestine"
+        },
+        "region": "palestine"
+      },
+      "value": 37.137,
+      "unit": "percentage",
+      "quality": {
+        "score": 0.8333333333333333,
+        "completeness": 0.6666666666666666,
+        "consistency": 1,
+        "verified": false,
+        "confidence": 0.8
+      },
+      "sources": [
+        {
+          "name": "Palestinian Central Bureau of Statistics (PCBS)",
+          "organization": "PCBS",
+          "url": "https://api.worldbank.org/v2",
+          "fetched_at": "2025-10-30T09:46:35.093Z",
+          "reliability_score": 0.95
+        }
+      ],
+      "created_at": "2025-10-30T09:46:35.093Z",
+      "updated_at": "2025-10-30T09:46:35.093Z",
+      "version": 1,
+      "indicator_code": "SL.UEM.1524.ZS",
+      "indicator_name": "Unemployment, youth total (% of total labor force ages 15-24)",
+      "analysis": {
+        "trend": {
+          "slope": 0.5858901098901069,
+          "direction": "increasing"
+        },
+        "growth_rate": 0.2739699795806203,
+        "volatility": 3.2278809525425474,
+        "recent_change": 7.196051264288195,
+        "baseline_comparison": 2.8953784772248747,
+        "data_points": 13,
+        "date_range": {
+          "start": "2010-01-01",
+          "end": "2022-01-01"
+        }
+      },
+      "pcbs_metadata": {
+        "official_source": true,
+        "data_quality": "high",
+        "update_frequency": "quarterly"
+      }
+    },
+    {
+      "id": "pcbs-o8xhz8",
+      "type": "economic",
+      "category": "labor",
+      "date": "2013-01-01",
+      "timestamp": "2013-01-01T00:00:00.000Z",
+      "period": {
+        "type": "year",
+        "value": "2013"
+      },
+      "location": {
+        "name": "Palestine",
+        "admin_levels": {
+          "level1": "Palestine"
+        },
+        "region": "palestine"
+      },
+      "value": 23.476,
+      "unit": "percentage",
+      "quality": {
+        "score": 0.8333333333333333,
+        "completeness": 0.6666666666666666,
+        "consistency": 1,
+        "verified": false,
+        "confidence": 0.8
+      },
+      "sources": [
+        {
+          "name": "Palestinian Central Bureau of Statistics (PCBS)",
+          "organization": "PCBS",
+          "url": "https://api.worldbank.org/v2",
+          "fetched_at": "2025-10-30T09:46:35.093Z",
+          "reliability_score": 0.95
+        }
+      ],
+      "created_at": "2025-10-30T09:46:35.093Z",
+      "updated_at": "2025-10-30T09:46:35.093Z",
+      "version": 1,
+      "indicator_code": "SL.UEM.ADVN.ZS",
+      "indicator_name": "Unemployment with advanced education (% of total labor force)",
+      "analysis": {
+        "trend": {
+          "slope": 0.7917582417582417,
+          "direction": "increasing"
+        },
+        "growth_rate": 2.4562216454627412,
+        "volatility": 4.509178460402193,
+        "recent_change": 3.227508574443753,
+        "baseline_comparison": -20.57918062180724,
+        "data_points": 14,
+        "date_range": {
+          "start": "2010-01-01",
+          "end": "2024-01-01"
+        }
+      },
+      "pcbs_metadata": {
+        "official_source": true,
+        "data_quality": "high",
+        "update_frequency": "quarterly"
+      }
+    },
+    {
+      "id": "pcbs-1lnb6n",
+      "type": "economic",
+      "category": "labor",
+      "date": "2013-01-01",
+      "timestamp": "2013-01-01T00:00:00.000Z",
+      "period": {
+        "type": "year",
+        "value": "2013"
+      },
+      "location": {
+        "name": "Palestine",
+        "admin_levels": {
+          "level1": "Palestine"
+        },
+        "region": "palestine"
+      },
+      "value": 25.6780137902693,
+      "unit": "percentage",
+      "quality": {
+        "score": 0.8333333333333333,
+        "completeness": 0.6666666666666666,
+        "consistency": 1,
+        "verified": false,
+        "confidence": 0.8
+      },
+      "sources": [
+        {
+          "name": "Palestinian Central Bureau of Statistics (PCBS)",
+          "organization": "PCBS",
+          "url": "https://api.worldbank.org/v2",
+          "fetched_at": "2025-10-30T09:46:35.093Z",
+          "reliability_score": 0.95
+        }
+      ],
+      "created_at": "2025-10-30T09:46:35.093Z",
+      "updated_at": "2025-10-30T09:46:35.093Z",
+      "version": 1,
+      "indicator_code": "SL.EMP.VULN.ZS",
+      "indicator_name": "Vulnerable employment, total (% of total employment)",
+      "analysis": {
+        "trend": {
+          "slope": -0.6080387051187662,
+          "direction": "decreasing"
+        },
+        "growth_rate": -2.7496489826893638,
+        "volatility": 2.4069115782998995,
+        "recent_change": -3.9608436955036277,
+        "baseline_comparison": 39.702511257560445,
+        "data_points": 13,
+        "date_range": {
+          "start": "2010-01-01",
+          "end": "2022-01-01"
+        }
+      },
+      "pcbs_metadata": {
+        "official_source": true,
+        "data_quality": "high",
+        "update_frequency": "quarterly"
+      }
+    },
+    {
+      "id": "pcbs-im48s3",
+      "type": "economic",
+      "category": "labor",
+      "date": "2013-01-01",
+      "timestamp": "2013-01-01T00:00:00.000Z",
+      "period": {
+        "type": "year",
+        "value": "2013"
+      },
+      "location": {
+        "name": "Palestine",
+        "admin_levels": {
+          "level1": "Palestine"
+        },
+        "region": "palestine"
+      },
+      "value": 1010156,
+      "unit": "count",
+      "quality": {
+        "score": 0.8333333333333333,
+        "completeness": 0.6666666666666666,
+        "consistency": 1,
+        "verified": false,
+        "confidence": 0.8
+      },
+      "sources": [
+        {
+          "name": "Palestinian Central Bureau of Statistics (PCBS)",
+          "organization": "PCBS",
+          "url": "https://api.worldbank.org/v2",
+          "fetched_at": "2025-10-30T09:46:35.093Z",
+          "reliability_score": 0.95
+        }
+      ],
+      "created_at": "2025-10-30T09:46:35.093Z",
+      "updated_at": "2025-10-30T09:46:35.093Z",
+      "version": 1,
+      "indicator_code": "SL.TLF.TOTL.IN",
+      "indicator_name": "Labor force, total",
+      "analysis": {
+        "trend": {
+          "slope": 37530.92857142857,
+          "direction": "increasing"
+        },
+        "growth_rate": 3.9515747777760843,
+        "volatility": 143532.23298053542,
+        "recent_change": 3.3437274929614356,
+        "baseline_comparison": -27.391157464977034,
+        "data_points": 13,
+        "date_range": {
+          "start": "2010-01-01",
+          "end": "2022-01-01"
+        }
+      },
+      "pcbs_metadata": {
+        "official_source": true,
+        "data_quality": "high",
+        "update_frequency": "quarterly"
+      }
+    },
+    {
+      "id": "pcbs-73rag2",
+      "type": "economic",
+      "category": "labor",
+      "date": "2014-01-01",
+      "timestamp": "2014-01-01T00:00:00.000Z",
+      "period": {
+        "type": "year",
+        "value": "2014"
+      },
+      "location": {
+        "name": "Palestine",
+        "admin_levels": {
+          "level1": "Palestine"
+        },
+        "region": "palestine"
+      },
+      "value": 20.526,
+      "unit": "percentage",
+      "quality": {
+        "score": 0.8333333333333333,
+        "completeness": 0.6666666666666666,
+        "consistency": 1,
+        "verified": false,
+        "confidence": 0.8
+      },
+      "sources": [
+        {
+          "name": "Palestinian Central Bureau of Statistics (PCBS)",
+          "organization": "PCBS",
+          "url": "https://api.worldbank.org/v2",
+          "fetched_at": "2025-10-30T09:46:35.094Z",
+          "reliability_score": 0.95
+        }
+      ],
+      "created_at": "2025-10-30T09:46:35.094Z",
+      "updated_at": "2025-10-30T09:46:35.094Z",
+      "version": 1,
+      "indicator_code": "SL.UEM.TOTL.ZS",
+      "indicator_name": "Unemployment, total (% of total labor force)",
+      "analysis": {
+        "trend": {
+          "slope": 0.6551153846153833,
+          "direction": "increasing"
+        },
+        "growth_rate": 1.4057959609732358,
+        "volatility": 2.8807724884442916,
+        "recent_change": 3.176837237358005,
+        "baseline_comparison": -15.945945945945953,
+        "data_points": 13,
+        "date_range": {
+          "start": "2010-01-01",
+          "end": "2022-01-01"
+        }
+      },
+      "pcbs_metadata": {
+        "official_source": true,
+        "data_quality": "high",
+        "update_frequency": "quarterly"
+      }
+    },
+    {
+      "id": "pcbs-qkeg6h",
+      "type": "economic",
+      "category": "labor",
+      "date": "2014-01-01",
+      "timestamp": "2014-01-01T00:00:00.000Z",
+      "period": {
+        "type": "year",
+        "value": "2014"
+      },
+      "location": {
+        "name": "Palestine",
+        "admin_levels": {
+          "level1": "Palestine"
+        },
+        "region": "palestine"
+      },
+      "value": 26.083,
+      "unit": "percentage",
+      "quality": {
+        "score": 0.8333333333333333,
+        "completeness": 0.6666666666666666,
+        "consistency": 1,
+        "verified": false,
+        "confidence": 0.8
+      },
+      "sources": [
+        {
+          "name": "Palestinian Central Bureau of Statistics (PCBS)",
+          "organization": "PCBS",
+          "url": "https://api.worldbank.org/v2",
+          "fetched_at": "2025-10-30T09:46:35.094Z",
+          "reliability_score": 0.95
+        }
+      ],
+      "created_at": "2025-10-30T09:46:35.094Z",
+      "updated_at": "2025-10-30T09:46:35.094Z",
+      "version": 1,
+      "indicator_code": "SL.UEM.TOTL.FE.ZS",
+      "indicator_name": "Unemployment, female (% of female labor force)",
+      "analysis": {
+        "trend": {
+          "slope": 1.9043901098901115,
+          "direction": "increasing"
+        },
+        "growth_rate": 5.7444738132556665,
+        "volatility": 7.815284625344616,
+        "recent_change": -4.545288197621229,
+        "baseline_comparison": -34.7892394619731,
+        "data_points": 13,
+        "date_range": {
+          "start": "2010-01-01",
+          "end": "2022-01-01"
+        }
+      },
+      "pcbs_metadata": {
+        "official_source": true,
+        "data_quality": "high",
+        "update_frequency": "quarterly"
+      }
+    },
+    {
+      "id": "pcbs-ia762i",
+      "type": "economic",
+      "category": "labor",
+      "date": "2014-01-01",
+      "timestamp": "2014-01-01T00:00:00.000Z",
+      "period": {
+        "type": "year",
+        "value": "2014"
+      },
+      "location": {
+        "name": "Palestine",
+        "admin_levels": {
+          "level1": "Palestine"
+        },
+        "region": "palestine"
+      },
+      "value": 19.14,
+      "unit": "percentage",
+      "quality": {
+        "score": 0.8333333333333333,
+        "completeness": 0.6666666666666666,
+        "consistency": 1,
+        "verified": false,
+        "confidence": 0.8
+      },
+      "sources": [
+        {
+          "name": "Palestinian Central Bureau of Statistics (PCBS)",
+          "organization": "PCBS",
+          "url": "https://api.worldbank.org/v2",
+          "fetched_at": "2025-10-30T09:46:35.094Z",
+          "reliability_score": 0.95
+        }
+      ],
+      "created_at": "2025-10-30T09:46:35.094Z",
+      "updated_at": "2025-10-30T09:46:35.094Z",
+      "version": 1,
+      "indicator_code": "SL.UEM.TOTL.MA.ZS",
+      "indicator_name": "Unemployment, male (% of male labor force)",
+      "analysis": {
+        "trend": {
+          "slope": 0.31371978021978114,
+          "direction": "increasing"
+        },
+        "growth_rate": -0.10808060271199575,
+        "volatility": 1.8165061561647997,
+        "recent_change": 5.582524271844663,
+        "baseline_comparison": -5.078357468756203,
+        "data_points": 13,
+        "date_range": {
+          "start": "2010-01-01",
+          "end": "2022-01-01"
+        }
+      },
+      "pcbs_metadata": {
+        "official_source": true,
+        "data_quality": "high",
+        "update_frequency": "quarterly"
+      }
+    },
+    {
+      "id": "pcbs-hlbjfz",
+      "type": "economic",
+      "category": "labor",
+      "date": "2014-01-01",
+      "timestamp": "2014-01-01T00:00:00.000Z",
+      "period": {
+        "type": "year",
+        "value": "2014"
+      },
+      "location": {
+        "name": "Palestine",
+        "admin_levels": {
+          "level1": "Palestine"
+        },
+        "region": "palestine"
+      },
+      "value": 36.33,
+      "unit": "percentage",
+      "quality": {
+        "score": 0.8333333333333333,
+        "completeness": 0.6666666666666666,
+        "consistency": 1,
+        "verified": false,
+        "confidence": 0.8
+      },
+      "sources": [
+        {
+          "name": "Palestinian Central Bureau of Statistics (PCBS)",
+          "organization": "PCBS",
+          "url": "https://api.worldbank.org/v2",
+          "fetched_at": "2025-10-30T09:46:35.094Z",
+          "reliability_score": 0.95
+        }
+      ],
+      "created_at": "2025-10-30T09:46:35.094Z",
+      "updated_at": "2025-10-30T09:46:35.094Z",
+      "version": 1,
+      "indicator_code": "SL.UEM.1524.ZS",
+      "indicator_name": "Unemployment, youth total (% of total labor force ages 15-24)",
+      "analysis": {
+        "trend": {
+          "slope": 0.5858901098901069,
+          "direction": "increasing"
+        },
+        "growth_rate": 0.2739699795806203,
+        "volatility": 3.2278809525425474,
+        "recent_change": -2.173034978592784,
+        "baseline_comparison": 0.6594259115593472,
+        "data_points": 13,
+        "date_range": {
+          "start": "2010-01-01",
+          "end": "2022-01-01"
+        }
+      },
+      "pcbs_metadata": {
+        "official_source": true,
+        "data_quality": "high",
+        "update_frequency": "quarterly"
+      }
+    },
+    {
+      "id": "pcbs-w38m8t",
+      "type": "economic",
+      "category": "labor",
+      "date": "2014-01-01",
+      "timestamp": "2014-01-01T00:00:00.000Z",
+      "period": {
+        "type": "year",
+        "value": "2014"
+      },
+      "location": {
+        "name": "Palestine",
+        "admin_levels": {
+          "level1": "Palestine"
+        },
+        "region": "palestine"
+      },
+      "value": 23.29,
+      "unit": "percentage",
+      "quality": {
+        "score": 0.8333333333333333,
+        "completeness": 0.6666666666666666,
+        "consistency": 1,
+        "verified": false,
+        "confidence": 0.8
+      },
+      "sources": [
+        {
+          "name": "Palestinian Central Bureau of Statistics (PCBS)",
+          "organization": "PCBS",
+          "url": "https://api.worldbank.org/v2",
+          "fetched_at": "2025-10-30T09:46:35.094Z",
+          "reliability_score": 0.95
+        }
+      ],
+      "created_at": "2025-10-30T09:46:35.094Z",
+      "updated_at": "2025-10-30T09:46:35.094Z",
+      "version": 1,
+      "indicator_code": "SL.UEM.ADVN.ZS",
+      "indicator_name": "Unemployment with advanced education (% of total labor force)",
+      "analysis": {
+        "trend": {
+          "slope": 0.7917582417582417,
+          "direction": "increasing"
+        },
+        "growth_rate": 2.4562216454627412,
+        "volatility": 4.509178460402193,
+        "recent_change": -0.7922985176350313,
+        "baseline_comparison": -21.208430596434255,
+        "data_points": 14,
+        "date_range": {
+          "start": "2010-01-01",
+          "end": "2024-01-01"
+        }
+      },
+      "pcbs_metadata": {
+        "official_source": true,
+        "data_quality": "high",
+        "update_frequency": "quarterly"
+      }
+    },
+    {
+      "id": "pcbs-o4o0y7",
+      "type": "economic",
+      "category": "labor",
+      "date": "2014-01-01",
+      "timestamp": "2014-01-01T00:00:00.000Z",
+      "period": {
+        "type": "year",
+        "value": "2014"
+      },
+      "location": {
+        "name": "Palestine",
+        "admin_levels": {
+          "level1": "Palestine"
+        },
+        "region": "palestine"
+      },
+      "value": 25.9241015490221,
+      "unit": "percentage",
+      "quality": {
+        "score": 0.8333333333333333,
+        "completeness": 0.6666666666666666,
+        "consistency": 1,
+        "verified": false,
+        "confidence": 0.8
+      },
+      "sources": [
+        {
+          "name": "Palestinian Central Bureau of Statistics (PCBS)",
+          "organization": "PCBS",
+          "url": "https://api.worldbank.org/v2",
+          "fetched_at": "2025-10-30T09:46:35.094Z",
+          "reliability_score": 0.95
+        }
+      ],
+      "created_at": "2025-10-30T09:46:35.094Z",
+      "updated_at": "2025-10-30T09:46:35.094Z",
+      "version": 1,
+      "indicator_code": "SL.EMP.VULN.ZS",
+      "indicator_name": "Vulnerable employment, total (% of total employment)",
+      "analysis": {
+        "trend": {
+          "slope": -0.6080387051187662,
+          "direction": "decreasing"
+        },
+        "growth_rate": -2.7496489826893638,
+        "volatility": 2.4069115782998995,
+        "recent_change": 0.9583597888947915,
+        "baseline_comparison": 41.04136394952913,
+        "data_points": 13,
+        "date_range": {
+          "start": "2010-01-01",
+          "end": "2022-01-01"
+        }
+      },
+      "pcbs_metadata": {
+        "official_source": true,
+        "data_quality": "high",
+        "update_frequency": "quarterly"
+      }
+    },
+    {
+      "id": "pcbs-qacsei",
+      "type": "economic",
+      "category": "labor",
+      "date": "2014-01-01",
+      "timestamp": "2014-01-01T00:00:00.000Z",
+      "period": {
+        "type": "year",
+        "value": "2014"
+      },
+      "location": {
+        "name": "Palestine",
+        "admin_levels": {
+          "level1": "Palestine"
+        },
+        "region": "palestine"
+      },
+      "value": 1047752,
+      "unit": "count",
+      "quality": {
+        "score": 0.8333333333333333,
+        "completeness": 0.6666666666666666,
+        "consistency": 1,
+        "verified": false,
+        "confidence": 0.8
+      },
+      "sources": [
+        {
+          "name": "Palestinian Central Bureau of Statistics (PCBS)",
+          "organization": "PCBS",
+          "url": "https://api.worldbank.org/v2",
+          "fetched_at": "2025-10-30T09:46:35.094Z",
+          "reliability_score": 0.95
+        }
+      ],
+      "created_at": "2025-10-30T09:46:35.094Z",
+      "updated_at": "2025-10-30T09:46:35.094Z",
+      "version": 1,
+      "indicator_code": "SL.TLF.TOTL.IN",
+      "indicator_name": "Labor force, total",
+      "analysis": {
+        "trend": {
+          "slope": 37530.92857142857,
+          "direction": "increasing"
+        },
+        "growth_rate": 3.9515747777760843,
+        "volatility": 143532.23298053542,
+        "recent_change": 3.7218013851325935,
+        "baseline_comparison": -24.688800557779807,
+        "data_points": 13,
+        "date_range": {
+          "start": "2010-01-01",
+          "end": "2022-01-01"
+        }
+      },
+      "pcbs_metadata": {
+        "official_source": true,
+        "data_quality": "high",
+        "update_frequency": "quarterly"
+      }
+    },
+    {
+      "id": "pcbs-sr0q3k",
+      "type": "economic",
+      "category": "labor",
+      "date": "2015-01-01",
+      "timestamp": "2015-01-01T00:00:00.000Z",
+      "period": {
+        "type": "year",
+        "value": "2015"
+      },
+      "location": {
+        "name": "Palestine",
+        "admin_levels": {
+          "level1": "Palestine"
+        },
+        "region": "palestine"
+      },
+      "value": 23.005,
+      "unit": "percentage",
+      "quality": {
+        "score": 0.8333333333333333,
+        "completeness": 0.6666666666666666,
+        "consistency": 1,
+        "verified": false,
+        "confidence": 0.8
+      },
+      "sources": [
+        {
+          "name": "Palestinian Central Bureau of Statistics (PCBS)",
+          "organization": "PCBS",
+          "url": "https://api.worldbank.org/v2",
+          "fetched_at": "2025-10-30T09:46:35.096Z",
+          "reliability_score": 0.95
+        }
+      ],
+      "created_at": "2025-10-30T09:46:35.096Z",
+      "updated_at": "2025-10-30T09:46:35.096Z",
+      "version": 1,
+      "indicator_code": "SL.UEM.TOTL.ZS",
+      "indicator_name": "Unemployment, total (% of total labor force)",
+      "analysis": {
+        "trend": {
+          "slope": 0.6551153846153833,
+          "direction": "increasing"
+        },
+        "growth_rate": 1.4057959609732358,
+        "volatility": 2.8807724884442916,
+        "recent_change": 12.077365292799373,
+        "baseline_comparison": -5.794430794430805,
+        "data_points": 13,
+        "date_range": {
+          "start": "2010-01-01",
+          "end": "2022-01-01"
+        }
+      },
+      "pcbs_metadata": {
+        "official_source": true,
+        "data_quality": "high",
+        "update_frequency": "quarterly"
+      }
+    },
+    {
+      "id": "pcbs-ek5ivw",
+      "type": "economic",
+      "category": "labor",
+      "date": "2015-01-01",
+      "timestamp": "2015-01-01T00:00:00.000Z",
+      "period": {
+        "type": "year",
+        "value": "2015"
+      },
+      "location": {
+        "name": "Palestine",
+        "admin_levels": {
+          "level1": "Palestine"
+        },
+        "region": "palestine"
+      },
+      "value": 34.123,
+      "unit": "percentage",
+      "quality": {
+        "score": 0.8333333333333333,
+        "completeness": 0.6666666666666666,
+        "consistency": 1,
+        "verified": false,
+        "confidence": 0.8
+      },
+      "sources": [
+        {
+          "name": "Palestinian Central Bureau of Statistics (PCBS)",
+          "organization": "PCBS",
+          "url": "https://api.worldbank.org/v2",
+          "fetched_at": "2025-10-30T09:46:35.096Z",
+          "reliability_score": 0.95
+        }
+      ],
+      "created_at": "2025-10-30T09:46:35.096Z",
+      "updated_at": "2025-10-30T09:46:35.096Z",
+      "version": 1,
+      "indicator_code": "SL.UEM.TOTL.FE.ZS",
+      "indicator_name": "Unemployment, female (% of female labor force)",
+      "analysis": {
+        "trend": {
+          "slope": 1.9043901098901115,
+          "direction": "increasing"
+        },
+        "growth_rate": 5.7444738132556665,
+        "volatility": 7.815284625344616,
+        "recent_change": 30.824675075719814,
+        "baseline_comparison": -14.688234411720588,
+        "data_points": 13,
+        "date_range": {
+          "start": "2010-01-01",
+          "end": "2022-01-01"
+        }
+      },
+      "pcbs_metadata": {
+        "official_source": true,
+        "data_quality": "high",
+        "update_frequency": "quarterly"
+      }
+    },
+    {
+      "id": "pcbs-makkx5",
+      "type": "economic",
+      "category": "labor",
+      "date": "2015-01-01",
+      "timestamp": "2015-01-01T00:00:00.000Z",
+      "period": {
+        "type": "year",
+        "value": "2015"
+      },
+      "location": {
+        "name": "Palestine",
+        "admin_levels": {
+          "level1": "Palestine"
+        },
+        "region": "palestine"
+      },
+      "value": 20.085,
+      "unit": "percentage",
+      "quality": {
+        "score": 0.8333333333333333,
+        "completeness": 0.6666666666666666,
+        "consistency": 1,
+        "verified": false,
+        "confidence": 0.8
+      },
+      "sources": [
+        {
+          "name": "Palestinian Central Bureau of Statistics (PCBS)",
+          "organization": "PCBS",
+          "url": "https://api.worldbank.org/v2",
+          "fetched_at": "2025-10-30T09:46:35.096Z",
+          "reliability_score": 0.95
+        }
+      ],
+      "created_at": "2025-10-30T09:46:35.096Z",
+      "updated_at": "2025-10-30T09:46:35.096Z",
+      "version": 1,
+      "indicator_code": "SL.UEM.TOTL.MA.ZS",
+      "indicator_name": "Unemployment, male (% of male labor force)",
+      "analysis": {
+        "trend": {
+          "slope": 0.31371978021978114,
+          "direction": "increasing"
+        },
+        "growth_rate": -0.10808060271199575,
+        "volatility": 1.8165061561647997,
+        "recent_change": 4.937304075235112,
+        "baseline_comparison": -0.39178734378099894,
+        "data_points": 13,
+        "date_range": {
+          "start": "2010-01-01",
+          "end": "2022-01-01"
+        }
+      },
+      "pcbs_metadata": {
+        "official_source": true,
+        "data_quality": "high",
+        "update_frequency": "quarterly"
+      }
+    },
+    {
+      "id": "pcbs-eer7pb",
+      "type": "economic",
+      "category": "labor",
+      "date": "2015-01-01",
+      "timestamp": "2015-01-01T00:00:00.000Z",
+      "period": {
+        "type": "year",
+        "value": "2015"
+      },
+      "location": {
+        "name": "Palestine",
+        "admin_levels": {
+          "level1": "Palestine"
+        },
+        "region": "palestine"
+      },
+      "value": 37.215,
+      "unit": "percentage",
+      "quality": {
+        "score": 0.8333333333333333,
+        "completeness": 0.6666666666666666,
+        "consistency": 1,
+        "verified": false,
+        "confidence": 0.8
+      },
+      "sources": [
+        {
+          "name": "Palestinian Central Bureau of Statistics (PCBS)",
+          "organization": "PCBS",
+          "url": "https://api.worldbank.org/v2",
+          "fetched_at": "2025-10-30T09:46:35.096Z",
+          "reliability_score": 0.95
+        }
+      ],
+      "created_at": "2025-10-30T09:46:35.096Z",
+      "updated_at": "2025-10-30T09:46:35.096Z",
+      "version": 1,
+      "indicator_code": "SL.UEM.1524.ZS",
+      "indicator_name": "Unemployment, youth total (% of total labor force ages 15-24)",
+      "analysis": {
+        "trend": {
+          "slope": 0.5858901098901069,
+          "direction": "increasing"
+        },
+        "growth_rate": 0.2739699795806203,
+        "volatility": 3.2278809525425474,
+        "recent_change": 2.4360033030553403,
+        "baseline_comparison": 3.1114928516014757,
+        "data_points": 13,
+        "date_range": {
+          "start": "2010-01-01",
+          "end": "2022-01-01"
+        }
+      },
+      "pcbs_metadata": {
+        "official_source": true,
+        "data_quality": "high",
+        "update_frequency": "quarterly"
+      }
+    },
+    {
+      "id": "pcbs-fyu3c6",
+      "type": "economic",
+      "category": "labor",
+      "date": "2015-01-01",
+      "timestamp": "2015-01-01T00:00:00.000Z",
+      "period": {
+        "type": "year",
+        "value": "2015"
+      },
+      "location": {
+        "name": "Palestine",
+        "admin_levels": {
+          "level1": "Palestine"
+        },
+        "region": "palestine"
+      },
+      "value": 28.743,
+      "unit": "percentage",
+      "quality": {
+        "score": 0.8333333333333333,
+        "completeness": 0.6666666666666666,
+        "consistency": 1,
+        "verified": false,
+        "confidence": 0.8
+      },
+      "sources": [
+        {
+          "name": "Palestinian Central Bureau of Statistics (PCBS)",
+          "organization": "PCBS",
+          "url": "https://api.worldbank.org/v2",
+          "fetched_at": "2025-10-30T09:46:35.096Z",
+          "reliability_score": 0.95
+        }
+      ],
+      "created_at": "2025-10-30T09:46:35.096Z",
+      "updated_at": "2025-10-30T09:46:35.096Z",
+      "version": 1,
+      "indicator_code": "SL.UEM.ADVN.ZS",
+      "indicator_name": "Unemployment with advanced education (% of total labor force)",
+      "analysis": {
+        "trend": {
+          "slope": 0.7917582417582417,
+          "direction": "increasing"
+        },
+        "growth_rate": 2.4562216454627412,
+        "volatility": 4.509178460402193,
+        "recent_change": 23.413482181193643,
+        "baseline_comparison": -2.7605805338475675,
+        "data_points": 14,
+        "date_range": {
+          "start": "2010-01-01",
+          "end": "2024-01-01"
+        }
+      },
+      "pcbs_metadata": {
+        "official_source": true,
+        "data_quality": "high",
+        "update_frequency": "quarterly"
+      }
+    },
+    {
+      "id": "pcbs-v19w40",
+      "type": "economic",
+      "category": "labor",
+      "date": "2015-01-01",
+      "timestamp": "2015-01-01T00:00:00.000Z",
+      "period": {
+        "type": "year",
+        "value": "2015"
+      },
+      "location": {
+        "name": "Palestine",
+        "admin_levels": {
+          "level1": "Palestine"
+        },
+        "region": "palestine"
+      },
+      "value": 25.034773852681,
+      "unit": "percentage",
+      "quality": {
+        "score": 0.8333333333333333,
+        "completeness": 0.6666666666666666,
+        "consistency": 1,
+        "verified": false,
+        "confidence": 0.8
+      },
+      "sources": [
+        {
+          "name": "Palestinian Central Bureau of Statistics (PCBS)",
+          "organization": "PCBS",
+          "url": "https://api.worldbank.org/v2",
+          "fetched_at": "2025-10-30T09:46:35.096Z",
+          "reliability_score": 0.95
+        }
+      ],
+      "created_at": "2025-10-30T09:46:35.096Z",
+      "updated_at": "2025-10-30T09:46:35.096Z",
+      "version": 1,
+      "indicator_code": "SL.EMP.VULN.ZS",
+      "indicator_name": "Vulnerable employment, total (% of total employment)",
+      "analysis": {
+        "trend": {
+          "slope": -0.6080387051187662,
+          "direction": "decreasing"
+        },
+        "growth_rate": -2.7496489826893638,
+        "volatility": 2.4069115782998995,
+        "recent_change": -3.430505372228218,
+        "baseline_comparison": 36.20293238217658,
+        "data_points": 13,
+        "date_range": {
+          "start": "2010-01-01",
+          "end": "2022-01-01"
+        }
+      },
+      "pcbs_metadata": {
+        "official_source": true,
+        "data_quality": "high",
+        "update_frequency": "quarterly"
+      }
+    },
+    {
+      "id": "pcbs-oq8czv",
+      "type": "economic",
+      "category": "labor",
+      "date": "2015-01-01",
+      "timestamp": "2015-01-01T00:00:00.000Z",
+      "period": {
+        "type": "year",
+        "value": "2015"
+      },
+      "location": {
+        "name": "Palestine",
+        "admin_levels": {
+          "level1": "Palestine"
+        },
+        "region": "palestine"
+      },
+      "value": 1124303,
+      "unit": "count",
+      "quality": {
+        "score": 0.8333333333333333,
+        "completeness": 0.6666666666666666,
+        "consistency": 1,
+        "verified": false,
+        "confidence": 0.8
+      },
+      "sources": [
+        {
+          "name": "Palestinian Central Bureau of Statistics (PCBS)",
+          "organization": "PCBS",
+          "url": "https://api.worldbank.org/v2",
+          "fetched_at": "2025-10-30T09:46:35.096Z",
+          "reliability_score": 0.95
+        }
+      ],
+      "created_at": "2025-10-30T09:46:35.096Z",
+      "updated_at": "2025-10-30T09:46:35.096Z",
+      "version": 1,
+      "indicator_code": "SL.TLF.TOTL.IN",
+      "indicator_name": "Labor force, total",
+      "analysis": {
+        "trend": {
+          "slope": 37530.92857142857,
+          "direction": "increasing"
+        },
+        "growth_rate": 3.9515747777760843,
+        "volatility": 143532.23298053542,
+        "recent_change": 7.306213684154265,
+        "baseline_comparison": -19.186403398431604,
+        "data_points": 13,
+        "date_range": {
+          "start": "2010-01-01",
+          "end": "2022-01-01"
+        }
+      },
+      "pcbs_metadata": {
+        "official_source": true,
+        "data_quality": "high",
+        "update_frequency": "quarterly"
+      }
+    },
+    {
+      "id": "pcbs-wxajah",
+      "type": "economic",
+      "category": "labor",
+      "date": "2016-01-01",
+      "timestamp": "2016-01-01T00:00:00.000Z",
+      "period": {
+        "type": "year",
+        "value": "2016"
+      },
+      "location": {
+        "name": "Palestine",
+        "admin_levels": {
+          "level1": "Palestine"
+        },
+        "region": "palestine"
+      },
+      "value": 23.939,
+      "unit": "percentage",
+      "quality": {
+        "score": 0.8333333333333333,
+        "completeness": 0.6666666666666666,
+        "consistency": 1,
+        "verified": false,
+        "confidence": 0.8
+      },
+      "sources": [
+        {
+          "name": "Palestinian Central Bureau of Statistics (PCBS)",
+          "organization": "PCBS",
+          "url": "https://api.worldbank.org/v2",
+          "fetched_at": "2025-10-30T09:46:35.097Z",
+          "reliability_score": 0.95
+        }
+      ],
+      "created_at": "2025-10-30T09:46:35.097Z",
+      "updated_at": "2025-10-30T09:46:35.097Z",
+      "version": 1,
+      "indicator_code": "SL.UEM.TOTL.ZS",
+      "indicator_name": "Unemployment, total (% of total labor force)",
+      "analysis": {
+        "trend": {
+          "slope": 0.6551153846153833,
+          "direction": "increasing"
+        },
+        "growth_rate": 1.4057959609732358,
+        "volatility": 2.8807724884442916,
+        "recent_change": 4.059986959356666,
+        "baseline_comparison": -1.9696969696969764,
+        "data_points": 13,
+        "date_range": {
+          "start": "2010-01-01",
+          "end": "2022-01-01"
+        }
+      },
+      "pcbs_metadata": {
+        "official_source": true,
+        "data_quality": "high",
+        "update_frequency": "quarterly"
+      }
+    },
+    {
+      "id": "pcbs-rcirf1",
+      "type": "economic",
+      "category": "labor",
+      "date": "2016-01-01",
+      "timestamp": "2016-01-01T00:00:00.000Z",
+      "period": {
+        "type": "year",
+        "value": "2016"
+      },
+      "location": {
+        "name": "Palestine",
+        "admin_levels": {
+          "level1": "Palestine"
+        },
+        "region": "palestine"
+      },
+      "value": 37.708,
+      "unit": "percentage",
+      "quality": {
+        "score": 0.8333333333333333,
+        "completeness": 0.6666666666666666,
+        "consistency": 1,
+        "verified": false,
+        "confidence": 0.8
+      },
+      "sources": [
+        {
+          "name": "Palestinian Central Bureau of Statistics (PCBS)",
+          "organization": "PCBS",
+          "url": "https://api.worldbank.org/v2",
+          "fetched_at": "2025-10-30T09:46:35.097Z",
+          "reliability_score": 0.95
+        }
+      ],
+      "created_at": "2025-10-30T09:46:35.097Z",
+      "updated_at": "2025-10-30T09:46:35.097Z",
+      "version": 1,
+      "indicator_code": "SL.UEM.TOTL.FE.ZS",
+      "indicator_name": "Unemployment, female (% of female labor force)",
+      "analysis": {
+        "trend": {
+          "slope": 1.9043901098901115,
+          "direction": "increasing"
+        },
+        "growth_rate": 5.7444738132556665,
+        "volatility": 7.815284625344616,
+        "recent_change": 10.506110248219679,
+        "baseline_comparison": -5.725286264313214,
+        "data_points": 13,
+        "date_range": {
+          "start": "2010-01-01",
+          "end": "2022-01-01"
+        }
+      },
+      "pcbs_metadata": {
+        "official_source": true,
+        "data_quality": "high",
+        "update_frequency": "quarterly"
+      }
+    },
+    {
+      "id": "pcbs-knzxu6",
+      "type": "economic",
+      "category": "labor",
+      "date": "2016-01-01",
+      "timestamp": "2016-01-01T00:00:00.000Z",
+      "period": {
+        "type": "year",
+        "value": "2016"
+      },
+      "location": {
+        "name": "Palestine",
+        "admin_levels": {
+          "level1": "Palestine"
+        },
+        "region": "palestine"
+      },
+      "value": 20.441,
+      "unit": "percentage",
+      "quality": {
+        "score": 0.8333333333333333,
+        "completeness": 0.6666666666666666,
+        "consistency": 1,
+        "verified": false,
+        "confidence": 0.8
+      },
+      "sources": [
+        {
+          "name": "Palestinian Central Bureau of Statistics (PCBS)",
+          "organization": "PCBS",
+          "url": "https://api.worldbank.org/v2",
+          "fetched_at": "2025-10-30T09:46:35.097Z",
+          "reliability_score": 0.95
+        }
+      ],
+      "created_at": "2025-10-30T09:46:35.097Z",
+      "updated_at": "2025-10-30T09:46:35.097Z",
+      "version": 1,
+      "indicator_code": "SL.UEM.TOTL.MA.ZS",
+      "indicator_name": "Unemployment, male (% of male labor force)",
+      "analysis": {
+        "trend": {
+          "slope": 0.31371978021978114,
+          "direction": "increasing"
+        },
+        "growth_rate": -0.10808060271199575,
+        "volatility": 1.8165061561647997,
+        "recent_change": 1.7724670151854522,
+        "baseline_comparison": 1.373735369966264,
+        "data_points": 13,
+        "date_range": {
+          "start": "2010-01-01",
+          "end": "2022-01-01"
+        }
+      },
+      "pcbs_metadata": {
+        "official_source": true,
+        "data_quality": "high",
+        "update_frequency": "quarterly"
+      }
+    },
+    {
+      "id": "pcbs-tm5eux",
+      "type": "economic",
+      "category": "labor",
+      "date": "2016-01-01",
+      "timestamp": "2016-01-01T00:00:00.000Z",
+      "period": {
+        "type": "year",
+        "value": "2016"
+      },
+      "location": {
+        "name": "Palestine",
+        "admin_levels": {
+          "level1": "Palestine"
+        },
+        "region": "palestine"
+      },
+      "value": 38.507,
+      "unit": "percentage",
+      "quality": {
+        "score": 0.8333333333333333,
+        "completeness": 0.6666666666666666,
+        "consistency": 1,
+        "verified": false,
+        "confidence": 0.8
+      },
+      "sources": [
+        {
+          "name": "Palestinian Central Bureau of Statistics (PCBS)",
+          "organization": "PCBS",
+          "url": "https://api.worldbank.org/v2",
+          "fetched_at": "2025-10-30T09:46:35.097Z",
+          "reliability_score": 0.95
+        }
+      ],
+      "created_at": "2025-10-30T09:46:35.097Z",
+      "updated_at": "2025-10-30T09:46:35.097Z",
+      "version": 1,
+      "indicator_code": "SL.UEM.1524.ZS",
+      "indicator_name": "Unemployment, youth total (% of total labor force ages 15-24)",
+      "analysis": {
+        "trend": {
+          "slope": 0.5858901098901069,
+          "direction": "increasing"
+        },
+        "growth_rate": 0.2739699795806203,
+        "volatility": 3.2278809525425474,
+        "recent_change": 3.4717183931210385,
+        "baseline_comparison": 6.691233514352208,
+        "data_points": 13,
+        "date_range": {
+          "start": "2010-01-01",
+          "end": "2022-01-01"
+        }
+      },
+      "pcbs_metadata": {
+        "official_source": true,
+        "data_quality": "high",
+        "update_frequency": "quarterly"
+      }
+    },
+    {
+      "id": "pcbs-6pwu70",
+      "type": "economic",
+      "category": "labor",
+      "date": "2016-01-01",
+      "timestamp": "2016-01-01T00:00:00.000Z",
+      "period": {
+        "type": "year",
+        "value": "2016"
+      },
+      "location": {
+        "name": "Palestine",
+        "admin_levels": {
+          "level1": "Palestine"
+        },
+        "region": "palestine"
+      },
+      "value": 30.565,
+      "unit": "percentage",
+      "quality": {
+        "score": 0.8333333333333333,
+        "completeness": 0.6666666666666666,
+        "consistency": 1,
+        "verified": false,
+        "confidence": 0.8
+      },
+      "sources": [
+        {
+          "name": "Palestinian Central Bureau of Statistics (PCBS)",
+          "organization": "PCBS",
+          "url": "https://api.worldbank.org/v2",
+          "fetched_at": "2025-10-30T09:46:35.097Z",
+          "reliability_score": 0.95
+        }
+      ],
+      "created_at": "2025-10-30T09:46:35.097Z",
+      "updated_at": "2025-10-30T09:46:35.097Z",
+      "version": 1,
+      "indicator_code": "SL.UEM.ADVN.ZS",
+      "indicator_name": "Unemployment with advanced education (% of total labor force)",
+      "analysis": {
+        "trend": {
+          "slope": 0.7917582417582417,
+          "direction": "increasing"
+        },
+        "growth_rate": 2.4562216454627412,
+        "volatility": 4.509178460402193,
+        "recent_change": 6.338934697143663,
+        "baseline_comparison": 3.4033627659934376,
+        "data_points": 14,
+        "date_range": {
+          "start": "2010-01-01",
+          "end": "2024-01-01"
+        }
+      },
+      "pcbs_metadata": {
+        "official_source": true,
+        "data_quality": "high",
+        "update_frequency": "quarterly"
+      }
+    },
+    {
+      "id": "pcbs-ltabtn",
+      "type": "economic",
+      "category": "labor",
+      "date": "2016-01-01",
+      "timestamp": "2016-01-01T00:00:00.000Z",
+      "period": {
+        "type": "year",
+        "value": "2016"
+      },
+      "location": {
+        "name": "Palestine",
+        "admin_levels": {
+          "level1": "Palestine"
+        },
+        "region": "palestine"
+      },
+      "value": 24.0678335304945,
+      "unit": "percentage",
+      "quality": {
+        "score": 0.8333333333333333,
+        "completeness": 0.6666666666666666,
+        "consistency": 1,
+        "verified": false,
+        "confidence": 0.8
+      },
+      "sources": [
+        {
+          "name": "Palestinian Central Bureau of Statistics (PCBS)",
+          "organization": "PCBS",
+          "url": "https://api.worldbank.org/v2",
+          "fetched_at": "2025-10-30T09:46:35.097Z",
+          "reliability_score": 0.95
+        }
+      ],
+      "created_at": "2025-10-30T09:46:35.097Z",
+      "updated_at": "2025-10-30T09:46:35.097Z",
+      "version": 1,
+      "indicator_code": "SL.EMP.VULN.ZS",
+      "indicator_name": "Vulnerable employment, total (% of total employment)",
+      "analysis": {
+        "trend": {
+          "slope": -0.6080387051187662,
+          "direction": "decreasing"
+        },
+        "growth_rate": -2.7496489826893638,
+        "volatility": 2.4069115782998995,
+        "recent_change": -3.8623888830653383,
+        "baseline_comparison": 30.94224546343839,
+        "data_points": 13,
+        "date_range": {
+          "start": "2010-01-01",
+          "end": "2022-01-01"
+        }
+      },
+      "pcbs_metadata": {
+        "official_source": true,
+        "data_quality": "high",
+        "update_frequency": "quarterly"
+      }
+    },
+    {
+      "id": "pcbs-rykvs5",
+      "type": "economic",
+      "category": "labor",
+      "date": "2016-01-01",
+      "timestamp": "2016-01-01T00:00:00.000Z",
+      "period": {
+        "type": "year",
+        "value": "2016"
+      },
+      "location": {
+        "name": "Palestine",
+        "admin_levels": {
+          "level1": "Palestine"
+        },
+        "region": "palestine"
+      },
+      "value": 1149280,
+      "unit": "count",
+      "quality": {
+        "score": 0.8333333333333333,
+        "completeness": 0.6666666666666666,
+        "consistency": 1,
+        "verified": false,
+        "confidence": 0.8
+      },
+      "sources": [
+        {
+          "name": "Palestinian Central Bureau of Statistics (PCBS)",
+          "organization": "PCBS",
+          "url": "https://api.worldbank.org/v2",
+          "fetched_at": "2025-10-30T09:46:35.097Z",
+          "reliability_score": 0.95
+        }
+      ],
+      "created_at": "2025-10-30T09:46:35.097Z",
+      "updated_at": "2025-10-30T09:46:35.097Z",
+      "version": 1,
+      "indicator_code": "SL.TLF.TOTL.IN",
+      "indicator_name": "Labor force, total",
+      "analysis": {
+        "trend": {
+          "slope": 37530.92857142857,
+          "direction": "increasing"
+        },
+        "growth_rate": 3.9515747777760843,
+        "volatility": 143532.23298053542,
+        "recent_change": 2.2215541539958537,
+        "baseline_comparison": -17.39108558613601,
+        "data_points": 13,
+        "date_range": {
+          "start": "2010-01-01",
+          "end": "2022-01-01"
+        }
+      },
+      "pcbs_metadata": {
+        "official_source": true,
+        "data_quality": "high",
+        "update_frequency": "quarterly"
+      }
+    },
+    {
+      "id": "pcbs-44550h",
+      "type": "economic",
+      "category": "labor",
+      "date": "2017-01-01",
+      "timestamp": "2017-01-01T00:00:00.000Z",
+      "period": {
+        "type": "year",
+        "value": "2017"
+      },
+      "location": {
+        "name": "Palestine",
+        "admin_levels": {
+          "level1": "Palestine"
+        },
+        "region": "palestine"
+      },
+      "value": 25.677,
+      "unit": "percentage",
+      "quality": {
+        "score": 0.8333333333333333,
+        "completeness": 0.6666666666666666,
+        "consistency": 1,
+        "verified": false,
+        "confidence": 0.8
+      },
+      "sources": [
+        {
+          "name": "Palestinian Central Bureau of Statistics (PCBS)",
+          "organization": "PCBS",
+          "url": "https://api.worldbank.org/v2",
+          "fetched_at": "2025-10-30T09:46:35.098Z",
+          "reliability_score": 0.95
+        }
+      ],
+      "created_at": "2025-10-30T09:46:35.098Z",
+      "updated_at": "2025-10-30T09:46:35.098Z",
+      "version": 1,
+      "indicator_code": "SL.UEM.TOTL.ZS",
+      "indicator_name": "Unemployment, total (% of total labor force)",
+      "analysis": {
+        "trend": {
+          "slope": 0.6551153846153833,
+          "direction": "increasing"
+        },
+        "growth_rate": 1.4057959609732358,
+        "volatility": 2.8807724884442916,
+        "recent_change": 7.260119470320396,
+        "baseline_comparison": 5.147420147420139,
+        "data_points": 13,
+        "date_range": {
+          "start": "2010-01-01",
+          "end": "2022-01-01"
+        }
+      },
+      "pcbs_metadata": {
+        "official_source": true,
+        "data_quality": "high",
+        "update_frequency": "quarterly"
+      }
+    },
+    {
+      "id": "pcbs-s5auuy",
+      "type": "economic",
+      "category": "labor",
+      "date": "2017-01-01",
+      "timestamp": "2017-01-01T00:00:00.000Z",
+      "period": {
+        "type": "year",
+        "value": "2017"
+      },
+      "location": {
+        "name": "Palestine",
+        "admin_levels": {
+          "level1": "Palestine"
+        },
+        "region": "palestine"
+      },
+      "value": 42.485,
+      "unit": "percentage",
+      "quality": {
+        "score": 0.8333333333333333,
+        "completeness": 0.6666666666666666,
+        "consistency": 1,
+        "verified": false,
+        "confidence": 0.8
+      },
+      "sources": [
+        {
+          "name": "Palestinian Central Bureau of Statistics (PCBS)",
+          "organization": "PCBS",
+          "url": "https://api.worldbank.org/v2",
+          "fetched_at": "2025-10-30T09:46:35.098Z",
+          "reliability_score": 0.95
+        }
+      ],
+      "created_at": "2025-10-30T09:46:35.098Z",
+      "updated_at": "2025-10-30T09:46:35.098Z",
+      "version": 1,
+      "indicator_code": "SL.UEM.TOTL.FE.ZS",
+      "indicator_name": "Unemployment, female (% of female labor force)",
+      "analysis": {
+        "trend": {
+          "slope": 1.9043901098901115,
+          "direction": "increasing"
+        },
+        "growth_rate": 5.7444738132556665,
+        "volatility": 7.815284625344616,
+        "recent_change": 12.66839927866766,
+        "baseline_comparison": 6.217810890544532,
+        "data_points": 13,
+        "date_range": {
+          "start": "2010-01-01",
+          "end": "2022-01-01"
+        }
+      },
+      "pcbs_metadata": {
+        "official_source": true,
+        "data_quality": "high",
+        "update_frequency": "quarterly"
+      }
+    },
+    {
+      "id": "pcbs-fv6g2a",
+      "type": "economic",
+      "category": "labor",
+      "date": "2017-01-01",
+      "timestamp": "2017-01-01T00:00:00.000Z",
+      "period": {
+        "type": "year",
+        "value": "2017"
+      },
+      "location": {
+        "name": "Palestine",
+        "admin_levels": {
+          "level1": "Palestine"
+        },
+        "region": "palestine"
+      },
+      "value": 21.362,
+      "unit": "percentage",
+      "quality": {
+        "score": 0.8333333333333333,
+        "completeness": 0.6666666666666666,
+        "consistency": 1,
+        "verified": false,
+        "confidence": 0.8
+      },
+      "sources": [
+        {
+          "name": "Palestinian Central Bureau of Statistics (PCBS)",
+          "organization": "PCBS",
+          "url": "https://api.worldbank.org/v2",
+          "fetched_at": "2025-10-30T09:46:35.098Z",
+          "reliability_score": 0.95
+        }
+      ],
+      "created_at": "2025-10-30T09:46:35.098Z",
+      "updated_at": "2025-10-30T09:46:35.098Z",
+      "version": 1,
+      "indicator_code": "SL.UEM.TOTL.MA.ZS",
+      "indicator_name": "Unemployment, male (% of male labor force)",
+      "analysis": {
+        "trend": {
+          "slope": 0.31371978021978114,
+          "direction": "increasing"
+        },
+        "growth_rate": -0.10808060271199575,
+        "volatility": 1.8165061561647997,
+        "recent_change": 4.505650408492732,
+        "baseline_comparison": 5.94128149176749,
+        "data_points": 13,
+        "date_range": {
+          "start": "2010-01-01",
+          "end": "2022-01-01"
+        }
+      },
+      "pcbs_metadata": {
+        "official_source": true,
+        "data_quality": "high",
+        "update_frequency": "quarterly"
+      }
+    },
+    {
+      "id": "pcbs-re8k77",
+      "type": "economic",
+      "category": "labor",
+      "date": "2017-01-01",
+      "timestamp": "2017-01-01T00:00:00.000Z",
+      "period": {
+        "type": "year",
+        "value": "2017"
+      },
+      "location": {
+        "name": "Palestine",
+        "admin_levels": {
+          "level1": "Palestine"
+        },
+        "region": "palestine"
+      },
+      "value": 41.867,
+      "unit": "percentage",
+      "quality": {
+        "score": 0.8333333333333333,
+        "completeness": 0.6666666666666666,
+        "consistency": 1,
+        "verified": false,
+        "confidence": 0.8
+      },
+      "sources": [
+        {
+          "name": "Palestinian Central Bureau of Statistics (PCBS)",
+          "organization": "PCBS",
+          "url": "https://api.worldbank.org/v2",
+          "fetched_at": "2025-10-30T09:46:35.098Z",
+          "reliability_score": 0.95
+        }
+      ],
+      "created_at": "2025-10-30T09:46:35.098Z",
+      "updated_at": "2025-10-30T09:46:35.098Z",
+      "version": 1,
+      "indicator_code": "SL.UEM.1524.ZS",
+      "indicator_name": "Unemployment, youth total (% of total labor force ages 15-24)",
+      "analysis": {
+        "trend": {
+          "slope": 0.5858901098901069,
+          "direction": "increasing"
+        },
+        "growth_rate": 0.2739699795806203,
+        "volatility": 3.2278809525425474,
+        "recent_change": 8.72568623886566,
+        "baseline_comparison": 16.000775795190066,
+        "data_points": 13,
+        "date_range": {
+          "start": "2010-01-01",
+          "end": "2022-01-01"
+        }
+      },
+      "pcbs_metadata": {
+        "official_source": true,
+        "data_quality": "high",
+        "update_frequency": "quarterly"
+      }
+    },
+    {
+      "id": "pcbs-57927e",
+      "type": "economic",
+      "category": "labor",
+      "date": "2017-01-01",
+      "timestamp": "2017-01-01T00:00:00.000Z",
+      "period": {
+        "type": "year",
+        "value": "2017"
+      },
+      "location": {
+        "name": "Palestine",
+        "admin_levels": {
+          "level1": "Palestine"
+        },
+        "region": "palestine"
+      },
+      "value": 33.291,
+      "unit": "percentage",
+      "quality": {
+        "score": 0.8333333333333333,
+        "completeness": 0.6666666666666666,
+        "consistency": 1,
+        "verified": false,
+        "confidence": 0.8
+      },
+      "sources": [
+        {
+          "name": "Palestinian Central Bureau of Statistics (PCBS)",
+          "organization": "PCBS",
+          "url": "https://api.worldbank.org/v2",
+          "fetched_at": "2025-10-30T09:46:35.098Z",
+          "reliability_score": 0.95
+        }
+      ],
+      "created_at": "2025-10-30T09:46:35.098Z",
+      "updated_at": "2025-10-30T09:46:35.098Z",
+      "version": 1,
+      "indicator_code": "SL.UEM.ADVN.ZS",
+      "indicator_name": "Unemployment with advanced education (% of total labor force)",
+      "analysis": {
+        "trend": {
+          "slope": 0.7917582417582417,
+          "direction": "increasing"
+        },
+        "growth_rate": 2.4562216454627412,
+        "volatility": 4.509178460402193,
+        "recent_change": 8.918697857025995,
+        "baseline_comparison": 12.625596265096911,
+        "data_points": 14,
+        "date_range": {
+          "start": "2010-01-01",
+          "end": "2024-01-01"
+        }
+      },
+      "pcbs_metadata": {
+        "official_source": true,
+        "data_quality": "high",
+        "update_frequency": "quarterly"
+      }
+    },
+    {
+      "id": "pcbs-g9p5ls",
+      "type": "economic",
+      "category": "labor",
+      "date": "2017-01-01",
+      "timestamp": "2017-01-01T00:00:00.000Z",
+      "period": {
+        "type": "year",
+        "value": "2017"
+      },
+      "location": {
+        "name": "Palestine",
+        "admin_levels": {
+          "level1": "Palestine"
+        },
+        "region": "palestine"
+      },
+      "value": 23.0469823782656,
+      "unit": "percentage",
+      "quality": {
+        "score": 0.8333333333333333,
+        "completeness": 0.6666666666666666,
+        "consistency": 1,
+        "verified": false,
+        "confidence": 0.8
+      },
+      "sources": [
+        {
+          "name": "Palestinian Central Bureau of Statistics (PCBS)",
+          "organization": "PCBS",
+          "url": "https://api.worldbank.org/v2",
+          "fetched_at": "2025-10-30T09:46:35.098Z",
+          "reliability_score": 0.95
+        }
+      ],
+      "created_at": "2025-10-30T09:46:35.098Z",
+      "updated_at": "2025-10-30T09:46:35.098Z",
+      "version": 1,
+      "indicator_code": "SL.EMP.VULN.ZS",
+      "indicator_name": "Vulnerable employment, total (% of total employment)",
+      "analysis": {
+        "trend": {
+          "slope": -0.6080387051187662,
+          "direction": "decreasing"
+        },
+        "growth_rate": -2.7496489826893638,
+        "volatility": 2.4069115782998995,
+        "recent_change": -4.2415581399774025,
+        "baseline_comparison": 25.388253992314723,
+        "data_points": 13,
+        "date_range": {
+          "start": "2010-01-01",
+          "end": "2022-01-01"
+        }
+      },
+      "pcbs_metadata": {
+        "official_source": true,
+        "data_quality": "high",
+        "update_frequency": "quarterly"
+      }
+    },
+    {
+      "id": "pcbs-fh3coe",
+      "type": "economic",
+      "category": "labor",
+      "date": "2017-01-01",
+      "timestamp": "2017-01-01T00:00:00.000Z",
+      "period": {
+        "type": "year",
+        "value": "2017"
+      },
+      "location": {
+        "name": "Palestine",
+        "admin_levels": {
+          "level1": "Palestine"
+        },
+        "region": "palestine"
+      },
+      "value": 1181552,
+      "unit": "count",
+      "quality": {
+        "score": 0.8333333333333333,
+        "completeness": 0.6666666666666666,
+        "consistency": 1,
+        "verified": false,
+        "confidence": 0.8
+      },
+      "sources": [
+        {
+          "name": "Palestinian Central Bureau of Statistics (PCBS)",
+          "organization": "PCBS",
+          "url": "https://api.worldbank.org/v2",
+          "fetched_at": "2025-10-30T09:46:35.098Z",
+          "reliability_score": 0.95
+        }
+      ],
+      "created_at": "2025-10-30T09:46:35.098Z",
+      "updated_at": "2025-10-30T09:46:35.098Z",
+      "version": 1,
+      "indicator_code": "SL.TLF.TOTL.IN",
+      "indicator_name": "Labor force, total",
+      "analysis": {
+        "trend": {
+          "slope": 37530.92857142857,
+          "direction": "increasing"
+        },
+        "growth_rate": 3.9515747777760843,
+        "volatility": 143532.23298053542,
+        "recent_change": 2.808018933593206,
+        "baseline_comparison": -15.0714116285589,
+        "data_points": 13,
+        "date_range": {
+          "start": "2010-01-01",
+          "end": "2022-01-01"
+        }
+      },
+      "pcbs_metadata": {
+        "official_source": true,
+        "data_quality": "high",
+        "update_frequency": "quarterly"
+      }
+    },
+    {
+      "id": "pcbs-idmrem",
+      "type": "economic",
+      "category": "labor",
+      "date": "2018-01-01",
+      "timestamp": "2018-01-01T00:00:00.000Z",
+      "period": {
+        "type": "year",
+        "value": "2018"
+      },
+      "location": {
+        "name": "Palestine",
+        "admin_levels": {
+          "level1": "Palestine"
+        },
+        "region": "palestine"
+      },
+      "value": 26.256,
+      "unit": "percentage",
+      "quality": {
+        "score": 0.8333333333333333,
+        "completeness": 0.6666666666666666,
+        "consistency": 1,
+        "verified": false,
+        "confidence": 0.8
+      },
+      "sources": [
+        {
+          "name": "Palestinian Central Bureau of Statistics (PCBS)",
+          "organization": "PCBS",
+          "url": "https://api.worldbank.org/v2",
+          "fetched_at": "2025-10-30T09:46:35.099Z",
+          "reliability_score": 0.95
+        }
+      ],
+      "created_at": "2025-10-30T09:46:35.099Z",
+      "updated_at": "2025-10-30T09:46:35.099Z",
+      "version": 1,
+      "indicator_code": "SL.UEM.TOTL.ZS",
+      "indicator_name": "Unemployment, total (% of total labor force)",
+      "analysis": {
+        "trend": {
+          "slope": 0.6551153846153833,
+          "direction": "increasing"
+        },
+        "growth_rate": 1.4057959609732358,
+        "volatility": 2.8807724884442916,
+        "recent_change": 2.2549363243369576,
+        "baseline_comparison": 7.518427518427512,
+        "data_points": 13,
+        "date_range": {
+          "start": "2010-01-01",
+          "end": "2022-01-01"
+        }
+      },
+      "pcbs_metadata": {
+        "official_source": true,
+        "data_quality": "high",
+        "update_frequency": "quarterly"
+      }
+    },
+    {
+      "id": "pcbs-8mvo81",
+      "type": "economic",
+      "category": "labor",
+      "date": "2018-01-01",
+      "timestamp": "2018-01-01T00:00:00.000Z",
+      "period": {
+        "type": "year",
+        "value": "2018"
+      },
+      "location": {
+        "name": "Palestine",
+        "admin_levels": {
+          "level1": "Palestine"
+        },
+        "region": "palestine"
+      },
+      "value": 41.59,
+      "unit": "percentage",
+      "quality": {
+        "score": 0.8333333333333333,
+        "completeness": 0.6666666666666666,
+        "consistency": 1,
+        "verified": false,
+        "confidence": 0.8
+      },
+      "sources": [
+        {
+          "name": "Palestinian Central Bureau of Statistics (PCBS)",
+          "organization": "PCBS",
+          "url": "https://api.worldbank.org/v2",
+          "fetched_at": "2025-10-30T09:46:35.099Z",
+          "reliability_score": 0.95
+        }
+      ],
+      "created_at": "2025-10-30T09:46:35.099Z",
+      "updated_at": "2025-10-30T09:46:35.099Z",
+      "version": 1,
+      "indicator_code": "SL.UEM.TOTL.FE.ZS",
+      "indicator_name": "Unemployment, female (% of female labor force)",
+      "analysis": {
+        "trend": {
+          "slope": 1.9043901098901115,
+          "direction": "increasing"
+        },
+        "growth_rate": 5.7444738132556665,
+        "volatility": 7.815284625344616,
+        "recent_change": -2.1066258679533862,
+        "baseline_comparison": 3.9801990099505122,
+        "data_points": 13,
+        "date_range": {
+          "start": "2010-01-01",
+          "end": "2022-01-01"
+        }
+      },
+      "pcbs_metadata": {
+        "official_source": true,
+        "data_quality": "high",
+        "update_frequency": "quarterly"
+      }
+    },
+    {
+      "id": "pcbs-ufr84y",
+      "type": "economic",
+      "category": "labor",
+      "date": "2018-01-01",
+      "timestamp": "2018-01-01T00:00:00.000Z",
+      "period": {
+        "type": "year",
+        "value": "2018"
+      },
+      "location": {
+        "name": "Palestine",
+        "admin_levels": {
+          "level1": "Palestine"
+        },
+        "region": "palestine"
+      },
+      "value": 22.254,
+      "unit": "percentage",
+      "quality": {
+        "score": 0.8333333333333333,
+        "completeness": 0.6666666666666666,
+        "consistency": 1,
+        "verified": false,
+        "confidence": 0.8
+      },
+      "sources": [
+        {
+          "name": "Palestinian Central Bureau of Statistics (PCBS)",
+          "organization": "PCBS",
+          "url": "https://api.worldbank.org/v2",
+          "fetched_at": "2025-10-30T09:46:35.099Z",
+          "reliability_score": 0.95
+        }
+      ],
+      "created_at": "2025-10-30T09:46:35.099Z",
+      "updated_at": "2025-10-30T09:46:35.099Z",
+      "version": 1,
+      "indicator_code": "SL.UEM.TOTL.MA.ZS",
+      "indicator_name": "Unemployment, male (% of male labor force)",
+      "analysis": {
+        "trend": {
+          "slope": 0.31371978021978114,
+          "direction": "increasing"
+        },
+        "growth_rate": -0.10808060271199575,
+        "volatility": 1.8165061561647997,
+        "recent_change": 4.175638985113768,
+        "baseline_comparison": 10.36500694306685,
+        "data_points": 13,
+        "date_range": {
+          "start": "2010-01-01",
+          "end": "2022-01-01"
+        }
+      },
+      "pcbs_metadata": {
+        "official_source": true,
+        "data_quality": "high",
+        "update_frequency": "quarterly"
+      }
+    },
+    {
+      "id": "pcbs-3skw62",
+      "type": "economic",
+      "category": "labor",
+      "date": "2018-01-01",
+      "timestamp": "2018-01-01T00:00:00.000Z",
+      "period": {
+        "type": "year",
+        "value": "2018"
+      },
+      "location": {
+        "name": "Palestine",
+        "admin_levels": {
+          "level1": "Palestine"
+        },
+        "region": "palestine"
+      },
+      "value": 42.224,
+      "unit": "percentage",
+      "quality": {
+        "score": 0.8333333333333333,
+        "completeness": 0.6666666666666666,
+        "consistency": 1,
+        "verified": false,
+        "confidence": 0.8
+      },
+      "sources": [
+        {
+          "name": "Palestinian Central Bureau of Statistics (PCBS)",
+          "organization": "PCBS",
+          "url": "https://api.worldbank.org/v2",
+          "fetched_at": "2025-10-30T09:46:35.099Z",
+          "reliability_score": 0.95
+        }
+      ],
+      "created_at": "2025-10-30T09:46:35.099Z",
+      "updated_at": "2025-10-30T09:46:35.099Z",
+      "version": 1,
+      "indicator_code": "SL.UEM.1524.ZS",
+      "indicator_name": "Unemployment, youth total (% of total labor force ages 15-24)",
+      "analysis": {
+        "trend": {
+          "slope": 0.5858901098901069,
+          "direction": "increasing"
+        },
+        "growth_rate": 0.2739699795806203,
+        "volatility": 3.2278809525425474,
+        "recent_change": 0.8527002173549557,
+        "baseline_comparison": 16.989914662529088,
+        "data_points": 13,
+        "date_range": {
+          "start": "2010-01-01",
+          "end": "2022-01-01"
+        }
+      },
+      "pcbs_metadata": {
+        "official_source": true,
+        "data_quality": "high",
+        "update_frequency": "quarterly"
+      }
+    },
+    {
+      "id": "pcbs-a2hm92",
+      "type": "economic",
+      "category": "labor",
+      "date": "2018-01-01",
+      "timestamp": "2018-01-01T00:00:00.000Z",
+      "period": {
+        "type": "year",
+        "value": "2018"
+      },
+      "location": {
+        "name": "Palestine",
+        "admin_levels": {
+          "level1": "Palestine"
+        },
+        "region": "palestine"
+      },
+      "value": 32.53,
+      "unit": "percentage",
+      "quality": {
+        "score": 0.8333333333333333,
+        "completeness": 0.6666666666666666,
+        "consistency": 1,
+        "verified": false,
+        "confidence": 0.8
+      },
+      "sources": [
+        {
+          "name": "Palestinian Central Bureau of Statistics (PCBS)",
+          "organization": "PCBS",
+          "url": "https://api.worldbank.org/v2",
+          "fetched_at": "2025-10-30T09:46:35.099Z",
+          "reliability_score": 0.95
+        }
+      ],
+      "created_at": "2025-10-30T09:46:35.099Z",
+      "updated_at": "2025-10-30T09:46:35.099Z",
+      "version": 1,
+      "indicator_code": "SL.UEM.ADVN.ZS",
+      "indicator_name": "Unemployment with advanced education (% of total labor force)",
+      "analysis": {
+        "trend": {
+          "slope": 0.7917582417582417,
+          "direction": "increasing"
+        },
+        "growth_rate": 2.4562216454627412,
+        "volatility": 4.509178460402193,
+        "recent_change": -2.2859030969330925,
+        "baseline_comparison": 10.0510842721337,
+        "data_points": 14,
+        "date_range": {
+          "start": "2010-01-01",
+          "end": "2024-01-01"
+        }
+      },
+      "pcbs_metadata": {
+        "official_source": true,
+        "data_quality": "high",
+        "update_frequency": "quarterly"
+      }
+    },
+    {
+      "id": "pcbs-bwhcym",
+      "type": "economic",
+      "category": "labor",
+      "date": "2018-01-01",
+      "timestamp": "2018-01-01T00:00:00.000Z",
+      "period": {
+        "type": "year",
+        "value": "2018"
+      },
+      "location": {
+        "name": "Palestine",
+        "admin_levels": {
+          "level1": "Palestine"
+        },
+        "region": "palestine"
+      },
+      "value": 23.1817188424492,
+      "unit": "percentage",
+      "quality": {
+        "score": 0.8333333333333333,
+        "completeness": 0.6666666666666666,
+        "consistency": 1,
+        "verified": false,
+        "confidence": 0.8
+      },
+      "sources": [
+        {
+          "name": "Palestinian Central Bureau of Statistics (PCBS)",
+          "organization": "PCBS",
+          "url": "https://api.worldbank.org/v2",
+          "fetched_at": "2025-10-30T09:46:35.099Z",
+          "reliability_score": 0.95
+        }
+      ],
+      "created_at": "2025-10-30T09:46:35.099Z",
+      "updated_at": "2025-10-30T09:46:35.099Z",
+      "version": 1,
+      "indicator_code": "SL.EMP.VULN.ZS",
+      "indicator_name": "Vulnerable employment, total (% of total employment)",
+      "analysis": {
+        "trend": {
+          "slope": -0.6080387051187662,
+          "direction": "decreasing"
+        },
+        "growth_rate": -2.7496489826893638,
+        "volatility": 2.4069115782998995,
+        "recent_change": 0.584616510622506,
+        "baseline_comparison": 26.12129442753508,
+        "data_points": 13,
+        "date_range": {
+          "start": "2010-01-01",
+          "end": "2022-01-01"
+        }
+      },
+      "pcbs_metadata": {
+        "official_source": true,
+        "data_quality": "high",
+        "update_frequency": "quarterly"
+      }
+    },
+    {
+      "id": "pcbs-xd3dwo",
+      "type": "economic",
+      "category": "labor",
+      "date": "2018-01-01",
+      "timestamp": "2018-01-01T00:00:00.000Z",
+      "period": {
+        "type": "year",
+        "value": "2018"
+      },
+      "location": {
+        "name": "Palestine",
+        "admin_levels": {
+          "level1": "Palestine"
+        },
+        "region": "palestine"
+      },
+      "value": 1198168,
+      "unit": "count",
+      "quality": {
+        "score": 0.8333333333333333,
+        "completeness": 0.6666666666666666,
+        "consistency": 1,
+        "verified": false,
+        "confidence": 0.8
+      },
+      "sources": [
+        {
+          "name": "Palestinian Central Bureau of Statistics (PCBS)",
+          "organization": "PCBS",
+          "url": "https://api.worldbank.org/v2",
+          "fetched_at": "2025-10-30T09:46:35.099Z",
+          "reliability_score": 0.95
+        }
+      ],
+      "created_at": "2025-10-30T09:46:35.099Z",
+      "updated_at": "2025-10-30T09:46:35.099Z",
+      "version": 1,
+      "indicator_code": "SL.TLF.TOTL.IN",
+      "indicator_name": "Labor force, total",
+      "analysis": {
+        "trend": {
+          "slope": 37530.92857142857,
+          "direction": "increasing"
+        },
+        "growth_rate": 3.9515747777760843,
+        "volatility": 143532.23298053542,
+        "recent_change": 1.4062859696399312,
+        "baseline_comparison": -13.877072806078075,
+        "data_points": 13,
+        "date_range": {
+          "start": "2010-01-01",
+          "end": "2022-01-01"
+        }
+      },
+      "pcbs_metadata": {
+        "official_source": true,
+        "data_quality": "high",
+        "update_frequency": "quarterly"
+      }
+    },
+    {
+      "id": "pcbs-jyqtci",
+      "type": "economic",
+      "category": "labor",
+      "date": "2019-01-01",
+      "timestamp": "2019-01-01T00:00:00.000Z",
+      "period": {
+        "type": "year",
+        "value": "2019"
+      },
+      "location": {
+        "name": "Palestine",
+        "admin_levels": {
+          "level1": "Palestine"
+        },
+        "region": "palestine"
+      },
+      "value": 25.34,
+      "unit": "percentage",
+      "quality": {
+        "score": 0.8333333333333333,
+        "completeness": 0.6666666666666666,
+        "consistency": 1,
+        "verified": false,
+        "confidence": 0.8
+      },
+      "sources": [
+        {
+          "name": "Palestinian Central Bureau of Statistics (PCBS)",
+          "organization": "PCBS",
+          "url": "https://api.worldbank.org/v2",
+          "fetched_at": "2025-10-30T09:46:35.100Z",
+          "reliability_score": 0.95
+        }
+      ],
+      "created_at": "2025-10-30T09:46:35.100Z",
+      "updated_at": "2025-10-30T09:46:35.100Z",
+      "version": 1,
+      "indicator_code": "SL.UEM.TOTL.ZS",
+      "indicator_name": "Unemployment, total (% of total labor force)",
+      "analysis": {
+        "trend": {
+          "slope": 0.6551153846153833,
+          "direction": "increasing"
+        },
+        "growth_rate": 1.4057959609732358,
+        "volatility": 2.8807724884442916,
+        "recent_change": -3.488726386349788,
+        "baseline_comparison": 3.76740376740376,
+        "data_points": 13,
+        "date_range": {
+          "start": "2010-01-01",
+          "end": "2022-01-01"
+        }
+      },
+      "pcbs_metadata": {
+        "official_source": true,
+        "data_quality": "high",
+        "update_frequency": "quarterly"
+      }
+    },
+    {
+      "id": "pcbs-yrcywt",
+      "type": "economic",
+      "category": "labor",
+      "date": "2019-01-01",
+      "timestamp": "2019-01-01T00:00:00.000Z",
+      "period": {
+        "type": "year",
+        "value": "2019"
+      },
+      "location": {
+        "name": "Palestine",
+        "admin_levels": {
+          "level1": "Palestine"
+        },
+        "region": "palestine"
+      },
+      "value": 40.86,
+      "unit": "percentage",
+      "quality": {
+        "score": 0.8333333333333333,
+        "completeness": 0.6666666666666666,
+        "consistency": 1,
+        "verified": false,
+        "confidence": 0.8
+      },
+      "sources": [
+        {
+          "name": "Palestinian Central Bureau of Statistics (PCBS)",
+          "organization": "PCBS",
+          "url": "https://api.worldbank.org/v2",
+          "fetched_at": "2025-10-30T09:46:35.100Z",
+          "reliability_score": 0.95
+        }
+      ],
+      "created_at": "2025-10-30T09:46:35.100Z",
+      "updated_at": "2025-10-30T09:46:35.100Z",
+      "version": 1,
+      "indicator_code": "SL.UEM.TOTL.FE.ZS",
+      "indicator_name": "Unemployment, female (% of female labor force)",
+      "analysis": {
+        "trend": {
+          "slope": 1.9043901098901115,
+          "direction": "increasing"
+        },
+        "growth_rate": 5.7444738132556665,
+        "volatility": 7.815284625344616,
+        "recent_change": -1.7552296225054191,
+        "baseline_comparison": 2.155107755387774,
+        "data_points": 13,
+        "date_range": {
+          "start": "2010-01-01",
+          "end": "2022-01-01"
+        }
+      },
+      "pcbs_metadata": {
+        "official_source": true,
+        "data_quality": "high",
+        "update_frequency": "quarterly"
+      }
+    },
+    {
+      "id": "pcbs-35igha",
+      "type": "economic",
+      "category": "labor",
+      "date": "2019-01-01",
+      "timestamp": "2019-01-01T00:00:00.000Z",
+      "period": {
+        "type": "year",
+        "value": "2019"
+      },
+      "location": {
+        "name": "Palestine",
+        "admin_levels": {
+          "level1": "Palestine"
+        },
+        "region": "palestine"
+      },
+      "value": 21.177,
+      "unit": "percentage",
+      "quality": {
+        "score": 0.8333333333333333,
+        "completeness": 0.6666666666666666,
+        "consistency": 1,
+        "verified": false,
+        "confidence": 0.8
+      },
+      "sources": [
+        {
+          "name": "Palestinian Central Bureau of Statistics (PCBS)",
+          "organization": "PCBS",
+          "url": "https://api.worldbank.org/v2",
+          "fetched_at": "2025-10-30T09:46:35.100Z",
+          "reliability_score": 0.95
+        }
+      ],
+      "created_at": "2025-10-30T09:46:35.100Z",
+      "updated_at": "2025-10-30T09:46:35.100Z",
+      "version": 1,
+      "indicator_code": "SL.UEM.TOTL.MA.ZS",
+      "indicator_name": "Unemployment, male (% of male labor force)",
+      "analysis": {
+        "trend": {
+          "slope": 0.31371978021978114,
+          "direction": "increasing"
+        },
+        "growth_rate": -0.10808060271199575,
+        "volatility": 1.8165061561647997,
+        "recent_change": -4.839579401455926,
+        "baseline_comparison": 5.023804800634785,
+        "data_points": 13,
+        "date_range": {
+          "start": "2010-01-01",
+          "end": "2022-01-01"
+        }
+      },
+      "pcbs_metadata": {
+        "official_source": true,
+        "data_quality": "high",
+        "update_frequency": "quarterly"
+      }
+    },
+    {
+      "id": "pcbs-3et09e",
+      "type": "economic",
+      "category": "labor",
+      "date": "2019-01-01",
+      "timestamp": "2019-01-01T00:00:00.000Z",
+      "period": {
+        "type": "year",
+        "value": "2019"
+      },
+      "location": {
+        "name": "Palestine",
+        "admin_levels": {
+          "level1": "Palestine"
+        },
+        "region": "palestine"
+      },
+      "value": 40.151,
+      "unit": "percentage",
+      "quality": {
+        "score": 0.8333333333333333,
+        "completeness": 0.6666666666666666,
+        "consistency": 1,
+        "verified": false,
+        "confidence": 0.8
+      },
+      "sources": [
+        {
+          "name": "Palestinian Central Bureau of Statistics (PCBS)",
+          "organization": "PCBS",
+          "url": "https://api.worldbank.org/v2",
+          "fetched_at": "2025-10-30T09:46:35.100Z",
+          "reliability_score": 0.95
+        }
+      ],
+      "created_at": "2025-10-30T09:46:35.100Z",
+      "updated_at": "2025-10-30T09:46:35.100Z",
+      "version": 1,
+      "indicator_code": "SL.UEM.1524.ZS",
+      "indicator_name": "Unemployment, youth total (% of total labor force ages 15-24)",
+      "analysis": {
+        "trend": {
+          "slope": 0.5858901098901069,
+          "direction": "increasing"
+        },
+        "growth_rate": 0.2739699795806203,
+        "volatility": 3.2278809525425474,
+        "recent_change": -4.909530125047351,
+        "baseline_comparison": 11.246259558905033,
+        "data_points": 13,
+        "date_range": {
+          "start": "2010-01-01",
+          "end": "2022-01-01"
+        }
+      },
+      "pcbs_metadata": {
+        "official_source": true,
+        "data_quality": "high",
+        "update_frequency": "quarterly"
+      }
+    },
+    {
+      "id": "pcbs-di3wio",
+      "type": "economic",
+      "category": "labor",
+      "date": "2019-01-01",
+      "timestamp": "2019-01-01T00:00:00.000Z",
+      "period": {
+        "type": "year",
+        "value": "2019"
+      },
+      "location": {
+        "name": "Palestine",
+        "admin_levels": {
+          "level1": "Palestine"
+        },
+        "region": "palestine"
+      },
+      "value": 30.456,
+      "unit": "percentage",
+      "quality": {
+        "score": 0.8333333333333333,
+        "completeness": 0.6666666666666666,
+        "consistency": 1,
+        "verified": false,
+        "confidence": 0.8
+      },
+      "sources": [
+        {
+          "name": "Palestinian Central Bureau of Statistics (PCBS)",
+          "organization": "PCBS",
+          "url": "https://api.worldbank.org/v2",
+          "fetched_at": "2025-10-30T09:46:35.100Z",
+          "reliability_score": 0.95
+        }
+      ],
+      "created_at": "2025-10-30T09:46:35.100Z",
+      "updated_at": "2025-10-30T09:46:35.100Z",
+      "version": 1,
+      "indicator_code": "SL.UEM.ADVN.ZS",
+      "indicator_name": "Unemployment with advanced education (% of total labor force)",
+      "analysis": {
+        "trend": {
+          "slope": 0.7917582417582417,
+          "direction": "increasing"
+        },
+        "growth_rate": 2.4562216454627412,
+        "volatility": 4.509178460402193,
+        "recent_change": -6.375653243160165,
+        "baseline_comparison": 3.0346087486044806,
+        "data_points": 14,
+        "date_range": {
+          "start": "2010-01-01",
+          "end": "2024-01-01"
+        }
+      },
+      "pcbs_metadata": {
+        "official_source": true,
+        "data_quality": "high",
+        "update_frequency": "quarterly"
+      }
+    },
+    {
+      "id": "pcbs-ndl0zn",
+      "type": "economic",
+      "category": "labor",
+      "date": "2019-01-01",
+      "timestamp": "2019-01-01T00:00:00.000Z",
+      "period": {
+        "type": "year",
+        "value": "2019"
+      },
+      "location": {
+        "name": "Palestine",
+        "admin_levels": {
+          "level1": "Palestine"
+        },
+        "region": "palestine"
+      },
+      "value": 22.0358958783411,
+      "unit": "percentage",
+      "quality": {
+        "score": 0.8333333333333333,
+        "completeness": 0.6666666666666666,
+        "consistency": 1,
+        "verified": false,
+        "confidence": 0.8
+      },
+      "sources": [
+        {
+          "name": "Palestinian Central Bureau of Statistics (PCBS)",
+          "organization": "PCBS",
+          "url": "https://api.worldbank.org/v2",
+          "fetched_at": "2025-10-30T09:46:35.100Z",
+          "reliability_score": 0.95
+        }
+      ],
+      "created_at": "2025-10-30T09:46:35.100Z",
+      "updated_at": "2025-10-30T09:46:35.100Z",
+      "version": 1,
+      "indicator_code": "SL.EMP.VULN.ZS",
+      "indicator_name": "Vulnerable employment, total (% of total employment)",
+      "analysis": {
+        "trend": {
+          "slope": -0.6080387051187662,
+          "direction": "decreasing"
+        },
+        "growth_rate": -2.7496489826893638,
+        "volatility": 2.4069115782998995,
+        "recent_change": -4.942786908492417,
+        "baseline_comparison": 19.8873875977497,
+        "data_points": 13,
+        "date_range": {
+          "start": "2010-01-01",
+          "end": "2022-01-01"
+        }
+      },
+      "pcbs_metadata": {
+        "official_source": true,
+        "data_quality": "high",
+        "update_frequency": "quarterly"
+      }
+    },
+    {
+      "id": "pcbs-3ovgq1",
+      "type": "economic",
+      "category": "labor",
+      "date": "2019-01-01",
+      "timestamp": "2019-01-01T00:00:00.000Z",
+      "period": {
+        "type": "year",
+        "value": "2019"
+      },
+      "location": {
+        "name": "Palestine",
+        "admin_levels": {
+          "level1": "Palestine"
+        },
+        "region": "palestine"
+      },
+      "value": 1254446,
+      "unit": "count",
+      "quality": {
+        "score": 0.8333333333333333,
+        "completeness": 0.6666666666666666,
+        "consistency": 1,
+        "verified": false,
+        "confidence": 0.8
+      },
+      "sources": [
+        {
+          "name": "Palestinian Central Bureau of Statistics (PCBS)",
+          "organization": "PCBS",
+          "url": "https://api.worldbank.org/v2",
+          "fetched_at": "2025-10-30T09:46:35.100Z",
+          "reliability_score": 0.95
+        }
+      ],
+      "created_at": "2025-10-30T09:46:35.100Z",
+      "updated_at": "2025-10-30T09:46:35.100Z",
+      "version": 1,
+      "indicator_code": "SL.TLF.TOTL.IN",
+      "indicator_name": "Labor force, total",
+      "analysis": {
+        "trend": {
+          "slope": 37530.92857142857,
+          "direction": "increasing"
+        },
+        "growth_rate": 3.9515747777760843,
+        "volatility": 143532.23298053542,
+        "recent_change": 4.697004092915184,
+        "baseline_comparison": -9.831875390841198,
+        "data_points": 13,
+        "date_range": {
+          "start": "2010-01-01",
+          "end": "2022-01-01"
+        }
+      },
+      "pcbs_metadata": {
+        "official_source": true,
+        "data_quality": "high",
+        "update_frequency": "quarterly"
+      }
+    },
+    {
+      "id": "pcbs-1gcp3b",
+      "type": "economic",
+      "category": "labor",
+      "date": "2020-01-01",
+      "timestamp": "2020-01-01T00:00:00.000Z",
+      "period": {
+        "type": "year",
+        "value": "2020"
+      },
+      "location": {
+        "name": "Palestine",
+        "admin_levels": {
+          "level1": "Palestine"
+        },
+        "region": "palestine"
+      },
+      "value": 25.895,
+      "unit": "percentage",
+      "quality": {
+        "score": 0.8333333333333333,
+        "completeness": 0.6666666666666666,
+        "consistency": 1,
+        "verified": false,
+        "confidence": 0.8
+      },
+      "sources": [
+        {
+          "name": "Palestinian Central Bureau of Statistics (PCBS)",
+          "organization": "PCBS",
+          "url": "https://api.worldbank.org/v2",
+          "fetched_at": "2025-10-30T09:46:35.100Z",
+          "reliability_score": 0.95
+        }
+      ],
+      "created_at": "2025-10-30T09:46:35.100Z",
+      "updated_at": "2025-10-30T09:46:35.100Z",
+      "version": 1,
+      "indicator_code": "SL.UEM.TOTL.ZS",
+      "indicator_name": "Unemployment, total (% of total labor force)",
+      "analysis": {
+        "trend": {
+          "slope": 0.6551153846153833,
+          "direction": "increasing"
+        },
+        "growth_rate": 1.4057959609732358,
+        "volatility": 2.8807724884442916,
+        "recent_change": 2.1902131018153104,
+        "baseline_comparison": 6.0401310401310315,
+        "data_points": 13,
+        "date_range": {
+          "start": "2010-01-01",
+          "end": "2022-01-01"
+        }
+      },
+      "pcbs_metadata": {
+        "official_source": true,
+        "data_quality": "high",
+        "update_frequency": "quarterly"
+      }
+    },
+    {
+      "id": "pcbs-9ujiec",
+      "type": "economic",
+      "category": "labor",
+      "date": "2020-01-01",
+      "timestamp": "2020-01-01T00:00:00.000Z",
+      "period": {
+        "type": "year",
+        "value": "2020"
+      },
+      "location": {
+        "name": "Palestine",
+        "admin_levels": {
+          "level1": "Palestine"
+        },
+        "region": "palestine"
+      },
+      "value": 39.795,
+      "unit": "percentage",
+      "quality": {
+        "score": 0.8333333333333333,
+        "completeness": 0.6666666666666666,
+        "consistency": 1,
+        "verified": false,
+        "confidence": 0.8
+      },
+      "sources": [
+        {
+          "name": "Palestinian Central Bureau of Statistics (PCBS)",
+          "organization": "PCBS",
+          "url": "https://api.worldbank.org/v2",
+          "fetched_at": "2025-10-30T09:46:35.101Z",
+          "reliability_score": 0.95
+        }
+      ],
+      "created_at": "2025-10-30T09:46:35.101Z",
+      "updated_at": "2025-10-30T09:46:35.101Z",
+      "version": 1,
+      "indicator_code": "SL.UEM.TOTL.FE.ZS",
+      "indicator_name": "Unemployment, female (% of female labor force)",
+      "analysis": {
+        "trend": {
+          "slope": 1.9043901098901115,
+          "direction": "increasing"
+        },
+        "growth_rate": 5.7444738132556665,
+        "volatility": 7.815284625344616,
+        "recent_change": -2.606461086637293,
+        "baseline_comparison": -0.5075253762688031,
+        "data_points": 13,
+        "date_range": {
+          "start": "2010-01-01",
+          "end": "2022-01-01"
+        }
+      },
+      "pcbs_metadata": {
+        "official_source": true,
+        "data_quality": "high",
+        "update_frequency": "quarterly"
+      }
+    },
+    {
+      "id": "pcbs-fdxt85",
+      "type": "economic",
+      "category": "labor",
+      "date": "2020-01-01",
+      "timestamp": "2020-01-01T00:00:00.000Z",
+      "period": {
+        "type": "year",
+        "value": "2020"
+      },
+      "location": {
+        "name": "Palestine",
+        "admin_levels": {
+          "level1": "Palestine"
+        },
+        "region": "palestine"
+      },
+      "value": 22.322,
+      "unit": "percentage",
+      "quality": {
+        "score": 0.8333333333333333,
+        "completeness": 0.6666666666666666,
+        "consistency": 1,
+        "verified": false,
+        "confidence": 0.8
+      },
+      "sources": [
+        {
+          "name": "Palestinian Central Bureau of Statistics (PCBS)",
+          "organization": "PCBS",
+          "url": "https://api.worldbank.org/v2",
+          "fetched_at": "2025-10-30T09:46:35.101Z",
+          "reliability_score": 0.95
+        }
+      ],
+      "created_at": "2025-10-30T09:46:35.101Z",
+      "updated_at": "2025-10-30T09:46:35.101Z",
+      "version": 1,
+      "indicator_code": "SL.UEM.TOTL.MA.ZS",
+      "indicator_name": "Unemployment, male (% of male labor force)",
+      "analysis": {
+        "trend": {
+          "slope": 0.31371978021978114,
+          "direction": "increasing"
+        },
+        "growth_rate": -0.10808060271199575,
+        "volatility": 1.8165061561647997,
+        "recent_change": 5.406809274212588,
+        "baseline_comparison": 10.70224161872643,
+        "data_points": 13,
+        "date_range": {
+          "start": "2010-01-01",
+          "end": "2022-01-01"
+        }
+      },
+      "pcbs_metadata": {
+        "official_source": true,
+        "data_quality": "high",
+        "update_frequency": "quarterly"
+      }
+    },
+    {
+      "id": "pcbs-ccatat",
+      "type": "economic",
+      "category": "labor",
+      "date": "2020-01-01",
+      "timestamp": "2020-01-01T00:00:00.000Z",
+      "period": {
+        "type": "year",
+        "value": "2020"
+      },
+      "location": {
+        "name": "Palestine",
+        "admin_levels": {
+          "level1": "Palestine"
+        },
+        "region": "palestine"
+      },
+      "value": 42.053,
+      "unit": "percentage",
+      "quality": {
+        "score": 0.8333333333333333,
+        "completeness": 0.6666666666666666,
+        "consistency": 1,
+        "verified": false,
+        "confidence": 0.8
+      },
+      "sources": [
+        {
+          "name": "Palestinian Central Bureau of Statistics (PCBS)",
+          "organization": "PCBS",
+          "url": "https://api.worldbank.org/v2",
+          "fetched_at": "2025-10-30T09:46:35.101Z",
+          "reliability_score": 0.95
+        }
+      ],
+      "created_at": "2025-10-30T09:46:35.101Z",
+      "updated_at": "2025-10-30T09:46:35.101Z",
+      "version": 1,
+      "indicator_code": "SL.UEM.1524.ZS",
+      "indicator_name": "Unemployment, youth total (% of total labor force ages 15-24)",
+      "analysis": {
+        "trend": {
+          "slope": 0.5858901098901069,
+          "direction": "increasing"
+        },
+        "growth_rate": 0.2739699795806203,
+        "volatility": 3.2278809525425474,
+        "recent_change": 4.737117381883374,
+        "baseline_comparison": 16.516125457165018,
+        "data_points": 13,
+        "date_range": {
+          "start": "2010-01-01",
+          "end": "2022-01-01"
+        }
+      },
+      "pcbs_metadata": {
+        "official_source": true,
+        "data_quality": "high",
+        "update_frequency": "quarterly"
+      }
+    },
+    {
+      "id": "pcbs-q0c722",
+      "type": "economic",
+      "category": "labor",
+      "date": "2020-01-01",
+      "timestamp": "2020-01-01T00:00:00.000Z",
+      "period": {
+        "type": "year",
+        "value": "2020"
+      },
+      "location": {
+        "name": "Palestine",
+        "admin_levels": {
+          "level1": "Palestine"
+        },
+        "region": "palestine"
+      },
+      "value": 29.384,
+      "unit": "percentage",
+      "quality": {
+        "score": 0.8333333333333333,
+        "completeness": 0.6666666666666666,
+        "consistency": 1,
+        "verified": false,
+        "confidence": 0.8
+      },
+      "sources": [
+        {
+          "name": "Palestinian Central Bureau of Statistics (PCBS)",
+          "organization": "PCBS",
+          "url": "https://api.worldbank.org/v2",
+          "fetched_at": "2025-10-30T09:46:35.101Z",
+          "reliability_score": 0.95
+        }
+      ],
+      "created_at": "2025-10-30T09:46:35.101Z",
+      "updated_at": "2025-10-30T09:46:35.101Z",
+      "version": 1,
+      "indicator_code": "SL.UEM.ADVN.ZS",
+      "indicator_name": "Unemployment with advanced education (% of total labor force)",
+      "analysis": {
+        "trend": {
+          "slope": 0.7917582417582417,
+          "direction": "increasing"
+        },
+        "growth_rate": 2.4562216454627412,
+        "volatility": 4.509178460402193,
+        "recent_change": -3.5198318886262125,
+        "baseline_comparison": -0.592036266450153,
+        "data_points": 14,
+        "date_range": {
+          "start": "2010-01-01",
+          "end": "2024-01-01"
+        }
+      },
+      "pcbs_metadata": {
+        "official_source": true,
+        "data_quality": "high",
+        "update_frequency": "quarterly"
+      }
+    },
+    {
+      "id": "pcbs-byhifl",
+      "type": "economic",
+      "category": "labor",
+      "date": "2020-01-01",
+      "timestamp": "2020-01-01T00:00:00.000Z",
+      "period": {
+        "type": "year",
+        "value": "2020"
+      },
+      "location": {
+        "name": "Palestine",
+        "admin_levels": {
+          "level1": "Palestine"
+        },
+        "region": "palestine"
+      },
+      "value": 21.8491239159431,
+      "unit": "percentage",
+      "quality": {
+        "score": 0.8333333333333333,
+        "completeness": 0.6666666666666666,
+        "consistency": 1,
+        "verified": false,
+        "confidence": 0.8
+      },
+      "sources": [
+        {
+          "name": "Palestinian Central Bureau of Statistics (PCBS)",
+          "organization": "PCBS",
+          "url": "https://api.worldbank.org/v2",
+          "fetched_at": "2025-10-30T09:46:35.101Z",
+          "reliability_score": 0.95
+        }
+      ],
+      "created_at": "2025-10-30T09:46:35.101Z",
+      "updated_at": "2025-10-30T09:46:35.101Z",
+      "version": 1,
+      "indicator_code": "SL.EMP.VULN.ZS",
+      "indicator_name": "Vulnerable employment, total (% of total employment)",
+      "analysis": {
+        "trend": {
+          "slope": -0.6080387051187662,
+          "direction": "decreasing"
+        },
+        "growth_rate": -2.7496489826893638,
+        "volatility": 2.4069115782998995,
+        "recent_change": -0.8475805269237007,
+        "baseline_comparison": 18.871245446233637,
+        "data_points": 13,
+        "date_range": {
+          "start": "2010-01-01",
+          "end": "2022-01-01"
+        }
+      },
+      "pcbs_metadata": {
+        "official_source": true,
+        "data_quality": "high",
+        "update_frequency": "quarterly"
+      }
+    },
+    {
+      "id": "pcbs-9k0bal",
+      "type": "economic",
+      "category": "labor",
+      "date": "2020-01-01",
+      "timestamp": "2020-01-01T00:00:00.000Z",
+      "period": {
+        "type": "year",
+        "value": "2020"
+      },
+      "location": {
+        "name": "Palestine",
+        "admin_levels": {
+          "level1": "Palestine"
+        },
+        "region": "palestine"
+      },
+      "value": 1193390,
+      "unit": "count",
+      "quality": {
+        "score": 0.8333333333333333,
+        "completeness": 0.6666666666666666,
+        "consistency": 1,
+        "verified": false,
+        "confidence": 0.8
+      },
+      "sources": [
+        {
+          "name": "Palestinian Central Bureau of Statistics (PCBS)",
+          "organization": "PCBS",
+          "url": "https://api.worldbank.org/v2",
+          "fetched_at": "2025-10-30T09:46:35.101Z",
+          "reliability_score": 0.95
+        }
+      ],
+      "created_at": "2025-10-30T09:46:35.101Z",
+      "updated_at": "2025-10-30T09:46:35.101Z",
+      "version": 1,
+      "indicator_code": "SL.TLF.TOTL.IN",
+      "indicator_name": "Labor force, total",
+      "analysis": {
+        "trend": {
+          "slope": 37530.92857142857,
+          "direction": "increasing"
+        },
+        "growth_rate": 3.9515747777760843,
+        "volatility": 143532.23298053542,
+        "recent_change": -4.867168455238408,
+        "baseline_comparison": -14.220509908498236,
+        "data_points": 13,
+        "date_range": {
+          "start": "2010-01-01",
+          "end": "2022-01-01"
+        }
+      },
+      "pcbs_metadata": {
+        "official_source": true,
+        "data_quality": "high",
+        "update_frequency": "quarterly"
+      }
+    },
+    {
+      "id": "pcbs-j1mf7l",
+      "type": "economic",
+      "category": "labor",
+      "date": "2021-01-01",
+      "timestamp": "2021-01-01T00:00:00.000Z",
+      "period": {
+        "type": "year",
+        "value": "2021"
+      },
+      "location": {
+        "name": "Palestine",
+        "admin_levels": {
+          "level1": "Palestine"
+        },
+        "region": "palestine"
+      },
+      "value": 26.39,
+      "unit": "percentage",
+      "quality": {
+        "score": 0.8333333333333333,
+        "completeness": 0.6666666666666666,
+        "consistency": 1,
+        "verified": false,
+        "confidence": 0.8
+      },
+      "sources": [
+        {
+          "name": "Palestinian Central Bureau of Statistics (PCBS)",
+          "organization": "PCBS",
+          "url": "https://api.worldbank.org/v2",
+          "fetched_at": "2025-10-30T09:46:35.103Z",
+          "reliability_score": 0.95
+        }
+      ],
+      "created_at": "2025-10-30T09:46:35.103Z",
+      "updated_at": "2025-10-30T09:46:35.103Z",
+      "version": 1,
+      "indicator_code": "SL.UEM.TOTL.ZS",
+      "indicator_name": "Unemployment, total (% of total labor force)",
+      "analysis": {
+        "trend": {
+          "slope": 0.6551153846153833,
+          "direction": "increasing"
+        },
+        "growth_rate": 1.4057959609732358,
+        "volatility": 2.8807724884442916,
+        "recent_change": 1.9115659393705389,
+        "baseline_comparison": 8.067158067158061,
+        "data_points": 13,
+        "date_range": {
+          "start": "2010-01-01",
+          "end": "2022-01-01"
+        }
+      },
+      "pcbs_metadata": {
+        "official_source": true,
+        "data_quality": "high",
+        "update_frequency": "quarterly"
+      }
+    },
+    {
+      "id": "pcbs-ya1rcx",
+      "type": "economic",
+      "category": "labor",
+      "date": "2021-01-01",
+      "timestamp": "2021-01-01T00:00:00.000Z",
+      "period": {
+        "type": "year",
+        "value": "2021"
+      },
+      "location": {
+        "name": "Palestine",
+        "admin_levels": {
+          "level1": "Palestine"
+        },
+        "region": "palestine"
+      },
+      "value": 42.508,
+      "unit": "percentage",
+      "quality": {
+        "score": 0.8333333333333333,
+        "completeness": 0.6666666666666666,
+        "consistency": 1,
+        "verified": false,
+        "confidence": 0.8
+      },
+      "sources": [
+        {
+          "name": "Palestinian Central Bureau of Statistics (PCBS)",
+          "organization": "PCBS",
+          "url": "https://api.worldbank.org/v2",
+          "fetched_at": "2025-10-30T09:46:35.103Z",
+          "reliability_score": 0.95
+        }
+      ],
+      "created_at": "2025-10-30T09:46:35.103Z",
+      "updated_at": "2025-10-30T09:46:35.103Z",
+      "version": 1,
+      "indicator_code": "SL.UEM.TOTL.FE.ZS",
+      "indicator_name": "Unemployment, female (% of female labor force)",
+      "analysis": {
+        "trend": {
+          "slope": 1.9043901098901115,
+          "direction": "increasing"
+        },
+        "growth_rate": 5.7444738132556665,
+        "volatility": 7.815284625344616,
+        "recent_change": 6.817439376806133,
+        "baseline_comparison": 6.275313765688298,
+        "data_points": 13,
+        "date_range": {
+          "start": "2010-01-01",
+          "end": "2022-01-01"
+        }
+      },
+      "pcbs_metadata": {
+        "official_source": true,
+        "data_quality": "high",
+        "update_frequency": "quarterly"
+      }
+    },
+    {
+      "id": "pcbs-mq3aem",
+      "type": "economic",
+      "category": "labor",
+      "date": "2021-01-01",
+      "timestamp": "2021-01-01T00:00:00.000Z",
+      "period": {
+        "type": "year",
+        "value": "2021"
+      },
+      "location": {
+        "name": "Palestine",
+        "admin_levels": {
+          "level1": "Palestine"
+        },
+        "region": "palestine"
+      },
+      "value": 22.203,
+      "unit": "percentage",
+      "quality": {
+        "score": 0.8333333333333333,
+        "completeness": 0.6666666666666666,
+        "consistency": 1,
+        "verified": false,
+        "confidence": 0.8
+      },
+      "sources": [
+        {
+          "name": "Palestinian Central Bureau of Statistics (PCBS)",
+          "organization": "PCBS",
+          "url": "https://api.worldbank.org/v2",
+          "fetched_at": "2025-10-30T09:46:35.103Z",
+          "reliability_score": 0.95
+        }
+      ],
+      "created_at": "2025-10-30T09:46:35.103Z",
+      "updated_at": "2025-10-30T09:46:35.103Z",
+      "version": 1,
+      "indicator_code": "SL.UEM.TOTL.MA.ZS",
+      "indicator_name": "Unemployment, male (% of male labor force)",
+      "analysis": {
+        "trend": {
+          "slope": 0.31371978021978114,
+          "direction": "increasing"
+        },
+        "growth_rate": -0.10808060271199575,
+        "volatility": 1.8165061561647997,
+        "recent_change": -0.5331063524773756,
+        "baseline_comparison": 10.112080936322148,
+        "data_points": 13,
+        "date_range": {
+          "start": "2010-01-01",
+          "end": "2022-01-01"
+        }
+      },
+      "pcbs_metadata": {
+        "official_source": true,
+        "data_quality": "high",
+        "update_frequency": "quarterly"
+      }
+    },
+    {
+      "id": "pcbs-ct9qa6",
+      "type": "economic",
+      "category": "labor",
+      "date": "2021-01-01",
+      "timestamp": "2021-01-01T00:00:00.000Z",
+      "period": {
+        "type": "year",
+        "value": "2021"
+      },
+      "location": {
+        "name": "Palestine",
+        "admin_levels": {
+          "level1": "Palestine"
+        },
+        "region": "palestine"
+      },
+      "value": 41.63,
+      "unit": "percentage",
+      "quality": {
+        "score": 0.8333333333333333,
+        "completeness": 0.6666666666666666,
+        "consistency": 1,
+        "verified": false,
+        "confidence": 0.8
+      },
+      "sources": [
+        {
+          "name": "Palestinian Central Bureau of Statistics (PCBS)",
+          "organization": "PCBS",
+          "url": "https://api.worldbank.org/v2",
+          "fetched_at": "2025-10-30T09:46:35.103Z",
+          "reliability_score": 0.95
+        }
+      ],
+      "created_at": "2025-10-30T09:46:35.103Z",
+      "updated_at": "2025-10-30T09:46:35.103Z",
+      "version": 1,
+      "indicator_code": "SL.UEM.1524.ZS",
+      "indicator_name": "Unemployment, youth total (% of total labor force ages 15-24)",
+      "analysis": {
+        "trend": {
+          "slope": 0.5858901098901069,
+          "direction": "increasing"
+        },
+        "growth_rate": 0.2739699795806203,
+        "volatility": 3.2278809525425474,
+        "recent_change": -1.005873540532173,
+        "baseline_comparison": 15.344120580738124,
+        "data_points": 13,
+        "date_range": {
+          "start": "2010-01-01",
+          "end": "2022-01-01"
+        }
+      },
+      "pcbs_metadata": {
+        "official_source": true,
+        "data_quality": "high",
+        "update_frequency": "quarterly"
+      }
+    },
+    {
+      "id": "pcbs-zc828z",
+      "type": "economic",
+      "category": "labor",
+      "date": "2021-01-01",
+      "timestamp": "2021-01-01T00:00:00.000Z",
+      "period": {
+        "type": "year",
+        "value": "2021"
+      },
+      "location": {
+        "name": "Palestine",
+        "admin_levels": {
+          "level1": "Palestine"
+        },
+        "region": "palestine"
+      },
+      "value": 31.879,
+      "unit": "percentage",
+      "quality": {
+        "score": 0.8333333333333333,
+        "completeness": 0.6666666666666666,
+        "consistency": 1,
+        "verified": false,
+        "confidence": 0.8
+      },
+      "sources": [
+        {
+          "name": "Palestinian Central Bureau of Statistics (PCBS)",
+          "organization": "PCBS",
+          "url": "https://api.worldbank.org/v2",
+          "fetched_at": "2025-10-30T09:46:35.103Z",
+          "reliability_score": 0.95
+        }
+      ],
+      "created_at": "2025-10-30T09:46:35.103Z",
+      "updated_at": "2025-10-30T09:46:35.103Z",
+      "version": 1,
+      "indicator_code": "SL.UEM.ADVN.ZS",
+      "indicator_name": "Unemployment with advanced education (% of total labor force)",
+      "analysis": {
+        "trend": {
+          "slope": 0.7917582417582417,
+          "direction": "increasing"
+        },
+        "growth_rate": 2.4562216454627412,
+        "volatility": 4.509178460402193,
+        "recent_change": 8.491015518649608,
+        "baseline_comparison": 7.848709360939139,
+        "data_points": 14,
+        "date_range": {
+          "start": "2010-01-01",
+          "end": "2024-01-01"
+        }
+      },
+      "pcbs_metadata": {
+        "official_source": true,
+        "data_quality": "high",
+        "update_frequency": "quarterly"
+      }
+    },
+    {
+      "id": "pcbs-cdgtg6",
+      "type": "economic",
+      "category": "labor",
+      "date": "2021-01-01",
+      "timestamp": "2021-01-01T00:00:00.000Z",
+      "period": {
+        "type": "year",
+        "value": "2021"
+      },
+      "location": {
+        "name": "Palestine",
+        "admin_levels": {
+          "level1": "Palestine"
+        },
+        "region": "palestine"
+      },
+      "value": 21.654658153701,
+      "unit": "percentage",
+      "quality": {
+        "score": 0.8333333333333333,
+        "completeness": 0.6666666666666666,
+        "consistency": 1,
+        "verified": false,
+        "confidence": 0.8
+      },
+      "sources": [
+        {
+          "name": "Palestinian Central Bureau of Statistics (PCBS)",
+          "organization": "PCBS",
+          "url": "https://api.worldbank.org/v2",
+          "fetched_at": "2025-10-30T09:46:35.103Z",
+          "reliability_score": 0.95
+        }
+      ],
+      "created_at": "2025-10-30T09:46:35.103Z",
+      "updated_at": "2025-10-30T09:46:35.103Z",
+      "version": 1,
+      "indicator_code": "SL.EMP.VULN.ZS",
+      "indicator_name": "Vulnerable employment, total (% of total employment)",
+      "analysis": {
+        "trend": {
+          "slope": -0.6080387051187662,
+          "direction": "decreasing"
+        },
+        "growth_rate": -2.7496489826893638,
+        "volatility": 2.4069115782998995,
+        "recent_change": -0.8900391749812904,
+        "baseline_comparison": 17.813244793973993,
+        "data_points": 13,
+        "date_range": {
+          "start": "2010-01-01",
+          "end": "2022-01-01"
+        }
+      },
+      "pcbs_metadata": {
+        "official_source": true,
+        "data_quality": "high",
+        "update_frequency": "quarterly"
+      }
+    },
+    {
+      "id": "pcbs-2jm4cm",
+      "type": "economic",
+      "category": "labor",
+      "date": "2021-01-01",
+      "timestamp": "2021-01-01T00:00:00.000Z",
+      "period": {
+        "type": "year",
+        "value": "2021"
+      },
+      "location": {
+        "name": "Palestine",
+        "admin_levels": {
+          "level1": "Palestine"
+        },
+        "region": "palestine"
+      },
+      "value": 1301690,
+      "unit": "count",
+      "quality": {
+        "score": 0.8333333333333333,
+        "completeness": 0.6666666666666666,
+        "consistency": 1,
+        "verified": false,
+        "confidence": 0.8
+      },
+      "sources": [
+        {
+          "name": "Palestinian Central Bureau of Statistics (PCBS)",
+          "organization": "PCBS",
+          "url": "https://api.worldbank.org/v2",
+          "fetched_at": "2025-10-30T09:46:35.103Z",
+          "reliability_score": 0.95
+        }
+      ],
+      "created_at": "2025-10-30T09:46:35.103Z",
+      "updated_at": "2025-10-30T09:46:35.103Z",
+      "version": 1,
+      "indicator_code": "SL.TLF.TOTL.IN",
+      "indicator_name": "Labor force, total",
+      "analysis": {
+        "trend": {
+          "slope": 37530.92857142857,
+          "direction": "increasing"
+        },
+        "growth_rate": 3.9515747777760843,
+        "volatility": 143532.23298053542,
+        "recent_change": 9.074988059226238,
+        "baseline_comparison": -6.436031425429296,
+        "data_points": 13,
+        "date_range": {
+          "start": "2010-01-01",
+          "end": "2022-01-01"
+        }
+      },
+      "pcbs_metadata": {
+        "official_source": true,
+        "data_quality": "high",
+        "update_frequency": "quarterly"
+      }
+    },
+    {
+      "id": "pcbs-z6ig08",
+      "type": "economic",
+      "category": "labor",
+      "date": "2022-01-01",
+      "timestamp": "2022-01-01T00:00:00.000Z",
+      "period": {
+        "type": "year",
+        "value": "2022"
+      },
+      "location": {
+        "name": "Palestine",
+        "admin_levels": {
+          "level1": "Palestine"
+        },
+        "region": "palestine"
+      },
+      "value": 24.42,
+      "unit": "percentage",
+      "quality": {
+        "score": 0.8333333333333333,
+        "completeness": 0.6666666666666666,
+        "consistency": 1,
+        "verified": false,
+        "confidence": 0.8
+      },
+      "sources": [
+        {
+          "name": "Palestinian Central Bureau of Statistics (PCBS)",
+          "organization": "PCBS",
+          "url": "https://api.worldbank.org/v2",
+          "fetched_at": "2025-10-30T09:46:35.105Z",
+          "reliability_score": 0.95
+        }
+      ],
+      "created_at": "2025-10-30T09:46:35.105Z",
+      "updated_at": "2025-10-30T09:46:35.105Z",
+      "version": 1,
+      "indicator_code": "SL.UEM.TOTL.ZS",
+      "indicator_name": "Unemployment, total (% of total labor force)",
+      "analysis": {
+        "trend": {
+          "slope": 0.6551153846153833,
+          "direction": "increasing"
+        },
+        "growth_rate": 1.4057959609732358,
+        "volatility": 2.8807724884442916,
+        "recent_change": -7.464948844259185,
+        "baseline_comparison": 0,
+        "data_points": 13,
+        "date_range": {
+          "start": "2010-01-01",
+          "end": "2022-01-01"
+        }
+      },
+      "pcbs_metadata": {
+        "official_source": true,
+        "data_quality": "high",
+        "update_frequency": "quarterly"
+      }
+    },
+    {
+      "id": "pcbs-z9v0gt",
+      "type": "economic",
+      "category": "labor",
+      "date": "2022-01-01",
+      "timestamp": "2022-01-01T00:00:00.000Z",
+      "period": {
+        "type": "year",
+        "value": "2022"
+      },
+      "location": {
+        "name": "Palestine",
+        "admin_levels": {
+          "level1": "Palestine"
+        },
+        "region": "palestine"
+      },
+      "value": 39.998,
+      "unit": "percentage",
+      "quality": {
+        "score": 0.8333333333333333,
+        "completeness": 0.6666666666666666,
+        "consistency": 1,
+        "verified": false,
+        "confidence": 0.8
+      },
+      "sources": [
+        {
+          "name": "Palestinian Central Bureau of Statistics (PCBS)",
+          "organization": "PCBS",
+          "url": "https://api.worldbank.org/v2",
+          "fetched_at": "2025-10-30T09:46:35.105Z",
+          "reliability_score": 0.95
+        }
+      ],
+      "created_at": "2025-10-30T09:46:35.105Z",
+      "updated_at": "2025-10-30T09:46:35.105Z",
+      "version": 1,
+      "indicator_code": "SL.UEM.TOTL.FE.ZS",
+      "indicator_name": "Unemployment, female (% of female labor force)",
+      "analysis": {
+        "trend": {
+          "slope": 1.9043901098901115,
+          "direction": "increasing"
+        },
+        "growth_rate": 5.7444738132556665,
+        "volatility": 7.815284625344616,
+        "recent_change": -5.904770866660405,
+        "baseline_comparison": 0,
+        "data_points": 13,
+        "date_range": {
+          "start": "2010-01-01",
+          "end": "2022-01-01"
+        }
+      },
+      "pcbs_metadata": {
+        "official_source": true,
+        "data_quality": "high",
+        "update_frequency": "quarterly"
+      }
+    },
+    {
+      "id": "pcbs-q19c7b",
+      "type": "economic",
+      "category": "labor",
+      "date": "2022-01-01",
+      "timestamp": "2022-01-01T00:00:00.000Z",
+      "period": {
+        "type": "year",
+        "value": "2022"
+      },
+      "location": {
+        "name": "Palestine",
+        "admin_levels": {
+          "level1": "Palestine"
+        },
+        "region": "palestine"
+      },
+      "value": 20.164,
+      "unit": "percentage",
+      "quality": {
+        "score": 0.8333333333333333,
+        "completeness": 0.6666666666666666,
+        "consistency": 1,
+        "verified": false,
+        "confidence": 0.8
+      },
+      "sources": [
+        {
+          "name": "Palestinian Central Bureau of Statistics (PCBS)",
+          "organization": "PCBS",
+          "url": "https://api.worldbank.org/v2",
+          "fetched_at": "2025-10-30T09:46:35.105Z",
+          "reliability_score": 0.95
+        }
+      ],
+      "created_at": "2025-10-30T09:46:35.105Z",
+      "updated_at": "2025-10-30T09:46:35.105Z",
+      "version": 1,
+      "indicator_code": "SL.UEM.TOTL.MA.ZS",
+      "indicator_name": "Unemployment, male (% of male labor force)",
+      "analysis": {
+        "trend": {
+          "slope": 0.31371978021978114,
+          "direction": "increasing"
+        },
+        "growth_rate": -0.10808060271199575,
+        "volatility": 1.8165061561647997,
+        "recent_change": -9.183443678782137,
+        "baseline_comparison": 0,
+        "data_points": 13,
+        "date_range": {
+          "start": "2010-01-01",
+          "end": "2022-01-01"
+        }
+      },
+      "pcbs_metadata": {
+        "official_source": true,
+        "data_quality": "high",
+        "update_frequency": "quarterly"
+      }
+    },
+    {
+      "id": "pcbs-93bw3x",
+      "type": "economic",
+      "category": "labor",
+      "date": "2022-01-01",
+      "timestamp": "2022-01-01T00:00:00.000Z",
+      "period": {
+        "type": "year",
+        "value": "2022"
+      },
+      "location": {
+        "name": "Palestine",
+        "admin_levels": {
+          "level1": "Palestine"
+        },
+        "region": "palestine"
+      },
+      "value": 36.092,
+      "unit": "percentage",
+      "quality": {
+        "score": 0.8333333333333333,
+        "completeness": 0.6666666666666666,
+        "consistency": 1,
+        "verified": false,
+        "confidence": 0.8
+      },
+      "sources": [
+        {
+          "name": "Palestinian Central Bureau of Statistics (PCBS)",
+          "organization": "PCBS",
+          "url": "https://api.worldbank.org/v2",
+          "fetched_at": "2025-10-30T09:46:35.105Z",
+          "reliability_score": 0.95
+        }
+      ],
+      "created_at": "2025-10-30T09:46:35.105Z",
+      "updated_at": "2025-10-30T09:46:35.105Z",
+      "version": 1,
+      "indicator_code": "SL.UEM.1524.ZS",
+      "indicator_name": "Unemployment, youth total (% of total labor force ages 15-24)",
+      "analysis": {
+        "trend": {
+          "slope": 0.5858901098901069,
+          "direction": "increasing"
+        },
+        "growth_rate": 0.2739699795806203,
+        "volatility": 3.2278809525425474,
+        "recent_change": -13.302906557770847,
+        "baseline_comparison": 0,
+        "data_points": 13,
+        "date_range": {
+          "start": "2010-01-01",
+          "end": "2022-01-01"
+        }
+      },
+      "pcbs_metadata": {
+        "official_source": true,
+        "data_quality": "high",
+        "update_frequency": "quarterly"
+      }
+    },
+    {
+      "id": "pcbs-e4tj52",
+      "type": "economic",
+      "category": "labor",
+      "date": "2022-01-01",
+      "timestamp": "2022-01-01T00:00:00.000Z",
+      "period": {
+        "type": "year",
+        "value": "2022"
+      },
+      "location": {
+        "name": "Palestine",
+        "admin_levels": {
+          "level1": "Palestine"
+        },
+        "region": "palestine"
+      },
+      "value": 29.559,
+      "unit": "percentage",
+      "quality": {
+        "score": 0.8333333333333333,
+        "completeness": 0.6666666666666666,
+        "consistency": 1,
+        "verified": false,
+        "confidence": 0.8
+      },
+      "sources": [
+        {
+          "name": "Palestinian Central Bureau of Statistics (PCBS)",
+          "organization": "PCBS",
+          "url": "https://api.worldbank.org/v2",
+          "fetched_at": "2025-10-30T09:46:35.105Z",
+          "reliability_score": 0.95
+        }
+      ],
+      "created_at": "2025-10-30T09:46:35.105Z",
+      "updated_at": "2025-10-30T09:46:35.105Z",
+      "version": 1,
+      "indicator_code": "SL.UEM.ADVN.ZS",
+      "indicator_name": "Unemployment with advanced education (% of total labor force)",
+      "analysis": {
+        "trend": {
+          "slope": 0.7917582417582417,
+          "direction": "increasing"
+        },
+        "growth_rate": 2.4562216454627412,
+        "volatility": 4.509178460402193,
+        "recent_change": -7.277518115373757,
+        "baseline_comparison": 0,
+        "data_points": 14,
+        "date_range": {
+          "start": "2010-01-01",
+          "end": "2024-01-01"
+        }
+      },
+      "pcbs_metadata": {
+        "official_source": true,
+        "data_quality": "high",
+        "update_frequency": "quarterly"
+      }
+    },
+    {
+      "id": "pcbs-tfyj6o",
+      "type": "economic",
+      "category": "labor",
+      "date": "2022-01-01",
+      "timestamp": "2022-01-01T00:00:00.000Z",
+      "period": {
+        "type": "year",
+        "value": "2022"
+      },
+      "location": {
+        "name": "Palestine",
+        "admin_levels": {
+          "level1": "Palestine"
+        },
+        "region": "palestine"
+      },
+      "value": 18.3804954965544,
+      "unit": "percentage",
+      "quality": {
+        "score": 0.8333333333333333,
+        "completeness": 0.6666666666666666,
+        "consistency": 1,
+        "verified": false,
+        "confidence": 0.8
+      },
+      "sources": [
+        {
+          "name": "Palestinian Central Bureau of Statistics (PCBS)",
+          "organization": "PCBS",
+          "url": "https://api.worldbank.org/v2",
+          "fetched_at": "2025-10-30T09:46:35.105Z",
+          "reliability_score": 0.95
+        }
+      ],
+      "created_at": "2025-10-30T09:46:35.105Z",
+      "updated_at": "2025-10-30T09:46:35.105Z",
+      "version": 1,
+      "indicator_code": "SL.EMP.VULN.ZS",
+      "indicator_name": "Vulnerable employment, total (% of total employment)",
+      "analysis": {
+        "trend": {
+          "slope": -0.6080387051187662,
+          "direction": "decreasing"
+        },
+        "growth_rate": -2.7496489826893638,
+        "volatility": 2.4069115782998995,
+        "recent_change": -15.11989999522118,
+        "baseline_comparison": 0,
+        "data_points": 13,
+        "date_range": {
+          "start": "2010-01-01",
+          "end": "2022-01-01"
+        }
+      },
+      "pcbs_metadata": {
+        "official_source": true,
+        "data_quality": "high",
+        "update_frequency": "quarterly"
+      }
+    },
+    {
+      "id": "pcbs-v27qds",
+      "type": "economic",
+      "category": "labor",
+      "date": "2022-01-01",
+      "timestamp": "2022-01-01T00:00:00.000Z",
+      "period": {
+        "type": "year",
+        "value": "2022"
+      },
+      "location": {
+        "name": "Palestine",
+        "admin_levels": {
+          "level1": "Palestine"
+        },
+        "region": "palestine"
+      },
+      "value": 1391230,
+      "unit": "count",
+      "quality": {
+        "score": 0.8333333333333333,
+        "completeness": 0.6666666666666666,
+        "consistency": 1,
+        "verified": false,
+        "confidence": 0.8
+      },
+      "sources": [
+        {
+          "name": "Palestinian Central Bureau of Statistics (PCBS)",
+          "organization": "PCBS",
+          "url": "https://api.worldbank.org/v2",
+          "fetched_at": "2025-10-30T09:46:35.106Z",
+          "reliability_score": 0.95
+        }
+      ],
+      "created_at": "2025-10-30T09:46:35.106Z",
+      "updated_at": "2025-10-30T09:46:35.106Z",
+      "version": 1,
+      "indicator_code": "SL.TLF.TOTL.IN",
+      "indicator_name": "Labor force, total",
+      "analysis": {
+        "trend": {
+          "slope": 37530.92857142857,
+          "direction": "increasing"
+        },
+        "growth_rate": 3.9515747777760843,
+        "volatility": 143532.23298053542,
+        "recent_change": 6.878749932779694,
+        "baseline_comparison": 0,
+        "data_points": 13,
+        "date_range": {
+          "start": "2010-01-01",
+          "end": "2022-01-01"
+        }
+      },
+      "pcbs_metadata": {
+        "official_source": true,
+        "data_quality": "high",
+        "update_frequency": "quarterly"
+      }
+    },
+    {
+      "id": "pcbs-wral4l",
+      "type": "economic",
+      "category": "labor",
+      "date": "2024-01-01",
+      "timestamp": "2024-01-01T00:00:00.000Z",
+      "period": {
+        "type": "year",
+        "value": "2024"
+      },
+      "location": {
+        "name": "Palestine",
+        "admin_levels": {
+          "level1": "Palestine"
+        },
+        "region": "palestine"
+      },
+      "value": 25.808,
+      "unit": "percentage",
+      "quality": {
+        "score": 0.8333333333333333,
+        "completeness": 0.6666666666666666,
+        "consistency": 1,
+        "verified": false,
+        "confidence": 0.8
+      },
+      "sources": [
+        {
+          "name": "Palestinian Central Bureau of Statistics (PCBS)",
+          "organization": "PCBS",
+          "url": "https://api.worldbank.org/v2",
+          "fetched_at": "2025-10-30T09:46:35.108Z",
+          "reliability_score": 0.95
+        }
+      ],
+      "created_at": "2025-10-30T09:46:35.108Z",
+      "updated_at": "2025-10-30T09:46:35.108Z",
+      "version": 1,
+      "indicator_code": "SL.UEM.ADVN.ZS",
+      "indicator_name": "Unemployment with advanced education (% of total labor force)",
+      "analysis": {
+        "trend": {
+          "slope": 0.7917582417582417,
+          "direction": "increasing"
+        },
+        "growth_rate": 2.4562216454627412,
+        "volatility": 4.509178460402193,
+        "recent_change": -12.689874488311517,
+        "baseline_comparison": -12.689874488311517,
+        "data_points": 14,
+        "date_range": {
+          "start": "2010-01-01",
+          "end": "2024-01-01"
+        }
+      },
+      "pcbs_metadata": {
+        "official_source": true,
+        "data_quality": "high",
+        "update_frequency": "quarterly"
+      }
+    }
+  ]
+}

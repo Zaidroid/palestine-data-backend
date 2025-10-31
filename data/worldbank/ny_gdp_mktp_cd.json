@@ -1,0 +1,140 @@
+{
+  "indicator": "NY.GDP.MKTP.CD",
+  "indicator_name": "GDP (current US$)",
+  "data": [
+    {
+      "year": 2010,
+      "value": 9681500000,
+      "indicator": "NY.GDP.MKTP.CD",
+      "indicator_name": "GDP (current US$)",
+      "country": "West Bank and Gaza",
+      "source": "worldbank"
+    },
+    {
+      "year": 2011,
+      "value": 11186100000,
+      "indicator": "NY.GDP.MKTP.CD",
+      "indicator_name": "GDP (current US$)",
+      "country": "West Bank and Gaza",
+      "source": "worldbank"
+    },
+    {
+      "year": 2012,
+      "value": 12208400000,
+      "indicator": "NY.GDP.MKTP.CD",
+      "indicator_name": "GDP (current US$)",
+      "country": "West Bank and Gaza",
+      "source": "worldbank"
+    },
+    {
+      "year": 2013,
+      "value": 13515500000,
+      "indicator": "NY.GDP.MKTP.CD",
+      "indicator_name": "GDP (current US$)",
+      "country": "West Bank and Gaza",
+      "source": "worldbank"
+    },
+    {
+      "year": 2014,
+      "value": 13989700000,
+      "indicator": "NY.GDP.MKTP.CD",
+      "indicator_name": "GDP (current US$)",
+      "country": "West Bank and Gaza",
+      "source": "worldbank"
+    },
+    {
+      "year": 2015,
+      "value": 13972400000,
+      "indicator": "NY.GDP.MKTP.CD",
+      "indicator_name": "GDP (current US$)",
+      "country": "West Bank and Gaza",
+      "source": "worldbank"
+    },
+    {
+      "year": 2016,
+      "value": 15405400000,
+      "indicator": "NY.GDP.MKTP.CD",
+      "indicator_name": "GDP (current US$)",
+      "country": "West Bank and Gaza",
+      "source": "worldbank"
+    },
+    {
+      "year": 2017,
+      "value": 16128000000,
+      "indicator": "NY.GDP.MKTP.CD",
+      "indicator_name": "GDP (current US$)",
+      "country": "West Bank and Gaza",
+      "source": "worldbank"
+    },
+    {
+      "year": 2018,
+      "value": 16276600000,
+      "indicator": "NY.GDP.MKTP.CD",
+      "indicator_name": "GDP (current US$)",
+      "country": "West Bank and Gaza",
+      "source": "worldbank"
+    },
+    {
+      "year": 2019,
+      "value": 17133500000,
+      "indicator": "NY.GDP.MKTP.CD",
+      "indicator_name": "GDP (current US$)",
+      "country": "West Bank and Gaza",
+      "source": "worldbank"
+    },
+    {
+      "year": 2020,
+      "value": 15531700000,
+      "indicator": "NY.GDP.MKTP.CD",
+      "indicator_name": "GDP (current US$)",
+      "country": "West Bank and Gaza",
+      "source": "worldbank"
+    },
+    {
+      "year": 2021,
+      "value": 18109000000,
+      "indicator": "NY.GDP.MKTP.CD",
+      "indicator_name": "GDP (current US$)",
+      "country": "West Bank and Gaza",
+      "source": "worldbank"
+    },
+    {
+      "year": 2022,
+      "value": 19165500000,
+      "indicator": "NY.GDP.MKTP.CD",
+      "indicator_name": "GDP (current US$)",
+      "country": "West Bank and Gaza",
+      "source": "worldbank"
+    },
+    {
+      "year": 2023,
+      "value": 17847900000,
+      "indicator": "NY.GDP.MKTP.CD",
+      "indicator_name": "GDP (current US$)",
+      "country": "West Bank and Gaza",
+      "source": "worldbank"
+    },
+    {
+      "year": 2024,
+      "value": 13711100000,
+      "indicator": "NY.GDP.MKTP.CD",
+      "indicator_name": "GDP (current US$)",
+      "country": "West Bank and Gaza",
+      "source": "worldbank"
+    }
+  ],
+  "metadata": {
+    "source": "World Bank Open Data",
+    "last_updated": "2025-10-29T21:01:31.705Z",
+    "total_points": 15
+  },
+  "validation": {
+    "qualityScore": 1,
+    "completeness": 1,
+    "consistency": 1,
+    "accuracy": 1,
+    "meetsThreshold": true,
+    "errorCount": 0,
+    "warningCount": 0
+  }
+}

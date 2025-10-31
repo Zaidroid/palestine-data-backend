@@ -1,0 +1,132 @@
+{
+  "indicator": "SE.PRM.ENRR",
+  "indicator_name": "School enrollment, primary (% gross)",
+  "data": [
+    {
+      "year": 2010,
+      "value": 92.4950752375136,
+      "indicator": "SE.PRM.ENRR",
+      "indicator_name": "School enrollment, primary (% gross)",
+      "country": "West Bank and Gaza",
+      "source": "worldbank"
+    },
+    {
+      "year": 2011,
+      "value": 93.2215373459028,
+      "indicator": "SE.PRM.ENRR",
+      "indicator_name": "School enrollment, primary (% gross)",
+      "country": "West Bank and Gaza",
+      "source": "worldbank"
+    },
+    {
+      "year": 2012,
+      "value": 94.7061306249874,
+      "indicator": "SE.PRM.ENRR",
+      "indicator_name": "School enrollment, primary (% gross)",
+      "country": "West Bank and Gaza",
+      "source": "worldbank"
+    },
+    {
+      "year": 2013,
+      "value": 94.7726406972161,
+      "indicator": "SE.PRM.ENRR",
+      "indicator_name": "School enrollment, primary (% gross)",
+      "country": "West Bank and Gaza",
+      "source": "worldbank"
+    },
+    {
+      "year": 2014,
+      "value": 96.0595015055566,
+      "indicator": "SE.PRM.ENRR",
+      "indicator_name": "School enrollment, primary (% gross)",
+      "country": "West Bank and Gaza",
+      "source": "worldbank"
+    },
+    {
+      "year": 2015,
+      "value": 96.3706500890533,
+      "indicator": "SE.PRM.ENRR",
+      "indicator_name": "School enrollment, primary (% gross)",
+      "country": "West Bank and Gaza",
+      "source": "worldbank"
+    },
+    {
+      "year": 2016,
+      "value": 96.5069849798254,
+      "indicator": "SE.PRM.ENRR",
+      "indicator_name": "School enrollment, primary (% gross)",
+      "country": "West Bank and Gaza",
+      "source": "worldbank"
+    },
+    {
+      "year": 2017,
+      "value": 97.5735629387144,
+      "indicator": "SE.PRM.ENRR",
+      "indicator_name": "School enrollment, primary (% gross)",
+      "country": "West Bank and Gaza",
+      "source": "worldbank"
+    },
+    {
+      "year": 2018,
+      "value": 96.5580534271123,
+      "indicator": "SE.PRM.ENRR",
+      "indicator_name": "School enrollment, primary (% gross)",
+      "country": "West Bank and Gaza",
+      "source": "worldbank"
+    },
+    {
+      "year": 2019,
+      "value": 95.6166576244839,
+      "indicator": "SE.PRM.ENRR",
+      "indicator_name": "School enrollment, primary (% gross)",
+      "country": "West Bank and Gaza",
+      "source": "worldbank"
+    },
+    {
+      "year": 2020,
+      "value": 94.653084809438,
+      "indicator": "SE.PRM.ENRR",
+      "indicator_name": "School enrollment, primary (% gross)",
+      "country": "West Bank and Gaza",
+      "source": "worldbank"
+    },
+    {
+      "year": 2021,
+      "value": 92.7029909386815,
+      "indicator": "SE.PRM.ENRR",
+      "indicator_name": "School enrollment, primary (% gross)",
+      "country": "West Bank and Gaza",
+      "source": "worldbank"
+    },
+    {
+      "year": 2022,
+      "value": 91.451637200506,
+      "indicator": "SE.PRM.ENRR",
+      "indicator_name": "School enrollment, primary (% gross)",
+      "country": "West Bank and Gaza",
+      "source": "worldbank"
+    },
+    {
+      "year": 2023,
+      "value": 91.4422361153306,
+      "indicator": "SE.PRM.ENRR",
+      "indicator_name": "School enrollment, primary (% gross)",
+      "country": "West Bank and Gaza",
+      "source": "worldbank"
+    }
+  ],
+  "metadata": {
+    "source": "World Bank Open Data",
+    "last_updated": "2025-10-29T21:02:06.892Z",
+    "total_points": 14
+  },
+  "validation": {
+    "qualityScore": 1,
+    "completeness": 1,
+    "consistency": 1,
+    "accuracy": 1,
+    "meetsThreshold": true,
+    "errorCount": 0,
+    "warningCount": 0
+  }
+}

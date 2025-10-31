@@ -1,0 +1,140 @@
+{
+  "indicator": "SP.POP.1564.TO.ZS",
+  "indicator_name": "Population ages 15-64 (% of total)",
+  "data": [
+    {
+      "year": 2010,
+      "value": 55.2025552939812,
+      "indicator": "SP.POP.1564.TO.ZS",
+      "indicator_name": "Population ages 15-64 (% of total)",
+      "country": "West Bank and Gaza",
+      "source": "worldbank"
+    },
+    {
+      "year": 2011,
+      "value": 55.5841937652875,
+      "indicator": "SP.POP.1564.TO.ZS",
+      "indicator_name": "Population ages 15-64 (% of total)",
+      "country": "West Bank and Gaza",
+      "source": "worldbank"
+    },
+    {
+      "year": 2012,
+      "value": 55.9078412445292,
+      "indicator": "SP.POP.1564.TO.ZS",
+      "indicator_name": "Population ages 15-64 (% of total)",
+      "country": "West Bank and Gaza",
+      "source": "worldbank"
+    },
+    {
+      "year": 2013,
+      "value": 56.1995735831012,
+      "indicator": "SP.POP.1564.TO.ZS",
+      "indicator_name": "Population ages 15-64 (% of total)",
+      "country": "West Bank and Gaza",
+      "source": "worldbank"
+    },
+    {
+      "year": 2014,
+      "value": 56.4627356961458,
+      "indicator": "SP.POP.1564.TO.ZS",
+      "indicator_name": "Population ages 15-64 (% of total)",
+      "country": "West Bank and Gaza",
+      "source": "worldbank"
+    },
+    {
+      "year": 2015,
+      "value": 56.6701131134906,
+      "indicator": "SP.POP.1564.TO.ZS",
+      "indicator_name": "Population ages 15-64 (% of total)",
+      "country": "West Bank and Gaza",
+      "source": "worldbank"
+    },
+    {
+      "year": 2016,
+      "value": 56.8426367209549,
+      "indicator": "SP.POP.1564.TO.ZS",
+      "indicator_name": "Population ages 15-64 (% of total)",
+      "country": "West Bank and Gaza",
+      "source": "worldbank"
+    },
+    {
+      "year": 2017,
+      "value": 56.9185550343498,
+      "indicator": "SP.POP.1564.TO.ZS",
+      "indicator_name": "Population ages 15-64 (% of total)",
+      "country": "West Bank and Gaza",
+      "source": "worldbank"
+    },
+    {
+      "year": 2018,
+      "value": 56.9225409060852,
+      "indicator": "SP.POP.1564.TO.ZS",
+      "indicator_name": "Population ages 15-64 (% of total)",
+      "country": "West Bank and Gaza",
+      "source": "worldbank"
+    },
+    {
+      "year": 2019,
+      "value": 56.9725227158673,
+      "indicator": "SP.POP.1564.TO.ZS",
+      "indicator_name": "Population ages 15-64 (% of total)",
+      "country": "West Bank and Gaza",
+      "source": "worldbank"
+    },
+    {
+      "year": 2020,
+      "value": 57.1178387168293,
+      "indicator": "SP.POP.1564.TO.ZS",
+      "indicator_name": "Population ages 15-64 (% of total)",
+      "country": "West Bank and Gaza",
+      "source": "worldbank"
+    },
+    {
+      "year": 2021,
+      "value": 57.3431169497133,
+      "indicator": "SP.POP.1564.TO.ZS",
+      "indicator_name": "Population ages 15-64 (% of total)",
+      "country": "West Bank and Gaza",
+      "source": "worldbank"
+    },
+    {
+      "year": 2022,
+      "value": 57.6072471335106,
+      "indicator": "SP.POP.1564.TO.ZS",
+      "indicator_name": "Population ages 15-64 (% of total)",
+      "country": "West Bank and Gaza",
+      "source": "worldbank"
+    },
+    {
+      "year": 2023,
+      "value": 57.8272966906483,
+      "indicator": "SP.POP.1564.TO.ZS",
+      "indicator_name": "Population ages 15-64 (% of total)",
+      "country": "West Bank and Gaza",
+      "source": "worldbank"
+    },
+    {
+      "year": 2024,
+      "value": 58.1151601426855,
+      "indicator": "SP.POP.1564.TO.ZS",
+      "indicator_name": "Population ages 15-64 (% of total)",
+      "country": "West Bank and Gaza",
+      "source": "worldbank"
+    }
+  ],
+  "metadata": {
+    "source": "World Bank Open Data",
+    "last_updated": "2025-10-29T21:01:38.526Z",
+    "total_points": 15
+  },
+  "validation": {
+    "qualityScore": 1,
+    "completeness": 1,
+    "consistency": 1,
+    "accuracy": 1,
+    "meetsThreshold": true,
+    "errorCount": 0,
+    "warningCount": 0
+  }
+}

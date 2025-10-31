@@ -1,0 +1,7018 @@
+{
+  "datasetType": "demolitions",
+  "recordCount": 1000,
+  "qualityScore": 0,
+  "completeness": 0,
+  "consistency": 0,
+  "accuracy": 0,
+  "meetsThreshold": false,
+  "errors": [
+    {
+      "field": "structures",
+      "message": "Missing required field: structures",
+      "severity": "error",
+      "affectedRecords": 1,
+      "recordIndex": 0
+    },
+    {
+      "field": "structures",
+      "message": "Missing required field: structures",
+      "severity": "error",
+      "affectedRecords": 1,
+      "recordIndex": 1
+    },
+    {
+      "field": "structures",
+      "message": "Missing required field: structures",
+      "severity": "error",
+      "affectedRecords": 1,
+      "recordIndex": 2
+    },
+    {
+      "field": "structures",
+      "message": "Missing required field: structures",
+      "severity": "error",
+      "affectedRecords": 1,
+      "recordIndex": 3
+    },
+    {
+      "field": "structures",
+      "message": "Missing required field: structures",
+      "severity": "error",
+      "affectedRecords": 1,
+      "recordIndex": 4
+    },
+    {
+      "field": "structures",
+      "message": "Missing required field: structures",
+      "severity": "error",
+      "affectedRecords": 1,
+      "recordIndex": 5
+    },
+    {
+      "field": "structures",
+      "message": "Missing required field: structures",
+      "severity": "error",
+      "affectedRecords": 1,
+      "recordIndex": 6
+    },
+    {
+      "field": "structures",
+      "message": "Missing required field: structures",
+      "severity": "error",
+      "affectedRecords": 1,
+      "recordIndex": 7
+    },
+    {
+      "field": "structures",
+      "message": "Missing required field: structures",
+      "severity": "error",
+      "affectedRecords": 1,
+      "recordIndex": 8
+    },
+    {
+      "field": "structures",
+      "message": "Missing required field: structures",
+      "severity": "error",
+      "affectedRecords": 1,
+      "recordIndex": 9
+    },
+    {
+      "field": "structures",
+      "message": "Missing required field: structures",
+      "severity": "error",
+      "affectedRecords": 1,
+      "recordIndex": 10
+    },
+    {
+      "field": "structures",
+      "message": "Missing required field: structures",
+      "severity": "error",
+      "affectedRecords": 1,
+      "recordIndex": 11
+    },
+    {
+      "field": "structures",
+      "message": "Missing required field: structures",
+      "severity": "error",
+      "affectedRecords": 1,
+      "recordIndex": 12
+    },
+    {
+      "field": "structures",
+      "message": "Missing required field: structures",
+      "severity": "error",
+      "affectedRecords": 1,
+      "recordIndex": 13
+    },
+    {
+      "field": "structures",
+      "message": "Missing required field: structures",
+      "severity": "error",
+      "affectedRecords": 1,
+      "recordIndex": 14
+    },
+    {
+      "field": "structures",
+      "message": "Missing required field: structures",
+      "severity": "error",
+      "affectedRecords": 1,
+      "recordIndex": 15
+    },
+    {
+      "field": "structures",
+      "message": "Missing required field: structures",
+      "severity": "error",
+      "affectedRecords": 1,
+      "recordIndex": 16
+    },
+    {
+      "field": "structures",
+      "message": "Missing required field: structures",
+      "severity": "error",
+      "affectedRecords": 1,
+      "recordIndex": 17
+    },
+    {
+      "field": "structures",
+      "message": "Missing required field: structures",
+      "severity": "error",
+      "affectedRecords": 1,
+      "recordIndex": 18
+    },
+    {
+      "field": "structures",
+      "message": "Missing required field: structures",
+      "severity": "error",
+      "affectedRecords": 1,
+      "recordIndex": 19
+    },
+    {
+      "field": "structures",
+      "message": "Missing required field: structures",
+      "severity": "error",
+      "affectedRecords": 1,
+      "recordIndex": 20
+    },
+    {
+      "field": "structures",
+      "message": "Missing required field: structures",
+      "severity": "error",
+      "affectedRecords": 1,
+      "recordIndex": 21
+    },
+    {
+      "field": "structures",
+      "message": "Missing required field: structures",
+      "severity": "error",
+      "affectedRecords": 1,
+      "recordIndex": 22
+    },
+    {
+      "field": "structures",
+      "message": "Missing required field: structures",
+      "severity": "error",
+      "affectedRecords": 1,
+      "recordIndex": 23
+    },
+    {
+      "field": "structures",
+      "message": "Missing required field: structures",
+      "severity": "error",
+      "affectedRecords": 1,
+      "recordIndex": 24
+    },
+    {
+      "field": "structures",
+      "message": "Missing required field: structures",
+      "severity": "error",
+      "affectedRecords": 1,
+      "recordIndex": 25
+    },
+    {
+      "field": "structures",
+      "message": "Missing required field: structures",
+      "severity": "error",
+      "affectedRecords": 1,
+      "recordIndex": 26
+    },
+    {
+      "field": "structures",
+      "message": "Missing required field: structures",
+      "severity": "error",
+      "affectedRecords": 1,
+      "recordIndex": 27
+    },
+    {
+      "field": "structures",
+      "message": "Missing required field: structures",
+      "severity": "error",
+      "affectedRecords": 1,
+      "recordIndex": 28
+    },
+    {
+      "field": "structures",
+      "message": "Missing required field: structures",
+      "severity": "error",
+      "affectedRecords": 1,
+      "recordIndex": 29
+    },
+    {
+      "field": "structures",
+      "message": "Missing required field: structures",
+      "severity": "error",
+      "affectedRecords": 1,
+      "recordIndex": 30
+    },
+    {
+      "field": "structures",
+      "message": "Missing required field: structures",
+      "severity": "error",
+      "affectedRecords": 1,
+      "recordIndex": 31
+    },
+    {
+      "field": "structures",
+      "message": "Missing required field: structures",
+      "severity": "error",
+      "affectedRecords": 1,
+      "recordIndex": 32
+    },
+    {
+      "field": "structures",
+      "message": "Missing required field: structures",
+      "severity": "error",
+      "affectedRecords": 1,
+      "recordIndex": 33
+    },
+    {
+      "field": "structures",
+      "message": "Missing required field: structures",
+      "severity": "error",
+      "affectedRecords": 1,
+      "recordIndex": 34
+    },
+    {
+      "field": "structures",
+      "message": "Missing required field: structures",
+      "severity": "error",
+      "affectedRecords": 1,
+      "recordIndex": 35
+    },
+    {
+      "field": "structures",
+      "message": "Missing required field: structures",
+      "severity": "error",
+      "affectedRecords": 1,
+      "recordIndex": 36
+    },
+    {
+      "field": "structures",
+      "message": "Missing required field: structures",
+      "severity": "error",
+      "affectedRecords": 1,
+      "recordIndex": 37
+    },
+    {
+      "field": "structures",
+      "message": "Missing required field: structures",
+      "severity": "error",
+      "affectedRecords": 1,
+      "recordIndex": 38
+    },
+    {
+      "field": "structures",
+      "message": "Missing required field: structures",
+      "severity": "error",
+      "affectedRecords": 1,
+      "recordIndex": 39
+    },
+    {
+      "field": "structures",
+      "message": "Missing required field: structures",
+      "severity": "error",
+      "affectedRecords": 1,
+      "recordIndex": 40
+    },
+    {
+      "field": "structures",
+      "message": "Missing required field: structures",
+      "severity": "error",
+      "affectedRecords": 1,
+      "recordIndex": 41
+    },
+    {
+      "field": "structures",
+      "message": "Missing required field: structures",
+      "severity": "error",
+      "affectedRecords": 1,
+      "recordIndex": 42
+    },
+    {
+      "field": "structures",
+      "message": "Missing required field: structures",
+      "severity": "error",
+      "affectedRecords": 1,
+      "recordIndex": 43
+    },
+    {
+      "field": "structures",
+      "message": "Missing required field: structures",
+      "severity": "error",
+      "affectedRecords": 1,
+      "recordIndex": 44
+    },
+    {
+      "field": "structures",
+      "message": "Missing required field: structures",
+      "severity": "error",
+      "affectedRecords": 1,
+      "recordIndex": 45
+    },
+    {
+      "field": "structures",
+      "message": "Missing required field: structures",
+      "severity": "error",
+      "affectedRecords": 1,
+      "recordIndex": 46
+    },
+    {
+      "field": "structures",
+      "message": "Missing required field: structures",
+      "severity": "error",
+      "affectedRecords": 1,
+      "recordIndex": 47
+    },
+    {
+      "field": "structures",
+      "message": "Missing required field: structures",
+      "severity": "error",
+      "affectedRecords": 1,
+      "recordIndex": 48
+    },
+    {
+      "field": "structures",
+      "message": "Missing required field: structures",
+      "severity": "error",
+      "affectedRecords": 1,
+      "recordIndex": 49
+    },
+    {
+      "field": "structures",
+      "message": "Missing required field: structures",
+      "severity": "error",
+      "affectedRecords": 1,
+      "recordIndex": 50
+    },
+    {
+      "field": "structures",
+      "message": "Missing required field: structures",
+      "severity": "error",
+      "affectedRecords": 1,
+      "recordIndex": 51
+    },
+    {
+      "field": "structures",
+      "message": "Missing required field: structures",
+      "severity": "error",
+      "affectedRecords": 1,
+      "recordIndex": 52
+    },
+    {
+      "field": "structures",
+      "message": "Missing required field: structures",
+      "severity": "error",
+      "affectedRecords": 1,
+      "recordIndex": 53
+    },
+    {
+      "field": "structures",
+      "message": "Missing required field: structures",
+      "severity": "error",
+      "affectedRecords": 1,
+      "recordIndex": 54
+    },
+    {
+      "field": "structures",
+      "message": "Missing required field: structures",
+      "severity": "error",
+      "affectedRecords": 1,
+      "recordIndex": 55
+    },
+    {
+      "field": "structures",
+      "message": "Missing required field: structures",
+      "severity": "error",
+      "affectedRecords": 1,
+      "recordIndex": 56
+    },
+    {
+      "field": "structures",
+      "message": "Missing required field: structures",
+      "severity": "error",
+      "affectedRecords": 1,
+      "recordIndex": 57
+    },
+    {
+      "field": "structures",
+      "message": "Missing required field: structures",
+      "severity": "error",
+      "affectedRecords": 1,
+      "recordIndex": 58
+    },
+    {
+      "field": "structures",
+      "message": "Missing required field: structures",
+      "severity": "error",
+      "affectedRecords": 1,
+      "recordIndex": 59
+    },
+    {
+      "field": "structures",
+      "message": "Missing required field: structures",
+      "severity": "error",
+      "affectedRecords": 1,
+      "recordIndex": 60
+    },
+    {
+      "field": "structures",
+      "message": "Missing required field: structures",
+      "severity": "error",
+      "affectedRecords": 1,
+      "recordIndex": 61
+    },
+    {
+      "field": "structures",
+      "message": "Missing required field: structures",
+      "severity": "error",
+      "affectedRecords": 1,
+      "recordIndex": 62
+    },
+    {
+      "field": "structures",
+      "message": "Missing required field: structures",
+      "severity": "error",
+      "affectedRecords": 1,
+      "recordIndex": 63
+    },
+    {
+      "field": "structures",
+      "message": "Missing required field: structures",
+      "severity": "error",
+      "affectedRecords": 1,
+      "recordIndex": 64
+    },
+    {
+      "field": "structures",
+      "message": "Missing required field: structures",
+      "severity": "error",
+      "affectedRecords": 1,
+      "recordIndex": 65
+    },
+    {
+      "field": "structures",
+      "message": "Missing required field: structures",
+      "severity": "error",
+      "affectedRecords": 1,
+      "recordIndex": 66
+    },
+    {
+      "field": "structures",
+      "message": "Missing required field: structures",
+      "severity": "error",
+      "affectedRecords": 1,
+      "recordIndex": 67
+    },
+    {
+      "field": "structures",
+      "message": "Missing required field: structures",
+      "severity": "error",
+      "affectedRecords": 1,
+      "recordIndex": 68
+    },
+    {
+      "field": "structures",
+      "message": "Missing required field: structures",
+      "severity": "error",
+      "affectedRecords": 1,
+      "recordIndex": 69
+    },
+    {
+      "field": "structures",
+      "message": "Missing required field: structures",
+      "severity": "error",
+      "affectedRecords": 1,
+      "recordIndex": 70
+    },
+    {
+      "field": "structures",
+      "message": "Missing required field: structures",
+      "severity": "error",
+      "affectedRecords": 1,
+      "recordIndex": 71
+    },
+    {
+      "field": "structures",
+      "message": "Missing required field: structures",
+      "severity": "error",
+      "affectedRecords": 1,
+      "recordIndex": 72
+    },
+    {
+      "field": "structures",
+      "message": "Missing required field: structures",
+      "severity": "error",
+      "affectedRecords": 1,
+      "recordIndex": 73
+    },
+    {
+      "field": "structures",
+      "message": "Missing required field: structures",
+      "severity": "error",
+      "affectedRecords": 1,
+      "recordIndex": 74
+    },
+    {
+      "field": "structures",
+      "message": "Missing required field: structures",
+      "severity": "error",
+      "affectedRecords": 1,
+      "recordIndex": 75
+    },
+    {
+      "field": "structures",
+      "message": "Missing required field: structures",
+      "severity": "error",
+      "affectedRecords": 1,
+      "recordIndex": 76
+    },
+    {
+      "field": "structures",
+      "message": "Missing required field: structures",
+      "severity": "error",
+      "affectedRecords": 1,
+      "recordIndex": 77
+    },
+    {
+      "field": "structures",
+      "message": "Missing required field: structures",
+      "severity": "error",
+      "affectedRecords": 1,
+      "recordIndex": 78
+    },
+    {
+      "field": "structures",
+      "message": "Missing required field: structures",
+      "severity": "error",
+      "affectedRecords": 1,
+      "recordIndex": 79
+    },
+    {
+      "field": "structures",
+      "message": "Missing required field: structures",
+      "severity": "error",
+      "affectedRecords": 1,
+      "recordIndex": 80
+    },
+    {
+      "field": "structures",
+      "message": "Missing required field: structures",
+      "severity": "error",
+      "affectedRecords": 1,
+      "recordIndex": 81
+    },
+    {
+      "field": "structures",
+      "message": "Missing required field: structures",
+      "severity": "error",
+      "affectedRecords": 1,
+      "recordIndex": 82
+    },
+    {
+      "field": "structures",
+      "message": "Missing required field: structures",
+      "severity": "error",
+      "affectedRecords": 1,
+      "recordIndex": 83
+    },
+    {
+      "field": "structures",
+      "message": "Missing required field: structures",
+      "severity": "error",
+      "affectedRecords": 1,
+      "recordIndex": 84
+    },
+    {
+      "field": "structures",
+      "message": "Missing required field: structures",
+      "severity": "error",
+      "affectedRecords": 1,
+      "recordIndex": 85
+    },
+    {
+      "field": "structures",
+      "message": "Missing required field: structures",
+      "severity": "error",
+      "affectedRecords": 1,
+      "recordIndex": 86
+    },
+    {
+      "field": "structures",
+      "message": "Missing required field: structures",
+      "severity": "error",
+      "affectedRecords": 1,
+      "recordIndex": 87
+    },
+    {
+      "field": "structures",
+      "message": "Missing required field: structures",
+      "severity": "error",
+      "affectedRecords": 1,
+      "recordIndex": 88
+    },
+    {
+      "field": "structures",
+      "message": "Missing required field: structures",
+      "severity": "error",
+      "affectedRecords": 1,
+      "recordIndex": 89
+    },
+    {
+      "field": "structures",
+      "message": "Missing required field: structures",
+      "severity": "error",
+      "affectedRecords": 1,
+      "recordIndex": 90
+    },
+    {
+      "field": "structures",
+      "message": "Missing required field: structures",
+      "severity": "error",
+      "affectedRecords": 1,
+      "recordIndex": 91
+    },
+    {
+      "field": "structures",
+      "message": "Missing required field: structures",
+      "severity": "error",
+      "affectedRecords": 1,
+      "recordIndex": 92
+    },
+    {
+      "field": "structures",
+      "message": "Missing required field: structures",
+      "severity": "error",
+      "affectedRecords": 1,
+      "recordIndex": 93
+    },
+    {
+      "field": "structures",
+      "message": "Missing required field: structures",
+      "severity": "error",
+      "affectedRecords": 1,
+      "recordIndex": 94
+    },
+    {
+      "field": "structures",
+      "message": "Missing required field: structures",
+      "severity": "error",
+      "affectedRecords": 1,
+      "recordIndex": 95
+    },
+    {
+      "field": "structures",
+      "message": "Missing required field: structures",
+      "severity": "error",
+      "affectedRecords": 1,
+      "recordIndex": 96
+    },
+    {
+      "field": "structures",
+      "message": "Missing required field: structures",
+      "severity": "error",
+      "affectedRecords": 1,
+      "recordIndex": 97
+    },
+    {
+      "field": "structures",
+      "message": "Missing required field: structures",
+      "severity": "error",
+      "affectedRecords": 1,
+      "recordIndex": 98
+    },
+    {
+      "field": "structures",
+      "message": "Missing required field: structures",
+      "severity": "error",
+      "affectedRecords": 1,
+      "recordIndex": 99
+    },
+    {
+      "field": "structures",
+      "message": "Missing required field: structures",
+      "severity": "error",
+      "affectedRecords": 1,
+      "recordIndex": 100
+    },
+    {
+      "field": "structures",
+      "message": "Missing required field: structures",
+      "severity": "error",
+      "affectedRecords": 1,
+      "recordIndex": 101
+    },
+    {
+      "field": "structures",
+      "message": "Missing required field: structures",
+      "severity": "error",
+      "affectedRecords": 1,
+      "recordIndex": 102
+    },
+    {
+      "field": "structures",
+      "message": "Missing required field: structures",
+      "severity": "error",
+      "affectedRecords": 1,
+      "recordIndex": 103
+    },
+    {
+      "field": "structures",
+      "message": "Missing required field: structures",
+      "severity": "error",
+      "affectedRecords": 1,
+      "recordIndex": 104
+    },
+    {
+      "field": "structures",
+      "message": "Missing required field: structures",
+      "severity": "error",
+      "affectedRecords": 1,
+      "recordIndex": 105
+    },
+    {
+      "field": "structures",
+      "message": "Missing required field: structures",
+      "severity": "error",
+      "affectedRecords": 1,
+      "recordIndex": 106
+    },
+    {
+      "field": "structures",
+      "message": "Missing required field: structures",
+      "severity": "error",
+      "affectedRecords": 1,
+      "recordIndex": 107
+    },
+    {
+      "field": "structures",
+      "message": "Missing required field: structures",
+      "severity": "error",
+      "affectedRecords": 1,
+      "recordIndex": 108
+    },
+    {
+      "field": "structures",
+      "message": "Missing required field: structures",
+      "severity": "error",
+      "affectedRecords": 1,
+      "recordIndex": 109
+    },
+    {
+      "field": "structures",
+      "message": "Missing required field: structures",
+      "severity": "error",
+      "affectedRecords": 1,
+      "recordIndex": 110
+    },
+    {
+      "field": "structures",
+      "message": "Missing required field: structures",
+      "severity": "error",
+      "affectedRecords": 1,
+      "recordIndex": 111
+    },
+    {
+      "field": "structures",
+      "message": "Missing required field: structures",
+      "severity": "error",
+      "affectedRecords": 1,
+      "recordIndex": 112
+    },
+    {
+      "field": "structures",
+      "message": "Missing required field: structures",
+      "severity": "error",
+      "affectedRecords": 1,
+      "recordIndex": 113
+    },
+    {
+      "field": "structures",
+      "message": "Missing required field: structures",
+      "severity": "error",
+      "affectedRecords": 1,
+      "recordIndex": 114
+    },
+    {
+      "field": "structures",
+      "message": "Missing required field: structures",
+      "severity": "error",
+      "affectedRecords": 1,
+      "recordIndex": 115
+    },
+    {
+      "field": "structures",
+      "message": "Missing required field: structures",
+      "severity": "error",
+      "affectedRecords": 1,
+      "recordIndex": 116
+    },
+    {
+      "field": "structures",
+      "message": "Missing required field: structures",
+      "severity": "error",
+      "affectedRecords": 1,
+      "recordIndex": 117
+    },
+    {
+      "field": "structures",
+      "message": "Missing required field: structures",
+      "severity": "error",
+      "affectedRecords": 1,
+      "recordIndex": 118
+    },
+    {
+      "field": "structures",
+      "message": "Missing required field: structures",
+      "severity": "error",
+      "affectedRecords": 1,
+      "recordIndex": 119
+    },
+    {
+      "field": "structures",
+      "message": "Missing required field: structures",
+      "severity": "error",
+      "affectedRecords": 1,
+      "recordIndex": 120
+    },
+    {
+      "field": "structures",
+      "message": "Missing required field: structures",
+      "severity": "error",
+      "affectedRecords": 1,
+      "recordIndex": 121
+    },
+    {
+      "field": "structures",
+      "message": "Missing required field: structures",
+      "severity": "error",
+      "affectedRecords": 1,
+      "recordIndex": 122
+    },
+    {
+      "field": "structures",
+      "message": "Missing required field: structures",
+      "severity": "error",
+      "affectedRecords": 1,
+      "recordIndex": 123
+    },
+    {
+      "field": "structures",
+      "message": "Missing required field: structures",
+      "severity": "error",
+      "affectedRecords": 1,
+      "recordIndex": 124
+    },
+    {
+      "field": "structures",
+      "message": "Missing required field: structures",
+      "severity": "error",
+      "affectedRecords": 1,
+      "recordIndex": 125
+    },
+    {
+      "field": "structures",
+      "message": "Missing required field: structures",
+      "severity": "error",
+      "affectedRecords": 1,
+      "recordIndex": 126
+    },
+    {
+      "field": "structures",
+      "message": "Missing required field: structures",
+      "severity": "error",
+      "affectedRecords": 1,
+      "recordIndex": 127
+    },
+    {
+      "field": "structures",
+      "message": "Missing required field: structures",
+      "severity": "error",
+      "affectedRecords": 1,
+      "recordIndex": 128
+    },
+    {
+      "field": "structures",
+      "message": "Missing required field: structures",
+      "severity": "error",
+      "affectedRecords": 1,
+      "recordIndex": 129
+    },
+    {
+      "field": "structures",
+      "message": "Missing required field: structures",
+      "severity": "error",
+      "affectedRecords": 1,
+      "recordIndex": 130
+    },
+    {
+      "field": "structures",
+      "message": "Missing required field: structures",
+      "severity": "error",
+      "affectedRecords": 1,
+      "recordIndex": 131
+    },
+    {
+      "field": "structures",
+      "message": "Missing required field: structures",
+      "severity": "error",
+      "affectedRecords": 1,
+      "recordIndex": 132
+    },
+    {
+      "field": "structures",
+      "message": "Missing required field: structures",
+      "severity": "error",
+      "affectedRecords": 1,
+      "recordIndex": 133
+    },
+    {
+      "field": "structures",
+      "message": "Missing required field: structures",
+      "severity": "error",
+      "affectedRecords": 1,
+      "recordIndex": 134
+    },
+    {
+      "field": "structures",
+      "message": "Missing required field: structures",
+      "severity": "error",
+      "affectedRecords": 1,
+      "recordIndex": 135
+    },
+    {
+      "field": "structures",
+      "message": "Missing required field: structures",
+      "severity": "error",
+      "affectedRecords": 1,
+      "recordIndex": 136
+    },
+    {
+      "field": "structures",
+      "message": "Missing required field: structures",
+      "severity": "error",
+      "affectedRecords": 1,
+      "recordIndex": 137
+    },
+    {
+      "field": "structures",
+      "message": "Missing required field: structures",
+      "severity": "error",
+      "affectedRecords": 1,
+      "recordIndex": 138
+    },
+    {
+      "field": "structures",
+      "message": "Missing required field: structures",
+      "severity": "error",
+      "affectedRecords": 1,
+      "recordIndex": 139
+    },
+    {
+      "field": "structures",
+      "message": "Missing required field: structures",
+      "severity": "error",
+      "affectedRecords": 1,
+      "recordIndex": 140
+    },
+    {
+      "field": "structures",
+      "message": "Missing required field: structures",
+      "severity": "error",
+      "affectedRecords": 1,
+      "recordIndex": 141
+    },
+    {
+      "field": "structures",
+      "message": "Missing required field: structures",
+      "severity": "error",
+      "affectedRecords": 1,
+      "recordIndex": 142
+    },
+    {
+      "field": "structures",
+      "message": "Missing required field: structures",
+      "severity": "error",
+      "affectedRecords": 1,
+      "recordIndex": 143
+    },
+    {
+      "field": "structures",
+      "message": "Missing required field: structures",
+      "severity": "error",
+      "affectedRecords": 1,
+      "recordIndex": 144
+    },
+    {
+      "field": "structures",
+      "message": "Missing required field: structures",
+      "severity": "error",
+      "affectedRecords": 1,
+      "recordIndex": 145
+    },
+    {
+      "field": "structures",
+      "message": "Missing required field: structures",
+      "severity": "error",
+      "affectedRecords": 1,
+      "recordIndex": 146
+    },
+    {
+      "field": "structures",
+      "message": "Missing required field: structures",
+      "severity": "error",
+      "affectedRecords": 1,
+      "recordIndex": 147
+    },
+    {
+      "field": "structures",
+      "message": "Missing required field: structures",
+      "severity": "error",
+      "affectedRecords": 1,
+      "recordIndex": 148
+    },
+    {
+      "field": "structures",
+      "message": "Missing required field: structures",
+      "severity": "error",
+      "affectedRecords": 1,
+      "recordIndex": 149
+    },
+    {
+      "field": "structures",
+      "message": "Missing required field: structures",
+      "severity": "error",
+      "affectedRecords": 1,
+      "recordIndex": 150
+    },
+    {
+      "field": "structures",
+      "message": "Missing required field: structures",
+      "severity": "error",
+      "affectedRecords": 1,
+      "recordIndex": 151
+    },
+    {
+      "field": "structures",
+      "message": "Missing required field: structures",
+      "severity": "error",
+      "affectedRecords": 1,
+      "recordIndex": 152
+    },
+    {
+      "field": "structures",
+      "message": "Missing required field: structures",
+      "severity": "error",
+      "affectedRecords": 1,
+      "recordIndex": 153
+    },
+    {
+      "field": "structures",
+      "message": "Missing required field: structures",
+      "severity": "error",
+      "affectedRecords": 1,
+      "recordIndex": 154
+    },
+    {
+      "field": "structures",
+      "message": "Missing required field: structures",
+      "severity": "error",
+      "affectedRecords": 1,
+      "recordIndex": 155
+    },
+    {
+      "field": "structures",
+      "message": "Missing required field: structures",
+      "severity": "error",
+      "affectedRecords": 1,
+      "recordIndex": 156
+    },
+    {
+      "field": "structures",
+      "message": "Missing required field: structures",
+      "severity": "error",
+      "affectedRecords": 1,
+      "recordIndex": 157
+    },
+    {
+      "field": "structures",
+      "message": "Missing required field: structures",
+      "severity": "error",
+      "affectedRecords": 1,
+      "recordIndex": 158
+    },
+    {
+      "field": "structures",
+      "message": "Missing required field: structures",
+      "severity": "error",
+      "affectedRecords": 1,
+      "recordIndex": 159
+    },
+    {
+      "field": "structures",
+      "message": "Missing required field: structures",
+      "severity": "error",
+      "affectedRecords": 1,
+      "recordIndex": 160
+    },
+    {
+      "field": "structures",
+      "message": "Missing required field: structures",
+      "severity": "error",
+      "affectedRecords": 1,
+      "recordIndex": 161
+    },
+    {
+      "field": "structures",
+      "message": "Missing required field: structures",
+      "severity": "error",
+      "affectedRecords": 1,
+      "recordIndex": 162
+    },
+    {
+      "field": "structures",
+      "message": "Missing required field: structures",
+      "severity": "error",
+      "affectedRecords": 1,
+      "recordIndex": 163
+    },
+    {
+      "field": "structures",
+      "message": "Missing required field: structures",
+      "severity": "error",
+      "affectedRecords": 1,
+      "recordIndex": 164
+    },
+    {
+      "field": "structures",
+      "message": "Missing required field: structures",
+      "severity": "error",
+      "affectedRecords": 1,
+      "recordIndex": 165
+    },
+    {
+      "field": "structures",
+      "message": "Missing required field: structures",
+      "severity": "error",
+      "affectedRecords": 1,
+      "recordIndex": 166
+    },
+    {
+      "field": "structures",
+      "message": "Missing required field: structures",
+      "severity": "error",
+      "affectedRecords": 1,
+      "recordIndex": 167
+    },
+    {
+      "field": "structures",
+      "message": "Missing required field: structures",
+      "severity": "error",
+      "affectedRecords": 1,
+      "recordIndex": 168
+    },
+    {
+      "field": "structures",
+      "message": "Missing required field: structures",
+      "severity": "error",
+      "affectedRecords": 1,
+      "recordIndex": 169
+    },
+    {
+      "field": "structures",
+      "message": "Missing required field: structures",
+      "severity": "error",
+      "affectedRecords": 1,
+      "recordIndex": 170
+    },
+    {
+      "field": "structures",
+      "message": "Missing required field: structures",
+      "severity": "error",
+      "affectedRecords": 1,
+      "recordIndex": 171
+    },
+    {
+      "field": "structures",
+      "message": "Missing required field: structures",
+      "severity": "error",
+      "affectedRecords": 1,
+      "recordIndex": 172
+    },
+    {
+      "field": "structures",
+      "message": "Missing required field: structures",
+      "severity": "error",
+      "affectedRecords": 1,
+      "recordIndex": 173
+    },
+    {
+      "field": "structures",
+      "message": "Missing required field: structures",
+      "severity": "error",
+      "affectedRecords": 1,
+      "recordIndex": 174
+    },
+    {
+      "field": "structures",
+      "message": "Missing required field: structures",
+      "severity": "error",
+      "affectedRecords": 1,
+      "recordIndex": 175
+    },
+    {
+      "field": "structures",
+      "message": "Missing required field: structures",
+      "severity": "error",
+      "affectedRecords": 1,
+      "recordIndex": 176
+    },
+    {
+      "field": "structures",
+      "message": "Missing required field: structures",
+      "severity": "error",
+      "affectedRecords": 1,
+      "recordIndex": 177
+    },
+    {
+      "field": "structures",
+      "message": "Missing required field: structures",
+      "severity": "error",
+      "affectedRecords": 1,
+      "recordIndex": 178
+    },
+    {
+      "field": "structures",
+      "message": "Missing required field: structures",
+      "severity": "error",
+      "affectedRecords": 1,
+      "recordIndex": 179
+    },
+    {
+      "field": "structures",
+      "message": "Missing required field: structures",
+      "severity": "error",
+      "affectedRecords": 1,
+      "recordIndex": 180
+    },
+    {
+      "field": "structures",
+      "message": "Missing required field: structures",
+      "severity": "error",
+      "affectedRecords": 1,
+      "recordIndex": 181
+    },
+    {
+      "field": "structures",
+      "message": "Missing required field: structures",
+      "severity": "error",
+      "affectedRecords": 1,
+      "recordIndex": 182
+    },
+    {
+      "field": "structures",
+      "message": "Missing required field: structures",
+      "severity": "error",
+      "affectedRecords": 1,
+      "recordIndex": 183
+    },
+    {
+      "field": "structures",
+      "message": "Missing required field: structures",
+      "severity": "error",
+      "affectedRecords": 1,
+      "recordIndex": 184
+    },
+    {
+      "field": "structures",
+      "message": "Missing required field: structures",
+      "severity": "error",
+      "affectedRecords": 1,
+      "recordIndex": 185
+    },
+    {
+      "field": "structures",
+      "message": "Missing required field: structures",
+      "severity": "error",
+      "affectedRecords": 1,
+      "recordIndex": 186
+    },
+    {
+      "field": "structures",
+      "message": "Missing required field: structures",
+      "severity": "error",
+      "affectedRecords": 1,
+      "recordIndex": 187
+    },
+    {
+      "field": "structures",
+      "message": "Missing required field: structures",
+      "severity": "error",
+      "affectedRecords": 1,
+      "recordIndex": 188
+    },
+    {
+      "field": "structures",
+      "message": "Missing required field: structures",
+      "severity": "error",
+      "affectedRecords": 1,
+      "recordIndex": 189
+    },
+    {
+      "field": "structures",
+      "message": "Missing required field: structures",
+      "severity": "error",
+      "affectedRecords": 1,
+      "recordIndex": 190
+    },
+    {
+      "field": "structures",
+      "message": "Missing required field: structures",
+      "severity": "error",
+      "affectedRecords": 1,
+      "recordIndex": 191
+    },
+    {
+      "field": "structures",
+      "message": "Missing required field: structures",
+      "severity": "error",
+      "affectedRecords": 1,
+      "recordIndex": 192
+    },
+    {
+      "field": "structures",
+      "message": "Missing required field: structures",
+      "severity": "error",
+      "affectedRecords": 1,
+      "recordIndex": 193
+    },
+    {
+      "field": "structures",
+      "message": "Missing required field: structures",
+      "severity": "error",
+      "affectedRecords": 1,
+      "recordIndex": 194
+    },
+    {
+      "field": "structures",
+      "message": "Missing required field: structures",
+      "severity": "error",
+      "affectedRecords": 1,
+      "recordIndex": 195
+    },
+    {
+      "field": "structures",
+      "message": "Missing required field: structures",
+      "severity": "error",
+      "affectedRecords": 1,
+      "recordIndex": 196
+    },
+    {
+      "field": "structures",
+      "message": "Missing required field: structures",
+      "severity": "error",
+      "affectedRecords": 1,
+      "recordIndex": 197
+    },
+    {
+      "field": "structures",
+      "message": "Missing required field: structures",
+      "severity": "error",
+      "affectedRecords": 1,
+      "recordIndex": 198
+    },
+    {
+      "field": "structures",
+      "message": "Missing required field: structures",
+      "severity": "error",
+      "affectedRecords": 1,
+      "recordIndex": 199
+    },
+    {
+      "field": "structures",
+      "message": "Missing required field: structures",
+      "severity": "error",
+      "affectedRecords": 1,
+      "recordIndex": 200
+    },
+    {
+      "field": "structures",
+      "message": "Missing required field: structures",
+      "severity": "error",
+      "affectedRecords": 1,
+      "recordIndex": 201
+    },
+    {
+      "field": "structures",
+      "message": "Missing required field: structures",
+      "severity": "error",
+      "affectedRecords": 1,
+      "recordIndex": 202
+    },
+    {
+      "field": "structures",
+      "message": "Missing required field: structures",
+      "severity": "error",
+      "affectedRecords": 1,
+      "recordIndex": 203
+    },
+    {
+      "field": "structures",
+      "message": "Missing required field: structures",
+      "severity": "error",
+      "affectedRecords": 1,
+      "recordIndex": 204
+    },
+    {
+      "field": "structures",
+      "message": "Missing required field: structures",
+      "severity": "error",
+      "affectedRecords": 1,
+      "recordIndex": 205
+    },
+    {
+      "field": "structures",
+      "message": "Missing required field: structures",
+      "severity": "error",
+      "affectedRecords": 1,
+      "recordIndex": 206
+    },
+    {
+      "field": "structures",
+      "message": "Missing required field: structures",
+      "severity": "error",
+      "affectedRecords": 1,
+      "recordIndex": 207
+    },
+    {
+      "field": "structures",
+      "message": "Missing required field: structures",
+      "severity": "error",
+      "affectedRecords": 1,
+      "recordIndex": 208
+    },
+    {
+      "field": "structures",
+      "message": "Missing required field: structures",
+      "severity": "error",
+      "affectedRecords": 1,
+      "recordIndex": 209
+    },
+    {
+      "field": "structures",
+      "message": "Missing required field: structures",
+      "severity": "error",
+      "affectedRecords": 1,
+      "recordIndex": 210
+    },
+    {
+      "field": "structures",
+      "message": "Missing required field: structures",
+      "severity": "error",
+      "affectedRecords": 1,
+      "recordIndex": 211
+    },
+    {
+      "field": "structures",
+      "message": "Missing required field: structures",
+      "severity": "error",
+      "affectedRecords": 1,
+      "recordIndex": 212
+    },
+    {
+      "field": "structures",
+      "message": "Missing required field: structures",
+      "severity": "error",
+      "affectedRecords": 1,
+      "recordIndex": 213
+    },
+    {
+      "field": "structures",
+      "message": "Missing required field: structures",
+      "severity": "error",
+      "affectedRecords": 1,
+      "recordIndex": 214
+    },
+    {
+      "field": "structures",
+      "message": "Missing required field: structures",
+      "severity": "error",
+      "affectedRecords": 1,
+      "recordIndex": 215
+    },
+    {
+      "field": "structures",
+      "message": "Missing required field: structures",
+      "severity": "error",
+      "affectedRecords": 1,
+      "recordIndex": 216
+    },
+    {
+      "field": "structures",
+      "message": "Missing required field: structures",
+      "severity": "error",
+      "affectedRecords": 1,
+      "recordIndex": 217
+    },
+    {
+      "field": "structures",
+      "message": "Missing required field: structures",
+      "severity": "error",
+      "affectedRecords": 1,
+      "recordIndex": 218
+    },
+    {
+      "field": "structures",
+      "message": "Missing required field: structures",
+      "severity": "error",
+      "affectedRecords": 1,
+      "recordIndex": 219
+    },
+    {
+      "field": "structures",
+      "message": "Missing required field: structures",
+      "severity": "error",
+      "affectedRecords": 1,
+      "recordIndex": 220
+    },
+    {
+      "field": "structures",
+      "message": "Missing required field: structures",
+      "severity": "error",
+      "affectedRecords": 1,
+      "recordIndex": 221
+    },
+    {
+      "field": "structures",
+      "message": "Missing required field: structures",
+      "severity": "error",
+      "affectedRecords": 1,
+      "recordIndex": 222
+    },
+    {
+      "field": "structures",
+      "message": "Missing required field: structures",
+      "severity": "error",
+      "affectedRecords": 1,
+      "recordIndex": 223
+    },
+    {
+      "field": "structures",
+      "message": "Missing required field: structures",
+      "severity": "error",
+      "affectedRecords": 1,
+      "recordIndex": 224
+    },
+    {
+      "field": "structures",
+      "message": "Missing required field: structures",
+      "severity": "error",
+      "affectedRecords": 1,
+      "recordIndex": 225
+    },
+    {
+      "field": "structures",
+      "message": "Missing required field: structures",
+      "severity": "error",
+      "affectedRecords": 1,
+      "recordIndex": 226
+    },
+    {
+      "field": "structures",
+      "message": "Missing required field: structures",
+      "severity": "error",
+      "affectedRecords": 1,
+      "recordIndex": 227
+    },
+    {
+      "field": "structures",
+      "message": "Missing required field: structures",
+      "severity": "error",
+      "affectedRecords": 1,
+      "recordIndex": 228
+    },
+    {
+      "field": "structures",
+      "message": "Missing required field: structures",
+      "severity": "error",
+      "affectedRecords": 1,
+      "recordIndex": 229
+    },
+    {
+      "field": "structures",
+      "message": "Missing required field: structures",
+      "severity": "error",
+      "affectedRecords": 1,
+      "recordIndex": 230
+    },
+    {
+      "field": "structures",
+      "message": "Missing required field: structures",
+      "severity": "error",
+      "affectedRecords": 1,
+      "recordIndex": 231
+    },
+    {
+      "field": "structures",
+      "message": "Missing required field: structures",
+      "severity": "error",
+      "affectedRecords": 1,
+      "recordIndex": 232
+    },
+    {
+      "field": "structures",
+      "message": "Missing required field: structures",
+      "severity": "error",
+      "affectedRecords": 1,
+      "recordIndex": 233
+    },
+    {
+      "field": "structures",
+      "message": "Missing required field: structures",
+      "severity": "error",
+      "affectedRecords": 1,
+      "recordIndex": 234
+    },
+    {
+      "field": "structures",
+      "message": "Missing required field: structures",
+      "severity": "error",
+      "affectedRecords": 1,
+      "recordIndex": 235
+    },
+    {
+      "field": "structures",
+      "message": "Missing required field: structures",
+      "severity": "error",
+      "affectedRecords": 1,
+      "recordIndex": 236
+    },
+    {
+      "field": "structures",
+      "message": "Missing required field: structures",
+      "severity": "error",
+      "affectedRecords": 1,
+      "recordIndex": 237
+    },
+    {
+      "field": "structures",
+      "message": "Missing required field: structures",
+      "severity": "error",
+      "affectedRecords": 1,
+      "recordIndex": 238
+    },
+    {
+      "field": "structures",
+      "message": "Missing required field: structures",
+      "severity": "error",
+      "affectedRecords": 1,
+      "recordIndex": 239
+    },
+    {
+      "field": "structures",
+      "message": "Missing required field: structures",
+      "severity": "error",
+      "affectedRecords": 1,
+      "recordIndex": 240
+    },
+    {
+      "field": "structures",
+      "message": "Missing required field: structures",
+      "severity": "error",
+      "affectedRecords": 1,
+      "recordIndex": 241
+    },
+    {
+      "field": "structures",
+      "message": "Missing required field: structures",
+      "severity": "error",
+      "affectedRecords": 1,
+      "recordIndex": 242
+    },
+    {
+      "field": "structures",
+      "message": "Missing required field: structures",
+      "severity": "error",
+      "affectedRecords": 1,
+      "recordIndex": 243
+    },
+    {
+      "field": "structures",
+      "message": "Missing required field: structures",
+      "severity": "error",
+      "affectedRecords": 1,
+      "recordIndex": 244
+    },
+    {
+      "field": "structures",
+      "message": "Missing required field: structures",
+      "severity": "error",
+      "affectedRecords": 1,
+      "recordIndex": 245
+    },
+    {
+      "field": "structures",
+      "message": "Missing required field: structures",
+      "severity": "error",
+      "affectedRecords": 1,
+      "recordIndex": 246
+    },
+    {
+      "field": "structures",
+      "message": "Missing required field: structures",
+      "severity": "error",
+      "affectedRecords": 1,
+      "recordIndex": 247
+    },
+    {
+      "field": "structures",
+      "message": "Missing required field: structures",
+      "severity": "error",
+      "affectedRecords": 1,
+      "recordIndex": 248
+    },
+    {
+      "field": "structures",
+      "message": "Missing required field: structures",
+      "severity": "error",
+      "affectedRecords": 1,
+      "recordIndex": 249
+    },
+    {
+      "field": "structures",
+      "message": "Missing required field: structures",
+      "severity": "error",
+      "affectedRecords": 1,
+      "recordIndex": 250
+    },
+    {
+      "field": "structures",
+      "message": "Missing required field: structures",
+      "severity": "error",
+      "affectedRecords": 1,
+      "recordIndex": 251
+    },
+    {
+      "field": "structures",
+      "message": "Missing required field: structures",
+      "severity": "error",
+      "affectedRecords": 1,
+      "recordIndex": 252
+    },
+    {
+      "field": "structures",
+      "message": "Missing required field: structures",
+      "severity": "error",
+      "affectedRecords": 1,
+      "recordIndex": 253
+    },
+    {
+      "field": "structures",
+      "message": "Missing required field: structures",
+      "severity": "error",
+      "affectedRecords": 1,
+      "recordIndex": 254
+    },
+    {
+      "field": "structures",
+      "message": "Missing required field: structures",
+      "severity": "error",
+      "affectedRecords": 1,
+      "recordIndex": 255
+    },
+    {
+      "field": "structures",
+      "message": "Missing required field: structures",
+      "severity": "error",
+      "affectedRecords": 1,
+      "recordIndex": 256
+    },
+    {
+      "field": "structures",
+      "message": "Missing required field: structures",
+      "severity": "error",
+      "affectedRecords": 1,
+      "recordIndex": 257
+    },
+    {
+      "field": "structures",
+      "message": "Missing required field: structures",
+      "severity": "error",
+      "affectedRecords": 1,
+      "recordIndex": 258
+    },
+    {
+      "field": "structures",
+      "message": "Missing required field: structures",
+      "severity": "error",
+      "affectedRecords": 1,
+      "recordIndex": 259
+    },
+    {
+      "field": "structures",
+      "message": "Missing required field: structures",
+      "severity": "error",
+      "affectedRecords": 1,
+      "recordIndex": 260
+    },
+    {
+      "field": "structures",
+      "message": "Missing required field: structures",
+      "severity": "error",
+      "affectedRecords": 1,
+      "recordIndex": 261
+    },
+    {
+      "field": "structures",
+      "message": "Missing required field: structures",
+      "severity": "error",
+      "affectedRecords": 1,
+      "recordIndex": 262
+    },
+    {
+      "field": "structures",
+      "message": "Missing required field: structures",
+      "severity": "error",
+      "affectedRecords": 1,
+      "recordIndex": 263
+    },
+    {
+      "field": "structures",
+      "message": "Missing required field: structures",
+      "severity": "error",
+      "affectedRecords": 1,
+      "recordIndex": 264
+    },
+    {
+      "field": "structures",
+      "message": "Missing required field: structures",
+      "severity": "error",
+      "affectedRecords": 1,
+      "recordIndex": 265
+    },
+    {
+      "field": "structures",
+      "message": "Missing required field: structures",
+      "severity": "error",
+      "affectedRecords": 1,
+      "recordIndex": 266
+    },
+    {
+      "field": "structures",
+      "message": "Missing required field: structures",
+      "severity": "error",
+      "affectedRecords": 1,
+      "recordIndex": 267
+    },
+    {
+      "field": "structures",
+      "message": "Missing required field: structures",
+      "severity": "error",
+      "affectedRecords": 1,
+      "recordIndex": 268
+    },
+    {
+      "field": "structures",
+      "message": "Missing required field: structures",
+      "severity": "error",
+      "affectedRecords": 1,
+      "recordIndex": 269
+    },
+    {
+      "field": "structures",
+      "message": "Missing required field: structures",
+      "severity": "error",
+      "affectedRecords": 1,
+      "recordIndex": 270
+    },
+    {
+      "field": "structures",
+      "message": "Missing required field: structures",
+      "severity": "error",
+      "affectedRecords": 1,
+      "recordIndex": 271
+    },
+    {
+      "field": "structures",
+      "message": "Missing required field: structures",
+      "severity": "error",
+      "affectedRecords": 1,
+      "recordIndex": 272
+    },
+    {
+      "field": "structures",
+      "message": "Missing required field: structures",
+      "severity": "error",
+      "affectedRecords": 1,
+      "recordIndex": 273
+    },
+    {
+      "field": "structures",
+      "message": "Missing required field: structures",
+      "severity": "error",
+      "affectedRecords": 1,
+      "recordIndex": 274
+    },
+    {
+      "field": "structures",
+      "message": "Missing required field: structures",
+      "severity": "error",
+      "affectedRecords": 1,
+      "recordIndex": 275
+    },
+    {
+      "field": "structures",
+      "message": "Missing required field: structures",
+      "severity": "error",
+      "affectedRecords": 1,
+      "recordIndex": 276
+    },
+    {
+      "field": "structures",
+      "message": "Missing required field: structures",
+      "severity": "error",
+      "affectedRecords": 1,
+      "recordIndex": 277
+    },
+    {
+      "field": "structures",
+      "message": "Missing required field: structures",
+      "severity": "error",
+      "affectedRecords": 1,
+      "recordIndex": 278
+    },
+    {
+      "field": "structures",
+      "message": "Missing required field: structures",
+      "severity": "error",
+      "affectedRecords": 1,
+      "recordIndex": 279
+    },
+    {
+      "field": "structures",
+      "message": "Missing required field: structures",
+      "severity": "error",
+      "affectedRecords": 1,
+      "recordIndex": 280
+    },
+    {
+      "field": "structures",
+      "message": "Missing required field: structures",
+      "severity": "error",
+      "affectedRecords": 1,
+      "recordIndex": 281
+    },
+    {
+      "field": "structures",
+      "message": "Missing required field: structures",
+      "severity": "error",
+      "affectedRecords": 1,
+      "recordIndex": 282
+    },
+    {
+      "field": "structures",
+      "message": "Missing required field: structures",
+      "severity": "error",
+      "affectedRecords": 1,
+      "recordIndex": 283
+    },
+    {
+      "field": "structures",
+      "message": "Missing required field: structures",
+      "severity": "error",
+      "affectedRecords": 1,
+      "recordIndex": 284
+    },
+    {
+      "field": "structures",
+      "message": "Missing required field: structures",
+      "severity": "error",
+      "affectedRecords": 1,
+      "recordIndex": 285
+    },
+    {
+      "field": "structures",
+      "message": "Missing required field: structures",
+      "severity": "error",
+      "affectedRecords": 1,
+      "recordIndex": 286
+    },
+    {
+      "field": "structures",
+      "message": "Missing required field: structures",
+      "severity": "error",
+      "affectedRecords": 1,
+      "recordIndex": 287
+    },
+    {
+      "field": "structures",
+      "message": "Missing required field: structures",
+      "severity": "error",
+      "affectedRecords": 1,
+      "recordIndex": 288
+    },
+    {
+      "field": "structures",
+      "message": "Missing required field: structures",
+      "severity": "error",
+      "affectedRecords": 1,
+      "recordIndex": 289
+    },
+    {
+      "field": "structures",
+      "message": "Missing required field: structures",
+      "severity": "error",
+      "affectedRecords": 1,
+      "recordIndex": 290
+    },
+    {
+      "field": "structures",
+      "message": "Missing required field: structures",
+      "severity": "error",
+      "affectedRecords": 1,
+      "recordIndex": 291
+    },
+    {
+      "field": "structures",
+      "message": "Missing required field: structures",
+      "severity": "error",
+      "affectedRecords": 1,
+      "recordIndex": 292
+    },
+    {
+      "field": "structures",
+      "message": "Missing required field: structures",
+      "severity": "error",
+      "affectedRecords": 1,
+      "recordIndex": 293
+    },
+    {
+      "field": "structures",
+      "message": "Missing required field: structures",
+      "severity": "error",
+      "affectedRecords": 1,
+      "recordIndex": 294
+    },
+    {
+      "field": "structures",
+      "message": "Missing required field: structures",
+      "severity": "error",
+      "affectedRecords": 1,
+      "recordIndex": 295
+    },
+    {
+      "field": "structures",
+      "message": "Missing required field: structures",
+      "severity": "error",
+      "affectedRecords": 1,
+      "recordIndex": 296
+    },
+    {
+      "field": "structures",
+      "message": "Missing required field: structures",
+      "severity": "error",
+      "affectedRecords": 1,
+      "recordIndex": 297
+    },
+    {
+      "field": "structures",
+      "message": "Missing required field: structures",
+      "severity": "error",
+      "affectedRecords": 1,
+      "recordIndex": 298
+    },
+    {
+      "field": "structures",
+      "message": "Missing required field: structures",
+      "severity": "error",
+      "affectedRecords": 1,
+      "recordIndex": 299
+    },
+    {
+      "field": "structures",
+      "message": "Missing required field: structures",
+      "severity": "error",
+      "affectedRecords": 1,
+      "recordIndex": 300
+    },
+    {
+      "field": "structures",
+      "message": "Missing required field: structures",
+      "severity": "error",
+      "affectedRecords": 1,
+      "recordIndex": 301
+    },
+    {
+      "field": "structures",
+      "message": "Missing required field: structures",
+      "severity": "error",
+      "affectedRecords": 1,
+      "recordIndex": 302
+    },
+    {
+      "field": "structures",
+      "message": "Missing required field: structures",
+      "severity": "error",
+      "affectedRecords": 1,
+      "recordIndex": 303
+    },
+    {
+      "field": "structures",
+      "message": "Missing required field: structures",
+      "severity": "error",
+      "affectedRecords": 1,
+      "recordIndex": 304
+    },
+    {
+      "field": "structures",
+      "message": "Missing required field: structures",
+      "severity": "error",
+      "affectedRecords": 1,
+      "recordIndex": 305
+    },
+    {
+      "field": "structures",
+      "message": "Missing required field: structures",
+      "severity": "error",
+      "affectedRecords": 1,
+      "recordIndex": 306
+    },
+    {
+      "field": "structures",
+      "message": "Missing required field: structures",
+      "severity": "error",
+      "affectedRecords": 1,
+      "recordIndex": 307
+    },
+    {
+      "field": "structures",
+      "message": "Missing required field: structures",
+      "severity": "error",
+      "affectedRecords": 1,
+      "recordIndex": 308
+    },
+    {
+      "field": "structures",
+      "message": "Missing required field: structures",
+      "severity": "error",
+      "affectedRecords": 1,
+      "recordIndex": 309
+    },
+    {
+      "field": "structures",
+      "message": "Missing required field: structures",
+      "severity": "error",
+      "affectedRecords": 1,
+      "recordIndex": 310
+    },
+    {
+      "field": "structures",
+      "message": "Missing required field: structures",
+      "severity": "error",
+      "affectedRecords": 1,
+      "recordIndex": 311
+    },
+    {
+      "field": "structures",
+      "message": "Missing required field: structures",
+      "severity": "error",
+      "affectedRecords": 1,
+      "recordIndex": 312
+    },
+    {
+      "field": "structures",
+      "message": "Missing required field: structures",
+      "severity": "error",
+      "affectedRecords": 1,
+      "recordIndex": 313
+    },
+    {
+      "field": "structures",
+      "message": "Missing required field: structures",
+      "severity": "error",
+      "affectedRecords": 1,
+      "recordIndex": 314
+    },
+    {
+      "field": "structures",
+      "message": "Missing required field: structures",
+      "severity": "error",
+      "affectedRecords": 1,
+      "recordIndex": 315
+    },
+    {
+      "field": "structures",
+      "message": "Missing required field: structures",
+      "severity": "error",
+      "affectedRecords": 1,
+      "recordIndex": 316
+    },
+    {
+      "field": "structures",
+      "message": "Missing required field: structures",
+      "severity": "error",
+      "affectedRecords": 1,
+      "recordIndex": 317
+    },
+    {
+      "field": "structures",
+      "message": "Missing required field: structures",
+      "severity": "error",
+      "affectedRecords": 1,
+      "recordIndex": 318
+    },
+    {
+      "field": "structures",
+      "message": "Missing required field: structures",
+      "severity": "error",
+      "affectedRecords": 1,
+      "recordIndex": 319
+    },
+    {
+      "field": "structures",
+      "message": "Missing required field: structures",
+      "severity": "error",
+      "affectedRecords": 1,
+      "recordIndex": 320
+    },
+    {
+      "field": "structures",
+      "message": "Missing required field: structures",
+      "severity": "error",
+      "affectedRecords": 1,
+      "recordIndex": 321
+    },
+    {
+      "field": "structures",
+      "message": "Missing required field: structures",
+      "severity": "error",
+      "affectedRecords": 1,
+      "recordIndex": 322
+    },
+    {
+      "field": "structures",
+      "message": "Missing required field: structures",
+      "severity": "error",
+      "affectedRecords": 1,
+      "recordIndex": 323
+    },
+    {
+      "field": "structures",
+      "message": "Missing required field: structures",
+      "severity": "error",
+      "affectedRecords": 1,
+      "recordIndex": 324
+    },
+    {
+      "field": "structures",
+      "message": "Missing required field: structures",
+      "severity": "error",
+      "affectedRecords": 1,
+      "recordIndex": 325
+    },
+    {
+      "field": "structures",
+      "message": "Missing required field: structures",
+      "severity": "error",
+      "affectedRecords": 1,
+      "recordIndex": 326
+    },
+    {
+      "field": "structures",
+      "message": "Missing required field: structures",
+      "severity": "error",
+      "affectedRecords": 1,
+      "recordIndex": 327
+    },
+    {
+      "field": "structures",
+      "message": "Missing required field: structures",
+      "severity": "error",
+      "affectedRecords": 1,
+      "recordIndex": 328
+    },
+    {
+      "field": "structures",
+      "message": "Missing required field: structures",
+      "severity": "error",
+      "affectedRecords": 1,
+      "recordIndex": 329
+    },
+    {
+      "field": "structures",
+      "message": "Missing required field: structures",
+      "severity": "error",
+      "affectedRecords": 1,
+      "recordIndex": 330
+    },
+    {
+      "field": "structures",
+      "message": "Missing required field: structures",
+      "severity": "error",
+      "affectedRecords": 1,
+      "recordIndex": 331
+    },
+    {
+      "field": "structures",
+      "message": "Missing required field: structures",
+      "severity": "error",
+      "affectedRecords": 1,
+      "recordIndex": 332
+    },
+    {
+      "field": "structures",
+      "message": "Missing required field: structures",
+      "severity": "error",
+      "affectedRecords": 1,
+      "recordIndex": 333
+    },
+    {
+      "field": "structures",
+      "message": "Missing required field: structures",
+      "severity": "error",
+      "affectedRecords": 1,
+      "recordIndex": 334
+    },
+    {
+      "field": "structures",
+      "message": "Missing required field: structures",
+      "severity": "error",
+      "affectedRecords": 1,
+      "recordIndex": 335
+    },
+    {
+      "field": "structures",
+      "message": "Missing required field: structures",
+      "severity": "error",
+      "affectedRecords": 1,
+      "recordIndex": 336
+    },
+    {
+      "field": "structures",
+      "message": "Missing required field: structures",
+      "severity": "error",
+      "affectedRecords": 1,
+      "recordIndex": 337
+    },
+    {
+      "field": "structures",
+      "message": "Missing required field: structures",
+      "severity": "error",
+      "affectedRecords": 1,
+      "recordIndex": 338
+    },
+    {
+      "field": "structures",
+      "message": "Missing required field: structures",
+      "severity": "error",
+      "affectedRecords": 1,
+      "recordIndex": 339
+    },
+    {
+      "field": "structures",
+      "message": "Missing required field: structures",
+      "severity": "error",
+      "affectedRecords": 1,
+      "recordIndex": 340
+    },
+    {
+      "field": "structures",
+      "message": "Missing required field: structures",
+      "severity": "error",
+      "affectedRecords": 1,
+      "recordIndex": 341
+    },
+    {
+      "field": "structures",
+      "message": "Missing required field: structures",
+      "severity": "error",
+      "affectedRecords": 1,
+      "recordIndex": 342
+    },
+    {
+      "field": "structures",
+      "message": "Missing required field: structures",
+      "severity": "error",
+      "affectedRecords": 1,
+      "recordIndex": 343
+    },
+    {
+      "field": "structures",
+      "message": "Missing required field: structures",
+      "severity": "error",
+      "affectedRecords": 1,
+      "recordIndex": 344
+    },
+    {
+      "field": "structures",
+      "message": "Missing required field: structures",
+      "severity": "error",
+      "affectedRecords": 1,
+      "recordIndex": 345
+    },
+    {
+      "field": "structures",
+      "message": "Missing required field: structures",
+      "severity": "error",
+      "affectedRecords": 1,
+      "recordIndex": 346
+    },
+    {
+      "field": "structures",
+      "message": "Missing required field: structures",
+      "severity": "error",
+      "affectedRecords": 1,
+      "recordIndex": 347
+    },
+    {
+      "field": "structures",
+      "message": "Missing required field: structures",
+      "severity": "error",
+      "affectedRecords": 1,
+      "recordIndex": 348
+    },
+    {
+      "field": "structures",
+      "message": "Missing required field: structures",
+      "severity": "error",
+      "affectedRecords": 1,
+      "recordIndex": 349
+    },
+    {
+      "field": "structures",
+      "message": "Missing required field: structures",
+      "severity": "error",
+      "affectedRecords": 1,
+      "recordIndex": 350
+    },
+    {
+      "field": "structures",
+      "message": "Missing required field: structures",
+      "severity": "error",
+      "affectedRecords": 1,
+      "recordIndex": 351
+    },
+    {
+      "field": "structures",
+      "message": "Missing required field: structures",
+      "severity": "error",
+      "affectedRecords": 1,
+      "recordIndex": 352
+    },
+    {
+      "field": "structures",
+      "message": "Missing required field: structures",
+      "severity": "error",
+      "affectedRecords": 1,
+      "recordIndex": 353
+    },
+    {
+      "field": "structures",
+      "message": "Missing required field: structures",
+      "severity": "error",
+      "affectedRecords": 1,
+      "recordIndex": 354
+    },
+    {
+      "field": "structures",
+      "message": "Missing required field: structures",
+      "severity": "error",
+      "affectedRecords": 1,
+      "recordIndex": 355
+    },
+    {
+      "field": "structures",
+      "message": "Missing required field: structures",
+      "severity": "error",
+      "affectedRecords": 1,
+      "recordIndex": 356
+    },
+    {
+      "field": "structures",
+      "message": "Missing required field: structures",
+      "severity": "error",
+      "affectedRecords": 1,
+      "recordIndex": 357
+    },
+    {
+      "field": "structures",
+      "message": "Missing required field: structures",
+      "severity": "error",
+      "affectedRecords": 1,
+      "recordIndex": 358
+    },
+    {
+      "field": "structures",
+      "message": "Missing required field: structures",
+      "severity": "error",
+      "affectedRecords": 1,
+      "recordIndex": 359
+    },
+    {
+      "field": "structures",
+      "message": "Missing required field: structures",
+      "severity": "error",
+      "affectedRecords": 1,
+      "recordIndex": 360
+    },
+    {
+      "field": "structures",
+      "message": "Missing required field: structures",
+      "severity": "error",
+      "affectedRecords": 1,
+      "recordIndex": 361
+    },
+    {
+      "field": "structures",
+      "message": "Missing required field: structures",
+      "severity": "error",
+      "affectedRecords": 1,
+      "recordIndex": 362
+    },
+    {
+      "field": "structures",
+      "message": "Missing required field: structures",
+      "severity": "error",
+      "affectedRecords": 1,
+      "recordIndex": 363
+    },
+    {
+      "field": "structures",
+      "message": "Missing required field: structures",
+      "severity": "error",
+      "affectedRecords": 1,
+      "recordIndex": 364
+    },
+    {
+      "field": "structures",
+      "message": "Missing required field: structures",
+      "severity": "error",
+      "affectedRecords": 1,
+      "recordIndex": 365
+    },
+    {
+      "field": "structures",
+      "message": "Missing required field: structures",
+      "severity": "error",
+      "affectedRecords": 1,
+      "recordIndex": 366
+    },
+    {
+      "field": "structures",
+      "message": "Missing required field: structures",
+      "severity": "error",
+      "affectedRecords": 1,
+      "recordIndex": 367
+    },
+    {
+      "field": "structures",
+      "message": "Missing required field: structures",
+      "severity": "error",
+      "affectedRecords": 1,
+      "recordIndex": 368
+    },
+    {
+      "field": "structures",
+      "message": "Missing required field: structures",
+      "severity": "error",
+      "affectedRecords": 1,
+      "recordIndex": 369
+    },
+    {
+      "field": "structures",
+      "message": "Missing required field: structures",
+      "severity": "error",
+      "affectedRecords": 1,
+      "recordIndex": 370
+    },
+    {
+      "field": "structures",
+      "message": "Missing required field: structures",
+      "severity": "error",
+      "affectedRecords": 1,
+      "recordIndex": 371
+    },
+    {
+      "field": "structures",
+      "message": "Missing required field: structures",
+      "severity": "error",
+      "affectedRecords": 1,
+      "recordIndex": 372
+    },
+    {
+      "field": "structures",
+      "message": "Missing required field: structures",
+      "severity": "error",
+      "affectedRecords": 1,
+      "recordIndex": 373
+    },
+    {
+      "field": "structures",
+      "message": "Missing required field: structures",
+      "severity": "error",
+      "affectedRecords": 1,
+      "recordIndex": 374
+    },
+    {
+      "field": "structures",
+      "message": "Missing required field: structures",
+      "severity": "error",
+      "affectedRecords": 1,
+      "recordIndex": 375
+    },
+    {
+      "field": "structures",
+      "message": "Missing required field: structures",
+      "severity": "error",
+      "affectedRecords": 1,
+      "recordIndex": 376
+    },
+    {
+      "field": "structures",
+      "message": "Missing required field: structures",
+      "severity": "error",
+      "affectedRecords": 1,
+      "recordIndex": 377
+    },
+    {
+      "field": "structures",
+      "message": "Missing required field: structures",
+      "severity": "error",
+      "affectedRecords": 1,
+      "recordIndex": 378
+    },
+    {
+      "field": "structures",
+      "message": "Missing required field: structures",
+      "severity": "error",
+      "affectedRecords": 1,
+      "recordIndex": 379
+    },
+    {
+      "field": "structures",
+      "message": "Missing required field: structures",
+      "severity": "error",
+      "affectedRecords": 1,
+      "recordIndex": 380
+    },
+    {
+      "field": "structures",
+      "message": "Missing required field: structures",
+      "severity": "error",
+      "affectedRecords": 1,
+      "recordIndex": 381
+    },
+    {
+      "field": "structures",
+      "message": "Missing required field: structures",
+      "severity": "error",
+      "affectedRecords": 1,
+      "recordIndex": 382
+    },
+    {
+      "field": "structures",
+      "message": "Missing required field: structures",
+      "severity": "error",
+      "affectedRecords": 1,
+      "recordIndex": 383
+    },
+    {
+      "field": "structures",
+      "message": "Missing required field: structures",
+      "severity": "error",
+      "affectedRecords": 1,
+      "recordIndex": 384
+    },
+    {
+      "field": "structures",
+      "message": "Missing required field: structures",
+      "severity": "error",
+      "affectedRecords": 1,
+      "recordIndex": 385
+    },
+    {
+      "field": "structures",
+      "message": "Missing required field: structures",
+      "severity": "error",
+      "affectedRecords": 1,
+      "recordIndex": 386
+    },
+    {
+      "field": "structures",
+      "message": "Missing required field: structures",
+      "severity": "error",
+      "affectedRecords": 1,
+      "recordIndex": 387
+    },
+    {
+      "field": "structures",
+      "message": "Missing required field: structures",
+      "severity": "error",
+      "affectedRecords": 1,
+      "recordIndex": 388
+    },
+    {
+      "field": "structures",
+      "message": "Missing required field: structures",
+      "severity": "error",
+      "affectedRecords": 1,
+      "recordIndex": 389
+    },
+    {
+      "field": "structures",
+      "message": "Missing required field: structures",
+      "severity": "error",
+      "affectedRecords": 1,
+      "recordIndex": 390
+    },
+    {
+      "field": "structures",
+      "message": "Missing required field: structures",
+      "severity": "error",
+      "affectedRecords": 1,
+      "recordIndex": 391
+    },
+    {
+      "field": "structures",
+      "message": "Missing required field: structures",
+      "severity": "error",
+      "affectedRecords": 1,
+      "recordIndex": 392
+    },
+    {
+      "field": "structures",
+      "message": "Missing required field: structures",
+      "severity": "error",
+      "affectedRecords": 1,
+      "recordIndex": 393
+    },
+    {
+      "field": "structures",
+      "message": "Missing required field: structures",
+      "severity": "error",
+      "affectedRecords": 1,
+      "recordIndex": 394
+    },
+    {
+      "field": "structures",
+      "message": "Missing required field: structures",
+      "severity": "error",
+      "affectedRecords": 1,
+      "recordIndex": 395
+    },
+    {
+      "field": "structures",
+      "message": "Missing required field: structures",
+      "severity": "error",
+      "affectedRecords": 1,
+      "recordIndex": 396
+    },
+    {
+      "field": "structures",
+      "message": "Missing required field: structures",
+      "severity": "error",
+      "affectedRecords": 1,
+      "recordIndex": 397
+    },
+    {
+      "field": "structures",
+      "message": "Missing required field: structures",
+      "severity": "error",
+      "affectedRecords": 1,
+      "recordIndex": 398
+    },
+    {
+      "field": "structures",
+      "message": "Missing required field: structures",
+      "severity": "error",
+      "affectedRecords": 1,
+      "recordIndex": 399
+    },
+    {
+      "field": "structures",
+      "message": "Missing required field: structures",
+      "severity": "error",
+      "affectedRecords": 1,
+      "recordIndex": 400
+    },
+    {
+      "field": "structures",
+      "message": "Missing required field: structures",
+      "severity": "error",
+      "affectedRecords": 1,
+      "recordIndex": 401
+    },
+    {
+      "field": "structures",
+      "message": "Missing required field: structures",
+      "severity": "error",
+      "affectedRecords": 1,
+      "recordIndex": 402
+    },
+    {
+      "field": "structures",
+      "message": "Missing required field: structures",
+      "severity": "error",
+      "affectedRecords": 1,
+      "recordIndex": 403
+    },
+    {
+      "field": "structures",
+      "message": "Missing required field: structures",
+      "severity": "error",
+      "affectedRecords": 1,
+      "recordIndex": 404
+    },
+    {
+      "field": "structures",
+      "message": "Missing required field: structures",
+      "severity": "error",
+      "affectedRecords": 1,
+      "recordIndex": 405
+    },
+    {
+      "field": "structures",
+      "message": "Missing required field: structures",
+      "severity": "error",
+      "affectedRecords": 1,
+      "recordIndex": 406
+    },
+    {
+      "field": "structures",
+      "message": "Missing required field: structures",
+      "severity": "error",
+      "affectedRecords": 1,
+      "recordIndex": 407
+    },
+    {
+      "field": "structures",
+      "message": "Missing required field: structures",
+      "severity": "error",
+      "affectedRecords": 1,
+      "recordIndex": 408
+    },
+    {
+      "field": "structures",
+      "message": "Missing required field: structures",
+      "severity": "error",
+      "affectedRecords": 1,
+      "recordIndex": 409
+    },
+    {
+      "field": "structures",
+      "message": "Missing required field: structures",
+      "severity": "error",
+      "affectedRecords": 1,
+      "recordIndex": 410
+    },
+    {
+      "field": "structures",
+      "message": "Missing required field: structures",
+      "severity": "error",
+      "affectedRecords": 1,
+      "recordIndex": 411
+    },
+    {
+      "field": "structures",
+      "message": "Missing required field: structures",
+      "severity": "error",
+      "affectedRecords": 1,
+      "recordIndex": 412
+    },
+    {
+      "field": "structures",
+      "message": "Missing required field: structures",
+      "severity": "error",
+      "affectedRecords": 1,
+      "recordIndex": 413
+    },
+    {
+      "field": "structures",
+      "message": "Missing required field: structures",
+      "severity": "error",
+      "affectedRecords": 1,
+      "recordIndex": 414
+    },
+    {
+      "field": "structures",
+      "message": "Missing required field: structures",
+      "severity": "error",
+      "affectedRecords": 1,
+      "recordIndex": 415
+    },
+    {
+      "field": "structures",
+      "message": "Missing required field: structures",
+      "severity": "error",
+      "affectedRecords": 1,
+      "recordIndex": 416
+    },
+    {
+      "field": "structures",
+      "message": "Missing required field: structures",
+      "severity": "error",
+      "affectedRecords": 1,
+      "recordIndex": 417
+    },
+    {
+      "field": "structures",
+      "message": "Missing required field: structures",
+      "severity": "error",
+      "affectedRecords": 1,
+      "recordIndex": 418
+    },
+    {
+      "field": "structures",
+      "message": "Missing required field: structures",
+      "severity": "error",
+      "affectedRecords": 1,
+      "recordIndex": 419
+    },
+    {
+      "field": "structures",
+      "message": "Missing required field: structures",
+      "severity": "error",
+      "affectedRecords": 1,
+      "recordIndex": 420
+    },
+    {
+      "field": "structures",
+      "message": "Missing required field: structures",
+      "severity": "error",
+      "affectedRecords": 1,
+      "recordIndex": 421
+    },
+    {
+      "field": "structures",
+      "message": "Missing required field: structures",
+      "severity": "error",
+      "affectedRecords": 1,
+      "recordIndex": 422
+    },
+    {
+      "field": "structures",
+      "message": "Missing required field: structures",
+      "severity": "error",
+      "affectedRecords": 1,
+      "recordIndex": 423
+    },
+    {
+      "field": "structures",
+      "message": "Missing required field: structures",
+      "severity": "error",
+      "affectedRecords": 1,
+      "recordIndex": 424
+    },
+    {
+      "field": "structures",
+      "message": "Missing required field: structures",
+      "severity": "error",
+      "affectedRecords": 1,
+      "recordIndex": 425
+    },
+    {
+      "field": "structures",
+      "message": "Missing required field: structures",
+      "severity": "error",
+      "affectedRecords": 1,
+      "recordIndex": 426
+    },
+    {
+      "field": "structures",
+      "message": "Missing required field: structures",
+      "severity": "error",
+      "affectedRecords": 1,
+      "recordIndex": 427
+    },
+    {
+      "field": "structures",
+      "message": "Missing required field: structures",
+      "severity": "error",
+      "affectedRecords": 1,
+      "recordIndex": 428
+    },
+    {
+      "field": "structures",
+      "message": "Missing required field: structures",
+      "severity": "error",
+      "affectedRecords": 1,
+      "recordIndex": 429
+    },
+    {
+      "field": "structures",
+      "message": "Missing required field: structures",
+      "severity": "error",
+      "affectedRecords": 1,
+      "recordIndex": 430
+    },
+    {
+      "field": "structures",
+      "message": "Missing required field: structures",
+      "severity": "error",
+      "affectedRecords": 1,
+      "recordIndex": 431
+    },
+    {
+      "field": "structures",
+      "message": "Missing required field: structures",
+      "severity": "error",
+      "affectedRecords": 1,
+      "recordIndex": 432
+    },
+    {
+      "field": "structures",
+      "message": "Missing required field: structures",
+      "severity": "error",
+      "affectedRecords": 1,
+      "recordIndex": 433
+    },
+    {
+      "field": "structures",
+      "message": "Missing required field: structures",
+      "severity": "error",
+      "affectedRecords": 1,
+      "recordIndex": 434
+    },
+    {
+      "field": "structures",
+      "message": "Missing required field: structures",
+      "severity": "error",
+      "affectedRecords": 1,
+      "recordIndex": 435
+    },
+    {
+      "field": "structures",
+      "message": "Missing required field: structures",
+      "severity": "error",
+      "affectedRecords": 1,
+      "recordIndex": 436
+    },
+    {
+      "field": "structures",
+      "message": "Missing required field: structures",
+      "severity": "error",
+      "affectedRecords": 1,
+      "recordIndex": 437
+    },
+    {
+      "field": "structures",
+      "message": "Missing required field: structures",
+      "severity": "error",
+      "affectedRecords": 1,
+      "recordIndex": 438
+    },
+    {
+      "field": "structures",
+      "message": "Missing required field: structures",
+      "severity": "error",
+      "affectedRecords": 1,
+      "recordIndex": 439
+    },
+    {
+      "field": "structures",
+      "message": "Missing required field: structures",
+      "severity": "error",
+      "affectedRecords": 1,
+      "recordIndex": 440
+    },
+    {
+      "field": "structures",
+      "message": "Missing required field: structures",
+      "severity": "error",
+      "affectedRecords": 1,
+      "recordIndex": 441
+    },
+    {
+      "field": "structures",
+      "message": "Missing required field: structures",
+      "severity": "error",
+      "affectedRecords": 1,
+      "recordIndex": 442
+    },
+    {
+      "field": "structures",
+      "message": "Missing required field: structures",
+      "severity": "error",
+      "affectedRecords": 1,
+      "recordIndex": 443
+    },
+    {
+      "field": "structures",
+      "message": "Missing required field: structures",
+      "severity": "error",
+      "affectedRecords": 1,
+      "recordIndex": 444
+    },
+    {
+      "field": "structures",
+      "message": "Missing required field: structures",
+      "severity": "error",
+      "affectedRecords": 1,
+      "recordIndex": 445
+    },
+    {
+      "field": "structures",
+      "message": "Missing required field: structures",
+      "severity": "error",
+      "affectedRecords": 1,
+      "recordIndex": 446
+    },
+    {
+      "field": "structures",
+      "message": "Missing required field: structures",
+      "severity": "error",
+      "affectedRecords": 1,
+      "recordIndex": 447
+    },
+    {
+      "field": "structures",
+      "message": "Missing required field: structures",
+      "severity": "error",
+      "affectedRecords": 1,
+      "recordIndex": 448
+    },
+    {
+      "field": "structures",
+      "message": "Missing required field: structures",
+      "severity": "error",
+      "affectedRecords": 1,
+      "recordIndex": 449
+    },
+    {
+      "field": "structures",
+      "message": "Missing required field: structures",
+      "severity": "error",
+      "affectedRecords": 1,
+      "recordIndex": 450
+    },
+    {
+      "field": "structures",
+      "message": "Missing required field: structures",
+      "severity": "error",
+      "affectedRecords": 1,
+      "recordIndex": 451
+    },
+    {
+      "field": "structures",
+      "message": "Missing required field: structures",
+      "severity": "error",
+      "affectedRecords": 1,
+      "recordIndex": 452
+    },
+    {
+      "field": "structures",
+      "message": "Missing required field: structures",
+      "severity": "error",
+      "affectedRecords": 1,
+      "recordIndex": 453
+    },
+    {
+      "field": "structures",
+      "message": "Missing required field: structures",
+      "severity": "error",
+      "affectedRecords": 1,
+      "recordIndex": 454
+    },
+    {
+      "field": "structures",
+      "message": "Missing required field: structures",
+      "severity": "error",
+      "affectedRecords": 1,
+      "recordIndex": 455
+    },
+    {
+      "field": "structures",
+      "message": "Missing required field: structures",
+      "severity": "error",
+      "affectedRecords": 1,
+      "recordIndex": 456
+    },
+    {
+      "field": "structures",
+      "message": "Missing required field: structures",
+      "severity": "error",
+      "affectedRecords": 1,
+      "recordIndex": 457
+    },
+    {
+      "field": "structures",
+      "message": "Missing required field: structures",
+      "severity": "error",
+      "affectedRecords": 1,
+      "recordIndex": 458
+    },
+    {
+      "field": "structures",
+      "message": "Missing required field: structures",
+      "severity": "error",
+      "affectedRecords": 1,
+      "recordIndex": 459
+    },
+    {
+      "field": "structures",
+      "message": "Missing required field: structures",
+      "severity": "error",
+      "affectedRecords": 1,
+      "recordIndex": 460
+    },
+    {
+      "field": "structures",
+      "message": "Missing required field: structures",
+      "severity": "error",
+      "affectedRecords": 1,
+      "recordIndex": 461
+    },
+    {
+      "field": "structures",
+      "message": "Missing required field: structures",
+      "severity": "error",
+      "affectedRecords": 1,
+      "recordIndex": 462
+    },
+    {
+      "field": "structures",
+      "message": "Missing required field: structures",
+      "severity": "error",
+      "affectedRecords": 1,
+      "recordIndex": 463
+    },
+    {
+      "field": "structures",
+      "message": "Missing required field: structures",
+      "severity": "error",
+      "affectedRecords": 1,
+      "recordIndex": 464
+    },
+    {
+      "field": "structures",
+      "message": "Missing required field: structures",
+      "severity": "error",
+      "affectedRecords": 1,
+      "recordIndex": 465
+    },
+    {
+      "field": "structures",
+      "message": "Missing required field: structures",
+      "severity": "error",
+      "affectedRecords": 1,
+      "recordIndex": 466
+    },
+    {
+      "field": "structures",
+      "message": "Missing required field: structures",
+      "severity": "error",
+      "affectedRecords": 1,
+      "recordIndex": 467
+    },
+    {
+      "field": "structures",
+      "message": "Missing required field: structures",
+      "severity": "error",
+      "affectedRecords": 1,
+      "recordIndex": 468
+    },
+    {
+      "field": "structures",
+      "message": "Missing required field: structures",
+      "severity": "error",
+      "affectedRecords": 1,
+      "recordIndex": 469
+    },
+    {
+      "field": "structures",
+      "message": "Missing required field: structures",
+      "severity": "error",
+      "affectedRecords": 1,
+      "recordIndex": 470
+    },
+    {
+      "field": "structures",
+      "message": "Missing required field: structures",
+      "severity": "error",
+      "affectedRecords": 1,
+      "recordIndex": 471
+    },
+    {
+      "field": "structures",
+      "message": "Missing required field: structures",
+      "severity": "error",
+      "affectedRecords": 1,
+      "recordIndex": 472
+    },
+    {
+      "field": "structures",
+      "message": "Missing required field: structures",
+      "severity": "error",
+      "affectedRecords": 1,
+      "recordIndex": 473
+    },
+    {
+      "field": "structures",
+      "message": "Missing required field: structures",
+      "severity": "error",
+      "affectedRecords": 1,
+      "recordIndex": 474
+    },
+    {
+      "field": "structures",
+      "message": "Missing required field: structures",
+      "severity": "error",
+      "affectedRecords": 1,
+      "recordIndex": 475
+    },
+    {
+      "field": "structures",
+      "message": "Missing required field: structures",
+      "severity": "error",
+      "affectedRecords": 1,
+      "recordIndex": 476
+    },
+    {
+      "field": "structures",
+      "message": "Missing required field: structures",
+      "severity": "error",
+      "affectedRecords": 1,
+      "recordIndex": 477
+    },
+    {
+      "field": "structures",
+      "message": "Missing required field: structures",
+      "severity": "error",
+      "affectedRecords": 1,
+      "recordIndex": 478
+    },
+    {
+      "field": "structures",
+      "message": "Missing required field: structures",
+      "severity": "error",
+      "affectedRecords": 1,
+      "recordIndex": 479
+    },
+    {
+      "field": "structures",
+      "message": "Missing required field: structures",
+      "severity": "error",
+      "affectedRecords": 1,
+      "recordIndex": 480
+    },
+    {
+      "field": "structures",
+      "message": "Missing required field: structures",
+      "severity": "error",
+      "affectedRecords": 1,
+      "recordIndex": 481
+    },
+    {
+      "field": "structures",
+      "message": "Missing required field: structures",
+      "severity": "error",
+      "affectedRecords": 1,
+      "recordIndex": 482
+    },
+    {
+      "field": "structures",
+      "message": "Missing required field: structures",
+      "severity": "error",
+      "affectedRecords": 1,
+      "recordIndex": 483
+    },
+    {
+      "field": "structures",
+      "message": "Missing required field: structures",
+      "severity": "error",
+      "affectedRecords": 1,
+      "recordIndex": 484
+    },
+    {
+      "field": "structures",
+      "message": "Missing required field: structures",
+      "severity": "error",
+      "affectedRecords": 1,
+      "recordIndex": 485
+    },
+    {
+      "field": "structures",
+      "message": "Missing required field: structures",
+      "severity": "error",
+      "affectedRecords": 1,
+      "recordIndex": 486
+    },
+    {
+      "field": "structures",
+      "message": "Missing required field: structures",
+      "severity": "error",
+      "affectedRecords": 1,
+      "recordIndex": 487
+    },
+    {
+      "field": "structures",
+      "message": "Missing required field: structures",
+      "severity": "error",
+      "affectedRecords": 1,
+      "recordIndex": 488
+    },
+    {
+      "field": "structures",
+      "message": "Missing required field: structures",
+      "severity": "error",
+      "affectedRecords": 1,
+      "recordIndex": 489
+    },
+    {
+      "field": "structures",
+      "message": "Missing required field: structures",
+      "severity": "error",
+      "affectedRecords": 1,
+      "recordIndex": 490
+    },
+    {
+      "field": "structures",
+      "message": "Missing required field: structures",
+      "severity": "error",
+      "affectedRecords": 1,
+      "recordIndex": 491
+    },
+    {
+      "field": "structures",
+      "message": "Missing required field: structures",
+      "severity": "error",
+      "affectedRecords": 1,
+      "recordIndex": 492
+    },
+    {
+      "field": "structures",
+      "message": "Missing required field: structures",
+      "severity": "error",
+      "affectedRecords": 1,
+      "recordIndex": 493
+    },
+    {
+      "field": "structures",
+      "message": "Missing required field: structures",
+      "severity": "error",
+      "affectedRecords": 1,
+      "recordIndex": 494
+    },
+    {
+      "field": "structures",
+      "message": "Missing required field: structures",
+      "severity": "error",
+      "affectedRecords": 1,
+      "recordIndex": 495
+    },
+    {
+      "field": "structures",
+      "message": "Missing required field: structures",
+      "severity": "error",
+      "affectedRecords": 1,
+      "recordIndex": 496
+    },
+    {
+      "field": "structures",
+      "message": "Missing required field: structures",
+      "severity": "error",
+      "affectedRecords": 1,
+      "recordIndex": 497
+    },
+    {
+      "field": "structures",
+      "message": "Missing required field: structures",
+      "severity": "error",
+      "affectedRecords": 1,
+      "recordIndex": 498
+    },
+    {
+      "field": "structures",
+      "message": "Missing required field: structures",
+      "severity": "error",
+      "affectedRecords": 1,
+      "recordIndex": 499
+    },
+    {
+      "field": "structures",
+      "message": "Missing required field: structures",
+      "severity": "error",
+      "affectedRecords": 1,
+      "recordIndex": 500
+    },
+    {
+      "field": "structures",
+      "message": "Missing required field: structures",
+      "severity": "error",
+      "affectedRecords": 1,
+      "recordIndex": 501
+    },
+    {
+      "field": "structures",
+      "message": "Missing required field: structures",
+      "severity": "error",
+      "affectedRecords": 1,
+      "recordIndex": 502
+    },
+    {
+      "field": "structures",
+      "message": "Missing required field: structures",
+      "severity": "error",
+      "affectedRecords": 1,
+      "recordIndex": 503
+    },
+    {
+      "field": "structures",
+      "message": "Missing required field: structures",
+      "severity": "error",
+      "affectedRecords": 1,
+      "recordIndex": 504
+    },
+    {
+      "field": "structures",
+      "message": "Missing required field: structures",
+      "severity": "error",
+      "affectedRecords": 1,
+      "recordIndex": 505
+    },
+    {
+      "field": "structures",
+      "message": "Missing required field: structures",
+      "severity": "error",
+      "affectedRecords": 1,
+      "recordIndex": 506
+    },
+    {
+      "field": "structures",
+      "message": "Missing required field: structures",
+      "severity": "error",
+      "affectedRecords": 1,
+      "recordIndex": 507
+    },
+    {
+      "field": "structures",
+      "message": "Missing required field: structures",
+      "severity": "error",
+      "affectedRecords": 1,
+      "recordIndex": 508
+    },
+    {
+      "field": "structures",
+      "message": "Missing required field: structures",
+      "severity": "error",
+      "affectedRecords": 1,
+      "recordIndex": 509
+    },
+    {
+      "field": "structures",
+      "message": "Missing required field: structures",
+      "severity": "error",
+      "affectedRecords": 1,
+      "recordIndex": 510
+    },
+    {
+      "field": "structures",
+      "message": "Missing required field: structures",
+      "severity": "error",
+      "affectedRecords": 1,
+      "recordIndex": 511
+    },
+    {
+      "field": "structures",
+      "message": "Missing required field: structures",
+      "severity": "error",
+      "affectedRecords": 1,
+      "recordIndex": 512
+    },
+    {
+      "field": "structures",
+      "message": "Missing required field: structures",
+      "severity": "error",
+      "affectedRecords": 1,
+      "recordIndex": 513
+    },
+    {
+      "field": "structures",
+      "message": "Missing required field: structures",
+      "severity": "error",
+      "affectedRecords": 1,
+      "recordIndex": 514
+    },
+    {
+      "field": "structures",
+      "message": "Missing required field: structures",
+      "severity": "error",
+      "affectedRecords": 1,
+      "recordIndex": 515
+    },
+    {
+      "field": "structures",
+      "message": "Missing required field: structures",
+      "severity": "error",
+      "affectedRecords": 1,
+      "recordIndex": 516
+    },
+    {
+      "field": "structures",
+      "message": "Missing required field: structures",
+      "severity": "error",
+      "affectedRecords": 1,
+      "recordIndex": 517
+    },
+    {
+      "field": "structures",
+      "message": "Missing required field: structures",
+      "severity": "error",
+      "affectedRecords": 1,
+      "recordIndex": 518
+    },
+    {
+      "field": "structures",
+      "message": "Missing required field: structures",
+      "severity": "error",
+      "affectedRecords": 1,
+      "recordIndex": 519
+    },
+    {
+      "field": "structures",
+      "message": "Missing required field: structures",
+      "severity": "error",
+      "affectedRecords": 1,
+      "recordIndex": 520
+    },
+    {
+      "field": "structures",
+      "message": "Missing required field: structures",
+      "severity": "error",
+      "affectedRecords": 1,
+      "recordIndex": 521
+    },
+    {
+      "field": "structures",
+      "message": "Missing required field: structures",
+      "severity": "error",
+      "affectedRecords": 1,
+      "recordIndex": 522
+    },
+    {
+      "field": "structures",
+      "message": "Missing required field: structures",
+      "severity": "error",
+      "affectedRecords": 1,
+      "recordIndex": 523
+    },
+    {
+      "field": "structures",
+      "message": "Missing required field: structures",
+      "severity": "error",
+      "affectedRecords": 1,
+      "recordIndex": 524
+    },
+    {
+      "field": "structures",
+      "message": "Missing required field: structures",
+      "severity": "error",
+      "affectedRecords": 1,
+      "recordIndex": 525
+    },
+    {
+      "field": "structures",
+      "message": "Missing required field: structures",
+      "severity": "error",
+      "affectedRecords": 1,
+      "recordIndex": 526
+    },
+    {
+      "field": "structures",
+      "message": "Missing required field: structures",
+      "severity": "error",
+      "affectedRecords": 1,
+      "recordIndex": 527
+    },
+    {
+      "field": "structures",
+      "message": "Missing required field: structures",
+      "severity": "error",
+      "affectedRecords": 1,
+      "recordIndex": 528
+    },
+    {
+      "field": "structures",
+      "message": "Missing required field: structures",
+      "severity": "error",
+      "affectedRecords": 1,
+      "recordIndex": 529
+    },
+    {
+      "field": "structures",
+      "message": "Missing required field: structures",
+      "severity": "error",
+      "affectedRecords": 1,
+      "recordIndex": 530
+    },
+    {
+      "field": "structures",
+      "message": "Missing required field: structures",
+      "severity": "error",
+      "affectedRecords": 1,
+      "recordIndex": 531
+    },
+    {
+      "field": "structures",
+      "message": "Missing required field: structures",
+      "severity": "error",
+      "affectedRecords": 1,
+      "recordIndex": 532
+    },
+    {
+      "field": "structures",
+      "message": "Missing required field: structures",
+      "severity": "error",
+      "affectedRecords": 1,
+      "recordIndex": 533
+    },
+    {
+      "field": "structures",
+      "message": "Missing required field: structures",
+      "severity": "error",
+      "affectedRecords": 1,
+      "recordIndex": 534
+    },
+    {
+      "field": "structures",
+      "message": "Missing required field: structures",
+      "severity": "error",
+      "affectedRecords": 1,
+      "recordIndex": 535
+    },
+    {
+      "field": "structures",
+      "message": "Missing required field: structures",
+      "severity": "error",
+      "affectedRecords": 1,
+      "recordIndex": 536
+    },
+    {
+      "field": "structures",
+      "message": "Missing required field: structures",
+      "severity": "error",
+      "affectedRecords": 1,
+      "recordIndex": 537
+    },
+    {
+      "field": "structures",
+      "message": "Missing required field: structures",
+      "severity": "error",
+      "affectedRecords": 1,
+      "recordIndex": 538
+    },
+    {
+      "field": "structures",
+      "message": "Missing required field: structures",
+      "severity": "error",
+      "affectedRecords": 1,
+      "recordIndex": 539
+    },
+    {
+      "field": "structures",
+      "message": "Missing required field: structures",
+      "severity": "error",
+      "affectedRecords": 1,
+      "recordIndex": 540
+    },
+    {
+      "field": "structures",
+      "message": "Missing required field: structures",
+      "severity": "error",
+      "affectedRecords": 1,
+      "recordIndex": 541
+    },
+    {
+      "field": "structures",
+      "message": "Missing required field: structures",
+      "severity": "error",
+      "affectedRecords": 1,
+      "recordIndex": 542
+    },
+    {
+      "field": "structures",
+      "message": "Missing required field: structures",
+      "severity": "error",
+      "affectedRecords": 1,
+      "recordIndex": 543
+    },
+    {
+      "field": "structures",
+      "message": "Missing required field: structures",
+      "severity": "error",
+      "affectedRecords": 1,
+      "recordIndex": 544
+    },
+    {
+      "field": "structures",
+      "message": "Missing required field: structures",
+      "severity": "error",
+      "affectedRecords": 1,
+      "recordIndex": 545
+    },
+    {
+      "field": "structures",
+      "message": "Missing required field: structures",
+      "severity": "error",
+      "affectedRecords": 1,
+      "recordIndex": 546
+    },
+    {
+      "field": "structures",
+      "message": "Missing required field: structures",
+      "severity": "error",
+      "affectedRecords": 1,
+      "recordIndex": 547
+    },
+    {
+      "field": "structures",
+      "message": "Missing required field: structures",
+      "severity": "error",
+      "affectedRecords": 1,
+      "recordIndex": 548
+    },
+    {
+      "field": "structures",
+      "message": "Missing required field: structures",
+      "severity": "error",
+      "affectedRecords": 1,
+      "recordIndex": 549
+    },
+    {
+      "field": "structures",
+      "message": "Missing required field: structures",
+      "severity": "error",
+      "affectedRecords": 1,
+      "recordIndex": 550
+    },
+    {
+      "field": "structures",
+      "message": "Missing required field: structures",
+      "severity": "error",
+      "affectedRecords": 1,
+      "recordIndex": 551
+    },
+    {
+      "field": "structures",
+      "message": "Missing required field: structures",
+      "severity": "error",
+      "affectedRecords": 1,
+      "recordIndex": 552
+    },
+    {
+      "field": "structures",
+      "message": "Missing required field: structures",
+      "severity": "error",
+      "affectedRecords": 1,
+      "recordIndex": 553
+    },
+    {
+      "field": "structures",
+      "message": "Missing required field: structures",
+      "severity": "error",
+      "affectedRecords": 1,
+      "recordIndex": 554
+    },
+    {
+      "field": "structures",
+      "message": "Missing required field: structures",
+      "severity": "error",
+      "affectedRecords": 1,
+      "recordIndex": 555
+    },
+    {
+      "field": "structures",
+      "message": "Missing required field: structures",
+      "severity": "error",
+      "affectedRecords": 1,
+      "recordIndex": 556
+    },
+    {
+      "field": "structures",
+      "message": "Missing required field: structures",
+      "severity": "error",
+      "affectedRecords": 1,
+      "recordIndex": 557
+    },
+    {
+      "field": "structures",
+      "message": "Missing required field: structures",
+      "severity": "error",
+      "affectedRecords": 1,
+      "recordIndex": 558
+    },
+    {
+      "field": "structures",
+      "message": "Missing required field: structures",
+      "severity": "error",
+      "affectedRecords": 1,
+      "recordIndex": 559
+    },
+    {
+      "field": "structures",
+      "message": "Missing required field: structures",
+      "severity": "error",
+      "affectedRecords": 1,
+      "recordIndex": 560
+    },
+    {
+      "field": "structures",
+      "message": "Missing required field: structures",
+      "severity": "error",
+      "affectedRecords": 1,
+      "recordIndex": 561
+    },
+    {
+      "field": "structures",
+      "message": "Missing required field: structures",
+      "severity": "error",
+      "affectedRecords": 1,
+      "recordIndex": 562
+    },
+    {
+      "field": "structures",
+      "message": "Missing required field: structures",
+      "severity": "error",
+      "affectedRecords": 1,
+      "recordIndex": 563
+    },
+    {
+      "field": "structures",
+      "message": "Missing required field: structures",
+      "severity": "error",
+      "affectedRecords": 1,
+      "recordIndex": 564
+    },
+    {
+      "field": "structures",
+      "message": "Missing required field: structures",
+      "severity": "error",
+      "affectedRecords": 1,
+      "recordIndex": 565
+    },
+    {
+      "field": "structures",
+      "message": "Missing required field: structures",
+      "severity": "error",
+      "affectedRecords": 1,
+      "recordIndex": 566
+    },
+    {
+      "field": "structures",
+      "message": "Missing required field: structures",
+      "severity": "error",
+      "affectedRecords": 1,
+      "recordIndex": 567
+    },
+    {
+      "field": "structures",
+      "message": "Missing required field: structures",
+      "severity": "error",
+      "affectedRecords": 1,
+      "recordIndex": 568
+    },
+    {
+      "field": "structures",
+      "message": "Missing required field: structures",
+      "severity": "error",
+      "affectedRecords": 1,
+      "recordIndex": 569
+    },
+    {
+      "field": "structures",
+      "message": "Missing required field: structures",
+      "severity": "error",
+      "affectedRecords": 1,
+      "recordIndex": 570
+    },
+    {
+      "field": "structures",
+      "message": "Missing required field: structures",
+      "severity": "error",
+      "affectedRecords": 1,
+      "recordIndex": 571
+    },
+    {
+      "field": "structures",
+      "message": "Missing required field: structures",
+      "severity": "error",
+      "affectedRecords": 1,
+      "recordIndex": 572
+    },
+    {
+      "field": "structures",
+      "message": "Missing required field: structures",
+      "severity": "error",
+      "affectedRecords": 1,
+      "recordIndex": 573
+    },
+    {
+      "field": "structures",
+      "message": "Missing required field: structures",
+      "severity": "error",
+      "affectedRecords": 1,
+      "recordIndex": 574
+    },
+    {
+      "field": "structures",
+      "message": "Missing required field: structures",
+      "severity": "error",
+      "affectedRecords": 1,
+      "recordIndex": 575
+    },
+    {
+      "field": "structures",
+      "message": "Missing required field: structures",
+      "severity": "error",
+      "affectedRecords": 1,
+      "recordIndex": 576
+    },
+    {
+      "field": "structures",
+      "message": "Missing required field: structures",
+      "severity": "error",
+      "affectedRecords": 1,
+      "recordIndex": 577
+    },
+    {
+      "field": "structures",
+      "message": "Missing required field: structures",
+      "severity": "error",
+      "affectedRecords": 1,
+      "recordIndex": 578
+    },
+    {
+      "field": "structures",
+      "message": "Missing required field: structures",
+      "severity": "error",
+      "affectedRecords": 1,
+      "recordIndex": 579
+    },
+    {
+      "field": "structures",
+      "message": "Missing required field: structures",
+      "severity": "error",
+      "affectedRecords": 1,
+      "recordIndex": 580
+    },
+    {
+      "field": "structures",
+      "message": "Missing required field: structures",
+      "severity": "error",
+      "affectedRecords": 1,
+      "recordIndex": 581
+    },
+    {
+      "field": "structures",
+      "message": "Missing required field: structures",
+      "severity": "error",
+      "affectedRecords": 1,
+      "recordIndex": 582
+    },
+    {
+      "field": "structures",
+      "message": "Missing required field: structures",
+      "severity": "error",
+      "affectedRecords": 1,
+      "recordIndex": 583
+    },
+    {
+      "field": "structures",
+      "message": "Missing required field: structures",
+      "severity": "error",
+      "affectedRecords": 1,
+      "recordIndex": 584
+    },
+    {
+      "field": "structures",
+      "message": "Missing required field: structures",
+      "severity": "error",
+      "affectedRecords": 1,
+      "recordIndex": 585
+    },
+    {
+      "field": "structures",
+      "message": "Missing required field: structures",
+      "severity": "error",
+      "affectedRecords": 1,
+      "recordIndex": 586
+    },
+    {
+      "field": "structures",
+      "message": "Missing required field: structures",
+      "severity": "error",
+      "affectedRecords": 1,
+      "recordIndex": 587
+    },
+    {
+      "field": "structures",
+      "message": "Missing required field: structures",
+      "severity": "error",
+      "affectedRecords": 1,
+      "recordIndex": 588
+    },
+    {
+      "field": "structures",
+      "message": "Missing required field: structures",
+      "severity": "error",
+      "affectedRecords": 1,
+      "recordIndex": 589
+    },
+    {
+      "field": "structures",
+      "message": "Missing required field: structures",
+      "severity": "error",
+      "affectedRecords": 1,
+      "recordIndex": 590
+    },
+    {
+      "field": "structures",
+      "message": "Missing required field: structures",
+      "severity": "error",
+      "affectedRecords": 1,
+      "recordIndex": 591
+    },
+    {
+      "field": "structures",
+      "message": "Missing required field: structures",
+      "severity": "error",
+      "affectedRecords": 1,
+      "recordIndex": 592
+    },
+    {
+      "field": "structures",
+      "message": "Missing required field: structures",
+      "severity": "error",
+      "affectedRecords": 1,
+      "recordIndex": 593
+    },
+    {
+      "field": "structures",
+      "message": "Missing required field: structures",
+      "severity": "error",
+      "affectedRecords": 1,
+      "recordIndex": 594
+    },
+    {
+      "field": "structures",
+      "message": "Missing required field: structures",
+      "severity": "error",
+      "affectedRecords": 1,
+      "recordIndex": 595
+    },
+    {
+      "field": "structures",
+      "message": "Missing required field: structures",
+      "severity": "error",
+      "affectedRecords": 1,
+      "recordIndex": 596
+    },
+    {
+      "field": "structures",
+      "message": "Missing required field: structures",
+      "severity": "error",
+      "affectedRecords": 1,
+      "recordIndex": 597
+    },
+    {
+      "field": "structures",
+      "message": "Missing required field: structures",
+      "severity": "error",
+      "affectedRecords": 1,
+      "recordIndex": 598
+    },
+    {
+      "field": "structures",
+      "message": "Missing required field: structures",
+      "severity": "error",
+      "affectedRecords": 1,
+      "recordIndex": 599
+    },
+    {
+      "field": "structures",
+      "message": "Missing required field: structures",
+      "severity": "error",
+      "affectedRecords": 1,
+      "recordIndex": 600
+    },
+    {
+      "field": "structures",
+      "message": "Missing required field: structures",
+      "severity": "error",
+      "affectedRecords": 1,
+      "recordIndex": 601
+    },
+    {
+      "field": "structures",
+      "message": "Missing required field: structures",
+      "severity": "error",
+      "affectedRecords": 1,
+      "recordIndex": 602
+    },
+    {
+      "field": "structures",
+      "message": "Missing required field: structures",
+      "severity": "error",
+      "affectedRecords": 1,
+      "recordIndex": 603
+    },
+    {
+      "field": "structures",
+      "message": "Missing required field: structures",
+      "severity": "error",
+      "affectedRecords": 1,
+      "recordIndex": 604
+    },
+    {
+      "field": "structures",
+      "message": "Missing required field: structures",
+      "severity": "error",
+      "affectedRecords": 1,
+      "recordIndex": 605
+    },
+    {
+      "field": "structures",
+      "message": "Missing required field: structures",
+      "severity": "error",
+      "affectedRecords": 1,
+      "recordIndex": 606
+    },
+    {
+      "field": "structures",
+      "message": "Missing required field: structures",
+      "severity": "error",
+      "affectedRecords": 1,
+      "recordIndex": 607
+    },
+    {
+      "field": "structures",
+      "message": "Missing required field: structures",
+      "severity": "error",
+      "affectedRecords": 1,
+      "recordIndex": 608
+    },
+    {
+      "field": "structures",
+      "message": "Missing required field: structures",
+      "severity": "error",
+      "affectedRecords": 1,
+      "recordIndex": 609
+    },
+    {
+      "field": "structures",
+      "message": "Missing required field: structures",
+      "severity": "error",
+      "affectedRecords": 1,
+      "recordIndex": 610
+    },
+    {
+      "field": "structures",
+      "message": "Missing required field: structures",
+      "severity": "error",
+      "affectedRecords": 1,
+      "recordIndex": 611
+    },
+    {
+      "field": "structures",
+      "message": "Missing required field: structures",
+      "severity": "error",
+      "affectedRecords": 1,
+      "recordIndex": 612
+    },
+    {
+      "field": "structures",
+      "message": "Missing required field: structures",
+      "severity": "error",
+      "affectedRecords": 1,
+      "recordIndex": 613
+    },
+    {
+      "field": "structures",
+      "message": "Missing required field: structures",
+      "severity": "error",
+      "affectedRecords": 1,
+      "recordIndex": 614
+    },
+    {
+      "field": "structures",
+      "message": "Missing required field: structures",
+      "severity": "error",
+      "affectedRecords": 1,
+      "recordIndex": 615
+    },
+    {
+      "field": "structures",
+      "message": "Missing required field: structures",
+      "severity": "error",
+      "affectedRecords": 1,
+      "recordIndex": 616
+    },
+    {
+      "field": "structures",
+      "message": "Missing required field: structures",
+      "severity": "error",
+      "affectedRecords": 1,
+      "recordIndex": 617
+    },
+    {
+      "field": "structures",
+      "message": "Missing required field: structures",
+      "severity": "error",
+      "affectedRecords": 1,
+      "recordIndex": 618
+    },
+    {
+      "field": "structures",
+      "message": "Missing required field: structures",
+      "severity": "error",
+      "affectedRecords": 1,
+      "recordIndex": 619
+    },
+    {
+      "field": "structures",
+      "message": "Missing required field: structures",
+      "severity": "error",
+      "affectedRecords": 1,
+      "recordIndex": 620
+    },
+    {
+      "field": "structures",
+      "message": "Missing required field: structures",
+      "severity": "error",
+      "affectedRecords": 1,
+      "recordIndex": 621
+    },
+    {
+      "field": "structures",
+      "message": "Missing required field: structures",
+      "severity": "error",
+      "affectedRecords": 1,
+      "recordIndex": 622
+    },
+    {
+      "field": "structures",
+      "message": "Missing required field: structures",
+      "severity": "error",
+      "affectedRecords": 1,
+      "recordIndex": 623
+    },
+    {
+      "field": "structures",
+      "message": "Missing required field: structures",
+      "severity": "error",
+      "affectedRecords": 1,
+      "recordIndex": 624
+    },
+    {
+      "field": "structures",
+      "message": "Missing required field: structures",
+      "severity": "error",
+      "affectedRecords": 1,
+      "recordIndex": 625
+    },
+    {
+      "field": "structures",
+      "message": "Missing required field: structures",
+      "severity": "error",
+      "affectedRecords": 1,
+      "recordIndex": 626
+    },
+    {
+      "field": "structures",
+      "message": "Missing required field: structures",
+      "severity": "error",
+      "affectedRecords": 1,
+      "recordIndex": 627
+    },
+    {
+      "field": "structures",
+      "message": "Missing required field: structures",
+      "severity": "error",
+      "affectedRecords": 1,
+      "recordIndex": 628
+    },
+    {
+      "field": "structures",
+      "message": "Missing required field: structures",
+      "severity": "error",
+      "affectedRecords": 1,
+      "recordIndex": 629
+    },
+    {
+      "field": "structures",
+      "message": "Missing required field: structures",
+      "severity": "error",
+      "affectedRecords": 1,
+      "recordIndex": 630
+    },
+    {
+      "field": "structures",
+      "message": "Missing required field: structures",
+      "severity": "error",
+      "affectedRecords": 1,
+      "recordIndex": 631
+    },
+    {
+      "field": "structures",
+      "message": "Missing required field: structures",
+      "severity": "error",
+      "affectedRecords": 1,
+      "recordIndex": 632
+    },
+    {
+      "field": "structures",
+      "message": "Missing required field: structures",
+      "severity": "error",
+      "affectedRecords": 1,
+      "recordIndex": 633
+    },
+    {
+      "field": "structures",
+      "message": "Missing required field: structures",
+      "severity": "error",
+      "affectedRecords": 1,
+      "recordIndex": 634
+    },
+    {
+      "field": "structures",
+      "message": "Missing required field: structures",
+      "severity": "error",
+      "affectedRecords": 1,
+      "recordIndex": 635
+    },
+    {
+      "field": "structures",
+      "message": "Missing required field: structures",
+      "severity": "error",
+      "affectedRecords": 1,
+      "recordIndex": 636
+    },
+    {
+      "field": "structures",
+      "message": "Missing required field: structures",
+      "severity": "error",
+      "affectedRecords": 1,
+      "recordIndex": 637
+    },
+    {
+      "field": "structures",
+      "message": "Missing required field: structures",
+      "severity": "error",
+      "affectedRecords": 1,
+      "recordIndex": 638
+    },
+    {
+      "field": "structures",
+      "message": "Missing required field: structures",
+      "severity": "error",
+      "affectedRecords": 1,
+      "recordIndex": 639
+    },
+    {
+      "field": "structures",
+      "message": "Missing required field: structures",
+      "severity": "error",
+      "affectedRecords": 1,
+      "recordIndex": 640
+    },
+    {
+      "field": "structures",
+      "message": "Missing required field: structures",
+      "severity": "error",
+      "affectedRecords": 1,
+      "recordIndex": 641
+    },
+    {
+      "field": "structures",
+      "message": "Missing required field: structures",
+      "severity": "error",
+      "affectedRecords": 1,
+      "recordIndex": 642
+    },
+    {
+      "field": "structures",
+      "message": "Missing required field: structures",
+      "severity": "error",
+      "affectedRecords": 1,
+      "recordIndex": 643
+    },
+    {
+      "field": "structures",
+      "message": "Missing required field: structures",
+      "severity": "error",
+      "affectedRecords": 1,
+      "recordIndex": 644
+    },
+    {
+      "field": "structures",
+      "message": "Missing required field: structures",
+      "severity": "error",
+      "affectedRecords": 1,
+      "recordIndex": 645
+    },
+    {
+      "field": "structures",
+      "message": "Missing required field: structures",
+      "severity": "error",
+      "affectedRecords": 1,
+      "recordIndex": 646
+    },
+    {
+      "field": "structures",
+      "message": "Missing required field: structures",
+      "severity": "error",
+      "affectedRecords": 1,
+      "recordIndex": 647
+    },
+    {
+      "field": "structures",
+      "message": "Missing required field: structures",
+      "severity": "error",
+      "affectedRecords": 1,
+      "recordIndex": 648
+    },
+    {
+      "field": "structures",
+      "message": "Missing required field: structures",
+      "severity": "error",
+      "affectedRecords": 1,
+      "recordIndex": 649
+    },
+    {
+      "field": "structures",
+      "message": "Missing required field: structures",
+      "severity": "error",
+      "affectedRecords": 1,
+      "recordIndex": 650
+    },
+    {
+      "field": "structures",
+      "message": "Missing required field: structures",
+      "severity": "error",
+      "affectedRecords": 1,
+      "recordIndex": 651
+    },
+    {
+      "field": "structures",
+      "message": "Missing required field: structures",
+      "severity": "error",
+      "affectedRecords": 1,
+      "recordIndex": 652
+    },
+    {
+      "field": "structures",
+      "message": "Missing required field: structures",
+      "severity": "error",
+      "affectedRecords": 1,
+      "recordIndex": 653
+    },
+    {
+      "field": "structures",
+      "message": "Missing required field: structures",
+      "severity": "error",
+      "affectedRecords": 1,
+      "recordIndex": 654
+    },
+    {
+      "field": "structures",
+      "message": "Missing required field: structures",
+      "severity": "error",
+      "affectedRecords": 1,
+      "recordIndex": 655
+    },
+    {
+      "field": "structures",
+      "message": "Missing required field: structures",
+      "severity": "error",
+      "affectedRecords": 1,
+      "recordIndex": 656
+    },
+    {
+      "field": "structures",
+      "message": "Missing required field: structures",
+      "severity": "error",
+      "affectedRecords": 1,
+      "recordIndex": 657
+    },
+    {
+      "field": "structures",
+      "message": "Missing required field: structures",
+      "severity": "error",
+      "affectedRecords": 1,
+      "recordIndex": 658
+    },
+    {
+      "field": "structures",
+      "message": "Missing required field: structures",
+      "severity": "error",
+      "affectedRecords": 1,
+      "recordIndex": 659
+    },
+    {
+      "field": "structures",
+      "message": "Missing required field: structures",
+      "severity": "error",
+      "affectedRecords": 1,
+      "recordIndex": 660
+    },
+    {
+      "field": "structures",
+      "message": "Missing required field: structures",
+      "severity": "error",
+      "affectedRecords": 1,
+      "recordIndex": 661
+    },
+    {
+      "field": "structures",
+      "message": "Missing required field: structures",
+      "severity": "error",
+      "affectedRecords": 1,
+      "recordIndex": 662
+    },
+    {
+      "field": "structures",
+      "message": "Missing required field: structures",
+      "severity": "error",
+      "affectedRecords": 1,
+      "recordIndex": 663
+    },
+    {
+      "field": "structures",
+      "message": "Missing required field: structures",
+      "severity": "error",
+      "affectedRecords": 1,
+      "recordIndex": 664
+    },
+    {
+      "field": "structures",
+      "message": "Missing required field: structures",
+      "severity": "error",
+      "affectedRecords": 1,
+      "recordIndex": 665
+    },
+    {
+      "field": "structures",
+      "message": "Missing required field: structures",
+      "severity": "error",
+      "affectedRecords": 1,
+      "recordIndex": 666
+    },
+    {
+      "field": "structures",
+      "message": "Missing required field: structures",
+      "severity": "error",
+      "affectedRecords": 1,
+      "recordIndex": 667
+    },
+    {
+      "field": "structures",
+      "message": "Missing required field: structures",
+      "severity": "error",
+      "affectedRecords": 1,
+      "recordIndex": 668
+    },
+    {
+      "field": "structures",
+      "message": "Missing required field: structures",
+      "severity": "error",
+      "affectedRecords": 1,
+      "recordIndex": 669
+    },
+    {
+      "field": "structures",
+      "message": "Missing required field: structures",
+      "severity": "error",
+      "affectedRecords": 1,
+      "recordIndex": 670
+    },
+    {
+      "field": "structures",
+      "message": "Missing required field: structures",
+      "severity": "error",
+      "affectedRecords": 1,
+      "recordIndex": 671
+    },
+    {
+      "field": "structures",
+      "message": "Missing required field: structures",
+      "severity": "error",
+      "affectedRecords": 1,
+      "recordIndex": 672
+    },
+    {
+      "field": "structures",
+      "message": "Missing required field: structures",
+      "severity": "error",
+      "affectedRecords": 1,
+      "recordIndex": 673
+    },
+    {
+      "field": "structures",
+      "message": "Missing required field: structures",
+      "severity": "error",
+      "affectedRecords": 1,
+      "recordIndex": 674
+    },
+    {
+      "field": "structures",
+      "message": "Missing required field: structures",
+      "severity": "error",
+      "affectedRecords": 1,
+      "recordIndex": 675
+    },
+    {
+      "field": "structures",
+      "message": "Missing required field: structures",
+      "severity": "error",
+      "affectedRecords": 1,
+      "recordIndex": 676
+    },
+    {
+      "field": "structures",
+      "message": "Missing required field: structures",
+      "severity": "error",
+      "affectedRecords": 1,
+      "recordIndex": 677
+    },
+    {
+      "field": "structures",
+      "message": "Missing required field: structures",
+      "severity": "error",
+      "affectedRecords": 1,
+      "recordIndex": 678
+    },
+    {
+      "field": "structures",
+      "message": "Missing required field: structures",
+      "severity": "error",
+      "affectedRecords": 1,
+      "recordIndex": 679
+    },
+    {
+      "field": "structures",
+      "message": "Missing required field: structures",
+      "severity": "error",
+      "affectedRecords": 1,
+      "recordIndex": 680
+    },
+    {
+      "field": "structures",
+      "message": "Missing required field: structures",
+      "severity": "error",
+      "affectedRecords": 1,
+      "recordIndex": 681
+    },
+    {
+      "field": "structures",
+      "message": "Missing required field: structures",
+      "severity": "error",
+      "affectedRecords": 1,
+      "recordIndex": 682
+    },
+    {
+      "field": "structures",
+      "message": "Missing required field: structures",
+      "severity": "error",
+      "affectedRecords": 1,
+      "recordIndex": 683
+    },
+    {
+      "field": "structures",
+      "message": "Missing required field: structures",
+      "severity": "error",
+      "affectedRecords": 1,
+      "recordIndex": 684
+    },
+    {
+      "field": "structures",
+      "message": "Missing required field: structures",
+      "severity": "error",
+      "affectedRecords": 1,
+      "recordIndex": 685
+    },
+    {
+      "field": "structures",
+      "message": "Missing required field: structures",
+      "severity": "error",
+      "affectedRecords": 1,
+      "recordIndex": 686
+    },
+    {
+      "field": "structures",
+      "message": "Missing required field: structures",
+      "severity": "error",
+      "affectedRecords": 1,
+      "recordIndex": 687
+    },
+    {
+      "field": "structures",
+      "message": "Missing required field: structures",
+      "severity": "error",
+      "affectedRecords": 1,
+      "recordIndex": 688
+    },
+    {
+      "field": "structures",
+      "message": "Missing required field: structures",
+      "severity": "error",
+      "affectedRecords": 1,
+      "recordIndex": 689
+    },
+    {
+      "field": "structures",
+      "message": "Missing required field: structures",
+      "severity": "error",
+      "affectedRecords": 1,
+      "recordIndex": 690
+    },
+    {
+      "field": "structures",
+      "message": "Missing required field: structures",
+      "severity": "error",
+      "affectedRecords": 1,
+      "recordIndex": 691
+    },
+    {
+      "field": "structures",
+      "message": "Missing required field: structures",
+      "severity": "error",
+      "affectedRecords": 1,
+      "recordIndex": 692
+    },
+    {
+      "field": "structures",
+      "message": "Missing required field: structures",
+      "severity": "error",
+      "affectedRecords": 1,
+      "recordIndex": 693
+    },
+    {
+      "field": "structures",
+      "message": "Missing required field: structures",
+      "severity": "error",
+      "affectedRecords": 1,
+      "recordIndex": 694
+    },
+    {
+      "field": "structures",
+      "message": "Missing required field: structures",
+      "severity": "error",
+      "affectedRecords": 1,
+      "recordIndex": 695
+    },
+    {
+      "field": "structures",
+      "message": "Missing required field: structures",
+      "severity": "error",
+      "affectedRecords": 1,
+      "recordIndex": 696
+    },
+    {
+      "field": "structures",
+      "message": "Missing required field: structures",
+      "severity": "error",
+      "affectedRecords": 1,
+      "recordIndex": 697
+    },
+    {
+      "field": "structures",
+      "message": "Missing required field: structures",
+      "severity": "error",
+      "affectedRecords": 1,
+      "recordIndex": 698
+    },
+    {
+      "field": "structures",
+      "message": "Missing required field: structures",
+      "severity": "error",
+      "affectedRecords": 1,
+      "recordIndex": 699
+    },
+    {
+      "field": "structures",
+      "message": "Missing required field: structures",
+      "severity": "error",
+      "affectedRecords": 1,
+      "recordIndex": 700
+    },
+    {
+      "field": "structures",
+      "message": "Missing required field: structures",
+      "severity": "error",
+      "affectedRecords": 1,
+      "recordIndex": 701
+    },
+    {
+      "field": "structures",
+      "message": "Missing required field: structures",
+      "severity": "error",
+      "affectedRecords": 1,
+      "recordIndex": 702
+    },
+    {
+      "field": "structures",
+      "message": "Missing required field: structures",
+      "severity": "error",
+      "affectedRecords": 1,
+      "recordIndex": 703
+    },
+    {
+      "field": "structures",
+      "message": "Missing required field: structures",
+      "severity": "error",
+      "affectedRecords": 1,
+      "recordIndex": 704
+    },
+    {
+      "field": "structures",
+      "message": "Missing required field: structures",
+      "severity": "error",
+      "affectedRecords": 1,
+      "recordIndex": 705
+    },
+    {
+      "field": "structures",
+      "message": "Missing required field: structures",
+      "severity": "error",
+      "affectedRecords": 1,
+      "recordIndex": 706
+    },
+    {
+      "field": "structures",
+      "message": "Missing required field: structures",
+      "severity": "error",
+      "affectedRecords": 1,
+      "recordIndex": 707
+    },
+    {
+      "field": "structures",
+      "message": "Missing required field: structures",
+      "severity": "error",
+      "affectedRecords": 1,
+      "recordIndex": 708
+    },
+    {
+      "field": "structures",
+      "message": "Missing required field: structures",
+      "severity": "error",
+      "affectedRecords": 1,
+      "recordIndex": 709
+    },
+    {
+      "field": "structures",
+      "message": "Missing required field: structures",
+      "severity": "error",
+      "affectedRecords": 1,
+      "recordIndex": 710
+    },
+    {
+      "field": "structures",
+      "message": "Missing required field: structures",
+      "severity": "error",
+      "affectedRecords": 1,
+      "recordIndex": 711
+    },
+    {
+      "field": "structures",
+      "message": "Missing required field: structures",
+      "severity": "error",
+      "affectedRecords": 1,
+      "recordIndex": 712
+    },
+    {
+      "field": "structures",
+      "message": "Missing required field: structures",
+      "severity": "error",
+      "affectedRecords": 1,
+      "recordIndex": 713
+    },
+    {
+      "field": "structures",
+      "message": "Missing required field: structures",
+      "severity": "error",
+      "affectedRecords": 1,
+      "recordIndex": 714
+    },
+    {
+      "field": "structures",
+      "message": "Missing required field: structures",
+      "severity": "error",
+      "affectedRecords": 1,
+      "recordIndex": 715
+    },
+    {
+      "field": "structures",
+      "message": "Missing required field: structures",
+      "severity": "error",
+      "affectedRecords": 1,
+      "recordIndex": 716
+    },
+    {
+      "field": "structures",
+      "message": "Missing required field: structures",
+      "severity": "error",
+      "affectedRecords": 1,
+      "recordIndex": 717
+    },
+    {
+      "field": "structures",
+      "message": "Missing required field: structures",
+      "severity": "error",
+      "affectedRecords": 1,
+      "recordIndex": 718
+    },
+    {
+      "field": "structures",
+      "message": "Missing required field: structures",
+      "severity": "error",
+      "affectedRecords": 1,
+      "recordIndex": 719
+    },
+    {
+      "field": "structures",
+      "message": "Missing required field: structures",
+      "severity": "error",
+      "affectedRecords": 1,
+      "recordIndex": 720
+    },
+    {
+      "field": "structures",
+      "message": "Missing required field: structures",
+      "severity": "error",
+      "affectedRecords": 1,
+      "recordIndex": 721
+    },
+    {
+      "field": "structures",
+      "message": "Missing required field: structures",
+      "severity": "error",
+      "affectedRecords": 1,
+      "recordIndex": 722
+    },
+    {
+      "field": "structures",
+      "message": "Missing required field: structures",
+      "severity": "error",
+      "affectedRecords": 1,
+      "recordIndex": 723
+    },
+    {
+      "field": "structures",
+      "message": "Missing required field: structures",
+      "severity": "error",
+      "affectedRecords": 1,
+      "recordIndex": 724
+    },
+    {
+      "field": "structures",
+      "message": "Missing required field: structures",
+      "severity": "error",
+      "affectedRecords": 1,
+      "recordIndex": 725
+    },
+    {
+      "field": "structures",
+      "message": "Missing required field: structures",
+      "severity": "error",
+      "affectedRecords": 1,
+      "recordIndex": 726
+    },
+    {
+      "field": "structures",
+      "message": "Missing required field: structures",
+      "severity": "error",
+      "affectedRecords": 1,
+      "recordIndex": 727
+    },
+    {
+      "field": "structures",
+      "message": "Missing required field: structures",
+      "severity": "error",
+      "affectedRecords": 1,
+      "recordIndex": 728
+    },
+    {
+      "field": "structures",
+      "message": "Missing required field: structures",
+      "severity": "error",
+      "affectedRecords": 1,
+      "recordIndex": 729
+    },
+    {
+      "field": "structures",
+      "message": "Missing required field: structures",
+      "severity": "error",
+      "affectedRecords": 1,
+      "recordIndex": 730
+    },
+    {
+      "field": "structures",
+      "message": "Missing required field: structures",
+      "severity": "error",
+      "affectedRecords": 1,
+      "recordIndex": 731
+    },
+    {
+      "field": "structures",
+      "message": "Missing required field: structures",
+      "severity": "error",
+      "affectedRecords": 1,
+      "recordIndex": 732
+    },
+    {
+      "field": "structures",
+      "message": "Missing required field: structures",
+      "severity": "error",
+      "affectedRecords": 1,
+      "recordIndex": 733
+    },
+    {
+      "field": "structures",
+      "message": "Missing required field: structures",
+      "severity": "error",
+      "affectedRecords": 1,
+      "recordIndex": 734
+    },
+    {
+      "field": "structures",
+      "message": "Missing required field: structures",
+      "severity": "error",
+      "affectedRecords": 1,
+      "recordIndex": 735
+    },
+    {
+      "field": "structures",
+      "message": "Missing required field: structures",
+      "severity": "error",
+      "affectedRecords": 1,
+      "recordIndex": 736
+    },
+    {
+      "field": "structures",
+      "message": "Missing required field: structures",
+      "severity": "error",
+      "affectedRecords": 1,
+      "recordIndex": 737
+    },
+    {
+      "field": "structures",
+      "message": "Missing required field: structures",
+      "severity": "error",
+      "affectedRecords": 1,
+      "recordIndex": 738
+    },
+    {
+      "field": "structures",
+      "message": "Missing required field: structures",
+      "severity": "error",
+      "affectedRecords": 1,
+      "recordIndex": 739
+    },
+    {
+      "field": "structures",
+      "message": "Missing required field: structures",
+      "severity": "error",
+      "affectedRecords": 1,
+      "recordIndex": 740
+    },
+    {
+      "field": "structures",
+      "message": "Missing required field: structures",
+      "severity": "error",
+      "affectedRecords": 1,
+      "recordIndex": 741
+    },
+    {
+      "field": "structures",
+      "message": "Missing required field: structures",
+      "severity": "error",
+      "affectedRecords": 1,
+      "recordIndex": 742
+    },
+    {
+      "field": "structures",
+      "message": "Missing required field: structures",
+      "severity": "error",
+      "affectedRecords": 1,
+      "recordIndex": 743
+    },
+    {
+      "field": "structures",
+      "message": "Missing required field: structures",
+      "severity": "error",
+      "affectedRecords": 1,
+      "recordIndex": 744
+    },
+    {
+      "field": "structures",
+      "message": "Missing required field: structures",
+      "severity": "error",
+      "affectedRecords": 1,
+      "recordIndex": 745
+    },
+    {
+      "field": "structures",
+      "message": "Missing required field: structures",
+      "severity": "error",
+      "affectedRecords": 1,
+      "recordIndex": 746
+    },
+    {
+      "field": "structures",
+      "message": "Missing required field: structures",
+      "severity": "error",
+      "affectedRecords": 1,
+      "recordIndex": 747
+    },
+    {
+      "field": "structures",
+      "message": "Missing required field: structures",
+      "severity": "error",
+      "affectedRecords": 1,
+      "recordIndex": 748
+    },
+    {
+      "field": "structures",
+      "message": "Missing required field: structures",
+      "severity": "error",
+      "affectedRecords": 1,
+      "recordIndex": 749
+    },
+    {
+      "field": "structures",
+      "message": "Missing required field: structures",
+      "severity": "error",
+      "affectedRecords": 1,
+      "recordIndex": 750
+    },
+    {
+      "field": "structures",
+      "message": "Missing required field: structures",
+      "severity": "error",
+      "affectedRecords": 1,
+      "recordIndex": 751
+    },
+    {
+      "field": "structures",
+      "message": "Missing required field: structures",
+      "severity": "error",
+      "affectedRecords": 1,
+      "recordIndex": 752
+    },
+    {
+      "field": "structures",
+      "message": "Missing required field: structures",
+      "severity": "error",
+      "affectedRecords": 1,
+      "recordIndex": 753
+    },
+    {
+      "field": "structures",
+      "message": "Missing required field: structures",
+      "severity": "error",
+      "affectedRecords": 1,
+      "recordIndex": 754
+    },
+    {
+      "field": "structures",
+      "message": "Missing required field: structures",
+      "severity": "error",
+      "affectedRecords": 1,
+      "recordIndex": 755
+    },
+    {
+      "field": "structures",
+      "message": "Missing required field: structures",
+      "severity": "error",
+      "affectedRecords": 1,
+      "recordIndex": 756
+    },
+    {
+      "field": "structures",
+      "message": "Missing required field: structures",
+      "severity": "error",
+      "affectedRecords": 1,
+      "recordIndex": 757
+    },
+    {
+      "field": "structures",
+      "message": "Missing required field: structures",
+      "severity": "error",
+      "affectedRecords": 1,
+      "recordIndex": 758
+    },
+    {
+      "field": "structures",
+      "message": "Missing required field: structures",
+      "severity": "error",
+      "affectedRecords": 1,
+      "recordIndex": 759
+    },
+    {
+      "field": "structures",
+      "message": "Missing required field: structures",
+      "severity": "error",
+      "affectedRecords": 1,
+      "recordIndex": 760
+    },
+    {
+      "field": "structures",
+      "message": "Missing required field: structures",
+      "severity": "error",
+      "affectedRecords": 1,
+      "recordIndex": 761
+    },
+    {
+      "field": "structures",
+      "message": "Missing required field: structures",
+      "severity": "error",
+      "affectedRecords": 1,
+      "recordIndex": 762
+    },
+    {
+      "field": "structures",
+      "message": "Missing required field: structures",
+      "severity": "error",
+      "affectedRecords": 1,
+      "recordIndex": 763
+    },
+    {
+      "field": "structures",
+      "message": "Missing required field: structures",
+      "severity": "error",
+      "affectedRecords": 1,
+      "recordIndex": 764
+    },
+    {
+      "field": "structures",
+      "message": "Missing required field: structures",
+      "severity": "error",
+      "affectedRecords": 1,
+      "recordIndex": 765
+    },
+    {
+      "field": "structures",
+      "message": "Missing required field: structures",
+      "severity": "error",
+      "affectedRecords": 1,
+      "recordIndex": 766
+    },
+    {
+      "field": "structures",
+      "message": "Missing required field: structures",
+      "severity": "error",
+      "affectedRecords": 1,
+      "recordIndex": 767
+    },
+    {
+      "field": "structures",
+      "message": "Missing required field: structures",
+      "severity": "error",
+      "affectedRecords": 1,
+      "recordIndex": 768
+    },
+    {
+      "field": "structures",
+      "message": "Missing required field: structures",
+      "severity": "error",
+      "affectedRecords": 1,
+      "recordIndex": 769
+    },
+    {
+      "field": "structures",
+      "message": "Missing required field: structures",
+      "severity": "error",
+      "affectedRecords": 1,
+      "recordIndex": 770
+    },
+    {
+      "field": "structures",
+      "message": "Missing required field: structures",
+      "severity": "error",
+      "affectedRecords": 1,
+      "recordIndex": 771
+    },
+    {
+      "field": "structures",
+      "message": "Missing required field: structures",
+      "severity": "error",
+      "affectedRecords": 1,
+      "recordIndex": 772
+    },
+    {
+      "field": "structures",
+      "message": "Missing required field: structures",
+      "severity": "error",
+      "affectedRecords": 1,
+      "recordIndex": 773
+    },
+    {
+      "field": "structures",
+      "message": "Missing required field: structures",
+      "severity": "error",
+      "affectedRecords": 1,
+      "recordIndex": 774
+    },
+    {
+      "field": "structures",
+      "message": "Missing required field: structures",
+      "severity": "error",
+      "affectedRecords": 1,
+      "recordIndex": 775
+    },
+    {
+      "field": "structures",
+      "message": "Missing required field: structures",
+      "severity": "error",
+      "affectedRecords": 1,
+      "recordIndex": 776
+    },
+    {
+      "field": "structures",
+      "message": "Missing required field: structures",
+      "severity": "error",
+      "affectedRecords": 1,
+      "recordIndex": 777
+    },
+    {
+      "field": "structures",
+      "message": "Missing required field: structures",
+      "severity": "error",
+      "affectedRecords": 1,
+      "recordIndex": 778
+    },
+    {
+      "field": "structures",
+      "message": "Missing required field: structures",
+      "severity": "error",
+      "affectedRecords": 1,
+      "recordIndex": 779
+    },
+    {
+      "field": "structures",
+      "message": "Missing required field: structures",
+      "severity": "error",
+      "affectedRecords": 1,
+      "recordIndex": 780
+    },
+    {
+      "field": "structures",
+      "message": "Missing required field: structures",
+      "severity": "error",
+      "affectedRecords": 1,
+      "recordIndex": 781
+    },
+    {
+      "field": "structures",
+      "message": "Missing required field: structures",
+      "severity": "error",
+      "affectedRecords": 1,
+      "recordIndex": 782
+    },
+    {
+      "field": "structures",
+      "message": "Missing required field: structures",
+      "severity": "error",
+      "affectedRecords": 1,
+      "recordIndex": 783
+    },
+    {
+      "field": "structures",
+      "message": "Missing required field: structures",
+      "severity": "error",
+      "affectedRecords": 1,
+      "recordIndex": 784
+    },
+    {
+      "field": "structures",
+      "message": "Missing required field: structures",
+      "severity": "error",
+      "affectedRecords": 1,
+      "recordIndex": 785
+    },
+    {
+      "field": "structures",
+      "message": "Missing required field: structures",
+      "severity": "error",
+      "affectedRecords": 1,
+      "recordIndex": 786
+    },
+    {
+      "field": "structures",
+      "message": "Missing required field: structures",
+      "severity": "error",
+      "affectedRecords": 1,
+      "recordIndex": 787
+    },
+    {
+      "field": "structures",
+      "message": "Missing required field: structures",
+      "severity": "error",
+      "affectedRecords": 1,
+      "recordIndex": 788
+    },
+    {
+      "field": "structures",
+      "message": "Missing required field: structures",
+      "severity": "error",
+      "affectedRecords": 1,
+      "recordIndex": 789
+    },
+    {
+      "field": "structures",
+      "message": "Missing required field: structures",
+      "severity": "error",
+      "affectedRecords": 1,
+      "recordIndex": 790
+    },
+    {
+      "field": "structures",
+      "message": "Missing required field: structures",
+      "severity": "error",
+      "affectedRecords": 1,
+      "recordIndex": 791
+    },
+    {
+      "field": "structures",
+      "message": "Missing required field: structures",
+      "severity": "error",
+      "affectedRecords": 1,
+      "recordIndex": 792
+    },
+    {
+      "field": "structures",
+      "message": "Missing required field: structures",
+      "severity": "error",
+      "affectedRecords": 1,
+      "recordIndex": 793
+    },
+    {
+      "field": "structures",
+      "message": "Missing required field: structures",
+      "severity": "error",
+      "affectedRecords": 1,
+      "recordIndex": 794
+    },
+    {
+      "field": "structures",
+      "message": "Missing required field: structures",
+      "severity": "error",
+      "affectedRecords": 1,
+      "recordIndex": 795
+    },
+    {
+      "field": "structures",
+      "message": "Missing required field: structures",
+      "severity": "error",
+      "affectedRecords": 1,
+      "recordIndex": 796
+    },
+    {
+      "field": "structures",
+      "message": "Missing required field: structures",
+      "severity": "error",
+      "affectedRecords": 1,
+      "recordIndex": 797
+    },
+    {
+      "field": "structures",
+      "message": "Missing required field: structures",
+      "severity": "error",
+      "affectedRecords": 1,
+      "recordIndex": 798
+    },
+    {
+      "field": "structures",
+      "message": "Missing required field: structures",
+      "severity": "error",
+      "affectedRecords": 1,
+      "recordIndex": 799
+    },
+    {
+      "field": "structures",
+      "message": "Missing required field: structures",
+      "severity": "error",
+      "affectedRecords": 1,
+      "recordIndex": 800
+    },
+    {
+      "field": "structures",
+      "message": "Missing required field: structures",
+      "severity": "error",
+      "affectedRecords": 1,
+      "recordIndex": 801
+    },
+    {
+      "field": "structures",
+      "message": "Missing required field: structures",
+      "severity": "error",
+      "affectedRecords": 1,
+      "recordIndex": 802
+    },
+    {
+      "field": "structures",
+      "message": "Missing required field: structures",
+      "severity": "error",
+      "affectedRecords": 1,
+      "recordIndex": 803
+    },
+    {
+      "field": "structures",
+      "message": "Missing required field: structures",
+      "severity": "error",
+      "affectedRecords": 1,
+      "recordIndex": 804
+    },
+    {
+      "field": "structures",
+      "message": "Missing required field: structures",
+      "severity": "error",
+      "affectedRecords": 1,
+      "recordIndex": 805
+    },
+    {
+      "field": "structures",
+      "message": "Missing required field: structures",
+      "severity": "error",
+      "affectedRecords": 1,
+      "recordIndex": 806
+    },
+    {
+      "field": "structures",
+      "message": "Missing required field: structures",
+      "severity": "error",
+      "affectedRecords": 1,
+      "recordIndex": 807
+    },
+    {
+      "field": "structures",
+      "message": "Missing required field: structures",
+      "severity": "error",
+      "affectedRecords": 1,
+      "recordIndex": 808
+    },
+    {
+      "field": "structures",
+      "message": "Missing required field: structures",
+      "severity": "error",
+      "affectedRecords": 1,
+      "recordIndex": 809
+    },
+    {
+      "field": "structures",
+      "message": "Missing required field: structures",
+      "severity": "error",
+      "affectedRecords": 1,
+      "recordIndex": 810
+    },
+    {
+      "field": "structures",
+      "message": "Missing required field: structures",
+      "severity": "error",
+      "affectedRecords": 1,
+      "recordIndex": 811
+    },
+    {
+      "field": "structures",
+      "message": "Missing required field: structures",
+      "severity": "error",
+      "affectedRecords": 1,
+      "recordIndex": 812
+    },
+    {
+      "field": "structures",
+      "message": "Missing required field: structures",
+      "severity": "error",
+      "affectedRecords": 1,
+      "recordIndex": 813
+    },
+    {
+      "field": "structures",
+      "message": "Missing required field: structures",
+      "severity": "error",
+      "affectedRecords": 1,
+      "recordIndex": 814
+    },
+    {
+      "field": "structures",
+      "message": "Missing required field: structures",
+      "severity": "error",
+      "affectedRecords": 1,
+      "recordIndex": 815
+    },
+    {
+      "field": "structures",
+      "message": "Missing required field: structures",
+      "severity": "error",
+      "affectedRecords": 1,
+      "recordIndex": 816
+    },
+    {
+      "field": "structures",
+      "message": "Missing required field: structures",
+      "severity": "error",
+      "affectedRecords": 1,
+      "recordIndex": 817
+    },
+    {
+      "field": "structures",
+      "message": "Missing required field: structures",
+      "severity": "error",
+      "affectedRecords": 1,
+      "recordIndex": 818
+    },
+    {
+      "field": "structures",
+      "message": "Missing required field: structures",
+      "severity": "error",
+      "affectedRecords": 1,
+      "recordIndex": 819
+    },
+    {
+      "field": "structures",
+      "message": "Missing required field: structures",
+      "severity": "error",
+      "affectedRecords": 1,
+      "recordIndex": 820
+    },
+    {
+      "field": "structures",
+      "message": "Missing required field: structures",
+      "severity": "error",
+      "affectedRecords": 1,
+      "recordIndex": 821
+    },
+    {
+      "field": "structures",
+      "message": "Missing required field: structures",
+      "severity": "error",
+      "affectedRecords": 1,
+      "recordIndex": 822
+    },
+    {
+      "field": "structures",
+      "message": "Missing required field: structures",
+      "severity": "error",
+      "affectedRecords": 1,
+      "recordIndex": 823
+    },
+    {
+      "field": "structures",
+      "message": "Missing required field: structures",
+      "severity": "error",
+      "affectedRecords": 1,
+      "recordIndex": 824
+    },
+    {
+      "field": "structures",
+      "message": "Missing required field: structures",
+      "severity": "error",
+      "affectedRecords": 1,
+      "recordIndex": 825
+    },
+    {
+      "field": "structures",
+      "message": "Missing required field: structures",
+      "severity": "error",
+      "affectedRecords": 1,
+      "recordIndex": 826
+    },
+    {
+      "field": "structures",
+      "message": "Missing required field: structures",
+      "severity": "error",
+      "affectedRecords": 1,
+      "recordIndex": 827
+    },
+    {
+      "field": "structures",
+      "message": "Missing required field: structures",
+      "severity": "error",
+      "affectedRecords": 1,
+      "recordIndex": 828
+    },
+    {
+      "field": "structures",
+      "message": "Missing required field: structures",
+      "severity": "error",
+      "affectedRecords": 1,
+      "recordIndex": 829
+    },
+    {
+      "field": "structures",
+      "message": "Missing required field: structures",
+      "severity": "error",
+      "affectedRecords": 1,
+      "recordIndex": 830
+    },
+    {
+      "field": "structures",
+      "message": "Missing required field: structures",
+      "severity": "error",
+      "affectedRecords": 1,
+      "recordIndex": 831
+    },
+    {
+      "field": "structures",
+      "message": "Missing required field: structures",
+      "severity": "error",
+      "affectedRecords": 1,
+      "recordIndex": 832
+    },
+    {
+      "field": "structures",
+      "message": "Missing required field: structures",
+      "severity": "error",
+      "affectedRecords": 1,
+      "recordIndex": 833
+    },
+    {
+      "field": "structures",
+      "message": "Missing required field: structures",
+      "severity": "error",
+      "affectedRecords": 1,
+      "recordIndex": 834
+    },
+    {
+      "field": "structures",
+      "message": "Missing required field: structures",
+      "severity": "error",
+      "affectedRecords": 1,
+      "recordIndex": 835
+    },
+    {
+      "field": "structures",
+      "message": "Missing required field: structures",
+      "severity": "error",
+      "affectedRecords": 1,
+      "recordIndex": 836
+    },
+    {
+      "field": "structures",
+      "message": "Missing required field: structures",
+      "severity": "error",
+      "affectedRecords": 1,
+      "recordIndex": 837
+    },
+    {
+      "field": "structures",
+      "message": "Missing required field: structures",
+      "severity": "error",
+      "affectedRecords": 1,
+      "recordIndex": 838
+    },
+    {
+      "field": "structures",
+      "message": "Missing required field: structures",
+      "severity": "error",
+      "affectedRecords": 1,
+      "recordIndex": 839
+    },
+    {
+      "field": "structures",
+      "message": "Missing required field: structures",
+      "severity": "error",
+      "affectedRecords": 1,
+      "recordIndex": 840
+    },
+    {
+      "field": "structures",
+      "message": "Missing required field: structures",
+      "severity": "error",
+      "affectedRecords": 1,
+      "recordIndex": 841
+    },
+    {
+      "field": "structures",
+      "message": "Missing required field: structures",
+      "severity": "error",
+      "affectedRecords": 1,
+      "recordIndex": 842
+    },
+    {
+      "field": "structures",
+      "message": "Missing required field: structures",
+      "severity": "error",
+      "affectedRecords": 1,
+      "recordIndex": 843
+    },
+    {
+      "field": "structures",
+      "message": "Missing required field: structures",
+      "severity": "error",
+      "affectedRecords": 1,
+      "recordIndex": 844
+    },
+    {
+      "field": "structures",
+      "message": "Missing required field: structures",
+      "severity": "error",
+      "affectedRecords": 1,
+      "recordIndex": 845
+    },
+    {
+      "field": "structures",
+      "message": "Missing required field: structures",
+      "severity": "error",
+      "affectedRecords": 1,
+      "recordIndex": 846
+    },
+    {
+      "field": "structures",
+      "message": "Missing required field: structures",
+      "severity": "error",
+      "affectedRecords": 1,
+      "recordIndex": 847
+    },
+    {
+      "field": "structures",
+      "message": "Missing required field: structures",
+      "severity": "error",
+      "affectedRecords": 1,
+      "recordIndex": 848
+    },
+    {
+      "field": "structures",
+      "message": "Missing required field: structures",
+      "severity": "error",
+      "affectedRecords": 1,
+      "recordIndex": 849
+    },
+    {
+      "field": "structures",
+      "message": "Missing required field: structures",
+      "severity": "error",
+      "affectedRecords": 1,
+      "recordIndex": 850
+    },
+    {
+      "field": "structures",
+      "message": "Missing required field: structures",
+      "severity": "error",
+      "affectedRecords": 1,
+      "recordIndex": 851
+    },
+    {
+      "field": "structures",
+      "message": "Missing required field: structures",
+      "severity": "error",
+      "affectedRecords": 1,
+      "recordIndex": 852
+    },
+    {
+      "field": "structures",
+      "message": "Missing required field: structures",
+      "severity": "error",
+      "affectedRecords": 1,
+      "recordIndex": 853
+    },
+    {
+      "field": "structures",
+      "message": "Missing required field: structures",
+      "severity": "error",
+      "affectedRecords": 1,
+      "recordIndex": 854
+    },
+    {
+      "field": "structures",
+      "message": "Missing required field: structures",
+      "severity": "error",
+      "affectedRecords": 1,
+      "recordIndex": 855
+    },
+    {
+      "field": "structures",
+      "message": "Missing required field: structures",
+      "severity": "error",
+      "affectedRecords": 1,
+      "recordIndex": 856
+    },
+    {
+      "field": "structures",
+      "message": "Missing required field: structures",
+      "severity": "error",
+      "affectedRecords": 1,
+      "recordIndex": 857
+    },
+    {
+      "field": "structures",
+      "message": "Missing required field: structures",
+      "severity": "error",
+      "affectedRecords": 1,
+      "recordIndex": 858
+    },
+    {
+      "field": "structures",
+      "message": "Missing required field: structures",
+      "severity": "error",
+      "affectedRecords": 1,
+      "recordIndex": 859
+    },
+    {
+      "field": "structures",
+      "message": "Missing required field: structures",
+      "severity": "error",
+      "affectedRecords": 1,
+      "recordIndex": 860
+    },
+    {
+      "field": "structures",
+      "message": "Missing required field: structures",
+      "severity": "error",
+      "affectedRecords": 1,
+      "recordIndex": 861
+    },
+    {
+      "field": "structures",
+      "message": "Missing required field: structures",
+      "severity": "error",
+      "affectedRecords": 1,
+      "recordIndex": 862
+    },
+    {
+      "field": "structures",
+      "message": "Missing required field: structures",
+      "severity": "error",
+      "affectedRecords": 1,
+      "recordIndex": 863
+    },
+    {
+      "field": "structures",
+      "message": "Missing required field: structures",
+      "severity": "error",
+      "affectedRecords": 1,
+      "recordIndex": 864
+    },
+    {
+      "field": "structures",
+      "message": "Missing required field: structures",
+      "severity": "error",
+      "affectedRecords": 1,
+      "recordIndex": 865
+    },
+    {
+      "field": "structures",
+      "message": "Missing required field: structures",
+      "severity": "error",
+      "affectedRecords": 1,
+      "recordIndex": 866
+    },
+    {
+      "field": "structures",
+      "message": "Missing required field: structures",
+      "severity": "error",
+      "affectedRecords": 1,
+      "recordIndex": 867
+    },
+    {
+      "field": "structures",
+      "message": "Missing required field: structures",
+      "severity": "error",
+      "affectedRecords": 1,
+      "recordIndex": 868
+    },
+    {
+      "field": "structures",
+      "message": "Missing required field: structures",
+      "severity": "error",
+      "affectedRecords": 1,
+      "recordIndex": 869
+    },
+    {
+      "field": "structures",
+      "message": "Missing required field: structures",
+      "severity": "error",
+      "affectedRecords": 1,
+      "recordIndex": 870
+    },
+    {
+      "field": "structures",
+      "message": "Missing required field: structures",
+      "severity": "error",
+      "affectedRecords": 1,
+      "recordIndex": 871
+    },
+    {
+      "field": "structures",
+      "message": "Missing required field: structures",
+      "severity": "error",
+      "affectedRecords": 1,
+      "recordIndex": 872
+    },
+    {
+      "field": "structures",
+      "message": "Missing required field: structures",
+      "severity": "error",
+      "affectedRecords": 1,
+      "recordIndex": 873
+    },
+    {
+      "field": "structures",
+      "message": "Missing required field: structures",
+      "severity": "error",
+      "affectedRecords": 1,
+      "recordIndex": 874
+    },
+    {
+      "field": "structures",
+      "message": "Missing required field: structures",
+      "severity": "error",
+      "affectedRecords": 1,
+      "recordIndex": 875
+    },
+    {
+      "field": "structures",
+      "message": "Missing required field: structures",
+      "severity": "error",
+      "affectedRecords": 1,
+      "recordIndex": 876
+    },
+    {
+      "field": "structures",
+      "message": "Missing required field: structures",
+      "severity": "error",
+      "affectedRecords": 1,
+      "recordIndex": 877
+    },
+    {
+      "field": "structures",
+      "message": "Missing required field: structures",
+      "severity": "error",
+      "affectedRecords": 1,
+      "recordIndex": 878
+    },
+    {
+      "field": "structures",
+      "message": "Missing required field: structures",
+      "severity": "error",
+      "affectedRecords": 1,
+      "recordIndex": 879
+    },
+    {
+      "field": "structures",
+      "message": "Missing required field: structures",
+      "severity": "error",
+      "affectedRecords": 1,
+      "recordIndex": 880
+    },
+    {
+      "field": "structures",
+      "message": "Missing required field: structures",
+      "severity": "error",
+      "affectedRecords": 1,
+      "recordIndex": 881
+    },
+    {
+      "field": "structures",
+      "message": "Missing required field: structures",
+      "severity": "error",
+      "affectedRecords": 1,
+      "recordIndex": 882
+    },
+    {
+      "field": "structures",
+      "message": "Missing required field: structures",
+      "severity": "error",
+      "affectedRecords": 1,
+      "recordIndex": 883
+    },
+    {
+      "field": "structures",
+      "message": "Missing required field: structures",
+      "severity": "error",
+      "affectedRecords": 1,
+      "recordIndex": 884
+    },
+    {
+      "field": "structures",
+      "message": "Missing required field: structures",
+      "severity": "error",
+      "affectedRecords": 1,
+      "recordIndex": 885
+    },
+    {
+      "field": "structures",
+      "message": "Missing required field: structures",
+      "severity": "error",
+      "affectedRecords": 1,
+      "recordIndex": 886
+    },
+    {
+      "field": "structures",
+      "message": "Missing required field: structures",
+      "severity": "error",
+      "affectedRecords": 1,
+      "recordIndex": 887
+    },
+    {
+      "field": "structures",
+      "message": "Missing required field: structures",
+      "severity": "error",
+      "affectedRecords": 1,
+      "recordIndex": 888
+    },
+    {
+      "field": "structures",
+      "message": "Missing required field: structures",
+      "severity": "error",
+      "affectedRecords": 1,
+      "recordIndex": 889
+    },
+    {
+      "field": "structures",
+      "message": "Missing required field: structures",
+      "severity": "error",
+      "affectedRecords": 1,
+      "recordIndex": 890
+    },
+    {
+      "field": "structures",
+      "message": "Missing required field: structures",
+      "severity": "error",
+      "affectedRecords": 1,
+      "recordIndex": 891
+    },
+    {
+      "field": "structures",
+      "message": "Missing required field: structures",
+      "severity": "error",
+      "affectedRecords": 1,
+      "recordIndex": 892
+    },
+    {
+      "field": "structures",
+      "message": "Missing required field: structures",
+      "severity": "error",
+      "affectedRecords": 1,
+      "recordIndex": 893
+    },
+    {
+      "field": "structures",
+      "message": "Missing required field: structures",
+      "severity": "error",
+      "affectedRecords": 1,
+      "recordIndex": 894
+    },
+    {
+      "field": "structures",
+      "message": "Missing required field: structures",
+      "severity": "error",
+      "affectedRecords": 1,
+      "recordIndex": 895
+    },
+    {
+      "field": "structures",
+      "message": "Missing required field: structures",
+      "severity": "error",
+      "affectedRecords": 1,
+      "recordIndex": 896
+    },
+    {
+      "field": "structures",
+      "message": "Missing required field: structures",
+      "severity": "error",
+      "affectedRecords": 1,
+      "recordIndex": 897
+    },
+    {
+      "field": "structures",
+      "message": "Missing required field: structures",
+      "severity": "error",
+      "affectedRecords": 1,
+      "recordIndex": 898
+    },
+    {
+      "field": "structures",
+      "message": "Missing required field: structures",
+      "severity": "error",
+      "affectedRecords": 1,
+      "recordIndex": 899
+    },
+    {
+      "field": "structures",
+      "message": "Missing required field: structures",
+      "severity": "error",
+      "affectedRecords": 1,
+      "recordIndex": 900
+    },
+    {
+      "field": "structures",
+      "message": "Missing required field: structures",
+      "severity": "error",
+      "affectedRecords": 1,
+      "recordIndex": 901
+    },
+    {
+      "field": "structures",
+      "message": "Missing required field: structures",
+      "severity": "error",
+      "affectedRecords": 1,
+      "recordIndex": 902
+    },
+    {
+      "field": "structures",
+      "message": "Missing required field: structures",
+      "severity": "error",
+      "affectedRecords": 1,
+      "recordIndex": 903
+    },
+    {
+      "field": "structures",
+      "message": "Missing required field: structures",
+      "severity": "error",
+      "affectedRecords": 1,
+      "recordIndex": 904
+    },
+    {
+      "field": "structures",
+      "message": "Missing required field: structures",
+      "severity": "error",
+      "affectedRecords": 1,
+      "recordIndex": 905
+    },
+    {
+      "field": "structures",
+      "message": "Missing required field: structures",
+      "severity": "error",
+      "affectedRecords": 1,
+      "recordIndex": 906
+    },
+    {
+      "field": "structures",
+      "message": "Missing required field: structures",
+      "severity": "error",
+      "affectedRecords": 1,
+      "recordIndex": 907
+    },
+    {
+      "field": "structures",
+      "message": "Missing required field: structures",
+      "severity": "error",
+      "affectedRecords": 1,
+      "recordIndex": 908
+    },
+    {
+      "field": "structures",
+      "message": "Missing required field: structures",
+      "severity": "error",
+      "affectedRecords": 1,
+      "recordIndex": 909
+    },
+    {
+      "field": "structures",
+      "message": "Missing required field: structures",
+      "severity": "error",
+      "affectedRecords": 1,
+      "recordIndex": 910
+    },
+    {
+      "field": "structures",
+      "message": "Missing required field: structures",
+      "severity": "error",
+      "affectedRecords": 1,
+      "recordIndex": 911
+    },
+    {
+      "field": "structures",
+      "message": "Missing required field: structures",
+      "severity": "error",
+      "affectedRecords": 1,
+      "recordIndex": 912
+    },
+    {
+      "field": "structures",
+      "message": "Missing required field: structures",
+      "severity": "error",
+      "affectedRecords": 1,
+      "recordIndex": 913
+    },
+    {
+      "field": "structures",
+      "message": "Missing required field: structures",
+      "severity": "error",
+      "affectedRecords": 1,
+      "recordIndex": 914
+    },
+    {
+      "field": "structures",
+      "message": "Missing required field: structures",
+      "severity": "error",
+      "affectedRecords": 1,
+      "recordIndex": 915
+    },
+    {
+      "field": "structures",
+      "message": "Missing required field: structures",
+      "severity": "error",
+      "affectedRecords": 1,
+      "recordIndex": 916
+    },
+    {
+      "field": "structures",
+      "message": "Missing required field: structures",
+      "severity": "error",
+      "affectedRecords": 1,
+      "recordIndex": 917
+    },
+    {
+      "field": "structures",
+      "message": "Missing required field: structures",
+      "severity": "error",
+      "affectedRecords": 1,
+      "recordIndex": 918
+    },
+    {
+      "field": "structures",
+      "message": "Missing required field: structures",
+      "severity": "error",
+      "affectedRecords": 1,
+      "recordIndex": 919
+    },
+    {
+      "field": "structures",
+      "message": "Missing required field: structures",
+      "severity": "error",
+      "affectedRecords": 1,
+      "recordIndex": 920
+    },
+    {
+      "field": "structures",
+      "message": "Missing required field: structures",
+      "severity": "error",
+      "affectedRecords": 1,
+      "recordIndex": 921
+    },
+    {
+      "field": "structures",
+      "message": "Missing required field: structures",
+      "severity": "error",
+      "affectedRecords": 1,
+      "recordIndex": 922
+    },
+    {
+      "field": "structures",
+      "message": "Missing required field: structures",
+      "severity": "error",
+      "affectedRecords": 1,
+      "recordIndex": 923
+    },
+    {
+      "field": "structures",
+      "message": "Missing required field: structures",
+      "severity": "error",
+      "affectedRecords": 1,
+      "recordIndex": 924
+    },
+    {
+      "field": "structures",
+      "message": "Missing required field: structures",
+      "severity": "error",
+      "affectedRecords": 1,
+      "recordIndex": 925
+    },
+    {
+      "field": "structures",
+      "message": "Missing required field: structures",
+      "severity": "error",
+      "affectedRecords": 1,
+      "recordIndex": 926
+    },
+    {
+      "field": "structures",
+      "message": "Missing required field: structures",
+      "severity": "error",
+      "affectedRecords": 1,
+      "recordIndex": 927
+    },
+    {
+      "field": "structures",
+      "message": "Missing required field: structures",
+      "severity": "error",
+      "affectedRecords": 1,
+      "recordIndex": 928
+    },
+    {
+      "field": "structures",
+      "message": "Missing required field: structures",
+      "severity": "error",
+      "affectedRecords": 1,
+      "recordIndex": 929
+    },
+    {
+      "field": "structures",
+      "message": "Missing required field: structures",
+      "severity": "error",
+      "affectedRecords": 1,
+      "recordIndex": 930
+    },
+    {
+      "field": "structures",
+      "message": "Missing required field: structures",
+      "severity": "error",
+      "affectedRecords": 1,
+      "recordIndex": 931
+    },
+    {
+      "field": "structures",
+      "message": "Missing required field: structures",
+      "severity": "error",
+      "affectedRecords": 1,
+      "recordIndex": 932
+    },
+    {
+      "field": "structures",
+      "message": "Missing required field: structures",
+      "severity": "error",
+      "affectedRecords": 1,
+      "recordIndex": 933
+    },
+    {
+      "field": "structures",
+      "message": "Missing required field: structures",
+      "severity": "error",
+      "affectedRecords": 1,
+      "recordIndex": 934
+    },
+    {
+      "field": "structures",
+      "message": "Missing required field: structures",
+      "severity": "error",
+      "affectedRecords": 1,
+      "recordIndex": 935
+    },
+    {
+      "field": "structures",
+      "message": "Missing required field: structures",
+      "severity": "error",
+      "affectedRecords": 1,
+      "recordIndex": 936
+    },
+    {
+      "field": "structures",
+      "message": "Missing required field: structures",
+      "severity": "error",
+      "affectedRecords": 1,
+      "recordIndex": 937
+    },
+    {
+      "field": "structures",
+      "message": "Missing required field: structures",
+      "severity": "error",
+      "affectedRecords": 1,
+      "recordIndex": 938
+    },
+    {
+      "field": "structures",
+      "message": "Missing required field: structures",
+      "severity": "error",
+      "affectedRecords": 1,
+      "recordIndex": 939
+    },
+    {
+      "field": "structures",
+      "message": "Missing required field: structures",
+      "severity": "error",
+      "affectedRecords": 1,
+      "recordIndex": 940
+    },
+    {
+      "field": "structures",
+      "message": "Missing required field: structures",
+      "severity": "error",
+      "affectedRecords": 1,
+      "recordIndex": 941
+    },
+    {
+      "field": "structures",
+      "message": "Missing required field: structures",
+      "severity": "error",
+      "affectedRecords": 1,
+      "recordIndex": 942
+    },
+    {
+      "field": "structures",
+      "message": "Missing required field: structures",
+      "severity": "error",
+      "affectedRecords": 1,
+      "recordIndex": 943
+    },
+    {
+      "field": "structures",
+      "message": "Missing required field: structures",
+      "severity": "error",
+      "affectedRecords": 1,
+      "recordIndex": 944
+    },
+    {
+      "field": "structures",
+      "message": "Missing required field: structures",
+      "severity": "error",
+      "affectedRecords": 1,
+      "recordIndex": 945
+    },
+    {
+      "field": "structures",
+      "message": "Missing required field: structures",
+      "severity": "error",
+      "affectedRecords": 1,
+      "recordIndex": 946
+    },
+    {
+      "field": "structures",
+      "message": "Missing required field: structures",
+      "severity": "error",
+      "affectedRecords": 1,
+      "recordIndex": 947
+    },
+    {
+      "field": "structures",
+      "message": "Missing required field: structures",
+      "severity": "error",
+      "affectedRecords": 1,
+      "recordIndex": 948
+    },
+    {
+      "field": "structures",
+      "message": "Missing required field: structures",
+      "severity": "error",
+      "affectedRecords": 1,
+      "recordIndex": 949
+    },
+    {
+      "field": "structures",
+      "message": "Missing required field: structures",
+      "severity": "error",
+      "affectedRecords": 1,
+      "recordIndex": 950
+    },
+    {
+      "field": "structures",
+      "message": "Missing required field: structures",
+      "severity": "error",
+      "affectedRecords": 1,
+      "recordIndex": 951
+    },
+    {
+      "field": "structures",
+      "message": "Missing required field: structures",
+      "severity": "error",
+      "affectedRecords": 1,
+      "recordIndex": 952
+    },
+    {
+      "field": "structures",
+      "message": "Missing required field: structures",
+      "severity": "error",
+      "affectedRecords": 1,
+      "recordIndex": 953
+    },
+    {
+      "field": "structures",
+      "message": "Missing required field: structures",
+      "severity": "error",
+      "affectedRecords": 1,
+      "recordIndex": 954
+    },
+    {
+      "field": "structures",
+      "message": "Missing required field: structures",
+      "severity": "error",
+      "affectedRecords": 1,
+      "recordIndex": 955
+    },
+    {
+      "field": "structures",
+      "message": "Missing required field: structures",
+      "severity": "error",
+      "affectedRecords": 1,
+      "recordIndex": 956
+    },
+    {
+      "field": "structures",
+      "message": "Missing required field: structures",
+      "severity": "error",
+      "affectedRecords": 1,
+      "recordIndex": 957
+    },
+    {
+      "field": "structures",
+      "message": "Missing required field: structures",
+      "severity": "error",
+      "affectedRecords": 1,
+      "recordIndex": 958
+    },
+    {
+      "field": "structures",
+      "message": "Missing required field: structures",
+      "severity": "error",
+      "affectedRecords": 1,
+      "recordIndex": 959
+    },
+    {
+      "field": "structures",
+      "message": "Missing required field: structures",
+      "severity": "error",
+      "affectedRecords": 1,
+      "recordIndex": 960
+    },
+    {
+      "field": "structures",
+      "message": "Missing required field: structures",
+      "severity": "error",
+      "affectedRecords": 1,
+      "recordIndex": 961
+    },
+    {
+      "field": "structures",
+      "message": "Missing required field: structures",
+      "severity": "error",
+      "affectedRecords": 1,
+      "recordIndex": 962
+    },
+    {
+      "field": "structures",
+      "message": "Missing required field: structures",
+      "severity": "error",
+      "affectedRecords": 1,
+      "recordIndex": 963
+    },
+    {
+      "field": "structures",
+      "message": "Missing required field: structures",
+      "severity": "error",
+      "affectedRecords": 1,
+      "recordIndex": 964
+    },
+    {
+      "field": "structures",
+      "message": "Missing required field: structures",
+      "severity": "error",
+      "affectedRecords": 1,
+      "recordIndex": 965
+    },
+    {
+      "field": "structures",
+      "message": "Missing required field: structures",
+      "severity": "error",
+      "affectedRecords": 1,
+      "recordIndex": 966
+    },
+    {
+      "field": "structures",
+      "message": "Missing required field: structures",
+      "severity": "error",
+      "affectedRecords": 1,
+      "recordIndex": 967
+    },
+    {
+      "field": "structures",
+      "message": "Missing required field: structures",
+      "severity": "error",
+      "affectedRecords": 1,
+      "recordIndex": 968
+    },
+    {
+      "field": "structures",
+      "message": "Missing required field: structures",
+      "severity": "error",
+      "affectedRecords": 1,
+      "recordIndex": 969
+    },
+    {
+      "field": "structures",
+      "message": "Missing required field: structures",
+      "severity": "error",
+      "affectedRecords": 1,
+      "recordIndex": 970
+    },
+    {
+      "field": "structures",
+      "message": "Missing required field: structures",
+      "severity": "error",
+      "affectedRecords": 1,
+      "recordIndex": 971
+    },
+    {
+      "field": "structures",
+      "message": "Missing required field: structures",
+      "severity": "error",
+      "affectedRecords": 1,
+      "recordIndex": 972
+    },
+    {
+      "field": "structures",
+      "message": "Missing required field: structures",
+      "severity": "error",
+      "affectedRecords": 1,
+      "recordIndex": 973
+    },
+    {
+      "field": "structures",
+      "message": "Missing required field: structures",
+      "severity": "error",
+      "affectedRecords": 1,
+      "recordIndex": 974
+    },
+    {
+      "field": "structures",
+      "message": "Missing required field: structures",
+      "severity": "error",
+      "affectedRecords": 1,
+      "recordIndex": 975
+    },
+    {
+      "field": "structures",
+      "message": "Missing required field: structures",
+      "severity": "error",
+      "affectedRecords": 1,
+      "recordIndex": 976
+    },
+    {
+      "field": "structures",
+      "message": "Missing required field: structures",
+      "severity": "error",
+      "affectedRecords": 1,
+      "recordIndex": 977
+    },
+    {
+      "field": "structures",
+      "message": "Missing required field: structures",
+      "severity": "error",
+      "affectedRecords": 1,
+      "recordIndex": 978
+    },
+    {
+      "field": "structures",
+      "message": "Missing required field: structures",
+      "severity": "error",
+      "affectedRecords": 1,
+      "recordIndex": 979
+    },
+    {
+      "field": "structures",
+      "message": "Missing required field: structures",
+      "severity": "error",
+      "affectedRecords": 1,
+      "recordIndex": 980
+    },
+    {
+      "field": "structures",
+      "message": "Missing required field: structures",
+      "severity": "error",
+      "affectedRecords": 1,
+      "recordIndex": 981
+    },
+    {
+      "field": "structures",
+      "message": "Missing required field: structures",
+      "severity": "error",
+      "affectedRecords": 1,
+      "recordIndex": 982
+    },
+    {
+      "field": "structures",
+      "message": "Missing required field: structures",
+      "severity": "error",
+      "affectedRecords": 1,
+      "recordIndex": 983
+    },
+    {
+      "field": "structures",
+      "message": "Missing required field: structures",
+      "severity": "error",
+      "affectedRecords": 1,
+      "recordIndex": 984
+    },
+    {
+      "field": "structures",
+      "message": "Missing required field: structures",
+      "severity": "error",
+      "affectedRecords": 1,
+      "recordIndex": 985
+    },
+    {
+      "field": "structures",
+      "message": "Missing required field: structures",
+      "severity": "error",
+      "affectedRecords": 1,
+      "recordIndex": 986
+    },
+    {
+      "field": "structures",
+      "message": "Missing required field: structures",
+      "severity": "error",
+      "affectedRecords": 1,
+      "recordIndex": 987
+    },
+    {
+      "field": "structures",
+      "message": "Missing required field: structures",
+      "severity": "error",
+      "affectedRecords": 1,
+      "recordIndex": 988
+    },
+    {
+      "field": "structures",
+      "message": "Missing required field: structures",
+      "severity": "error",
+      "affectedRecords": 1,
+      "recordIndex": 989
+    },
+    {
+      "field": "structures",
+      "message": "Missing required field: structures",
+      "severity": "error",
+      "affectedRecords": 1,
+      "recordIndex": 990
+    },
+    {
+      "field": "structures",
+      "message": "Missing required field: structures",
+      "severity": "error",
+      "affectedRecords": 1,
+      "recordIndex": 991
+    },
+    {
+      "field": "structures",
+      "message": "Missing required field: structures",
+      "severity": "error",
+      "affectedRecords": 1,
+      "recordIndex": 992
+    },
+    {
+      "field": "structures",
+      "message": "Missing required field: structures",
+      "severity": "error",
+      "affectedRecords": 1,
+      "recordIndex": 993
+    },
+    {
+      "field": "structures",
+      "message": "Missing required field: structures",
+      "severity": "error",
+      "affectedRecords": 1,
+      "recordIndex": 994
+    },
+    {
+      "field": "structures",
+      "message": "Missing required field: structures",
+      "severity": "error",
+      "affectedRecords": 1,
+      "recordIndex": 995
+    },
+    {
+      "field": "structures",
+      "message": "Missing required field: structures",
+      "severity": "error",
+      "affectedRecords": 1,
+      "recordIndex": 996
+    },
+    {
+      "field": "structures",
+      "message": "Missing required field: structures",
+      "severity": "error",
+      "affectedRecords": 1,
+      "recordIndex": 997
+    },
+    {
+      "field": "structures",
+      "message": "Missing required field: structures",
+      "severity": "error",
+      "affectedRecords": 1,
+      "recordIndex": 998
+    },
+    {
+      "field": "structures",
+      "message": "Missing required field: structures",
+      "severity": "error",
+      "affectedRecords": 1,
+      "recordIndex": 999
+    }
+  ],
+  "warnings": [],
+  "missingFields": {
+    "date": 0,
+    "location": 0,
+    "structures": 1000
+  },
+  "timestamp": "2025-10-24T18:03:09.542Z"
+}

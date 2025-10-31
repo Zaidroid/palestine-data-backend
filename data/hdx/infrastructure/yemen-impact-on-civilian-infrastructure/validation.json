@@ -1,0 +1,144 @@
+{
+  "datasetType": "infrastructure",
+  "recordCount": 6,
+  "qualityScore": 0,
+  "completeness": 0,
+  "consistency": 0,
+  "accuracy": 0,
+  "meetsThreshold": false,
+  "errors": [
+    {
+      "field": "date",
+      "message": "Missing required field: date",
+      "severity": "error",
+      "affectedRecords": 1,
+      "recordIndex": 0
+    },
+    {
+      "field": "facility_type",
+      "message": "Missing required field: facility_type",
+      "severity": "error",
+      "affectedRecords": 1,
+      "recordIndex": 0
+    },
+    {
+      "field": "damage_level",
+      "message": "Missing required field: damage_level",
+      "severity": "error",
+      "affectedRecords": 1,
+      "recordIndex": 0
+    },
+    {
+      "field": "date",
+      "message": "Missing required field: date",
+      "severity": "error",
+      "affectedRecords": 1,
+      "recordIndex": 1
+    },
+    {
+      "field": "facility_type",
+      "message": "Missing required field: facility_type",
+      "severity": "error",
+      "affectedRecords": 1,
+      "recordIndex": 1
+    },
+    {
+      "field": "damage_level",
+      "message": "Missing required field: damage_level",
+      "severity": "error",
+      "affectedRecords": 1,
+      "recordIndex": 1
+    },
+    {
+      "field": "date",
+      "message": "Missing required field: date",
+      "severity": "error",
+      "affectedRecords": 1,
+      "recordIndex": 2
+    },
+    {
+      "field": "facility_type",
+      "message": "Missing required field: facility_type",
+      "severity": "error",
+      "affectedRecords": 1,
+      "recordIndex": 2
+    },
+    {
+      "field": "damage_level",
+      "message": "Missing required field: damage_level",
+      "severity": "error",
+      "affectedRecords": 1,
+      "recordIndex": 2
+    },
+    {
+      "field": "date",
+      "message": "Missing required field: date",
+      "severity": "error",
+      "affectedRecords": 1,
+      "recordIndex": 3
+    },
+    {
+      "field": "facility_type",
+      "message": "Missing required field: facility_type",
+      "severity": "error",
+      "affectedRecords": 1,
+      "recordIndex": 3
+    },
+    {
+      "field": "damage_level",
+      "message": "Missing required field: damage_level",
+      "severity": "error",
+      "affectedRecords": 1,
+      "recordIndex": 3
+    },
+    {
+      "field": "date",
+      "message": "Missing required field: date",
+      "severity": "error",
+      "affectedRecords": 1,
+      "recordIndex": 4
+    },
+    {
+      "field": "facility_type",
+      "message": "Missing required field: facility_type",
+      "severity": "error",
+      "affectedRecords": 1,
+      "recordIndex": 4
+    },
+    {
+      "field": "damage_level",
+      "message": "Missing required field: damage_level",
+      "severity": "error",
+      "affectedRecords": 1,
+      "recordIndex": 4
+    },
+    {
+      "field": "date",
+      "message": "Missing required field: date",
+      "severity": "error",
+      "affectedRecords": 1,
+      "recordIndex": 5
+    },
+    {
+      "field": "facility_type",
+      "message": "Missing required field: facility_type",
+      "severity": "error",
+      "affectedRecords": 1,
+      "recordIndex": 5
+    },
+    {
+      "field": "damage_level",
+      "message": "Missing required field: damage_level",
+      "severity": "error",
+      "affectedRecords": 1,
+      "recordIndex": 5
+    }
+  ],
+  "warnings": [],
+  "missingFields": {
+    "date": 6,
+    "facility_type": 6,
+    "damage_level": 6
+  },
+  "timestamp": "2025-10-29T21:10:46.994Z"
+}

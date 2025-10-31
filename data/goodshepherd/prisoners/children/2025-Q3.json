@@ -1,0 +1,83 @@
+{
+  "metadata": {
+    "source": "goodshepherd",
+    "dataset": "child-prisoners",
+    "quarter": "2025-Q3",
+    "record_count": 8,
+    "last_updated": "2025-10-24T18:03:09.535Z"
+  },
+  "data": [
+    {
+      "date": "2025-07-01T00:00:00.000",
+      "name": "Amjad Nassar Shihadah 'Awwad",
+      "age": 16,
+      "location": "Kafr 'Aqab (Jerusalem)",
+      "status": "detained",
+      "notes": "Shot by soldiers while participating in clashes at Manara Square in the city center, in which youths threw stones and fired fireworks at the soldiers. The clashes broke out after military and police counterterrorism (Yamam) forces raided a house on a nearby street, interrogated a Palestinian and arrested him. Afterwards, the forces raided another house in the Ein Musbah neighborhood in the northwest of the city and arrested four Palestinian citizens of Israel who had fled to Ramallah on criminal grounds. Evacuated by ambulance to a hospital in the city, where he was pronounced dead.",
+      "source": "goodshepherd-fallback"
+    },
+    {
+      "date": "2025-07-06T00:00:00.000",
+      "name": "Iyad 'Abd al-Mu'ti Iyad Shalakhti",
+      "age": 14,
+      "location": "Askar R.C.",
+      "status": "detained",
+      "notes": "Injured by soldiers' gunfire together with two other minors while throwing stones during the withdrawal of Israeli forces from Nablus. Taken by private car to Rafidiya Hospital in the city, where he died of his wounds about three days later. Two other minors were injured by the soldiers' gunfire.",
+      "source": "goodshepherd-fallback"
+    },
+    {
+      "date": "2025-07-18T00:00:00.000",
+      "name": "'Amru 'Ali Ahmad Qabha",
+      "age": 13,
+      "location": "Ya'bad",
+      "status": "detained",
+      "notes": "Shot by soldiers who got out of two military vehicles that entered the northern part of the town. Qabha, who was walking along the street, tried to escape when he noticed the soldiers, who called on him to stop, and they began shooting at him. His father arrived and approached him, and soldiers assaulted him, tied his hands, and seated him next to his dying son. For about half an hour, the soldiers prevented an ambulance at the site from evacuating him. Pronounced dead at a medical center in the town.",
+      "source": "goodshepherd-fallback"
+    },
+    {
+      "date": "2025-07-22T00:00:00.000",
+      "name": "Ibrahim Majed 'Ali Naser",
+      "age": 15,
+      "location": "Qabatiyah",
+      "status": "detained",
+      "notes": "Shot by soldiers who raided a house at the entrance to the town. Naser and two other minors threw stones at the military jeep parked near the house. He was shot and injured and fled into an olive grove, where he fell down. He was taken by paramedics to a hospital in Jenin, where he was pronounced dead. The two other minors fled the site. CCTV footage shows soldiers chasing the youths and firing.",
+      "source": "goodshepherd-fallback"
+    },
+    {
+      "date": "2025-07-22T00:00:00.000",
+      "name": "Muhammad Khaled Hassan Mabruk",
+      "age": 15,
+      "location": "Ein Beit al-Maa R.C.",
+      "status": "detained",
+      "notes": "Shot and injured in the thigh by Israeli forces who raided the city of Nablus for about twenty hours to arrest a Palestinian, while he was standing in an alley at the entrance to the camp together with his cousin, a minor. A military, Border Police and Shin Bet force raided a house in the city, detonated explosives nearby and arrested its owner. The forces raided the Rafidiya and al-Arabi hospitals searching for the wanted man, who was later arrested. During the raid, clashes broke out in various parts of the city, in which Palestinians threw stones at the forces. While a military jeep and a Border Police jeep were driving, forces fired at people standing at the camp entrance, injuring Mabruk and another Palestinian. A resident carried him on foot to an ambulance waiting nearby. Died of his wounds about three days later at al-Arabi Hospital.",
+      "source": "goodshepherd-fallback"
+    },
+    {
+      "date": "2025-07-23T00:00:00.000",
+      "name": "Ibrahim 'Imad Ahmad Hamran",
+      "age": 13,
+      "location": "Araba",
+      "status": "detained",
+      "notes": "Shot by soldiers while standing on a hill together with four other teens and throwing stones at military vehicles withdrawing from the nearby town of Qabatiyah. Soldiers got out of the vehicles, chased the teens through olive groves and fired at them. The other boys fled toward the town. About an hour after the shooting, paramedics arrived at the site and the soldiers directed them to Hamran’s body. They took him to a hospital, where he was pronounced dead.",
+      "source": "goodshepherd-fallback"
+    },
+    {
+      "date": "2025-07-24T00:00:00.000",
+      "name": "Ahmad 'Ali As'ad 'Ashirat Salah",
+      "age": 15,
+      "location": "al-Khader",
+      "status": "detained",
+      "notes": "Shot dead by soldiers along with another minor near the Separation Barrier, according to the military after they threw Molotov cocktails at Route 60. In a video published on social media, an ambulance is seen at the site and gunfire is heard. Israel is holding his body.",
+      "source": "goodshepherd-fallback"
+    },
+    {
+      "date": "2025-07-24T00:00:00.000",
+      "name": "Muhammad Khaled 'Alian 'Issa",
+      "age": 17,
+      "location": "al-Khader",
+      "status": "detained",
+      "notes": "Shot dead by soldiers along with another minor near the Separation Barrier, according to the military after they threw Molotov cocktails at Route 60. In a video published on social media, an ambulance is seen at the site and gunfire is heard. Israel is holding his body.",
+      "source": "goodshepherd-fallback"
+    }
+  ]
+}

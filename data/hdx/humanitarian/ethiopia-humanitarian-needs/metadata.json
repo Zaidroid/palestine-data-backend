@@ -1,0 +1,92 @@
+{
+  "id": "882d0746-ac2a-4471-b40d-a92dee832ee2",
+  "name": "ethiopia-humanitarian-needs",
+  "title": "Ethiopia: Humanitarian Needs",
+  "description": "This dataset was compiled by the United Nations Office for the Coordination of Humanitarian Affairs (UNOCHA) on behalf of the Humanitarian Country Team and partners. It provides the Humanitarian Country Team’s shared understanding of the crisis, including the most pressing humanitarian need and the estimated number of people who need assistance, and represents a consolidated evidence base and helps inform joint strategic response planning.",
+  "category": "humanitarian",
+  "organization": {
+    "name": "ocha-hpc-tools",
+    "title": "OCHA Humanitarian Programme Cycle Tools (HPC Tools)"
+  },
+  "tags": [
+    "humanitarian needs overview-hno",
+    "hxl",
+    "people in need-pin"
+  ],
+  "license": "Creative Commons Attribution International (CC BY)",
+  "dataset_date": "[2018-01-01T00:00:00 TO 2025-12-31T23:59:59]",
+  "last_modified": "2025-06-11T21:58:02.043892",
+  "data_update_frequency": "365",
+  "num_resources": 7,
+  "resources": [
+    {
+      "id": "5c049ef4-1dc0-4618-bb7f-a7be0b044137",
+      "name": "eth_hpc_needs_api_2025.csv",
+      "format": "CSV",
+      "size": 234,
+      "last_modified": "2025-06-11T21:58:00.224662",
+      "url": "https://data.humdata.org/dataset/882d0746-ac2a-4471-b40d-a92dee832ee2/resource/5c049ef4-1dc0-4618-bb7f-a7be0b044137/download/eth_hpc_needs_api_2025.csv"
+    },
+    {
+      "id": "79eb6301-add8-42de-95bc-6088ffba7731",
+      "name": "eth_hpc_needs_api_2024.csv",
+      "format": "CSV",
+      "size": 7246541,
+      "last_modified": "2025-02-20T01:34:55.491405",
+      "url": "https://data.humdata.org/dataset/882d0746-ac2a-4471-b40d-a92dee832ee2/resource/79eb6301-add8-42de-95bc-6088ffba7731/download/eth_hpc_needs_api_2024.csv"
+    },
+    {
+      "id": "31eec4ef-87d8-4278-9c29-4c80558eb39f",
+      "name": "eth_hpc_needs_2024.xlsx",
+      "format": "XLSX",
+      "size": 110183,
+      "last_modified": "2024-03-08T11:01:47.870255",
+      "url": "https://data.humdata.org/dataset/882d0746-ac2a-4471-b40d-a92dee832ee2/resource/31eec4ef-87d8-4278-9c29-4c80558eb39f/download/ethiopia-2024-humanitairan-needs-overview_hxl.xlsx"
+    },
+    {
+      "id": "a43c1bb3-084a-422e-aa9c-16c310b76209",
+      "name": "eth_hpc_needs_2021.xlsx",
+      "format": "XLSX",
+      "size": 791455,
+      "last_modified": "2021-06-24T06:47:05.128104",
+      "url": "https://data.humdata.org/dataset/882d0746-ac2a-4471-b40d-a92dee832ee2/resource/a43c1bb3-084a-422e-aa9c-16c310b76209/download/ethiopia-2021-humanitairan-needs-overview.xlsx"
+    },
+    {
+      "id": "04e357f9-9ab7-4d6b-8102-2503bf02c6be",
+      "name": "eth_hpc_needs_2020.xlsx",
+      "format": "XLSX",
+      "size": 1542065,
+      "last_modified": "2020-02-14T12:39:27.150389",
+      "url": "https://data.humdata.org/dataset/882d0746-ac2a-4471-b40d-a92dee832ee2/resource/04e357f9-9ab7-4d6b-8102-2503bf02c6be/download/ethiopia-2020-humanitarian-needs-overview.xlsx"
+    },
+    {
+      "id": "d3f41f1c-f110-40e0-b65f-4e05afcdb9cf",
+      "name": "eth_hpc_needs_2019.xlsx",
+      "format": "XLSX",
+      "size": 12578,
+      "last_modified": "2019-03-18T15:21:02.097657",
+      "url": "https://data.humdata.org/dataset/882d0746-ac2a-4471-b40d-a92dee832ee2/resource/d3f41f1c-f110-40e0-b65f-4e05afcdb9cf/download/ethiopia-humanitarian-needs-overview_2019.xlsx"
+    },
+    {
+      "id": "232be819-b3d2-4475-b954-c206cf430b01",
+      "name": "eth_hpc_needs_2018.xlsx",
+      "format": "XLSX",
+      "size": 17775,
+      "last_modified": "2019-01-03T13:13:08.116221",
+      "url": "https://data.humdata.org/dataset/882d0746-ac2a-4471-b40d-a92dee832ee2/resource/232be819-b3d2-4475-b954-c206cf430b01/download/ethiopia-hno-2018_hxl.xlsx"
+    }
+  ],
+  "source_url": "https://data.humdata.org/dataset/ethiopia-humanitarian-needs",
+  "extracted_at": "2025-10-29T21:11:20.343Z",
+  "palestine_context": {
+    "regions_covered": [],
+    "governorates": [],
+    "conflict_related": false,
+    "baseline_comparison_available": false
+  },
+  "data_quality": {
+    "update_frequency": "365",
+    "last_updated": "2025-06-11T21:58:02.043892",
+    "source_reliability": "unknown"
+  }
+}

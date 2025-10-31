@@ -1,0 +1,119 @@
+{
+  "metadata": {
+    "source": "goodshepherd",
+    "dataset": "child-prisoners",
+    "quarter": "2025-Q2",
+    "record_count": 12,
+    "last_updated": "2025-10-24T18:03:09.535Z"
+  },
+  "data": [
+    {
+      "date": "2025-04-02T00:00:00.000",
+      "name": "'Omar 'Amer Yasser Zyud",
+      "age": 16,
+      "location": "Silat al-Harithiya",
+      "status": "detained",
+      "notes": "Shot in the back by soldiers at the entrance to town. Zyud and other young men threw stones and IEDs at two armored military vehicles that entered the town, and the soldiers fired at them from a machine gun mounted on one of them and left the scene a few minutes later. Two more minors were injured by soldiers' gunfire at the scene, and another Palestinian was injured by gunfire during clashes that developed in another neighborhood in the town. Zyud was taken by ambulance to Ibn Sina Hospital in the city of Jenin, where he was pronounced dead.",
+      "source": "goodshepherd-fallback"
+    },
+    {
+      "date": "2025-04-06T00:00:00.000",
+      "name": "'Amer Muhammad Sa'adah Rabi'",
+      "age": 14,
+      "location": "Turmusaya",
+      "status": "detained",
+      "notes": "פלסטיני בעל אזרחות אמריקאית. נורה בידי חיילים ממארב יחד עם שני נערים נוספים, שנפצעו מהירי ונמלטו, לאחר שלפחות אחד מהשלושה יידה ככל הנראה אבן לעבר כביש 60, ממטע בקצה העיירה. חבריו לא יכלו לפנותו משום שהירי נמשך. החיילים ניסו ככל הנראה להגיש לו עזרה ראשונה אך הוא מת מפצעיו. גופתו נלקחה מהמקום בידי החיילים ונמסרה באותו ערב לאביו ולצוות הסהר האדום במחנה הצבאי חווארה.",
+      "source": "goodshepherd-fallback"
+    },
+    {
+      "date": "2025-04-14T00:00:00.000",
+      "name": "Malek 'Ali Ibrahim Hattab",
+      "age": 17,
+      "location": "al-Jalazun R.C.",
+      "status": "detained",
+      "notes": "Shot in the abdomen by soldiers on a balcony on the second floor of a building on the main street in the camp, as he tried to escape with other youths from two military jeeps after some youths threw stones at them. A woman in a nearby house tried to rescue Hattab but was forced to return home because of the shooting. Two more Palestinians were wounded by the soldiers’ fire, including a minor. Hattab was taken to al-Istishari Hospital in the city of Ramallah where he underwent surgery, but after several hours, the doctors were forced to pronounce him dead.",
+      "source": "goodshepherd-fallback"
+    },
+    {
+      "date": "2025-04-17T00:00:00.000",
+      "name": "Jihad Adham 'Abdallah 'Adili",
+      "age": 16,
+      "location": "Osarin",
+      "status": "detained",
+      "notes": "Fatally shot by soldiers in ambush along with another Palestinian, while the two were throwing stones at Route 505. A third Palestinian who was with them was unharmed. Israel is holding his body.",
+      "source": "goodshepherd-fallback"
+    },
+    {
+      "date": "2025-04-23T00:00:00.000",
+      "name": "Mahmoud Mithqal 'Ali Abu al-Heija",
+      "age": 12,
+      "location": "al-Yamun",
+      "status": "detained",
+      "notes": "Shot by soldiers who raided a house in the southern neighborhood of the town, while throwing stones at the house along with other minors from a distance of about 50 meters. Taken by car to the clinic in town and then by ambulance to a hospital in the city of Jenin, where he was pronounced dead.",
+      "source": "goodshepherd-fallback"
+    },
+    {
+      "date": "2025-04-25T00:00:00.000",
+      "name": "'Abd al-Khaleq Mus'ab 'Abd al-Khaleq 'Abd al-Khaleq",
+      "age": 16,
+      "location": "Salem",
+      "status": "detained",
+      "notes": "Shot in the chest after closing his family's grocery store when military jeeps were reported in the village. Soldiers who got out of the jeeps approached the grocery store under cover of a grove and shot him from a distance of about 50 meters immediately after he stepped out. When some young men tried to evacuate him, the soldiers ordered them to back away, and allowed his evacuation only after trying unsuccessfully to provide first aid, but then blocked the path of the car in which he was being evacuated, forcing the driver to take a detour. ‘Abd al-Khaleq was pronounced dead in a hospital in Nablus.",
+      "source": "goodshepherd-fallback"
+    },
+    {
+      "date": "2025-05-15T00:00:00.000",
+      "name": "Rida Mahmoud Kamal Bani 'Odeh",
+      "age": 17,
+      "location": "Tammun",
+      "status": "detained",
+      "notes": "Killed along with four other Palestinians, during a fire exchange with soldiers who raided the town, surrounded the three-story building in which they had barricaded themselves and fired shoulder-fired missiles at it. During the operation, the Israeli forces destroyed a significant portion of the building, rendering it uninhabitable. At the end of the operation, a military bulldozer scooped Bani ‘Odeh’s body and three others into its bucket and drove with them in it through the streets of the town and nearby communities. According to the military, four Palestinians were arrested in the town and the nearby city of Tubas during the raid. Bani ‘Odeh was an Islamic Jihad military wing operative. Israel is holding his body.",
+      "source": "goodshepherd-fallback"
+    },
+    {
+      "date": "2025-05-16T00:00:00.000",
+      "name": "Muhammad Nidal Majed Abu Libdah",
+      "age": 17,
+      "location": "Old City (Jerusalem)",
+      "status": "detained",
+      "notes": "Shot by Israel Police officers at Bab al-Silsila (the Gate of the Chain in Temple Mount) in the Old City of Jerusalem. The police claimed he was shot after stabbing and moderately wounding a police officer. Israel is holding his body.",
+      "source": "goodshepherd-fallback"
+    },
+    {
+      "date": "2025-05-17T00:00:00.000",
+      "name": "Nidal Wael 'Abd al-Karim a-Shaghnubi",
+      "age": 16,
+      "location": "Burqa",
+      "status": "detained",
+      "notes": "Shot by soldiers from an ambush while throwing stones on Highway 60 along with two other minors who were injured, fled, and were evacuated by local residents to ambulances waiting in the nearby village of ‘Asirah a-Shamaliyah, which took them to a hospital in the city of Nablus. Locals searching for a-Shaghnubi were unable to get close due to the presence of soldiers, who fired in the air and prevented his evacuation by ambulance. About two hours after the shooting, the Palestinian DCO was informed that a-Shaghnubi had died of his wounds. Israel is holding his body.",
+      "source": "goodshepherd-fallback"
+    },
+    {
+      "date": "2025-06-02T00:00:00.000",
+      "name": "Yusef Fouad 'Abd al-Karim Fuqaha",
+      "age": 16,
+      "location": "Sinjil",
+      "status": "detained",
+      "notes": "Shot by soldiers in ambush in farm fields near Rotue 5056, and evacuated in a military vehicle from which he was transferred to an Israeli ambulance. After the shooting, soldiers raided a house overlooking the spot where the shooting took place, viewed the security camera footage, and then deleted it. According to the military, Fuqaha tried to throw stones at the road. However, according to the witness with the security cameras, the footage showed he did not hold or throw any stones. Israel is holding his body.",
+      "source": "goodshepherd-fallback"
+    },
+    {
+      "date": "2025-06-23T00:00:00.000",
+      "name": "'Ammar Mu'taz Mustafa Hamayel",
+      "age": 13,
+      "location": "Kafr Malik",
+      "status": "detained",
+      "notes": "Shot in the back by soldiers after he threw a stone at an armored vehicle coming from the direction of Route 449. His friend, a minor, who was with him fled the scene after seeing Hamayel fall. Hamayel was evacuated, deceased, in a Palestinian ambulance that arrived at the scene following coordination with the DCO, and pronounced dead at a hospital in the city of Ramallah.",
+      "source": "goodshepherd-fallback"
+    },
+    {
+      "date": "2025-06-25T00:00:00.000",
+      "name": "Rayan Tamer Anwar Hushiyeh",
+      "age": 13,
+      "location": "al-Yamun",
+      "status": "detained",
+      "notes": "Shot by soldiers who climbed onto the roof of a building in the center of the town during clashes that developed after they entered and surrounded a house to arrest a Palestinian. During the clashes, Palestinians threw stones and IEDs at the soldiers. Hushiyeh was trying to cross the road on his way home with his cousin, a minor, when he was shot by the soldiers. He was taken by residents to a nearby ambulance and then to a clinic in the town, where he was pronounced dead.",
+      "source": "goodshepherd-fallback"
+    }
+  ]
+}

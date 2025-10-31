@@ -1,0 +1,132 @@
+{
+  "indicator": "AG.LND.CROP.ZS",
+  "indicator_name": "Permanent cropland (% of land area)",
+  "data": [
+    {
+      "year": 2010,
+      "value": 9.00332225913621,
+      "indicator": "AG.LND.CROP.ZS",
+      "indicator_name": "Permanent cropland (% of land area)",
+      "country": "West Bank and Gaza",
+      "source": "worldbank"
+    },
+    {
+      "year": 2011,
+      "value": 10.9634551495017,
+      "indicator": "AG.LND.CROP.ZS",
+      "indicator_name": "Permanent cropland (% of land area)",
+      "country": "West Bank and Gaza",
+      "source": "worldbank"
+    },
+    {
+      "year": 2012,
+      "value": 12.5946843853821,
+      "indicator": "AG.LND.CROP.ZS",
+      "indicator_name": "Permanent cropland (% of land area)",
+      "country": "West Bank and Gaza",
+      "source": "worldbank"
+    },
+    {
+      "year": 2013,
+      "value": 12.5946843853821,
+      "indicator": "AG.LND.CROP.ZS",
+      "indicator_name": "Permanent cropland (% of land area)",
+      "country": "West Bank and Gaza",
+      "source": "worldbank"
+    },
+    {
+      "year": 2014,
+      "value": 13.953488372093,
+      "indicator": "AG.LND.CROP.ZS",
+      "indicator_name": "Permanent cropland (% of land area)",
+      "country": "West Bank and Gaza",
+      "source": "worldbank"
+    },
+    {
+      "year": 2015,
+      "value": 15.9634551495017,
+      "indicator": "AG.LND.CROP.ZS",
+      "indicator_name": "Permanent cropland (% of land area)",
+      "country": "West Bank and Gaza",
+      "source": "worldbank"
+    },
+    {
+      "year": 2016,
+      "value": 16.4451827242525,
+      "indicator": "AG.LND.CROP.ZS",
+      "indicator_name": "Permanent cropland (% of land area)",
+      "country": "West Bank and Gaza",
+      "source": "worldbank"
+    },
+    {
+      "year": 2017,
+      "value": 15.6810631229236,
+      "indicator": "AG.LND.CROP.ZS",
+      "indicator_name": "Permanent cropland (% of land area)",
+      "country": "West Bank and Gaza",
+      "source": "worldbank"
+    },
+    {
+      "year": 2018,
+      "value": 16.1960132890365,
+      "indicator": "AG.LND.CROP.ZS",
+      "indicator_name": "Permanent cropland (% of land area)",
+      "country": "West Bank and Gaza",
+      "source": "worldbank"
+    },
+    {
+      "year": 2019,
+      "value": 16.2956810631229,
+      "indicator": "AG.LND.CROP.ZS",
+      "indicator_name": "Permanent cropland (% of land area)",
+      "country": "West Bank and Gaza",
+      "source": "worldbank"
+    },
+    {
+      "year": 2020,
+      "value": 14.0697674418605,
+      "indicator": "AG.LND.CROP.ZS",
+      "indicator_name": "Permanent cropland (% of land area)",
+      "country": "West Bank and Gaza",
+      "source": "worldbank"
+    },
+    {
+      "year": 2021,
+      "value": 11.8340248962656,
+      "indicator": "AG.LND.CROP.ZS",
+      "indicator_name": "Permanent cropland (% of land area)",
+      "country": "West Bank and Gaza",
+      "source": "worldbank"
+    },
+    {
+      "year": 2022,
+      "value": 11.8340248962656,
+      "indicator": "AG.LND.CROP.ZS",
+      "indicator_name": "Permanent cropland (% of land area)",
+      "country": "West Bank and Gaza",
+      "source": "worldbank"
+    },
+    {
+      "year": 2023,
+      "value": 11.8340248962656,
+      "indicator": "AG.LND.CROP.ZS",
+      "indicator_name": "Permanent cropland (% of land area)",
+      "country": "West Bank and Gaza",
+      "source": "worldbank"
+    }
+  ],
+  "metadata": {
+    "source": "World Bank Open Data",
+    "last_updated": "2025-10-29T21:01:56.232Z",
+    "total_points": 14
+  },
+  "validation": {
+    "qualityScore": 1,
+    "completeness": 1,
+    "consistency": 1,
+    "accuracy": 1,
+    "meetsThreshold": true,
+    "errorCount": 0,
+    "warningCount": 0
+  }
+}

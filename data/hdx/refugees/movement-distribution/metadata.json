@@ -1,0 +1,322 @@
+{
+  "id": "32167ba5-ef67-4254-8eaf-04cdb8b90c1d",
+  "name": "movement-distribution",
+  "title": "Movement Distribution",
+  "description": "The Movement Distribution dataset shows the range of movement of people away from the area where they live on a daily basis. These maps are useful for projects focused on transportation, tourism, displacement, and other areas. \r\n\r\nMore info available here: https://dataforgood.facebook.com/dfg/tools/movement-distribution-maps",
+  "category": "refugees",
+  "organization": {
+    "name": "meta",
+    "title": "AI and Data for Good at Meta"
+  },
+  "tags": [
+    "displacement"
+  ],
+  "license": "Creative Commons Attribution International (CC BY)",
+  "dataset_date": "[2022-12-01T00:00:00 TO 2025-09-30T23:59:59]",
+  "last_modified": "2025-10-07T08:43:20.248476",
+  "data_update_frequency": "30",
+  "num_resources": 36,
+  "resources": [
+    {
+      "id": "eb208f4d-0c42-4905-912c-63a88edd08ab",
+      "name": "movement-distribution-maps 2025-09-01- 2025-10-01.zip",
+      "format": "CSV",
+      "size": 89026174,
+      "last_modified": "2025-10-07T00:15:53.491955",
+      "url": "https://data.humdata.org/dataset/32167ba5-ef67-4254-8eaf-04cdb8b90c1d/resource/eb208f4d-0c42-4905-912c-63a88edd08ab/download/movement-distribution-maps-2025-09-01-2025-10-01.zip"
+    },
+    {
+      "id": "e5dbb650-af5e-4710-ae2e-a10594dd4665",
+      "name": "movement-distribution-data-for-good-2025-08-01_2025-09-01.zip",
+      "format": "CSV",
+      "size": 88977445,
+      "last_modified": "2025-09-01T18:35:26.017190",
+      "url": "https://data.humdata.org/dataset/32167ba5-ef67-4254-8eaf-04cdb8b90c1d/resource/e5dbb650-af5e-4710-ae2e-a10594dd4665/download/movement-distribution-data-for-good-2025-08-01_2025-09-01.zip"
+    },
+    {
+      "id": "cff07eb9-d18d-4b3c-9e14-39aad7a4f54f",
+      "name": "movement-distribution-data-for-good-at-meta_2025-07-01_2025-08-01.zip",
+      "format": "CSV",
+      "size": 90090651,
+      "last_modified": "2025-08-04T19:55:00.896756",
+      "url": "https://data.humdata.org/dataset/32167ba5-ef67-4254-8eaf-04cdb8b90c1d/resource/cff07eb9-d18d-4b3c-9e14-39aad7a4f54f/download/movement-distribution-data-for-good-at-meta-2025-07-01_2025-08-01.zip"
+    },
+    {
+      "id": "cea53475-0950-4d81-a3d0-2566ecfa914e",
+      "name": "movement-distribution-data-for-good-at-meta_2025-06-01_2025-07-01.zip",
+      "format": "CSV",
+      "size": 90831781,
+      "last_modified": "2025-07-02T22:06:32.860219",
+      "url": "https://data.humdata.org/dataset/32167ba5-ef67-4254-8eaf-04cdb8b90c1d/resource/cea53475-0950-4d81-a3d0-2566ecfa914e/download/movement-distribution-data-for-good-at-meta_2025-06-01_2025-07-01.zip"
+    },
+    {
+      "id": "79767bb0-ea9a-4bca-bfac-bfebc8d48a56",
+      "name": "movement-distribution-data-for-good-at-meta_2025-05-01_2025-06-01.csv.zip",
+      "format": "CSV",
+      "size": 101475071,
+      "last_modified": "2025-06-05T15:55:49.911519",
+      "url": "https://data.humdata.org/dataset/32167ba5-ef67-4254-8eaf-04cdb8b90c1d/resource/79767bb0-ea9a-4bca-bfac-bfebc8d48a56/download/movement-distrubtion-may-2025.zip"
+    },
+    {
+      "id": "10e7d947-e081-46ff-8a65-fbf157548b9d",
+      "name": "movement-distribution-data-for-good-at-meta_2025-04-01_2025-05-01.zip",
+      "format": "CSV",
+      "size": 92435951,
+      "last_modified": "2025-07-03T18:58:17.438967",
+      "url": "https://data.humdata.org/dataset/32167ba5-ef67-4254-8eaf-04cdb8b90c1d/resource/10e7d947-e081-46ff-8a65-fbf157548b9d/download/movement-distribution-data-for-good-at-meta_2025-04-01_2025-05-01.zip"
+    },
+    {
+      "id": "5a8a1212-ce5b-4273-851c-ec37ca128328",
+      "name": "movement-distribution-data-for-good-at-meta_2025-03-01_2025-04-01.zip",
+      "format": "CSV",
+      "size": 71629201,
+      "last_modified": "2025-05-04T14:30:51.351204",
+      "url": "https://data.humdata.org/dataset/32167ba5-ef67-4254-8eaf-04cdb8b90c1d/resource/5a8a1212-ce5b-4273-851c-ec37ca128328/download/movement-distribution-data-for-good-at-meta_2025-03-01_2025-04-01.zip"
+    },
+    {
+      "id": "78452286-4bdc-40a3-a7e4-79ae2b239173",
+      "name": "movement-distribution-data-for-good-at-meta_2025-02-01_2025-03-01_csv.zip",
+      "format": "CSV",
+      "size": 85745055,
+      "last_modified": "2025-03-10T14:53:35.270852",
+      "url": "https://data.humdata.org/dataset/32167ba5-ef67-4254-8eaf-04cdb8b90c1d/resource/78452286-4bdc-40a3-a7e4-79ae2b239173/download/movement-distribution-data-for-good-at-meta_2025-02-01_2025-03-01_csv.zip"
+    },
+    {
+      "id": "efa5b7d2-799f-4091-a427-4e58e551d383",
+      "name": "movement-distribution-data-for-good-at-meta_2025-01-01_2025-02-01_csv.zip",
+      "format": "CSV",
+      "size": 97127168,
+      "last_modified": "2025-02-03T14:31:21.713089",
+      "url": "https://data.humdata.org/dataset/32167ba5-ef67-4254-8eaf-04cdb8b90c1d/resource/efa5b7d2-799f-4091-a427-4e58e551d383/download/movement-distribution-data-for-good-at-meta_2025-01-01_2025-02-01_csv.zip"
+    },
+    {
+      "id": "d05cbfa2-10bc-4696-97e2-a2446ac2ca7f",
+      "name": "movement-distribution-data-for-good-at-meta_2024-12-01_2025-01-01_csv.zip.zip",
+      "format": "CSV",
+      "size": 100942178,
+      "last_modified": "2025-01-06T17:27:44.553670",
+      "url": "https://data.humdata.org/dataset/32167ba5-ef67-4254-8eaf-04cdb8b90c1d/resource/d05cbfa2-10bc-4696-97e2-a2446ac2ca7f/download/movement-distribution-data-for-good-at-meta_2024-12-01_2025-01-01_csv.zip.zip"
+    },
+    {
+      "id": "226a0414-4d47-4a1e-bc07-8a3d22523d2a",
+      "name": "movement-distribution-data-for-good-at-meta_2024-11-01_2024-12-01_csv.zip",
+      "format": "CSV",
+      "size": 97425995,
+      "last_modified": "2024-12-04T14:13:33.150307",
+      "url": "https://data.humdata.org/dataset/32167ba5-ef67-4254-8eaf-04cdb8b90c1d/resource/226a0414-4d47-4a1e-bc07-8a3d22523d2a/download/movement-distribution-data-for-good-at-meta_2024-11-01_2024-12-01_csv.zip"
+    },
+    {
+      "id": "92cddd47-78b8-4ea1-b712-16c39ecf6b49",
+      "name": "movement-distribution-data-for-good-at-meta_2024-10-01_2024-11-01_csv.zip",
+      "format": "CSV",
+      "size": 100122097,
+      "last_modified": "2024-11-04T15:29:52.532784",
+      "url": "https://data.humdata.org/dataset/32167ba5-ef67-4254-8eaf-04cdb8b90c1d/resource/92cddd47-78b8-4ea1-b712-16c39ecf6b49/download/movement-distribution-data-for-good-at-meta_2024-10-01_2024-11-01_csv.zip"
+    },
+    {
+      "id": "41ced55b-293a-45c2-9edc-fbb2f46f9452",
+      "name": "movement-distribution-data-for-good-at-meta_2024-09-01_2024-10-01_csv.zip",
+      "format": "CSV",
+      "size": 388246901,
+      "last_modified": "2024-10-04T20:02:13.495977",
+      "url": "https://data.humdata.org/dataset/32167ba5-ef67-4254-8eaf-04cdb8b90c1d/resource/41ced55b-293a-45c2-9edc-fbb2f46f9452/download/movement-distribution-data-for-good-at-meta_2024-09-01_2024-10-01_csv.zip"
+    },
+    {
+      "id": "0620fcaf-8352-4282-bedd-2f0d691fa0d7",
+      "name": "movement-distribution-data-for-good-at-meta_2024-08-01_2024-09-01_csv.zip.zip.zip",
+      "format": "CSV",
+      "size": 401478110,
+      "last_modified": "2024-09-05T20:13:36.294232",
+      "url": "https://data.humdata.org/dataset/32167ba5-ef67-4254-8eaf-04cdb8b90c1d/resource/0620fcaf-8352-4282-bedd-2f0d691fa0d7/download/movement-distribution-data-for-good-at-meta_2024-08-01_2024-09-01_csv.zip.zip.zip"
+    },
+    {
+      "id": "b5bbcaaf-2bf3-42dd-a3ce-416b1d005527",
+      "name": "movement-distribution-data-for-good-at-meta_2024-07-01_2024-08-01_csv.zip.zip",
+      "format": "CSV",
+      "size": 401681577,
+      "last_modified": "2024-08-09T15:55:01.274853",
+      "url": "https://data.humdata.org/dataset/32167ba5-ef67-4254-8eaf-04cdb8b90c1d/resource/b5bbcaaf-2bf3-42dd-a3ce-416b1d005527/download/movement-distribution-data-for-good-at-meta_2024-07-01_2024-08-01_csv.zip.zip"
+    },
+    {
+      "id": "08a08233-a86f-4d56-8fbe-f38d8b7011a0",
+      "name": "movement-distribution-data-for-good-at-meta_2024-06-01_2024-07-01_csv.zip",
+      "format": "CSV",
+      "size": 389417386,
+      "last_modified": "2024-07-03T16:01:04.074192",
+      "url": "https://data.humdata.org/dataset/32167ba5-ef67-4254-8eaf-04cdb8b90c1d/resource/08a08233-a86f-4d56-8fbe-f38d8b7011a0/download/movement-distribution-data-for-good-at-meta_2024-06-01_2024-07-01_csv.zip"
+    },
+    {
+      "id": "f33dae15-4456-4908-9fd1-08542c844a80",
+      "name": "movement-distribution-data-for-good-at-meta_2024-05-01_2024-06-01_csv.zip",
+      "format": "CSV",
+      "size": 402136710,
+      "last_modified": "2024-06-06T21:04:10.446059",
+      "url": "https://data.humdata.org/dataset/32167ba5-ef67-4254-8eaf-04cdb8b90c1d/resource/f33dae15-4456-4908-9fd1-08542c844a80/download/movement-distribution-data-for-good-at-meta_2024-05-01_2024-06-01_csv.zip"
+    },
+    {
+      "id": "72d61200-7b4f-40fb-b429-f9f1c44b9720",
+      "name": "movement-distribution-data-for-good-at-meta_2024-04-01_2024-05-01_csv.zip",
+      "format": "CSV",
+      "size": 389756934,
+      "last_modified": "2024-05-15T15:55:03.877707",
+      "url": "https://data.humdata.org/dataset/32167ba5-ef67-4254-8eaf-04cdb8b90c1d/resource/72d61200-7b4f-40fb-b429-f9f1c44b9720/download/movement-distribution-data-for-good-at-meta_2024-04-01_2024-05-01_csv.zip"
+    },
+    {
+      "id": "a0b710a1-f7df-4f80-bd2f-eeddc6abc955",
+      "name": "movement-distribution-data-for-good-at-meta_2024-03-01_2024-03-31_csv.zip.zip",
+      "format": "CSV",
+      "size": 402272329,
+      "last_modified": "2024-04-10T14:43:25.753809",
+      "url": "https://data.humdata.org/dataset/32167ba5-ef67-4254-8eaf-04cdb8b90c1d/resource/a0b710a1-f7df-4f80-bd2f-eeddc6abc955/download/movement-distribution-data-for-good-at-meta_2024-04-01_2024-03-31_csv.zip.zip"
+    },
+    {
+      "id": "8bdb8bc5-0ab7-4ae7-b865-25e7bb5a6011",
+      "name": "movement-distribution-data-for-good-at-meta_2024-02-01_2024-03-01_csv.zip",
+      "format": "CSV",
+      "size": 376873870,
+      "last_modified": "2024-03-19T13:50:10.485945",
+      "url": "https://data.humdata.org/dataset/32167ba5-ef67-4254-8eaf-04cdb8b90c1d/resource/8bdb8bc5-0ab7-4ae7-b865-25e7bb5a6011/download/movement-distribution-data-for-good-at-meta_2024-02-01_2024-03-01_csv.zip"
+    },
+    {
+      "id": "079447e1-dcdc-4714-bb14-717ef0b8a4d7",
+      "name": "movement-distribution-data-for-good-at-meta_2024-01-01_2024-02-01_csv.zip",
+      "format": "CSV",
+      "size": 401829895,
+      "last_modified": "2024-03-19T13:52:36.405195",
+      "url": "https://data.humdata.org/dataset/32167ba5-ef67-4254-8eaf-04cdb8b90c1d/resource/079447e1-dcdc-4714-bb14-717ef0b8a4d7/download/movement-distribution-data-for-good-at-meta_2024-01-01_2024-02-01_csv.zip"
+    },
+    {
+      "id": "846906be-8479-4bdf-9f34-7abd10a7a9e7",
+      "name": "Movement Distribution - Data for Good at Meta_2023-12-01_2024-01-01_csv.zip",
+      "format": "CSV",
+      "size": 401458671,
+      "last_modified": "2024-01-11T21:02:35.010325",
+      "url": "https://data.humdata.org/dataset/32167ba5-ef67-4254-8eaf-04cdb8b90c1d/resource/846906be-8479-4bdf-9f34-7abd10a7a9e7/download/movement-distribution-data-for-good-at-meta_2023-12-01_2024-01-01_csv.zip"
+    },
+    {
+      "id": "eef4a09f-5803-4fee-83dd-057d5e662a2a",
+      "name": "Movement Distribution - Data for Good at Meta_2023-11-01_2023-12-01_csv.zip",
+      "format": "CSV",
+      "size": 388281666,
+      "last_modified": "2024-01-18T14:53:00.147381",
+      "url": "https://data.humdata.org/dataset/32167ba5-ef67-4254-8eaf-04cdb8b90c1d/resource/eef4a09f-5803-4fee-83dd-057d5e662a2a/download/movement-distribution-data-for-good-at-meta_2023-11-01_2023-12-01_csv.zip"
+    },
+    {
+      "id": "9f67a926-5588-4f2b-864a-b119035a1609",
+      "name": "Movement Distribution - Data for Good at Meta_2023-10-01_2023-11-01_csv.zip",
+      "format": "CSV",
+      "size": 401187120,
+      "last_modified": "2024-01-18T14:55:54.343511",
+      "url": "https://data.humdata.org/dataset/32167ba5-ef67-4254-8eaf-04cdb8b90c1d/resource/9f67a926-5588-4f2b-864a-b119035a1609/download/movement-distribution-data-for-good-at-meta_2023-10-01_2023-11-01_csv.zip"
+    },
+    {
+      "id": "2d9efcb1-5ac9-4783-99ab-62a5df63a548",
+      "name": "Movement Distribution - Data for Good at Meta_2023-09-01_2023-10-01_csv.zip",
+      "format": "CSV",
+      "size": 388290045,
+      "last_modified": "2024-01-18T14:58:43.990241",
+      "url": "https://data.humdata.org/dataset/32167ba5-ef67-4254-8eaf-04cdb8b90c1d/resource/2d9efcb1-5ac9-4783-99ab-62a5df63a548/download/movement-distribution-data-for-good-at-meta_2023-09-01_2023-10-01_csv.zip"
+    },
+    {
+      "id": "7f4dea53-55b3-4aab-bd5b-367fd5764b12",
+      "name": "Movement Distribution - Data for Good at Meta_2023-08-01_2023-09-01_csv.zip",
+      "format": "CSV",
+      "size": 400099377,
+      "last_modified": "2024-01-18T15:01:38.551390",
+      "url": "https://data.humdata.org/dataset/32167ba5-ef67-4254-8eaf-04cdb8b90c1d/resource/7f4dea53-55b3-4aab-bd5b-367fd5764b12/download/movement-distribution-data-for-good-at-meta_2023-08-01_2023-09-01_csv.zip"
+    },
+    {
+      "id": "2c854ea9-00fa-485d-96eb-f95162620562",
+      "name": "Movement Distribution - Data for Good at Meta_2023-07-01_2023-08-01_csv.zip",
+      "format": "CSV",
+      "size": 400206626,
+      "last_modified": "2024-01-18T15:04:29.133646",
+      "url": "https://data.humdata.org/dataset/32167ba5-ef67-4254-8eaf-04cdb8b90c1d/resource/2c854ea9-00fa-485d-96eb-f95162620562/download/movement-distribution-data-for-good-at-meta_2023-07-01_2023-08-01_csv.zip"
+    },
+    {
+      "id": "2ea262cd-9f74-4dd6-b26f-2e5f40907f5c",
+      "name": "Movement Distribution - Data for Good at Meta_2023-06-01_2023-07-01_csv.zip",
+      "format": "CSV",
+      "size": 387394583,
+      "last_modified": "2024-01-18T15:07:27.111069",
+      "url": "https://data.humdata.org/dataset/32167ba5-ef67-4254-8eaf-04cdb8b90c1d/resource/2ea262cd-9f74-4dd6-b26f-2e5f40907f5c/download/movement-distribution-data-for-good-at-meta_2023-06-01_2023-07-01_csv.zip"
+    },
+    {
+      "id": "c452b378-efa5-48a1-898f-a8d208441ccc",
+      "name": "Movement Distribution - Data for Good at Meta_2023-05-01_2023-06-01_csv.zip",
+      "format": "CSV",
+      "size": 399789852,
+      "last_modified": "2024-01-18T15:10:27.351681",
+      "url": "https://data.humdata.org/dataset/32167ba5-ef67-4254-8eaf-04cdb8b90c1d/resource/c452b378-efa5-48a1-898f-a8d208441ccc/download/movement-distribution-data-for-good-at-meta_2023-05-01_2023-06-01_csv.zip"
+    },
+    {
+      "id": "a93a6f85-f40f-4245-a971-6b1bdcf85d49",
+      "name": "Movement Distribution - Data for Good at Meta_2023-04-01_2023-05-01_csv.zip",
+      "format": "CSV",
+      "size": 387181411,
+      "last_modified": "2024-01-18T15:13:17.106477",
+      "url": "https://data.humdata.org/dataset/32167ba5-ef67-4254-8eaf-04cdb8b90c1d/resource/a93a6f85-f40f-4245-a971-6b1bdcf85d49/download/movement-distribution-data-for-good-at-meta_2023-04-01_2023-05-01_csv.zip"
+    },
+    {
+      "id": "92ca86c8-dea4-4db9-8faa-a0fd5336ead2",
+      "name": "Movement Distribution - Data for Good at Meta_2023-03-01_2023-04-01_csv.zip",
+      "format": "CSV",
+      "size": 399153001,
+      "last_modified": "2024-01-18T15:16:19.841516",
+      "url": "https://data.humdata.org/dataset/32167ba5-ef67-4254-8eaf-04cdb8b90c1d/resource/92ca86c8-dea4-4db9-8faa-a0fd5336ead2/download/movement-distribution-data-for-good-at-meta_2023-03-01_2023-04-01_csv.zip"
+    },
+    {
+      "id": "08289397-87e0-42a5-a967-ff34b7b9fb2a",
+      "name": "Movement Distribution - Data for Good at Meta_2023-02-01_2023-03-01_csv.zip",
+      "format": "CSV",
+      "size": 361310096,
+      "last_modified": "2024-01-18T15:19:05.776260",
+      "url": "https://data.humdata.org/dataset/32167ba5-ef67-4254-8eaf-04cdb8b90c1d/resource/08289397-87e0-42a5-a967-ff34b7b9fb2a/download/movement-distribution-data-for-good-at-meta_2023-02-01_2023-03-01_csv.zip"
+    },
+    {
+      "id": "d1830ba5-6527-40af-b738-76b2009a71c8",
+      "name": "Movement Distribution - Data for Good at Meta_2023-01-01_2023-02-01_csv.zip",
+      "format": "CSV",
+      "size": 398416872,
+      "last_modified": "2024-01-18T15:22:17.465358",
+      "url": "https://data.humdata.org/dataset/32167ba5-ef67-4254-8eaf-04cdb8b90c1d/resource/d1830ba5-6527-40af-b738-76b2009a71c8/download/movement-distribution-data-for-good-at-meta_2023-01-01_2023-02-01_csv.zip"
+    },
+    {
+      "id": "ad3473e3-fff2-4a50-9166-d9d870f93e64",
+      "name": "Movement Distribution - Data for Good at Meta_2022-12-01_2023-01-01_csv.zip",
+      "format": "CSV",
+      "size": 398976805,
+      "last_modified": "2024-01-11T21:05:21.056868",
+      "url": "https://data.humdata.org/dataset/32167ba5-ef67-4254-8eaf-04cdb8b90c1d/resource/ad3473e3-fff2-4a50-9166-d9d870f93e64/download/movement-distribution-data-for-good-at-meta_2022-12-01_2023-01-01_csv.zip"
+    },
+    {
+      "id": "767a05fe-0bf6-4a0b-96dc-8525baefa327",
+      "name": "Movement Distribution Readme - Data for Good at Meta.pdf",
+      "format": "PDF",
+      "size": 120831,
+      "last_modified": "2024-01-18T15:31:11.546743",
+      "url": "https://data.humdata.org/dataset/32167ba5-ef67-4254-8eaf-04cdb8b90c1d/resource/767a05fe-0bf6-4a0b-96dc-8525baefa327/download/movement-distribution-readme-data-for-good-at-meta.pdf"
+    },
+    {
+      "id": "f8f274d0-8ca2-4c20-8f1e-91962b098a19",
+      "name": "movement-distribution-data-for-good-at-meta_2025-04-01_2025-05-01.zip",
+      "format": "CSV",
+      "size": 92435951,
+      "last_modified": "2025-07-03T18:54:25.084133",
+      "url": "https://data.humdata.org/dataset/32167ba5-ef67-4254-8eaf-04cdb8b90c1d/resource/f8f274d0-8ca2-4c20-8f1e-91962b098a19/download/movement-distribution-data-for-good-at-meta_2025-04-01_2025-05-01.zip"
+    }
+  ],
+  "source_url": "https://data.humdata.org/dataset/movement-distribution",
+  "extracted_at": "2025-10-29T13:35:19.046Z",
+  "palestine_context": {
+    "regions_covered": [],
+    "governorates": [],
+    "conflict_related": false,
+    "baseline_comparison_available": false
+  },
+  "data_quality": {
+    "update_frequency": "30",
+    "last_updated": "2025-10-07T08:43:20.248476",
+    "source_reliability": "unknown"
+  }
+}

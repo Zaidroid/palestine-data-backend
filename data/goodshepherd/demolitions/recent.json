@@ -1,0 +1,58 @@
+{
+  "metadata": {
+    "source": "goodshepherd",
+    "dataset": "demolitions",
+    "record_count": 6,
+    "last_updated": "2025-10-24T18:03:09.550Z"
+  },
+  "data": [
+    {
+      "date": "2025-07-29",
+      "location": "al-Funduq",
+      "homes_demolished": 1,
+      "people_affected": 0,
+      "reason": "Administrative demolition",
+      "source": "goodshepherd-fallback"
+    },
+    {
+      "date": "2025-07-30",
+      "location": "Idhna",
+      "homes_demolished": 1,
+      "people_affected": 0,
+      "reason": "Administrative demolition",
+      "source": "goodshepherd-fallback"
+    },
+    {
+      "date": "2025-07-31",
+      "location": "Beit Furik",
+      "homes_demolished": 1,
+      "people_affected": 0,
+      "reason": "Administrative demolition",
+      "source": "goodshepherd-fallback"
+    },
+    {
+      "date": "2025-07-31",
+      "location": "Beit Dajan",
+      "homes_demolished": 1,
+      "people_affected": 0,
+      "reason": "Administrative demolition",
+      "source": "goodshepherd-fallback"
+    },
+    {
+      "date": "2025-07-31",
+      "location": "Kh. a-Nahlah",
+      "homes_demolished": 1,
+      "people_affected": 6,
+      "reason": "Administrative demolition",
+      "source": "goodshepherd-fallback"
+    },
+    {
+      "date": "2025-07-31",
+      "location": "Kh. a-Nahlah",
+      "homes_demolished": 1,
+      "people_affected": 0,
+      "reason": "Administrative demolition",
+      "source": "goodshepherd-fallback"
+    }
+  ]
+}

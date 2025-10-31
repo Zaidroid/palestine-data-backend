@@ -1,0 +1,14 @@
+{
+  "category": "humanitarian",
+  "total_records": 24148,
+  "last_updated": "2025-10-29T21:14:45.735Z",
+  "sources": [
+    "HDX"
+  ],
+  "quality": {
+    "average_score": 0,
+    "completeness": 0,
+    "consistency": 0,
+    "accuracy": 0
+  }
+}

@@ -1,0 +1,33 @@
+{
+  "id": "d5c801a8-2d8f-4aaf-a821-2e20ad003551",
+  "name": "eastern-africa-region-refugee-statistics-2007-2014",
+  "title": "Eastern Africa Region Refugee Statistics 2007 - 2015",
+  "description": "Refugee numbers in Burundi, Djibouti, DRC, Eritrea, Ethiopia, Kenya, Rwanda, S.Sudan, Somalia, Sudan, Tanzania and Uganda since December 2007. ",
+  "category": "refugees",
+  "organization": {
+    "name": "ocha-rosea",
+    "title": "OCHA Regional Office for Southern and Eastern Africa (ROSEA)"
+  },
+  "tags": [
+    "eastern africa",
+    "population",
+    "refugees"
+  ],
+  "license": "Creative Commons Attribution for Intergovernmental Organisations (CC BY-IGO)",
+  "dataset_date": "[2007-08-07T00:00:00 TO 2007-08-07T23:59:59]",
+  "last_modified": "2023-09-28T02:40:54.266570",
+  "data_update_frequency": "-1",
+  "num_resources": 1,
+  "resources": [
+    {
+      "id": "58949899-2242-4b1d-87e9-d0a7b591e3c4",
+      "name": "EA_Refugee Stats Dec 07 to date_09Mar2015.csv",
+      "format": "CSV",
+      "size": 1946,
+      "last_modified": "2015-11-24T23:42:55.560329",
+      "url": "https://data.humdata.org/dataset/d5c801a8-2d8f-4aaf-a821-2e20ad003551/resource/58949899-2242-4b1d-87e9-d0a7b591e3c4/download/ea-refugee-stats-dec-07-to-date-09mar2015.csv"
+    }
+  ],
+  "source_url": "https://data.humdata.org/dataset/eastern-africa-region-refugee-statistics-2007-2014",
+  "extracted_at": "2025-10-24T18:02:39.499Z"
+}

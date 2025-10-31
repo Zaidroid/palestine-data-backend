@@ -1,0 +1,139 @@
+{
+  "indicator": "SE.PRM.ENRR.FE",
+  "indicator_name": "School enrollment, primary, female (% gross)",
+  "category": "education",
+  "data": [
+    {
+      "year": 2010,
+      "value": 90.3010791483378,
+      "indicator": "SE.PRM.ENRR.FE",
+      "indicator_name": "School enrollment, primary, female (% gross)",
+      "country": "West Bank and Gaza",
+      "source": "pcbs",
+      "source_detail": "PCBS via World Bank API"
+    },
+    {
+      "year": 2011,
+      "value": 91.3431978033005,
+      "indicator": "SE.PRM.ENRR.FE",
+      "indicator_name": "School enrollment, primary, female (% gross)",
+      "country": "West Bank and Gaza",
+      "source": "pcbs",
+      "source_detail": "PCBS via World Bank API"
+    },
+    {
+      "year": 2012,
+      "value": 92.3871176275173,
+      "indicator": "SE.PRM.ENRR.FE",
+      "indicator_name": "School enrollment, primary, female (% gross)",
+      "country": "West Bank and Gaza",
+      "source": "pcbs",
+      "source_detail": "PCBS via World Bank API"
+    },
+    {
+      "year": 2013,
+      "value": 93.3762128948125,
+      "indicator": "SE.PRM.ENRR.FE",
+      "indicator_name": "School enrollment, primary, female (% gross)",
+      "country": "West Bank and Gaza",
+      "source": "pcbs",
+      "source_detail": "PCBS via World Bank API"
+    },
+    {
+      "year": 2014,
+      "value": 93.9356484121008,
+      "indicator": "SE.PRM.ENRR.FE",
+      "indicator_name": "School enrollment, primary, female (% gross)",
+      "country": "West Bank and Gaza",
+      "source": "pcbs",
+      "source_detail": "PCBS via World Bank API"
+    },
+    {
+      "year": 2015,
+      "value": 94.4278218823408,
+      "indicator": "SE.PRM.ENRR.FE",
+      "indicator_name": "School enrollment, primary, female (% gross)",
+      "country": "West Bank and Gaza",
+      "source": "pcbs",
+      "source_detail": "PCBS via World Bank API"
+    },
+    {
+      "year": 2016,
+      "value": 94.6350983600352,
+      "indicator": "SE.PRM.ENRR.FE",
+      "indicator_name": "School enrollment, primary, female (% gross)",
+      "country": "West Bank and Gaza",
+      "source": "pcbs",
+      "source_detail": "PCBS via World Bank API"
+    },
+    {
+      "year": 2017,
+      "value": 95.5255740015405,
+      "indicator": "SE.PRM.ENRR.FE",
+      "indicator_name": "School enrollment, primary, female (% gross)",
+      "country": "West Bank and Gaza",
+      "source": "pcbs",
+      "source_detail": "PCBS via World Bank API"
+    },
+    {
+      "year": 2018,
+      "value": 95.0531075153795,
+      "indicator": "SE.PRM.ENRR.FE",
+      "indicator_name": "School enrollment, primary, female (% gross)",
+      "country": "West Bank and Gaza",
+      "source": "pcbs",
+      "source_detail": "PCBS via World Bank API"
+    },
+    {
+      "year": 2019,
+      "value": 94.2678397478936,
+      "indicator": "SE.PRM.ENRR.FE",
+      "indicator_name": "School enrollment, primary, female (% gross)",
+      "country": "West Bank and Gaza",
+      "source": "pcbs",
+      "source_detail": "PCBS via World Bank API"
+    },
+    {
+      "year": 2020,
+      "value": 93.4281742177532,
+      "indicator": "SE.PRM.ENRR.FE",
+      "indicator_name": "School enrollment, primary, female (% gross)",
+      "country": "West Bank and Gaza",
+      "source": "pcbs",
+      "source_detail": "PCBS via World Bank API"
+    },
+    {
+      "year": 2021,
+      "value": 91.7353166669172,
+      "indicator": "SE.PRM.ENRR.FE",
+      "indicator_name": "School enrollment, primary, female (% gross)",
+      "country": "West Bank and Gaza",
+      "source": "pcbs",
+      "source_detail": "PCBS via World Bank API"
+    },
+    {
+      "year": 2022,
+      "value": 90.9410330303702,
+      "indicator": "SE.PRM.ENRR.FE",
+      "indicator_name": "School enrollment, primary, female (% gross)",
+      "country": "West Bank and Gaza",
+      "source": "pcbs",
+      "source_detail": "PCBS via World Bank API"
+    },
+    {
+      "year": 2023,
+      "value": 91.0433634801024,
+      "indicator": "SE.PRM.ENRR.FE",
+      "indicator_name": "School enrollment, primary, female (% gross)",
+      "country": "West Bank and Gaza",
+      "source": "pcbs",
+      "source_detail": "PCBS via World Bank API"
+    }
+  ],
+  "metadata": {
+    "source": "Palestinian Central Bureau of Statistics (PCBS)",
+    "source_detail": "Data accessed via World Bank Open Data API",
+    "last_updated": "2025-10-30T09:43:42.749Z",
+    "total_points": 14
+  }
+}

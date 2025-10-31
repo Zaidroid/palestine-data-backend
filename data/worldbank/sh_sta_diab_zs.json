@@ -1,0 +1,36 @@
+{
+  "indicator": "SH.STA.DIAB.ZS",
+  "indicator_name": "Diabetes prevalence (% of population ages 20 to 79)",
+  "data": [
+    {
+      "year": 2011,
+      "value": 9.2,
+      "indicator": "SH.STA.DIAB.ZS",
+      "indicator_name": "Diabetes prevalence (% of population ages 20 to 79)",
+      "country": "West Bank and Gaza",
+      "source": "worldbank"
+    },
+    {
+      "year": 2024,
+      "value": 15.5,
+      "indicator": "SH.STA.DIAB.ZS",
+      "indicator_name": "Diabetes prevalence (% of population ages 20 to 79)",
+      "country": "West Bank and Gaza",
+      "source": "worldbank"
+    }
+  ],
+  "metadata": {
+    "source": "World Bank Open Data",
+    "last_updated": "2025-10-29T21:02:13.546Z",
+    "total_points": 2
+  },
+  "validation": {
+    "qualityScore": 1,
+    "completeness": 1,
+    "consistency": 1,
+    "accuracy": 1,
+    "meetsThreshold": true,
+    "errorCount": 0,
+    "warningCount": 0
+  }
+}

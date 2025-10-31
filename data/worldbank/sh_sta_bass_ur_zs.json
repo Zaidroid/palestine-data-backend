@@ -1,0 +1,124 @@
+{
+  "indicator": "SH.STA.BASS.UR.ZS",
+  "indicator_name": "People using at least basic sanitation services, urban (% of urban population)",
+  "data": [
+    {
+      "year": 2010,
+      "value": 94.6199297579457,
+      "indicator": "SH.STA.BASS.UR.ZS",
+      "indicator_name": "People using at least basic sanitation services, urban (% of urban population)",
+      "country": "West Bank and Gaza",
+      "source": "worldbank"
+    },
+    {
+      "year": 2011,
+      "value": 95.0318565025528,
+      "indicator": "SH.STA.BASS.UR.ZS",
+      "indicator_name": "People using at least basic sanitation services, urban (% of urban population)",
+      "country": "West Bank and Gaza",
+      "source": "worldbank"
+    },
+    {
+      "year": 2012,
+      "value": 95.4440871517187,
+      "indicator": "SH.STA.BASS.UR.ZS",
+      "indicator_name": "People using at least basic sanitation services, urban (% of urban population)",
+      "country": "West Bank and Gaza",
+      "source": "worldbank"
+    },
+    {
+      "year": 2013,
+      "value": 95.8566217054434,
+      "indicator": "SH.STA.BASS.UR.ZS",
+      "indicator_name": "People using at least basic sanitation services, urban (% of urban population)",
+      "country": "West Bank and Gaza",
+      "source": "worldbank"
+    },
+    {
+      "year": 2014,
+      "value": 96.269460163727,
+      "indicator": "SH.STA.BASS.UR.ZS",
+      "indicator_name": "People using at least basic sanitation services, urban (% of urban population)",
+      "country": "West Bank and Gaza",
+      "source": "worldbank"
+    },
+    {
+      "year": 2015,
+      "value": 96.6826025265693,
+      "indicator": "SH.STA.BASS.UR.ZS",
+      "indicator_name": "People using at least basic sanitation services, urban (% of urban population)",
+      "country": "West Bank and Gaza",
+      "source": "worldbank"
+    },
+    {
+      "year": 2016,
+      "value": 97.0960487939706,
+      "indicator": "SH.STA.BASS.UR.ZS",
+      "indicator_name": "People using at least basic sanitation services, urban (% of urban population)",
+      "country": "West Bank and Gaza",
+      "source": "worldbank"
+    },
+    {
+      "year": 2017,
+      "value": 97.5097989659307,
+      "indicator": "SH.STA.BASS.UR.ZS",
+      "indicator_name": "People using at least basic sanitation services, urban (% of urban population)",
+      "country": "West Bank and Gaza",
+      "source": "worldbank"
+    },
+    {
+      "year": 2018,
+      "value": 97.9238530424496,
+      "indicator": "SH.STA.BASS.UR.ZS",
+      "indicator_name": "People using at least basic sanitation services, urban (% of urban population)",
+      "country": "West Bank and Gaza",
+      "source": "worldbank"
+    },
+    {
+      "year": 2019,
+      "value": 98.3382110235274,
+      "indicator": "SH.STA.BASS.UR.ZS",
+      "indicator_name": "People using at least basic sanitation services, urban (% of urban population)",
+      "country": "West Bank and Gaza",
+      "source": "worldbank"
+    },
+    {
+      "year": 2020,
+      "value": 98.752872909164,
+      "indicator": "SH.STA.BASS.UR.ZS",
+      "indicator_name": "People using at least basic sanitation services, urban (% of urban population)",
+      "country": "West Bank and Gaza",
+      "source": "worldbank"
+    },
+    {
+      "year": 2021,
+      "value": 99.1678386993593,
+      "indicator": "SH.STA.BASS.UR.ZS",
+      "indicator_name": "People using at least basic sanitation services, urban (% of urban population)",
+      "country": "West Bank and Gaza",
+      "source": "worldbank"
+    },
+    {
+      "year": 2022,
+      "value": 99.5804492546583,
+      "indicator": "SH.STA.BASS.UR.ZS",
+      "indicator_name": "People using at least basic sanitation services, urban (% of urban population)",
+      "country": "West Bank and Gaza",
+      "source": "worldbank"
+    }
+  ],
+  "metadata": {
+    "source": "World Bank Open Data",
+    "last_updated": "2025-10-29T21:02:19.077Z",
+    "total_points": 13
+  },
+  "validation": {
+    "qualityScore": 1,
+    "completeness": 1,
+    "consistency": 1,
+    "accuracy": 1,
+    "meetsThreshold": true,
+    "errorCount": 0,
+    "warningCount": 0
+  }
+}

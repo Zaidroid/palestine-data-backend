@@ -1,0 +1,84 @@
+{
+  "indicator": "SE.SEC.PROG.ZS",
+  "indicator_name": "Progression to secondary school (%)",
+  "data": [
+    {
+      "year": 2010,
+      "value": 97.24531,
+      "indicator": "SE.SEC.PROG.ZS",
+      "indicator_name": "Progression to secondary school (%)",
+      "country": "West Bank and Gaza",
+      "source": "worldbank"
+    },
+    {
+      "year": 2011,
+      "value": 98.30376,
+      "indicator": "SE.SEC.PROG.ZS",
+      "indicator_name": "Progression to secondary school (%)",
+      "country": "West Bank and Gaza",
+      "source": "worldbank"
+    },
+    {
+      "year": 2012,
+      "value": 97.92226,
+      "indicator": "SE.SEC.PROG.ZS",
+      "indicator_name": "Progression to secondary school (%)",
+      "country": "West Bank and Gaza",
+      "source": "worldbank"
+    },
+    {
+      "year": 2013,
+      "value": 99.44818,
+      "indicator": "SE.SEC.PROG.ZS",
+      "indicator_name": "Progression to secondary school (%)",
+      "country": "West Bank and Gaza",
+      "source": "worldbank"
+    },
+    {
+      "year": 2014,
+      "value": 98.6471,
+      "indicator": "SE.SEC.PROG.ZS",
+      "indicator_name": "Progression to secondary school (%)",
+      "country": "West Bank and Gaza",
+      "source": "worldbank"
+    },
+    {
+      "year": 2015,
+      "value": 99.24897,
+      "indicator": "SE.SEC.PROG.ZS",
+      "indicator_name": "Progression to secondary school (%)",
+      "country": "West Bank and Gaza",
+      "source": "worldbank"
+    },
+    {
+      "year": 2016,
+      "value": 98.80546,
+      "indicator": "SE.SEC.PROG.ZS",
+      "indicator_name": "Progression to secondary school (%)",
+      "country": "West Bank and Gaza",
+      "source": "worldbank"
+    },
+    {
+      "year": 2017,
+      "value": 96.97746,
+      "indicator": "SE.SEC.PROG.ZS",
+      "indicator_name": "Progression to secondary school (%)",
+      "country": "West Bank and Gaza",
+      "source": "worldbank"
+    }
+  ],
+  "metadata": {
+    "source": "World Bank Open Data",
+    "last_updated": "2025-10-29T21:02:02.357Z",
+    "total_points": 8
+  },
+  "validation": {
+    "qualityScore": 1,
+    "completeness": 1,
+    "consistency": 1,
+    "accuracy": 1,
+    "meetsThreshold": true,
+    "errorCount": 0,
+    "warningCount": 0
+  }
+}

@@ -1,0 +1,124 @@
+{
+  "indicator": "SH.STA.SMSS.RU.ZS",
+  "indicator_name": "People using safely managed sanitation services, rural (% of rural population)",
+  "data": [
+    {
+      "year": 2010,
+      "value": 25.3636406531419,
+      "indicator": "SH.STA.SMSS.RU.ZS",
+      "indicator_name": "People using safely managed sanitation services, rural (% of rural population)",
+      "country": "West Bank and Gaza",
+      "source": "worldbank"
+    },
+    {
+      "year": 2011,
+      "value": 27.6787003388392,
+      "indicator": "SH.STA.SMSS.RU.ZS",
+      "indicator_name": "People using safely managed sanitation services, rural (% of rural population)",
+      "country": "West Bank and Gaza",
+      "source": "worldbank"
+    },
+    {
+      "year": 2012,
+      "value": 30.0212592746773,
+      "indicator": "SH.STA.SMSS.RU.ZS",
+      "indicator_name": "People using safely managed sanitation services, rural (% of rural population)",
+      "country": "West Bank and Gaza",
+      "source": "worldbank"
+    },
+    {
+      "year": 2013,
+      "value": 32.3913174606562,
+      "indicator": "SH.STA.SMSS.RU.ZS",
+      "indicator_name": "People using safely managed sanitation services, rural (% of rural population)",
+      "country": "West Bank and Gaza",
+      "source": "worldbank"
+    },
+    {
+      "year": 2014,
+      "value": 34.7888748967753,
+      "indicator": "SH.STA.SMSS.RU.ZS",
+      "indicator_name": "People using safely managed sanitation services, rural (% of rural population)",
+      "country": "West Bank and Gaza",
+      "source": "worldbank"
+    },
+    {
+      "year": 2015,
+      "value": 37.2139315830358,
+      "indicator": "SH.STA.SMSS.RU.ZS",
+      "indicator_name": "People using safely managed sanitation services, rural (% of rural population)",
+      "country": "West Bank and Gaza",
+      "source": "worldbank"
+    },
+    {
+      "year": 2016,
+      "value": 39.666487519437,
+      "indicator": "SH.STA.SMSS.RU.ZS",
+      "indicator_name": "People using safely managed sanitation services, rural (% of rural population)",
+      "country": "West Bank and Gaza",
+      "source": "worldbank"
+    },
+    {
+      "year": 2017,
+      "value": 42.1465427059784,
+      "indicator": "SH.STA.SMSS.RU.ZS",
+      "indicator_name": "People using safely managed sanitation services, rural (% of rural population)",
+      "country": "West Bank and Gaza",
+      "source": "worldbank"
+    },
+    {
+      "year": 2018,
+      "value": 44.6540971426613,
+      "indicator": "SH.STA.SMSS.RU.ZS",
+      "indicator_name": "People using safely managed sanitation services, rural (% of rural population)",
+      "country": "West Bank and Gaza",
+      "source": "worldbank"
+    },
+    {
+      "year": 2019,
+      "value": 47.1891508294849,
+      "indicator": "SH.STA.SMSS.RU.ZS",
+      "indicator_name": "People using safely managed sanitation services, rural (% of rural population)",
+      "country": "West Bank and Gaza",
+      "source": "worldbank"
+    },
+    {
+      "year": 2020,
+      "value": 49.7517037664492,
+      "indicator": "SH.STA.SMSS.RU.ZS",
+      "indicator_name": "People using safely managed sanitation services, rural (% of rural population)",
+      "country": "West Bank and Gaza",
+      "source": "worldbank"
+    },
+    {
+      "year": 2021,
+      "value": 52.3417559535539,
+      "indicator": "SH.STA.SMSS.RU.ZS",
+      "indicator_name": "People using safely managed sanitation services, rural (% of rural population)",
+      "country": "West Bank and Gaza",
+      "source": "worldbank"
+    },
+    {
+      "year": 2022,
+      "value": 54.6564629905767,
+      "indicator": "SH.STA.SMSS.RU.ZS",
+      "indicator_name": "People using safely managed sanitation services, rural (% of rural population)",
+      "country": "West Bank and Gaza",
+      "source": "worldbank"
+    }
+  ],
+  "metadata": {
+    "source": "World Bank Open Data",
+    "last_updated": "2025-10-29T21:02:22.249Z",
+    "total_points": 13
+  },
+  "validation": {
+    "qualityScore": 1,
+    "completeness": 1,
+    "consistency": 1,
+    "accuracy": 1,
+    "meetsThreshold": true,
+    "errorCount": 0,
+    "warningCount": 0
+  }
+}

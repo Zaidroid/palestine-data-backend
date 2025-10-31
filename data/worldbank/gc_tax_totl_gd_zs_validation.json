@@ -1,0 +1,20 @@
+{
+  "datasetType": "worldbank",
+  "recordCount": 0,
+  "qualityScore": 0,
+  "completeness": 0,
+  "consistency": 0,
+  "accuracy": 0,
+  "meetsThreshold": false,
+  "errors": [],
+  "warnings": [
+    {
+      "field": "root",
+      "message": "Data array is empty",
+      "severity": "warning",
+      "affectedRecords": 0
+    }
+  ],
+  "missingFields": {},
+  "timestamp": "2025-10-29T21:02:46.761Z"
+}

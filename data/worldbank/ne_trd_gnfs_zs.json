@@ -1,0 +1,140 @@
+{
+  "indicator": "NE.TRD.GNFS.ZS",
+  "indicator_name": "Trade (% of GDP)",
+  "data": [
+    {
+      "year": 2010,
+      "value": 68.4976501575169,
+      "indicator": "NE.TRD.GNFS.ZS",
+      "indicator_name": "Trade (% of GDP)",
+      "country": "West Bank and Gaza",
+      "source": "worldbank"
+    },
+    {
+      "year": 2011,
+      "value": 67.2495329024414,
+      "indicator": "NE.TRD.GNFS.ZS",
+      "indicator_name": "Trade (% of GDP)",
+      "country": "West Bank and Gaza",
+      "source": "worldbank"
+    },
+    {
+      "year": 2012,
+      "value": 66.9293273483831,
+      "indicator": "NE.TRD.GNFS.ZS",
+      "indicator_name": "Trade (% of GDP)",
+      "country": "West Bank and Gaza",
+      "source": "worldbank"
+    },
+    {
+      "year": 2013,
+      "value": 66.2713181162369,
+      "indicator": "NE.TRD.GNFS.ZS",
+      "indicator_name": "Trade (% of GDP)",
+      "country": "West Bank and Gaza",
+      "source": "worldbank"
+    },
+    {
+      "year": 2014,
+      "value": 67.7398371659149,
+      "indicator": "NE.TRD.GNFS.ZS",
+      "indicator_name": "Trade (% of GDP)",
+      "country": "West Bank and Gaza",
+      "source": "worldbank"
+    },
+    {
+      "year": 2015,
+      "value": 70.7809681944405,
+      "indicator": "NE.TRD.GNFS.ZS",
+      "indicator_name": "Trade (% of GDP)",
+      "country": "West Bank and Gaza",
+      "source": "worldbank"
+    },
+    {
+      "year": 2016,
+      "value": 65.4225141833383,
+      "indicator": "NE.TRD.GNFS.ZS",
+      "indicator_name": "Trade (% of GDP)",
+      "country": "West Bank and Gaza",
+      "source": "worldbank"
+    },
+    {
+      "year": 2017,
+      "value": 68.4486607142857,
+      "indicator": "NE.TRD.GNFS.ZS",
+      "indicator_name": "Trade (% of GDP)",
+      "country": "West Bank and Gaza",
+      "source": "worldbank"
+    },
+    {
+      "year": 2018,
+      "value": 71.4012754506469,
+      "indicator": "NE.TRD.GNFS.ZS",
+      "indicator_name": "Trade (% of GDP)",
+      "country": "West Bank and Gaza",
+      "source": "worldbank"
+    },
+    {
+      "year": 2019,
+      "value": 68.9934922812035,
+      "indicator": "NE.TRD.GNFS.ZS",
+      "indicator_name": "Trade (% of GDP)",
+      "country": "West Bank and Gaza",
+      "source": "worldbank"
+    },
+    {
+      "year": 2020,
+      "value": 67.2881912475775,
+      "indicator": "NE.TRD.GNFS.ZS",
+      "indicator_name": "Trade (% of GDP)",
+      "country": "West Bank and Gaza",
+      "source": "worldbank"
+    },
+    {
+      "year": 2021,
+      "value": 73.0835496162129,
+      "indicator": "NE.TRD.GNFS.ZS",
+      "indicator_name": "Trade (% of GDP)",
+      "country": "West Bank and Gaza",
+      "source": "worldbank"
+    },
+    {
+      "year": 2022,
+      "value": 82.3949283869453,
+      "indicator": "NE.TRD.GNFS.ZS",
+      "indicator_name": "Trade (% of GDP)",
+      "country": "West Bank and Gaza",
+      "source": "worldbank"
+    },
+    {
+      "year": 2023,
+      "value": 79.5331663669115,
+      "indicator": "NE.TRD.GNFS.ZS",
+      "indicator_name": "Trade (% of GDP)",
+      "country": "West Bank and Gaza",
+      "source": "worldbank"
+    },
+    {
+      "year": 2024,
+      "value": 81.3136801569531,
+      "indicator": "NE.TRD.GNFS.ZS",
+      "indicator_name": "Trade (% of GDP)",
+      "country": "West Bank and Gaza",
+      "source": "worldbank"
+    }
+  ],
+  "metadata": {
+    "source": "World Bank Open Data",
+    "last_updated": "2025-10-29T21:02:34.446Z",
+    "total_points": 15
+  },
+  "validation": {
+    "qualityScore": 1,
+    "completeness": 1,
+    "consistency": 1,
+    "accuracy": 1,
+    "meetsThreshold": true,
+    "errorCount": 0,
+    "warningCount": 0
+  }
+}

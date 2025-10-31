@@ -1,0 +1,463 @@
+{
+  "source": "hdx-ckan",
+  "generated_at": "2025-10-29T21:12:18.254Z",
+  "baseline_date": "2023-10-07",
+  "summary": {
+    "totalCategories": 8,
+    "totalDatasets": 21,
+    "totalRecords": 214584,
+    "totalPartitioned": 11
+  },
+  "categories": {
+    "conflict": {
+      "name": "conflict",
+      "datasetCount": 1,
+      "totalRecords": 8,
+      "partitionedDatasets": 0,
+      "datasets": [
+        {
+          "id": "9c04aa68-b19c-440c-a8e7-15d482e1b2ce",
+          "name": "undof-reoccupation",
+          "title": "Peace and Security Pillar: Reoccupied UNDOF Positions and United Nations Truce Supervision Organization (UNTSO) Military Observers in Observer Group Golan Positions",
+          "recordCount": 8,
+          "partitioned": false,
+          "partitionCount": 0,
+          "dateRange": "[2024-02-28T00:00:00 TO 2024-02-28T23:59:59]",
+          "lastModified": "2025-10-29T09:43:43.354649",
+          "organization": "United Nations Peace and Security Data Hub",
+          "tags": [
+            "complex emergency-conflict-security",
+            "peacekeeping"
+          ],
+          "sourceUrl": "https://data.humdata.org/dataset/undof-reoccupation"
+        }
+      ]
+    },
+    "education": {
+      "name": "education",
+      "datasetCount": 3,
+      "totalRecords": 2671,
+      "partitionedDatasets": 2,
+      "datasets": [
+        {
+          "id": "97032db1-5fcf-464e-87f5-81068200d9a9",
+          "name": "student-enrollment-in-technical-institutions-in-kenya",
+          "title": "Kenya - Student Enrolment by Sex in Technical Institutions",
+          "recordCount": 70,
+          "partitioned": false,
+          "partitionCount": 0,
+          "dateRange": "[2009-02-24T00:00:00 TO 2013-12-20T23:59:59]",
+          "lastModified": "2025-07-22T20:41:25.533142",
+          "organization": "Kenya National Bureau of Statistics (inactive)",
+          "tags": [
+            "education",
+            "gender and age disaggregated data-gadd",
+            "governance and civil society"
+          ],
+          "sourceUrl": "https://data.humdata.org/dataset/student-enrollment-in-technical-institutions-in-kenya"
+        },
+        {
+          "id": "43b53248-b909-4627-869c-8bdf24bb60b2",
+          "name": "world-bank-infrastructure-indicators-for-philippines",
+          "title": "Philippines - Infrastructure",
+          "recordCount": 1352,
+          "partitioned": true,
+          "partitionCount": 0,
+          "dateRange": "[1960-01-01T00:00:00 TO 2024-12-31T23:59:59]",
+          "lastModified": "2025-09-27T22:46:53.579480",
+          "organization": "World Bank Group",
+          "tags": [
+            "facilities-infrastructure",
+            "hxl",
+            "indicators"
+          ],
+          "sourceUrl": "https://data.humdata.org/dataset/world-bank-infrastructure-indicators-for-philippines"
+        },
+        {
+          "id": "121c6bdd-1638-4c46-8842-d89603ad8396",
+          "name": "unicef-ed-anar-l1",
+          "title": "Adjusted net attendance rate for children of primary school age",
+          "recordCount": 1249,
+          "partitioned": true,
+          "partitionCount": 0,
+          "dateRange": "[2010-01-01T00:00:00 TO 2022-12-31T23:59:59]",
+          "lastModified": "2025-10-28T09:06:20.904999",
+          "organization": "UNICEF Data and Analytics (HQ)",
+          "tags": [
+            "children",
+            "education",
+            "indicators",
+            "youth"
+          ],
+          "sourceUrl": "https://data.humdata.org/dataset/unicef-ed-anar-l1"
+        }
+      ]
+    },
+    "water": {
+      "name": "water",
+      "datasetCount": 2,
+      "totalRecords": 109823,
+      "partitionedDatasets": 2,
+      "datasets": [
+        {
+          "id": "19ceee4f-519e-40e3-9cb5-2095a6f3bdf4",
+          "name": "open_weekly_water_access",
+          "title": "Water Service Access",
+          "recordCount": 108471,
+          "partitioned": true,
+          "partitionCount": 0,
+          "dateRange": "[2020-07-15T00:00:00 TO *]",
+          "lastModified": "2025-04-10T14:31:55.946362",
+          "organization": "Code for Venezuela",
+          "tags": [
+            "socioeconomics",
+            "water sanitation and hygiene-wash"
+          ],
+          "sourceUrl": "https://data.humdata.org/dataset/open_weekly_water_access"
+        },
+        {
+          "id": "43b53248-b909-4627-869c-8bdf24bb60b2",
+          "name": "world-bank-infrastructure-indicators-for-philippines",
+          "title": "Philippines - Infrastructure",
+          "recordCount": 1352,
+          "partitioned": true,
+          "partitionCount": 0,
+          "dateRange": "[1960-01-01T00:00:00 TO 2024-12-31T23:59:59]",
+          "lastModified": "2025-09-27T22:46:53.579480",
+          "organization": "World Bank Group",
+          "tags": [
+            "facilities-infrastructure",
+            "hxl",
+            "indicators"
+          ],
+          "sourceUrl": "https://data.humdata.org/dataset/world-bank-infrastructure-indicators-for-philippines"
+        }
+      ]
+    },
+    "infrastructure": {
+      "name": "infrastructure",
+      "datasetCount": 4,
+      "totalRecords": 24214,
+      "partitionedDatasets": 2,
+      "datasets": [
+        {
+          "id": "31428563-4820-4725-96a0-1d1e6786fc8d",
+          "name": "yemen-impact-on-civilian-infrastructure",
+          "title": "Yemen Impact on Civilian Infrastructure.",
+          "recordCount": 6,
+          "partitioned": false,
+          "partitionCount": 0,
+          "dateRange": "[2021-04-30T00:00:00 TO 2021-04-30T23:59:59]",
+          "lastModified": "2025-08-27T14:16:48.988343",
+          "organization": "Civilian Impact Monitoring Project (inactive)",
+          "tags": [
+            "damage assessment",
+            "facilities-infrastructure",
+            "hxl"
+          ],
+          "sourceUrl": "https://data.humdata.org/dataset/yemen-impact-on-civilian-infrastructure"
+        },
+        {
+          "id": "5040df47-96a2-4b3c-9a7f-2b7fb2b41316",
+          "name": "electricaldistributiongridmaps",
+          "title": "Electrical Distribution Grid Maps",
+          "recordCount": 22856,
+          "partitioned": true,
+          "partitionCount": 0,
+          "dateRange": "[2019-01-24T00:00:00 TO 2019-03-19T23:59:59]",
+          "lastModified": "2025-04-08T17:31:55.565135",
+          "organization": "AI and Data for Good at Meta",
+          "tags": [
+            "facilities-infrastructure",
+            "geodata"
+          ],
+          "sourceUrl": "https://data.humdata.org/dataset/electricaldistributiongridmaps"
+        },
+        {
+          "id": "f58fb58f-c9fb-4dfa-be3f-1dcad9ec12d1",
+          "name": "democratic-republic-of-congo-drc-infrastructures-mining-and-fabrication-openstreetmap-export",
+          "title": "Democratic Republic of Congo (DRC) Infrastructures, Mining and Fabrication (OpenStreetMap Export)",
+          "recordCount": 0,
+          "partitioned": false,
+          "partitionCount": 0,
+          "dateRange": "[2020-01-02T00:00:00 TO 2020-01-02T23:59:59]",
+          "lastModified": "2025-04-09T15:43:51.046020",
+          "organization": "OpenStreetMap RDC",
+          "tags": [
+            "facilities-infrastructure",
+            "geodata"
+          ],
+          "sourceUrl": "https://data.humdata.org/dataset/democratic-republic-of-congo-drc-infrastructures-mining-and-fabrication-openstreetmap-export"
+        },
+        {
+          "id": "43b53248-b909-4627-869c-8bdf24bb60b2",
+          "name": "world-bank-infrastructure-indicators-for-philippines",
+          "title": "Philippines - Infrastructure",
+          "recordCount": 1352,
+          "partitioned": true,
+          "partitionCount": 0,
+          "dateRange": "[1960-01-01T00:00:00 TO 2024-12-31T23:59:59]",
+          "lastModified": "2025-09-27T22:46:53.579480",
+          "organization": "World Bank Group",
+          "tags": [
+            "facilities-infrastructure",
+            "hxl",
+            "indicators"
+          ],
+          "sourceUrl": "https://data.humdata.org/dataset/world-bank-infrastructure-indicators-for-philippines"
+        }
+      ]
+    },
+    "refugees": {
+      "name": "refugees",
+      "datasetCount": 1,
+      "totalRecords": 6107,
+      "partitionedDatasets": 1,
+      "datasets": [
+        {
+          "id": "27b71bdd-d5d4-4aae-855f-19ae3619e52c",
+          "name": "2015-unhcr-refugees-statistics-by-coo-coa",
+          "title": "2015 UNHCR Refugees Statistics by CoO/CoA",
+          "recordCount": 6107,
+          "partitioned": true,
+          "partitionCount": 0,
+          "dateRange": "[2015-01-01T00:00:00 TO 2015-12-31T23:59:59]",
+          "lastModified": "2021-09-23T14:47:37.731790",
+          "organization": "UNHCR - The UN Refugee Agency",
+          "tags": [
+            "refugees"
+          ],
+          "sourceUrl": "https://data.humdata.org/dataset/2015-unhcr-refugees-statistics-by-coo-coa"
+        }
+      ]
+    },
+    "humanitarian": {
+      "name": "humanitarian",
+      "datasetCount": 2,
+      "totalRecords": 882,
+      "partitionedDatasets": 0,
+      "datasets": [
+        {
+          "id": "882d0746-ac2a-4471-b40d-a92dee832ee2",
+          "name": "ethiopia-humanitarian-needs",
+          "title": "Ethiopia: Humanitarian Needs",
+          "recordCount": 2,
+          "partitioned": false,
+          "partitionCount": 0,
+          "dateRange": "[2018-01-01T00:00:00 TO 2025-12-31T23:59:59]",
+          "lastModified": "2025-06-11T21:58:02.043892",
+          "organization": "OCHA Humanitarian Programme Cycle Tools (HPC Tools)",
+          "tags": [
+            "humanitarian needs overview-hno",
+            "hxl",
+            "people in need-pin"
+          ],
+          "sourceUrl": "https://data.humdata.org/dataset/ethiopia-humanitarian-needs"
+        },
+        {
+          "id": "f0e95437-b6d9-4897-9e3f-84853bcbfaee",
+          "name": "humanitarian-response-plans",
+          "title": "Humanitarian Response Plans",
+          "recordCount": 880,
+          "partitioned": false,
+          "partitionCount": 0,
+          "dateRange": "[2008-01-01T00:00:00 TO *]",
+          "lastModified": "2025-10-28T10:42:15.353705",
+          "organization": "OCHA Financial Tracking System (FTS)",
+          "tags": [
+            "humanitarian response plan-hrp",
+            "hxl"
+          ],
+          "sourceUrl": "https://data.humdata.org/dataset/humanitarian-response-plans"
+        }
+      ]
+    },
+    "health": {
+      "name": "health",
+      "datasetCount": 7,
+      "totalRecords": 68447,
+      "partitionedDatasets": 3,
+      "datasets": [
+        {
+          "id": "5ffb79be-a48e-4d68-a345-3617745fa1c4",
+          "name": "number-of-health-care-workers-deaths-by-edv",
+          "title": "Number of ebola health-care worker deaths",
+          "recordCount": 288,
+          "partitioned": false,
+          "partitionCount": 0,
+          "dateRange": "[2014-09-07T00:00:00 TO 2015-11-04T23:59:59]",
+          "lastModified": "2025-03-10T23:38:05.991369",
+          "organization": "HDX",
+          "tags": [
+            "disease",
+            "epidemics-outbreaks",
+            "health"
+          ],
+          "sourceUrl": "https://data.humdata.org/dataset/number-of-health-care-workers-deaths-by-edv"
+        },
+        {
+          "id": "eeb91a9f-349a-4c46-aec2-4216a7b572bc",
+          "name": "disease-outbreaks",
+          "title": "Disease Outbreaks in Afghanistan",
+          "recordCount": 41,
+          "partitioned": false,
+          "partitionCount": 0,
+          "dateRange": "[2012-01-01T00:00:00 TO 2014-12-31T23:59:59]",
+          "lastModified": "2023-03-02T23:34:08.199490",
+          "organization": "OCHA Afghanistan",
+          "tags": [
+            "disease",
+            "epidemics-outbreaks"
+          ],
+          "sourceUrl": "https://data.humdata.org/dataset/disease-outbreaks"
+        },
+        {
+          "id": "2563ba1f-88f9-49bd-8b43-36942448a4e7",
+          "name": "unicef-gn-mtnty-lv-bnfts",
+          "title": "Maternity leave benefits",
+          "recordCount": 370,
+          "partitioned": false,
+          "partitionCount": 0,
+          "dateRange": "[2022-01-01T00:00:00 TO 2024-12-31T23:59:59]",
+          "lastModified": "2025-10-28T09:08:31.192495",
+          "organization": "UNICEF Data and Analytics (HQ)",
+          "tags": [
+            "children",
+            "gender",
+            "indicators",
+            "maternity"
+          ],
+          "sourceUrl": "https://data.humdata.org/dataset/unicef-gn-mtnty-lv-bnfts"
+        },
+        {
+          "id": "a82a2140-4d31-4506-ad12-10db73f5f4f6",
+          "name": "who-data-for-turkey",
+          "title": "Turkey - Health Indicators",
+          "recordCount": 23266,
+          "partitioned": true,
+          "partitionCount": 0,
+          "dateRange": "[1961-01-01T00:00:00 TO 2019-12-31T23:59:59]",
+          "lastModified": "2024-06-27T08:55:37.063233",
+          "organization": "World Health Organization",
+          "tags": [
+            "casualties",
+            "children",
+            "conflict-violence",
+            "demographics",
+            "disease",
+            "environment",
+            "facilities-infrastructure",
+            "health",
+            "hxl",
+            "indicators",
+            "malaria",
+            "mortality",
+            "nutrition",
+            "socioeconomics",
+            "sustainable development goals-sdg",
+            "vaccination-immunization"
+          ],
+          "sourceUrl": "https://data.humdata.org/dataset/who-data-for-turkey"
+        },
+        {
+          "id": "cde20733-8f74-438d-8726-73ff1643ea11",
+          "name": "who-data-for-uganda",
+          "title": "Uganda - Health Indicators",
+          "recordCount": 21063,
+          "partitioned": true,
+          "partitionCount": 0,
+          "dateRange": "[1953-01-01T00:00:00 TO 2030-12-31T23:59:59]",
+          "lastModified": "2025-02-07T17:27:31.363076",
+          "organization": "World Health Organization",
+          "tags": [
+            "disability",
+            "disease",
+            "environment",
+            "health",
+            "hxl",
+            "indicators",
+            "malaria",
+            "maternity",
+            "mental health",
+            "nutrition",
+            "vaccination-immunization",
+            "women"
+          ],
+          "sourceUrl": "https://data.humdata.org/dataset/who-data-for-uganda"
+        },
+        {
+          "id": "982b0fb8-ed53-4cd1-b839-93ba5d2c8896",
+          "name": "dhs-data-for-philippines",
+          "title": "Philippines - National Demographic and Health Data",
+          "recordCount": 153,
+          "partitioned": false,
+          "partitionCount": 0,
+          "dateRange": "[1993-01-01T00:00:00 TO 2022-12-31T23:59:59]",
+          "lastModified": "2025-10-20T13:05:19.715772",
+          "organization": "The DHS Program",
+          "tags": [
+            "demographics",
+            "health",
+            "hxl"
+          ],
+          "sourceUrl": "https://data.humdata.org/dataset/dhs-data-for-philippines"
+        },
+        {
+          "id": "a82a2140-4d31-4506-ad12-10db73f5f4f6",
+          "name": "who-data-for-turkey",
+          "title": "Turkey - Health Indicators",
+          "recordCount": 23266,
+          "partitioned": true,
+          "partitionCount": 0,
+          "dateRange": "[1961-01-01T00:00:00 TO 2019-12-31T23:59:59]",
+          "lastModified": "2024-06-27T08:55:37.063233",
+          "organization": "World Health Organization",
+          "tags": [
+            "casualties",
+            "children",
+            "conflict-violence",
+            "demographics",
+            "disease",
+            "environment",
+            "facilities-infrastructure",
+            "health",
+            "hxl",
+            "indicators",
+            "malaria",
+            "mortality",
+            "nutrition",
+            "socioeconomics",
+            "sustainable development goals-sdg",
+            "vaccination-immunization"
+          ],
+          "sourceUrl": "https://data.humdata.org/dataset/who-data-for-turkey"
+        }
+      ]
+    },
+    "shelter": {
+      "name": "shelter",
+      "datasetCount": 1,
+      "totalRecords": 2432,
+      "partitionedDatasets": 1,
+      "datasets": [
+        {
+          "id": "6ff93c3d-9c62-4eca-9873-ef1647166f35",
+          "name": "poverty-rate-gap-density-and-the-percentage-of-poor-housing-at-location-level-in-kenya-in-1999",
+          "title": "Poverty rate, gap, density and the percentage of poor housing at Location level in Kenya in 1999.",
+          "recordCount": 2432,
+          "partitioned": true,
+          "partitionCount": 0,
+          "dateRange": "[1999-12-30T00:00:00 TO 1999-12-30T23:59:59]",
+          "lastModified": "2025-08-26T13:29:46.429365",
+          "organization": "World Resources Institute (inactive)",
+          "tags": [
+            "geodata",
+            "humanitarian needs overview-hno",
+            "poverty"
+          ],
+          "sourceUrl": "https://data.humdata.org/dataset/poverty-rate-gap-density-and-the-percentage-of-poor-housing-at-location-level-in-kenya-in-1999"
+        }
+      ]
+    }
+  }
+}

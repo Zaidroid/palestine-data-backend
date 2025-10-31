@@ -1,0 +1,2897 @@
+{
+  "source": "hdx-ckan",
+  "category": "health",
+  "transformed_at": "2025-10-29T21:11:40.012Z",
+  "record_count": 288,
+  "validation": {
+    "qualityScore": 0,
+    "completeness": 0,
+    "consistency": 0,
+    "accuracy": 0,
+    "meetsThreshold": false,
+    "errorCount": 576,
+    "warningCount": 0
+  },
+  "data": [
+    {
+      "country": "Guinea",
+      "total_deaths": 27,
+      "date": "2014-09-07",
+      "_category": "health",
+      "_source": "HDX",
+      "_source_url": "https://data.humdata.org/dataset/number-of-health-care-workers-deaths-by-edv",
+      "_dataset_id": "5ffb79be-a48e-4d68-a345-3617745fa1c4",
+      "_dataset_name": "number-of-health-care-workers-deaths-by-edv"
+    },
+    {
+      "country": "Liberia",
+      "total_deaths": 81,
+      "date": "2014-09-07",
+      "_category": "health",
+      "_source": "HDX",
+      "_source_url": "https://data.humdata.org/dataset/number-of-health-care-workers-deaths-by-edv",
+      "_dataset_id": "5ffb79be-a48e-4d68-a345-3617745fa1c4",
+      "_dataset_name": "number-of-health-care-workers-deaths-by-edv"
+    },
+    {
+      "country": "Sierra Leone",
+      "total_deaths": 31,
+      "date": "2014-09-07",
+      "_category": "health",
+      "_source": "HDX",
+      "_source_url": "https://data.humdata.org/dataset/number-of-health-care-workers-deaths-by-edv",
+      "_dataset_id": "5ffb79be-a48e-4d68-a345-3617745fa1c4",
+      "_dataset_name": "number-of-health-care-workers-deaths-by-edv"
+    },
+    {
+      "country": "Guinea",
+      "total_deaths": 30,
+      "date": "2014-09-14",
+      "_category": "health",
+      "_source": "HDX",
+      "_source_url": "https://data.humdata.org/dataset/number-of-health-care-workers-deaths-by-edv",
+      "_dataset_id": "5ffb79be-a48e-4d68-a345-3617745fa1c4",
+      "_dataset_name": "number-of-health-care-workers-deaths-by-edv"
+    },
+    {
+      "country": "Liberia",
+      "total_deaths": 85,
+      "date": "2014-09-14",
+      "_category": "health",
+      "_source": "HDX",
+      "_source_url": "https://data.humdata.org/dataset/number-of-health-care-workers-deaths-by-edv",
+      "_dataset_id": "5ffb79be-a48e-4d68-a345-3617745fa1c4",
+      "_dataset_name": "number-of-health-care-workers-deaths-by-edv"
+    },
+    {
+      "country": "Nigeria",
+      "total_deaths": 5,
+      "date": "2014-09-14",
+      "_category": "health",
+      "_source": "HDX",
+      "_source_url": "https://data.humdata.org/dataset/number-of-health-care-workers-deaths-by-edv",
+      "_dataset_id": "5ffb79be-a48e-4d68-a345-3617745fa1c4",
+      "_dataset_name": "number-of-health-care-workers-deaths-by-edv"
+    },
+    {
+      "country": "Sierra Leone",
+      "total_deaths": 31,
+      "date": "2014-09-14",
+      "_category": "health",
+      "_source": "HDX",
+      "_source_url": "https://data.humdata.org/dataset/number-of-health-care-workers-deaths-by-edv",
+      "_dataset_id": "5ffb79be-a48e-4d68-a345-3617745fa1c4",
+      "_dataset_name": "number-of-health-care-workers-deaths-by-edv"
+    },
+    {
+      "country": "Guinea",
+      "total_deaths": 35,
+      "date": "2014-09-21",
+      "_category": "health",
+      "_source": "HDX",
+      "_source_url": "https://data.humdata.org/dataset/number-of-health-care-workers-deaths-by-edv",
+      "_dataset_id": "5ffb79be-a48e-4d68-a345-3617745fa1c4",
+      "_dataset_name": "number-of-health-care-workers-deaths-by-edv"
+    },
+    {
+      "country": "Liberia",
+      "total_deaths": 87,
+      "date": "2014-09-21",
+      "_category": "health",
+      "_source": "HDX",
+      "_source_url": "https://data.humdata.org/dataset/number-of-health-care-workers-deaths-by-edv",
+      "_dataset_id": "5ffb79be-a48e-4d68-a345-3617745fa1c4",
+      "_dataset_name": "number-of-health-care-workers-deaths-by-edv"
+    },
+    {
+      "country": "Nigeria",
+      "total_deaths": 5,
+      "date": "2014-09-21",
+      "_category": "health",
+      "_source": "HDX",
+      "_source_url": "https://data.humdata.org/dataset/number-of-health-care-workers-deaths-by-edv",
+      "_dataset_id": "5ffb79be-a48e-4d68-a345-3617745fa1c4",
+      "_dataset_name": "number-of-health-care-workers-deaths-by-edv"
+    },
+    {
+      "country": "Sierra Leone",
+      "total_deaths": 81,
+      "date": "2014-09-21",
+      "_category": "health",
+      "_source": "HDX",
+      "_source_url": "https://data.humdata.org/dataset/number-of-health-care-workers-deaths-by-edv",
+      "_dataset_id": "5ffb79be-a48e-4d68-a345-3617745fa1c4",
+      "_dataset_name": "number-of-health-care-workers-deaths-by-edv"
+    },
+    {
+      "country": "Guinea",
+      "total_deaths": 35,
+      "date": "2014-09-28",
+      "_category": "health",
+      "_source": "HDX",
+      "_source_url": "https://data.humdata.org/dataset/number-of-health-care-workers-deaths-by-edv",
+      "_dataset_id": "5ffb79be-a48e-4d68-a345-3617745fa1c4",
+      "_dataset_name": "number-of-health-care-workers-deaths-by-edv"
+    },
+    {
+      "country": "Liberia",
+      "total_deaths": 95,
+      "date": "2014-09-28",
+      "_category": "health",
+      "_source": "HDX",
+      "_source_url": "https://data.humdata.org/dataset/number-of-health-care-workers-deaths-by-edv",
+      "_dataset_id": "5ffb79be-a48e-4d68-a345-3617745fa1c4",
+      "_dataset_name": "number-of-health-care-workers-deaths-by-edv"
+    },
+    {
+      "country": "Nigeria",
+      "total_deaths": 5,
+      "date": "2014-09-28",
+      "_category": "health",
+      "_source": "HDX",
+      "_source_url": "https://data.humdata.org/dataset/number-of-health-care-workers-deaths-by-edv",
+      "_dataset_id": "5ffb79be-a48e-4d68-a345-3617745fa1c4",
+      "_dataset_name": "number-of-health-care-workers-deaths-by-edv"
+    },
+    {
+      "country": "Sierra Leone",
+      "total_deaths": 81,
+      "date": "2014-09-28",
+      "_category": "health",
+      "_source": "HDX",
+      "_source_url": "https://data.humdata.org/dataset/number-of-health-care-workers-deaths-by-edv",
+      "_dataset_id": "5ffb79be-a48e-4d68-a345-3617745fa1c4",
+      "_dataset_name": "number-of-health-care-workers-deaths-by-edv"
+    },
+    {
+      "country": "Guinea",
+      "total_deaths": 40,
+      "date": "2014-10-12",
+      "_category": "health",
+      "_source": "HDX",
+      "_source_url": "https://data.humdata.org/dataset/number-of-health-care-workers-deaths-by-edv",
+      "_dataset_id": "5ffb79be-a48e-4d68-a345-3617745fa1c4",
+      "_dataset_name": "number-of-health-care-workers-deaths-by-edv"
+    },
+    {
+      "country": "Liberia",
+      "total_deaths": 96,
+      "date": "2014-10-12",
+      "_category": "health",
+      "_source": "HDX",
+      "_source_url": "https://data.humdata.org/dataset/number-of-health-care-workers-deaths-by-edv",
+      "_dataset_id": "5ffb79be-a48e-4d68-a345-3617745fa1c4",
+      "_dataset_name": "number-of-health-care-workers-deaths-by-edv"
+    },
+    {
+      "country": "Nigeria",
+      "total_deaths": 5,
+      "date": "2014-10-12",
+      "_category": "health",
+      "_source": "HDX",
+      "_source_url": "https://data.humdata.org/dataset/number-of-health-care-workers-deaths-by-edv",
+      "_dataset_id": "5ffb79be-a48e-4d68-a345-3617745fa1c4",
+      "_dataset_name": "number-of-health-care-workers-deaths-by-edv"
+    },
+    {
+      "country": "Sierra Leone",
+      "total_deaths": 95,
+      "date": "2014-10-12",
+      "_category": "health",
+      "_source": "HDX",
+      "_source_url": "https://data.humdata.org/dataset/number-of-health-care-workers-deaths-by-edv",
+      "_dataset_id": "5ffb79be-a48e-4d68-a345-3617745fa1c4",
+      "_dataset_name": "number-of-health-care-workers-deaths-by-edv"
+    },
+    {
+      "country": "Guinea",
+      "total_deaths": 41,
+      "date": "2014-10-19",
+      "_category": "health",
+      "_source": "HDX",
+      "_source_url": "https://data.humdata.org/dataset/number-of-health-care-workers-deaths-by-edv",
+      "_dataset_id": "5ffb79be-a48e-4d68-a345-3617745fa1c4",
+      "_dataset_name": "number-of-health-care-workers-deaths-by-edv"
+    },
+    {
+      "country": "Liberia",
+      "total_deaths": 103,
+      "date": "2014-10-19",
+      "_category": "health",
+      "_source": "HDX",
+      "_source_url": "https://data.humdata.org/dataset/number-of-health-care-workers-deaths-by-edv",
+      "_dataset_id": "5ffb79be-a48e-4d68-a345-3617745fa1c4",
+      "_dataset_name": "number-of-health-care-workers-deaths-by-edv"
+    },
+    {
+      "country": "Nigeria",
+      "total_deaths": 5,
+      "date": "2014-10-19",
+      "_category": "health",
+      "_source": "HDX",
+      "_source_url": "https://data.humdata.org/dataset/number-of-health-care-workers-deaths-by-edv",
+      "_dataset_id": "5ffb79be-a48e-4d68-a345-3617745fa1c4",
+      "_dataset_name": "number-of-health-care-workers-deaths-by-edv"
+    },
+    {
+      "country": "Sierra Leone",
+      "total_deaths": 95,
+      "date": "2014-10-19",
+      "_category": "health",
+      "_source": "HDX",
+      "_source_url": "https://data.humdata.org/dataset/number-of-health-care-workers-deaths-by-edv",
+      "_dataset_id": "5ffb79be-a48e-4d68-a345-3617745fa1c4",
+      "_dataset_name": "number-of-health-care-workers-deaths-by-edv"
+    },
+    {
+      "country": "Guinea",
+      "total_deaths": 43,
+      "date": "2014-10-27",
+      "_category": "health",
+      "_source": "HDX",
+      "_source_url": "https://data.humdata.org/dataset/number-of-health-care-workers-deaths-by-edv",
+      "_dataset_id": "5ffb79be-a48e-4d68-a345-3617745fa1c4",
+      "_dataset_name": "number-of-health-care-workers-deaths-by-edv"
+    },
+    {
+      "country": "Liberia",
+      "total_deaths": 123,
+      "date": "2014-10-27",
+      "_category": "health",
+      "_source": "HDX",
+      "_source_url": "https://data.humdata.org/dataset/number-of-health-care-workers-deaths-by-edv",
+      "_dataset_id": "5ffb79be-a48e-4d68-a345-3617745fa1c4",
+      "_dataset_name": "number-of-health-care-workers-deaths-by-edv"
+    },
+    {
+      "country": "Nigeria",
+      "total_deaths": 5,
+      "date": "2014-10-27",
+      "_category": "health",
+      "_source": "HDX",
+      "_source_url": "https://data.humdata.org/dataset/number-of-health-care-workers-deaths-by-edv",
+      "_dataset_id": "5ffb79be-a48e-4d68-a345-3617745fa1c4",
+      "_dataset_name": "number-of-health-care-workers-deaths-by-edv"
+    },
+    {
+      "country": "Sierra Leone",
+      "total_deaths": 101,
+      "date": "2014-10-27",
+      "_category": "health",
+      "_source": "HDX",
+      "_source_url": "https://data.humdata.org/dataset/number-of-health-care-workers-deaths-by-edv",
+      "_dataset_id": "5ffb79be-a48e-4d68-a345-3617745fa1c4",
+      "_dataset_name": "number-of-health-care-workers-deaths-by-edv"
+    },
+    {
+      "country": "All",
+      "total_deaths": 269,
+      "date": "2014-10-29",
+      "_category": "health",
+      "_source": "HDX",
+      "_source_url": "https://data.humdata.org/dataset/number-of-health-care-workers-deaths-by-edv",
+      "_dataset_id": "5ffb79be-a48e-4d68-a345-3617745fa1c4",
+      "_dataset_name": "number-of-health-care-workers-deaths-by-edv"
+    },
+    {
+      "country": "Guinea",
+      "total_deaths": 46,
+      "date": "2014-11-02",
+      "_category": "health",
+      "_source": "HDX",
+      "_source_url": "https://data.humdata.org/dataset/number-of-health-care-workers-deaths-by-edv",
+      "_dataset_id": "5ffb79be-a48e-4d68-a345-3617745fa1c4",
+      "_dataset_name": "number-of-health-care-workers-deaths-by-edv"
+    },
+    {
+      "country": "Liberia",
+      "total_deaths": 157,
+      "date": "2014-11-02",
+      "_category": "health",
+      "_source": "HDX",
+      "_source_url": "https://data.humdata.org/dataset/number-of-health-care-workers-deaths-by-edv",
+      "_dataset_id": "5ffb79be-a48e-4d68-a345-3617745fa1c4",
+      "_dataset_name": "number-of-health-care-workers-deaths-by-edv"
+    },
+    {
+      "country": "Nigeria",
+      "total_deaths": 5,
+      "date": "2014-11-02",
+      "_category": "health",
+      "_source": "HDX",
+      "_source_url": "https://data.humdata.org/dataset/number-of-health-care-workers-deaths-by-edv",
+      "_dataset_id": "5ffb79be-a48e-4d68-a345-3617745fa1c4",
+      "_dataset_name": "number-of-health-care-workers-deaths-by-edv"
+    },
+    {
+      "country": "Sierra Leone",
+      "total_deaths": 102,
+      "date": "2014-11-02",
+      "_category": "health",
+      "_source": "HDX",
+      "_source_url": "https://data.humdata.org/dataset/number-of-health-care-workers-deaths-by-edv",
+      "_dataset_id": "5ffb79be-a48e-4d68-a345-3617745fa1c4",
+      "_dataset_name": "number-of-health-care-workers-deaths-by-edv"
+    },
+    {
+      "country": "All",
+      "total_deaths": 311,
+      "date": "2014-11-04",
+      "_category": "health",
+      "_source": "HDX",
+      "_source_url": "https://data.humdata.org/dataset/number-of-health-care-workers-deaths-by-edv",
+      "_dataset_id": "5ffb79be-a48e-4d68-a345-3617745fa1c4",
+      "_dataset_name": "number-of-health-care-workers-deaths-by-edv"
+    },
+    {
+      "country": "Guinea",
+      "total_deaths": 51,
+      "date": "2014-11-10",
+      "_category": "health",
+      "_source": "HDX",
+      "_source_url": "https://data.humdata.org/dataset/number-of-health-care-workers-deaths-by-edv",
+      "_dataset_id": "5ffb79be-a48e-4d68-a345-3617745fa1c4",
+      "_dataset_name": "number-of-health-care-workers-deaths-by-edv"
+    },
+    {
+      "country": "Liberia",
+      "total_deaths": 162,
+      "date": "2014-11-10",
+      "_category": "health",
+      "_source": "HDX",
+      "_source_url": "https://data.humdata.org/dataset/number-of-health-care-workers-deaths-by-edv",
+      "_dataset_id": "5ffb79be-a48e-4d68-a345-3617745fa1c4",
+      "_dataset_name": "number-of-health-care-workers-deaths-by-edv"
+    },
+    {
+      "country": "Nigeria",
+      "total_deaths": 5,
+      "date": "2014-11-10",
+      "_category": "health",
+      "_source": "HDX",
+      "_source_url": "https://data.humdata.org/dataset/number-of-health-care-workers-deaths-by-edv",
+      "_dataset_id": "5ffb79be-a48e-4d68-a345-3617745fa1c4",
+      "_dataset_name": "number-of-health-care-workers-deaths-by-edv"
+    },
+    {
+      "country": "Sierra Leone",
+      "total_deaths": 102,
+      "date": "2014-11-10",
+      "_category": "health",
+      "_source": "HDX",
+      "_source_url": "https://data.humdata.org/dataset/number-of-health-care-workers-deaths-by-edv",
+      "_dataset_id": "5ffb79be-a48e-4d68-a345-3617745fa1c4",
+      "_dataset_name": "number-of-health-care-workers-deaths-by-edv"
+    },
+    {
+      "country": "All",
+      "total_deaths": 324,
+      "date": "2014-11-14",
+      "_category": "health",
+      "_source": "HDX",
+      "_source_url": "https://data.humdata.org/dataset/number-of-health-care-workers-deaths-by-edv",
+      "_dataset_id": "5ffb79be-a48e-4d68-a345-3617745fa1c4",
+      "_dataset_name": "number-of-health-care-workers-deaths-by-edv"
+    },
+    {
+      "country": "Guinea",
+      "total_deaths": 55,
+      "date": "2014-11-16",
+      "_category": "health",
+      "_source": "HDX",
+      "_source_url": "https://data.humdata.org/dataset/number-of-health-care-workers-deaths-by-edv",
+      "_dataset_id": "5ffb79be-a48e-4d68-a345-3617745fa1c4",
+      "_dataset_name": "number-of-health-care-workers-deaths-by-edv"
+    },
+    {
+      "country": "Liberia",
+      "total_deaths": 170,
+      "date": "2014-11-16",
+      "_category": "health",
+      "_source": "HDX",
+      "_source_url": "https://data.humdata.org/dataset/number-of-health-care-workers-deaths-by-edv",
+      "_dataset_id": "5ffb79be-a48e-4d68-a345-3617745fa1c4",
+      "_dataset_name": "number-of-health-care-workers-deaths-by-edv"
+    },
+    {
+      "country": "Nigeria",
+      "total_deaths": 5,
+      "date": "2014-11-16",
+      "_category": "health",
+      "_source": "HDX",
+      "_source_url": "https://data.humdata.org/dataset/number-of-health-care-workers-deaths-by-edv",
+      "_dataset_id": "5ffb79be-a48e-4d68-a345-3617745fa1c4",
+      "_dataset_name": "number-of-health-care-workers-deaths-by-edv"
+    },
+    {
+      "country": "Sierra Leone",
+      "total_deaths": 104,
+      "date": "2014-11-16",
+      "_category": "health",
+      "_source": "HDX",
+      "_source_url": "https://data.humdata.org/dataset/number-of-health-care-workers-deaths-by-edv",
+      "_dataset_id": "5ffb79be-a48e-4d68-a345-3617745fa1c4",
+      "_dataset_name": "number-of-health-care-workers-deaths-by-edv"
+    },
+    {
+      "country": "All",
+      "total_deaths": 337,
+      "date": "2014-11-18",
+      "_category": "health",
+      "_source": "HDX",
+      "_source_url": "https://data.humdata.org/dataset/number-of-health-care-workers-deaths-by-edv",
+      "_dataset_id": "5ffb79be-a48e-4d68-a345-3617745fa1c4",
+      "_dataset_name": "number-of-health-care-workers-deaths-by-edv"
+    },
+    {
+      "country": "Guinea",
+      "total_deaths": 56,
+      "date": "2014-11-23",
+      "_category": "health",
+      "_source": "HDX",
+      "_source_url": "https://data.humdata.org/dataset/number-of-health-care-workers-deaths-by-edv",
+      "_dataset_id": "5ffb79be-a48e-4d68-a345-3617745fa1c4",
+      "_dataset_name": "number-of-health-care-workers-deaths-by-edv"
+    },
+    {
+      "country": "Liberia",
+      "total_deaths": 172,
+      "date": "2014-11-23",
+      "_category": "health",
+      "_source": "HDX",
+      "_source_url": "https://data.humdata.org/dataset/number-of-health-care-workers-deaths-by-edv",
+      "_dataset_id": "5ffb79be-a48e-4d68-a345-3617745fa1c4",
+      "_dataset_name": "number-of-health-care-workers-deaths-by-edv"
+    },
+    {
+      "country": "Mali",
+      "total_deaths": 2,
+      "date": "2014-11-23",
+      "_category": "health",
+      "_source": "HDX",
+      "_source_url": "https://data.humdata.org/dataset/number-of-health-care-workers-deaths-by-edv",
+      "_dataset_id": "5ffb79be-a48e-4d68-a345-3617745fa1c4",
+      "_dataset_name": "number-of-health-care-workers-deaths-by-edv"
+    },
+    {
+      "country": "Nigeria",
+      "total_deaths": 5,
+      "date": "2014-11-23",
+      "_category": "health",
+      "_source": "HDX",
+      "_source_url": "https://data.humdata.org/dataset/number-of-health-care-workers-deaths-by-edv",
+      "_dataset_id": "5ffb79be-a48e-4d68-a345-3617745fa1c4",
+      "_dataset_name": "number-of-health-care-workers-deaths-by-edv"
+    },
+    {
+      "country": "Sierra Leone",
+      "total_deaths": 105,
+      "date": "2014-11-23",
+      "_category": "health",
+      "_source": "HDX",
+      "_source_url": "https://data.humdata.org/dataset/number-of-health-care-workers-deaths-by-edv",
+      "_dataset_id": "5ffb79be-a48e-4d68-a345-3617745fa1c4",
+      "_dataset_name": "number-of-health-care-workers-deaths-by-edv"
+    },
+    {
+      "country": "Guinea",
+      "total_deaths": 59,
+      "date": "2014-11-30",
+      "_category": "health",
+      "_source": "HDX",
+      "_source_url": "https://data.humdata.org/dataset/number-of-health-care-workers-deaths-by-edv",
+      "_dataset_id": "5ffb79be-a48e-4d68-a345-3617745fa1c4",
+      "_dataset_name": "number-of-health-care-workers-deaths-by-edv"
+    },
+    {
+      "country": "Liberia",
+      "total_deaths": 174,
+      "date": "2014-11-30",
+      "_category": "health",
+      "_source": "HDX",
+      "_source_url": "https://data.humdata.org/dataset/number-of-health-care-workers-deaths-by-edv",
+      "_dataset_id": "5ffb79be-a48e-4d68-a345-3617745fa1c4",
+      "_dataset_name": "number-of-health-care-workers-deaths-by-edv"
+    },
+    {
+      "country": "Mali",
+      "total_deaths": 2,
+      "date": "2014-11-30",
+      "_category": "health",
+      "_source": "HDX",
+      "_source_url": "https://data.humdata.org/dataset/number-of-health-care-workers-deaths-by-edv",
+      "_dataset_id": "5ffb79be-a48e-4d68-a345-3617745fa1c4",
+      "_dataset_name": "number-of-health-care-workers-deaths-by-edv"
+    },
+    {
+      "country": "Nigeria",
+      "total_deaths": 5,
+      "date": "2014-11-30",
+      "_category": "health",
+      "_source": "HDX",
+      "_source_url": "https://data.humdata.org/dataset/number-of-health-care-workers-deaths-by-edv",
+      "_dataset_id": "5ffb79be-a48e-4d68-a345-3617745fa1c4",
+      "_dataset_name": "number-of-health-care-workers-deaths-by-edv"
+    },
+    {
+      "country": "Sierra Leone",
+      "total_deaths": 106,
+      "date": "2014-11-30",
+      "_category": "health",
+      "_source": "HDX",
+      "_source_url": "https://data.humdata.org/dataset/number-of-health-care-workers-deaths-by-edv",
+      "_dataset_id": "5ffb79be-a48e-4d68-a345-3617745fa1c4",
+      "_dataset_name": "number-of-health-care-workers-deaths-by-edv"
+    },
+    {
+      "country": "Guinea",
+      "total_deaths": 62,
+      "date": "2014-12-07",
+      "_category": "health",
+      "_source": "HDX",
+      "_source_url": "https://data.humdata.org/dataset/number-of-health-care-workers-deaths-by-edv",
+      "_dataset_id": "5ffb79be-a48e-4d68-a345-3617745fa1c4",
+      "_dataset_name": "number-of-health-care-workers-deaths-by-edv"
+    },
+    {
+      "country": "Liberia",
+      "total_deaths": 174,
+      "date": "2014-12-07",
+      "_category": "health",
+      "_source": "HDX",
+      "_source_url": "https://data.humdata.org/dataset/number-of-health-care-workers-deaths-by-edv",
+      "_dataset_id": "5ffb79be-a48e-4d68-a345-3617745fa1c4",
+      "_dataset_name": "number-of-health-care-workers-deaths-by-edv"
+    },
+    {
+      "country": "Mali",
+      "total_deaths": 2,
+      "date": "2014-12-07",
+      "_category": "health",
+      "_source": "HDX",
+      "_source_url": "https://data.humdata.org/dataset/number-of-health-care-workers-deaths-by-edv",
+      "_dataset_id": "5ffb79be-a48e-4d68-a345-3617745fa1c4",
+      "_dataset_name": "number-of-health-care-workers-deaths-by-edv"
+    },
+    {
+      "country": "Nigeria",
+      "total_deaths": 5,
+      "date": "2014-12-07",
+      "_category": "health",
+      "_source": "HDX",
+      "_source_url": "https://data.humdata.org/dataset/number-of-health-care-workers-deaths-by-edv",
+      "_dataset_id": "5ffb79be-a48e-4d68-a345-3617745fa1c4",
+      "_dataset_name": "number-of-health-care-workers-deaths-by-edv"
+    },
+    {
+      "country": "Sierra Leone",
+      "total_deaths": 106,
+      "date": "2014-12-07",
+      "_category": "health",
+      "_source": "HDX",
+      "_source_url": "https://data.humdata.org/dataset/number-of-health-care-workers-deaths-by-edv",
+      "_dataset_id": "5ffb79be-a48e-4d68-a345-3617745fa1c4",
+      "_dataset_name": "number-of-health-care-workers-deaths-by-edv"
+    },
+    {
+      "country": "Guinea",
+      "total_deaths": 72,
+      "date": "2014-12-14",
+      "_category": "health",
+      "_source": "HDX",
+      "_source_url": "https://data.humdata.org/dataset/number-of-health-care-workers-deaths-by-edv",
+      "_dataset_id": "5ffb79be-a48e-4d68-a345-3617745fa1c4",
+      "_dataset_name": "number-of-health-care-workers-deaths-by-edv"
+    },
+    {
+      "country": "Liberia",
+      "total_deaths": 177,
+      "date": "2014-12-14",
+      "_category": "health",
+      "_source": "HDX",
+      "_source_url": "https://data.humdata.org/dataset/number-of-health-care-workers-deaths-by-edv",
+      "_dataset_id": "5ffb79be-a48e-4d68-a345-3617745fa1c4",
+      "_dataset_name": "number-of-health-care-workers-deaths-by-edv"
+    },
+    {
+      "country": "Mali",
+      "total_deaths": 2,
+      "date": "2014-12-14",
+      "_category": "health",
+      "_source": "HDX",
+      "_source_url": "https://data.humdata.org/dataset/number-of-health-care-workers-deaths-by-edv",
+      "_dataset_id": "5ffb79be-a48e-4d68-a345-3617745fa1c4",
+      "_dataset_name": "number-of-health-care-workers-deaths-by-edv"
+    },
+    {
+      "country": "Nigeria",
+      "total_deaths": 5,
+      "date": "2014-12-14",
+      "_category": "health",
+      "_source": "HDX",
+      "_source_url": "https://data.humdata.org/dataset/number-of-health-care-workers-deaths-by-edv",
+      "_dataset_id": "5ffb79be-a48e-4d68-a345-3617745fa1c4",
+      "_dataset_name": "number-of-health-care-workers-deaths-by-edv"
+    },
+    {
+      "country": "Sierra Leone",
+      "total_deaths": 109,
+      "date": "2014-12-14",
+      "_category": "health",
+      "_source": "HDX",
+      "_source_url": "https://data.humdata.org/dataset/number-of-health-care-workers-deaths-by-edv",
+      "_dataset_id": "5ffb79be-a48e-4d68-a345-3617745fa1c4",
+      "_dataset_name": "number-of-health-care-workers-deaths-by-edv"
+    },
+    {
+      "country": "Guinea",
+      "total_deaths": 72,
+      "date": "2014-12-21",
+      "_category": "health",
+      "_source": "HDX",
+      "_source_url": "https://data.humdata.org/dataset/number-of-health-care-workers-deaths-by-edv",
+      "_dataset_id": "5ffb79be-a48e-4d68-a345-3617745fa1c4",
+      "_dataset_name": "number-of-health-care-workers-deaths-by-edv"
+    },
+    {
+      "country": "Liberia",
+      "total_deaths": 177,
+      "date": "2014-12-21",
+      "_category": "health",
+      "_source": "HDX",
+      "_source_url": "https://data.humdata.org/dataset/number-of-health-care-workers-deaths-by-edv",
+      "_dataset_id": "5ffb79be-a48e-4d68-a345-3617745fa1c4",
+      "_dataset_name": "number-of-health-care-workers-deaths-by-edv"
+    },
+    {
+      "country": "Mali",
+      "total_deaths": 2,
+      "date": "2014-12-21",
+      "_category": "health",
+      "_source": "HDX",
+      "_source_url": "https://data.humdata.org/dataset/number-of-health-care-workers-deaths-by-edv",
+      "_dataset_id": "5ffb79be-a48e-4d68-a345-3617745fa1c4",
+      "_dataset_name": "number-of-health-care-workers-deaths-by-edv"
+    },
+    {
+      "country": "Nigeria",
+      "total_deaths": 5,
+      "date": "2014-12-21",
+      "_category": "health",
+      "_source": "HDX",
+      "_source_url": "https://data.humdata.org/dataset/number-of-health-care-workers-deaths-by-edv",
+      "_dataset_id": "5ffb79be-a48e-4d68-a345-3617745fa1c4",
+      "_dataset_name": "number-of-health-care-workers-deaths-by-edv"
+    },
+    {
+      "country": "Sierra Leone",
+      "total_deaths": 110,
+      "date": "2014-12-21",
+      "_category": "health",
+      "_source": "HDX",
+      "_source_url": "https://data.humdata.org/dataset/number-of-health-care-workers-deaths-by-edv",
+      "_dataset_id": "5ffb79be-a48e-4d68-a345-3617745fa1c4",
+      "_dataset_name": "number-of-health-care-workers-deaths-by-edv"
+    },
+    {
+      "country": "Guinea",
+      "total_deaths": 87,
+      "date": "2014-12-28",
+      "_category": "health",
+      "_source": "HDX",
+      "_source_url": "https://data.humdata.org/dataset/number-of-health-care-workers-deaths-by-edv",
+      "_dataset_id": "5ffb79be-a48e-4d68-a345-3617745fa1c4",
+      "_dataset_name": "number-of-health-care-workers-deaths-by-edv"
+    },
+    {
+      "country": "Liberia",
+      "total_deaths": 178,
+      "date": "2014-12-28",
+      "_category": "health",
+      "_source": "HDX",
+      "_source_url": "https://data.humdata.org/dataset/number-of-health-care-workers-deaths-by-edv",
+      "_dataset_id": "5ffb79be-a48e-4d68-a345-3617745fa1c4",
+      "_dataset_name": "number-of-health-care-workers-deaths-by-edv"
+    },
+    {
+      "country": "Mali",
+      "total_deaths": 2,
+      "date": "2014-12-28",
+      "_category": "health",
+      "_source": "HDX",
+      "_source_url": "https://data.humdata.org/dataset/number-of-health-care-workers-deaths-by-edv",
+      "_dataset_id": "5ffb79be-a48e-4d68-a345-3617745fa1c4",
+      "_dataset_name": "number-of-health-care-workers-deaths-by-edv"
+    },
+    {
+      "country": "Nigeria",
+      "total_deaths": 5,
+      "date": "2014-12-28",
+      "_category": "health",
+      "_source": "HDX",
+      "_source_url": "https://data.humdata.org/dataset/number-of-health-care-workers-deaths-by-edv",
+      "_dataset_id": "5ffb79be-a48e-4d68-a345-3617745fa1c4",
+      "_dataset_name": "number-of-health-care-workers-deaths-by-edv"
+    },
+    {
+      "country": "Sierra Leone",
+      "total_deaths": 110,
+      "date": "2014-12-28",
+      "_category": "health",
+      "_source": "HDX",
+      "_source_url": "https://data.humdata.org/dataset/number-of-health-care-workers-deaths-by-edv",
+      "_dataset_id": "5ffb79be-a48e-4d68-a345-3617745fa1c4",
+      "_dataset_name": "number-of-health-care-workers-deaths-by-edv"
+    },
+    {
+      "country": "Guinea",
+      "total_deaths": 94,
+      "date": "2015-01-11",
+      "_category": "health",
+      "_source": "HDX",
+      "_source_url": "https://data.humdata.org/dataset/number-of-health-care-workers-deaths-by-edv",
+      "_dataset_id": "5ffb79be-a48e-4d68-a345-3617745fa1c4",
+      "_dataset_name": "number-of-health-care-workers-deaths-by-edv"
+    },
+    {
+      "country": "Liberia",
+      "total_deaths": 178,
+      "date": "2015-01-11",
+      "_category": "health",
+      "_source": "HDX",
+      "_source_url": "https://data.humdata.org/dataset/number-of-health-care-workers-deaths-by-edv",
+      "_dataset_id": "5ffb79be-a48e-4d68-a345-3617745fa1c4",
+      "_dataset_name": "number-of-health-care-workers-deaths-by-edv"
+    },
+    {
+      "country": "Mali",
+      "total_deaths": 2,
+      "date": "2015-01-11",
+      "_category": "health",
+      "_source": "HDX",
+      "_source_url": "https://data.humdata.org/dataset/number-of-health-care-workers-deaths-by-edv",
+      "_dataset_id": "5ffb79be-a48e-4d68-a345-3617745fa1c4",
+      "_dataset_name": "number-of-health-care-workers-deaths-by-edv"
+    },
+    {
+      "country": "Nigeria",
+      "total_deaths": 5,
+      "date": "2015-01-11",
+      "_category": "health",
+      "_source": "HDX",
+      "_source_url": "https://data.humdata.org/dataset/number-of-health-care-workers-deaths-by-edv",
+      "_dataset_id": "5ffb79be-a48e-4d68-a345-3617745fa1c4",
+      "_dataset_name": "number-of-health-care-workers-deaths-by-edv"
+    },
+    {
+      "country": "Sierra Leone",
+      "total_deaths": 221,
+      "date": "2015-01-11",
+      "_category": "health",
+      "_source": "HDX",
+      "_source_url": "https://data.humdata.org/dataset/number-of-health-care-workers-deaths-by-edv",
+      "_dataset_id": "5ffb79be-a48e-4d68-a345-3617745fa1c4",
+      "_dataset_name": "number-of-health-care-workers-deaths-by-edv"
+    },
+    {
+      "country": "Guinea",
+      "total_deaths": 100,
+      "date": "2015-01-21",
+      "_category": "health",
+      "_source": "HDX",
+      "_source_url": "https://data.humdata.org/dataset/number-of-health-care-workers-deaths-by-edv",
+      "_dataset_id": "5ffb79be-a48e-4d68-a345-3617745fa1c4",
+      "_dataset_name": "number-of-health-care-workers-deaths-by-edv"
+    },
+    {
+      "country": "Liberia",
+      "total_deaths": 178,
+      "date": "2015-01-21",
+      "_category": "health",
+      "_source": "HDX",
+      "_source_url": "https://data.humdata.org/dataset/number-of-health-care-workers-deaths-by-edv",
+      "_dataset_id": "5ffb79be-a48e-4d68-a345-3617745fa1c4",
+      "_dataset_name": "number-of-health-care-workers-deaths-by-edv"
+    },
+    {
+      "country": "Mali",
+      "total_deaths": 2,
+      "date": "2015-01-21",
+      "_category": "health",
+      "_source": "HDX",
+      "_source_url": "https://data.humdata.org/dataset/number-of-health-care-workers-deaths-by-edv",
+      "_dataset_id": "5ffb79be-a48e-4d68-a345-3617745fa1c4",
+      "_dataset_name": "number-of-health-care-workers-deaths-by-edv"
+    },
+    {
+      "country": "Nigeria",
+      "total_deaths": 5,
+      "date": "2015-01-21",
+      "_category": "health",
+      "_source": "HDX",
+      "_source_url": "https://data.humdata.org/dataset/number-of-health-care-workers-deaths-by-edv",
+      "_dataset_id": "5ffb79be-a48e-4d68-a345-3617745fa1c4",
+      "_dataset_name": "number-of-health-care-workers-deaths-by-edv"
+    },
+    {
+      "country": "Sierra Leone",
+      "total_deaths": 221,
+      "date": "2015-01-21",
+      "_category": "health",
+      "_source": "HDX",
+      "_source_url": "https://data.humdata.org/dataset/number-of-health-care-workers-deaths-by-edv",
+      "_dataset_id": "5ffb79be-a48e-4d68-a345-3617745fa1c4",
+      "_dataset_name": "number-of-health-care-workers-deaths-by-edv"
+    },
+    {
+      "country": "Guinea",
+      "total_deaths": 88,
+      "date": "2015-01-28",
+      "_category": "health",
+      "_source": "HDX",
+      "_source_url": "https://data.humdata.org/dataset/number-of-health-care-workers-deaths-by-edv",
+      "_dataset_id": "5ffb79be-a48e-4d68-a345-3617745fa1c4",
+      "_dataset_name": "number-of-health-care-workers-deaths-by-edv"
+    },
+    {
+      "country": "Liberia",
+      "total_deaths": 179,
+      "date": "2015-01-28",
+      "_category": "health",
+      "_source": "HDX",
+      "_source_url": "https://data.humdata.org/dataset/number-of-health-care-workers-deaths-by-edv",
+      "_dataset_id": "5ffb79be-a48e-4d68-a345-3617745fa1c4",
+      "_dataset_name": "number-of-health-care-workers-deaths-by-edv"
+    },
+    {
+      "country": "Mali",
+      "total_deaths": 2,
+      "date": "2015-01-28",
+      "_category": "health",
+      "_source": "HDX",
+      "_source_url": "https://data.humdata.org/dataset/number-of-health-care-workers-deaths-by-edv",
+      "_dataset_id": "5ffb79be-a48e-4d68-a345-3617745fa1c4",
+      "_dataset_name": "number-of-health-care-workers-deaths-by-edv"
+    },
+    {
+      "country": "Nigeria",
+      "total_deaths": 5,
+      "date": "2015-01-28",
+      "_category": "health",
+      "_source": "HDX",
+      "_source_url": "https://data.humdata.org/dataset/number-of-health-care-workers-deaths-by-edv",
+      "_dataset_id": "5ffb79be-a48e-4d68-a345-3617745fa1c4",
+      "_dataset_name": "number-of-health-care-workers-deaths-by-edv"
+    },
+    {
+      "country": "Sierra Leone",
+      "total_deaths": 221,
+      "date": "2015-01-28",
+      "_category": "health",
+      "_source": "HDX",
+      "_source_url": "https://data.humdata.org/dataset/number-of-health-care-workers-deaths-by-edv",
+      "_dataset_id": "5ffb79be-a48e-4d68-a345-3617745fa1c4",
+      "_dataset_name": "number-of-health-care-workers-deaths-by-edv"
+    },
+    {
+      "country": "Guinea",
+      "total_deaths": 88,
+      "date": "2015-02-04",
+      "_category": "health",
+      "_source": "HDX",
+      "_source_url": "https://data.humdata.org/dataset/number-of-health-care-workers-deaths-by-edv",
+      "_dataset_id": "5ffb79be-a48e-4d68-a345-3617745fa1c4",
+      "_dataset_name": "number-of-health-care-workers-deaths-by-edv"
+    },
+    {
+      "country": "Liberia",
+      "total_deaths": 179,
+      "date": "2015-02-04",
+      "_category": "health",
+      "_source": "HDX",
+      "_source_url": "https://data.humdata.org/dataset/number-of-health-care-workers-deaths-by-edv",
+      "_dataset_id": "5ffb79be-a48e-4d68-a345-3617745fa1c4",
+      "_dataset_name": "number-of-health-care-workers-deaths-by-edv"
+    },
+    {
+      "country": "Mali",
+      "total_deaths": 2,
+      "date": "2015-02-04",
+      "_category": "health",
+      "_source": "HDX",
+      "_source_url": "https://data.humdata.org/dataset/number-of-health-care-workers-deaths-by-edv",
+      "_dataset_id": "5ffb79be-a48e-4d68-a345-3617745fa1c4",
+      "_dataset_name": "number-of-health-care-workers-deaths-by-edv"
+    },
+    {
+      "country": "Nigeria",
+      "total_deaths": 5,
+      "date": "2015-02-04",
+      "_category": "health",
+      "_source": "HDX",
+      "_source_url": "https://data.humdata.org/dataset/number-of-health-care-workers-deaths-by-edv",
+      "_dataset_id": "5ffb79be-a48e-4d68-a345-3617745fa1c4",
+      "_dataset_name": "number-of-health-care-workers-deaths-by-edv"
+    },
+    {
+      "country": "Sierra Leone",
+      "total_deaths": 221,
+      "date": "2015-02-04",
+      "_category": "health",
+      "_source": "HDX",
+      "_source_url": "https://data.humdata.org/dataset/number-of-health-care-workers-deaths-by-edv",
+      "_dataset_id": "5ffb79be-a48e-4d68-a345-3617745fa1c4",
+      "_dataset_name": "number-of-health-care-workers-deaths-by-edv"
+    },
+    {
+      "country": "Guinea",
+      "total_deaths": 88,
+      "date": "2015-02-11",
+      "_category": "health",
+      "_source": "HDX",
+      "_source_url": "https://data.humdata.org/dataset/number-of-health-care-workers-deaths-by-edv",
+      "_dataset_id": "5ffb79be-a48e-4d68-a345-3617745fa1c4",
+      "_dataset_name": "number-of-health-care-workers-deaths-by-edv"
+    },
+    {
+      "country": "Liberia",
+      "total_deaths": 179,
+      "date": "2015-02-11",
+      "_category": "health",
+      "_source": "HDX",
+      "_source_url": "https://data.humdata.org/dataset/number-of-health-care-workers-deaths-by-edv",
+      "_dataset_id": "5ffb79be-a48e-4d68-a345-3617745fa1c4",
+      "_dataset_name": "number-of-health-care-workers-deaths-by-edv"
+    },
+    {
+      "country": "Mali",
+      "total_deaths": 2,
+      "date": "2015-02-11",
+      "_category": "health",
+      "_source": "HDX",
+      "_source_url": "https://data.humdata.org/dataset/number-of-health-care-workers-deaths-by-edv",
+      "_dataset_id": "5ffb79be-a48e-4d68-a345-3617745fa1c4",
+      "_dataset_name": "number-of-health-care-workers-deaths-by-edv"
+    },
+    {
+      "country": "Nigeria",
+      "total_deaths": 5,
+      "date": "2015-02-11",
+      "_category": "health",
+      "_source": "HDX",
+      "_source_url": "https://data.humdata.org/dataset/number-of-health-care-workers-deaths-by-edv",
+      "_dataset_id": "5ffb79be-a48e-4d68-a345-3617745fa1c4",
+      "_dataset_name": "number-of-health-care-workers-deaths-by-edv"
+    },
+    {
+      "country": "Sierra Leone",
+      "total_deaths": 221,
+      "date": "2015-02-11",
+      "_category": "health",
+      "_source": "HDX",
+      "_source_url": "https://data.humdata.org/dataset/number-of-health-care-workers-deaths-by-edv",
+      "_dataset_id": "5ffb79be-a48e-4d68-a345-3617745fa1c4",
+      "_dataset_name": "number-of-health-care-workers-deaths-by-edv"
+    },
+    {
+      "country": "Guinea",
+      "total_deaths": 88,
+      "date": "2015-02-18",
+      "_category": "health",
+      "_source": "HDX",
+      "_source_url": "https://data.humdata.org/dataset/number-of-health-care-workers-deaths-by-edv",
+      "_dataset_id": "5ffb79be-a48e-4d68-a345-3617745fa1c4",
+      "_dataset_name": "number-of-health-care-workers-deaths-by-edv"
+    },
+    {
+      "country": "Liberia",
+      "total_deaths": 179,
+      "date": "2015-02-18",
+      "_category": "health",
+      "_source": "HDX",
+      "_source_url": "https://data.humdata.org/dataset/number-of-health-care-workers-deaths-by-edv",
+      "_dataset_id": "5ffb79be-a48e-4d68-a345-3617745fa1c4",
+      "_dataset_name": "number-of-health-care-workers-deaths-by-edv"
+    },
+    {
+      "country": "Mali",
+      "total_deaths": 2,
+      "date": "2015-02-18",
+      "_category": "health",
+      "_source": "HDX",
+      "_source_url": "https://data.humdata.org/dataset/number-of-health-care-workers-deaths-by-edv",
+      "_dataset_id": "5ffb79be-a48e-4d68-a345-3617745fa1c4",
+      "_dataset_name": "number-of-health-care-workers-deaths-by-edv"
+    },
+    {
+      "country": "Nigeria",
+      "total_deaths": 5,
+      "date": "2015-02-18",
+      "_category": "health",
+      "_source": "HDX",
+      "_source_url": "https://data.humdata.org/dataset/number-of-health-care-workers-deaths-by-edv",
+      "_dataset_id": "5ffb79be-a48e-4d68-a345-3617745fa1c4",
+      "_dataset_name": "number-of-health-care-workers-deaths-by-edv"
+    },
+    {
+      "country": "Sierra Leone",
+      "total_deaths": 221,
+      "date": "2015-02-18",
+      "_category": "health",
+      "_source": "HDX",
+      "_source_url": "https://data.humdata.org/dataset/number-of-health-care-workers-deaths-by-edv",
+      "_dataset_id": "5ffb79be-a48e-4d68-a345-3617745fa1c4",
+      "_dataset_name": "number-of-health-care-workers-deaths-by-edv"
+    },
+    {
+      "country": "Guinea",
+      "total_deaths": 89,
+      "date": "2015-02-25",
+      "_category": "health",
+      "_source": "HDX",
+      "_source_url": "https://data.humdata.org/dataset/number-of-health-care-workers-deaths-by-edv",
+      "_dataset_id": "5ffb79be-a48e-4d68-a345-3617745fa1c4",
+      "_dataset_name": "number-of-health-care-workers-deaths-by-edv"
+    },
+    {
+      "country": "Liberia",
+      "total_deaths": 180,
+      "date": "2015-02-25",
+      "_category": "health",
+      "_source": "HDX",
+      "_source_url": "https://data.humdata.org/dataset/number-of-health-care-workers-deaths-by-edv",
+      "_dataset_id": "5ffb79be-a48e-4d68-a345-3617745fa1c4",
+      "_dataset_name": "number-of-health-care-workers-deaths-by-edv"
+    },
+    {
+      "country": "Mali",
+      "total_deaths": 2,
+      "date": "2015-02-25",
+      "_category": "health",
+      "_source": "HDX",
+      "_source_url": "https://data.humdata.org/dataset/number-of-health-care-workers-deaths-by-edv",
+      "_dataset_id": "5ffb79be-a48e-4d68-a345-3617745fa1c4",
+      "_dataset_name": "number-of-health-care-workers-deaths-by-edv"
+    },
+    {
+      "country": "Nigeria",
+      "total_deaths": 5,
+      "date": "2015-02-25",
+      "_category": "health",
+      "_source": "HDX",
+      "_source_url": "https://data.humdata.org/dataset/number-of-health-care-workers-deaths-by-edv",
+      "_dataset_id": "5ffb79be-a48e-4d68-a345-3617745fa1c4",
+      "_dataset_name": "number-of-health-care-workers-deaths-by-edv"
+    },
+    {
+      "country": "Sierra Leone",
+      "total_deaths": 221,
+      "date": "2015-02-25",
+      "_category": "health",
+      "_source": "HDX",
+      "_source_url": "https://data.humdata.org/dataset/number-of-health-care-workers-deaths-by-edv",
+      "_dataset_id": "5ffb79be-a48e-4d68-a345-3617745fa1c4",
+      "_dataset_name": "number-of-health-care-workers-deaths-by-edv"
+    },
+    {
+      "country": "Guinea",
+      "total_deaths": 89,
+      "date": "2015-03-04",
+      "_category": "health",
+      "_source": "HDX",
+      "_source_url": "https://data.humdata.org/dataset/number-of-health-care-workers-deaths-by-edv",
+      "_dataset_id": "5ffb79be-a48e-4d68-a345-3617745fa1c4",
+      "_dataset_name": "number-of-health-care-workers-deaths-by-edv"
+    },
+    {
+      "country": "Liberia",
+      "total_deaths": 180,
+      "date": "2015-03-04",
+      "_category": "health",
+      "_source": "HDX",
+      "_source_url": "https://data.humdata.org/dataset/number-of-health-care-workers-deaths-by-edv",
+      "_dataset_id": "5ffb79be-a48e-4d68-a345-3617745fa1c4",
+      "_dataset_name": "number-of-health-care-workers-deaths-by-edv"
+    },
+    {
+      "country": "Mali",
+      "total_deaths": 2,
+      "date": "2015-03-04",
+      "_category": "health",
+      "_source": "HDX",
+      "_source_url": "https://data.humdata.org/dataset/number-of-health-care-workers-deaths-by-edv",
+      "_dataset_id": "5ffb79be-a48e-4d68-a345-3617745fa1c4",
+      "_dataset_name": "number-of-health-care-workers-deaths-by-edv"
+    },
+    {
+      "country": "Nigeria",
+      "total_deaths": 5,
+      "date": "2015-03-04",
+      "_category": "health",
+      "_source": "HDX",
+      "_source_url": "https://data.humdata.org/dataset/number-of-health-care-workers-deaths-by-edv",
+      "_dataset_id": "5ffb79be-a48e-4d68-a345-3617745fa1c4",
+      "_dataset_name": "number-of-health-care-workers-deaths-by-edv"
+    },
+    {
+      "country": "Sierra Leone",
+      "total_deaths": 221,
+      "date": "2015-03-04",
+      "_category": "health",
+      "_source": "HDX",
+      "_source_url": "https://data.humdata.org/dataset/number-of-health-care-workers-deaths-by-edv",
+      "_dataset_id": "5ffb79be-a48e-4d68-a345-3617745fa1c4",
+      "_dataset_name": "number-of-health-care-workers-deaths-by-edv"
+    },
+    {
+      "country": "Guinea",
+      "total_deaths": 90,
+      "date": "2015-03-11",
+      "_category": "health",
+      "_source": "HDX",
+      "_source_url": "https://data.humdata.org/dataset/number-of-health-care-workers-deaths-by-edv",
+      "_dataset_id": "5ffb79be-a48e-4d68-a345-3617745fa1c4",
+      "_dataset_name": "number-of-health-care-workers-deaths-by-edv"
+    },
+    {
+      "country": "Liberia",
+      "total_deaths": 180,
+      "date": "2015-03-11",
+      "_category": "health",
+      "_source": "HDX",
+      "_source_url": "https://data.humdata.org/dataset/number-of-health-care-workers-deaths-by-edv",
+      "_dataset_id": "5ffb79be-a48e-4d68-a345-3617745fa1c4",
+      "_dataset_name": "number-of-health-care-workers-deaths-by-edv"
+    },
+    {
+      "country": "Mali",
+      "total_deaths": 2,
+      "date": "2015-03-11",
+      "_category": "health",
+      "_source": "HDX",
+      "_source_url": "https://data.humdata.org/dataset/number-of-health-care-workers-deaths-by-edv",
+      "_dataset_id": "5ffb79be-a48e-4d68-a345-3617745fa1c4",
+      "_dataset_name": "number-of-health-care-workers-deaths-by-edv"
+    },
+    {
+      "country": "Nigeria",
+      "total_deaths": 5,
+      "date": "2015-03-11",
+      "_category": "health",
+      "_source": "HDX",
+      "_source_url": "https://data.humdata.org/dataset/number-of-health-care-workers-deaths-by-edv",
+      "_dataset_id": "5ffb79be-a48e-4d68-a345-3617745fa1c4",
+      "_dataset_name": "number-of-health-care-workers-deaths-by-edv"
+    },
+    {
+      "country": "Sierra Leone",
+      "total_deaths": 221,
+      "date": "2015-03-11",
+      "_category": "health",
+      "_source": "HDX",
+      "_source_url": "https://data.humdata.org/dataset/number-of-health-care-workers-deaths-by-edv",
+      "_dataset_id": "5ffb79be-a48e-4d68-a345-3617745fa1c4",
+      "_dataset_name": "number-of-health-care-workers-deaths-by-edv"
+    },
+    {
+      "country": "Guinea",
+      "total_deaths": 91,
+      "date": "2015-03-18",
+      "_category": "health",
+      "_source": "HDX",
+      "_source_url": "https://data.humdata.org/dataset/number-of-health-care-workers-deaths-by-edv",
+      "_dataset_id": "5ffb79be-a48e-4d68-a345-3617745fa1c4",
+      "_dataset_name": "number-of-health-care-workers-deaths-by-edv"
+    },
+    {
+      "country": "Liberia",
+      "total_deaths": 180,
+      "date": "2015-03-18",
+      "_category": "health",
+      "_source": "HDX",
+      "_source_url": "https://data.humdata.org/dataset/number-of-health-care-workers-deaths-by-edv",
+      "_dataset_id": "5ffb79be-a48e-4d68-a345-3617745fa1c4",
+      "_dataset_name": "number-of-health-care-workers-deaths-by-edv"
+    },
+    {
+      "country": "Mali",
+      "total_deaths": 2,
+      "date": "2015-03-18",
+      "_category": "health",
+      "_source": "HDX",
+      "_source_url": "https://data.humdata.org/dataset/number-of-health-care-workers-deaths-by-edv",
+      "_dataset_id": "5ffb79be-a48e-4d68-a345-3617745fa1c4",
+      "_dataset_name": "number-of-health-care-workers-deaths-by-edv"
+    },
+    {
+      "country": "Nigeria",
+      "total_deaths": 5,
+      "date": "2015-03-18",
+      "_category": "health",
+      "_source": "HDX",
+      "_source_url": "https://data.humdata.org/dataset/number-of-health-care-workers-deaths-by-edv",
+      "_dataset_id": "5ffb79be-a48e-4d68-a345-3617745fa1c4",
+      "_dataset_name": "number-of-health-care-workers-deaths-by-edv"
+    },
+    {
+      "country": "Sierra Leone",
+      "total_deaths": 221,
+      "date": "2015-03-18",
+      "_category": "health",
+      "_source": "HDX",
+      "_source_url": "https://data.humdata.org/dataset/number-of-health-care-workers-deaths-by-edv",
+      "_dataset_id": "5ffb79be-a48e-4d68-a345-3617745fa1c4",
+      "_dataset_name": "number-of-health-care-workers-deaths-by-edv"
+    },
+    {
+      "country": "Guinea",
+      "total_deaths": 93,
+      "date": "2015-03-25",
+      "_category": "health",
+      "_source": "HDX",
+      "_source_url": "https://data.humdata.org/dataset/number-of-health-care-workers-deaths-by-edv",
+      "_dataset_id": "5ffb79be-a48e-4d68-a345-3617745fa1c4",
+      "_dataset_name": "number-of-health-care-workers-deaths-by-edv"
+    },
+    {
+      "country": "Liberia",
+      "total_deaths": 180,
+      "date": "2015-03-25",
+      "_category": "health",
+      "_source": "HDX",
+      "_source_url": "https://data.humdata.org/dataset/number-of-health-care-workers-deaths-by-edv",
+      "_dataset_id": "5ffb79be-a48e-4d68-a345-3617745fa1c4",
+      "_dataset_name": "number-of-health-care-workers-deaths-by-edv"
+    },
+    {
+      "country": "Mali",
+      "total_deaths": 2,
+      "date": "2015-03-25",
+      "_category": "health",
+      "_source": "HDX",
+      "_source_url": "https://data.humdata.org/dataset/number-of-health-care-workers-deaths-by-edv",
+      "_dataset_id": "5ffb79be-a48e-4d68-a345-3617745fa1c4",
+      "_dataset_name": "number-of-health-care-workers-deaths-by-edv"
+    },
+    {
+      "country": "Nigeria",
+      "total_deaths": 5,
+      "date": "2015-03-25",
+      "_category": "health",
+      "_source": "HDX",
+      "_source_url": "https://data.humdata.org/dataset/number-of-health-care-workers-deaths-by-edv",
+      "_dataset_id": "5ffb79be-a48e-4d68-a345-3617745fa1c4",
+      "_dataset_name": "number-of-health-care-workers-deaths-by-edv"
+    },
+    {
+      "country": "Sierra Leone",
+      "total_deaths": 221,
+      "date": "2015-03-25",
+      "_category": "health",
+      "_source": "HDX",
+      "_source_url": "https://data.humdata.org/dataset/number-of-health-care-workers-deaths-by-edv",
+      "_dataset_id": "5ffb79be-a48e-4d68-a345-3617745fa1c4",
+      "_dataset_name": "number-of-health-care-workers-deaths-by-edv"
+    },
+    {
+      "country": "Guinea",
+      "total_deaths": 94,
+      "date": "2015-04-01",
+      "_category": "health",
+      "_source": "HDX",
+      "_source_url": "https://data.humdata.org/dataset/number-of-health-care-workers-deaths-by-edv",
+      "_dataset_id": "5ffb79be-a48e-4d68-a345-3617745fa1c4",
+      "_dataset_name": "number-of-health-care-workers-deaths-by-edv"
+    },
+    {
+      "country": "Liberia",
+      "total_deaths": 180,
+      "date": "2015-04-01",
+      "_category": "health",
+      "_source": "HDX",
+      "_source_url": "https://data.humdata.org/dataset/number-of-health-care-workers-deaths-by-edv",
+      "_dataset_id": "5ffb79be-a48e-4d68-a345-3617745fa1c4",
+      "_dataset_name": "number-of-health-care-workers-deaths-by-edv"
+    },
+    {
+      "country": "Mali",
+      "total_deaths": 2,
+      "date": "2015-04-01",
+      "_category": "health",
+      "_source": "HDX",
+      "_source_url": "https://data.humdata.org/dataset/number-of-health-care-workers-deaths-by-edv",
+      "_dataset_id": "5ffb79be-a48e-4d68-a345-3617745fa1c4",
+      "_dataset_name": "number-of-health-care-workers-deaths-by-edv"
+    },
+    {
+      "country": "Nigeria",
+      "total_deaths": 5,
+      "date": "2015-04-01",
+      "_category": "health",
+      "_source": "HDX",
+      "_source_url": "https://data.humdata.org/dataset/number-of-health-care-workers-deaths-by-edv",
+      "_dataset_id": "5ffb79be-a48e-4d68-a345-3617745fa1c4",
+      "_dataset_name": "number-of-health-care-workers-deaths-by-edv"
+    },
+    {
+      "country": "Sierra Leone",
+      "total_deaths": 221,
+      "date": "2015-04-01",
+      "_category": "health",
+      "_source": "HDX",
+      "_source_url": "https://data.humdata.org/dataset/number-of-health-care-workers-deaths-by-edv",
+      "_dataset_id": "5ffb79be-a48e-4d68-a345-3617745fa1c4",
+      "_dataset_name": "number-of-health-care-workers-deaths-by-edv"
+    },
+    {
+      "country": "Guinea",
+      "total_deaths": 94,
+      "date": "2015-04-08",
+      "_category": "health",
+      "_source": "HDX",
+      "_source_url": "https://data.humdata.org/dataset/number-of-health-care-workers-deaths-by-edv",
+      "_dataset_id": "5ffb79be-a48e-4d68-a345-3617745fa1c4",
+      "_dataset_name": "number-of-health-care-workers-deaths-by-edv"
+    },
+    {
+      "country": "Liberia",
+      "total_deaths": 184,
+      "date": "2015-04-08",
+      "_category": "health",
+      "_source": "HDX",
+      "_source_url": "https://data.humdata.org/dataset/number-of-health-care-workers-deaths-by-edv",
+      "_dataset_id": "5ffb79be-a48e-4d68-a345-3617745fa1c4",
+      "_dataset_name": "number-of-health-care-workers-deaths-by-edv"
+    },
+    {
+      "country": "Mali",
+      "total_deaths": 2,
+      "date": "2015-04-08",
+      "_category": "health",
+      "_source": "HDX",
+      "_source_url": "https://data.humdata.org/dataset/number-of-health-care-workers-deaths-by-edv",
+      "_dataset_id": "5ffb79be-a48e-4d68-a345-3617745fa1c4",
+      "_dataset_name": "number-of-health-care-workers-deaths-by-edv"
+    },
+    {
+      "country": "Nigeria",
+      "total_deaths": 5,
+      "date": "2015-04-08",
+      "_category": "health",
+      "_source": "HDX",
+      "_source_url": "https://data.humdata.org/dataset/number-of-health-care-workers-deaths-by-edv",
+      "_dataset_id": "5ffb79be-a48e-4d68-a345-3617745fa1c4",
+      "_dataset_name": "number-of-health-care-workers-deaths-by-edv"
+    },
+    {
+      "country": "Sierra Leone",
+      "total_deaths": 221,
+      "date": "2015-04-08",
+      "_category": "health",
+      "_source": "HDX",
+      "_source_url": "https://data.humdata.org/dataset/number-of-health-care-workers-deaths-by-edv",
+      "_dataset_id": "5ffb79be-a48e-4d68-a345-3617745fa1c4",
+      "_dataset_name": "number-of-health-care-workers-deaths-by-edv"
+    },
+    {
+      "country": "Guinea",
+      "total_deaths": 94,
+      "date": "2015-04-15",
+      "_category": "health",
+      "_source": "HDX",
+      "_source_url": "https://data.humdata.org/dataset/number-of-health-care-workers-deaths-by-edv",
+      "_dataset_id": "5ffb79be-a48e-4d68-a345-3617745fa1c4",
+      "_dataset_name": "number-of-health-care-workers-deaths-by-edv"
+    },
+    {
+      "country": "Liberia",
+      "total_deaths": 188,
+      "date": "2015-04-15",
+      "_category": "health",
+      "_source": "HDX",
+      "_source_url": "https://data.humdata.org/dataset/number-of-health-care-workers-deaths-by-edv",
+      "_dataset_id": "5ffb79be-a48e-4d68-a345-3617745fa1c4",
+      "_dataset_name": "number-of-health-care-workers-deaths-by-edv"
+    },
+    {
+      "country": "Mali",
+      "total_deaths": 2,
+      "date": "2015-04-15",
+      "_category": "health",
+      "_source": "HDX",
+      "_source_url": "https://data.humdata.org/dataset/number-of-health-care-workers-deaths-by-edv",
+      "_dataset_id": "5ffb79be-a48e-4d68-a345-3617745fa1c4",
+      "_dataset_name": "number-of-health-care-workers-deaths-by-edv"
+    },
+    {
+      "country": "Nigeria",
+      "total_deaths": 5,
+      "date": "2015-04-15",
+      "_category": "health",
+      "_source": "HDX",
+      "_source_url": "https://data.humdata.org/dataset/number-of-health-care-workers-deaths-by-edv",
+      "_dataset_id": "5ffb79be-a48e-4d68-a345-3617745fa1c4",
+      "_dataset_name": "number-of-health-care-workers-deaths-by-edv"
+    },
+    {
+      "country": "Sierra Leone",
+      "total_deaths": 221,
+      "date": "2015-04-15",
+      "_category": "health",
+      "_source": "HDX",
+      "_source_url": "https://data.humdata.org/dataset/number-of-health-care-workers-deaths-by-edv",
+      "_dataset_id": "5ffb79be-a48e-4d68-a345-3617745fa1c4",
+      "_dataset_name": "number-of-health-care-workers-deaths-by-edv"
+    },
+    {
+      "country": "Guinea",
+      "total_deaths": 94,
+      "date": "2015-04-22",
+      "_category": "health",
+      "_source": "HDX",
+      "_source_url": "https://data.humdata.org/dataset/number-of-health-care-workers-deaths-by-edv",
+      "_dataset_id": "5ffb79be-a48e-4d68-a345-3617745fa1c4",
+      "_dataset_name": "number-of-health-care-workers-deaths-by-edv"
+    },
+    {
+      "country": "Liberia",
+      "total_deaths": 189,
+      "date": "2015-04-22",
+      "_category": "health",
+      "_source": "HDX",
+      "_source_url": "https://data.humdata.org/dataset/number-of-health-care-workers-deaths-by-edv",
+      "_dataset_id": "5ffb79be-a48e-4d68-a345-3617745fa1c4",
+      "_dataset_name": "number-of-health-care-workers-deaths-by-edv"
+    },
+    {
+      "country": "Mali",
+      "total_deaths": 2,
+      "date": "2015-04-22",
+      "_category": "health",
+      "_source": "HDX",
+      "_source_url": "https://data.humdata.org/dataset/number-of-health-care-workers-deaths-by-edv",
+      "_dataset_id": "5ffb79be-a48e-4d68-a345-3617745fa1c4",
+      "_dataset_name": "number-of-health-care-workers-deaths-by-edv"
+    },
+    {
+      "country": "Nigeria",
+      "total_deaths": 5,
+      "date": "2015-04-22",
+      "_category": "health",
+      "_source": "HDX",
+      "_source_url": "https://data.humdata.org/dataset/number-of-health-care-workers-deaths-by-edv",
+      "_dataset_id": "5ffb79be-a48e-4d68-a345-3617745fa1c4",
+      "_dataset_name": "number-of-health-care-workers-deaths-by-edv"
+    },
+    {
+      "country": "Sierra Leone",
+      "total_deaths": 221,
+      "date": "2015-04-22",
+      "_category": "health",
+      "_source": "HDX",
+      "_source_url": "https://data.humdata.org/dataset/number-of-health-care-workers-deaths-by-edv",
+      "_dataset_id": "5ffb79be-a48e-4d68-a345-3617745fa1c4",
+      "_dataset_name": "number-of-health-care-workers-deaths-by-edv"
+    },
+    {
+      "country": "Guinea",
+      "total_deaths": 94,
+      "date": "2015-04-29",
+      "_category": "health",
+      "_source": "HDX",
+      "_source_url": "https://data.humdata.org/dataset/number-of-health-care-workers-deaths-by-edv",
+      "_dataset_id": "5ffb79be-a48e-4d68-a345-3617745fa1c4",
+      "_dataset_name": "number-of-health-care-workers-deaths-by-edv"
+    },
+    {
+      "country": "Liberia",
+      "total_deaths": 189,
+      "date": "2015-04-29",
+      "_category": "health",
+      "_source": "HDX",
+      "_source_url": "https://data.humdata.org/dataset/number-of-health-care-workers-deaths-by-edv",
+      "_dataset_id": "5ffb79be-a48e-4d68-a345-3617745fa1c4",
+      "_dataset_name": "number-of-health-care-workers-deaths-by-edv"
+    },
+    {
+      "country": "Mali",
+      "total_deaths": 2,
+      "date": "2015-04-29",
+      "_category": "health",
+      "_source": "HDX",
+      "_source_url": "https://data.humdata.org/dataset/number-of-health-care-workers-deaths-by-edv",
+      "_dataset_id": "5ffb79be-a48e-4d68-a345-3617745fa1c4",
+      "_dataset_name": "number-of-health-care-workers-deaths-by-edv"
+    },
+    {
+      "country": "Nigeria",
+      "total_deaths": 5,
+      "date": "2015-04-29",
+      "_category": "health",
+      "_source": "HDX",
+      "_source_url": "https://data.humdata.org/dataset/number-of-health-care-workers-deaths-by-edv",
+      "_dataset_id": "5ffb79be-a48e-4d68-a345-3617745fa1c4",
+      "_dataset_name": "number-of-health-care-workers-deaths-by-edv"
+    },
+    {
+      "country": "Sierra Leone",
+      "total_deaths": 221,
+      "date": "2015-04-29",
+      "_category": "health",
+      "_source": "HDX",
+      "_source_url": "https://data.humdata.org/dataset/number-of-health-care-workers-deaths-by-edv",
+      "_dataset_id": "5ffb79be-a48e-4d68-a345-3617745fa1c4",
+      "_dataset_name": "number-of-health-care-workers-deaths-by-edv"
+    },
+    {
+      "country": "Guinea",
+      "total_deaths": 94,
+      "date": "2015-05-06",
+      "_category": "health",
+      "_source": "HDX",
+      "_source_url": "https://data.humdata.org/dataset/number-of-health-care-workers-deaths-by-edv",
+      "_dataset_id": "5ffb79be-a48e-4d68-a345-3617745fa1c4",
+      "_dataset_name": "number-of-health-care-workers-deaths-by-edv"
+    },
+    {
+      "country": "Liberia",
+      "total_deaths": 192,
+      "date": "2015-05-06",
+      "_category": "health",
+      "_source": "HDX",
+      "_source_url": "https://data.humdata.org/dataset/number-of-health-care-workers-deaths-by-edv",
+      "_dataset_id": "5ffb79be-a48e-4d68-a345-3617745fa1c4",
+      "_dataset_name": "number-of-health-care-workers-deaths-by-edv"
+    },
+    {
+      "country": "Mali",
+      "total_deaths": 2,
+      "date": "2015-05-06",
+      "_category": "health",
+      "_source": "HDX",
+      "_source_url": "https://data.humdata.org/dataset/number-of-health-care-workers-deaths-by-edv",
+      "_dataset_id": "5ffb79be-a48e-4d68-a345-3617745fa1c4",
+      "_dataset_name": "number-of-health-care-workers-deaths-by-edv"
+    },
+    {
+      "country": "Nigeria",
+      "total_deaths": 5,
+      "date": "2015-05-06",
+      "_category": "health",
+      "_source": "HDX",
+      "_source_url": "https://data.humdata.org/dataset/number-of-health-care-workers-deaths-by-edv",
+      "_dataset_id": "5ffb79be-a48e-4d68-a345-3617745fa1c4",
+      "_dataset_name": "number-of-health-care-workers-deaths-by-edv"
+    },
+    {
+      "country": "Sierra Leone",
+      "total_deaths": 221,
+      "date": "2015-05-06",
+      "_category": "health",
+      "_source": "HDX",
+      "_source_url": "https://data.humdata.org/dataset/number-of-health-care-workers-deaths-by-edv",
+      "_dataset_id": "5ffb79be-a48e-4d68-a345-3617745fa1c4",
+      "_dataset_name": "number-of-health-care-workers-deaths-by-edv"
+    },
+    {
+      "country": "Guinea",
+      "total_deaths": 94,
+      "date": "2015-05-13",
+      "_category": "health",
+      "_source": "HDX",
+      "_source_url": "https://data.humdata.org/dataset/number-of-health-care-workers-deaths-by-edv",
+      "_dataset_id": "5ffb79be-a48e-4d68-a345-3617745fa1c4",
+      "_dataset_name": "number-of-health-care-workers-deaths-by-edv"
+    },
+    {
+      "country": "Liberia",
+      "total_deaths": 192,
+      "date": "2015-05-13",
+      "_category": "health",
+      "_source": "HDX",
+      "_source_url": "https://data.humdata.org/dataset/number-of-health-care-workers-deaths-by-edv",
+      "_dataset_id": "5ffb79be-a48e-4d68-a345-3617745fa1c4",
+      "_dataset_name": "number-of-health-care-workers-deaths-by-edv"
+    },
+    {
+      "country": "Mali",
+      "total_deaths": 2,
+      "date": "2015-05-13",
+      "_category": "health",
+      "_source": "HDX",
+      "_source_url": "https://data.humdata.org/dataset/number-of-health-care-workers-deaths-by-edv",
+      "_dataset_id": "5ffb79be-a48e-4d68-a345-3617745fa1c4",
+      "_dataset_name": "number-of-health-care-workers-deaths-by-edv"
+    },
+    {
+      "country": "Nigeria",
+      "total_deaths": 5,
+      "date": "2015-05-13",
+      "_category": "health",
+      "_source": "HDX",
+      "_source_url": "https://data.humdata.org/dataset/number-of-health-care-workers-deaths-by-edv",
+      "_dataset_id": "5ffb79be-a48e-4d68-a345-3617745fa1c4",
+      "_dataset_name": "number-of-health-care-workers-deaths-by-edv"
+    },
+    {
+      "country": "Sierra Leone",
+      "total_deaths": 221,
+      "date": "2015-05-13",
+      "_category": "health",
+      "_source": "HDX",
+      "_source_url": "https://data.humdata.org/dataset/number-of-health-care-workers-deaths-by-edv",
+      "_dataset_id": "5ffb79be-a48e-4d68-a345-3617745fa1c4",
+      "_dataset_name": "number-of-health-care-workers-deaths-by-edv"
+    },
+    {
+      "country": "Guinea",
+      "total_deaths": 94,
+      "date": "2015-05-20",
+      "_category": "health",
+      "_source": "HDX",
+      "_source_url": "https://data.humdata.org/dataset/number-of-health-care-workers-deaths-by-edv",
+      "_dataset_id": "5ffb79be-a48e-4d68-a345-3617745fa1c4",
+      "_dataset_name": "number-of-health-care-workers-deaths-by-edv"
+    },
+    {
+      "country": "Liberia",
+      "total_deaths": 192,
+      "date": "2015-05-20",
+      "_category": "health",
+      "_source": "HDX",
+      "_source_url": "https://data.humdata.org/dataset/number-of-health-care-workers-deaths-by-edv",
+      "_dataset_id": "5ffb79be-a48e-4d68-a345-3617745fa1c4",
+      "_dataset_name": "number-of-health-care-workers-deaths-by-edv"
+    },
+    {
+      "country": "Mali",
+      "total_deaths": 2,
+      "date": "2015-05-20",
+      "_category": "health",
+      "_source": "HDX",
+      "_source_url": "https://data.humdata.org/dataset/number-of-health-care-workers-deaths-by-edv",
+      "_dataset_id": "5ffb79be-a48e-4d68-a345-3617745fa1c4",
+      "_dataset_name": "number-of-health-care-workers-deaths-by-edv"
+    },
+    {
+      "country": "Nigeria",
+      "total_deaths": 5,
+      "date": "2015-05-20",
+      "_category": "health",
+      "_source": "HDX",
+      "_source_url": "https://data.humdata.org/dataset/number-of-health-care-workers-deaths-by-edv",
+      "_dataset_id": "5ffb79be-a48e-4d68-a345-3617745fa1c4",
+      "_dataset_name": "number-of-health-care-workers-deaths-by-edv"
+    },
+    {
+      "country": "Sierra Leone",
+      "total_deaths": 221,
+      "date": "2015-05-20",
+      "_category": "health",
+      "_source": "HDX",
+      "_source_url": "https://data.humdata.org/dataset/number-of-health-care-workers-deaths-by-edv",
+      "_dataset_id": "5ffb79be-a48e-4d68-a345-3617745fa1c4",
+      "_dataset_name": "number-of-health-care-workers-deaths-by-edv"
+    },
+    {
+      "country": "Guinea",
+      "total_deaths": 94,
+      "date": "2015-05-27",
+      "_category": "health",
+      "_source": "HDX",
+      "_source_url": "https://data.humdata.org/dataset/number-of-health-care-workers-deaths-by-edv",
+      "_dataset_id": "5ffb79be-a48e-4d68-a345-3617745fa1c4",
+      "_dataset_name": "number-of-health-care-workers-deaths-by-edv"
+    },
+    {
+      "country": "Liberia",
+      "total_deaths": 192,
+      "date": "2015-05-27",
+      "_category": "health",
+      "_source": "HDX",
+      "_source_url": "https://data.humdata.org/dataset/number-of-health-care-workers-deaths-by-edv",
+      "_dataset_id": "5ffb79be-a48e-4d68-a345-3617745fa1c4",
+      "_dataset_name": "number-of-health-care-workers-deaths-by-edv"
+    },
+    {
+      "country": "Mali",
+      "total_deaths": 2,
+      "date": "2015-05-27",
+      "_category": "health",
+      "_source": "HDX",
+      "_source_url": "https://data.humdata.org/dataset/number-of-health-care-workers-deaths-by-edv",
+      "_dataset_id": "5ffb79be-a48e-4d68-a345-3617745fa1c4",
+      "_dataset_name": "number-of-health-care-workers-deaths-by-edv"
+    },
+    {
+      "country": "Nigeria",
+      "total_deaths": 5,
+      "date": "2015-05-27",
+      "_category": "health",
+      "_source": "HDX",
+      "_source_url": "https://data.humdata.org/dataset/number-of-health-care-workers-deaths-by-edv",
+      "_dataset_id": "5ffb79be-a48e-4d68-a345-3617745fa1c4",
+      "_dataset_name": "number-of-health-care-workers-deaths-by-edv"
+    },
+    {
+      "country": "Sierra Leone",
+      "total_deaths": 221,
+      "date": "2015-05-27",
+      "_category": "health",
+      "_source": "HDX",
+      "_source_url": "https://data.humdata.org/dataset/number-of-health-care-workers-deaths-by-edv",
+      "_dataset_id": "5ffb79be-a48e-4d68-a345-3617745fa1c4",
+      "_dataset_name": "number-of-health-care-workers-deaths-by-edv"
+    },
+    {
+      "country": "Guinea",
+      "total_deaths": 94,
+      "date": "2015-06-03",
+      "_category": "health",
+      "_source": "HDX",
+      "_source_url": "https://data.humdata.org/dataset/number-of-health-care-workers-deaths-by-edv",
+      "_dataset_id": "5ffb79be-a48e-4d68-a345-3617745fa1c4",
+      "_dataset_name": "number-of-health-care-workers-deaths-by-edv"
+    },
+    {
+      "country": "Liberia",
+      "total_deaths": 192,
+      "date": "2015-06-03",
+      "_category": "health",
+      "_source": "HDX",
+      "_source_url": "https://data.humdata.org/dataset/number-of-health-care-workers-deaths-by-edv",
+      "_dataset_id": "5ffb79be-a48e-4d68-a345-3617745fa1c4",
+      "_dataset_name": "number-of-health-care-workers-deaths-by-edv"
+    },
+    {
+      "country": "Mali",
+      "total_deaths": 2,
+      "date": "2015-06-03",
+      "_category": "health",
+      "_source": "HDX",
+      "_source_url": "https://data.humdata.org/dataset/number-of-health-care-workers-deaths-by-edv",
+      "_dataset_id": "5ffb79be-a48e-4d68-a345-3617745fa1c4",
+      "_dataset_name": "number-of-health-care-workers-deaths-by-edv"
+    },
+    {
+      "country": "Nigeria",
+      "total_deaths": 5,
+      "date": "2015-06-03",
+      "_category": "health",
+      "_source": "HDX",
+      "_source_url": "https://data.humdata.org/dataset/number-of-health-care-workers-deaths-by-edv",
+      "_dataset_id": "5ffb79be-a48e-4d68-a345-3617745fa1c4",
+      "_dataset_name": "number-of-health-care-workers-deaths-by-edv"
+    },
+    {
+      "country": "Sierra Leone",
+      "total_deaths": 221,
+      "date": "2015-06-03",
+      "_category": "health",
+      "_source": "HDX",
+      "_source_url": "https://data.humdata.org/dataset/number-of-health-care-workers-deaths-by-edv",
+      "_dataset_id": "5ffb79be-a48e-4d68-a345-3617745fa1c4",
+      "_dataset_name": "number-of-health-care-workers-deaths-by-edv"
+    },
+    {
+      "country": "Guinea",
+      "total_deaths": 94,
+      "date": "2015-06-10",
+      "_category": "health",
+      "_source": "HDX",
+      "_source_url": "https://data.humdata.org/dataset/number-of-health-care-workers-deaths-by-edv",
+      "_dataset_id": "5ffb79be-a48e-4d68-a345-3617745fa1c4",
+      "_dataset_name": "number-of-health-care-workers-deaths-by-edv"
+    },
+    {
+      "country": "Liberia",
+      "total_deaths": 192,
+      "date": "2015-06-10",
+      "_category": "health",
+      "_source": "HDX",
+      "_source_url": "https://data.humdata.org/dataset/number-of-health-care-workers-deaths-by-edv",
+      "_dataset_id": "5ffb79be-a48e-4d68-a345-3617745fa1c4",
+      "_dataset_name": "number-of-health-care-workers-deaths-by-edv"
+    },
+    {
+      "country": "Mali",
+      "total_deaths": 2,
+      "date": "2015-06-10",
+      "_category": "health",
+      "_source": "HDX",
+      "_source_url": "https://data.humdata.org/dataset/number-of-health-care-workers-deaths-by-edv",
+      "_dataset_id": "5ffb79be-a48e-4d68-a345-3617745fa1c4",
+      "_dataset_name": "number-of-health-care-workers-deaths-by-edv"
+    },
+    {
+      "country": "Nigeria",
+      "total_deaths": 5,
+      "date": "2015-06-10",
+      "_category": "health",
+      "_source": "HDX",
+      "_source_url": "https://data.humdata.org/dataset/number-of-health-care-workers-deaths-by-edv",
+      "_dataset_id": "5ffb79be-a48e-4d68-a345-3617745fa1c4",
+      "_dataset_name": "number-of-health-care-workers-deaths-by-edv"
+    },
+    {
+      "country": "Sierra Leone",
+      "total_deaths": 221,
+      "date": "2015-06-10",
+      "_category": "health",
+      "_source": "HDX",
+      "_source_url": "https://data.humdata.org/dataset/number-of-health-care-workers-deaths-by-edv",
+      "_dataset_id": "5ffb79be-a48e-4d68-a345-3617745fa1c4",
+      "_dataset_name": "number-of-health-care-workers-deaths-by-edv"
+    },
+    {
+      "country": "Guinea",
+      "total_deaths": 94,
+      "date": "2015-06-17",
+      "_category": "health",
+      "_source": "HDX",
+      "_source_url": "https://data.humdata.org/dataset/number-of-health-care-workers-deaths-by-edv",
+      "_dataset_id": "5ffb79be-a48e-4d68-a345-3617745fa1c4",
+      "_dataset_name": "number-of-health-care-workers-deaths-by-edv"
+    },
+    {
+      "country": "Liberia",
+      "total_deaths": 192,
+      "date": "2015-06-17",
+      "_category": "health",
+      "_source": "HDX",
+      "_source_url": "https://data.humdata.org/dataset/number-of-health-care-workers-deaths-by-edv",
+      "_dataset_id": "5ffb79be-a48e-4d68-a345-3617745fa1c4",
+      "_dataset_name": "number-of-health-care-workers-deaths-by-edv"
+    },
+    {
+      "country": "Mali",
+      "total_deaths": 2,
+      "date": "2015-06-17",
+      "_category": "health",
+      "_source": "HDX",
+      "_source_url": "https://data.humdata.org/dataset/number-of-health-care-workers-deaths-by-edv",
+      "_dataset_id": "5ffb79be-a48e-4d68-a345-3617745fa1c4",
+      "_dataset_name": "number-of-health-care-workers-deaths-by-edv"
+    },
+    {
+      "country": "Nigeria",
+      "total_deaths": 5,
+      "date": "2015-06-17",
+      "_category": "health",
+      "_source": "HDX",
+      "_source_url": "https://data.humdata.org/dataset/number-of-health-care-workers-deaths-by-edv",
+      "_dataset_id": "5ffb79be-a48e-4d68-a345-3617745fa1c4",
+      "_dataset_name": "number-of-health-care-workers-deaths-by-edv"
+    },
+    {
+      "country": "Sierra Leone",
+      "total_deaths": 221,
+      "date": "2015-06-17",
+      "_category": "health",
+      "_source": "HDX",
+      "_source_url": "https://data.humdata.org/dataset/number-of-health-care-workers-deaths-by-edv",
+      "_dataset_id": "5ffb79be-a48e-4d68-a345-3617745fa1c4",
+      "_dataset_name": "number-of-health-care-workers-deaths-by-edv"
+    },
+    {
+      "country": "Guinea",
+      "total_deaths": 94,
+      "date": "2015-06-24",
+      "_category": "health",
+      "_source": "HDX",
+      "_source_url": "https://data.humdata.org/dataset/number-of-health-care-workers-deaths-by-edv",
+      "_dataset_id": "5ffb79be-a48e-4d68-a345-3617745fa1c4",
+      "_dataset_name": "number-of-health-care-workers-deaths-by-edv"
+    },
+    {
+      "country": "Liberia",
+      "total_deaths": 192,
+      "date": "2015-06-24",
+      "_category": "health",
+      "_source": "HDX",
+      "_source_url": "https://data.humdata.org/dataset/number-of-health-care-workers-deaths-by-edv",
+      "_dataset_id": "5ffb79be-a48e-4d68-a345-3617745fa1c4",
+      "_dataset_name": "number-of-health-care-workers-deaths-by-edv"
+    },
+    {
+      "country": "Mali",
+      "total_deaths": 2,
+      "date": "2015-06-24",
+      "_category": "health",
+      "_source": "HDX",
+      "_source_url": "https://data.humdata.org/dataset/number-of-health-care-workers-deaths-by-edv",
+      "_dataset_id": "5ffb79be-a48e-4d68-a345-3617745fa1c4",
+      "_dataset_name": "number-of-health-care-workers-deaths-by-edv"
+    },
+    {
+      "country": "Nigeria",
+      "total_deaths": 5,
+      "date": "2015-06-24",
+      "_category": "health",
+      "_source": "HDX",
+      "_source_url": "https://data.humdata.org/dataset/number-of-health-care-workers-deaths-by-edv",
+      "_dataset_id": "5ffb79be-a48e-4d68-a345-3617745fa1c4",
+      "_dataset_name": "number-of-health-care-workers-deaths-by-edv"
+    },
+    {
+      "country": "Sierra Leone",
+      "total_deaths": 221,
+      "date": "2015-06-24",
+      "_category": "health",
+      "_source": "HDX",
+      "_source_url": "https://data.humdata.org/dataset/number-of-health-care-workers-deaths-by-edv",
+      "_dataset_id": "5ffb79be-a48e-4d68-a345-3617745fa1c4",
+      "_dataset_name": "number-of-health-care-workers-deaths-by-edv"
+    },
+    {
+      "country": "Guinea",
+      "total_deaths": 96,
+      "date": "2015-07-01",
+      "_category": "health",
+      "_source": "HDX",
+      "_source_url": "https://data.humdata.org/dataset/number-of-health-care-workers-deaths-by-edv",
+      "_dataset_id": "5ffb79be-a48e-4d68-a345-3617745fa1c4",
+      "_dataset_name": "number-of-health-care-workers-deaths-by-edv"
+    },
+    {
+      "country": "Liberia",
+      "total_deaths": 192,
+      "date": "2015-07-01",
+      "_category": "health",
+      "_source": "HDX",
+      "_source_url": "https://data.humdata.org/dataset/number-of-health-care-workers-deaths-by-edv",
+      "_dataset_id": "5ffb79be-a48e-4d68-a345-3617745fa1c4",
+      "_dataset_name": "number-of-health-care-workers-deaths-by-edv"
+    },
+    {
+      "country": "Mali",
+      "total_deaths": 2,
+      "date": "2015-07-01",
+      "_category": "health",
+      "_source": "HDX",
+      "_source_url": "https://data.humdata.org/dataset/number-of-health-care-workers-deaths-by-edv",
+      "_dataset_id": "5ffb79be-a48e-4d68-a345-3617745fa1c4",
+      "_dataset_name": "number-of-health-care-workers-deaths-by-edv"
+    },
+    {
+      "country": "Nigeria",
+      "total_deaths": 5,
+      "date": "2015-07-01",
+      "_category": "health",
+      "_source": "HDX",
+      "_source_url": "https://data.humdata.org/dataset/number-of-health-care-workers-deaths-by-edv",
+      "_dataset_id": "5ffb79be-a48e-4d68-a345-3617745fa1c4",
+      "_dataset_name": "number-of-health-care-workers-deaths-by-edv"
+    },
+    {
+      "country": "Sierra Leone",
+      "total_deaths": 221,
+      "date": "2015-07-01",
+      "_category": "health",
+      "_source": "HDX",
+      "_source_url": "https://data.humdata.org/dataset/number-of-health-care-workers-deaths-by-edv",
+      "_dataset_id": "5ffb79be-a48e-4d68-a345-3617745fa1c4",
+      "_dataset_name": "number-of-health-care-workers-deaths-by-edv"
+    },
+    {
+      "country": "Guinea",
+      "total_deaths": 96,
+      "date": "2015-07-08",
+      "_category": "health",
+      "_source": "HDX",
+      "_source_url": "https://data.humdata.org/dataset/number-of-health-care-workers-deaths-by-edv",
+      "_dataset_id": "5ffb79be-a48e-4d68-a345-3617745fa1c4",
+      "_dataset_name": "number-of-health-care-workers-deaths-by-edv"
+    },
+    {
+      "country": "Liberia",
+      "total_deaths": 192,
+      "date": "2015-07-08",
+      "_category": "health",
+      "_source": "HDX",
+      "_source_url": "https://data.humdata.org/dataset/number-of-health-care-workers-deaths-by-edv",
+      "_dataset_id": "5ffb79be-a48e-4d68-a345-3617745fa1c4",
+      "_dataset_name": "number-of-health-care-workers-deaths-by-edv"
+    },
+    {
+      "country": "Mali",
+      "total_deaths": 2,
+      "date": "2015-07-08",
+      "_category": "health",
+      "_source": "HDX",
+      "_source_url": "https://data.humdata.org/dataset/number-of-health-care-workers-deaths-by-edv",
+      "_dataset_id": "5ffb79be-a48e-4d68-a345-3617745fa1c4",
+      "_dataset_name": "number-of-health-care-workers-deaths-by-edv"
+    },
+    {
+      "country": "Nigeria",
+      "total_deaths": 5,
+      "date": "2015-07-08",
+      "_category": "health",
+      "_source": "HDX",
+      "_source_url": "https://data.humdata.org/dataset/number-of-health-care-workers-deaths-by-edv",
+      "_dataset_id": "5ffb79be-a48e-4d68-a345-3617745fa1c4",
+      "_dataset_name": "number-of-health-care-workers-deaths-by-edv"
+    },
+    {
+      "country": "Sierra Leone",
+      "total_deaths": 221,
+      "date": "2015-07-08",
+      "_category": "health",
+      "_source": "HDX",
+      "_source_url": "https://data.humdata.org/dataset/number-of-health-care-workers-deaths-by-edv",
+      "_dataset_id": "5ffb79be-a48e-4d68-a345-3617745fa1c4",
+      "_dataset_name": "number-of-health-care-workers-deaths-by-edv"
+    },
+    {
+      "country": "Guinea",
+      "total_deaths": 96,
+      "date": "2015-07-15",
+      "_category": "health",
+      "_source": "HDX",
+      "_source_url": "https://data.humdata.org/dataset/number-of-health-care-workers-deaths-by-edv",
+      "_dataset_id": "5ffb79be-a48e-4d68-a345-3617745fa1c4",
+      "_dataset_name": "number-of-health-care-workers-deaths-by-edv"
+    },
+    {
+      "country": "Liberia",
+      "total_deaths": 192,
+      "date": "2015-07-15",
+      "_category": "health",
+      "_source": "HDX",
+      "_source_url": "https://data.humdata.org/dataset/number-of-health-care-workers-deaths-by-edv",
+      "_dataset_id": "5ffb79be-a48e-4d68-a345-3617745fa1c4",
+      "_dataset_name": "number-of-health-care-workers-deaths-by-edv"
+    },
+    {
+      "country": "Mali",
+      "total_deaths": 2,
+      "date": "2015-07-15",
+      "_category": "health",
+      "_source": "HDX",
+      "_source_url": "https://data.humdata.org/dataset/number-of-health-care-workers-deaths-by-edv",
+      "_dataset_id": "5ffb79be-a48e-4d68-a345-3617745fa1c4",
+      "_dataset_name": "number-of-health-care-workers-deaths-by-edv"
+    },
+    {
+      "country": "Nigeria",
+      "total_deaths": 5,
+      "date": "2015-07-15",
+      "_category": "health",
+      "_source": "HDX",
+      "_source_url": "https://data.humdata.org/dataset/number-of-health-care-workers-deaths-by-edv",
+      "_dataset_id": "5ffb79be-a48e-4d68-a345-3617745fa1c4",
+      "_dataset_name": "number-of-health-care-workers-deaths-by-edv"
+    },
+    {
+      "country": "Sierra Leone",
+      "total_deaths": 221,
+      "date": "2015-07-15",
+      "_category": "health",
+      "_source": "HDX",
+      "_source_url": "https://data.humdata.org/dataset/number-of-health-care-workers-deaths-by-edv",
+      "_dataset_id": "5ffb79be-a48e-4d68-a345-3617745fa1c4",
+      "_dataset_name": "number-of-health-care-workers-deaths-by-edv"
+    },
+    {
+      "country": "Guinea",
+      "total_deaths": 97,
+      "date": "2015-07-22",
+      "_category": "health",
+      "_source": "HDX",
+      "_source_url": "https://data.humdata.org/dataset/number-of-health-care-workers-deaths-by-edv",
+      "_dataset_id": "5ffb79be-a48e-4d68-a345-3617745fa1c4",
+      "_dataset_name": "number-of-health-care-workers-deaths-by-edv"
+    },
+    {
+      "country": "Liberia",
+      "total_deaths": 192,
+      "date": "2015-07-22",
+      "_category": "health",
+      "_source": "HDX",
+      "_source_url": "https://data.humdata.org/dataset/number-of-health-care-workers-deaths-by-edv",
+      "_dataset_id": "5ffb79be-a48e-4d68-a345-3617745fa1c4",
+      "_dataset_name": "number-of-health-care-workers-deaths-by-edv"
+    },
+    {
+      "country": "Mali",
+      "total_deaths": 2,
+      "date": "2015-07-22",
+      "_category": "health",
+      "_source": "HDX",
+      "_source_url": "https://data.humdata.org/dataset/number-of-health-care-workers-deaths-by-edv",
+      "_dataset_id": "5ffb79be-a48e-4d68-a345-3617745fa1c4",
+      "_dataset_name": "number-of-health-care-workers-deaths-by-edv"
+    },
+    {
+      "country": "Nigeria",
+      "total_deaths": 5,
+      "date": "2015-07-22",
+      "_category": "health",
+      "_source": "HDX",
+      "_source_url": "https://data.humdata.org/dataset/number-of-health-care-workers-deaths-by-edv",
+      "_dataset_id": "5ffb79be-a48e-4d68-a345-3617745fa1c4",
+      "_dataset_name": "number-of-health-care-workers-deaths-by-edv"
+    },
+    {
+      "country": "Sierra Leone",
+      "total_deaths": 221,
+      "date": "2015-07-22",
+      "_category": "health",
+      "_source": "HDX",
+      "_source_url": "https://data.humdata.org/dataset/number-of-health-care-workers-deaths-by-edv",
+      "_dataset_id": "5ffb79be-a48e-4d68-a345-3617745fa1c4",
+      "_dataset_name": "number-of-health-care-workers-deaths-by-edv"
+    },
+    {
+      "country": "Guinea",
+      "total_deaths": 97,
+      "date": "2015-07-29",
+      "_category": "health",
+      "_source": "HDX",
+      "_source_url": "https://data.humdata.org/dataset/number-of-health-care-workers-deaths-by-edv",
+      "_dataset_id": "5ffb79be-a48e-4d68-a345-3617745fa1c4",
+      "_dataset_name": "number-of-health-care-workers-deaths-by-edv"
+    },
+    {
+      "country": "Liberia",
+      "total_deaths": 192,
+      "date": "2015-07-29",
+      "_category": "health",
+      "_source": "HDX",
+      "_source_url": "https://data.humdata.org/dataset/number-of-health-care-workers-deaths-by-edv",
+      "_dataset_id": "5ffb79be-a48e-4d68-a345-3617745fa1c4",
+      "_dataset_name": "number-of-health-care-workers-deaths-by-edv"
+    },
+    {
+      "country": "Mali",
+      "total_deaths": 2,
+      "date": "2015-07-29",
+      "_category": "health",
+      "_source": "HDX",
+      "_source_url": "https://data.humdata.org/dataset/number-of-health-care-workers-deaths-by-edv",
+      "_dataset_id": "5ffb79be-a48e-4d68-a345-3617745fa1c4",
+      "_dataset_name": "number-of-health-care-workers-deaths-by-edv"
+    },
+    {
+      "country": "Nigeria",
+      "total_deaths": 5,
+      "date": "2015-07-29",
+      "_category": "health",
+      "_source": "HDX",
+      "_source_url": "https://data.humdata.org/dataset/number-of-health-care-workers-deaths-by-edv",
+      "_dataset_id": "5ffb79be-a48e-4d68-a345-3617745fa1c4",
+      "_dataset_name": "number-of-health-care-workers-deaths-by-edv"
+    },
+    {
+      "country": "Sierra Leone",
+      "total_deaths": 221,
+      "date": "2015-07-29",
+      "_category": "health",
+      "_source": "HDX",
+      "_source_url": "https://data.humdata.org/dataset/number-of-health-care-workers-deaths-by-edv",
+      "_dataset_id": "5ffb79be-a48e-4d68-a345-3617745fa1c4",
+      "_dataset_name": "number-of-health-care-workers-deaths-by-edv"
+    },
+    {
+      "country": "Guinea",
+      "total_deaths": 99,
+      "date": "2015-08-05",
+      "_category": "health",
+      "_source": "HDX",
+      "_source_url": "https://data.humdata.org/dataset/number-of-health-care-workers-deaths-by-edv",
+      "_dataset_id": "5ffb79be-a48e-4d68-a345-3617745fa1c4",
+      "_dataset_name": "number-of-health-care-workers-deaths-by-edv"
+    },
+    {
+      "country": "Liberia",
+      "total_deaths": 192,
+      "date": "2015-08-05",
+      "_category": "health",
+      "_source": "HDX",
+      "_source_url": "https://data.humdata.org/dataset/number-of-health-care-workers-deaths-by-edv",
+      "_dataset_id": "5ffb79be-a48e-4d68-a345-3617745fa1c4",
+      "_dataset_name": "number-of-health-care-workers-deaths-by-edv"
+    },
+    {
+      "country": "Mali",
+      "total_deaths": 2,
+      "date": "2015-08-05",
+      "_category": "health",
+      "_source": "HDX",
+      "_source_url": "https://data.humdata.org/dataset/number-of-health-care-workers-deaths-by-edv",
+      "_dataset_id": "5ffb79be-a48e-4d68-a345-3617745fa1c4",
+      "_dataset_name": "number-of-health-care-workers-deaths-by-edv"
+    },
+    {
+      "country": "Nigeria",
+      "total_deaths": 5,
+      "date": "2015-08-05",
+      "_category": "health",
+      "_source": "HDX",
+      "_source_url": "https://data.humdata.org/dataset/number-of-health-care-workers-deaths-by-edv",
+      "_dataset_id": "5ffb79be-a48e-4d68-a345-3617745fa1c4",
+      "_dataset_name": "number-of-health-care-workers-deaths-by-edv"
+    },
+    {
+      "country": "Sierra Leone",
+      "total_deaths": 221,
+      "date": "2015-08-05",
+      "_category": "health",
+      "_source": "HDX",
+      "_source_url": "https://data.humdata.org/dataset/number-of-health-care-workers-deaths-by-edv",
+      "_dataset_id": "5ffb79be-a48e-4d68-a345-3617745fa1c4",
+      "_dataset_name": "number-of-health-care-workers-deaths-by-edv"
+    },
+    {
+      "country": "Guinea",
+      "total_deaths": 99,
+      "date": "2015-08-12",
+      "_category": "health",
+      "_source": "HDX",
+      "_source_url": "https://data.humdata.org/dataset/number-of-health-care-workers-deaths-by-edv",
+      "_dataset_id": "5ffb79be-a48e-4d68-a345-3617745fa1c4",
+      "_dataset_name": "number-of-health-care-workers-deaths-by-edv"
+    },
+    {
+      "country": "Liberia",
+      "total_deaths": 192,
+      "date": "2015-08-12",
+      "_category": "health",
+      "_source": "HDX",
+      "_source_url": "https://data.humdata.org/dataset/number-of-health-care-workers-deaths-by-edv",
+      "_dataset_id": "5ffb79be-a48e-4d68-a345-3617745fa1c4",
+      "_dataset_name": "number-of-health-care-workers-deaths-by-edv"
+    },
+    {
+      "country": "Mali",
+      "total_deaths": 2,
+      "date": "2015-08-12",
+      "_category": "health",
+      "_source": "HDX",
+      "_source_url": "https://data.humdata.org/dataset/number-of-health-care-workers-deaths-by-edv",
+      "_dataset_id": "5ffb79be-a48e-4d68-a345-3617745fa1c4",
+      "_dataset_name": "number-of-health-care-workers-deaths-by-edv"
+    },
+    {
+      "country": "Nigeria",
+      "total_deaths": 5,
+      "date": "2015-08-12",
+      "_category": "health",
+      "_source": "HDX",
+      "_source_url": "https://data.humdata.org/dataset/number-of-health-care-workers-deaths-by-edv",
+      "_dataset_id": "5ffb79be-a48e-4d68-a345-3617745fa1c4",
+      "_dataset_name": "number-of-health-care-workers-deaths-by-edv"
+    },
+    {
+      "country": "Sierra Leone",
+      "total_deaths": 221,
+      "date": "2015-08-12",
+      "_category": "health",
+      "_source": "HDX",
+      "_source_url": "https://data.humdata.org/dataset/number-of-health-care-workers-deaths-by-edv",
+      "_dataset_id": "5ffb79be-a48e-4d68-a345-3617745fa1c4",
+      "_dataset_name": "number-of-health-care-workers-deaths-by-edv"
+    },
+    {
+      "country": "Guinea",
+      "total_deaths": 99,
+      "date": "2015-08-19",
+      "_category": "health",
+      "_source": "HDX",
+      "_source_url": "https://data.humdata.org/dataset/number-of-health-care-workers-deaths-by-edv",
+      "_dataset_id": "5ffb79be-a48e-4d68-a345-3617745fa1c4",
+      "_dataset_name": "number-of-health-care-workers-deaths-by-edv"
+    },
+    {
+      "country": "Liberia",
+      "total_deaths": 192,
+      "date": "2015-08-19",
+      "_category": "health",
+      "_source": "HDX",
+      "_source_url": "https://data.humdata.org/dataset/number-of-health-care-workers-deaths-by-edv",
+      "_dataset_id": "5ffb79be-a48e-4d68-a345-3617745fa1c4",
+      "_dataset_name": "number-of-health-care-workers-deaths-by-edv"
+    },
+    {
+      "country": "Mali",
+      "total_deaths": 2,
+      "date": "2015-08-19",
+      "_category": "health",
+      "_source": "HDX",
+      "_source_url": "https://data.humdata.org/dataset/number-of-health-care-workers-deaths-by-edv",
+      "_dataset_id": "5ffb79be-a48e-4d68-a345-3617745fa1c4",
+      "_dataset_name": "number-of-health-care-workers-deaths-by-edv"
+    },
+    {
+      "country": "Nigeria",
+      "total_deaths": 5,
+      "date": "2015-08-19",
+      "_category": "health",
+      "_source": "HDX",
+      "_source_url": "https://data.humdata.org/dataset/number-of-health-care-workers-deaths-by-edv",
+      "_dataset_id": "5ffb79be-a48e-4d68-a345-3617745fa1c4",
+      "_dataset_name": "number-of-health-care-workers-deaths-by-edv"
+    },
+    {
+      "country": "Sierra Leone",
+      "total_deaths": 221,
+      "date": "2015-08-19",
+      "_category": "health",
+      "_source": "HDX",
+      "_source_url": "https://data.humdata.org/dataset/number-of-health-care-workers-deaths-by-edv",
+      "_dataset_id": "5ffb79be-a48e-4d68-a345-3617745fa1c4",
+      "_dataset_name": "number-of-health-care-workers-deaths-by-edv"
+    },
+    {
+      "country": "Guinea",
+      "total_deaths": 99,
+      "date": "2015-08-26",
+      "_category": "health",
+      "_source": "HDX",
+      "_source_url": "https://data.humdata.org/dataset/number-of-health-care-workers-deaths-by-edv",
+      "_dataset_id": "5ffb79be-a48e-4d68-a345-3617745fa1c4",
+      "_dataset_name": "number-of-health-care-workers-deaths-by-edv"
+    },
+    {
+      "country": "Liberia",
+      "total_deaths": 192,
+      "date": "2015-08-26",
+      "_category": "health",
+      "_source": "HDX",
+      "_source_url": "https://data.humdata.org/dataset/number-of-health-care-workers-deaths-by-edv",
+      "_dataset_id": "5ffb79be-a48e-4d68-a345-3617745fa1c4",
+      "_dataset_name": "number-of-health-care-workers-deaths-by-edv"
+    },
+    {
+      "country": "Mali",
+      "total_deaths": 2,
+      "date": "2015-08-26",
+      "_category": "health",
+      "_source": "HDX",
+      "_source_url": "https://data.humdata.org/dataset/number-of-health-care-workers-deaths-by-edv",
+      "_dataset_id": "5ffb79be-a48e-4d68-a345-3617745fa1c4",
+      "_dataset_name": "number-of-health-care-workers-deaths-by-edv"
+    },
+    {
+      "country": "Nigeria",
+      "total_deaths": 5,
+      "date": "2015-08-26",
+      "_category": "health",
+      "_source": "HDX",
+      "_source_url": "https://data.humdata.org/dataset/number-of-health-care-workers-deaths-by-edv",
+      "_dataset_id": "5ffb79be-a48e-4d68-a345-3617745fa1c4",
+      "_dataset_name": "number-of-health-care-workers-deaths-by-edv"
+    },
+    {
+      "country": "Sierra Leone",
+      "total_deaths": 221,
+      "date": "2015-08-26",
+      "_category": "health",
+      "_source": "HDX",
+      "_source_url": "https://data.humdata.org/dataset/number-of-health-care-workers-deaths-by-edv",
+      "_dataset_id": "5ffb79be-a48e-4d68-a345-3617745fa1c4",
+      "_dataset_name": "number-of-health-care-workers-deaths-by-edv"
+    },
+    {
+      "country": "Guinea",
+      "total_deaths": 100,
+      "date": "2015-09-02",
+      "_category": "health",
+      "_source": "HDX",
+      "_source_url": "https://data.humdata.org/dataset/number-of-health-care-workers-deaths-by-edv",
+      "_dataset_id": "5ffb79be-a48e-4d68-a345-3617745fa1c4",
+      "_dataset_name": "number-of-health-care-workers-deaths-by-edv"
+    },
+    {
+      "country": "Liberia",
+      "total_deaths": 192,
+      "date": "2015-09-02",
+      "_category": "health",
+      "_source": "HDX",
+      "_source_url": "https://data.humdata.org/dataset/number-of-health-care-workers-deaths-by-edv",
+      "_dataset_id": "5ffb79be-a48e-4d68-a345-3617745fa1c4",
+      "_dataset_name": "number-of-health-care-workers-deaths-by-edv"
+    },
+    {
+      "country": "Mali",
+      "total_deaths": 2,
+      "date": "2015-09-02",
+      "_category": "health",
+      "_source": "HDX",
+      "_source_url": "https://data.humdata.org/dataset/number-of-health-care-workers-deaths-by-edv",
+      "_dataset_id": "5ffb79be-a48e-4d68-a345-3617745fa1c4",
+      "_dataset_name": "number-of-health-care-workers-deaths-by-edv"
+    },
+    {
+      "country": "Nigeria",
+      "total_deaths": 5,
+      "date": "2015-09-02",
+      "_category": "health",
+      "_source": "HDX",
+      "_source_url": "https://data.humdata.org/dataset/number-of-health-care-workers-deaths-by-edv",
+      "_dataset_id": "5ffb79be-a48e-4d68-a345-3617745fa1c4",
+      "_dataset_name": "number-of-health-care-workers-deaths-by-edv"
+    },
+    {
+      "country": "Sierra Leone",
+      "total_deaths": 221,
+      "date": "2015-09-02",
+      "_category": "health",
+      "_source": "HDX",
+      "_source_url": "https://data.humdata.org/dataset/number-of-health-care-workers-deaths-by-edv",
+      "_dataset_id": "5ffb79be-a48e-4d68-a345-3617745fa1c4",
+      "_dataset_name": "number-of-health-care-workers-deaths-by-edv"
+    },
+    {
+      "country": "Guinea",
+      "total_deaths": 100,
+      "date": "2015-09-09",
+      "_category": "health",
+      "_source": "HDX",
+      "_source_url": "https://data.humdata.org/dataset/number-of-health-care-workers-deaths-by-edv",
+      "_dataset_id": "5ffb79be-a48e-4d68-a345-3617745fa1c4",
+      "_dataset_name": "number-of-health-care-workers-deaths-by-edv"
+    },
+    {
+      "country": "Liberia",
+      "total_deaths": 192,
+      "date": "2015-09-09",
+      "_category": "health",
+      "_source": "HDX",
+      "_source_url": "https://data.humdata.org/dataset/number-of-health-care-workers-deaths-by-edv",
+      "_dataset_id": "5ffb79be-a48e-4d68-a345-3617745fa1c4",
+      "_dataset_name": "number-of-health-care-workers-deaths-by-edv"
+    },
+    {
+      "country": "Mali",
+      "total_deaths": 2,
+      "date": "2015-09-09",
+      "_category": "health",
+      "_source": "HDX",
+      "_source_url": "https://data.humdata.org/dataset/number-of-health-care-workers-deaths-by-edv",
+      "_dataset_id": "5ffb79be-a48e-4d68-a345-3617745fa1c4",
+      "_dataset_name": "number-of-health-care-workers-deaths-by-edv"
+    },
+    {
+      "country": "Nigeria",
+      "total_deaths": 5,
+      "date": "2015-09-09",
+      "_category": "health",
+      "_source": "HDX",
+      "_source_url": "https://data.humdata.org/dataset/number-of-health-care-workers-deaths-by-edv",
+      "_dataset_id": "5ffb79be-a48e-4d68-a345-3617745fa1c4",
+      "_dataset_name": "number-of-health-care-workers-deaths-by-edv"
+    },
+    {
+      "country": "Sierra Leone",
+      "total_deaths": 221,
+      "date": "2015-09-09",
+      "_category": "health",
+      "_source": "HDX",
+      "_source_url": "https://data.humdata.org/dataset/number-of-health-care-workers-deaths-by-edv",
+      "_dataset_id": "5ffb79be-a48e-4d68-a345-3617745fa1c4",
+      "_dataset_name": "number-of-health-care-workers-deaths-by-edv"
+    },
+    {
+      "country": "Guinea",
+      "total_deaths": 100,
+      "date": "2015-09-16",
+      "_category": "health",
+      "_source": "HDX",
+      "_source_url": "https://data.humdata.org/dataset/number-of-health-care-workers-deaths-by-edv",
+      "_dataset_id": "5ffb79be-a48e-4d68-a345-3617745fa1c4",
+      "_dataset_name": "number-of-health-care-workers-deaths-by-edv"
+    },
+    {
+      "country": "Liberia",
+      "total_deaths": 192,
+      "date": "2015-09-16",
+      "_category": "health",
+      "_source": "HDX",
+      "_source_url": "https://data.humdata.org/dataset/number-of-health-care-workers-deaths-by-edv",
+      "_dataset_id": "5ffb79be-a48e-4d68-a345-3617745fa1c4",
+      "_dataset_name": "number-of-health-care-workers-deaths-by-edv"
+    },
+    {
+      "country": "Mali",
+      "total_deaths": 2,
+      "date": "2015-09-16",
+      "_category": "health",
+      "_source": "HDX",
+      "_source_url": "https://data.humdata.org/dataset/number-of-health-care-workers-deaths-by-edv",
+      "_dataset_id": "5ffb79be-a48e-4d68-a345-3617745fa1c4",
+      "_dataset_name": "number-of-health-care-workers-deaths-by-edv"
+    },
+    {
+      "country": "Nigeria",
+      "total_deaths": 5,
+      "date": "2015-09-16",
+      "_category": "health",
+      "_source": "HDX",
+      "_source_url": "https://data.humdata.org/dataset/number-of-health-care-workers-deaths-by-edv",
+      "_dataset_id": "5ffb79be-a48e-4d68-a345-3617745fa1c4",
+      "_dataset_name": "number-of-health-care-workers-deaths-by-edv"
+    },
+    {
+      "country": "Sierra Leone",
+      "total_deaths": 221,
+      "date": "2015-09-16",
+      "_category": "health",
+      "_source": "HDX",
+      "_source_url": "https://data.humdata.org/dataset/number-of-health-care-workers-deaths-by-edv",
+      "_dataset_id": "5ffb79be-a48e-4d68-a345-3617745fa1c4",
+      "_dataset_name": "number-of-health-care-workers-deaths-by-edv"
+    },
+    {
+      "country": "Guinea",
+      "total_deaths": 100,
+      "date": "2015-09-23",
+      "_category": "health",
+      "_source": "HDX",
+      "_source_url": "https://data.humdata.org/dataset/number-of-health-care-workers-deaths-by-edv",
+      "_dataset_id": "5ffb79be-a48e-4d68-a345-3617745fa1c4",
+      "_dataset_name": "number-of-health-care-workers-deaths-by-edv"
+    },
+    {
+      "country": "Liberia",
+      "total_deaths": 192,
+      "date": "2015-09-23",
+      "_category": "health",
+      "_source": "HDX",
+      "_source_url": "https://data.humdata.org/dataset/number-of-health-care-workers-deaths-by-edv",
+      "_dataset_id": "5ffb79be-a48e-4d68-a345-3617745fa1c4",
+      "_dataset_name": "number-of-health-care-workers-deaths-by-edv"
+    },
+    {
+      "country": "Mali",
+      "total_deaths": 2,
+      "date": "2015-09-23",
+      "_category": "health",
+      "_source": "HDX",
+      "_source_url": "https://data.humdata.org/dataset/number-of-health-care-workers-deaths-by-edv",
+      "_dataset_id": "5ffb79be-a48e-4d68-a345-3617745fa1c4",
+      "_dataset_name": "number-of-health-care-workers-deaths-by-edv"
+    },
+    {
+      "country": "Nigeria",
+      "total_deaths": 5,
+      "date": "2015-09-23",
+      "_category": "health",
+      "_source": "HDX",
+      "_source_url": "https://data.humdata.org/dataset/number-of-health-care-workers-deaths-by-edv",
+      "_dataset_id": "5ffb79be-a48e-4d68-a345-3617745fa1c4",
+      "_dataset_name": "number-of-health-care-workers-deaths-by-edv"
+    },
+    {
+      "country": "Sierra Leone",
+      "total_deaths": 221,
+      "date": "2015-09-23",
+      "_category": "health",
+      "_source": "HDX",
+      "_source_url": "https://data.humdata.org/dataset/number-of-health-care-workers-deaths-by-edv",
+      "_dataset_id": "5ffb79be-a48e-4d68-a345-3617745fa1c4",
+      "_dataset_name": "number-of-health-care-workers-deaths-by-edv"
+    },
+    {
+      "country": "Guinea",
+      "total_deaths": 100,
+      "date": "2015-09-30",
+      "_category": "health",
+      "_source": "HDX",
+      "_source_url": "https://data.humdata.org/dataset/number-of-health-care-workers-deaths-by-edv",
+      "_dataset_id": "5ffb79be-a48e-4d68-a345-3617745fa1c4",
+      "_dataset_name": "number-of-health-care-workers-deaths-by-edv"
+    },
+    {
+      "country": "Liberia",
+      "total_deaths": 192,
+      "date": "2015-09-30",
+      "_category": "health",
+      "_source": "HDX",
+      "_source_url": "https://data.humdata.org/dataset/number-of-health-care-workers-deaths-by-edv",
+      "_dataset_id": "5ffb79be-a48e-4d68-a345-3617745fa1c4",
+      "_dataset_name": "number-of-health-care-workers-deaths-by-edv"
+    },
+    {
+      "country": "Mali",
+      "total_deaths": 2,
+      "date": "2015-09-30",
+      "_category": "health",
+      "_source": "HDX",
+      "_source_url": "https://data.humdata.org/dataset/number-of-health-care-workers-deaths-by-edv",
+      "_dataset_id": "5ffb79be-a48e-4d68-a345-3617745fa1c4",
+      "_dataset_name": "number-of-health-care-workers-deaths-by-edv"
+    },
+    {
+      "country": "Nigeria",
+      "total_deaths": 5,
+      "date": "2015-09-30",
+      "_category": "health",
+      "_source": "HDX",
+      "_source_url": "https://data.humdata.org/dataset/number-of-health-care-workers-deaths-by-edv",
+      "_dataset_id": "5ffb79be-a48e-4d68-a345-3617745fa1c4",
+      "_dataset_name": "number-of-health-care-workers-deaths-by-edv"
+    },
+    {
+      "country": "Sierra Leone",
+      "total_deaths": 221,
+      "date": "2015-09-30",
+      "_category": "health",
+      "_source": "HDX",
+      "_source_url": "https://data.humdata.org/dataset/number-of-health-care-workers-deaths-by-edv",
+      "_dataset_id": "5ffb79be-a48e-4d68-a345-3617745fa1c4",
+      "_dataset_name": "number-of-health-care-workers-deaths-by-edv"
+    },
+    {
+      "country": "Guinea",
+      "total_deaths": 100,
+      "date": "2015-10-07",
+      "_category": "health",
+      "_source": "HDX",
+      "_source_url": "https://data.humdata.org/dataset/number-of-health-care-workers-deaths-by-edv",
+      "_dataset_id": "5ffb79be-a48e-4d68-a345-3617745fa1c4",
+      "_dataset_name": "number-of-health-care-workers-deaths-by-edv"
+    },
+    {
+      "country": "Liberia",
+      "total_deaths": 192,
+      "date": "2015-10-07",
+      "_category": "health",
+      "_source": "HDX",
+      "_source_url": "https://data.humdata.org/dataset/number-of-health-care-workers-deaths-by-edv",
+      "_dataset_id": "5ffb79be-a48e-4d68-a345-3617745fa1c4",
+      "_dataset_name": "number-of-health-care-workers-deaths-by-edv"
+    },
+    {
+      "country": "Mali",
+      "total_deaths": 2,
+      "date": "2015-10-07",
+      "_category": "health",
+      "_source": "HDX",
+      "_source_url": "https://data.humdata.org/dataset/number-of-health-care-workers-deaths-by-edv",
+      "_dataset_id": "5ffb79be-a48e-4d68-a345-3617745fa1c4",
+      "_dataset_name": "number-of-health-care-workers-deaths-by-edv"
+    },
+    {
+      "country": "Nigeria",
+      "total_deaths": 5,
+      "date": "2015-10-07",
+      "_category": "health",
+      "_source": "HDX",
+      "_source_url": "https://data.humdata.org/dataset/number-of-health-care-workers-deaths-by-edv",
+      "_dataset_id": "5ffb79be-a48e-4d68-a345-3617745fa1c4",
+      "_dataset_name": "number-of-health-care-workers-deaths-by-edv"
+    },
+    {
+      "country": "Sierra Leone",
+      "total_deaths": 221,
+      "date": "2015-10-07",
+      "_category": "health",
+      "_source": "HDX",
+      "_source_url": "https://data.humdata.org/dataset/number-of-health-care-workers-deaths-by-edv",
+      "_dataset_id": "5ffb79be-a48e-4d68-a345-3617745fa1c4",
+      "_dataset_name": "number-of-health-care-workers-deaths-by-edv"
+    },
+    {
+      "country": "Guinea",
+      "total_deaths": 100,
+      "date": "2015-10-14",
+      "_category": "health",
+      "_source": "HDX",
+      "_source_url": "https://data.humdata.org/dataset/number-of-health-care-workers-deaths-by-edv",
+      "_dataset_id": "5ffb79be-a48e-4d68-a345-3617745fa1c4",
+      "_dataset_name": "number-of-health-care-workers-deaths-by-edv"
+    },
+    {
+      "country": "Liberia",
+      "total_deaths": 192,
+      "date": "2015-10-14",
+      "_category": "health",
+      "_source": "HDX",
+      "_source_url": "https://data.humdata.org/dataset/number-of-health-care-workers-deaths-by-edv",
+      "_dataset_id": "5ffb79be-a48e-4d68-a345-3617745fa1c4",
+      "_dataset_name": "number-of-health-care-workers-deaths-by-edv"
+    },
+    {
+      "country": "Mali",
+      "total_deaths": 2,
+      "date": "2015-10-14",
+      "_category": "health",
+      "_source": "HDX",
+      "_source_url": "https://data.humdata.org/dataset/number-of-health-care-workers-deaths-by-edv",
+      "_dataset_id": "5ffb79be-a48e-4d68-a345-3617745fa1c4",
+      "_dataset_name": "number-of-health-care-workers-deaths-by-edv"
+    },
+    {
+      "country": "Nigeria",
+      "total_deaths": 5,
+      "date": "2015-10-14",
+      "_category": "health",
+      "_source": "HDX",
+      "_source_url": "https://data.humdata.org/dataset/number-of-health-care-workers-deaths-by-edv",
+      "_dataset_id": "5ffb79be-a48e-4d68-a345-3617745fa1c4",
+      "_dataset_name": "number-of-health-care-workers-deaths-by-edv"
+    },
+    {
+      "country": "Sierra Leone",
+      "total_deaths": 221,
+      "date": "2015-10-14",
+      "_category": "health",
+      "_source": "HDX",
+      "_source_url": "https://data.humdata.org/dataset/number-of-health-care-workers-deaths-by-edv",
+      "_dataset_id": "5ffb79be-a48e-4d68-a345-3617745fa1c4",
+      "_dataset_name": "number-of-health-care-workers-deaths-by-edv"
+    },
+    {
+      "country": "Guinea",
+      "total_deaths": 100,
+      "date": "2015-10-21",
+      "_category": "health",
+      "_source": "HDX",
+      "_source_url": "https://data.humdata.org/dataset/number-of-health-care-workers-deaths-by-edv",
+      "_dataset_id": "5ffb79be-a48e-4d68-a345-3617745fa1c4",
+      "_dataset_name": "number-of-health-care-workers-deaths-by-edv"
+    },
+    {
+      "country": "Liberia",
+      "total_deaths": 192,
+      "date": "2015-10-21",
+      "_category": "health",
+      "_source": "HDX",
+      "_source_url": "https://data.humdata.org/dataset/number-of-health-care-workers-deaths-by-edv",
+      "_dataset_id": "5ffb79be-a48e-4d68-a345-3617745fa1c4",
+      "_dataset_name": "number-of-health-care-workers-deaths-by-edv"
+    },
+    {
+      "country": "Mali",
+      "total_deaths": 2,
+      "date": "2015-10-21",
+      "_category": "health",
+      "_source": "HDX",
+      "_source_url": "https://data.humdata.org/dataset/number-of-health-care-workers-deaths-by-edv",
+      "_dataset_id": "5ffb79be-a48e-4d68-a345-3617745fa1c4",
+      "_dataset_name": "number-of-health-care-workers-deaths-by-edv"
+    },
+    {
+      "country": "Nigeria",
+      "total_deaths": 5,
+      "date": "2015-10-21",
+      "_category": "health",
+      "_source": "HDX",
+      "_source_url": "https://data.humdata.org/dataset/number-of-health-care-workers-deaths-by-edv",
+      "_dataset_id": "5ffb79be-a48e-4d68-a345-3617745fa1c4",
+      "_dataset_name": "number-of-health-care-workers-deaths-by-edv"
+    },
+    {
+      "country": "Sierra Leone",
+      "total_deaths": 221,
+      "date": "2015-10-21",
+      "_category": "health",
+      "_source": "HDX",
+      "_source_url": "https://data.humdata.org/dataset/number-of-health-care-workers-deaths-by-edv",
+      "_dataset_id": "5ffb79be-a48e-4d68-a345-3617745fa1c4",
+      "_dataset_name": "number-of-health-care-workers-deaths-by-edv"
+    },
+    {
+      "country": "Guinea",
+      "total_deaths": 100,
+      "date": "2015-10-28",
+      "_category": "health",
+      "_source": "HDX",
+      "_source_url": "https://data.humdata.org/dataset/number-of-health-care-workers-deaths-by-edv",
+      "_dataset_id": "5ffb79be-a48e-4d68-a345-3617745fa1c4",
+      "_dataset_name": "number-of-health-care-workers-deaths-by-edv"
+    },
+    {
+      "country": "Liberia",
+      "total_deaths": 192,
+      "date": "2015-10-28",
+      "_category": "health",
+      "_source": "HDX",
+      "_source_url": "https://data.humdata.org/dataset/number-of-health-care-workers-deaths-by-edv",
+      "_dataset_id": "5ffb79be-a48e-4d68-a345-3617745fa1c4",
+      "_dataset_name": "number-of-health-care-workers-deaths-by-edv"
+    },
+    {
+      "country": "Mali",
+      "total_deaths": 2,
+      "date": "2015-10-28",
+      "_category": "health",
+      "_source": "HDX",
+      "_source_url": "https://data.humdata.org/dataset/number-of-health-care-workers-deaths-by-edv",
+      "_dataset_id": "5ffb79be-a48e-4d68-a345-3617745fa1c4",
+      "_dataset_name": "number-of-health-care-workers-deaths-by-edv"
+    },
+    {
+      "country": "Nigeria",
+      "total_deaths": 5,
+      "date": "2015-10-28",
+      "_category": "health",
+      "_source": "HDX",
+      "_source_url": "https://data.humdata.org/dataset/number-of-health-care-workers-deaths-by-edv",
+      "_dataset_id": "5ffb79be-a48e-4d68-a345-3617745fa1c4",
+      "_dataset_name": "number-of-health-care-workers-deaths-by-edv"
+    },
+    {
+      "country": "Sierra Leone",
+      "total_deaths": 221,
+      "date": "2015-10-28",
+      "_category": "health",
+      "_source": "HDX",
+      "_source_url": "https://data.humdata.org/dataset/number-of-health-care-workers-deaths-by-edv",
+      "_dataset_id": "5ffb79be-a48e-4d68-a345-3617745fa1c4",
+      "_dataset_name": "number-of-health-care-workers-deaths-by-edv"
+    },
+    {
+      "country": "Guinea",
+      "total_deaths": 100,
+      "date": "2015-11-04",
+      "_category": "health",
+      "_source": "HDX",
+      "_source_url": "https://data.humdata.org/dataset/number-of-health-care-workers-deaths-by-edv",
+      "_dataset_id": "5ffb79be-a48e-4d68-a345-3617745fa1c4",
+      "_dataset_name": "number-of-health-care-workers-deaths-by-edv"
+    },
+    {
+      "country": "Liberia",
+      "total_deaths": 192,
+      "date": "2015-11-04",
+      "_category": "health",
+      "_source": "HDX",
+      "_source_url": "https://data.humdata.org/dataset/number-of-health-care-workers-deaths-by-edv",
+      "_dataset_id": "5ffb79be-a48e-4d68-a345-3617745fa1c4",
+      "_dataset_name": "number-of-health-care-workers-deaths-by-edv"
+    },
+    {
+      "country": "Mali",
+      "total_deaths": 2,
+      "date": "2015-11-04",
+      "_category": "health",
+      "_source": "HDX",
+      "_source_url": "https://data.humdata.org/dataset/number-of-health-care-workers-deaths-by-edv",
+      "_dataset_id": "5ffb79be-a48e-4d68-a345-3617745fa1c4",
+      "_dataset_name": "number-of-health-care-workers-deaths-by-edv"
+    },
+    {
+      "country": "Nigeria",
+      "total_deaths": 5,
+      "date": "2015-11-04",
+      "_category": "health",
+      "_source": "HDX",
+      "_source_url": "https://data.humdata.org/dataset/number-of-health-care-workers-deaths-by-edv",
+      "_dataset_id": "5ffb79be-a48e-4d68-a345-3617745fa1c4",
+      "_dataset_name": "number-of-health-care-workers-deaths-by-edv"
+    },
+    {
+      "country": "Sierra Leone",
+      "total_deaths": 221,
+      "date": "2015-11-04",
+      "_category": "health",
+      "_source": "HDX",
+      "_source_url": "https://data.humdata.org/dataset/number-of-health-care-workers-deaths-by-edv",
+      "_dataset_id": "5ffb79be-a48e-4d68-a345-3617745fa1c4",
+      "_dataset_name": "number-of-health-care-workers-deaths-by-edv"
+    }
+  ]
+}

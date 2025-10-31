@@ -1,0 +1,31 @@
+{
+  "indicator": "SH.MED.PHYS.ZS",
+  "indicator_name": "Physicians (per 1,000 people)",
+  "category": "health",
+  "data": [
+    {
+      "year": 2017,
+      "value": 1.774,
+      "indicator": "SH.MED.PHYS.ZS",
+      "indicator_name": "Physicians (per 1,000 people)",
+      "country": "West Bank and Gaza",
+      "source": "pcbs",
+      "source_detail": "PCBS via World Bank API"
+    },
+    {
+      "year": 2018,
+      "value": 2.168,
+      "indicator": "SH.MED.PHYS.ZS",
+      "indicator_name": "Physicians (per 1,000 people)",
+      "country": "West Bank and Gaza",
+      "source": "pcbs",
+      "source_detail": "PCBS via World Bank API"
+    }
+  ],
+  "metadata": {
+    "source": "Palestinian Central Bureau of Statistics (PCBS)",
+    "source_detail": "Data accessed via World Bank Open Data API",
+    "last_updated": "2025-10-30T09:43:48.277Z",
+    "total_points": 2
+  }
+}

@@ -1,0 +1,52 @@
+{
+  "indicator": "AG.LND.IRIG.AG.ZS",
+  "indicator_name": "Agricultural irrigated land (% of total agricultural land)",
+  "data": [
+    {
+      "year": 2010,
+      "value": 3.41424379834623,
+      "indicator": "AG.LND.IRIG.AG.ZS",
+      "indicator_name": "Agricultural irrigated land (% of total agricultural land)",
+      "country": "West Bank and Gaza",
+      "source": "worldbank"
+    },
+    {
+      "year": 2011,
+      "value": 3.71865867981419,
+      "indicator": "AG.LND.IRIG.AG.ZS",
+      "indicator_name": "Agricultural irrigated land (% of total agricultural land)",
+      "country": "West Bank and Gaza",
+      "source": "worldbank"
+    },
+    {
+      "year": 2012,
+      "value": 5.74327199771767,
+      "indicator": "AG.LND.IRIG.AG.ZS",
+      "indicator_name": "Agricultural irrigated land (% of total agricultural land)",
+      "country": "West Bank and Gaza",
+      "source": "worldbank"
+    },
+    {
+      "year": 2013,
+      "value": 3.65321836714652,
+      "indicator": "AG.LND.IRIG.AG.ZS",
+      "indicator_name": "Agricultural irrigated land (% of total agricultural land)",
+      "country": "West Bank and Gaza",
+      "source": "worldbank"
+    }
+  ],
+  "metadata": {
+    "source": "World Bank Open Data",
+    "last_updated": "2025-10-29T21:01:55.226Z",
+    "total_points": 4
+  },
+  "validation": {
+    "qualityScore": 1,
+    "completeness": 1,
+    "consistency": 1,
+    "accuracy": 1,
+    "meetsThreshold": true,
+    "errorCount": 0,
+    "warningCount": 0
+  }
+}

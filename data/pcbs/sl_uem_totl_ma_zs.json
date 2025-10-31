@@ -1,0 +1,130 @@
+{
+  "indicator": "SL.UEM.TOTL.MA.ZS",
+  "indicator_name": "Unemployment, male (% of male labor force)",
+  "category": "labor",
+  "data": [
+    {
+      "year": 2010,
+      "value": 21.385,
+      "indicator": "SL.UEM.TOTL.MA.ZS",
+      "indicator_name": "Unemployment, male (% of male labor force)",
+      "country": "West Bank and Gaza",
+      "source": "pcbs",
+      "source_detail": "PCBS via World Bank API"
+    },
+    {
+      "year": 2011,
+      "value": 16.464,
+      "indicator": "SL.UEM.TOTL.MA.ZS",
+      "indicator_name": "Unemployment, male (% of male labor force)",
+      "country": "West Bank and Gaza",
+      "source": "pcbs",
+      "source_detail": "PCBS via World Bank API"
+    },
+    {
+      "year": 2012,
+      "value": 17.553,
+      "indicator": "SL.UEM.TOTL.MA.ZS",
+      "indicator_name": "Unemployment, male (% of male labor force)",
+      "country": "West Bank and Gaza",
+      "source": "pcbs",
+      "source_detail": "PCBS via World Bank API"
+    },
+    {
+      "year": 2013,
+      "value": 18.128,
+      "indicator": "SL.UEM.TOTL.MA.ZS",
+      "indicator_name": "Unemployment, male (% of male labor force)",
+      "country": "West Bank and Gaza",
+      "source": "pcbs",
+      "source_detail": "PCBS via World Bank API"
+    },
+    {
+      "year": 2014,
+      "value": 19.14,
+      "indicator": "SL.UEM.TOTL.MA.ZS",
+      "indicator_name": "Unemployment, male (% of male labor force)",
+      "country": "West Bank and Gaza",
+      "source": "pcbs",
+      "source_detail": "PCBS via World Bank API"
+    },
+    {
+      "year": 2015,
+      "value": 20.085,
+      "indicator": "SL.UEM.TOTL.MA.ZS",
+      "indicator_name": "Unemployment, male (% of male labor force)",
+      "country": "West Bank and Gaza",
+      "source": "pcbs",
+      "source_detail": "PCBS via World Bank API"
+    },
+    {
+      "year": 2016,
+      "value": 20.441,
+      "indicator": "SL.UEM.TOTL.MA.ZS",
+      "indicator_name": "Unemployment, male (% of male labor force)",
+      "country": "West Bank and Gaza",
+      "source": "pcbs",
+      "source_detail": "PCBS via World Bank API"
+    },
+    {
+      "year": 2017,
+      "value": 21.362,
+      "indicator": "SL.UEM.TOTL.MA.ZS",
+      "indicator_name": "Unemployment, male (% of male labor force)",
+      "country": "West Bank and Gaza",
+      "source": "pcbs",
+      "source_detail": "PCBS via World Bank API"
+    },
+    {
+      "year": 2018,
+      "value": 22.254,
+      "indicator": "SL.UEM.TOTL.MA.ZS",
+      "indicator_name": "Unemployment, male (% of male labor force)",
+      "country": "West Bank and Gaza",
+      "source": "pcbs",
+      "source_detail": "PCBS via World Bank API"
+    },
+    {
+      "year": 2019,
+      "value": 21.177,
+      "indicator": "SL.UEM.TOTL.MA.ZS",
+      "indicator_name": "Unemployment, male (% of male labor force)",
+      "country": "West Bank and Gaza",
+      "source": "pcbs",
+      "source_detail": "PCBS via World Bank API"
+    },
+    {
+      "year": 2020,
+      "value": 22.322,
+      "indicator": "SL.UEM.TOTL.MA.ZS",
+      "indicator_name": "Unemployment, male (% of male labor force)",
+      "country": "West Bank and Gaza",
+      "source": "pcbs",
+      "source_detail": "PCBS via World Bank API"
+    },
+    {
+      "year": 2021,
+      "value": 22.203,
+      "indicator": "SL.UEM.TOTL.MA.ZS",
+      "indicator_name": "Unemployment, male (% of male labor force)",
+      "country": "West Bank and Gaza",
+      "source": "pcbs",
+      "source_detail": "PCBS via World Bank API"
+    },
+    {
+      "year": 2022,
+      "value": 20.164,
+      "indicator": "SL.UEM.TOTL.MA.ZS",
+      "indicator_name": "Unemployment, male (% of male labor force)",
+      "country": "West Bank and Gaza",
+      "source": "pcbs",
+      "source_detail": "PCBS via World Bank API"
+    }
+  ],
+  "metadata": {
+    "source": "Palestinian Central Bureau of Statistics (PCBS)",
+    "source_detail": "Data accessed via World Bank Open Data API",
+    "last_updated": "2025-10-30T09:42:57.475Z",
+    "total_points": 13
+  }
+}

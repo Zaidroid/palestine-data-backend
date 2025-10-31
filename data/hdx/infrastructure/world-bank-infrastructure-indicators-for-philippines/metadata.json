@@ -1,0 +1,52 @@
+{
+  "id": "43b53248-b909-4627-869c-8bdf24bb60b2",
+  "name": "world-bank-infrastructure-indicators-for-philippines",
+  "title": "Philippines - Infrastructure",
+  "description": "Contains data from the World Bank's [data portal](http://data.worldbank.org/). There is also a [consolidated country dataset](https://data.humdata.org/dataset/world-bank-combined-indicators-for-philippines) on HDX.\n\nInfrastructure helps determine the success of manufacturing and agricultural activities. Investments in water, sanitation, energy, housing, and transport also improve lives and help reduce poverty. And new information and communication technologies promote growth, improve delivery of health and other services, expand the reach of education, and support social and cultural advances. Data here are compiled from such sources as the International Road Federation, Containerisation International, the International Civil Aviation Organization, the International Energy Association, and the International Telecommunications Union.",
+  "category": "infrastructure",
+  "organization": {
+    "name": "world-bank-group",
+    "title": "World Bank Group"
+  },
+  "tags": [
+    "facilities-infrastructure",
+    "hxl",
+    "indicators"
+  ],
+  "license": "Creative Commons Attribution International (CC BY)",
+  "dataset_date": "[1960-01-01T00:00:00 TO 2024-12-31T23:59:59]",
+  "last_modified": "2025-09-27T22:46:53.579480",
+  "data_update_frequency": "30",
+  "num_resources": 2,
+  "resources": [
+    {
+      "id": "0ebc9dd6-c93d-449a-b6d2-1cdea6c7988c",
+      "name": "Infrastructure Indicators for Philippines",
+      "format": "CSV",
+      "size": 133696,
+      "last_modified": "2025-09-27T22:46:51.082281",
+      "url": "https://data.humdata.org/dataset/43b53248-b909-4627-869c-8bdf24bb60b2/resource/0ebc9dd6-c93d-449a-b6d2-1cdea6c7988c/download/infrastructure_phl.csv"
+    },
+    {
+      "id": "4a936441-9032-4990-a682-da0b6dba9fa3",
+      "name": "QuickCharts-Infrastructure Indicators for Philippines",
+      "format": "CSV",
+      "size": 2311,
+      "last_modified": "2025-09-27T22:46:51.270447",
+      "url": "https://data.humdata.org/dataset/43b53248-b909-4627-869c-8bdf24bb60b2/resource/4a936441-9032-4990-a682-da0b6dba9fa3/download/qc_infrastructure_phl.csv"
+    }
+  ],
+  "source_url": "https://data.humdata.org/dataset/world-bank-infrastructure-indicators-for-philippines",
+  "extracted_at": "2025-10-29T21:10:58.832Z",
+  "palestine_context": {
+    "regions_covered": [],
+    "governorates": [],
+    "conflict_related": false,
+    "baseline_comparison_available": false
+  },
+  "data_quality": {
+    "update_frequency": "30",
+    "last_updated": "2025-09-27T22:46:53.579480",
+    "source_reliability": "unknown"
+  }
+}

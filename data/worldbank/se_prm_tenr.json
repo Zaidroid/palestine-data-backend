@@ -1,0 +1,92 @@
+{
+  "indicator": "SE.PRM.TENR",
+  "indicator_name": "Adjusted net enrollment rate, primary (% of primary school age children)",
+  "data": [
+    {
+      "year": 2010,
+      "value": 89.64119,
+      "indicator": "SE.PRM.TENR",
+      "indicator_name": "Adjusted net enrollment rate, primary (% of primary school age children)",
+      "country": "West Bank and Gaza",
+      "source": "worldbank"
+    },
+    {
+      "year": 2011,
+      "value": 90.86764,
+      "indicator": "SE.PRM.TENR",
+      "indicator_name": "Adjusted net enrollment rate, primary (% of primary school age children)",
+      "country": "West Bank and Gaza",
+      "source": "worldbank"
+    },
+    {
+      "year": 2012,
+      "value": 94.12444,
+      "indicator": "SE.PRM.TENR",
+      "indicator_name": "Adjusted net enrollment rate, primary (% of primary school age children)",
+      "country": "West Bank and Gaza",
+      "source": "worldbank"
+    },
+    {
+      "year": 2013,
+      "value": 94.5785,
+      "indicator": "SE.PRM.TENR",
+      "indicator_name": "Adjusted net enrollment rate, primary (% of primary school age children)",
+      "country": "West Bank and Gaza",
+      "source": "worldbank"
+    },
+    {
+      "year": 2014,
+      "value": 95.70712,
+      "indicator": "SE.PRM.TENR",
+      "indicator_name": "Adjusted net enrollment rate, primary (% of primary school age children)",
+      "country": "West Bank and Gaza",
+      "source": "worldbank"
+    },
+    {
+      "year": 2015,
+      "value": 95.36596,
+      "indicator": "SE.PRM.TENR",
+      "indicator_name": "Adjusted net enrollment rate, primary (% of primary school age children)",
+      "country": "West Bank and Gaza",
+      "source": "worldbank"
+    },
+    {
+      "year": 2016,
+      "value": 95.77247,
+      "indicator": "SE.PRM.TENR",
+      "indicator_name": "Adjusted net enrollment rate, primary (% of primary school age children)",
+      "country": "West Bank and Gaza",
+      "source": "worldbank"
+    },
+    {
+      "year": 2017,
+      "value": 97.19359,
+      "indicator": "SE.PRM.TENR",
+      "indicator_name": "Adjusted net enrollment rate, primary (% of primary school age children)",
+      "country": "West Bank and Gaza",
+      "source": "worldbank"
+    },
+    {
+      "year": 2018,
+      "value": 97.10722,
+      "indicator": "SE.PRM.TENR",
+      "indicator_name": "Adjusted net enrollment rate, primary (% of primary school age children)",
+      "country": "West Bank and Gaza",
+      "source": "worldbank"
+    }
+  ],
+  "metadata": {
+    "source": "World Bank Open Data",
+    "last_updated": "2025-10-29T21:02:01.849Z",
+    "total_points": 9
+  },
+  "validation": {
+    "qualityScore": 1,
+    "completeness": 1,
+    "consistency": 1,
+    "accuracy": 1,
+    "meetsThreshold": true,
+    "errorCount": 0,
+    "warningCount": 0
+  }
+}

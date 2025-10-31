@@ -1,0 +1,148 @@
+{
+  "indicator": "NY.GDP.MKTP.KD.ZG",
+  "indicator_name": "GDP growth (annual %)",
+  "category": "economic",
+  "data": [
+    {
+      "year": 2010,
+      "value": 5.77736205629419,
+      "indicator": "NY.GDP.MKTP.KD.ZG",
+      "indicator_name": "GDP growth (annual %)",
+      "country": "West Bank and Gaza",
+      "source": "pcbs",
+      "source_detail": "PCBS via World Bank API"
+    },
+    {
+      "year": 2011,
+      "value": 9.60080848913594,
+      "indicator": "NY.GDP.MKTP.KD.ZG",
+      "indicator_name": "GDP growth (annual %)",
+      "country": "West Bank and Gaza",
+      "source": "pcbs",
+      "source_detail": "PCBS via World Bank API"
+    },
+    {
+      "year": 2012,
+      "value": 6.09645656326154,
+      "indicator": "NY.GDP.MKTP.KD.ZG",
+      "indicator_name": "GDP growth (annual %)",
+      "country": "West Bank and Gaza",
+      "source": "pcbs",
+      "source_detail": "PCBS via World Bank API"
+    },
+    {
+      "year": 2013,
+      "value": 4.69856986552234,
+      "indicator": "NY.GDP.MKTP.KD.ZG",
+      "indicator_name": "GDP growth (annual %)",
+      "country": "West Bank and Gaza",
+      "source": "pcbs",
+      "source_detail": "PCBS via World Bank API"
+    },
+    {
+      "year": 2014,
+      "value": -0.157866650855297,
+      "indicator": "NY.GDP.MKTP.KD.ZG",
+      "indicator_name": "GDP growth (annual %)",
+      "country": "West Bank and Gaza",
+      "source": "pcbs",
+      "source_detail": "PCBS via World Bank API"
+    },
+    {
+      "year": 2015,
+      "value": 3.72129967114788,
+      "indicator": "NY.GDP.MKTP.KD.ZG",
+      "indicator_name": "GDP growth (annual %)",
+      "country": "West Bank and Gaza",
+      "source": "pcbs",
+      "source_detail": "PCBS via World Bank API"
+    },
+    {
+      "year": 2016,
+      "value": 8.86461881995935,
+      "indicator": "NY.GDP.MKTP.KD.ZG",
+      "indicator_name": "GDP growth (annual %)",
+      "country": "West Bank and Gaza",
+      "source": "pcbs",
+      "source_detail": "PCBS via World Bank API"
+    },
+    {
+      "year": 2017,
+      "value": 1.41936756294787,
+      "indicator": "NY.GDP.MKTP.KD.ZG",
+      "indicator_name": "GDP growth (annual %)",
+      "country": "West Bank and Gaza",
+      "source": "pcbs",
+      "source_detail": "PCBS via World Bank API"
+    },
+    {
+      "year": 2018,
+      "value": 1.22707737782703,
+      "indicator": "NY.GDP.MKTP.KD.ZG",
+      "indicator_name": "GDP growth (annual %)",
+      "country": "West Bank and Gaza",
+      "source": "pcbs",
+      "source_detail": "PCBS via World Bank API"
+    },
+    {
+      "year": 2019,
+      "value": 1.36268746558062,
+      "indicator": "NY.GDP.MKTP.KD.ZG",
+      "indicator_name": "GDP growth (annual %)",
+      "country": "West Bank and Gaza",
+      "source": "pcbs",
+      "source_detail": "PCBS via World Bank API"
+    },
+    {
+      "year": 2020,
+      "value": -11.3184661065134,
+      "indicator": "NY.GDP.MKTP.KD.ZG",
+      "indicator_name": "GDP growth (annual %)",
+      "country": "West Bank and Gaza",
+      "source": "pcbs",
+      "source_detail": "PCBS via World Bank API"
+    },
+    {
+      "year": 2021,
+      "value": 7.01198227592003,
+      "indicator": "NY.GDP.MKTP.KD.ZG",
+      "indicator_name": "GDP growth (annual %)",
+      "country": "West Bank and Gaza",
+      "source": "pcbs",
+      "source_detail": "PCBS via World Bank API"
+    },
+    {
+      "year": 2022,
+      "value": 4.08276027347105,
+      "indicator": "NY.GDP.MKTP.KD.ZG",
+      "indicator_name": "GDP growth (annual %)",
+      "country": "West Bank and Gaza",
+      "source": "pcbs",
+      "source_detail": "PCBS via World Bank API"
+    },
+    {
+      "year": 2023,
+      "value": -4.55580428525744,
+      "indicator": "NY.GDP.MKTP.KD.ZG",
+      "indicator_name": "GDP growth (annual %)",
+      "country": "West Bank and Gaza",
+      "source": "pcbs",
+      "source_detail": "PCBS via World Bank API"
+    },
+    {
+      "year": 2024,
+      "value": -26.5575264529877,
+      "indicator": "NY.GDP.MKTP.KD.ZG",
+      "indicator_name": "GDP growth (annual %)",
+      "country": "West Bank and Gaza",
+      "source": "pcbs",
+      "source_detail": "PCBS via World Bank API"
+    }
+  ],
+  "metadata": {
+    "source": "Palestinian Central Bureau of Statistics (PCBS)",
+    "source_detail": "Data accessed via World Bank Open Data API",
+    "last_updated": "2025-10-30T09:43:34.058Z",
+    "total_points": 15
+  }
+}

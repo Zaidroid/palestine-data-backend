@@ -1,0 +1,419 @@
+{
+  "metadata": {
+    "source": "goodshepherd",
+    "dataset": "demolitions",
+    "quarter": "2025-Q3",
+    "record_count": 51,
+    "last_updated": "2025-10-24T18:03:09.549Z"
+  },
+  "data": [
+    {
+      "date": "2025-07-01",
+      "location": "'Izbat Salman",
+      "homes_demolished": 1,
+      "people_affected": 5,
+      "reason": "Administrative demolition",
+      "source": "goodshepherd-fallback"
+    },
+    {
+      "date": "2025-07-01",
+      "location": "al-'Auja",
+      "homes_demolished": 2,
+      "people_affected": 0,
+      "reason": "Administrative demolition",
+      "source": "goodshepherd-fallback"
+    },
+    {
+      "date": "2025-07-01",
+      "location": "al-'Auja",
+      "homes_demolished": 1,
+      "people_affected": 12,
+      "reason": "Administrative demolition",
+      "source": "goodshepherd-fallback"
+    },
+    {
+      "date": "2025-07-01",
+      "location": "al-'Auja",
+      "homes_demolished": 4,
+      "people_affected": 0,
+      "reason": "Administrative demolition",
+      "source": "goodshepherd-fallback"
+    },
+    {
+      "date": "2025-07-02",
+      "location": "Ni'lin",
+      "homes_demolished": 1,
+      "people_affected": 12,
+      "reason": "Administrative demolition",
+      "source": "goodshepherd-fallback"
+    },
+    {
+      "date": "2025-07-02",
+      "location": "Shweikah",
+      "homes_demolished": 1,
+      "people_affected": 6,
+      "reason": "Administrative demolition",
+      "source": "goodshepherd-fallback"
+    },
+    {
+      "date": "2025-07-02",
+      "location": "Husan",
+      "homes_demolished": 1,
+      "people_affected": 0,
+      "reason": "Administrative demolition",
+      "source": "goodshepherd-fallback"
+    },
+    {
+      "date": "2025-07-02",
+      "location": "Shweikah",
+      "homes_demolished": 1,
+      "people_affected": 0,
+      "reason": "Administrative demolition",
+      "source": "goodshepherd-fallback"
+    },
+    {
+      "date": "2025-07-02",
+      "location": "Husan",
+      "homes_demolished": 1,
+      "people_affected": 0,
+      "reason": "Administrative demolition",
+      "source": "goodshepherd-fallback"
+    },
+    {
+      "date": "2025-07-07",
+      "location": "Abu a-Nuwar (Bseisat)",
+      "homes_demolished": 1,
+      "people_affected": 6,
+      "reason": "Administrative demolition",
+      "source": "goodshepherd-fallback"
+    },
+    {
+      "date": "2025-07-07",
+      "location": "Kharbatha al-Misbah",
+      "homes_demolished": 4,
+      "people_affected": 19,
+      "reason": "Administrative demolition",
+      "source": "goodshepherd-fallback"
+    },
+    {
+      "date": "2025-07-07",
+      "location": "Kharbatha al-Misbah",
+      "homes_demolished": 2,
+      "people_affected": 0,
+      "reason": "Administrative demolition",
+      "source": "goodshepherd-fallback"
+    },
+    {
+      "date": "2025-07-07",
+      "location": "Abu a-Nuwar (Bseisat)",
+      "homes_demolished": 1,
+      "people_affected": 7,
+      "reason": "Administrative demolition",
+      "source": "goodshepherd-fallback"
+    },
+    {
+      "date": "2025-07-07",
+      "location": "Abu a-Nuwar (Bseisat)",
+      "homes_demolished": 11,
+      "people_affected": 0,
+      "reason": "Administrative demolition",
+      "source": "goodshepherd-fallback"
+    },
+    {
+      "date": "2025-07-07",
+      "location": "Abu a-Nuwar (Bseisat)",
+      "homes_demolished": 6,
+      "people_affected": 0,
+      "reason": "Administrative demolition",
+      "source": "goodshepherd-fallback"
+    },
+    {
+      "date": "2025-07-09",
+      "location": "Rujeib",
+      "homes_demolished": 1,
+      "people_affected": 7,
+      "reason": "Administrative demolition",
+      "source": "goodshepherd-fallback"
+    },
+    {
+      "date": "2025-07-09",
+      "location": "Rujeib",
+      "homes_demolished": 1,
+      "people_affected": 0,
+      "reason": "Administrative demolition",
+      "source": "goodshepherd-fallback"
+    },
+    {
+      "date": "2025-07-09",
+      "location": "Shuqba",
+      "homes_demolished": 2,
+      "people_affected": 17,
+      "reason": "Administrative demolition",
+      "source": "goodshepherd-fallback"
+    },
+    {
+      "date": "2025-07-09",
+      "location": "Shuqba",
+      "homes_demolished": 3,
+      "people_affected": 0,
+      "reason": "Administrative demolition",
+      "source": "goodshepherd-fallback"
+    },
+    {
+      "date": "2025-07-09",
+      "location": "Shuqba",
+      "homes_demolished": 2,
+      "people_affected": 0,
+      "reason": "Administrative demolition",
+      "source": "goodshepherd-fallback"
+    },
+    {
+      "date": "2025-07-09",
+      "location": "Shuqba",
+      "homes_demolished": 3,
+      "people_affected": 0,
+      "reason": "Administrative demolition",
+      "source": "goodshepherd-fallback"
+    },
+    {
+      "date": "2025-07-09",
+      "location": "Beit Sira",
+      "homes_demolished": 1,
+      "people_affected": 0,
+      "reason": "Administrative demolition",
+      "source": "goodshepherd-fallback"
+    },
+    {
+      "date": "2025-07-09",
+      "location": "Shuqba",
+      "homes_demolished": 3,
+      "people_affected": 4,
+      "reason": "Administrative demolition",
+      "source": "goodshepherd-fallback"
+    },
+    {
+      "date": "2025-07-09",
+      "location": "Beit Sira",
+      "homes_demolished": 1,
+      "people_affected": 0,
+      "reason": "Administrative demolition",
+      "source": "goodshepherd-fallback"
+    },
+    {
+      "date": "2025-07-11",
+      "location": "Rafat",
+      "homes_demolished": 1,
+      "people_affected": 0,
+      "reason": "Administrative demolition",
+      "source": "goodshepherd-fallback"
+    },
+    {
+      "date": "2025-07-14",
+      "location": "Wadi Fukin",
+      "homes_demolished": 2,
+      "people_affected": 0,
+      "reason": "Administrative demolition",
+      "source": "goodshepherd-fallback"
+    },
+    {
+      "date": "2025-07-14",
+      "location": "Nahhalin",
+      "homes_demolished": 2,
+      "people_affected": 0,
+      "reason": "Administrative demolition",
+      "source": "goodshepherd-fallback"
+    },
+    {
+      "date": "2025-07-14",
+      "location": "al-Ma'sarah",
+      "homes_demolished": 1,
+      "people_affected": 8,
+      "reason": "Administrative demolition",
+      "source": "goodshepherd-fallback"
+    },
+    {
+      "date": "2025-07-14",
+      "location": "Kafr Qadum",
+      "homes_demolished": 1,
+      "people_affected": 0,
+      "reason": "Administrative demolition",
+      "source": "goodshepherd-fallback"
+    },
+    {
+      "date": "2025-07-14",
+      "location": "Jalbun",
+      "homes_demolished": 1,
+      "people_affected": 0,
+      "reason": "Administrative demolition",
+      "source": "goodshepherd-fallback"
+    },
+    {
+      "date": "2025-07-16",
+      "location": "Beit Jala",
+      "homes_demolished": 3,
+      "people_affected": 0,
+      "reason": "Administrative demolition",
+      "source": "goodshepherd-fallback"
+    },
+    {
+      "date": "2025-07-16",
+      "location": "Hajjah",
+      "homes_demolished": 1,
+      "people_affected": 0,
+      "reason": "Administrative demolition",
+      "source": "goodshepherd-fallback"
+    },
+    {
+      "date": "2025-07-23",
+      "location": "Wadi Qatunyah (al-Khalaileh)",
+      "homes_demolished": 3,
+      "people_affected": 0,
+      "reason": "Administrative demolition",
+      "source": "goodshepherd-fallback"
+    },
+    {
+      "date": "2025-07-23",
+      "location": "Wadi Qatunyah (al-Khalaileh)",
+      "homes_demolished": 2,
+      "people_affected": 0,
+      "reason": "Administrative demolition",
+      "source": "goodshepherd-fallback"
+    },
+    {
+      "date": "2025-07-23",
+      "location": "al-Khalaiel (Abu Naser)",
+      "homes_demolished": 3,
+      "people_affected": 0,
+      "reason": "Administrative demolition",
+      "source": "goodshepherd-fallback"
+    },
+    {
+      "date": "2025-07-23",
+      "location": "al-Khalaiel (Abu Naser)",
+      "homes_demolished": 1,
+      "people_affected": 7,
+      "reason": "Administrative demolition",
+      "source": "goodshepherd-fallback"
+    },
+    {
+      "date": "2025-07-23",
+      "location": "al-Khalaiel (Abu Naser)",
+      "homes_demolished": 2,
+      "people_affected": 6,
+      "reason": "Administrative demolition",
+      "source": "goodshepherd-fallback"
+    },
+    {
+      "date": "2025-07-23",
+      "location": "al-Khalaiel (Abu Naser)",
+      "homes_demolished": 1,
+      "people_affected": 10,
+      "reason": "Administrative demolition",
+      "source": "goodshepherd-fallback"
+    },
+    {
+      "date": "2025-07-23",
+      "location": "al-Khalaiel (Abu Naser)",
+      "homes_demolished": 4,
+      "people_affected": 0,
+      "reason": "Administrative demolition",
+      "source": "goodshepherd-fallback"
+    },
+    {
+      "date": "2025-07-23",
+      "location": "al-Khalaiel (Abu Naser)",
+      "homes_demolished": 1,
+      "people_affected": 6,
+      "reason": "Administrative demolition",
+      "source": "goodshepherd-fallback"
+    },
+    {
+      "date": "2025-07-23",
+      "location": "al-Khalaiel (Abu Naser)",
+      "homes_demolished": 2,
+      "people_affected": 9,
+      "reason": "Administrative demolition",
+      "source": "goodshepherd-fallback"
+    },
+    {
+      "date": "2025-07-23",
+      "location": "al-Jab'ah",
+      "homes_demolished": 4,
+      "people_affected": 0,
+      "reason": "Administrative demolition",
+      "source": "goodshepherd-fallback"
+    },
+    {
+      "date": "2025-07-24",
+      "location": "'Ein al-Beida",
+      "homes_demolished": 3,
+      "people_affected": 0,
+      "reason": "Administrative demolition",
+      "source": "goodshepherd-fallback"
+    },
+    {
+      "date": "2025-07-24",
+      "location": "Kh. 'Ein al-Hilweh",
+      "homes_demolished": 3,
+      "people_affected": 0,
+      "reason": "Administrative demolition",
+      "source": "goodshepherd-fallback"
+    },
+    {
+      "date": "2025-07-24",
+      "location": "Kh. 'Ein al-Hilweh",
+      "homes_demolished": 2,
+      "people_affected": 0,
+      "reason": "Administrative demolition",
+      "source": "goodshepherd-fallback"
+    },
+    {
+      "date": "2025-07-29",
+      "location": "al-Funduq",
+      "homes_demolished": 1,
+      "people_affected": 0,
+      "reason": "Administrative demolition",
+      "source": "goodshepherd-fallback"
+    },
+    {
+      "date": "2025-07-30",
+      "location": "Idhna",
+      "homes_demolished": 1,
+      "people_affected": 0,
+      "reason": "Administrative demolition",
+      "source": "goodshepherd-fallback"
+    },
+    {
+      "date": "2025-07-31",
+      "location": "Beit Furik",
+      "homes_demolished": 1,
+      "people_affected": 0,
+      "reason": "Administrative demolition",
+      "source": "goodshepherd-fallback"
+    },
+    {
+      "date": "2025-07-31",
+      "location": "Beit Dajan",
+      "homes_demolished": 1,
+      "people_affected": 0,
+      "reason": "Administrative demolition",
+      "source": "goodshepherd-fallback"
+    },
+    {
+      "date": "2025-07-31",
+      "location": "Kh. a-Nahlah",
+      "homes_demolished": 1,
+      "people_affected": 6,
+      "reason": "Administrative demolition",
+      "source": "goodshepherd-fallback"
+    },
+    {
+      "date": "2025-07-31",
+      "location": "Kh. a-Nahlah",
+      "homes_demolished": 1,
+      "people_affected": 0,
+      "reason": "Administrative demolition",
+      "source": "goodshepherd-fallback"
+    }
+  ]
+}

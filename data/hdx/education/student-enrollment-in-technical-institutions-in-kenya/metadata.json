@@ -1,0 +1,44 @@
+{
+  "id": "97032db1-5fcf-464e-87f5-81068200d9a9",
+  "name": "student-enrollment-in-technical-institutions-in-kenya",
+  "title": "Kenya - Student Enrolment by Sex in Technical Institutions",
+  "description": "The Dataset shows the Student Enrollment by Sex in Technical Institutions for the period of 2009 – 2013 as reported by the Kenya National Bureau of statistics in the KNBS Economic Survey 2014\r\n",
+  "category": "education",
+  "organization": {
+    "name": "kenya-national-bureau-of-statistics",
+    "title": "Kenya National Bureau of Statistics (inactive)"
+  },
+  "tags": [
+    "education",
+    "gender and age disaggregated data-gadd",
+    "governance and civil society"
+  ],
+  "license": "Public Domain / No restrictions (CC0)",
+  "dataset_date": "[2009-02-24T00:00:00 TO 2013-12-20T23:59:59]",
+  "last_modified": "2025-07-22T20:41:25.533142",
+  "data_update_frequency": "-1",
+  "num_resources": 1,
+  "resources": [
+    {
+      "id": "a47fe5f3-4471-4683-88f9-f36a7434e912",
+      "name": "Student Enrolment by Sex in Technical Institutions.csv",
+      "format": "CSV",
+      "size": 2922,
+      "last_modified": "2015-11-24T23:46:23.062870",
+      "url": "https://data.humdata.org/dataset/97032db1-5fcf-464e-87f5-81068200d9a9/resource/a47fe5f3-4471-4683-88f9-f36a7434e912/download/student-enrolment-by-sex-in-technical-institutions.csv"
+    }
+  ],
+  "source_url": "https://data.humdata.org/dataset/student-enrollment-in-technical-institutions-in-kenya",
+  "extracted_at": "2025-10-29T21:10:15.218Z",
+  "palestine_context": {
+    "regions_covered": [],
+    "governorates": [],
+    "conflict_related": false,
+    "baseline_comparison_available": false
+  },
+  "data_quality": {
+    "update_frequency": "-1",
+    "last_updated": "2025-07-22T20:41:25.533142",
+    "source_reliability": "unknown"
+  }
+}

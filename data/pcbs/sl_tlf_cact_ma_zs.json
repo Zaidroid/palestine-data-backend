@@ -1,0 +1,130 @@
+{
+  "indicator": "SL.TLF.CACT.MA.ZS",
+  "indicator_name": "Labor force participation rate, male (% of male population ages 15+)",
+  "category": "labor",
+  "data": [
+    {
+      "year": 2010,
+      "value": 66.577,
+      "indicator": "SL.TLF.CACT.MA.ZS",
+      "indicator_name": "Labor force participation rate, male (% of male population ages 15+)",
+      "country": "West Bank and Gaza",
+      "source": "pcbs",
+      "source_detail": "PCBS via World Bank API"
+    },
+    {
+      "year": 2011,
+      "value": 67.748,
+      "indicator": "SL.TLF.CACT.MA.ZS",
+      "indicator_name": "Labor force participation rate, male (% of male population ages 15+)",
+      "country": "West Bank and Gaza",
+      "source": "pcbs",
+      "source_detail": "PCBS via World Bank API"
+    },
+    {
+      "year": 2012,
+      "value": 67.877,
+      "indicator": "SL.TLF.CACT.MA.ZS",
+      "indicator_name": "Labor force participation rate, male (% of male population ages 15+)",
+      "country": "West Bank and Gaza",
+      "source": "pcbs",
+      "source_detail": "PCBS via World Bank API"
+    },
+    {
+      "year": 2013,
+      "value": 68.521,
+      "indicator": "SL.TLF.CACT.MA.ZS",
+      "indicator_name": "Labor force participation rate, male (% of male population ages 15+)",
+      "country": "West Bank and Gaza",
+      "source": "pcbs",
+      "source_detail": "PCBS via World Bank API"
+    },
+    {
+      "year": 2014,
+      "value": 68.466,
+      "indicator": "SL.TLF.CACT.MA.ZS",
+      "indicator_name": "Labor force participation rate, male (% of male population ages 15+)",
+      "country": "West Bank and Gaza",
+      "source": "pcbs",
+      "source_detail": "PCBS via World Bank API"
+    },
+    {
+      "year": 2015,
+      "value": 70.799,
+      "indicator": "SL.TLF.CACT.MA.ZS",
+      "indicator_name": "Labor force participation rate, male (% of male population ages 15+)",
+      "country": "West Bank and Gaza",
+      "source": "pcbs",
+      "source_detail": "PCBS via World Bank API"
+    },
+    {
+      "year": 2016,
+      "value": 71.022,
+      "indicator": "SL.TLF.CACT.MA.ZS",
+      "indicator_name": "Labor force participation rate, male (% of male population ages 15+)",
+      "country": "West Bank and Gaza",
+      "source": "pcbs",
+      "source_detail": "PCBS via World Bank API"
+    },
+    {
+      "year": 2017,
+      "value": 71.297,
+      "indicator": "SL.TLF.CACT.MA.ZS",
+      "indicator_name": "Labor force participation rate, male (% of male population ages 15+)",
+      "country": "West Bank and Gaza",
+      "source": "pcbs",
+      "source_detail": "PCBS via World Bank API"
+    },
+    {
+      "year": 2018,
+      "value": 70.198,
+      "indicator": "SL.TLF.CACT.MA.ZS",
+      "indicator_name": "Labor force participation rate, male (% of male population ages 15+)",
+      "country": "West Bank and Gaza",
+      "source": "pcbs",
+      "source_detail": "PCBS via World Bank API"
+    },
+    {
+      "year": 2019,
+      "value": 71.143,
+      "indicator": "SL.TLF.CACT.MA.ZS",
+      "indicator_name": "Labor force participation rate, male (% of male population ages 15+)",
+      "country": "West Bank and Gaza",
+      "source": "pcbs",
+      "source_detail": "PCBS via World Bank API"
+    },
+    {
+      "year": 2020,
+      "value": 66.394,
+      "indicator": "SL.TLF.CACT.MA.ZS",
+      "indicator_name": "Labor force participation rate, male (% of male population ages 15+)",
+      "country": "West Bank and Gaza",
+      "source": "pcbs",
+      "source_detail": "PCBS via World Bank API"
+    },
+    {
+      "year": 2021,
+      "value": 70.215,
+      "indicator": "SL.TLF.CACT.MA.ZS",
+      "indicator_name": "Labor force participation rate, male (% of male population ages 15+)",
+      "country": "West Bank and Gaza",
+      "source": "pcbs",
+      "source_detail": "PCBS via World Bank API"
+    },
+    {
+      "year": 2022,
+      "value": 72.096,
+      "indicator": "SL.TLF.CACT.MA.ZS",
+      "indicator_name": "Labor force participation rate, male (% of male population ages 15+)",
+      "country": "West Bank and Gaza",
+      "source": "pcbs",
+      "source_detail": "PCBS via World Bank API"
+    }
+  ],
+  "metadata": {
+    "source": "Palestinian Central Bureau of Statistics (PCBS)",
+    "source_detail": "Data accessed via World Bank Open Data API",
+    "last_updated": "2025-10-30T09:42:59.110Z",
+    "total_points": 13
+  }
+}

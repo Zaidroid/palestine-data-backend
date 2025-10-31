@@ -1,0 +1,124 @@
+{
+  "indicator": "VC.IHR.PSRC.P5",
+  "indicator_name": "Intentional homicides (per 100,000 people)",
+  "data": [
+    {
+      "year": 2010,
+      "value": 0.970894209748749,
+      "indicator": "VC.IHR.PSRC.P5",
+      "indicator_name": "Intentional homicides (per 100,000 people)",
+      "country": "West Bank and Gaza",
+      "source": "worldbank"
+    },
+    {
+      "year": 2011,
+      "value": 0.728879354067116,
+      "indicator": "VC.IHR.PSRC.P5",
+      "indicator_name": "Intentional homicides (per 100,000 people)",
+      "country": "West Bank and Gaza",
+      "source": "worldbank"
+    },
+    {
+      "year": 2012,
+      "value": 0.569352738456195,
+      "indicator": "VC.IHR.PSRC.P5",
+      "indicator_name": "Intentional homicides (per 100,000 people)",
+      "country": "West Bank and Gaza",
+      "source": "worldbank"
+    },
+    {
+      "year": 2013,
+      "value": 0.55616572858116,
+      "indicator": "VC.IHR.PSRC.P5",
+      "indicator_name": "Intentional homicides (per 100,000 people)",
+      "country": "West Bank and Gaza",
+      "source": "worldbank"
+    },
+    {
+      "year": 2014,
+      "value": 0.543492845086536,
+      "indicator": "VC.IHR.PSRC.P5",
+      "indicator_name": "Intentional homicides (per 100,000 people)",
+      "country": "West Bank and Gaza",
+      "source": "worldbank"
+    },
+    {
+      "year": 2015,
+      "value": 0.663487089094152,
+      "indicator": "VC.IHR.PSRC.P5",
+      "indicator_name": "Intentional homicides (per 100,000 people)",
+      "country": "West Bank and Gaza",
+      "source": "worldbank"
+    },
+    {
+      "year": 2016,
+      "value": 0.410124550508889,
+      "indicator": "VC.IHR.PSRC.P5",
+      "indicator_name": "Intentional homicides (per 100,000 people)",
+      "country": "West Bank and Gaza",
+      "source": "worldbank"
+    },
+    {
+      "year": 2017,
+      "value": 0.506036328137148,
+      "indicator": "VC.IHR.PSRC.P5",
+      "indicator_name": "Intentional homicides (per 100,000 people)",
+      "country": "West Bank and Gaza",
+      "source": "worldbank"
+    },
+    {
+      "year": 2018,
+      "value": 0.350472648444494,
+      "indicator": "VC.IHR.PSRC.P5",
+      "indicator_name": "Intentional homicides (per 100,000 people)",
+      "country": "West Bank and Gaza",
+      "source": "worldbank"
+    },
+    {
+      "year": 2019,
+      "value": 0.322725871803602,
+      "indicator": "VC.IHR.PSRC.P5",
+      "indicator_name": "Intentional homicides (per 100,000 people)",
+      "country": "West Bank and Gaza",
+      "source": "worldbank"
+    },
+    {
+      "year": 2020,
+      "value": 0.355051154981407,
+      "indicator": "VC.IHR.PSRC.P5",
+      "indicator_name": "Intentional homicides (per 100,000 people)",
+      "country": "West Bank and Gaza",
+      "source": "worldbank"
+    },
+    {
+      "year": 2021,
+      "value": 0.655695277576543,
+      "indicator": "VC.IHR.PSRC.P5",
+      "indicator_name": "Intentional homicides (per 100,000 people)",
+      "country": "West Bank and Gaza",
+      "source": "worldbank"
+    },
+    {
+      "year": 2022,
+      "value": 0.622023007311598,
+      "indicator": "VC.IHR.PSRC.P5",
+      "indicator_name": "Intentional homicides (per 100,000 people)",
+      "country": "West Bank and Gaza",
+      "source": "worldbank"
+    }
+  ],
+  "metadata": {
+    "source": "World Bank Open Data",
+    "last_updated": "2025-10-29T21:01:50.312Z",
+    "total_points": 13
+  },
+  "validation": {
+    "qualityScore": 1,
+    "completeness": 1,
+    "consistency": 1,
+    "accuracy": 1,
+    "meetsThreshold": true,
+    "errorCount": 0,
+    "warningCount": 0
+  }
+}

@@ -1,0 +1,124 @@
+{
+  "indicator": "SH.H2O.SMDW.RU.ZS",
+  "indicator_name": "People using safely managed drinking water services, rural (% of rural population)",
+  "data": [
+    {
+      "year": 2010,
+      "value": 71.5711753589216,
+      "indicator": "SH.H2O.SMDW.RU.ZS",
+      "indicator_name": "People using safely managed drinking water services, rural (% of rural population)",
+      "country": "West Bank and Gaza",
+      "source": "worldbank"
+    },
+    {
+      "year": 2011,
+      "value": 71.9773305242137,
+      "indicator": "SH.H2O.SMDW.RU.ZS",
+      "indicator_name": "People using safely managed drinking water services, rural (% of rural population)",
+      "country": "West Bank and Gaza",
+      "source": "worldbank"
+    },
+    {
+      "year": 2012,
+      "value": 72.3834856895057,
+      "indicator": "SH.H2O.SMDW.RU.ZS",
+      "indicator_name": "People using safely managed drinking water services, rural (% of rural population)",
+      "country": "West Bank and Gaza",
+      "source": "worldbank"
+    },
+    {
+      "year": 2013,
+      "value": 72.7896408547976,
+      "indicator": "SH.H2O.SMDW.RU.ZS",
+      "indicator_name": "People using safely managed drinking water services, rural (% of rural population)",
+      "country": "West Bank and Gaza",
+      "source": "worldbank"
+    },
+    {
+      "year": 2014,
+      "value": 73.1957960200898,
+      "indicator": "SH.H2O.SMDW.RU.ZS",
+      "indicator_name": "People using safely managed drinking water services, rural (% of rural population)",
+      "country": "West Bank and Gaza",
+      "source": "worldbank"
+    },
+    {
+      "year": 2015,
+      "value": 73.6019511853817,
+      "indicator": "SH.H2O.SMDW.RU.ZS",
+      "indicator_name": "People using safely managed drinking water services, rural (% of rural population)",
+      "country": "West Bank and Gaza",
+      "source": "worldbank"
+    },
+    {
+      "year": 2016,
+      "value": 74.0081063506736,
+      "indicator": "SH.H2O.SMDW.RU.ZS",
+      "indicator_name": "People using safely managed drinking water services, rural (% of rural population)",
+      "country": "West Bank and Gaza",
+      "source": "worldbank"
+    },
+    {
+      "year": 2017,
+      "value": 74.4142615159658,
+      "indicator": "SH.H2O.SMDW.RU.ZS",
+      "indicator_name": "People using safely managed drinking water services, rural (% of rural population)",
+      "country": "West Bank and Gaza",
+      "source": "worldbank"
+    },
+    {
+      "year": 2018,
+      "value": 74.8204166812577,
+      "indicator": "SH.H2O.SMDW.RU.ZS",
+      "indicator_name": "People using safely managed drinking water services, rural (% of rural population)",
+      "country": "West Bank and Gaza",
+      "source": "worldbank"
+    },
+    {
+      "year": 2019,
+      "value": 75.2265718465497,
+      "indicator": "SH.H2O.SMDW.RU.ZS",
+      "indicator_name": "People using safely managed drinking water services, rural (% of rural population)",
+      "country": "West Bank and Gaza",
+      "source": "worldbank"
+    },
+    {
+      "year": 2020,
+      "value": 75.6327270118418,
+      "indicator": "SH.H2O.SMDW.RU.ZS",
+      "indicator_name": "People using safely managed drinking water services, rural (% of rural population)",
+      "country": "West Bank and Gaza",
+      "source": "worldbank"
+    },
+    {
+      "year": 2021,
+      "value": 76.0388821771338,
+      "indicator": "SH.H2O.SMDW.RU.ZS",
+      "indicator_name": "People using safely managed drinking water services, rural (% of rural population)",
+      "country": "West Bank and Gaza",
+      "source": "worldbank"
+    },
+    {
+      "year": 2022,
+      "value": 76.37127,
+      "indicator": "SH.H2O.SMDW.RU.ZS",
+      "indicator_name": "People using safely managed drinking water services, rural (% of rural population)",
+      "country": "West Bank and Gaza",
+      "source": "worldbank"
+    }
+  ],
+  "metadata": {
+    "source": "World Bank Open Data",
+    "last_updated": "2025-10-29T21:02:21.125Z",
+    "total_points": 13
+  },
+  "validation": {
+    "qualityScore": 1,
+    "completeness": 1,
+    "consistency": 1,
+    "accuracy": 1,
+    "meetsThreshold": true,
+    "errorCount": 0,
+    "warningCount": 0
+  }
+}

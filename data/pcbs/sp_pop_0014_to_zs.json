@@ -1,0 +1,148 @@
+{
+  "indicator": "SP.POP.0014.TO.ZS",
+  "indicator_name": "Population ages 0-14 (% of total)",
+  "category": "population",
+  "data": [
+    {
+      "year": 2010,
+      "value": 41.9015535676566,
+      "indicator": "SP.POP.0014.TO.ZS",
+      "indicator_name": "Population ages 0-14 (% of total)",
+      "country": "West Bank and Gaza",
+      "source": "pcbs",
+      "source_detail": "PCBS via World Bank API"
+    },
+    {
+      "year": 2011,
+      "value": 41.4607471134859,
+      "indicator": "SP.POP.0014.TO.ZS",
+      "indicator_name": "Population ages 0-14 (% of total)",
+      "country": "West Bank and Gaza",
+      "source": "pcbs",
+      "source_detail": "PCBS via World Bank API"
+    },
+    {
+      "year": 2012,
+      "value": 41.0743994574068,
+      "indicator": "SP.POP.0014.TO.ZS",
+      "indicator_name": "Population ages 0-14 (% of total)",
+      "country": "West Bank and Gaza",
+      "source": "pcbs",
+      "source_detail": "PCBS via World Bank API"
+    },
+    {
+      "year": 2013,
+      "value": 40.7222113242063,
+      "indicator": "SP.POP.0014.TO.ZS",
+      "indicator_name": "Population ages 0-14 (% of total)",
+      "country": "West Bank and Gaza",
+      "source": "pcbs",
+      "source_detail": "PCBS via World Bank API"
+    },
+    {
+      "year": 2014,
+      "value": 40.3924788289722,
+      "indicator": "SP.POP.0014.TO.ZS",
+      "indicator_name": "Population ages 0-14 (% of total)",
+      "country": "West Bank and Gaza",
+      "source": "pcbs",
+      "source_detail": "PCBS via World Bank API"
+    },
+    {
+      "year": 2015,
+      "value": 40.1148606732404,
+      "indicator": "SP.POP.0014.TO.ZS",
+      "indicator_name": "Population ages 0-14 (% of total)",
+      "country": "West Bank and Gaza",
+      "source": "pcbs",
+      "source_detail": "PCBS via World Bank API"
+    },
+    {
+      "year": 2016,
+      "value": 39.8733125263478,
+      "indicator": "SP.POP.0014.TO.ZS",
+      "indicator_name": "Population ages 0-14 (% of total)",
+      "country": "West Bank and Gaza",
+      "source": "pcbs",
+      "source_detail": "PCBS via World Bank API"
+    },
+    {
+      "year": 2017,
+      "value": 39.7257493949967,
+      "indicator": "SP.POP.0014.TO.ZS",
+      "indicator_name": "Population ages 0-14 (% of total)",
+      "country": "West Bank and Gaza",
+      "source": "pcbs",
+      "source_detail": "PCBS via World Bank API"
+    },
+    {
+      "year": 2018,
+      "value": 39.6498159760895,
+      "indicator": "SP.POP.0014.TO.ZS",
+      "indicator_name": "Population ages 0-14 (% of total)",
+      "country": "West Bank and Gaza",
+      "source": "pcbs",
+      "source_detail": "PCBS via World Bank API"
+    },
+    {
+      "year": 2019,
+      "value": 39.5223919312078,
+      "indicator": "SP.POP.0014.TO.ZS",
+      "indicator_name": "Population ages 0-14 (% of total)",
+      "country": "West Bank and Gaza",
+      "source": "pcbs",
+      "source_detail": "PCBS via World Bank API"
+    },
+    {
+      "year": 2020,
+      "value": 39.3067665649116,
+      "indicator": "SP.POP.0014.TO.ZS",
+      "indicator_name": "Population ages 0-14 (% of total)",
+      "country": "West Bank and Gaza",
+      "source": "pcbs",
+      "source_detail": "PCBS via World Bank API"
+    },
+    {
+      "year": 2021,
+      "value": 39.0266165034066,
+      "indicator": "SP.POP.0014.TO.ZS",
+      "indicator_name": "Population ages 0-14 (% of total)",
+      "country": "West Bank and Gaza",
+      "source": "pcbs",
+      "source_detail": "PCBS via World Bank API"
+    },
+    {
+      "year": 2022,
+      "value": 38.6899535744646,
+      "indicator": "SP.POP.0014.TO.ZS",
+      "indicator_name": "Population ages 0-14 (% of total)",
+      "country": "West Bank and Gaza",
+      "source": "pcbs",
+      "source_detail": "PCBS via World Bank API"
+    },
+    {
+      "year": 2023,
+      "value": 38.3702289515375,
+      "indicator": "SP.POP.0014.TO.ZS",
+      "indicator_name": "Population ages 0-14 (% of total)",
+      "country": "West Bank and Gaza",
+      "source": "pcbs",
+      "source_detail": "PCBS via World Bank API"
+    },
+    {
+      "year": 2024,
+      "value": 38.0471055745642,
+      "indicator": "SP.POP.0014.TO.ZS",
+      "indicator_name": "Population ages 0-14 (% of total)",
+      "country": "West Bank and Gaza",
+      "source": "pcbs",
+      "source_detail": "PCBS via World Bank API"
+    }
+  ],
+  "metadata": {
+    "source": "Palestinian Central Bureau of Statistics (PCBS)",
+    "source_detail": "Data accessed via World Bank Open Data API",
+    "last_updated": "2025-10-30T09:42:35.560Z",
+    "total_points": 15
+  }
+}

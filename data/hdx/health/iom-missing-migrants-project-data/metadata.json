@@ -1,0 +1,61 @@
+{
+  "id": "c85c6e30-6b84-4076-b1a2-6433b65cbb09",
+  "name": "iom-missing-migrants-project-data",
+  "title": "Missing Migrants Project Data",
+  "description": "Missing Migrants Project draws on a range of sources to track deaths of migrants along migratory routes across the globe. Data from this project are published in the report “Fatal Journeys: Tracking Lives Lost during Migration,” which provides the most comprehensive global tally of migrant fatalities since 2014.\r\n\r\n##What is included in Missing Migrants Project data?\r\nMissing Migrants Project counts migrants who have died at the external borders of states, or in the process of migration towards an international destination, regardless of their legal status. The Project records only those migrants who die during their journey to a country different from their country of residence.\r\n\r\nMissing Migrants Project data include the deaths of migrants who die in transportation accidents, shipwrecks, violent attacks, or due to medical complications during their journeys. It also includes the number of corpses found at border crossings that are categorized as the bodies of migrants, on the basis of belongings and/or the characteristics of the death. For instance, a death of an unidentified person might be included if the decedent is found without any identifying documentation in an area known to be on a migration route. Deaths during migration may also be identified based on the cause of death, especially if is related to trafficking, smuggling, or means of travel such as on top of a train, in the back of a cargo truck, as a stowaway on a plane, in unseaworthy boats, or crossing a border fence. While the location and cause of death can provide strong evidence that an unidentified decedent should be included in Missing Migrants Project data, this should always be evaluated in conjunction with migration history and trends.\r\n\r\n## What is excluded?\r\nThe count excludes deaths that occur in immigration detention facilities or after deportation to a migrant’s homeland, as well as deaths more loosely connected with migrants´ irregular status, such as those resulting from labour exploitation. Migrants who die or go missing after they are established in a new home are also not included in the data, so deaths in refugee camps or housing are excluded. The deaths of internally displaced persons who die within their country of origin are also excluded. There remains a significant gap in knowledge and data on such deaths. Data and knowledge of the risks and vulnerabilities faced by migrants in destination countries, including death, should not be neglected, but rather tracked as a distinct category.",
+  "category": "health",
+  "organization": {
+    "name": "iom-missing-migrants-project",
+    "title": "IOM Missing Migrants Project"
+  },
+  "tags": [
+    "asylum seekers",
+    "gender and age disaggregated data-gadd",
+    "migration",
+    "refugees"
+  ],
+  "license": "Creative Commons Attribution for Intergovernmental Organisations (CC BY-IGO)",
+  "dataset_date": "[2014-01-02T00:00:00 TO *]",
+  "last_modified": "2025-09-08T01:25:48.180785",
+  "data_update_frequency": "-1",
+  "num_resources": 3,
+  "resources": [
+    {
+      "id": "109e5039-03c2-4fc7-a4fc-0be64744d2a4",
+      "name": "Missing Migrants Project Data.csv",
+      "format": "CSV",
+      "size": 5461441,
+      "last_modified": "2025-08-26T10:43:53.995853",
+      "url": "https://docs.google.com/spreadsheets/d/e/2PACX-1vTCSf2bkolxhbxDOdGDqWhaJIYyA0QTrG6t1M1mGOXrUwP5IUx7JmXjpo5grMUjXcMBeaZRG6USOZCU/pub?gid=1801809492&single=true&output=csv"
+    },
+    {
+      "id": "d189f067-c079-4784-9c32-8bcf6bf16fc9",
+      "name": "Codebook for Missing Migrants Project Data.csv",
+      "format": "CSV",
+      "size": 5211,
+      "last_modified": "2025-08-27T12:44:50.142182",
+      "url": "https://docs.google.com/spreadsheets/d/e/2PACX-1vTCSf2bkolxhbxDOdGDqWhaJIYyA0QTrG6t1M1mGOXrUwP5IUx7JmXjpo5grMUjXcMBeaZRG6USOZCU/pub?gid=0&single=true&output=csv"
+    },
+    {
+      "id": "d0af3cf3-e3d2-46c3-96a4-9091fbcf508c",
+      "name": "Attempted Mediterranean Crossings.xls",
+      "format": "XLS",
+      "size": 0,
+      "last_modified": "2025-06-21T01:02:28.461117",
+      "url": "https://missingmigrants.iom.int/mediterranean-data/xls"
+    }
+  ],
+  "source_url": "https://data.humdata.org/dataset/iom-missing-migrants-project-data",
+  "extracted_at": "2025-10-29T13:36:39.467Z",
+  "palestine_context": {
+    "regions_covered": [],
+    "governorates": [],
+    "conflict_related": true,
+    "baseline_comparison_available": false
+  },
+  "data_quality": {
+    "update_frequency": "-1",
+    "last_updated": "2025-09-08T01:25:48.180785",
+    "source_reliability": "unknown"
+  }
+}

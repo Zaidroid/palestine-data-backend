@@ -1,0 +1,14 @@
+{
+  "category": "refugees",
+  "total_records": 6107,
+  "last_updated": "2025-10-29T21:14:45.844Z",
+  "sources": [
+    "HDX"
+  ],
+  "quality": {
+    "average_score": 1,
+    "completeness": 1,
+    "consistency": 1,
+    "accuracy": 1
+  }
+}

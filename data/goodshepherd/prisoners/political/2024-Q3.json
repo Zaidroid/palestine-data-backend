@@ -1,0 +1,51 @@
+{
+  "metadata": {
+    "source": "goodshepherd",
+    "dataset": "political-prisoners",
+    "quarter": "2024-Q3",
+    "record_count": 5,
+    "last_updated": "2025-10-29T21:01:30.646Z"
+  },
+  "data": [
+    {
+      "date": "2024-07-01T00:00:00.000Z",
+      "name": "Unknown",
+      "location": "Unknown",
+      "detention_type": "administrative",
+      "notes": "",
+      "source": "goodshepherd-api"
+    },
+    {
+      "date": "2024-07-05T12:00:00.000Z",
+      "name": "Unknown",
+      "location": "Unknown",
+      "detention_type": "administrative",
+      "notes": "",
+      "source": "goodshepherd-api"
+    },
+    {
+      "date": "2024-08-01T12:00:00.000Z",
+      "name": "Unknown",
+      "location": "Unknown",
+      "detention_type": "administrative",
+      "notes": "",
+      "source": "goodshepherd-api"
+    },
+    {
+      "date": "2024-08-07T12:00:00.000Z",
+      "name": "Unknown",
+      "location": "Unknown",
+      "detention_type": "administrative",
+      "notes": "",
+      "source": "goodshepherd-api"
+    },
+    {
+      "date": "2024-09-06T12:00:00.000Z",
+      "name": "Unknown",
+      "location": "Unknown",
+      "detention_type": "administrative",
+      "notes": "",
+      "source": "goodshepherd-api"
+    }
+  ]
+}

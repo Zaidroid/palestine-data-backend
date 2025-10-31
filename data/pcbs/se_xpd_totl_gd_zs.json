@@ -1,0 +1,85 @@
+{
+  "indicator": "SE.XPD.TOTL.GD.ZS",
+  "indicator_name": "Government expenditure on education, total (% of GDP)",
+  "category": "education",
+  "data": [
+    {
+      "year": 2010,
+      "value": 6.19167995452881,
+      "indicator": "SE.XPD.TOTL.GD.ZS",
+      "indicator_name": "Government expenditure on education, total (% of GDP)",
+      "country": "West Bank and Gaza",
+      "source": "pcbs",
+      "source_detail": "PCBS via World Bank API"
+    },
+    {
+      "year": 2011,
+      "value": 5.33527994155884,
+      "indicator": "SE.XPD.TOTL.GD.ZS",
+      "indicator_name": "Government expenditure on education, total (% of GDP)",
+      "country": "West Bank and Gaza",
+      "source": "pcbs",
+      "source_detail": "PCBS via World Bank API"
+    },
+    {
+      "year": 2012,
+      "value": 4.74210977554321,
+      "indicator": "SE.XPD.TOTL.GD.ZS",
+      "indicator_name": "Government expenditure on education, total (% of GDP)",
+      "country": "West Bank and Gaza",
+      "source": "pcbs",
+      "source_detail": "PCBS via World Bank API"
+    },
+    {
+      "year": 2013,
+      "value": 4.89467000961304,
+      "indicator": "SE.XPD.TOTL.GD.ZS",
+      "indicator_name": "Government expenditure on education, total (% of GDP)",
+      "country": "West Bank and Gaza",
+      "source": "pcbs",
+      "source_detail": "PCBS via World Bank API"
+    },
+    {
+      "year": 2015,
+      "value": 4.66321992874146,
+      "indicator": "SE.XPD.TOTL.GD.ZS",
+      "indicator_name": "Government expenditure on education, total (% of GDP)",
+      "country": "West Bank and Gaza",
+      "source": "pcbs",
+      "source_detail": "PCBS via World Bank API"
+    },
+    {
+      "year": 2016,
+      "value": 4.98296022415161,
+      "indicator": "SE.XPD.TOTL.GD.ZS",
+      "indicator_name": "Government expenditure on education, total (% of GDP)",
+      "country": "West Bank and Gaza",
+      "source": "pcbs",
+      "source_detail": "PCBS via World Bank API"
+    },
+    {
+      "year": 2017,
+      "value": 4.72153997421265,
+      "indicator": "SE.XPD.TOTL.GD.ZS",
+      "indicator_name": "Government expenditure on education, total (% of GDP)",
+      "country": "West Bank and Gaza",
+      "source": "pcbs",
+      "source_detail": "PCBS via World Bank API"
+    },
+    {
+      "year": 2021,
+      "value": 5.43442010879517,
+      "indicator": "SE.XPD.TOTL.GD.ZS",
+      "indicator_name": "Government expenditure on education, total (% of GDP)",
+      "country": "West Bank and Gaza",
+      "source": "pcbs",
+      "source_detail": "PCBS via World Bank API"
+    }
+  ],
+  "metadata": {
+    "source": "Palestinian Central Bureau of Statistics (PCBS)",
+    "source_detail": "Data accessed via World Bank Open Data API",
+    "last_updated": "2025-10-30T09:43:45.207Z",
+    "total_points": 8
+  }
+}

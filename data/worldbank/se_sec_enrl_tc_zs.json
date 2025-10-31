@@ -1,0 +1,92 @@
+{
+  "indicator": "SE.SEC.ENRL.TC.ZS",
+  "indicator_name": "Pupil-teacher ratio, secondary",
+  "data": [
+    {
+      "year": 2010,
+      "value": 22.50795,
+      "indicator": "SE.SEC.ENRL.TC.ZS",
+      "indicator_name": "Pupil-teacher ratio, secondary",
+      "country": "West Bank and Gaza",
+      "source": "worldbank"
+    },
+    {
+      "year": 2011,
+      "value": 20.49871,
+      "indicator": "SE.SEC.ENRL.TC.ZS",
+      "indicator_name": "Pupil-teacher ratio, secondary",
+      "country": "West Bank and Gaza",
+      "source": "worldbank"
+    },
+    {
+      "year": 2012,
+      "value": 20.18146,
+      "indicator": "SE.SEC.ENRL.TC.ZS",
+      "indicator_name": "Pupil-teacher ratio, secondary",
+      "country": "West Bank and Gaza",
+      "source": "worldbank"
+    },
+    {
+      "year": 2013,
+      "value": 19.86081,
+      "indicator": "SE.SEC.ENRL.TC.ZS",
+      "indicator_name": "Pupil-teacher ratio, secondary",
+      "country": "West Bank and Gaza",
+      "source": "worldbank"
+    },
+    {
+      "year": 2014,
+      "value": 19.71825,
+      "indicator": "SE.SEC.ENRL.TC.ZS",
+      "indicator_name": "Pupil-teacher ratio, secondary",
+      "country": "West Bank and Gaza",
+      "source": "worldbank"
+    },
+    {
+      "year": 2015,
+      "value": 19.9462,
+      "indicator": "SE.SEC.ENRL.TC.ZS",
+      "indicator_name": "Pupil-teacher ratio, secondary",
+      "country": "West Bank and Gaza",
+      "source": "worldbank"
+    },
+    {
+      "year": 2016,
+      "value": 19.64335,
+      "indicator": "SE.SEC.ENRL.TC.ZS",
+      "indicator_name": "Pupil-teacher ratio, secondary",
+      "country": "West Bank and Gaza",
+      "source": "worldbank"
+    },
+    {
+      "year": 2017,
+      "value": 20.08626,
+      "indicator": "SE.SEC.ENRL.TC.ZS",
+      "indicator_name": "Pupil-teacher ratio, secondary",
+      "country": "West Bank and Gaza",
+      "source": "worldbank"
+    },
+    {
+      "year": 2018,
+      "value": 17.33404,
+      "indicator": "SE.SEC.ENRL.TC.ZS",
+      "indicator_name": "Pupil-teacher ratio, secondary",
+      "country": "West Bank and Gaza",
+      "source": "worldbank"
+    }
+  ],
+  "metadata": {
+    "source": "World Bank Open Data",
+    "last_updated": "2025-10-29T21:02:04.863Z",
+    "total_points": 9
+  },
+  "validation": {
+    "qualityScore": 1,
+    "completeness": 1,
+    "consistency": 1,
+    "accuracy": 1,
+    "meetsThreshold": true,
+    "errorCount": 0,
+    "warningCount": 0
+  }
+}

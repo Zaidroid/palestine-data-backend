@@ -1,0 +1,42 @@
+{
+  "id": "27b71bdd-d5d4-4aae-855f-19ae3619e52c",
+  "name": "2015-unhcr-refugees-statistics-by-coo-coa",
+  "title": "2015 UNHCR Refugees Statistics by CoO/CoA",
+  "description": "2015 UNHCR Refugees statistics by Country of Asylum broken down by Country of Origin\r\nFigures between 1 and 4 are redacted for Refugees protection reasons",
+  "category": "refugees",
+  "organization": {
+    "name": "unhcr",
+    "title": "UNHCR - The UN Refugee Agency"
+  },
+  "tags": [
+    "refugees"
+  ],
+  "license": "Creative Commons Attribution International (CC BY)",
+  "dataset_date": "[2015-01-01T00:00:00 TO 2015-12-31T23:59:59]",
+  "last_modified": "2021-09-23T14:47:37.731790",
+  "data_update_frequency": "-1",
+  "num_resources": 1,
+  "resources": [
+    {
+      "id": "278278d5-ba6c-45eb-b34d-c0b8cbdbe223",
+      "name": "unhcr_refugees_2015.csv",
+      "format": "CSV",
+      "size": 143095,
+      "last_modified": "2019-11-10T07:24:44",
+      "url": "https://data.humdata.org/dataset/27b71bdd-d5d4-4aae-855f-19ae3619e52c/resource/278278d5-ba6c-45eb-b34d-c0b8cbdbe223/download/unhcr_refugees_2015.csv"
+    }
+  ],
+  "source_url": "https://data.humdata.org/dataset/2015-unhcr-refugees-statistics-by-coo-coa",
+  "extracted_at": "2025-10-29T21:11:14.024Z",
+  "palestine_context": {
+    "regions_covered": [],
+    "governorates": [],
+    "conflict_related": false,
+    "baseline_comparison_available": false
+  },
+  "data_quality": {
+    "update_frequency": "-1",
+    "last_updated": "2021-09-23T14:47:37.731790",
+    "source_reliability": "high"
+  }
+}

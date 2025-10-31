@@ -1,0 +1,180 @@
+name: Update Daily Data Sources
+
+# Run daily at midnight UTC for Good Shepherd and B'Tselem data
+on:
+  schedule:
+    # Runs at 00:00 UTC daily
+    - cron: '0 0 * * *'
+  
+  # Allow manual trigger from GitHub Actions tab
+  workflow_dispatch:
+
+jobs:
+  update-daily-data:
+    runs-on: ubuntu-latest
+    
+    steps:
+      # 1. Checkout the repository
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+      
+      # 2. Setup Node.js
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '18'
+          cache: 'npm'
+      
+      # 3. Install dependencies
+      - name: Install dependencies
+        run: npm ci
+      
+      # 4. Fetch Good Shepherd data with retry logic
+      - name: Fetch Good Shepherd data
+        id: fetch_goodshepherd
+        run: |
+          echo "Attempting to fetch Good Shepherd data..."
+          max_retries=3
+          retry_count=0
+          
+          while [ $retry_count -lt $max_retries ]; do
+            if node scripts/fetch-goodshepherd-data.js; then
+              echo "✅ Good Shepherd data fetched successfully"
+              echo "success=true" >> $GITHUB_OUTPUT
+              break
+            else
+              retry_count=$((retry_count + 1))
+              if [ $retry_count -lt $max_retries ]; then
+                echo "⚠️ Attempt $retry_count failed, retrying in 30 seconds..."
+                sleep 30
+              else
+                echo "❌ All retry attempts failed"
+                echo "success=false" >> $GITHUB_OUTPUT
+              fi
+            fi
+          done
+        env:
+          NODE_ENV: production
+        continue-on-error: true
+      
+      # 5. Fetch B'Tselem data with retry logic
+      - name: Fetch B'Tselem data
+        id: fetch_btselem
+        run: |
+          echo "Attempting to fetch B'Tselem data..."
+          max_retries=3
+          retry_count=0
+          
+          while [ $retry_count -lt $max_retries ]; do
+            if npm run update-btselem-data; then
+              echo "✅ B'Tselem data fetched successfully"
+              echo "success=true" >> $GITHUB_OUTPUT
+              break
+            else
+              retry_count=$((retry_count + 1))
+              if [ $retry_count -lt $max_retries ]; then
+                echo "⚠️ Attempt $retry_count failed, retrying in 30 seconds..."
+                sleep 30
+              else
+                echo "❌ All retry attempts failed"
+                echo "success=false" >> $GITHUB_OUTPUT
+              fi
+            fi
+          done
+        env:
+          NODE_ENV: production
+        continue-on-error: true
+      
+      # 6. Run data validation
+      - name: Validate data quality
+        run: node scripts/validate-data.js
+        continue-on-error: true
+      
+      # 7. Update global manifest
+      - name: Update manifest
+        run: node scripts/generate-manifest.js
+        continue-on-error: true
+      
+      # 8. Check if data changed
+      - name: Check for changes
+        id: check_changes
+        run: |
+          if git diff --quiet public/data/goodshepherd/ src/data/btselem-checkpoints.json public/data/manifest.json; then
+            echo "changed=false" >> $GITHUB_OUTPUT
+            echo "ℹ️ No data changes detected"
+          else
+            echo "changed=true" >> $GITHUB_OUTPUT
+            echo "✅ Data changes detected"
+            # Show what changed
+            git diff --stat public/data/goodshepherd/ src/data/btselem-checkpoints.json public/data/manifest.json
+          fi
+      
+      # 9. Commit and push if data changed
+      - name: Commit and push changes
+        if: steps.check_changes.outputs.changed == 'true'
+        run: |
+          git config --local user.name "Daily Data Bot"
+          git config --local user.email "daily-bot@palboard.net"
+          git add public/data/goodshepherd/
+          git add src/data/btselem-checkpoints.json
+          git add public/data/manifest.json
+          git add public/data/validation-report.json
+          git add public/data/data-collection-summary.json
+          git commit -m "🤖 Auto-update daily data (Good Shepherd, B'Tselem): $(date -u '+%Y-%m-%d %H:%M UTC')"
+          git push
+      
+      # 10. Summary with error handling
+      - name: Summary
+        run: |
+          echo "📊 Daily Data Update Summary"
+          echo "================================"
+          
+          if [ "${{ steps.fetch_goodshepherd.outputs.success }}" == "true" ]; then
+            echo "✅ Good Shepherd: Success"
+          else
+            echo "❌ Good Shepherd: Failed (check logs)"
+          fi
+          
+          if [ "${{ steps.fetch_btselem.outputs.success }}" == "true" ]; then
+            echo "✅ B'Tselem: Success"
+          else
+            echo "❌ B'Tselem: Failed (check logs)"
+          fi
+          
+          echo "================================"
+          
+          if [ "${{ steps.check_changes.outputs.changed }}" == "true" ]; then
+            echo "✅ Data updated and pushed to repository"
+            echo "📊 Netlify will automatically deploy the changes"
+          else
+            echo "ℹ️ No data changes - skipping commit"
+          fi
+      
+      # 11. Upload validation report as artifact
+      - name: Upload validation report
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: validation-report-daily
+          path: public/data/validation-report.json
+          retention-days: 7
+      
+      # 12. Upload summary report as artifact
+      - name: Upload summary report
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: summary-report-daily
+          path: public/data/data-collection-summary.json
+          retention-days: 7
+      
+      # 13. Upload logs as artifact
+      - name: Upload logs
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: logs-daily
+          path: data-collection.log
+          retention-days: 7

@@ -1,0 +1,44 @@
+{
+  "indicator": "SH.STA.STNT.ZS",
+  "indicator_name": "Prevalence of stunting, height for age (% of children under 5)",
+  "data": [
+    {
+      "year": 2010,
+      "value": 10.9,
+      "indicator": "SH.STA.STNT.ZS",
+      "indicator_name": "Prevalence of stunting, height for age (% of children under 5)",
+      "country": "West Bank and Gaza",
+      "source": "worldbank"
+    },
+    {
+      "year": 2014,
+      "value": 7.4,
+      "indicator": "SH.STA.STNT.ZS",
+      "indicator_name": "Prevalence of stunting, height for age (% of children under 5)",
+      "country": "West Bank and Gaza",
+      "source": "worldbank"
+    },
+    {
+      "year": 2020,
+      "value": 8.7,
+      "indicator": "SH.STA.STNT.ZS",
+      "indicator_name": "Prevalence of stunting, height for age (% of children under 5)",
+      "country": "West Bank and Gaza",
+      "source": "worldbank"
+    }
+  ],
+  "metadata": {
+    "source": "World Bank Open Data",
+    "last_updated": "2025-10-29T21:02:14.570Z",
+    "total_points": 3
+  },
+  "validation": {
+    "qualityScore": 1,
+    "completeness": 1,
+    "consistency": 1,
+    "accuracy": 1,
+    "meetsThreshold": true,
+    "errorCount": 0,
+    "warningCount": 0
+  }
+}

@@ -1,0 +1,139 @@
+{
+  "indicator": "SE.TER.ENRR.FE",
+  "indicator_name": "School enrollment, tertiary, female (% gross)",
+  "category": "education",
+  "data": [
+    {
+      "year": 2010,
+      "value": 50.8934404357707,
+      "indicator": "SE.TER.ENRR.FE",
+      "indicator_name": "School enrollment, tertiary, female (% gross)",
+      "country": "West Bank and Gaza",
+      "source": "pcbs",
+      "source_detail": "PCBS via World Bank API"
+    },
+    {
+      "year": 2011,
+      "value": 54.2828539010879,
+      "indicator": "SE.TER.ENRR.FE",
+      "indicator_name": "School enrollment, tertiary, female (% gross)",
+      "country": "West Bank and Gaza",
+      "source": "pcbs",
+      "source_detail": "PCBS via World Bank API"
+    },
+    {
+      "year": 2012,
+      "value": 54.2372294522178,
+      "indicator": "SE.TER.ENRR.FE",
+      "indicator_name": "School enrollment, tertiary, female (% gross)",
+      "country": "West Bank and Gaza",
+      "source": "pcbs",
+      "source_detail": "PCBS via World Bank API"
+    },
+    {
+      "year": 2013,
+      "value": 53.3679700643718,
+      "indicator": "SE.TER.ENRR.FE",
+      "indicator_name": "School enrollment, tertiary, female (% gross)",
+      "country": "West Bank and Gaza",
+      "source": "pcbs",
+      "source_detail": "PCBS via World Bank API"
+    },
+    {
+      "year": 2014,
+      "value": 53.5503712710969,
+      "indicator": "SE.TER.ENRR.FE",
+      "indicator_name": "School enrollment, tertiary, female (% gross)",
+      "country": "West Bank and Gaza",
+      "source": "pcbs",
+      "source_detail": "PCBS via World Bank API"
+    },
+    {
+      "year": 2015,
+      "value": 55.1963153814583,
+      "indicator": "SE.TER.ENRR.FE",
+      "indicator_name": "School enrollment, tertiary, female (% gross)",
+      "country": "West Bank and Gaza",
+      "source": "pcbs",
+      "source_detail": "PCBS via World Bank API"
+    },
+    {
+      "year": 2016,
+      "value": 54.4611833614613,
+      "indicator": "SE.TER.ENRR.FE",
+      "indicator_name": "School enrollment, tertiary, female (% gross)",
+      "country": "West Bank and Gaza",
+      "source": "pcbs",
+      "source_detail": "PCBS via World Bank API"
+    },
+    {
+      "year": 2017,
+      "value": 54.8600363992027,
+      "indicator": "SE.TER.ENRR.FE",
+      "indicator_name": "School enrollment, tertiary, female (% gross)",
+      "country": "West Bank and Gaza",
+      "source": "pcbs",
+      "source_detail": "PCBS via World Bank API"
+    },
+    {
+      "year": 2018,
+      "value": 55.399451085429,
+      "indicator": "SE.TER.ENRR.FE",
+      "indicator_name": "School enrollment, tertiary, female (% gross)",
+      "country": "West Bank and Gaza",
+      "source": "pcbs",
+      "source_detail": "PCBS via World Bank API"
+    },
+    {
+      "year": 2019,
+      "value": 55.2074327482719,
+      "indicator": "SE.TER.ENRR.FE",
+      "indicator_name": "School enrollment, tertiary, female (% gross)",
+      "country": "West Bank and Gaza",
+      "source": "pcbs",
+      "source_detail": "PCBS via World Bank API"
+    },
+    {
+      "year": 2020,
+      "value": 55.0424015442741,
+      "indicator": "SE.TER.ENRR.FE",
+      "indicator_name": "School enrollment, tertiary, female (% gross)",
+      "country": "West Bank and Gaza",
+      "source": "pcbs",
+      "source_detail": "PCBS via World Bank API"
+    },
+    {
+      "year": 2021,
+      "value": 53.8979713870798,
+      "indicator": "SE.TER.ENRR.FE",
+      "indicator_name": "School enrollment, tertiary, female (% gross)",
+      "country": "West Bank and Gaza",
+      "source": "pcbs",
+      "source_detail": "PCBS via World Bank API"
+    },
+    {
+      "year": 2022,
+      "value": 55.6647600418469,
+      "indicator": "SE.TER.ENRR.FE",
+      "indicator_name": "School enrollment, tertiary, female (% gross)",
+      "country": "West Bank and Gaza",
+      "source": "pcbs",
+      "source_detail": "PCBS via World Bank API"
+    },
+    {
+      "year": 2023,
+      "value": 54.7817476689496,
+      "indicator": "SE.TER.ENRR.FE",
+      "indicator_name": "School enrollment, tertiary, female (% gross)",
+      "country": "West Bank and Gaza",
+      "source": "pcbs",
+      "source_detail": "PCBS via World Bank API"
+    }
+  ],
+  "metadata": {
+    "source": "Palestinian Central Bureau of Statistics (PCBS)",
+    "source_detail": "Data accessed via World Bank Open Data API",
+    "last_updated": "2025-10-30T09:43:43.774Z",
+    "total_points": 14
+  }
+}

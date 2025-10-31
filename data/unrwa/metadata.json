@@ -1,0 +1,14 @@
+{
+  "source": "UNRWA",
+  "api_base": "https://data.humdata.org/api/3/action",
+  "organization": "unrwa",
+  "last_updated": "2025-10-29T17:48:44.227Z",
+  "update_frequency": "monthly",
+  "categories": [
+    "refugees",
+    "education",
+    "health",
+    "emergency"
+  ],
+  "total_datasets": 0
+}

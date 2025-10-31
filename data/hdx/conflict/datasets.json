@@ -1,0 +1,287 @@
+{
+  "category": "conflict",
+  "generated_at": "2025-10-24T15:26:52.642Z",
+  "datasets": [
+    {
+      "id": "819ed927-c593-40fc-bda2-1e1e72ab69ff",
+      "name": "conflict-hunger-and-aid-security",
+      "title": "Conflict-Related Incidents Affecting Food Systems",
+      "organization": "Insecurity Insight",
+      "last_modified": "2025-08-17T13:17:55.913673",
+      "resources": [
+        {
+          "id": "c0ca4093-14a9-42a5-93bf-6be400088159",
+          "name": "2025 Food Security Incident Data.xlsx",
+          "format": "XLSX",
+          "url": "https://data.humdata.org/dataset/819ed927-c593-40fc-bda2-1e1e72ab69ff/resource/c0ca4093-14a9-42a5-93bf-6be400088159/download/2025-food-security-incident-data.xlsx",
+          "last_modified": "2025-07-21T07:20:54.183539"
+        },
+        {
+          "id": "30aeac7e-c627-443f-84d7-dc08b0cc0fd7",
+          "name": "2020-2025 Food Security Incident Data.xlsx",
+          "format": "XLSX",
+          "url": "https://data.humdata.org/dataset/819ed927-c593-40fc-bda2-1e1e72ab69ff/resource/30aeac7e-c627-443f-84d7-dc08b0cc0fd7/download/2020-2025-food-security-incident-data.xlsx",
+          "last_modified": "2025-07-21T07:20:54.400756"
+        },
+        {
+          "id": "011d98d4-d918-43c7-9ced-f5a1453ad9c5",
+          "name": "2020-2025 Food Security Overview Data.xlsx",
+          "format": "XLSX",
+          "url": "https://data.humdata.org/dataset/819ed927-c593-40fc-bda2-1e1e72ab69ff/resource/011d98d4-d918-43c7-9ced-f5a1453ad9c5/download/2020-2025-food-security-overview-data.xlsx",
+          "last_modified": "2025-07-21T07:20:54.725338"
+        },
+        {
+          "id": "6745e180-663d-458e-b116-c20e23ebd44f",
+          "name": "FIVC-West Bank OPT (linked to West Bank conflict and hunger report).xlsx",
+          "format": "XLSX",
+          "url": "https://data.humdata.org/dataset/819ed927-c593-40fc-bda2-1e1e72ab69ff/resource/6745e180-663d-458e-b116-c20e23ebd44f/download/fivc-west-bank.xlsx",
+          "last_modified": "2025-06-12T13:41:41.430394"
+        },
+        {
+          "id": "b6b4b811-1b0b-44b0-a8be-6038bbcf3e0c",
+          "name": "FIVC-DRC (linked to DRC North Kivu and Ituri conflict and hunger report)",
+          "format": "XLSX",
+          "url": "https://data.humdata.org/dataset/819ed927-c593-40fc-bda2-1e1e72ab69ff/resource/b6b4b811-1b0b-44b0-a8be-6038bbcf3e0c/download/fivc-drc-linked-to-drc-north-kivu-and-ituri-conflict-and-hunger-report-1.xlsx",
+          "last_modified": "2025-05-20T11:58:22.788207"
+        },
+        {
+          "id": "09cc2dc0-d0ad-42bd-9ce4-794aa9f2f559",
+          "name": "FIVC-DRC (linked to DRC conflict and hunger report).xlsx",
+          "format": "XLSX",
+          "url": "https://data.humdata.org/dataset/819ed927-c593-40fc-bda2-1e1e72ab69ff/resource/09cc2dc0-d0ad-42bd-9ce4-794aa9f2f559/download/fivc-drc-linked-to-drc-conflict-and-hunger-report.xlsx",
+          "last_modified": "2025-02-03T14:28:27.601569"
+        },
+        {
+          "id": "b884ba57-4ac2-4dc4-80f3-29c4dccfcd37",
+          "name": "FIVC-Mali 2024 (linked to Mali 2024 food-related violence briefing).xlsx",
+          "format": "XLSX",
+          "url": "https://data.humdata.org/dataset/819ed927-c593-40fc-bda2-1e1e72ab69ff/resource/b884ba57-4ac2-4dc4-80f3-29c4dccfcd37/download/fivc-mali-2024.xlsx",
+          "last_modified": "2025-03-20T12:51:30.511804"
+        },
+        {
+          "id": "77918ac1-f414-4b13-9ed6-e68153300f47",
+          "name": "FIVC-Ségou (linked to anticipatory action briefing).xlsx",
+          "format": "XLSX",
+          "url": "https://data.humdata.org/dataset/819ed927-c593-40fc-bda2-1e1e72ab69ff/resource/77918ac1-f414-4b13-9ed6-e68153300f47/download/fivc-segou-linked-to-anticipatory-action-briefing.xlsx",
+          "last_modified": "2024-11-12T12:05:37.487144"
+        },
+        {
+          "id": "a1beee72-9849-4bdd-af60-926c16f54631",
+          "name": "FIVC-Timbuktu (linked to anticipatory action briefing).xlsx",
+          "format": "XLSX",
+          "url": "https://data.humdata.org/dataset/819ed927-c593-40fc-bda2-1e1e72ab69ff/resource/a1beee72-9849-4bdd-af60-926c16f54631/download/fivc-timbuktu-linked-to-anticipatory-action-briefing.xlsx",
+          "last_modified": "2024-11-07T10:27:38.590137"
+        },
+        {
+          "id": "6c000f61-dd6b-428a-93f7-ed874b340ddb",
+          "name": "FIVC-Gao (linked to anticipatory action briefing).xlsx",
+          "format": "XLSX",
+          "url": "https://data.humdata.org/dataset/819ed927-c593-40fc-bda2-1e1e72ab69ff/resource/6c000f61-dd6b-428a-93f7-ed874b340ddb/download/fivc-gao-linked-to-anticipatory-action-briefing.xlsx",
+          "last_modified": "2024-10-31T11:24:37.108428"
+        },
+        {
+          "id": "2caaf98e-8b51-44f3-8f14-d632bfe2907c",
+          "name": "FIVC-Ménaka (linked to anticipatory action briefing).xlsx",
+          "format": "XLSX",
+          "url": "https://data.humdata.org/dataset/819ed927-c593-40fc-bda2-1e1e72ab69ff/resource/2caaf98e-8b51-44f3-8f14-d632bfe2907c/download/fivc-menaka-linked-to-anticipatory-action-briefing.xlsx",
+          "last_modified": "2024-10-16T21:25:13.991782"
+        },
+        {
+          "id": "d5b7ed55-3581-4a9a-8e84-94f0d76c4359",
+          "name": "FIVC-Mopti, Mali (linked to anticipatory action briefing).xlsx",
+          "format": "XLSX",
+          "url": "https://data.humdata.org/dataset/819ed927-c593-40fc-bda2-1e1e72ab69ff/resource/d5b7ed55-3581-4a9a-8e84-94f0d76c4359/download/mopti-region-mali-anticipatory-action-fivc-dataset-october-2024.xlsx.xlsx",
+          "last_modified": "2024-10-02T13:38:58.783004"
+        },
+        {
+          "id": "a55fe5a1-a152-4ab3-b384-068012273361",
+          "name": "FIVC-Mali (linked to Mali conflict and hunger report).xlsx",
+          "format": "XLSX",
+          "url": "https://data.humdata.org/dataset/819ed927-c593-40fc-bda2-1e1e72ab69ff/resource/a55fe5a1-a152-4ab3-b384-068012273361/download/fivc-mali_linked-to-mali-conflict-and-hunger-report.xlsx",
+          "last_modified": "2024-08-07T19:44:06.273227"
+        },
+        {
+          "id": "7ab2f496-888d-42a4-a91f-df50a29cde20",
+          "name": "FIVC-Gaza (linked to Gaza conflict and hunger report).xlsx",
+          "format": "XLSX",
+          "url": "https://data.humdata.org/dataset/819ed927-c593-40fc-bda2-1e1e72ab69ff/resource/7ab2f496-888d-42a4-a91f-df50a29cde20/download/fivc-gaza-october-2024.xlsx",
+          "last_modified": "2024-10-13T21:19:54.962385"
+        },
+        {
+          "id": "262a908b-5f2a-470d-a343-2309da56fda5",
+          "name": "FIVC-Niger (linked to Niger conflict and hunger report).xlsx",
+          "format": "XLSX",
+          "url": "https://data.humdata.org/dataset/819ed927-c593-40fc-bda2-1e1e72ab69ff/resource/262a908b-5f2a-470d-a343-2309da56fda5/download/fivc-niger.xlsx",
+          "last_modified": "2023-10-18T20:14:32.109442"
+        },
+        {
+          "id": "e26884a8-7f13-4982-916a-bc08c29aba46",
+          "name": "FIVC-Sudan (linked to Sudan conflict and hunger report).xlsx",
+          "format": "XLSX",
+          "url": "https://data.humdata.org/dataset/819ed927-c593-40fc-bda2-1e1e72ab69ff/resource/e26884a8-7f13-4982-916a-bc08c29aba46/download/fivc-sudan-linked-to-sudan-conflict-and-hunger-report.xlsx",
+          "last_modified": "2025-01-06T16:49:19.757627"
+        },
+        {
+          "id": "d5557462-08d5-4fbc-855f-cef756477a20",
+          "name": "FIVC-Syria (linked to Syria conflict and hunger report).xlsx",
+          "format": "XLSX",
+          "url": "https://data.humdata.org/dataset/819ed927-c593-40fc-bda2-1e1e72ab69ff/resource/d5557462-08d5-4fbc-855f-cef756477a20/download/fivc-syria.xlsx",
+          "last_modified": "2023-06-06T13:06:07.615637"
+        },
+        {
+          "id": "d5bc2e93-dbdc-475f-8e75-b004f8c3ed7d",
+          "name": "FIVC-Somalia (linked to Somalia conflict and hunger report).xlsx",
+          "format": "XLSX",
+          "url": "https://data.humdata.org/dataset/819ed927-c593-40fc-bda2-1e1e72ab69ff/resource/d5bc2e93-dbdc-475f-8e75-b004f8c3ed7d/download/food-insecurity-and-violent-conflict-fivc-somalia-dataset_2017_2022.xlsx",
+          "last_modified": "2024-11-26T16:00:25.162551"
+        }
+      ]
+    },
+    {
+      "id": "b36e1975-4428-4caa-9b00-e0d8793130d0",
+      "name": "opt-violent-and-threatening-incidents-against-healthcare",
+      "title": "State of Palestine (PSE): Attacks on Aid Operations, Education, Food and Water Systems, Health Care and IDP/Refugee Camps, and Conflict-Related Sexual Violence and Explosive Weapons Incident Data",
+      "organization": "Insecurity Insight",
+      "last_modified": "2025-09-17T15:18:15.631655",
+      "resources": [
+        {
+          "id": "7c42af43-e847-4793-aa66-bc66e1849f0d",
+          "name": "2020-2025-PSE Aid Worker KIKA Incident Data.xlsx",
+          "format": "XLSX",
+          "url": "https://data.humdata.org/dataset/b36e1975-4428-4caa-9b00-e0d8793130d0/resource/7c42af43-e847-4793-aa66-bc66e1849f0d/download/2020-2025-pse-aid-worker-kika-incident-data.xlsx",
+          "last_modified": "2025-07-21T07:21:00.274201"
+        },
+        {
+          "id": "5adcd4f5-8432-458b-a435-b994ab6913e2",
+          "name": "2016-2025-PSE Attacks on Health Care Incident Data.xlsx",
+          "format": "XLSX",
+          "url": "https://data.humdata.org/dataset/b36e1975-4428-4caa-9b00-e0d8793130d0/resource/5adcd4f5-8432-458b-a435-b994ab6913e2/download/2016-2025-pse-attacks-on-health-care-incident-data.xlsx",
+          "last_modified": "2025-07-21T07:21:00.443663"
+        },
+        {
+          "id": "88daa748-a867-4f33-a5b0-4bfec6f8c763",
+          "name": "2023-2025-PSE Conflict Related Sexual Violence Incident Data.xlsx",
+          "format": "XLSX",
+          "url": "https://data.humdata.org/dataset/b36e1975-4428-4caa-9b00-e0d8793130d0/resource/88daa748-a867-4f33-a5b0-4bfec6f8c763/download/2023-2025-pse-conflict-related-sexual-violence-incident-data.xlsx",
+          "last_modified": "2025-07-21T07:21:00.818159"
+        },
+        {
+          "id": "6d9fcb93-0136-44ed-a11a-693ac892f4ab",
+          "name": "2020-2025-PSE Explosive Weapons Incident Data.xlsx",
+          "format": "XLSX",
+          "url": "https://data.humdata.org/dataset/b36e1975-4428-4caa-9b00-e0d8793130d0/resource/6d9fcb93-0136-44ed-a11a-693ac892f4ab/download/2020-2025-pse-explosive-weapons-incident-data.xlsx",
+          "last_modified": "2025-07-21T07:21:00.991739"
+        },
+        {
+          "id": "d4586c59-6bdb-497d-9fe1-0d6e1b439e81",
+          "name": "2021-2025-PSE Food Security Incident Data.xlsx",
+          "format": "XLSX",
+          "url": "https://data.humdata.org/dataset/b36e1975-4428-4caa-9b00-e0d8793130d0/resource/d4586c59-6bdb-497d-9fe1-0d6e1b439e81/download/2021-2025-pse-food-security-incident-data.xlsx",
+          "last_modified": "2025-07-21T07:21:01.132629"
+        },
+        {
+          "id": "d772fcfa-a9fe-44ea-9c0c-9bedd65bc224",
+          "name": "2020-2025-PSE Protection in Danger Incident Data.xlsx",
+          "format": "XLSX",
+          "url": "https://data.humdata.org/dataset/b36e1975-4428-4caa-9b00-e0d8793130d0/resource/d772fcfa-a9fe-44ea-9c0c-9bedd65bc224/download/2020-2025-pse-protection-in-danger-incident-data.xlsx",
+          "last_modified": "2025-07-21T07:21:01.330129"
+        },
+        {
+          "id": "0193c2ca-5859-401d-bdc9-5b184e976255",
+          "name": "2020-2024-PSE Education in Danger Incident Data.xlsx",
+          "format": "XLSX",
+          "url": "https://data.humdata.org/dataset/b36e1975-4428-4caa-9b00-e0d8793130d0/resource/0193c2ca-5859-401d-bdc9-5b184e976255/download/2020-2024-pse-education-in-danger-incident-data.xlsx",
+          "last_modified": "2024-08-19T07:12:05.354761"
+        },
+        {
+          "id": "dbe8462e-ea26-43ab-8d04-0b67e90c7654",
+          "name": "2023-2024 PSE SHCC Health Care Data.xlsx",
+          "format": "XLSX",
+          "url": "https://data.humdata.org/dataset/b36e1975-4428-4caa-9b00-e0d8793130d0/resource/dbe8462e-ea26-43ab-8d04-0b67e90c7654/download/2023-2024-pse-shcc-health-care-data.xlsx",
+          "last_modified": "2025-05-16T15:49:42.864364"
+        },
+        {
+          "id": "13f16126-10a4-4860-bee6-947a9cb09719",
+          "name": "2023 PSE SHCC Health Care Data.xlsx",
+          "format": "XLSX",
+          "url": "https://data.humdata.org/dataset/b36e1975-4428-4caa-9b00-e0d8793130d0/resource/13f16126-10a4-4860-bee6-947a9cb09719/download/2023-pse-shcc-health-care-data.xlsx",
+          "last_modified": "2024-05-21T17:41:48.712017"
+        },
+        {
+          "id": "777796b4-2163-4872-8ce2-4f2f2ff62cfd",
+          "name": "2022 PSE SHCC Health Care Data.xlsx",
+          "format": "XLSX",
+          "url": "https://data.humdata.org/dataset/b36e1975-4428-4caa-9b00-e0d8793130d0/resource/777796b4-2163-4872-8ce2-4f2f2ff62cfd/download/2022-pse-shcc-health-care-data.xlsx",
+          "last_modified": "2023-12-11T12:41:23.261236"
+        },
+        {
+          "id": "f91654cb-2466-40d1-9d76-cc6194557f03",
+          "name": "2021 PSE SHCC Health Care Data.xlsx",
+          "format": "XLSX",
+          "url": "https://data.humdata.org/dataset/b36e1975-4428-4caa-9b00-e0d8793130d0/resource/f91654cb-2466-40d1-9d76-cc6194557f03/download/2021-pse-shcc-health-care-data.xlsx",
+          "last_modified": "2023-12-11T12:41:25.903058"
+        },
+        {
+          "id": "3fbf5373-3efd-4897-8828-566033e073f0",
+          "name": "2020 PSE SHCC Health Care Data.xlsx",
+          "format": "XLSX",
+          "url": "https://data.humdata.org/dataset/b36e1975-4428-4caa-9b00-e0d8793130d0/resource/3fbf5373-3efd-4897-8828-566033e073f0/download/2020-pse-shcc-health-care-data.xlsx",
+          "last_modified": "2023-12-11T12:41:32.186120"
+        },
+        {
+          "id": "2fae26ad-dce5-4c3f-9696-08626b2b9d09",
+          "name": "2019 PSE SHCC Health Care Data.xlsx",
+          "format": "XLSX",
+          "url": "https://data.humdata.org/dataset/b36e1975-4428-4caa-9b00-e0d8793130d0/resource/2fae26ad-dce5-4c3f-9696-08626b2b9d09/download/2019-pse-shcc-health-care-data.xlsx",
+          "last_modified": "2023-12-11T12:41:35.880513"
+        }
+      ]
+    },
+    {
+      "id": "4486b11e-d753-4949-b485-16fb81b87f87",
+      "name": "conflict-related-incidents-affecting-water-systems",
+      "title": "Conflict-Related Incidents Affecting Water Systems",
+      "organization": "Insecurity Insight",
+      "last_modified": "2025-09-18T09:15:46.454123",
+      "resources": [
+        {
+          "id": "7d67f588-1260-4a1f-a90e-c3c6337d33fb",
+          "name": "2024-2025 Conflict-Related Incidents Affecting Water Systems Incident Data.xlsx",
+          "format": "XLSX",
+          "url": "https://data.humdata.org/dataset/4486b11e-d753-4949-b485-16fb81b87f87/resource/7d67f588-1260-4a1f-a90e-c3c6337d33fb/download/2024-2025-conflict-related-incidents-affecting-water-systems-incident-data.xlsx",
+          "last_modified": "2025-09-18T09:02:33.352458"
+        }
+      ]
+    },
+    {
+      "id": "4fd39213-b871-40cd-bb6c-32cf900a1158",
+      "name": "conflict-related-sexual-violence",
+      "title": "Conflict-Related (CRSV) or Political-Related Sexual Violence Data",
+      "organization": "Insecurity Insight",
+      "last_modified": "2025-08-17T13:13:10.123304",
+      "resources": [
+        {
+          "id": "2a91f0a0-3878-4a6b-9347-ebc9b520833f",
+          "name": "2025 Conflict Related Sexual Violence Incident Data.xlsx",
+          "format": "XLSX",
+          "url": "https://data.humdata.org/dataset/4fd39213-b871-40cd-bb6c-32cf900a1158/resource/2a91f0a0-3878-4a6b-9347-ebc9b520833f/download/2025-conflict-related-sexual-violence-incident-data.xlsx",
+          "last_modified": "2025-07-21T07:20:08.982732"
+        },
+        {
+          "id": "38b6f08e-9e5e-415f-a81f-423c8db68774",
+          "name": "2020-2025 Conflict Related Sexual Violence Incident Data.xlsx",
+          "format": "XLSX",
+          "url": "https://data.humdata.org/dataset/4fd39213-b871-40cd-bb6c-32cf900a1158/resource/38b6f08e-9e5e-415f-a81f-423c8db68774/download/2020-2025-conflict-related-sexual-violence-incident-data.xlsx",
+          "last_modified": "2025-07-21T07:20:09.145925"
+        },
+        {
+          "id": "bd0d8dde-2b5c-4450-9bdc-fb5150f15257",
+          "name": "2020-2025 Conflict Related Sexual Violence Overview Data.xlsx",
+          "format": "XLSX",
+          "url": "https://data.humdata.org/dataset/4fd39213-b871-40cd-bb6c-32cf900a1158/resource/bd0d8dde-2b5c-4450-9bdc-fb5150f15257/download/2020-2025-conflict-related-sexual-violence-overview-data.xlsx",
+          "last_modified": "2025-07-21T07:20:09.498472"
+        }
+      ]
+    }
+  ]
+}

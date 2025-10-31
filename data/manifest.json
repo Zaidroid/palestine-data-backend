@@ -1,0 +1,52 @@
+{
+  "generated_at": "2025-10-29T21:02:58.982Z",
+  "version": "3.0.0",
+  "baseline_date": "2023-10-07",
+  "sources": {
+    "hdx": {
+      "name": "Humanitarian Data Exchange",
+      "path": "/data/hdx",
+      "datasets": 10,
+      "records": 7803,
+      "categories": 7,
+      "size_bytes": 831072544,
+      "size_mb": "792.57",
+      "last_updated": "2025-10-29T21:02:58.819Z"
+    },
+    "goodshepherd": {
+      "name": "Good Shepherd Collective",
+      "path": "/data/goodshepherd",
+      "datasets": 3,
+      "records": 50,
+      "partitions": 0,
+      "size_bytes": 4803559,
+      "size_mb": "4.58",
+      "last_updated": "2025-10-29T21:02:58.835Z"
+    },
+    "worldbank": {
+      "name": "World Bank",
+      "path": "/data/worldbank",
+      "indicators": 284,
+      "data_points": 1522,
+      "size_bytes": 576761,
+      "size_mb": "0.55",
+      "last_updated": "2025-10-29T21:02:58.840Z"
+    },
+    "tech4palestine": {
+      "name": "Tech4Palestine",
+      "path": "/data/tech4palestine",
+      "datasets": 4,
+      "records": 1039,
+      "size_bytes": 362520,
+      "size_mb": "0.35",
+      "last_updated": "2025-10-29T21:02:58.973Z"
+    }
+  },
+  "summary": {
+    "total_sources": 4,
+    "total_datasets": 301,
+    "total_records": 10414,
+    "total_size_bytes": 836815384,
+    "total_size_mb": "798.05"
+  }
+}

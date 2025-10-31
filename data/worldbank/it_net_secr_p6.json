@@ -1,0 +1,140 @@
+{
+  "indicator": "IT.NET.SECR.P6",
+  "indicator_name": "Secure Internet servers (per 1 million people)",
+  "data": [
+    {
+      "year": 2010,
+      "value": 3.69767688167513,
+      "indicator": "IT.NET.SECR.P6",
+      "indicator_name": "Secure Internet servers (per 1 million people)",
+      "country": "West Bank and Gaza",
+      "source": "worldbank"
+    },
+    {
+      "year": 2011,
+      "value": 5.15067527928249,
+      "indicator": "IT.NET.SECR.P6",
+      "indicator_name": "Secure Internet servers (per 1 million people)",
+      "country": "West Bank and Gaza",
+      "source": "worldbank"
+    },
+    {
+      "year": 2012,
+      "value": 11.5577947526607,
+      "indicator": "IT.NET.SECR.P6",
+      "indicator_name": "Secure Internet servers (per 1 million people)",
+      "country": "West Bank and Gaza",
+      "source": "worldbank"
+    },
+    {
+      "year": 2013,
+      "value": 14.7177575632103,
+      "indicator": "IT.NET.SECR.P6",
+      "indicator_name": "Secure Internet servers (per 1 million people)",
+      "country": "West Bank and Gaza",
+      "source": "worldbank"
+    },
+    {
+      "year": 2014,
+      "value": 21.0859352498851,
+      "indicator": "IT.NET.SECR.P6",
+      "indicator_name": "Secure Internet servers (per 1 million people)",
+      "country": "West Bank and Gaza",
+      "source": "worldbank"
+    },
+    {
+      "year": 2015,
+      "value": 32.5519918540397,
+      "indicator": "IT.NET.SECR.P6",
+      "indicator_name": "Secure Internet servers (per 1 million people)",
+      "country": "West Bank and Gaza",
+      "source": "worldbank"
+    },
+    {
+      "year": 2016,
+      "value": 108.081174457671,
+      "indicator": "IT.NET.SECR.P6",
+      "indicator_name": "Secure Internet servers (per 1 million people)",
+      "country": "West Bank and Gaza",
+      "source": "worldbank"
+    },
+    {
+      "year": 2017,
+      "value": 547.723188781552,
+      "indicator": "IT.NET.SECR.P6",
+      "indicator_name": "Secure Internet servers (per 1 million people)",
+      "country": "West Bank and Gaza",
+      "source": "worldbank"
+    },
+    {
+      "year": 2018,
+      "value": 469.021491602152,
+      "indicator": "IT.NET.SECR.P6",
+      "indicator_name": "Secure Internet servers (per 1 million people)",
+      "country": "West Bank and Gaza",
+      "source": "worldbank"
+    },
+    {
+      "year": 2019,
+      "value": 557.701033827887,
+      "indicator": "IT.NET.SECR.P6",
+      "indicator_name": "Secure Internet servers (per 1 million people)",
+      "country": "West Bank and Gaza",
+      "source": "worldbank"
+    },
+    {
+      "year": 2020,
+      "value": 535.676848413029,
+      "indicator": "IT.NET.SECR.P6",
+      "indicator_name": "Secure Internet servers (per 1 million people)",
+      "country": "West Bank and Gaza",
+      "source": "worldbank"
+    },
+    {
+      "year": 2021,
+      "value": 594.180202971957,
+      "indicator": "IT.NET.SECR.P6",
+      "indicator_name": "Secure Internet servers (per 1 million people)",
+      "country": "West Bank and Gaza",
+      "source": "worldbank"
+    },
+    {
+      "year": 2022,
+      "value": 517.882818900423,
+      "indicator": "IT.NET.SECR.P6",
+      "indicator_name": "Secure Internet servers (per 1 million people)",
+      "country": "West Bank and Gaza",
+      "source": "worldbank"
+    },
+    {
+      "year": 2023,
+      "value": 434.591131050036,
+      "indicator": "IT.NET.SECR.P6",
+      "indicator_name": "Secure Internet servers (per 1 million people)",
+      "country": "West Bank and Gaza",
+      "source": "worldbank"
+    },
+    {
+      "year": 2024,
+      "value": 427.100601381847,
+      "indicator": "IT.NET.SECR.P6",
+      "indicator_name": "Secure Internet servers (per 1 million people)",
+      "country": "West Bank and Gaza",
+      "source": "worldbank"
+    }
+  ],
+  "metadata": {
+    "source": "World Bank Open Data",
+    "last_updated": "2025-10-29T21:01:59.332Z",
+    "total_points": 15
+  },
+  "validation": {
+    "qualityScore": 1,
+    "completeness": 1,
+    "consistency": 1,
+    "accuracy": 1,
+    "meetsThreshold": true,
+    "errorCount": 0,
+    "warningCount": 0
+  }
+}

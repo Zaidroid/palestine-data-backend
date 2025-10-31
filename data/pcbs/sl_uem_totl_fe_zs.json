@@ -1,0 +1,130 @@
+{
+  "indicator": "SL.UEM.TOTL.FE.ZS",
+  "indicator_name": "Unemployment, female (% of female labor force)",
+  "category": "labor",
+  "data": [
+    {
+      "year": 2010,
+      "value": 21.562,
+      "indicator": "SL.UEM.TOTL.FE.ZS",
+      "indicator_name": "Unemployment, female (% of female labor force)",
+      "country": "West Bank and Gaza",
+      "source": "pcbs",
+      "source_detail": "PCBS via World Bank API"
+    },
+    {
+      "year": 2011,
+      "value": 22.39,
+      "indicator": "SL.UEM.TOTL.FE.ZS",
+      "indicator_name": "Unemployment, female (% of female labor force)",
+      "country": "West Bank and Gaza",
+      "source": "pcbs",
+      "source_detail": "PCBS via World Bank API"
+    },
+    {
+      "year": 2012,
+      "value": 25.942,
+      "indicator": "SL.UEM.TOTL.FE.ZS",
+      "indicator_name": "Unemployment, female (% of female labor force)",
+      "country": "West Bank and Gaza",
+      "source": "pcbs",
+      "source_detail": "PCBS via World Bank API"
+    },
+    {
+      "year": 2013,
+      "value": 27.325,
+      "indicator": "SL.UEM.TOTL.FE.ZS",
+      "indicator_name": "Unemployment, female (% of female labor force)",
+      "country": "West Bank and Gaza",
+      "source": "pcbs",
+      "source_detail": "PCBS via World Bank API"
+    },
+    {
+      "year": 2014,
+      "value": 26.083,
+      "indicator": "SL.UEM.TOTL.FE.ZS",
+      "indicator_name": "Unemployment, female (% of female labor force)",
+      "country": "West Bank and Gaza",
+      "source": "pcbs",
+      "source_detail": "PCBS via World Bank API"
+    },
+    {
+      "year": 2015,
+      "value": 34.123,
+      "indicator": "SL.UEM.TOTL.FE.ZS",
+      "indicator_name": "Unemployment, female (% of female labor force)",
+      "country": "West Bank and Gaza",
+      "source": "pcbs",
+      "source_detail": "PCBS via World Bank API"
+    },
+    {
+      "year": 2016,
+      "value": 37.708,
+      "indicator": "SL.UEM.TOTL.FE.ZS",
+      "indicator_name": "Unemployment, female (% of female labor force)",
+      "country": "West Bank and Gaza",
+      "source": "pcbs",
+      "source_detail": "PCBS via World Bank API"
+    },
+    {
+      "year": 2017,
+      "value": 42.485,
+      "indicator": "SL.UEM.TOTL.FE.ZS",
+      "indicator_name": "Unemployment, female (% of female labor force)",
+      "country": "West Bank and Gaza",
+      "source": "pcbs",
+      "source_detail": "PCBS via World Bank API"
+    },
+    {
+      "year": 2018,
+      "value": 41.59,
+      "indicator": "SL.UEM.TOTL.FE.ZS",
+      "indicator_name": "Unemployment, female (% of female labor force)",
+      "country": "West Bank and Gaza",
+      "source": "pcbs",
+      "source_detail": "PCBS via World Bank API"
+    },
+    {
+      "year": 2019,
+      "value": 40.86,
+      "indicator": "SL.UEM.TOTL.FE.ZS",
+      "indicator_name": "Unemployment, female (% of female labor force)",
+      "country": "West Bank and Gaza",
+      "source": "pcbs",
+      "source_detail": "PCBS via World Bank API"
+    },
+    {
+      "year": 2020,
+      "value": 39.795,
+      "indicator": "SL.UEM.TOTL.FE.ZS",
+      "indicator_name": "Unemployment, female (% of female labor force)",
+      "country": "West Bank and Gaza",
+      "source": "pcbs",
+      "source_detail": "PCBS via World Bank API"
+    },
+    {
+      "year": 2021,
+      "value": 42.508,
+      "indicator": "SL.UEM.TOTL.FE.ZS",
+      "indicator_name": "Unemployment, female (% of female labor force)",
+      "country": "West Bank and Gaza",
+      "source": "pcbs",
+      "source_detail": "PCBS via World Bank API"
+    },
+    {
+      "year": 2022,
+      "value": 39.998,
+      "indicator": "SL.UEM.TOTL.FE.ZS",
+      "indicator_name": "Unemployment, female (% of female labor force)",
+      "country": "West Bank and Gaza",
+      "source": "pcbs",
+      "source_detail": "PCBS via World Bank API"
+    }
+  ],
+  "metadata": {
+    "source": "Palestinian Central Bureau of Statistics (PCBS)",
+    "source_detail": "Data accessed via World Bank Open Data API",
+    "last_updated": "2025-10-30T09:42:57.066Z",
+    "total_points": 13
+  }
+}

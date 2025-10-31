@@ -1,0 +1,648 @@
+{
+  "metadata": {
+    "source": "tech4palestine",
+    "dataset": "westbank",
+    "quarter": "2025-Q2",
+    "record_count": 91,
+    "last_updated": "2025-10-29T21:02:48.983Z"
+  },
+  "data": [
+    {
+      "report_date": "2025-04-01",
+      "date": "2025-04-01",
+      "killed": 0,
+      "injured": 0,
+      "source": "tech4palestine"
+    },
+    {
+      "report_date": "2025-04-02",
+      "date": "2025-04-02",
+      "killed": 0,
+      "injured": 0,
+      "source": "tech4palestine"
+    },
+    {
+      "report_date": "2025-04-03",
+      "date": "2025-04-03",
+      "killed": 0,
+      "injured": 0,
+      "source": "tech4palestine"
+    },
+    {
+      "report_date": "2025-04-04",
+      "date": "2025-04-04",
+      "killed": 0,
+      "injured": 0,
+      "source": "tech4palestine"
+    },
+    {
+      "report_date": "2025-04-05",
+      "date": "2025-04-05",
+      "killed": 0,
+      "injured": 0,
+      "source": "tech4palestine"
+    },
+    {
+      "report_date": "2025-04-06",
+      "date": "2025-04-06",
+      "killed": 0,
+      "injured": 0,
+      "source": "tech4palestine"
+    },
+    {
+      "report_date": "2025-04-07",
+      "date": "2025-04-07",
+      "killed": 0,
+      "injured": 0,
+      "source": "tech4palestine"
+    },
+    {
+      "report_date": "2025-04-08",
+      "date": "2025-04-08",
+      "killed": 0,
+      "injured": 0,
+      "source": "tech4palestine"
+    },
+    {
+      "report_date": "2025-04-09",
+      "date": "2025-04-09",
+      "killed": 0,
+      "injured": 0,
+      "source": "tech4palestine"
+    },
+    {
+      "report_date": "2025-04-10",
+      "date": "2025-04-10",
+      "killed": 0,
+      "injured": 0,
+      "source": "tech4palestine"
+    },
+    {
+      "report_date": "2025-04-11",
+      "date": "2025-04-11",
+      "killed": 0,
+      "injured": 0,
+      "source": "tech4palestine"
+    },
+    {
+      "report_date": "2025-04-12",
+      "date": "2025-04-12",
+      "killed": 0,
+      "injured": 0,
+      "source": "tech4palestine"
+    },
+    {
+      "report_date": "2025-04-13",
+      "date": "2025-04-13",
+      "killed": 0,
+      "injured": 0,
+      "source": "tech4palestine"
+    },
+    {
+      "report_date": "2025-04-14",
+      "date": "2025-04-14",
+      "killed": 0,
+      "injured": 0,
+      "source": "tech4palestine"
+    },
+    {
+      "report_date": "2025-04-15",
+      "date": "2025-04-15",
+      "killed": 0,
+      "injured": 0,
+      "source": "tech4palestine"
+    },
+    {
+      "report_date": "2025-04-16",
+      "date": "2025-04-16",
+      "killed": 0,
+      "injured": 0,
+      "source": "tech4palestine"
+    },
+    {
+      "report_date": "2025-04-17",
+      "date": "2025-04-17",
+      "killed": 0,
+      "injured": 0,
+      "source": "tech4palestine"
+    },
+    {
+      "report_date": "2025-04-18",
+      "date": "2025-04-18",
+      "killed": 0,
+      "injured": 0,
+      "source": "tech4palestine"
+    },
+    {
+      "report_date": "2025-04-19",
+      "date": "2025-04-19",
+      "killed": 0,
+      "injured": 0,
+      "source": "tech4palestine"
+    },
+    {
+      "report_date": "2025-04-20",
+      "date": "2025-04-20",
+      "killed": 0,
+      "injured": 0,
+      "source": "tech4palestine"
+    },
+    {
+      "report_date": "2025-04-21",
+      "date": "2025-04-21",
+      "killed": 0,
+      "injured": 0,
+      "source": "tech4palestine"
+    },
+    {
+      "report_date": "2025-04-22",
+      "date": "2025-04-22",
+      "killed": 0,
+      "injured": 0,
+      "source": "tech4palestine"
+    },
+    {
+      "report_date": "2025-04-23",
+      "date": "2025-04-23",
+      "killed": 0,
+      "injured": 0,
+      "source": "tech4palestine"
+    },
+    {
+      "report_date": "2025-04-24",
+      "date": "2025-04-24",
+      "killed": 0,
+      "injured": 0,
+      "source": "tech4palestine"
+    },
+    {
+      "report_date": "2025-04-25",
+      "date": "2025-04-25",
+      "killed": 0,
+      "injured": 0,
+      "source": "tech4palestine"
+    },
+    {
+      "report_date": "2025-04-26",
+      "date": "2025-04-26",
+      "killed": 0,
+      "injured": 0,
+      "source": "tech4palestine"
+    },
+    {
+      "report_date": "2025-04-27",
+      "date": "2025-04-27",
+      "killed": 0,
+      "injured": 0,
+      "source": "tech4palestine"
+    },
+    {
+      "report_date": "2025-04-28",
+      "date": "2025-04-28",
+      "killed": 0,
+      "injured": 0,
+      "source": "tech4palestine"
+    },
+    {
+      "report_date": "2025-04-29",
+      "date": "2025-04-29",
+      "killed": 0,
+      "injured": 0,
+      "source": "tech4palestine"
+    },
+    {
+      "report_date": "2025-04-30",
+      "date": "2025-04-30",
+      "killed": 0,
+      "injured": 0,
+      "source": "tech4palestine"
+    },
+    {
+      "report_date": "2025-05-01",
+      "date": "2025-05-01",
+      "killed": 0,
+      "injured": 0,
+      "source": "tech4palestine"
+    },
+    {
+      "report_date": "2025-05-02",
+      "date": "2025-05-02",
+      "killed": 0,
+      "injured": 0,
+      "source": "tech4palestine"
+    },
+    {
+      "report_date": "2025-05-03",
+      "date": "2025-05-03",
+      "killed": 0,
+      "injured": 0,
+      "source": "tech4palestine"
+    },
+    {
+      "report_date": "2025-05-04",
+      "date": "2025-05-04",
+      "killed": 0,
+      "injured": 0,
+      "source": "tech4palestine"
+    },
+    {
+      "report_date": "2025-05-05",
+      "date": "2025-05-05",
+      "killed": 0,
+      "injured": 0,
+      "source": "tech4palestine"
+    },
+    {
+      "report_date": "2025-05-06",
+      "date": "2025-05-06",
+      "killed": 0,
+      "injured": 0,
+      "source": "tech4palestine"
+    },
+    {
+      "report_date": "2025-05-07",
+      "date": "2025-05-07",
+      "killed": 0,
+      "injured": 0,
+      "source": "tech4palestine"
+    },
+    {
+      "report_date": "2025-05-08",
+      "date": "2025-05-08",
+      "killed": 0,
+      "injured": 0,
+      "source": "tech4palestine"
+    },
+    {
+      "report_date": "2025-05-09",
+      "date": "2025-05-09",
+      "killed": 0,
+      "injured": 0,
+      "source": "tech4palestine"
+    },
+    {
+      "report_date": "2025-05-10",
+      "date": "2025-05-10",
+      "killed": 0,
+      "injured": 0,
+      "source": "tech4palestine"
+    },
+    {
+      "report_date": "2025-05-11",
+      "date": "2025-05-11",
+      "killed": 0,
+      "injured": 0,
+      "source": "tech4palestine"
+    },
+    {
+      "report_date": "2025-05-12",
+      "date": "2025-05-12",
+      "killed": 0,
+      "injured": 0,
+      "source": "tech4palestine"
+    },
+    {
+      "report_date": "2025-05-13",
+      "date": "2025-05-13",
+      "killed": 0,
+      "injured": 0,
+      "source": "tech4palestine"
+    },
+    {
+      "report_date": "2025-05-14",
+      "date": "2025-05-14",
+      "killed": 0,
+      "injured": 0,
+      "source": "tech4palestine"
+    },
+    {
+      "report_date": "2025-05-15",
+      "date": "2025-05-15",
+      "killed": 0,
+      "injured": 0,
+      "source": "tech4palestine"
+    },
+    {
+      "report_date": "2025-05-16",
+      "date": "2025-05-16",
+      "killed": 0,
+      "injured": 0,
+      "source": "tech4palestine"
+    },
+    {
+      "report_date": "2025-05-17",
+      "date": "2025-05-17",
+      "killed": 0,
+      "injured": 0,
+      "source": "tech4palestine"
+    },
+    {
+      "report_date": "2025-05-18",
+      "date": "2025-05-18",
+      "killed": 0,
+      "injured": 0,
+      "source": "tech4palestine"
+    },
+    {
+      "report_date": "2025-05-19",
+      "date": "2025-05-19",
+      "killed": 0,
+      "injured": 0,
+      "source": "tech4palestine"
+    },
+    {
+      "report_date": "2025-05-20",
+      "date": "2025-05-20",
+      "killed": 0,
+      "injured": 0,
+      "source": "tech4palestine"
+    },
+    {
+      "report_date": "2025-05-21",
+      "date": "2025-05-21",
+      "killed": 0,
+      "injured": 0,
+      "source": "tech4palestine"
+    },
+    {
+      "report_date": "2025-05-22",
+      "date": "2025-05-22",
+      "killed": 0,
+      "injured": 0,
+      "source": "tech4palestine"
+    },
+    {
+      "report_date": "2025-05-23",
+      "date": "2025-05-23",
+      "killed": 0,
+      "injured": 0,
+      "source": "tech4palestine"
+    },
+    {
+      "report_date": "2025-05-24",
+      "date": "2025-05-24",
+      "killed": 0,
+      "injured": 0,
+      "source": "tech4palestine"
+    },
+    {
+      "report_date": "2025-05-25",
+      "date": "2025-05-25",
+      "killed": 0,
+      "injured": 0,
+      "source": "tech4palestine"
+    },
+    {
+      "report_date": "2025-05-26",
+      "date": "2025-05-26",
+      "killed": 0,
+      "injured": 0,
+      "source": "tech4palestine"
+    },
+    {
+      "report_date": "2025-05-27",
+      "date": "2025-05-27",
+      "killed": 0,
+      "injured": 0,
+      "source": "tech4palestine"
+    },
+    {
+      "report_date": "2025-05-28",
+      "date": "2025-05-28",
+      "killed": 0,
+      "injured": 0,
+      "source": "tech4palestine"
+    },
+    {
+      "report_date": "2025-05-29",
+      "date": "2025-05-29",
+      "killed": 0,
+      "injured": 0,
+      "source": "tech4palestine"
+    },
+    {
+      "report_date": "2025-05-30",
+      "date": "2025-05-30",
+      "killed": 0,
+      "injured": 0,
+      "source": "tech4palestine"
+    },
+    {
+      "report_date": "2025-05-31",
+      "date": "2025-05-31",
+      "killed": 0,
+      "injured": 0,
+      "source": "tech4palestine"
+    },
+    {
+      "report_date": "2025-06-01",
+      "date": "2025-06-01",
+      "killed": 0,
+      "injured": 0,
+      "source": "tech4palestine"
+    },
+    {
+      "report_date": "2025-06-02",
+      "date": "2025-06-02",
+      "killed": 0,
+      "injured": 0,
+      "source": "tech4palestine"
+    },
+    {
+      "report_date": "2025-06-03",
+      "date": "2025-06-03",
+      "killed": 0,
+      "injured": 0,
+      "source": "tech4palestine"
+    },
+    {
+      "report_date": "2025-06-04",
+      "date": "2025-06-04",
+      "killed": 0,
+      "injured": 0,
+      "source": "tech4palestine"
+    },
+    {
+      "report_date": "2025-06-05",
+      "date": "2025-06-05",
+      "killed": 0,
+      "injured": 0,
+      "source": "tech4palestine"
+    },
+    {
+      "report_date": "2025-06-06",
+      "date": "2025-06-06",
+      "killed": 0,
+      "injured": 0,
+      "source": "tech4palestine"
+    },
+    {
+      "report_date": "2025-06-07",
+      "date": "2025-06-07",
+      "killed": 0,
+      "injured": 0,
+      "source": "tech4palestine"
+    },
+    {
+      "report_date": "2025-06-08",
+      "date": "2025-06-08",
+      "killed": 0,
+      "injured": 0,
+      "source": "tech4palestine"
+    },
+    {
+      "report_date": "2025-06-09",
+      "date": "2025-06-09",
+      "killed": 0,
+      "injured": 0,
+      "source": "tech4palestine"
+    },
+    {
+      "report_date": "2025-06-10",
+      "date": "2025-06-10",
+      "killed": 0,
+      "injured": 0,
+      "source": "tech4palestine"
+    },
+    {
+      "report_date": "2025-06-11",
+      "date": "2025-06-11",
+      "killed": 0,
+      "injured": 0,
+      "source": "tech4palestine"
+    },
+    {
+      "report_date": "2025-06-12",
+      "date": "2025-06-12",
+      "killed": 0,
+      "injured": 0,
+      "source": "tech4palestine"
+    },
+    {
+      "report_date": "2025-06-13",
+      "date": "2025-06-13",
+      "killed": 0,
+      "injured": 0,
+      "source": "tech4palestine"
+    },
+    {
+      "report_date": "2025-06-14",
+      "date": "2025-06-14",
+      "killed": 0,
+      "injured": 0,
+      "source": "tech4palestine"
+    },
+    {
+      "report_date": "2025-06-15",
+      "date": "2025-06-15",
+      "killed": 0,
+      "injured": 0,
+      "source": "tech4palestine"
+    },
+    {
+      "report_date": "2025-06-16",
+      "date": "2025-06-16",
+      "killed": 0,
+      "injured": 0,
+      "source": "tech4palestine"
+    },
+    {
+      "report_date": "2025-06-17",
+      "date": "2025-06-17",
+      "killed": 0,
+      "injured": 0,
+      "source": "tech4palestine"
+    },
+    {
+      "report_date": "2025-06-18",
+      "date": "2025-06-18",
+      "killed": 0,
+      "injured": 0,
+      "source": "tech4palestine"
+    },
+    {
+      "report_date": "2025-06-19",
+      "date": "2025-06-19",
+      "killed": 0,
+      "injured": 0,
+      "source": "tech4palestine"
+    },
+    {
+      "report_date": "2025-06-20",
+      "date": "2025-06-20",
+      "killed": 0,
+      "injured": 0,
+      "source": "tech4palestine"
+    },
+    {
+      "report_date": "2025-06-21",
+      "date": "2025-06-21",
+      "killed": 0,
+      "injured": 0,
+      "source": "tech4palestine"
+    },
+    {
+      "report_date": "2025-06-22",
+      "date": "2025-06-22",
+      "killed": 0,
+      "injured": 0,
+      "source": "tech4palestine"
+    },
+    {
+      "report_date": "2025-06-23",
+      "date": "2025-06-23",
+      "killed": 0,
+      "injured": 0,
+      "source": "tech4palestine"
+    },
+    {
+      "report_date": "2025-06-24",
+      "date": "2025-06-24",
+      "killed": 0,
+      "injured": 0,
+      "source": "tech4palestine"
+    },
+    {
+      "report_date": "2025-06-25",
+      "date": "2025-06-25",
+      "killed": 0,
+      "injured": 0,
+      "source": "tech4palestine"
+    },
+    {
+      "report_date": "2025-06-26",
+      "date": "2025-06-26",
+      "killed": 0,
+      "injured": 0,
+      "source": "tech4palestine"
+    },
+    {
+      "report_date": "2025-06-27",
+      "date": "2025-06-27",
+      "killed": 0,
+      "injured": 0,
+      "source": "tech4palestine"
+    },
+    {
+      "report_date": "2025-06-28",
+      "date": "2025-06-28",
+      "killed": 0,
+      "injured": 0,
+      "source": "tech4palestine"
+    },
+    {
+      "report_date": "2025-06-29",
+      "date": "2025-06-29",
+      "killed": 0,
+      "injured": 0,
+      "source": "tech4palestine"
+    },
+    {
+      "report_date": "2025-06-30",
+      "date": "2025-06-30",
+      "killed": 0,
+      "injured": 0,
+      "source": "tech4palestine"
+    }
+  ]
+}

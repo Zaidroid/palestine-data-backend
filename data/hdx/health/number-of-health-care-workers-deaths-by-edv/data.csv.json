@@ -1,0 +1,1454 @@
+{
+  "source": "hdx-ckan",
+  "downloaded_at": "2025-10-29T21:11:40.008Z",
+  "resource": {
+    "id": "6b642eca-7874-4af1-86cb-a616ac8dc7db",
+    "name": "health-care-workers-deaths-2015-11-04.csv",
+    "format": "CSV",
+    "url": "https://data.humdata.org/dataset/5ffb79be-a48e-4d68-a345-3617745fa1c4/resource/6b642eca-7874-4af1-86cb-a616ac8dc7db/download/health-care-workers-deaths-2015-11-04.csv"
+  },
+  "data": {
+    "csv": [
+      {
+        "country": "Guinea",
+        "total_deaths": 27,
+        "date": "2014-09-07"
+      },
+      {
+        "country": "Liberia",
+        "total_deaths": 81,
+        "date": "2014-09-07"
+      },
+      {
+        "country": "Sierra Leone",
+        "total_deaths": 31,
+        "date": "2014-09-07"
+      },
+      {
+        "country": "Guinea",
+        "total_deaths": 30,
+        "date": "2014-09-14"
+      },
+      {
+        "country": "Liberia",
+        "total_deaths": 85,
+        "date": "2014-09-14"
+      },
+      {
+        "country": "Nigeria",
+        "total_deaths": 5,
+        "date": "2014-09-14"
+      },
+      {
+        "country": "Sierra Leone",
+        "total_deaths": 31,
+        "date": "2014-09-14"
+      },
+      {
+        "country": "Guinea",
+        "total_deaths": 35,
+        "date": "2014-09-21"
+      },
+      {
+        "country": "Liberia",
+        "total_deaths": 87,
+        "date": "2014-09-21"
+      },
+      {
+        "country": "Nigeria",
+        "total_deaths": 5,
+        "date": "2014-09-21"
+      },
+      {
+        "country": "Sierra Leone",
+        "total_deaths": 81,
+        "date": "2014-09-21"
+      },
+      {
+        "country": "Guinea",
+        "total_deaths": 35,
+        "date": "2014-09-28"
+      },
+      {
+        "country": "Liberia",
+        "total_deaths": 95,
+        "date": "2014-09-28"
+      },
+      {
+        "country": "Nigeria",
+        "total_deaths": 5,
+        "date": "2014-09-28"
+      },
+      {
+        "country": "Sierra Leone",
+        "total_deaths": 81,
+        "date": "2014-09-28"
+      },
+      {
+        "country": "Guinea",
+        "total_deaths": 40,
+        "date": "2014-10-12"
+      },
+      {
+        "country": "Liberia",
+        "total_deaths": 96,
+        "date": "2014-10-12"
+      },
+      {
+        "country": "Nigeria",
+        "total_deaths": 5,
+        "date": "2014-10-12"
+      },
+      {
+        "country": "Sierra Leone",
+        "total_deaths": 95,
+        "date": "2014-10-12"
+      },
+      {
+        "country": "Guinea",
+        "total_deaths": 41,
+        "date": "2014-10-19"
+      },
+      {
+        "country": "Liberia",
+        "total_deaths": 103,
+        "date": "2014-10-19"
+      },
+      {
+        "country": "Nigeria",
+        "total_deaths": 5,
+        "date": "2014-10-19"
+      },
+      {
+        "country": "Sierra Leone",
+        "total_deaths": 95,
+        "date": "2014-10-19"
+      },
+      {
+        "country": "Guinea",
+        "total_deaths": 43,
+        "date": "2014-10-27"
+      },
+      {
+        "country": "Liberia",
+        "total_deaths": 123,
+        "date": "2014-10-27"
+      },
+      {
+        "country": "Nigeria",
+        "total_deaths": 5,
+        "date": "2014-10-27"
+      },
+      {
+        "country": "Sierra Leone",
+        "total_deaths": 101,
+        "date": "2014-10-27"
+      },
+      {
+        "country": "All",
+        "total_deaths": 269,
+        "date": "2014-10-29"
+      },
+      {
+        "country": "Guinea",
+        "total_deaths": 46,
+        "date": "2014-11-02"
+      },
+      {
+        "country": "Liberia",
+        "total_deaths": 157,
+        "date": "2014-11-02"
+      },
+      {
+        "country": "Nigeria",
+        "total_deaths": 5,
+        "date": "2014-11-02"
+      },
+      {
+        "country": "Sierra Leone",
+        "total_deaths": 102,
+        "date": "2014-11-02"
+      },
+      {
+        "country": "All",
+        "total_deaths": 311,
+        "date": "2014-11-04"
+      },
+      {
+        "country": "Guinea",
+        "total_deaths": 51,
+        "date": "2014-11-10"
+      },
+      {
+        "country": "Liberia",
+        "total_deaths": 162,
+        "date": "2014-11-10"
+      },
+      {
+        "country": "Nigeria",
+        "total_deaths": 5,
+        "date": "2014-11-10"
+      },
+      {
+        "country": "Sierra Leone",
+        "total_deaths": 102,
+        "date": "2014-11-10"
+      },
+      {
+        "country": "All",
+        "total_deaths": 324,
+        "date": "2014-11-14"
+      },
+      {
+        "country": "Guinea",
+        "total_deaths": 55,
+        "date": "2014-11-16"
+      },
+      {
+        "country": "Liberia",
+        "total_deaths": 170,
+        "date": "2014-11-16"
+      },
+      {
+        "country": "Nigeria",
+        "total_deaths": 5,
+        "date": "2014-11-16"
+      },
+      {
+        "country": "Sierra Leone",
+        "total_deaths": 104,
+        "date": "2014-11-16"
+      },
+      {
+        "country": "All",
+        "total_deaths": 337,
+        "date": "2014-11-18"
+      },
+      {
+        "country": "Guinea",
+        "total_deaths": 56,
+        "date": "2014-11-23"
+      },
+      {
+        "country": "Liberia",
+        "total_deaths": 172,
+        "date": "2014-11-23"
+      },
+      {
+        "country": "Mali",
+        "total_deaths": 2,
+        "date": "2014-11-23"
+      },
+      {
+        "country": "Nigeria",
+        "total_deaths": 5,
+        "date": "2014-11-23"
+      },
+      {
+        "country": "Sierra Leone",
+        "total_deaths": 105,
+        "date": "2014-11-23"
+      },
+      {
+        "country": "Guinea",
+        "total_deaths": 59,
+        "date": "2014-11-30"
+      },
+      {
+        "country": "Liberia",
+        "total_deaths": 174,
+        "date": "2014-11-30"
+      },
+      {
+        "country": "Mali",
+        "total_deaths": 2,
+        "date": "2014-11-30"
+      },
+      {
+        "country": "Nigeria",
+        "total_deaths": 5,
+        "date": "2014-11-30"
+      },
+      {
+        "country": "Sierra Leone",
+        "total_deaths": 106,
+        "date": "2014-11-30"
+      },
+      {
+        "country": "Guinea",
+        "total_deaths": 62,
+        "date": "2014-12-07"
+      },
+      {
+        "country": "Liberia",
+        "total_deaths": 174,
+        "date": "2014-12-07"
+      },
+      {
+        "country": "Mali",
+        "total_deaths": 2,
+        "date": "2014-12-07"
+      },
+      {
+        "country": "Nigeria",
+        "total_deaths": 5,
+        "date": "2014-12-07"
+      },
+      {
+        "country": "Sierra Leone",
+        "total_deaths": 106,
+        "date": "2014-12-07"
+      },
+      {
+        "country": "Guinea",
+        "total_deaths": 72,
+        "date": "2014-12-14"
+      },
+      {
+        "country": "Liberia",
+        "total_deaths": 177,
+        "date": "2014-12-14"
+      },
+      {
+        "country": "Mali",
+        "total_deaths": 2,
+        "date": "2014-12-14"
+      },
+      {
+        "country": "Nigeria",
+        "total_deaths": 5,
+        "date": "2014-12-14"
+      },
+      {
+        "country": "Sierra Leone",
+        "total_deaths": 109,
+        "date": "2014-12-14"
+      },
+      {
+        "country": "Guinea",
+        "total_deaths": 72,
+        "date": "2014-12-21"
+      },
+      {
+        "country": "Liberia",
+        "total_deaths": 177,
+        "date": "2014-12-21"
+      },
+      {
+        "country": "Mali",
+        "total_deaths": 2,
+        "date": "2014-12-21"
+      },
+      {
+        "country": "Nigeria",
+        "total_deaths": 5,
+        "date": "2014-12-21"
+      },
+      {
+        "country": "Sierra Leone",
+        "total_deaths": 110,
+        "date": "2014-12-21"
+      },
+      {
+        "country": "Guinea",
+        "total_deaths": 87,
+        "date": "2014-12-28"
+      },
+      {
+        "country": "Liberia",
+        "total_deaths": 178,
+        "date": "2014-12-28"
+      },
+      {
+        "country": "Mali",
+        "total_deaths": 2,
+        "date": "2014-12-28"
+      },
+      {
+        "country": "Nigeria",
+        "total_deaths": 5,
+        "date": "2014-12-28"
+      },
+      {
+        "country": "Sierra Leone",
+        "total_deaths": 110,
+        "date": "2014-12-28"
+      },
+      {
+        "country": "Guinea",
+        "total_deaths": 94,
+        "date": "2015-01-11"
+      },
+      {
+        "country": "Liberia",
+        "total_deaths": 178,
+        "date": "2015-01-11"
+      },
+      {
+        "country": "Mali",
+        "total_deaths": 2,
+        "date": "2015-01-11"
+      },
+      {
+        "country": "Nigeria",
+        "total_deaths": 5,
+        "date": "2015-01-11"
+      },
+      {
+        "country": "Sierra Leone",
+        "total_deaths": 221,
+        "date": "2015-01-11"
+      },
+      {
+        "country": "Guinea",
+        "total_deaths": 100,
+        "date": "2015-01-21"
+      },
+      {
+        "country": "Liberia",
+        "total_deaths": 178,
+        "date": "2015-01-21"
+      },
+      {
+        "country": "Mali",
+        "total_deaths": 2,
+        "date": "2015-01-21"
+      },
+      {
+        "country": "Nigeria",
+        "total_deaths": 5,
+        "date": "2015-01-21"
+      },
+      {
+        "country": "Sierra Leone",
+        "total_deaths": 221,
+        "date": "2015-01-21"
+      },
+      {
+        "country": "Guinea",
+        "total_deaths": 88,
+        "date": "2015-01-28"
+      },
+      {
+        "country": "Liberia",
+        "total_deaths": 179,
+        "date": "2015-01-28"
+      },
+      {
+        "country": "Mali",
+        "total_deaths": 2,
+        "date": "2015-01-28"
+      },
+      {
+        "country": "Nigeria",
+        "total_deaths": 5,
+        "date": "2015-01-28"
+      },
+      {
+        "country": "Sierra Leone",
+        "total_deaths": 221,
+        "date": "2015-01-28"
+      },
+      {
+        "country": "Guinea",
+        "total_deaths": 88,
+        "date": "2015-02-04"
+      },
+      {
+        "country": "Liberia",
+        "total_deaths": 179,
+        "date": "2015-02-04"
+      },
+      {
+        "country": "Mali",
+        "total_deaths": 2,
+        "date": "2015-02-04"
+      },
+      {
+        "country": "Nigeria",
+        "total_deaths": 5,
+        "date": "2015-02-04"
+      },
+      {
+        "country": "Sierra Leone",
+        "total_deaths": 221,
+        "date": "2015-02-04"
+      },
+      {
+        "country": "Guinea",
+        "total_deaths": 88,
+        "date": "2015-02-11"
+      },
+      {
+        "country": "Liberia",
+        "total_deaths": 179,
+        "date": "2015-02-11"
+      },
+      {
+        "country": "Mali",
+        "total_deaths": 2,
+        "date": "2015-02-11"
+      },
+      {
+        "country": "Nigeria",
+        "total_deaths": 5,
+        "date": "2015-02-11"
+      },
+      {
+        "country": "Sierra Leone",
+        "total_deaths": 221,
+        "date": "2015-02-11"
+      },
+      {
+        "country": "Guinea",
+        "total_deaths": 88,
+        "date": "2015-02-18"
+      },
+      {
+        "country": "Liberia",
+        "total_deaths": 179,
+        "date": "2015-02-18"
+      },
+      {
+        "country": "Mali",
+        "total_deaths": 2,
+        "date": "2015-02-18"
+      },
+      {
+        "country": "Nigeria",
+        "total_deaths": 5,
+        "date": "2015-02-18"
+      },
+      {
+        "country": "Sierra Leone",
+        "total_deaths": 221,
+        "date": "2015-02-18"
+      },
+      {
+        "country": "Guinea",
+        "total_deaths": 89,
+        "date": "2015-02-25"
+      },
+      {
+        "country": "Liberia",
+        "total_deaths": 180,
+        "date": "2015-02-25"
+      },
+      {
+        "country": "Mali",
+        "total_deaths": 2,
+        "date": "2015-02-25"
+      },
+      {
+        "country": "Nigeria",
+        "total_deaths": 5,
+        "date": "2015-02-25"
+      },
+      {
+        "country": "Sierra Leone",
+        "total_deaths": 221,
+        "date": "2015-02-25"
+      },
+      {
+        "country": "Guinea",
+        "total_deaths": 89,
+        "date": "2015-03-04"
+      },
+      {
+        "country": "Liberia",
+        "total_deaths": 180,
+        "date": "2015-03-04"
+      },
+      {
+        "country": "Mali",
+        "total_deaths": 2,
+        "date": "2015-03-04"
+      },
+      {
+        "country": "Nigeria",
+        "total_deaths": 5,
+        "date": "2015-03-04"
+      },
+      {
+        "country": "Sierra Leone",
+        "total_deaths": 221,
+        "date": "2015-03-04"
+      },
+      {
+        "country": "Guinea",
+        "total_deaths": 90,
+        "date": "2015-03-11"
+      },
+      {
+        "country": "Liberia",
+        "total_deaths": 180,
+        "date": "2015-03-11"
+      },
+      {
+        "country": "Mali",
+        "total_deaths": 2,
+        "date": "2015-03-11"
+      },
+      {
+        "country": "Nigeria",
+        "total_deaths": 5,
+        "date": "2015-03-11"
+      },
+      {
+        "country": "Sierra Leone",
+        "total_deaths": 221,
+        "date": "2015-03-11"
+      },
+      {
+        "country": "Guinea",
+        "total_deaths": 91,
+        "date": "2015-03-18"
+      },
+      {
+        "country": "Liberia",
+        "total_deaths": 180,
+        "date": "2015-03-18"
+      },
+      {
+        "country": "Mali",
+        "total_deaths": 2,
+        "date": "2015-03-18"
+      },
+      {
+        "country": "Nigeria",
+        "total_deaths": 5,
+        "date": "2015-03-18"
+      },
+      {
+        "country": "Sierra Leone",
+        "total_deaths": 221,
+        "date": "2015-03-18"
+      },
+      {
+        "country": "Guinea",
+        "total_deaths": 93,
+        "date": "2015-03-25"
+      },
+      {
+        "country": "Liberia",
+        "total_deaths": 180,
+        "date": "2015-03-25"
+      },
+      {
+        "country": "Mali",
+        "total_deaths": 2,
+        "date": "2015-03-25"
+      },
+      {
+        "country": "Nigeria",
+        "total_deaths": 5,
+        "date": "2015-03-25"
+      },
+      {
+        "country": "Sierra Leone",
+        "total_deaths": 221,
+        "date": "2015-03-25"
+      },
+      {
+        "country": "Guinea",
+        "total_deaths": 94,
+        "date": "2015-04-01"
+      },
+      {
+        "country": "Liberia",
+        "total_deaths": 180,
+        "date": "2015-04-01"
+      },
+      {
+        "country": "Mali",
+        "total_deaths": 2,
+        "date": "2015-04-01"
+      },
+      {
+        "country": "Nigeria",
+        "total_deaths": 5,
+        "date": "2015-04-01"
+      },
+      {
+        "country": "Sierra Leone",
+        "total_deaths": 221,
+        "date": "2015-04-01"
+      },
+      {
+        "country": "Guinea",
+        "total_deaths": 94,
+        "date": "2015-04-08"
+      },
+      {
+        "country": "Liberia",
+        "total_deaths": 184,
+        "date": "2015-04-08"
+      },
+      {
+        "country": "Mali",
+        "total_deaths": 2,
+        "date": "2015-04-08"
+      },
+      {
+        "country": "Nigeria",
+        "total_deaths": 5,
+        "date": "2015-04-08"
+      },
+      {
+        "country": "Sierra Leone",
+        "total_deaths": 221,
+        "date": "2015-04-08"
+      },
+      {
+        "country": "Guinea",
+        "total_deaths": 94,
+        "date": "2015-04-15"
+      },
+      {
+        "country": "Liberia",
+        "total_deaths": 188,
+        "date": "2015-04-15"
+      },
+      {
+        "country": "Mali",
+        "total_deaths": 2,
+        "date": "2015-04-15"
+      },
+      {
+        "country": "Nigeria",
+        "total_deaths": 5,
+        "date": "2015-04-15"
+      },
+      {
+        "country": "Sierra Leone",
+        "total_deaths": 221,
+        "date": "2015-04-15"
+      },
+      {
+        "country": "Guinea",
+        "total_deaths": 94,
+        "date": "2015-04-22"
+      },
+      {
+        "country": "Liberia",
+        "total_deaths": 189,
+        "date": "2015-04-22"
+      },
+      {
+        "country": "Mali",
+        "total_deaths": 2,
+        "date": "2015-04-22"
+      },
+      {
+        "country": "Nigeria",
+        "total_deaths": 5,
+        "date": "2015-04-22"
+      },
+      {
+        "country": "Sierra Leone",
+        "total_deaths": 221,
+        "date": "2015-04-22"
+      },
+      {
+        "country": "Guinea",
+        "total_deaths": 94,
+        "date": "2015-04-29"
+      },
+      {
+        "country": "Liberia",
+        "total_deaths": 189,
+        "date": "2015-04-29"
+      },
+      {
+        "country": "Mali",
+        "total_deaths": 2,
+        "date": "2015-04-29"
+      },
+      {
+        "country": "Nigeria",
+        "total_deaths": 5,
+        "date": "2015-04-29"
+      },
+      {
+        "country": "Sierra Leone",
+        "total_deaths": 221,
+        "date": "2015-04-29"
+      },
+      {
+        "country": "Guinea",
+        "total_deaths": 94,
+        "date": "2015-05-06"
+      },
+      {
+        "country": "Liberia",
+        "total_deaths": 192,
+        "date": "2015-05-06"
+      },
+      {
+        "country": "Mali",
+        "total_deaths": 2,
+        "date": "2015-05-06"
+      },
+      {
+        "country": "Nigeria",
+        "total_deaths": 5,
+        "date": "2015-05-06"
+      },
+      {
+        "country": "Sierra Leone",
+        "total_deaths": 221,
+        "date": "2015-05-06"
+      },
+      {
+        "country": "Guinea",
+        "total_deaths": 94,
+        "date": "2015-05-13"
+      },
+      {
+        "country": "Liberia",
+        "total_deaths": 192,
+        "date": "2015-05-13"
+      },
+      {
+        "country": "Mali",
+        "total_deaths": 2,
+        "date": "2015-05-13"
+      },
+      {
+        "country": "Nigeria",
+        "total_deaths": 5,
+        "date": "2015-05-13"
+      },
+      {
+        "country": "Sierra Leone",
+        "total_deaths": 221,
+        "date": "2015-05-13"
+      },
+      {
+        "country": "Guinea",
+        "total_deaths": 94,
+        "date": "2015-05-20"
+      },
+      {
+        "country": "Liberia",
+        "total_deaths": 192,
+        "date": "2015-05-20"
+      },
+      {
+        "country": "Mali",
+        "total_deaths": 2,
+        "date": "2015-05-20"
+      },
+      {
+        "country": "Nigeria",
+        "total_deaths": 5,
+        "date": "2015-05-20"
+      },
+      {
+        "country": "Sierra Leone",
+        "total_deaths": 221,
+        "date": "2015-05-20"
+      },
+      {
+        "country": "Guinea",
+        "total_deaths": 94,
+        "date": "2015-05-27"
+      },
+      {
+        "country": "Liberia",
+        "total_deaths": 192,
+        "date": "2015-05-27"
+      },
+      {
+        "country": "Mali",
+        "total_deaths": 2,
+        "date": "2015-05-27"
+      },
+      {
+        "country": "Nigeria",
+        "total_deaths": 5,
+        "date": "2015-05-27"
+      },
+      {
+        "country": "Sierra Leone",
+        "total_deaths": 221,
+        "date": "2015-05-27"
+      },
+      {
+        "country": "Guinea",
+        "total_deaths": 94,
+        "date": "2015-06-03"
+      },
+      {
+        "country": "Liberia",
+        "total_deaths": 192,
+        "date": "2015-06-03"
+      },
+      {
+        "country": "Mali",
+        "total_deaths": 2,
+        "date": "2015-06-03"
+      },
+      {
+        "country": "Nigeria",
+        "total_deaths": 5,
+        "date": "2015-06-03"
+      },
+      {
+        "country": "Sierra Leone",
+        "total_deaths": 221,
+        "date": "2015-06-03"
+      },
+      {
+        "country": "Guinea",
+        "total_deaths": 94,
+        "date": "2015-06-10"
+      },
+      {
+        "country": "Liberia",
+        "total_deaths": 192,
+        "date": "2015-06-10"
+      },
+      {
+        "country": "Mali",
+        "total_deaths": 2,
+        "date": "2015-06-10"
+      },
+      {
+        "country": "Nigeria",
+        "total_deaths": 5,
+        "date": "2015-06-10"
+      },
+      {
+        "country": "Sierra Leone",
+        "total_deaths": 221,
+        "date": "2015-06-10"
+      },
+      {
+        "country": "Guinea",
+        "total_deaths": 94,
+        "date": "2015-06-17"
+      },
+      {
+        "country": "Liberia",
+        "total_deaths": 192,
+        "date": "2015-06-17"
+      },
+      {
+        "country": "Mali",
+        "total_deaths": 2,
+        "date": "2015-06-17"
+      },
+      {
+        "country": "Nigeria",
+        "total_deaths": 5,
+        "date": "2015-06-17"
+      },
+      {
+        "country": "Sierra Leone",
+        "total_deaths": 221,
+        "date": "2015-06-17"
+      },
+      {
+        "country": "Guinea",
+        "total_deaths": 94,
+        "date": "2015-06-24"
+      },
+      {
+        "country": "Liberia",
+        "total_deaths": 192,
+        "date": "2015-06-24"
+      },
+      {
+        "country": "Mali",
+        "total_deaths": 2,
+        "date": "2015-06-24"
+      },
+      {
+        "country": "Nigeria",
+        "total_deaths": 5,
+        "date": "2015-06-24"
+      },
+      {
+        "country": "Sierra Leone",
+        "total_deaths": 221,
+        "date": "2015-06-24"
+      },
+      {
+        "country": "Guinea",
+        "total_deaths": 96,
+        "date": "2015-07-01"
+      },
+      {
+        "country": "Liberia",
+        "total_deaths": 192,
+        "date": "2015-07-01"
+      },
+      {
+        "country": "Mali",
+        "total_deaths": 2,
+        "date": "2015-07-01"
+      },
+      {
+        "country": "Nigeria",
+        "total_deaths": 5,
+        "date": "2015-07-01"
+      },
+      {
+        "country": "Sierra Leone",
+        "total_deaths": 221,
+        "date": "2015-07-01"
+      },
+      {
+        "country": "Guinea",
+        "total_deaths": 96,
+        "date": "2015-07-08"
+      },
+      {
+        "country": "Liberia",
+        "total_deaths": 192,
+        "date": "2015-07-08"
+      },
+      {
+        "country": "Mali",
+        "total_deaths": 2,
+        "date": "2015-07-08"
+      },
+      {
+        "country": "Nigeria",
+        "total_deaths": 5,
+        "date": "2015-07-08"
+      },
+      {
+        "country": "Sierra Leone",
+        "total_deaths": 221,
+        "date": "2015-07-08"
+      },
+      {
+        "country": "Guinea",
+        "total_deaths": 96,
+        "date": "2015-07-15"
+      },
+      {
+        "country": "Liberia",
+        "total_deaths": 192,
+        "date": "2015-07-15"
+      },
+      {
+        "country": "Mali",
+        "total_deaths": 2,
+        "date": "2015-07-15"
+      },
+      {
+        "country": "Nigeria",
+        "total_deaths": 5,
+        "date": "2015-07-15"
+      },
+      {
+        "country": "Sierra Leone",
+        "total_deaths": 221,
+        "date": "2015-07-15"
+      },
+      {
+        "country": "Guinea",
+        "total_deaths": 97,
+        "date": "2015-07-22"
+      },
+      {
+        "country": "Liberia",
+        "total_deaths": 192,
+        "date": "2015-07-22"
+      },
+      {
+        "country": "Mali",
+        "total_deaths": 2,
+        "date": "2015-07-22"
+      },
+      {
+        "country": "Nigeria",
+        "total_deaths": 5,
+        "date": "2015-07-22"
+      },
+      {
+        "country": "Sierra Leone",
+        "total_deaths": 221,
+        "date": "2015-07-22"
+      },
+      {
+        "country": "Guinea",
+        "total_deaths": 97,
+        "date": "2015-07-29"
+      },
+      {
+        "country": "Liberia",
+        "total_deaths": 192,
+        "date": "2015-07-29"
+      },
+      {
+        "country": "Mali",
+        "total_deaths": 2,
+        "date": "2015-07-29"
+      },
+      {
+        "country": "Nigeria",
+        "total_deaths": 5,
+        "date": "2015-07-29"
+      },
+      {
+        "country": "Sierra Leone",
+        "total_deaths": 221,
+        "date": "2015-07-29"
+      },
+      {
+        "country": "Guinea",
+        "total_deaths": 99,
+        "date": "2015-08-05"
+      },
+      {
+        "country": "Liberia",
+        "total_deaths": 192,
+        "date": "2015-08-05"
+      },
+      {
+        "country": "Mali",
+        "total_deaths": 2,
+        "date": "2015-08-05"
+      },
+      {
+        "country": "Nigeria",
+        "total_deaths": 5,
+        "date": "2015-08-05"
+      },
+      {
+        "country": "Sierra Leone",
+        "total_deaths": 221,
+        "date": "2015-08-05"
+      },
+      {
+        "country": "Guinea",
+        "total_deaths": 99,
+        "date": "2015-08-12"
+      },
+      {
+        "country": "Liberia",
+        "total_deaths": 192,
+        "date": "2015-08-12"
+      },
+      {
+        "country": "Mali",
+        "total_deaths": 2,
+        "date": "2015-08-12"
+      },
+      {
+        "country": "Nigeria",
+        "total_deaths": 5,
+        "date": "2015-08-12"
+      },
+      {
+        "country": "Sierra Leone",
+        "total_deaths": 221,
+        "date": "2015-08-12"
+      },
+      {
+        "country": "Guinea",
+        "total_deaths": 99,
+        "date": "2015-08-19"
+      },
+      {
+        "country": "Liberia",
+        "total_deaths": 192,
+        "date": "2015-08-19"
+      },
+      {
+        "country": "Mali",
+        "total_deaths": 2,
+        "date": "2015-08-19"
+      },
+      {
+        "country": "Nigeria",
+        "total_deaths": 5,
+        "date": "2015-08-19"
+      },
+      {
+        "country": "Sierra Leone",
+        "total_deaths": 221,
+        "date": "2015-08-19"
+      },
+      {
+        "country": "Guinea",
+        "total_deaths": 99,
+        "date": "2015-08-26"
+      },
+      {
+        "country": "Liberia",
+        "total_deaths": 192,
+        "date": "2015-08-26"
+      },
+      {
+        "country": "Mali",
+        "total_deaths": 2,
+        "date": "2015-08-26"
+      },
+      {
+        "country": "Nigeria",
+        "total_deaths": 5,
+        "date": "2015-08-26"
+      },
+      {
+        "country": "Sierra Leone",
+        "total_deaths": 221,
+        "date": "2015-08-26"
+      },
+      {
+        "country": "Guinea",
+        "total_deaths": 100,
+        "date": "2015-09-02"
+      },
+      {
+        "country": "Liberia",
+        "total_deaths": 192,
+        "date": "2015-09-02"
+      },
+      {
+        "country": "Mali",
+        "total_deaths": 2,
+        "date": "2015-09-02"
+      },
+      {
+        "country": "Nigeria",
+        "total_deaths": 5,
+        "date": "2015-09-02"
+      },
+      {
+        "country": "Sierra Leone",
+        "total_deaths": 221,
+        "date": "2015-09-02"
+      },
+      {
+        "country": "Guinea",
+        "total_deaths": 100,
+        "date": "2015-09-09"
+      },
+      {
+        "country": "Liberia",
+        "total_deaths": 192,
+        "date": "2015-09-09"
+      },
+      {
+        "country": "Mali",
+        "total_deaths": 2,
+        "date": "2015-09-09"
+      },
+      {
+        "country": "Nigeria",
+        "total_deaths": 5,
+        "date": "2015-09-09"
+      },
+      {
+        "country": "Sierra Leone",
+        "total_deaths": 221,
+        "date": "2015-09-09"
+      },
+      {
+        "country": "Guinea",
+        "total_deaths": 100,
+        "date": "2015-09-16"
+      },
+      {
+        "country": "Liberia",
+        "total_deaths": 192,
+        "date": "2015-09-16"
+      },
+      {
+        "country": "Mali",
+        "total_deaths": 2,
+        "date": "2015-09-16"
+      },
+      {
+        "country": "Nigeria",
+        "total_deaths": 5,
+        "date": "2015-09-16"
+      },
+      {
+        "country": "Sierra Leone",
+        "total_deaths": 221,
+        "date": "2015-09-16"
+      },
+      {
+        "country": "Guinea",
+        "total_deaths": 100,
+        "date": "2015-09-23"
+      },
+      {
+        "country": "Liberia",
+        "total_deaths": 192,
+        "date": "2015-09-23"
+      },
+      {
+        "country": "Mali",
+        "total_deaths": 2,
+        "date": "2015-09-23"
+      },
+      {
+        "country": "Nigeria",
+        "total_deaths": 5,
+        "date": "2015-09-23"
+      },
+      {
+        "country": "Sierra Leone",
+        "total_deaths": 221,
+        "date": "2015-09-23"
+      },
+      {
+        "country": "Guinea",
+        "total_deaths": 100,
+        "date": "2015-09-30"
+      },
+      {
+        "country": "Liberia",
+        "total_deaths": 192,
+        "date": "2015-09-30"
+      },
+      {
+        "country": "Mali",
+        "total_deaths": 2,
+        "date": "2015-09-30"
+      },
+      {
+        "country": "Nigeria",
+        "total_deaths": 5,
+        "date": "2015-09-30"
+      },
+      {
+        "country": "Sierra Leone",
+        "total_deaths": 221,
+        "date": "2015-09-30"
+      },
+      {
+        "country": "Guinea",
+        "total_deaths": 100,
+        "date": "2015-10-07"
+      },
+      {
+        "country": "Liberia",
+        "total_deaths": 192,
+        "date": "2015-10-07"
+      },
+      {
+        "country": "Mali",
+        "total_deaths": 2,
+        "date": "2015-10-07"
+      },
+      {
+        "country": "Nigeria",
+        "total_deaths": 5,
+        "date": "2015-10-07"
+      },
+      {
+        "country": "Sierra Leone",
+        "total_deaths": 221,
+        "date": "2015-10-07"
+      },
+      {
+        "country": "Guinea",
+        "total_deaths": 100,
+        "date": "2015-10-14"
+      },
+      {
+        "country": "Liberia",
+        "total_deaths": 192,
+        "date": "2015-10-14"
+      },
+      {
+        "country": "Mali",
+        "total_deaths": 2,
+        "date": "2015-10-14"
+      },
+      {
+        "country": "Nigeria",
+        "total_deaths": 5,
+        "date": "2015-10-14"
+      },
+      {
+        "country": "Sierra Leone",
+        "total_deaths": 221,
+        "date": "2015-10-14"
+      },
+      {
+        "country": "Guinea",
+        "total_deaths": 100,
+        "date": "2015-10-21"
+      },
+      {
+        "country": "Liberia",
+        "total_deaths": 192,
+        "date": "2015-10-21"
+      },
+      {
+        "country": "Mali",
+        "total_deaths": 2,
+        "date": "2015-10-21"
+      },
+      {
+        "country": "Nigeria",
+        "total_deaths": 5,
+        "date": "2015-10-21"
+      },
+      {
+        "country": "Sierra Leone",
+        "total_deaths": 221,
+        "date": "2015-10-21"
+      },
+      {
+        "country": "Guinea",
+        "total_deaths": 100,
+        "date": "2015-10-28"
+      },
+      {
+        "country": "Liberia",
+        "total_deaths": 192,
+        "date": "2015-10-28"
+      },
+      {
+        "country": "Mali",
+        "total_deaths": 2,
+        "date": "2015-10-28"
+      },
+      {
+        "country": "Nigeria",
+        "total_deaths": 5,
+        "date": "2015-10-28"
+      },
+      {
+        "country": "Sierra Leone",
+        "total_deaths": 221,
+        "date": "2015-10-28"
+      },
+      {
+        "country": "Guinea",
+        "total_deaths": 100,
+        "date": "2015-11-04"
+      },
+      {
+        "country": "Liberia",
+        "total_deaths": 192,
+        "date": "2015-11-04"
+      },
+      {
+        "country": "Mali",
+        "total_deaths": 2,
+        "date": "2015-11-04"
+      },
+      {
+        "country": "Nigeria",
+        "total_deaths": 5,
+        "date": "2015-11-04"
+      },
+      {
+        "country": "Sierra Leone",
+        "total_deaths": 221,
+        "date": "2015-11-04"
+      }
+    ]
+  }
+}

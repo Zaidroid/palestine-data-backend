@@ -1,0 +1,124 @@
+{
+  "indicator": "SH.XPD.CHEX.PP.CD",
+  "indicator_name": "Current health expenditure per capita, PPP (current international $)",
+  "data": [
+    {
+      "year": 2010,
+      "value": 337.240945031636,
+      "indicator": "SH.XPD.CHEX.PP.CD",
+      "indicator_name": "Current health expenditure per capita, PPP (current international $)",
+      "country": "West Bank and Gaza",
+      "source": "worldbank"
+    },
+    {
+      "year": 2011,
+      "value": 458.863761783045,
+      "indicator": "SH.XPD.CHEX.PP.CD",
+      "indicator_name": "Current health expenditure per capita, PPP (current international $)",
+      "country": "West Bank and Gaza",
+      "source": "worldbank"
+    },
+    {
+      "year": 2012,
+      "value": 487.535449394699,
+      "indicator": "SH.XPD.CHEX.PP.CD",
+      "indicator_name": "Current health expenditure per capita, PPP (current international $)",
+      "country": "West Bank and Gaza",
+      "source": "worldbank"
+    },
+    {
+      "year": 2013,
+      "value": 505.714991629513,
+      "indicator": "SH.XPD.CHEX.PP.CD",
+      "indicator_name": "Current health expenditure per capita, PPP (current international $)",
+      "country": "West Bank and Gaza",
+      "source": "worldbank"
+    },
+    {
+      "year": 2014,
+      "value": 516.598288295106,
+      "indicator": "SH.XPD.CHEX.PP.CD",
+      "indicator_name": "Current health expenditure per capita, PPP (current international $)",
+      "country": "West Bank and Gaza",
+      "source": "worldbank"
+    },
+    {
+      "year": 2015,
+      "value": 522.102703947439,
+      "indicator": "SH.XPD.CHEX.PP.CD",
+      "indicator_name": "Current health expenditure per capita, PPP (current international $)",
+      "country": "West Bank and Gaza",
+      "source": "worldbank"
+    },
+    {
+      "year": 2016,
+      "value": 535.181355190854,
+      "indicator": "SH.XPD.CHEX.PP.CD",
+      "indicator_name": "Current health expenditure per capita, PPP (current international $)",
+      "country": "West Bank and Gaza",
+      "source": "worldbank"
+    },
+    {
+      "year": 2017,
+      "value": 548.534705236879,
+      "indicator": "SH.XPD.CHEX.PP.CD",
+      "indicator_name": "Current health expenditure per capita, PPP (current international $)",
+      "country": "West Bank and Gaza",
+      "source": "worldbank"
+    },
+    {
+      "year": 2018,
+      "value": 588.50619446537,
+      "indicator": "SH.XPD.CHEX.PP.CD",
+      "indicator_name": "Current health expenditure per capita, PPP (current international $)",
+      "country": "West Bank and Gaza",
+      "source": "worldbank"
+    },
+    {
+      "year": 2019,
+      "value": 565.158136875195,
+      "indicator": "SH.XPD.CHEX.PP.CD",
+      "indicator_name": "Current health expenditure per capita, PPP (current international $)",
+      "country": "West Bank and Gaza",
+      "source": "worldbank"
+    },
+    {
+      "year": 2020,
+      "value": 555.457960843787,
+      "indicator": "SH.XPD.CHEX.PP.CD",
+      "indicator_name": "Current health expenditure per capita, PPP (current international $)",
+      "country": "West Bank and Gaza",
+      "source": "worldbank"
+    },
+    {
+      "year": 2021,
+      "value": 616.63430217211,
+      "indicator": "SH.XPD.CHEX.PP.CD",
+      "indicator_name": "Current health expenditure per capita, PPP (current international $)",
+      "country": "West Bank and Gaza",
+      "source": "worldbank"
+    },
+    {
+      "year": 2022,
+      "value": 625.432989212633,
+      "indicator": "SH.XPD.CHEX.PP.CD",
+      "indicator_name": "Current health expenditure per capita, PPP (current international $)",
+      "country": "West Bank and Gaza",
+      "source": "worldbank"
+    }
+  ],
+  "metadata": {
+    "source": "World Bank Open Data",
+    "last_updated": "2025-10-29T21:02:17.548Z",
+    "total_points": 13
+  },
+  "validation": {
+    "qualityScore": 1,
+    "completeness": 1,
+    "consistency": 1,
+    "accuracy": 1,
+    "meetsThreshold": true,
+    "errorCount": 0,
+    "warningCount": 0
+  }
+}

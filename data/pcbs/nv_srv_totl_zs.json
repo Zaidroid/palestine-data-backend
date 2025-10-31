@@ -1,0 +1,130 @@
+{
+  "indicator": "NV.SRV.TOTL.ZS",
+  "indicator_name": "Services, value added (% of GDP)",
+  "category": "economic",
+  "data": [
+    {
+      "year": 2010,
+      "value": 57.6987037132676,
+      "indicator": "NV.SRV.TOTL.ZS",
+      "indicator_name": "Services, value added (% of GDP)",
+      "country": "West Bank and Gaza",
+      "source": "pcbs",
+      "source_detail": "PCBS via World Bank API"
+    },
+    {
+      "year": 2011,
+      "value": 60.2175914751343,
+      "indicator": "NV.SRV.TOTL.ZS",
+      "indicator_name": "Services, value added (% of GDP)",
+      "country": "West Bank and Gaza",
+      "source": "pcbs",
+      "source_detail": "PCBS via World Bank API"
+    },
+    {
+      "year": 2012,
+      "value": 59.9775564365519,
+      "indicator": "NV.SRV.TOTL.ZS",
+      "indicator_name": "Services, value added (% of GDP)",
+      "country": "West Bank and Gaza",
+      "source": "pcbs",
+      "source_detail": "PCBS via World Bank API"
+    },
+    {
+      "year": 2013,
+      "value": 60.7687469941919,
+      "indicator": "NV.SRV.TOTL.ZS",
+      "indicator_name": "Services, value added (% of GDP)",
+      "country": "West Bank and Gaza",
+      "source": "pcbs",
+      "source_detail": "PCBS via World Bank API"
+    },
+    {
+      "year": 2014,
+      "value": 61.4273358256431,
+      "indicator": "NV.SRV.TOTL.ZS",
+      "indicator_name": "Services, value added (% of GDP)",
+      "country": "West Bank and Gaza",
+      "source": "pcbs",
+      "source_detail": "PCBS via World Bank API"
+    },
+    {
+      "year": 2015,
+      "value": 61.6830322636054,
+      "indicator": "NV.SRV.TOTL.ZS",
+      "indicator_name": "Services, value added (% of GDP)",
+      "country": "West Bank and Gaza",
+      "source": "pcbs",
+      "source_detail": "PCBS via World Bank API"
+    },
+    {
+      "year": 2016,
+      "value": 60.9565477040518,
+      "indicator": "NV.SRV.TOTL.ZS",
+      "indicator_name": "Services, value added (% of GDP)",
+      "country": "West Bank and Gaza",
+      "source": "pcbs",
+      "source_detail": "PCBS via World Bank API"
+    },
+    {
+      "year": 2017,
+      "value": 58.9961557539682,
+      "indicator": "NV.SRV.TOTL.ZS",
+      "indicator_name": "Services, value added (% of GDP)",
+      "country": "West Bank and Gaza",
+      "source": "pcbs",
+      "source_detail": "PCBS via World Bank API"
+    },
+    {
+      "year": 2018,
+      "value": 59.977513731369,
+      "indicator": "NV.SRV.TOTL.ZS",
+      "indicator_name": "Services, value added (% of GDP)",
+      "country": "West Bank and Gaza",
+      "source": "pcbs",
+      "source_detail": "PCBS via World Bank API"
+    },
+    {
+      "year": 2019,
+      "value": 61.1095222809117,
+      "indicator": "NV.SRV.TOTL.ZS",
+      "indicator_name": "Services, value added (% of GDP)",
+      "country": "West Bank and Gaza",
+      "source": "pcbs",
+      "source_detail": "PCBS via World Bank API"
+    },
+    {
+      "year": 2020,
+      "value": 60.5516459885267,
+      "indicator": "NV.SRV.TOTL.ZS",
+      "indicator_name": "Services, value added (% of GDP)",
+      "country": "West Bank and Gaza",
+      "source": "pcbs",
+      "source_detail": "PCBS via World Bank API"
+    },
+    {
+      "year": 2021,
+      "value": 60.0751007786184,
+      "indicator": "NV.SRV.TOTL.ZS",
+      "indicator_name": "Services, value added (% of GDP)",
+      "country": "West Bank and Gaza",
+      "source": "pcbs",
+      "source_detail": "PCBS via World Bank API"
+    },
+    {
+      "year": 2022,
+      "value": 58.3308549216039,
+      "indicator": "NV.SRV.TOTL.ZS",
+      "indicator_name": "Services, value added (% of GDP)",
+      "country": "West Bank and Gaza",
+      "source": "pcbs",
+      "source_detail": "PCBS via World Bank API"
+    }
+  ],
+  "metadata": {
+    "source": "Palestinian Central Bureau of Statistics (PCBS)",
+    "source_detail": "Data accessed via World Bank Open Data API",
+    "last_updated": "2025-10-30T09:43:36.603Z",
+    "total_points": 13
+  }
+}

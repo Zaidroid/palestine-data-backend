@@ -1,0 +1,116 @@
+{
+  "indicator": "ER.H2O.FWST.ZS",
+  "indicator_name": "Annual freshwater withdrawals, total (% of internal resources)",
+  "data": [
+    {
+      "year": 2010,
+      "value": 38.6250178291,
+      "indicator": "ER.H2O.FWST.ZS",
+      "indicator_name": "Annual freshwater withdrawals, total (% of internal resources)",
+      "country": "West Bank and Gaza",
+      "source": "worldbank"
+    },
+    {
+      "year": 2011,
+      "value": 38.0687491085,
+      "indicator": "ER.H2O.FWST.ZS",
+      "indicator_name": "Annual freshwater withdrawals, total (% of internal resources)",
+      "country": "West Bank and Gaza",
+      "source": "worldbank"
+    },
+    {
+      "year": 2012,
+      "value": 41.7344173442,
+      "indicator": "ER.H2O.FWST.ZS",
+      "indicator_name": "Annual freshwater withdrawals, total (% of internal resources)",
+      "country": "West Bank and Gaza",
+      "source": "worldbank"
+    },
+    {
+      "year": 2013,
+      "value": 43.1322207959,
+      "indicator": "ER.H2O.FWST.ZS",
+      "indicator_name": "Annual freshwater withdrawals, total (% of internal resources)",
+      "country": "West Bank and Gaza",
+      "source": "worldbank"
+    },
+    {
+      "year": 2014,
+      "value": 39.1527599487,
+      "indicator": "ER.H2O.FWST.ZS",
+      "indicator_name": "Annual freshwater withdrawals, total (% of internal resources)",
+      "country": "West Bank and Gaza",
+      "source": "worldbank"
+    },
+    {
+      "year": 2015,
+      "value": 41.5347311368,
+      "indicator": "ER.H2O.FWST.ZS",
+      "indicator_name": "Annual freshwater withdrawals, total (% of internal resources)",
+      "country": "West Bank and Gaza",
+      "source": "worldbank"
+    },
+    {
+      "year": 2016,
+      "value": 40.0228212808,
+      "indicator": "ER.H2O.FWST.ZS",
+      "indicator_name": "Annual freshwater withdrawals, total (% of internal resources)",
+      "country": "West Bank and Gaza",
+      "source": "worldbank"
+    },
+    {
+      "year": 2017,
+      "value": 41.0783055199,
+      "indicator": "ER.H2O.FWST.ZS",
+      "indicator_name": "Annual freshwater withdrawals, total (% of internal resources)",
+      "country": "West Bank and Gaza",
+      "source": "worldbank"
+    },
+    {
+      "year": 2018,
+      "value": 42.7471116816,
+      "indicator": "ER.H2O.FWST.ZS",
+      "indicator_name": "Annual freshwater withdrawals, total (% of internal resources)",
+      "country": "West Bank and Gaza",
+      "source": "worldbank"
+    },
+    {
+      "year": 2019,
+      "value": 47.0118385394,
+      "indicator": "ER.H2O.FWST.ZS",
+      "indicator_name": "Annual freshwater withdrawals, total (% of internal resources)",
+      "country": "West Bank and Gaza",
+      "source": "worldbank"
+    },
+    {
+      "year": 2020,
+      "value": 50.2638710598,
+      "indicator": "ER.H2O.FWST.ZS",
+      "indicator_name": "Annual freshwater withdrawals, total (% of internal resources)",
+      "country": "West Bank and Gaza",
+      "source": "worldbank"
+    },
+    {
+      "year": 2021,
+      "value": 47.7535301669,
+      "indicator": "ER.H2O.FWST.ZS",
+      "indicator_name": "Annual freshwater withdrawals, total (% of internal resources)",
+      "country": "West Bank and Gaza",
+      "source": "worldbank"
+    }
+  ],
+  "metadata": {
+    "source": "World Bank Open Data",
+    "last_updated": "2025-10-29T21:02:20.200Z",
+    "total_points": 12
+  },
+  "validation": {
+    "qualityScore": 1,
+    "completeness": 1,
+    "consistency": 1,
+    "accuracy": 1,
+    "meetsThreshold": true,
+    "errorCount": 0,
+    "warningCount": 0
+  }
+}

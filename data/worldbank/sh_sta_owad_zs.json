@@ -1,0 +1,124 @@
+{
+  "indicator": "SH.STA.OWAD.ZS",
+  "indicator_name": "Prevalence of overweight (% of adults)",
+  "data": [
+    {
+      "year": 2010,
+      "value": 67.17,
+      "indicator": "SH.STA.OWAD.ZS",
+      "indicator_name": "Prevalence of overweight (% of adults)",
+      "country": "West Bank and Gaza",
+      "source": "worldbank"
+    },
+    {
+      "year": 2011,
+      "value": 67.41,
+      "indicator": "SH.STA.OWAD.ZS",
+      "indicator_name": "Prevalence of overweight (% of adults)",
+      "country": "West Bank and Gaza",
+      "source": "worldbank"
+    },
+    {
+      "year": 2012,
+      "value": 67.63,
+      "indicator": "SH.STA.OWAD.ZS",
+      "indicator_name": "Prevalence of overweight (% of adults)",
+      "country": "West Bank and Gaza",
+      "source": "worldbank"
+    },
+    {
+      "year": 2013,
+      "value": 67.83,
+      "indicator": "SH.STA.OWAD.ZS",
+      "indicator_name": "Prevalence of overweight (% of adults)",
+      "country": "West Bank and Gaza",
+      "source": "worldbank"
+    },
+    {
+      "year": 2014,
+      "value": 68.01,
+      "indicator": "SH.STA.OWAD.ZS",
+      "indicator_name": "Prevalence of overweight (% of adults)",
+      "country": "West Bank and Gaza",
+      "source": "worldbank"
+    },
+    {
+      "year": 2015,
+      "value": 68.18,
+      "indicator": "SH.STA.OWAD.ZS",
+      "indicator_name": "Prevalence of overweight (% of adults)",
+      "country": "West Bank and Gaza",
+      "source": "worldbank"
+    },
+    {
+      "year": 2016,
+      "value": 68.34,
+      "indicator": "SH.STA.OWAD.ZS",
+      "indicator_name": "Prevalence of overweight (% of adults)",
+      "country": "West Bank and Gaza",
+      "source": "worldbank"
+    },
+    {
+      "year": 2017,
+      "value": 68.46,
+      "indicator": "SH.STA.OWAD.ZS",
+      "indicator_name": "Prevalence of overweight (% of adults)",
+      "country": "West Bank and Gaza",
+      "source": "worldbank"
+    },
+    {
+      "year": 2018,
+      "value": 68.55,
+      "indicator": "SH.STA.OWAD.ZS",
+      "indicator_name": "Prevalence of overweight (% of adults)",
+      "country": "West Bank and Gaza",
+      "source": "worldbank"
+    },
+    {
+      "year": 2019,
+      "value": 68.62,
+      "indicator": "SH.STA.OWAD.ZS",
+      "indicator_name": "Prevalence of overweight (% of adults)",
+      "country": "West Bank and Gaza",
+      "source": "worldbank"
+    },
+    {
+      "year": 2020,
+      "value": 68.69,
+      "indicator": "SH.STA.OWAD.ZS",
+      "indicator_name": "Prevalence of overweight (% of adults)",
+      "country": "West Bank and Gaza",
+      "source": "worldbank"
+    },
+    {
+      "year": 2021,
+      "value": 68.75,
+      "indicator": "SH.STA.OWAD.ZS",
+      "indicator_name": "Prevalence of overweight (% of adults)",
+      "country": "West Bank and Gaza",
+      "source": "worldbank"
+    },
+    {
+      "year": 2022,
+      "value": 68.8,
+      "indicator": "SH.STA.OWAD.ZS",
+      "indicator_name": "Prevalence of overweight (% of adults)",
+      "country": "West Bank and Gaza",
+      "source": "worldbank"
+    }
+  ],
+  "metadata": {
+    "source": "World Bank Open Data",
+    "last_updated": "2025-10-29T21:02:14.057Z",
+    "total_points": 13
+  },
+  "validation": {
+    "qualityScore": 1,
+    "completeness": 1,
+    "consistency": 1,
+    "accuracy": 1,
+    "meetsThreshold": true,
+    "errorCount": 0,
+    "warningCount": 0
+  }
+}

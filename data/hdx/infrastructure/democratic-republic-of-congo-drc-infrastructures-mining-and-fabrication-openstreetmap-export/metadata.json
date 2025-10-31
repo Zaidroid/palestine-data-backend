@@ -1,0 +1,51 @@
+{
+  "id": "f58fb58f-c9fb-4dfa-be3f-1dcad9ec12d1",
+  "name": "democratic-republic-of-congo-drc-infrastructures-mining-and-fabrication-openstreetmap-export",
+  "title": "Democratic Republic of Congo (DRC) Infrastructures, Mining and Fabrication (OpenStreetMap Export)",
+  "description": "République démocratique du Congo (RDC), Infrastructures, Mines et Fabrication\r\n\r\nPoints + Lines + Polygons  OSM Features Interactive Online Map - \r\n\r\n    NOTE  : WORK IN PROGRESS - Will be revised with the thematic variable describing  more in detail group of facilities + adding Water facilities  \r\n\r\nThematic Variable = Infrastructures, Mining, Fabrication\r\nThe file contains Industrial facilities, Mining, quarry, pipelines, Power lines and stations, communication towers and piers.\r\nThe mkeys variable describes which OSM major keys are used to describe the facility.\r\n\r\nVariables : \r\nosmtype(node, way, relation)  geomtype(point, line, polygone) , osm_id, lat, lon,  thematic,  mkeys (osm major keys),\r\nman_made, landuse, power, industrial, embankment, content, product, substance, \r\nlocation, name, operator, operator:type,  private, address, addr:housenumber,  addr:street, addr:city,\r\nbuilding, building:levels, building:material, building:condition,  building:status, note,  layer, other_tags\r\n\r\nname, name:en, name:fr, operator, operator:type, natural, aerialway, aerodrome, aeroway, runway, taxiway, apron, helipad, heliport, iata, icao, public_transport, rail, railway, ref, route, network, station, service, shelter, harbor, bus, highway, bridge, tunnel, landuse, surface, building, building:levels, building:material, building:condition, building:status, building:min_level, address, addr:housenumber, addr:street, addr:city, layer, private, source_ref, source, source:name, source:date, source:data, source_ref:1, survey:date, timezone, toilets, type, voltage, weelchair, wikidata, wikipedia\r\n\r\nOSM Filter\r\n\r\n    OSM features :\r\n    thematic in (   'Infrastructures, Mining, Fabrication');\r\n",
+  "category": "infrastructure",
+  "organization": {
+    "name": "osm-rdc",
+    "title": "OpenStreetMap RDC"
+  },
+  "tags": [
+    "facilities-infrastructure",
+    "geodata"
+  ],
+  "license": "Open Database License (ODC-ODbL)",
+  "dataset_date": "[2020-01-02T00:00:00 TO 2020-01-02T23:59:59]",
+  "last_modified": "2025-04-09T15:43:51.046020",
+  "data_update_frequency": "-2",
+  "num_resources": 2,
+  "resources": [
+    {
+      "id": "e1c10804-66b4-4698-9805-7f540e6d87bc",
+      "name": "osm_rd_congo_infrastructures_mining_fabrication.geojson.zip",
+      "format": "GeoJSON",
+      "size": 258420,
+      "last_modified": "2020-01-14T02:56:32.327829",
+      "url": "https://data.humdata.org/dataset/f58fb58f-c9fb-4dfa-be3f-1dcad9ec12d1/resource/e1c10804-66b4-4698-9805-7f540e6d87bc/download/osm_rd_congo_infrastructures_mining_fabrication.geojson.zip"
+    },
+    {
+      "id": "a1899b4a-a7b2-46a7-a211-9eb1fb56dfcf",
+      "name": "osm_rd_congo_infrastructures_mining_fabrication.csv.zip",
+      "format": "CSV",
+      "size": 225988,
+      "last_modified": "2020-01-14T02:56:37.135897",
+      "url": "https://data.humdata.org/dataset/f58fb58f-c9fb-4dfa-be3f-1dcad9ec12d1/resource/a1899b4a-a7b2-46a7-a211-9eb1fb56dfcf/download/osm_rd_congo_infrastructures_mining_fabrication.csv.zip"
+    }
+  ],
+  "source_url": "https://data.humdata.org/dataset/democratic-republic-of-congo-drc-infrastructures-mining-and-fabrication-openstreetmap-export",
+  "extracted_at": "2025-10-29T21:10:56.448Z",
+  "palestine_context": {
+    "regions_covered": [],
+    "governorates": [],
+    "conflict_related": false,
+    "baseline_comparison_available": false
+  },
+  "data_quality": {
+    "update_frequency": "-2",
+    "last_updated": "2025-04-09T15:43:51.046020",
+    "source_reliability": "unknown"
+  }
+}

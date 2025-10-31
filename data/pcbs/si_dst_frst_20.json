@@ -1,0 +1,49 @@
+{
+  "indicator": "SI.DST.FRST.20",
+  "indicator_name": "Income share held by lowest 20%",
+  "category": "poverty",
+  "data": [
+    {
+      "year": 2010,
+      "value": 7.5,
+      "indicator": "SI.DST.FRST.20",
+      "indicator_name": "Income share held by lowest 20%",
+      "country": "West Bank and Gaza",
+      "source": "pcbs",
+      "source_detail": "PCBS via World Bank API"
+    },
+    {
+      "year": 2011,
+      "value": 7.7,
+      "indicator": "SI.DST.FRST.20",
+      "indicator_name": "Income share held by lowest 20%",
+      "country": "West Bank and Gaza",
+      "source": "pcbs",
+      "source_detail": "PCBS via World Bank API"
+    },
+    {
+      "year": 2016,
+      "value": 7.3,
+      "indicator": "SI.DST.FRST.20",
+      "indicator_name": "Income share held by lowest 20%",
+      "country": "West Bank and Gaza",
+      "source": "pcbs",
+      "source_detail": "PCBS via World Bank API"
+    },
+    {
+      "year": 2023,
+      "value": 6.6,
+      "indicator": "SI.DST.FRST.20",
+      "indicator_name": "Income share held by lowest 20%",
+      "country": "West Bank and Gaza",
+      "source": "pcbs",
+      "source_detail": "PCBS via World Bank API"
+    }
+  ],
+  "metadata": {
+    "source": "Palestinian Central Bureau of Statistics (PCBS)",
+    "source_detail": "Data accessed via World Bank Open Data API",
+    "last_updated": "2025-10-30T09:43:40.187Z",
+    "total_points": 4
+  }
+}

@@ -1,0 +1,60 @@
+{
+  "datasetType": "humanitarian",
+  "recordCount": 2,
+  "qualityScore": 0,
+  "completeness": 0,
+  "consistency": 0,
+  "accuracy": 0,
+  "meetsThreshold": false,
+  "errors": [
+    {
+      "field": "date",
+      "message": "Missing required field: date",
+      "severity": "error",
+      "affectedRecords": 1,
+      "recordIndex": 0
+    },
+    {
+      "field": "indicator",
+      "message": "Missing required field: indicator",
+      "severity": "error",
+      "affectedRecords": 1,
+      "recordIndex": 0
+    },
+    {
+      "field": "value",
+      "message": "Missing required field: value",
+      "severity": "error",
+      "affectedRecords": 1,
+      "recordIndex": 0
+    },
+    {
+      "field": "date",
+      "message": "Missing required field: date",
+      "severity": "error",
+      "affectedRecords": 1,
+      "recordIndex": 1
+    },
+    {
+      "field": "indicator",
+      "message": "Missing required field: indicator",
+      "severity": "error",
+      "affectedRecords": 1,
+      "recordIndex": 1
+    },
+    {
+      "field": "value",
+      "message": "Missing required field: value",
+      "severity": "error",
+      "affectedRecords": 1,
+      "recordIndex": 1
+    }
+  ],
+  "warnings": [],
+  "missingFields": {
+    "date": 2,
+    "indicator": 2,
+    "value": 2
+  },
+  "timestamp": "2025-10-29T21:11:21.805Z"
+}

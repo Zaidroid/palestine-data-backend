@@ -1,0 +1,130 @@
+{
+  "indicator": "SL.UEM.1524.ZS",
+  "indicator_name": "Unemployment, youth total (% of total labor force ages 15-24)",
+  "category": "labor",
+  "data": [
+    {
+      "year": 2010,
+      "value": 36.178,
+      "indicator": "SL.UEM.1524.ZS",
+      "indicator_name": "Unemployment, youth total (% of total labor force ages 15-24)",
+      "country": "West Bank and Gaza",
+      "source": "pcbs",
+      "source_detail": "PCBS via World Bank API"
+    },
+    {
+      "year": 2011,
+      "value": 31.224,
+      "indicator": "SL.UEM.1524.ZS",
+      "indicator_name": "Unemployment, youth total (% of total labor force ages 15-24)",
+      "country": "West Bank and Gaza",
+      "source": "pcbs",
+      "source_detail": "PCBS via World Bank API"
+    },
+    {
+      "year": 2012,
+      "value": 34.644,
+      "indicator": "SL.UEM.1524.ZS",
+      "indicator_name": "Unemployment, youth total (% of total labor force ages 15-24)",
+      "country": "West Bank and Gaza",
+      "source": "pcbs",
+      "source_detail": "PCBS via World Bank API"
+    },
+    {
+      "year": 2013,
+      "value": 37.137,
+      "indicator": "SL.UEM.1524.ZS",
+      "indicator_name": "Unemployment, youth total (% of total labor force ages 15-24)",
+      "country": "West Bank and Gaza",
+      "source": "pcbs",
+      "source_detail": "PCBS via World Bank API"
+    },
+    {
+      "year": 2014,
+      "value": 36.33,
+      "indicator": "SL.UEM.1524.ZS",
+      "indicator_name": "Unemployment, youth total (% of total labor force ages 15-24)",
+      "country": "West Bank and Gaza",
+      "source": "pcbs",
+      "source_detail": "PCBS via World Bank API"
+    },
+    {
+      "year": 2015,
+      "value": 37.215,
+      "indicator": "SL.UEM.1524.ZS",
+      "indicator_name": "Unemployment, youth total (% of total labor force ages 15-24)",
+      "country": "West Bank and Gaza",
+      "source": "pcbs",
+      "source_detail": "PCBS via World Bank API"
+    },
+    {
+      "year": 2016,
+      "value": 38.507,
+      "indicator": "SL.UEM.1524.ZS",
+      "indicator_name": "Unemployment, youth total (% of total labor force ages 15-24)",
+      "country": "West Bank and Gaza",
+      "source": "pcbs",
+      "source_detail": "PCBS via World Bank API"
+    },
+    {
+      "year": 2017,
+      "value": 41.867,
+      "indicator": "SL.UEM.1524.ZS",
+      "indicator_name": "Unemployment, youth total (% of total labor force ages 15-24)",
+      "country": "West Bank and Gaza",
+      "source": "pcbs",
+      "source_detail": "PCBS via World Bank API"
+    },
+    {
+      "year": 2018,
+      "value": 42.224,
+      "indicator": "SL.UEM.1524.ZS",
+      "indicator_name": "Unemployment, youth total (% of total labor force ages 15-24)",
+      "country": "West Bank and Gaza",
+      "source": "pcbs",
+      "source_detail": "PCBS via World Bank API"
+    },
+    {
+      "year": 2019,
+      "value": 40.151,
+      "indicator": "SL.UEM.1524.ZS",
+      "indicator_name": "Unemployment, youth total (% of total labor force ages 15-24)",
+      "country": "West Bank and Gaza",
+      "source": "pcbs",
+      "source_detail": "PCBS via World Bank API"
+    },
+    {
+      "year": 2020,
+      "value": 42.053,
+      "indicator": "SL.UEM.1524.ZS",
+      "indicator_name": "Unemployment, youth total (% of total labor force ages 15-24)",
+      "country": "West Bank and Gaza",
+      "source": "pcbs",
+      "source_detail": "PCBS via World Bank API"
+    },
+    {
+      "year": 2021,
+      "value": 41.63,
+      "indicator": "SL.UEM.1524.ZS",
+      "indicator_name": "Unemployment, youth total (% of total labor force ages 15-24)",
+      "country": "West Bank and Gaza",
+      "source": "pcbs",
+      "source_detail": "PCBS via World Bank API"
+    },
+    {
+      "year": 2022,
+      "value": 36.092,
+      "indicator": "SL.UEM.1524.ZS",
+      "indicator_name": "Unemployment, youth total (% of total labor force ages 15-24)",
+      "country": "West Bank and Gaza",
+      "source": "pcbs",
+      "source_detail": "PCBS via World Bank API"
+    }
+  ],
+  "metadata": {
+    "source": "Palestinian Central Bureau of Statistics (PCBS)",
+    "source_detail": "Data accessed via World Bank Open Data API",
+    "last_updated": "2025-10-30T09:42:59.520Z",
+    "total_points": 13
+  }
+}

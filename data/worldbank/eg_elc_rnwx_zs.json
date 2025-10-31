@@ -1,0 +1,116 @@
+{
+  "indicator": "EG.ELC.RNWX.ZS",
+  "indicator_name": "Renewable energy consumption (% of total final energy consumption)",
+  "data": [
+    {
+      "year": 2010,
+      "value": 0,
+      "indicator": "EG.ELC.RNWX.ZS",
+      "indicator_name": "Renewable energy consumption (% of total final energy consumption)",
+      "country": "West Bank and Gaza",
+      "source": "worldbank"
+    },
+    {
+      "year": 2011,
+      "value": 0,
+      "indicator": "EG.ELC.RNWX.ZS",
+      "indicator_name": "Renewable energy consumption (% of total final energy consumption)",
+      "country": "West Bank and Gaza",
+      "source": "worldbank"
+    },
+    {
+      "year": 2012,
+      "value": 0.216398692951895,
+      "indicator": "EG.ELC.RNWX.ZS",
+      "indicator_name": "Renewable energy consumption (% of total final energy consumption)",
+      "country": "West Bank and Gaza",
+      "source": "worldbank"
+    },
+    {
+      "year": 2013,
+      "value": 0.373064726730088,
+      "indicator": "EG.ELC.RNWX.ZS",
+      "indicator_name": "Renewable energy consumption (% of total final energy consumption)",
+      "country": "West Bank and Gaza",
+      "source": "worldbank"
+    },
+    {
+      "year": 2014,
+      "value": 0.883418239641921,
+      "indicator": "EG.ELC.RNWX.ZS",
+      "indicator_name": "Renewable energy consumption (% of total final energy consumption)",
+      "country": "West Bank and Gaza",
+      "source": "worldbank"
+    },
+    {
+      "year": 2015,
+      "value": 1.79744277330846,
+      "indicator": "EG.ELC.RNWX.ZS",
+      "indicator_name": "Renewable energy consumption (% of total final energy consumption)",
+      "country": "West Bank and Gaza",
+      "source": "worldbank"
+    },
+    {
+      "year": 2016,
+      "value": 7.91330739009813,
+      "indicator": "EG.ELC.RNWX.ZS",
+      "indicator_name": "Renewable energy consumption (% of total final energy consumption)",
+      "country": "West Bank and Gaza",
+      "source": "worldbank"
+    },
+    {
+      "year": 2017,
+      "value": 8.3498023715415,
+      "indicator": "EG.ELC.RNWX.ZS",
+      "indicator_name": "Renewable energy consumption (% of total final energy consumption)",
+      "country": "West Bank and Gaza",
+      "source": "worldbank"
+    },
+    {
+      "year": 2018,
+      "value": 14.3281595398255,
+      "indicator": "EG.ELC.RNWX.ZS",
+      "indicator_name": "Renewable energy consumption (% of total final energy consumption)",
+      "country": "West Bank and Gaza",
+      "source": "worldbank"
+    },
+    {
+      "year": 2019,
+      "value": 15.1699595042336,
+      "indicator": "EG.ELC.RNWX.ZS",
+      "indicator_name": "Renewable energy consumption (% of total final energy consumption)",
+      "country": "West Bank and Gaza",
+      "source": "worldbank"
+    },
+    {
+      "year": 2020,
+      "value": 21.2691007759318,
+      "indicator": "EG.ELC.RNWX.ZS",
+      "indicator_name": "Renewable energy consumption (% of total final energy consumption)",
+      "country": "West Bank and Gaza",
+      "source": "worldbank"
+    },
+    {
+      "year": 2021,
+      "value": 24.4633507853403,
+      "indicator": "EG.ELC.RNWX.ZS",
+      "indicator_name": "Renewable energy consumption (% of total final energy consumption)",
+      "country": "West Bank and Gaza",
+      "source": "worldbank"
+    }
+  ],
+  "metadata": {
+    "source": "World Bank Open Data",
+    "last_updated": "2025-10-29T21:02:00.312Z",
+    "total_points": 12
+  },
+  "validation": {
+    "qualityScore": 1,
+    "completeness": 1,
+    "consistency": 1,
+    "accuracy": 1,
+    "meetsThreshold": true,
+    "errorCount": 0,
+    "warningCount": 0
+  }
+}

@@ -1,0 +1,746 @@
+{
+  "category": "poverty",
+  "metadata": {
+    "source": "pcbs",
+    "record_count": 12,
+    "indicators": [
+      "SI.POV.GINI",
+      "SI.DST.FRST.20",
+      "SI.DST.05TH.20"
+    ]
+  },
+  "data": [
+    {
+      "id": "pcbs-du2mtu",
+      "type": "economic",
+      "category": "poverty",
+      "date": "2010-01-01",
+      "timestamp": "2010-01-01T00:00:00.000Z",
+      "period": {
+        "type": "year",
+        "value": "2010"
+      },
+      "location": {
+        "name": "Palestine",
+        "admin_levels": {
+          "level1": "Palestine"
+        },
+        "region": "palestine"
+      },
+      "value": 35.3,
+      "unit": "index",
+      "quality": {
+        "score": 0.8333333333333333,
+        "completeness": 0.6666666666666666,
+        "consistency": 1,
+        "verified": false,
+        "confidence": 0.8
+      },
+      "sources": [
+        {
+          "name": "Palestinian Central Bureau of Statistics (PCBS)",
+          "organization": "PCBS",
+          "url": "https://api.worldbank.org/v2",
+          "fetched_at": "2025-10-30T09:46:35.089Z",
+          "reliability_score": 0.95
+        }
+      ],
+      "created_at": "2025-10-30T09:46:35.089Z",
+      "updated_at": "2025-10-30T09:46:35.089Z",
+      "version": 1,
+      "indicator_code": "SI.POV.GINI",
+      "indicator_name": "Gini index",
+      "analysis": {
+        "trend": {
+          "slope": 0.2600000000000023,
+          "direction": "increasing"
+        },
+        "growth_rate": 1.1424702148166734,
+        "volatility": 1.0111874208078329,
+        "recent_change": 0,
+        "baseline_comparison": -3.0219780219780263,
+        "data_points": 4,
+        "date_range": {
+          "start": "2010-01-01",
+          "end": "2023-01-01"
+        }
+      },
+      "pcbs_metadata": {
+        "official_source": true,
+        "data_quality": "high",
+        "update_frequency": "annual"
+      }
+    },
+    {
+      "id": "pcbs-v5a3f1",
+      "type": "economic",
+      "category": "poverty",
+      "date": "2010-01-01",
+      "timestamp": "2010-01-01T00:00:00.000Z",
+      "period": {
+        "type": "year",
+        "value": "2010"
+      },
+      "location": {
+        "name": "Palestine",
+        "admin_levels": {
+          "level1": "Palestine"
+        },
+        "region": "palestine"
+      },
+      "value": 7.5,
+      "unit": "number",
+      "quality": {
+        "score": 0.8333333333333333,
+        "completeness": 0.6666666666666666,
+        "consistency": 1,
+        "verified": false,
+        "confidence": 0.8
+      },
+      "sources": [
+        {
+          "name": "Palestinian Central Bureau of Statistics (PCBS)",
+          "organization": "PCBS",
+          "url": "https://api.worldbank.org/v2",
+          "fetched_at": "2025-10-30T09:46:35.089Z",
+          "reliability_score": 0.95
+        }
+      ],
+      "created_at": "2025-10-30T09:46:35.089Z",
+      "updated_at": "2025-10-30T09:46:35.089Z",
+      "version": 1,
+      "indicator_code": "SI.DST.FRST.20",
+      "indicator_name": "Income share held by lowest 20%",
+      "analysis": {
+        "trend": {
+          "slope": -0.3100000000000023,
+          "direction": "decreasing"
+        },
+        "growth_rate": -4.039059874676314,
+        "volatility": 0.4145780987944252,
+        "recent_change": 0,
+        "baseline_comparison": 13.636363636363644,
+        "data_points": 4,
+        "date_range": {
+          "start": "2010-01-01",
+          "end": "2023-01-01"
+        }
+      },
+      "pcbs_metadata": {
+        "official_source": true,
+        "data_quality": "high",
+        "update_frequency": "annual"
+      }
+    },
+    {
+      "id": "pcbs-enymlw",
+      "type": "economic",
+      "category": "poverty",
+      "date": "2010-01-01",
+      "timestamp": "2010-01-01T00:00:00.000Z",
+      "period": {
+        "type": "year",
+        "value": "2010"
+      },
+      "location": {
+        "name": "Palestine",
+        "admin_levels": {
+          "level1": "Palestine"
+        },
+        "region": "palestine"
+      },
+      "value": 43.2,
+      "unit": "number",
+      "quality": {
+        "score": 0.8333333333333333,
+        "completeness": 0.6666666666666666,
+        "consistency": 1,
+        "verified": false,
+        "confidence": 0.8
+      },
+      "sources": [
+        {
+          "name": "Palestinian Central Bureau of Statistics (PCBS)",
+          "organization": "PCBS",
+          "url": "https://api.worldbank.org/v2",
+          "fetched_at": "2025-10-30T09:46:35.089Z",
+          "reliability_score": 0.95
+        }
+      ],
+      "created_at": "2025-10-30T09:46:35.089Z",
+      "updated_at": "2025-10-30T09:46:35.089Z",
+      "version": 1,
+      "indicator_code": "SI.DST.05TH.20",
+      "indicator_name": "Income share held by highest 20%",
+      "analysis": {
+        "trend": {
+          "slope": -0.20000000000000567,
+          "direction": "decreasing"
+        },
+        "growth_rate": -0.09720565706683004,
+        "volatility": 0.8200609733428363,
+        "recent_change": 0,
+        "baseline_comparison": 0.46511627906977404,
+        "data_points": 4,
+        "date_range": {
+          "start": "2010-01-01",
+          "end": "2023-01-01"
+        }
+      },
+      "pcbs_metadata": {
+        "official_source": true,
+        "data_quality": "high",
+        "update_frequency": "annual"
+      }
+    },
+    {
+      "id": "pcbs-50napf",
+      "type": "economic",
+      "category": "poverty",
+      "date": "2011-01-01",
+      "timestamp": "2011-01-01T00:00:00.000Z",
+      "period": {
+        "type": "year",
+        "value": "2011"
+      },
+      "location": {
+        "name": "Palestine",
+        "admin_levels": {
+          "level1": "Palestine"
+        },
+        "region": "palestine"
+      },
+      "value": 34.4,
+      "unit": "index",
+      "quality": {
+        "score": 0.8333333333333333,
+        "completeness": 0.6666666666666666,
+        "consistency": 1,
+        "verified": false,
+        "confidence": 0.8
+      },
+      "sources": [
+        {
+          "name": "Palestinian Central Bureau of Statistics (PCBS)",
+          "organization": "PCBS",
+          "url": "https://api.worldbank.org/v2",
+          "fetched_at": "2025-10-30T09:46:35.091Z",
+          "reliability_score": 0.95
+        }
+      ],
+      "created_at": "2025-10-30T09:46:35.091Z",
+      "updated_at": "2025-10-30T09:46:35.091Z",
+      "version": 1,
+      "indicator_code": "SI.POV.GINI",
+      "indicator_name": "Gini index",
+      "analysis": {
+        "trend": {
+          "slope": 0.2600000000000023,
+          "direction": "increasing"
+        },
+        "growth_rate": 1.1424702148166734,
+        "volatility": 1.0111874208078329,
+        "recent_change": -2.549575070821526,
+        "baseline_comparison": -5.4945054945054945,
+        "data_points": 4,
+        "date_range": {
+          "start": "2010-01-01",
+          "end": "2023-01-01"
+        }
+      },
+      "pcbs_metadata": {
+        "official_source": true,
+        "data_quality": "high",
+        "update_frequency": "annual"
+      }
+    },
+    {
+      "id": "pcbs-kc8kk6",
+      "type": "economic",
+      "category": "poverty",
+      "date": "2011-01-01",
+      "timestamp": "2011-01-01T00:00:00.000Z",
+      "period": {
+        "type": "year",
+        "value": "2011"
+      },
+      "location": {
+        "name": "Palestine",
+        "admin_levels": {
+          "level1": "Palestine"
+        },
+        "region": "palestine"
+      },
+      "value": 7.7,
+      "unit": "number",
+      "quality": {
+        "score": 0.8333333333333333,
+        "completeness": 0.6666666666666666,
+        "consistency": 1,
+        "verified": false,
+        "confidence": 0.8
+      },
+      "sources": [
+        {
+          "name": "Palestinian Central Bureau of Statistics (PCBS)",
+          "organization": "PCBS",
+          "url": "https://api.worldbank.org/v2",
+          "fetched_at": "2025-10-30T09:46:35.091Z",
+          "reliability_score": 0.95
+        }
+      ],
+      "created_at": "2025-10-30T09:46:35.091Z",
+      "updated_at": "2025-10-30T09:46:35.091Z",
+      "version": 1,
+      "indicator_code": "SI.DST.FRST.20",
+      "indicator_name": "Income share held by lowest 20%",
+      "analysis": {
+        "trend": {
+          "slope": -0.3100000000000023,
+          "direction": "decreasing"
+        },
+        "growth_rate": -4.039059874676314,
+        "volatility": 0.4145780987944252,
+        "recent_change": 2.6666666666666687,
+        "baseline_comparison": 16.66666666666668,
+        "data_points": 4,
+        "date_range": {
+          "start": "2010-01-01",
+          "end": "2023-01-01"
+        }
+      },
+      "pcbs_metadata": {
+        "official_source": true,
+        "data_quality": "high",
+        "update_frequency": "annual"
+      }
+    },
+    {
+      "id": "pcbs-x5dpn9",
+      "type": "economic",
+      "category": "poverty",
+      "date": "2011-01-01",
+      "timestamp": "2011-01-01T00:00:00.000Z",
+      "period": {
+        "type": "year",
+        "value": "2011"
+      },
+      "location": {
+        "name": "Palestine",
+        "admin_levels": {
+          "level1": "Palestine"
+        },
+        "region": "palestine"
+      },
+      "value": 42.5,
+      "unit": "number",
+      "quality": {
+        "score": 0.8333333333333333,
+        "completeness": 0.6666666666666666,
+        "consistency": 1,
+        "verified": false,
+        "confidence": 0.8
+      },
+      "sources": [
+        {
+          "name": "Palestinian Central Bureau of Statistics (PCBS)",
+          "organization": "PCBS",
+          "url": "https://api.worldbank.org/v2",
+          "fetched_at": "2025-10-30T09:46:35.091Z",
+          "reliability_score": 0.95
+        }
+      ],
+      "created_at": "2025-10-30T09:46:35.091Z",
+      "updated_at": "2025-10-30T09:46:35.091Z",
+      "version": 1,
+      "indicator_code": "SI.DST.05TH.20",
+      "indicator_name": "Income share held by highest 20%",
+      "analysis": {
+        "trend": {
+          "slope": -0.20000000000000567,
+          "direction": "decreasing"
+        },
+        "growth_rate": -0.09720565706683004,
+        "volatility": 0.8200609733428363,
+        "recent_change": -1.620370370370377,
+        "baseline_comparison": -1.1627906976744187,
+        "data_points": 4,
+        "date_range": {
+          "start": "2010-01-01",
+          "end": "2023-01-01"
+        }
+      },
+      "pcbs_metadata": {
+        "official_source": true,
+        "data_quality": "high",
+        "update_frequency": "annual"
+      }
+    },
+    {
+      "id": "pcbs-ct4bom",
+      "type": "economic",
+      "category": "poverty",
+      "date": "2016-01-01",
+      "timestamp": "2016-01-01T00:00:00.000Z",
+      "period": {
+        "type": "year",
+        "value": "2016"
+      },
+      "location": {
+        "name": "Palestine",
+        "admin_levels": {
+          "level1": "Palestine"
+        },
+        "region": "palestine"
+      },
+      "value": 33.7,
+      "unit": "index",
+      "quality": {
+        "score": 0.8333333333333333,
+        "completeness": 0.6666666666666666,
+        "consistency": 1,
+        "verified": false,
+        "confidence": 0.8
+      },
+      "sources": [
+        {
+          "name": "Palestinian Central Bureau of Statistics (PCBS)",
+          "organization": "PCBS",
+          "url": "https://api.worldbank.org/v2",
+          "fetched_at": "2025-10-30T09:46:35.097Z",
+          "reliability_score": 0.95
+        }
+      ],
+      "created_at": "2025-10-30T09:46:35.097Z",
+      "updated_at": "2025-10-30T09:46:35.097Z",
+      "version": 1,
+      "indicator_code": "SI.POV.GINI",
+      "indicator_name": "Gini index",
+      "analysis": {
+        "trend": {
+          "slope": 0.2600000000000023,
+          "direction": "increasing"
+        },
+        "growth_rate": 1.1424702148166734,
+        "volatility": 1.0111874208078329,
+        "recent_change": -2.03488372093022,
+        "baseline_comparison": -7.417582417582406,
+        "data_points": 4,
+        "date_range": {
+          "start": "2010-01-01",
+          "end": "2023-01-01"
+        }
+      },
+      "pcbs_metadata": {
+        "official_source": true,
+        "data_quality": "high",
+        "update_frequency": "annual"
+      }
+    },
+    {
+      "id": "pcbs-cr2rk9",
+      "type": "economic",
+      "category": "poverty",
+      "date": "2016-01-01",
+      "timestamp": "2016-01-01T00:00:00.000Z",
+      "period": {
+        "type": "year",
+        "value": "2016"
+      },
+      "location": {
+        "name": "Palestine",
+        "admin_levels": {
+          "level1": "Palestine"
+        },
+        "region": "palestine"
+      },
+      "value": 7.3,
+      "unit": "number",
+      "quality": {
+        "score": 0.8333333333333333,
+        "completeness": 0.6666666666666666,
+        "consistency": 1,
+        "verified": false,
+        "confidence": 0.8
+      },
+      "sources": [
+        {
+          "name": "Palestinian Central Bureau of Statistics (PCBS)",
+          "organization": "PCBS",
+          "url": "https://api.worldbank.org/v2",
+          "fetched_at": "2025-10-30T09:46:35.097Z",
+          "reliability_score": 0.95
+        }
+      ],
+      "created_at": "2025-10-30T09:46:35.097Z",
+      "updated_at": "2025-10-30T09:46:35.097Z",
+      "version": 1,
+      "indicator_code": "SI.DST.FRST.20",
+      "indicator_name": "Income share held by lowest 20%",
+      "analysis": {
+        "trend": {
+          "slope": -0.3100000000000023,
+          "direction": "decreasing"
+        },
+        "growth_rate": -4.039059874676314,
+        "volatility": 0.4145780987944252,
+        "recent_change": -5.194805194805199,
+        "baseline_comparison": 10.606060606060609,
+        "data_points": 4,
+        "date_range": {
+          "start": "2010-01-01",
+          "end": "2023-01-01"
+        }
+      },
+      "pcbs_metadata": {
+        "official_source": true,
+        "data_quality": "high",
+        "update_frequency": "annual"
+      }
+    },
+    {
+      "id": "pcbs-8kbpyt",
+      "type": "economic",
+      "category": "poverty",
+      "date": "2016-01-01",
+      "timestamp": "2016-01-01T00:00:00.000Z",
+      "period": {
+        "type": "year",
+        "value": "2016"
+      },
+      "location": {
+        "name": "Palestine",
+        "admin_levels": {
+          "level1": "Palestine"
+        },
+        "region": "palestine"
+      },
+      "value": 41.1,
+      "unit": "number",
+      "quality": {
+        "score": 0.8333333333333333,
+        "completeness": 0.6666666666666666,
+        "consistency": 1,
+        "verified": false,
+        "confidence": 0.8
+      },
+      "sources": [
+        {
+          "name": "Palestinian Central Bureau of Statistics (PCBS)",
+          "organization": "PCBS",
+          "url": "https://api.worldbank.org/v2",
+          "fetched_at": "2025-10-30T09:46:35.097Z",
+          "reliability_score": 0.95
+        }
+      ],
+      "created_at": "2025-10-30T09:46:35.097Z",
+      "updated_at": "2025-10-30T09:46:35.097Z",
+      "version": 1,
+      "indicator_code": "SI.DST.05TH.20",
+      "indicator_name": "Income share held by highest 20%",
+      "analysis": {
+        "trend": {
+          "slope": -0.20000000000000567,
+          "direction": "decreasing"
+        },
+        "growth_rate": -0.09720565706683004,
+        "volatility": 0.8200609733428363,
+        "recent_change": -3.2941176470588203,
+        "baseline_comparison": -4.418604651162787,
+        "data_points": 4,
+        "date_range": {
+          "start": "2010-01-01",
+          "end": "2023-01-01"
+        }
+      },
+      "pcbs_metadata": {
+        "official_source": true,
+        "data_quality": "high",
+        "update_frequency": "annual"
+      }
+    },
+    {
+      "id": "pcbs-hpawfq",
+      "type": "economic",
+      "category": "poverty",
+      "date": "2023-01-01",
+      "timestamp": "2023-01-01T00:00:00.000Z",
+      "period": {
+        "type": "year",
+        "value": "2023"
+      },
+      "location": {
+        "name": "Palestine",
+        "admin_levels": {
+          "level1": "Palestine"
+        },
+        "region": "palestine"
+      },
+      "value": 36.4,
+      "unit": "index",
+      "quality": {
+        "score": 0.8333333333333333,
+        "completeness": 0.6666666666666666,
+        "consistency": 1,
+        "verified": false,
+        "confidence": 0.8
+      },
+      "sources": [
+        {
+          "name": "Palestinian Central Bureau of Statistics (PCBS)",
+          "organization": "PCBS",
+          "url": "https://api.worldbank.org/v2",
+          "fetched_at": "2025-10-30T09:46:35.107Z",
+          "reliability_score": 0.95
+        }
+      ],
+      "created_at": "2025-10-30T09:46:35.107Z",
+      "updated_at": "2025-10-30T09:46:35.107Z",
+      "version": 1,
+      "indicator_code": "SI.POV.GINI",
+      "indicator_name": "Gini index",
+      "analysis": {
+        "trend": {
+          "slope": 0.2600000000000023,
+          "direction": "increasing"
+        },
+        "growth_rate": 1.1424702148166734,
+        "volatility": 1.0111874208078329,
+        "recent_change": 8.011869436201767,
+        "baseline_comparison": 0,
+        "data_points": 4,
+        "date_range": {
+          "start": "2010-01-01",
+          "end": "2023-01-01"
+        }
+      },
+      "pcbs_metadata": {
+        "official_source": true,
+        "data_quality": "high",
+        "update_frequency": "annual"
+      }
+    },
+    {
+      "id": "pcbs-8x6zsb",
+      "type": "economic",
+      "category": "poverty",
+      "date": "2023-01-01",
+      "timestamp": "2023-01-01T00:00:00.000Z",
+      "period": {
+        "type": "year",
+        "value": "2023"
+      },
+      "location": {
+        "name": "Palestine",
+        "admin_levels": {
+          "level1": "Palestine"
+        },
+        "region": "palestine"
+      },
+      "value": 6.6,
+      "unit": "number",
+      "quality": {
+        "score": 0.8333333333333333,
+        "completeness": 0.6666666666666666,
+        "consistency": 1,
+        "verified": false,
+        "confidence": 0.8
+      },
+      "sources": [
+        {
+          "name": "Palestinian Central Bureau of Statistics (PCBS)",
+          "organization": "PCBS",
+          "url": "https://api.worldbank.org/v2",
+          "fetched_at": "2025-10-30T09:46:35.107Z",
+          "reliability_score": 0.95
+        }
+      ],
+      "created_at": "2025-10-30T09:46:35.107Z",
+      "updated_at": "2025-10-30T09:46:35.107Z",
+      "version": 1,
+      "indicator_code": "SI.DST.FRST.20",
+      "indicator_name": "Income share held by lowest 20%",
+      "analysis": {
+        "trend": {
+          "slope": -0.3100000000000023,
+          "direction": "decreasing"
+        },
+        "growth_rate": -4.039059874676314,
+        "volatility": 0.4145780987944252,
+        "recent_change": -9.589041095890414,
+        "baseline_comparison": 0,
+        "data_points": 4,
+        "date_range": {
+          "start": "2010-01-01",
+          "end": "2023-01-01"
+        }
+      },
+      "pcbs_metadata": {
+        "official_source": true,
+        "data_quality": "high",
+        "update_frequency": "annual"
+      }
+    },
+    {
+      "id": "pcbs-y464du",
+      "type": "economic",
+      "category": "poverty",
+      "date": "2023-01-01",
+      "timestamp": "2023-01-01T00:00:00.000Z",
+      "period": {
+        "type": "year",
+        "value": "2023"
+      },
+      "location": {
+        "name": "Palestine",
+        "admin_levels": {
+          "level1": "Palestine"
+        },
+        "region": "palestine"
+      },
+      "value": 43,
+      "unit": "number",
+      "quality": {
+        "score": 0.8333333333333333,
+        "completeness": 0.6666666666666666,
+        "consistency": 1,
+        "verified": false,
+        "confidence": 0.8
+      },
+      "sources": [
+        {
+          "name": "Palestinian Central Bureau of Statistics (PCBS)",
+          "organization": "PCBS",
+          "url": "https://api.worldbank.org/v2",
+          "fetched_at": "2025-10-30T09:46:35.107Z",
+          "reliability_score": 0.95
+        }
+      ],
+      "created_at": "2025-10-30T09:46:35.107Z",
+      "updated_at": "2025-10-30T09:46:35.107Z",
+      "version": 1,
+      "indicator_code": "SI.DST.05TH.20",
+      "indicator_name": "Income share held by highest 20%",
+      "analysis": {
+        "trend": {
+          "slope": -0.20000000000000567,
+          "direction": "decreasing"
+        },
+        "growth_rate": -0.09720565706683004,
+        "volatility": 0.8200609733428363,
+        "recent_change": 4.622871046228707,
+        "baseline_comparison": 0,
+        "data_points": 4,
+        "date_range": {
+          "start": "2010-01-01",
+          "end": "2023-01-01"
+        }
+      },
+      "pcbs_metadata": {
+        "official_source": true,
+        "data_quality": "high",
+        "update_frequency": "annual"
+      }
+    }
+  ]
+}

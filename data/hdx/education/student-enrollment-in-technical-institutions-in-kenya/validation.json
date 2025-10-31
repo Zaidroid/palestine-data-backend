@@ -1,0 +1,13 @@
+{
+  "datasetType": "education",
+  "recordCount": 70,
+  "qualityScore": 1,
+  "completeness": 1,
+  "consistency": 1,
+  "accuracy": 1,
+  "meetsThreshold": true,
+  "errors": [],
+  "warnings": [],
+  "missingFields": {},
+  "timestamp": "2025-10-29T21:10:16.977Z"
+}

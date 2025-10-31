@@ -1,0 +1,139 @@
+{
+  "indicator": "EG.ELC.ACCS.ZS",
+  "indicator_name": "Access to electricity (% of population)",
+  "category": "housing",
+  "data": [
+    {
+      "year": 2010,
+      "value": 99.9,
+      "indicator": "EG.ELC.ACCS.ZS",
+      "indicator_name": "Access to electricity (% of population)",
+      "country": "West Bank and Gaza",
+      "source": "pcbs",
+      "source_detail": "PCBS via World Bank API"
+    },
+    {
+      "year": 2011,
+      "value": 99.7,
+      "indicator": "EG.ELC.ACCS.ZS",
+      "indicator_name": "Access to electricity (% of population)",
+      "country": "West Bank and Gaza",
+      "source": "pcbs",
+      "source_detail": "PCBS via World Bank API"
+    },
+    {
+      "year": 2012,
+      "value": 99.8,
+      "indicator": "EG.ELC.ACCS.ZS",
+      "indicator_name": "Access to electricity (% of population)",
+      "country": "West Bank and Gaza",
+      "source": "pcbs",
+      "source_detail": "PCBS via World Bank API"
+    },
+    {
+      "year": 2013,
+      "value": 99.9,
+      "indicator": "EG.ELC.ACCS.ZS",
+      "indicator_name": "Access to electricity (% of population)",
+      "country": "West Bank and Gaza",
+      "source": "pcbs",
+      "source_detail": "PCBS via World Bank API"
+    },
+    {
+      "year": 2014,
+      "value": 99.9,
+      "indicator": "EG.ELC.ACCS.ZS",
+      "indicator_name": "Access to electricity (% of population)",
+      "country": "West Bank and Gaza",
+      "source": "pcbs",
+      "source_detail": "PCBS via World Bank API"
+    },
+    {
+      "year": 2015,
+      "value": 99.9,
+      "indicator": "EG.ELC.ACCS.ZS",
+      "indicator_name": "Access to electricity (% of population)",
+      "country": "West Bank and Gaza",
+      "source": "pcbs",
+      "source_detail": "PCBS via World Bank API"
+    },
+    {
+      "year": 2016,
+      "value": 100,
+      "indicator": "EG.ELC.ACCS.ZS",
+      "indicator_name": "Access to electricity (% of population)",
+      "country": "West Bank and Gaza",
+      "source": "pcbs",
+      "source_detail": "PCBS via World Bank API"
+    },
+    {
+      "year": 2017,
+      "value": 99.9,
+      "indicator": "EG.ELC.ACCS.ZS",
+      "indicator_name": "Access to electricity (% of population)",
+      "country": "West Bank and Gaza",
+      "source": "pcbs",
+      "source_detail": "PCBS via World Bank API"
+    },
+    {
+      "year": 2018,
+      "value": 100,
+      "indicator": "EG.ELC.ACCS.ZS",
+      "indicator_name": "Access to electricity (% of population)",
+      "country": "West Bank and Gaza",
+      "source": "pcbs",
+      "source_detail": "PCBS via World Bank API"
+    },
+    {
+      "year": 2019,
+      "value": 100,
+      "indicator": "EG.ELC.ACCS.ZS",
+      "indicator_name": "Access to electricity (% of population)",
+      "country": "West Bank and Gaza",
+      "source": "pcbs",
+      "source_detail": "PCBS via World Bank API"
+    },
+    {
+      "year": 2020,
+      "value": 100,
+      "indicator": "EG.ELC.ACCS.ZS",
+      "indicator_name": "Access to electricity (% of population)",
+      "country": "West Bank and Gaza",
+      "source": "pcbs",
+      "source_detail": "PCBS via World Bank API"
+    },
+    {
+      "year": 2021,
+      "value": 100,
+      "indicator": "EG.ELC.ACCS.ZS",
+      "indicator_name": "Access to electricity (% of population)",
+      "country": "West Bank and Gaza",
+      "source": "pcbs",
+      "source_detail": "PCBS via World Bank API"
+    },
+    {
+      "year": 2022,
+      "value": 100,
+      "indicator": "EG.ELC.ACCS.ZS",
+      "indicator_name": "Access to electricity (% of population)",
+      "country": "West Bank and Gaza",
+      "source": "pcbs",
+      "source_detail": "PCBS via World Bank API"
+    },
+    {
+      "year": 2023,
+      "value": 100,
+      "indicator": "EG.ELC.ACCS.ZS",
+      "indicator_name": "Access to electricity (% of population)",
+      "country": "West Bank and Gaza",
+      "source": "pcbs",
+      "source_detail": "PCBS via World Bank API"
+    }
+  ],
+  "metadata": {
+    "source": "Palestinian Central Bureau of Statistics (PCBS)",
+    "source_detail": "Data accessed via World Bank Open Data API",
+    "last_updated": "2025-10-30T09:43:51.246Z",
+    "total_points": 14
+  }
+}
