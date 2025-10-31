@@ -53,14 +53,14 @@ jobs:
       - name: Check for changes
         id: check_changes
         run: |
-          git diff --quiet public/data/ || echo "changes=true" >> $GITHUB_OUTPUT
+          git diff --quiet data/ || echo "changes=true" >> $GITHUB_OUTPUT
       
       - name: Commit and push if changes
         if: steps.check_changes.outputs.changes == 'true'
         run: |
           git config --local user.email "github-actions[bot]@users.noreply.github.com"
           git config --local user.name "github-actions[bot]"
-          git add public/data/
+          git add data/
           git commit -m "chore: automated data update - $(date +'%Y-%m-%d %H:%M:%S UTC')"
           git push
       
@@ -72,10 +72,10 @@ jobs:
           echo "**Date:** $(date +'%Y-%m-%d %H:%M:%S UTC')" >> $GITHUB_STEP_SUMMARY
           echo "" >> $GITHUB_STEP_SUMMARY
           
-          if [ -f public/data/data-collection-summary.json ]; then
+          if [ -f data/data-collection-summary.json ]; then
             echo "### Collection Summary" >> $GITHUB_STEP_SUMMARY
             echo "\`\`\`json" >> $GITHUB_STEP_SUMMARY
-            cat public/data/data-collection-summary.json | jq '.data_collection' >> $GITHUB_STEP_SUMMARY
+            cat data/data-collection-summary.json | jq '.data_collection' >> $GITHUB_STEP_SUMMARY
             echo "\`\`\`" >> $GITHUB_STEP_SUMMARY
           fi
           
@@ -91,7 +91,6 @@ jobs:
         with:
           name: data-update-${{ github.run_number }}
           path: |
-            public/data/data-collection-summary.json
-            public/data/validation-report.json
-            public/data/manifest.json
+            data/data-collection-summary.json
+            data/manifest.json
           retention-days: 30
