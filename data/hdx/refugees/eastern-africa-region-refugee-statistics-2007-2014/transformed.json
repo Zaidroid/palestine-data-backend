@@ -1,16 +1,3 @@
-{
-  "source": "hdx-ckan",
-  "category": "refugees",
-  "transformed_at": "2025-10-24T18:02:40.637Z",
-  "record_count": 0,
-  "validation": {
-    "qualityScore": 0,
-    "completeness": 0,
-    "consistency": 0,
-    "accuracy": 0,
-    "meetsThreshold": false,
-    "errorCount": 0,
-    "warningCount": 1
-  },
-  "data": []
-}
+version https://git-lfs.github.com/spec/v1
+oid sha256:0f06a015cb2293e0f6e6c36e3c317d726bac9e0350469b60262247277e818879
+size 332

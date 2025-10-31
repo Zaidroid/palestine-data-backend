@@ -1,17 +1,3 @@
-{
-  "datasetType": "worldbank",
-  "recordCount": 15,
-  "qualityScore": 1,
-  "completeness": 1,
-  "consistency": 1,
-  "accuracy": 1,
-  "meetsThreshold": true,
-  "errors": [],
-  "warnings": [],
-  "missingFields": {
-    "year": 0,
-    "value": 0,
-    "country": 0
-  },
-  "timestamp": "2025-10-29T21:02:46.784Z"
-}
+version https://git-lfs.github.com/spec/v1
+oid sha256:2d0141726abc0666686218d329588bd5a82c0201345e64ef0306d29c4b071ae5
+size 309

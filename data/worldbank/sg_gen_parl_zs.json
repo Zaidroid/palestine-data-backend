@@ -1,19 +1,3 @@
-{
-  "indicator": "SG.GEN.PARL.ZS",
-  "indicator_name": "Proportion of seats held by women in parliament (%)",
-  "data": [],
-  "metadata": {
-    "source": "World Bank Open Data",
-    "last_updated": "2025-10-29T21:01:52.200Z",
-    "total_points": 0
-  },
-  "validation": {
-    "qualityScore": 0,
-    "completeness": 0,
-    "consistency": 0,
-    "accuracy": 0,
-    "meetsThreshold": false,
-    "errorCount": 0,
-    "warningCount": 1
-  }
-}
+version https://git-lfs.github.com/spec/v1
+oid sha256:7cadcbb140316d1c385480cf21d19949de7742c3ea5741e6e6ca7bc61c7e2992
+size 435

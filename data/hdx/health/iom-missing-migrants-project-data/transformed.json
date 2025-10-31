@@ -1,16 +1,3 @@
-{
-  "source": "hdx-ckan",
-  "category": "health",
-  "transformed_at": "2025-10-29T13:36:45.727Z",
-  "record_count": 0,
-  "validation": {
-    "qualityScore": 0,
-    "completeness": 0,
-    "consistency": 0,
-    "accuracy": 0,
-    "meetsThreshold": false,
-    "errorCount": 0,
-    "warningCount": 1
-  },
-  "data": []
-}
+version https://git-lfs.github.com/spec/v1
+oid sha256:7ed56f8749d4c2dc390ccce0433c9503127c885269aa5d322242f250df65d03a
+size 315

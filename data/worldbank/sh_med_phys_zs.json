@@ -1,36 +1,3 @@
-{
-  "indicator": "SH.MED.PHYS.ZS",
-  "indicator_name": "Physicians (per 1,000 people)",
-  "data": [
-    {
-      "year": 2017,
-      "value": 1.774,
-      "indicator": "SH.MED.PHYS.ZS",
-      "indicator_name": "Physicians (per 1,000 people)",
-      "country": "West Bank and Gaza",
-      "source": "worldbank"
-    },
-    {
-      "year": 2018,
-      "value": 2.168,
-      "indicator": "SH.MED.PHYS.ZS",
-      "indicator_name": "Physicians (per 1,000 people)",
-      "country": "West Bank and Gaza",
-      "source": "worldbank"
-    }
-  ],
-  "metadata": {
-    "source": "World Bank Open Data",
-    "last_updated": "2025-10-29T21:02:11.476Z",
-    "total_points": 2
-  },
-  "validation": {
-    "qualityScore": 1,
-    "completeness": 1,
-    "consistency": 1,
-    "accuracy": 1,
-    "meetsThreshold": true,
-    "errorCount": 0,
-    "warningCount": 0
-  }
-}
+version https://git-lfs.github.com/spec/v1
+oid sha256:199710f02d8d4b262d7b6a555ae03ef10d3ed507b8d91612892e752476ace1b8
+size 846

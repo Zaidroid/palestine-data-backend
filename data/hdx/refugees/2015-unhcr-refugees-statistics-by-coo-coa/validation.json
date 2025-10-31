@@ -1,13 +1,3 @@
-{
-  "datasetType": "refugees",
-  "recordCount": 6107,
-  "qualityScore": 1,
-  "completeness": 1,
-  "consistency": 1,
-  "accuracy": 1,
-  "meetsThreshold": true,
-  "errors": [],
-  "warnings": [],
-  "missingFields": {},
-  "timestamp": "2025-10-29T21:11:16.085Z"
-}
+version https://git-lfs.github.com/spec/v1
+oid sha256:9101b0dd23cadd39a87acb68714338ad45fd3ca5631338c6a80405383924658d
+size 259

@@ -1,19 +1,3 @@
-{
-  "indicator": "SN.ITK.DEFC.ZS",
-  "indicator_name": "Prevalence of undernourishment (% of population)",
-  "data": [],
-  "metadata": {
-    "source": "World Bank Open Data",
-    "last_updated": "2025-10-29T21:01:52.689Z",
-    "total_points": 0
-  },
-  "validation": {
-    "qualityScore": 0,
-    "completeness": 0,
-    "consistency": 0,
-    "accuracy": 0,
-    "meetsThreshold": false,
-    "errorCount": 0,
-    "warningCount": 1
-  }
-}
+version https://git-lfs.github.com/spec/v1
+oid sha256:81430d2e5a5d9db187a9074fea37059187159d81ecdff78670b822cfe664f642
+size 432

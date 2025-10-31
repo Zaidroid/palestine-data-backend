@@ -1,16 +1,3 @@
-{
-  "dataset": "prisoner-statistics",
-  "description": "Statistical summaries for prisoner data",
-  "files": [
-    {
-      "file": "monthly-totals.json",
-      "description": "Monthly totals and administrative detention data",
-      "records": 19
-    },
-    {
-      "file": "child-age-groups.json",
-      "description": "Child prisoner age group breakdowns"
-    }
-  ],
-  "last_updated": "2025-10-24T16:04:55.418Z"
-}
+version https://git-lfs.github.com/spec/v1
+oid sha256:60a1ebdbdfafb8547fb668eddf6fec7ff62469080fb6093691d4622308ebf0cf
+size 430

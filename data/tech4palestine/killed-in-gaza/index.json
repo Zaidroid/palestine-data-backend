@@ -1,10 +1,3 @@
-{
-  "dataset": "killed-in-gaza",
-  "date_range": {
-    "start": "2023-10-07",
-    "end": "2025-10-29",
-    "baseline_date": "2023-10-07"
-  },
-  "files": [],
-  "last_updated": "2025-10-29T21:02:48.995Z"
-}
+version https://git-lfs.github.com/spec/v1
+oid sha256:8658ed8298cb2f6910be3595d7e8b6414b13e543482b479ed4177c484277aa95
+size 203

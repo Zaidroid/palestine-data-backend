@@ -1,14 +1,3 @@
-{
-  "source": "UNRWA",
-  "api_base": "https://data.humdata.org/api/3/action",
-  "organization": "unrwa",
-  "last_updated": "2025-10-29T17:48:44.227Z",
-  "update_frequency": "monthly",
-  "categories": [
-    "refugees",
-    "education",
-    "health",
-    "emergency"
-  ],
-  "total_datasets": 0
-}
+version https://git-lfs.github.com/spec/v1
+oid sha256:41f4b1e326c0ff4e747d304c5761ee773adbd13b8e664fbc65010d8eeaa612f9
+size 293

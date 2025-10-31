@@ -1,9 +1,3 @@
-{
-  "dataset": "electricaldistributiongridmaps",
-  "totalPartitions": 0,
-  "totalRecords": 0,
-  "partitions": [],
-  "hasRecentFile": true,
-  "recentFileName": "recent.json",
-  "generated_at": "2025-10-29T21:10:55.049Z"
-}
+version https://git-lfs.github.com/spec/v1
+oid sha256:debc00ad8b08d055a88fe7f4d170e058dbaee7e4976dc8aceb06984a4efac3a5
+size 220

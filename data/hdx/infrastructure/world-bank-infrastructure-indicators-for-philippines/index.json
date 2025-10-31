@@ -1,9 +1,3 @@
-{
-  "dataset": "world-bank-infrastructure-indicators-for-philippines",
-  "totalPartitions": 0,
-  "totalRecords": 0,
-  "partitions": [],
-  "hasRecentFile": true,
-  "recentFileName": "recent.json",
-  "generated_at": "2025-10-29T21:11:01.958Z"
-}
+version https://git-lfs.github.com/spec/v1
+oid sha256:eca524c23ef8973253eeec3820f535d094b745c687b08f9ac8d039ae86ae24c1
+size 242

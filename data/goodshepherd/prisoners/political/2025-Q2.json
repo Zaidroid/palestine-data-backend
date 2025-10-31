@@ -1,35 +1,3 @@
-{
-  "metadata": {
-    "source": "goodshepherd",
-    "dataset": "political-prisoners",
-    "quarter": "2025-Q2",
-    "record_count": 3,
-    "last_updated": "2025-10-29T21:01:30.648Z"
-  },
-  "data": [
-    {
-      "date": "2025-04-14T12:00:00.000Z",
-      "name": "Unknown",
-      "location": "Unknown",
-      "detention_type": "administrative",
-      "notes": "",
-      "source": "goodshepherd-api"
-    },
-    {
-      "date": "2025-05-13T12:00:00.000Z",
-      "name": "Unknown",
-      "location": "Unknown",
-      "detention_type": "administrative",
-      "notes": "",
-      "source": "goodshepherd-api"
-    },
-    {
-      "date": "2025-06-04T12:00:00.000Z",
-      "name": "Unknown",
-      "location": "Unknown",
-      "detention_type": "administrative",
-      "notes": "",
-      "source": "goodshepherd-api"
-    }
-  ]
-}
+version https://git-lfs.github.com/spec/v1
+oid sha256:be506505a9a6aa441fa94b0e772ccf69a3e709f3a32b5a90c3a0a891fae83dc5
+size 818

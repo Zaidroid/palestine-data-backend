@@ -1,9 +1,3 @@
-{
-  "dataset": "poverty-rate-gap-density-and-the-percentage-of-poor-housing-at-location-level-in-kenya-in-1999",
-  "totalPartitions": 0,
-  "totalRecords": 0,
-  "partitions": [],
-  "hasRecentFile": true,
-  "recentFileName": "recent.json",
-  "generated_at": "2025-10-29T21:12:18.249Z"
-}
+version https://git-lfs.github.com/spec/v1
+oid sha256:84008b008cde871c17aa43eee77c8609ce859c0c6bfcbdcc9e9b0601cc8fc3bc
+size 284

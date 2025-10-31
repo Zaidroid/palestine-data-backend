@@ -1,20 +1,3 @@
-{
-  "datasetType": "refugees",
-  "recordCount": 0,
-  "qualityScore": 0,
-  "completeness": 0,
-  "consistency": 0,
-  "accuracy": 0,
-  "meetsThreshold": false,
-  "errors": [],
-  "warnings": [
-    {
-      "field": "root",
-      "message": "Data array is empty",
-      "severity": "warning",
-      "affectedRecords": 0
-    }
-  ],
-  "missingFields": {},
-  "timestamp": "2025-10-24T18:02:40.636Z"
-}
+version https://git-lfs.github.com/spec/v1
+oid sha256:07d50d6c5df125dac066f97dbdabe0cfdfa20846cfd564da1ba17df104a81ab6
+size 410

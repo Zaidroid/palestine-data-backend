@@ -1,33 +1,3 @@
-{
-  "source": "UNRWA (via HDX)",
-  "fetched_at": "2025-10-29T17:48:44.220Z",
-  "total_datasets": 0,
-  "total_failed": 17,
-  "by_category": [
-    {
-      "category": "refugees",
-      "downloaded": 0,
-      "failed": 4,
-      "datasets": 0
-    },
-    {
-      "category": "education",
-      "downloaded": 0,
-      "failed": 4,
-      "datasets": 0
-    },
-    {
-      "category": "health",
-      "downloaded": 0,
-      "failed": 4,
-      "datasets": 0
-    },
-    {
-      "category": "emergency",
-      "downloaded": 0,
-      "failed": 5,
-      "datasets": 0
-    }
-  ],
-  "datasets": []
-}
+version https://git-lfs.github.com/spec/v1
+oid sha256:94ad008460296623a0ba3334becc65f99405953b01f39b80062fc5d934fcc9f9
+size 583

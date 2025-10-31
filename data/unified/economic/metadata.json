@@ -1,14 +1,3 @@
-{
-  "category": "economic",
-  "total_records": 1522,
-  "last_updated": "2025-10-29T21:02:58.518Z",
-  "sources": [
-    "World Bank"
-  ],
-  "quality": {
-    "average_score": 1,
-    "completeness": 1,
-    "consistency": 1,
-    "accuracy": 1
-  }
-}
+version https://git-lfs.github.com/spec/v1
+oid sha256:2d921fead7dd6372f62060fd2b61998580cded00ef0e23cf62499f2bc3d285ff
+size 243

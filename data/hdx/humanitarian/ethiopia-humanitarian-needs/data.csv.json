@@ -1,36 +1,3 @@
-{
-  "source": "hdx-ckan",
-  "downloaded_at": "2025-10-29T21:11:21.801Z",
-  "resource": {
-    "id": "5c049ef4-1dc0-4618-bb7f-a7be0b044137",
-    "name": "eth_hpc_needs_api_2025.csv",
-    "format": "CSV",
-    "url": "https://data.humdata.org/dataset/882d0746-ac2a-4471-b40d-a92dee832ee2/resource/5c049ef4-1dc0-4618-bb7f-a7be0b044137/download/eth_hpc_needs_api_2025.csv"
-  },
-  "data": {
-    "csv": [
-      {
-        "description": "#sector+description",
-        "cluster": "#sector+cluster+code",
-        "category": "#category",
-        "population": "#population",
-        "in_need": "#inneed",
-        "targeted": "#targeted",
-        "affected": "#affected",
-        "reached": "#reached",
-        "info": "#meta+info"
-      },
-      {
-        "description": "GHO Estimate",
-        "cluster": "ALL",
-        "category": null,
-        "population": 129700000,
-        "in_need": null,
-        "targeted": 10000000,
-        "affected": null,
-        "reached": null,
-        "info": null
-      }
-    ]
-  }
-}
+version https://git-lfs.github.com/spec/v1
+oid sha256:a31816f18a52c4476956b87e9c710ad30a8114bea8d1aa99cc4954e28eeb61f1
+size 1007

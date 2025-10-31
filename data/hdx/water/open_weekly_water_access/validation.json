@@ -1,13 +1,3 @@
-{
-  "datasetType": "water",
-  "recordCount": 108471,
-  "qualityScore": 1,
-  "completeness": 1,
-  "consistency": 1,
-  "accuracy": 1,
-  "meetsThreshold": true,
-  "errors": [],
-  "warnings": [],
-  "missingFields": {},
-  "timestamp": "2025-10-29T21:10:31.042Z"
-}
+version https://git-lfs.github.com/spec/v1
+oid sha256:3d08c4ec551dec7c2d7f6e3d28742e9b7ffa3339b4391acc1a423ad7bca0354e
+size 258

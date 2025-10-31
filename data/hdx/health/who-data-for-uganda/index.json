@@ -1,9 +1,3 @@
-{
-  "dataset": "who-data-for-uganda",
-  "totalPartitions": 0,
-  "totalRecords": 0,
-  "partitions": [],
-  "hasRecentFile": true,
-  "recentFileName": "recent.json",
-  "generated_at": "2025-10-29T21:12:01.548Z"
-}
+version https://git-lfs.github.com/spec/v1
+oid sha256:5044767aa787d2a95b51dcface51e4b318c8dff8d446e515ce5d41150691d725
+size 209

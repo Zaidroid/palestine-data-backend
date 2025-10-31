@@ -1,9 +1,3 @@
-{
-  "dataset": "open_weekly_water_access",
-  "totalPartitions": 0,
-  "totalRecords": 0,
-  "partitions": [],
-  "hasRecentFile": true,
-  "recentFileName": "recent.json",
-  "generated_at": "2025-10-29T21:10:31.960Z"
-}
+version https://git-lfs.github.com/spec/v1
+oid sha256:b116df0f65fd5d6258a92e7745b9b1d59b1bb8a0868219230f24017504ad56c3
+size 214
