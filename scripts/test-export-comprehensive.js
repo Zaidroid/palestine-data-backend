@@ -81,8 +81,8 @@ function assertContains(haystack, needle, message) {
 // Load sample unified data
 function loadSampleData() {
   try {
-    const conflictPath = path.join(__dirname, '../public/data/unified/conflict/recent.json');
-    const economicPath = path.join(__dirname, '../public/data/unified/economic/recent.json');
+    const conflictPath = path.join(__dirname, '../data/unified/conflict/recent.json');
+    const economicPath = path.join(__dirname, '../data/unified/economic/recent.json');
     
     let conflictData = [];
     let economicData = [];

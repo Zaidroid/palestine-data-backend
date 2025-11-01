@@ -26,7 +26,7 @@ import { validateDataset } from './utils/data-validator.js';
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
-const DATA_DIR = path.join(__dirname, '../public/data/pcbs');
+const DATA_DIR = path.join(__dirname, '../data/pcbs');
 const WB_API_BASE = 'https://api.worldbank.org/v2';
 const COUNTRY_CODE = 'PSE'; // Palestine
 const RATE_LIMIT_DELAY = 500; // 0.5 seconds

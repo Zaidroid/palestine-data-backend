@@ -20,7 +20,7 @@ const logger = createLogger({
   logLevel: 'INFO',
 });
 
-const DATA_DIR = path.join(__dirname, '../public/data/goodshepherd');
+const DATA_DIR = path.join(__dirname, '../data/goodshepherd');
 
 async function testHealthcareStreaming() {
   await logger.info('Testing healthcare attacks streaming...');

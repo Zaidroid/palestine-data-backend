@@ -34,7 +34,7 @@ const logger = {
     error: (msg, data) => console.error(`❌ ${msg}`, data || ''),
 };
 
-const DATA_DIR = path.join(__dirname, '../public/data');
+const DATA_DIR = path.join(__dirname, '../data');
 const UNIFIED_DIR = path.join(DATA_DIR, 'unified');
 
 /**
@@ -576,7 +576,7 @@ async function main() {
         console.log('\n✅ Unified data population complete!');
         console.log(`\nData location: ${UNIFIED_DIR}`);
         console.log('\nNext steps:');
-        console.log('1. Check data: ls public/data/unified/*/all-data.json');
+        console.log('1. Check data: ls data/unified/*/all-data.json');
         console.log('2. Validate: npm run validate-data');
         console.log('3. Use in app: import { useConflictData } from "@/hooks/useUnifiedData"');
 

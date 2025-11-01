@@ -4,9 +4,9 @@
  * Setup Unified Data Directory Structure
  * 
  * Creates the complete directory structure for the unified data system:
- * - public/data/unified/ with category subdirectories
- * - public/data/sources/ for source-specific raw data
- * - public/data/relationships/ for cross-dataset links
+ * - data/unified/ with category subdirectories
+ * - data/sources/ for source-specific raw data
+ * - data/relationships/ for cross-dataset links
  * - Initializes metadata.json, all-data.json, recent.json, and partitions/ in each category
  */
 
@@ -232,7 +232,7 @@ This directory contains raw data fetched from ${source} before transformation.
 
 ## Usage
 
-Data in this directory is processed by the transformation pipeline and converted to the unified format in \`public/data/unified/\`.
+Data in this directory is processed by the transformation pipeline and converted to the unified format in \`data/unified/\`.
 `;
     if (ensureFile(readmePath, readmeContent)) created++; else existing++;
   });
@@ -315,7 +315,7 @@ This document describes the unified data directory structure for Palestine Pulse
 ## Directory Structure
 
 \`\`\`
-public/data/
+data/
 ├── unified/                    # Unified data store
 │   ├── conflict/
 │   │   ├── metadata.json      # Dataset metadata

@@ -101,14 +101,14 @@ jobs:
       - name: Check for changes
         id: check_changes
         run: |
-          if git diff --quiet public/data/goodshepherd/ src/data/btselem-checkpoints.json public/data/manifest.json; then
+          if git diff --quiet data/goodshepherd/ src/data/btselem-checkpoints.json data/manifest.json; then
             echo "changed=false" >> $GITHUB_OUTPUT
             echo "ℹ️ No data changes detected"
           else
             echo "changed=true" >> $GITHUB_OUTPUT
             echo "✅ Data changes detected"
             # Show what changed
-            git diff --stat public/data/goodshepherd/ src/data/btselem-checkpoints.json public/data/manifest.json
+            git diff --stat data/goodshepherd/ src/data/btselem-checkpoints.json data/manifest.json
           fi
       
       # 9. Commit and push if data changed
@@ -117,11 +117,11 @@ jobs:
         run: |
           git config --local user.name "Daily Data Bot"
           git config --local user.email "daily-bot@palboard.net"
-          git add public/data/goodshepherd/
+          git add data/goodshepherd/
           git add src/data/btselem-checkpoints.json
-          git add public/data/manifest.json
-          git add public/data/validation-report.json
-          git add public/data/data-collection-summary.json
+          git add data/manifest.json
+          git add data/validation-report.json
+          git add data/data-collection-summary.json
           git commit -m "🤖 Auto-update daily data (Good Shepherd, B'Tselem): $(date -u '+%Y-%m-%d %H:%M UTC')"
           git push
       
@@ -158,7 +158,7 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: validation-report-daily
-          path: public/data/validation-report.json
+          path: data/validation-report.json
           retention-days: 7
       
       # 12. Upload summary report as artifact
@@ -167,7 +167,7 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: summary-report-daily
-          path: public/data/data-collection-summary.json
+          path: data/data-collection-summary.json
           retention-days: 7
       
       # 13. Upload logs as artifact

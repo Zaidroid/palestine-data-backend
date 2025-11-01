@@ -90,14 +90,14 @@ jobs:
       - name: Check for changes
         id: check_changes
         run: |
-          if git diff --quiet public/data/hdx/ public/data/wfp/ public/data/unified/ public/data/manifest.json; then
+          if git diff --quiet data/hdx/ data/wfp/ data/unified/ data/manifest.json; then
             echo "changed=false" >> $GITHUB_OUTPUT
             echo "ℹ️ No data changes detected"
           else
             echo "changed=true" >> $GITHUB_OUTPUT
             echo "✅ Data changes detected"
             # Show what changed
-            git diff --stat public/data/hdx/ public/data/wfp/ public/data/unified/ public/data/manifest.json
+            git diff --stat data/hdx/ data/wfp/ data/unified/ data/manifest.json
           fi
       
       # 10. Commit and push if data changed
@@ -106,12 +106,12 @@ jobs:
         run: |
           git config --local user.name "Weekly Data Bot"
           git config --local user.email "weekly-bot@palboard.net"
-          git add public/data/hdx/
-          git add public/data/wfp/
-          git add public/data/unified/
-          git add public/data/manifest.json
-          git add public/data/validation-report.json
-          git add public/data/data-collection-summary.json
+          git add data/hdx/
+          git add data/wfp/
+          git add data/unified/
+          git add data/manifest.json
+          git add data/validation-report.json
+          git add data/data-collection-summary.json
           git commit -m "🤖 Auto-update weekly data (HDX, WFP + Unified): $(date -u '+%Y-%m-%d %H:%M UTC')"
           git push
       
@@ -151,7 +151,7 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: validation-report-weekly
-          path: public/data/validation-report.json
+          path: data/validation-report.json
           retention-days: 14
       
       # 13. Upload summary report as artifact
@@ -160,7 +160,7 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: summary-report-weekly
-          path: public/data/data-collection-summary.json
+          path: data/data-collection-summary.json
           retention-days: 14
       
       # 14. Upload logs as artifact

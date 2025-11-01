@@ -19,7 +19,7 @@ const __dirname = path.dirname(__filename);
 // Configuration
 const HDX_HAPI_BASE_URL = 'https://hapi.humdata.org/api/v1';
 const HDX_API_KEY = process.env.HDX_API_KEY;
-const DATA_DIR = path.join(__dirname, '../public/data/hdx');
+const DATA_DIR = path.join(__dirname, '../data/hdx');
 const BASELINE_DATE = '2023-10-07';
 const RATE_LIMIT_DELAY = 1100; // 1.1 seconds (HDX limit: 1 req/sec)
 

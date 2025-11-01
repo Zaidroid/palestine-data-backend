@@ -9,11 +9,14 @@ This backend system collects data from 9+ trusted sources, processes and transfo
 ## Features
 
 - **9 Active Data Sources**: Tech4Palestine, HDX, Good Shepherd, World Bank, WHO, PCBS, UNRWA, WFP, B'Tselem
-- **Automated Data Collection**: Scheduled fetching from all sources
+- **Automated Data Collection**: GitHub Actions scheduled fetching from all sources
 - **Data Transformation**: Unified data format across all sources
 - **Data Validation**: Quality checks and validation reports
+- **Real-time Monitoring**: Status dashboard for all data sources
+- **Smart Notifications**: Automatic GitHub Issues on failures
 - **API Ready**: Structured data output for API consumption
 - **Comprehensive Documentation**: Full guides and references
+- **Configuration Management**: Centralized config.json for all settings
 - **No Frontend Dependencies**: Pure Node.js backend system
 
 ## Quick Start
@@ -86,15 +89,18 @@ palestine-data-backend/
 
 ## Available Scripts
 
-### Data Collection
+### Data Collection (9 Sources)
 ```bash
-npm run fetch-all-data        # Fetch from all sources
-npm run fetch-pcbs            # PCBS official statistics
+npm run fetch-all-data        # Fetch from all 9 sources
+npm run fetch-tech4palestine  # Tech4Palestine (real-time)
+npm run fetch-hdx-ckan        # HDX humanitarian data
+npm run fetch-goodshepherd    # Good Shepherd violence data
 npm run fetch-worldbank       # World Bank indicators
 npm run fetch-who             # WHO health data
+npm run fetch-pcbs            # PCBS official statistics
 npm run fetch-unrwa           # UNRWA refugee data
-npm run fetch-hdx-ckan        # HDX humanitarian data
-npm run fetch-goodshepherd    # Good Shepherd data
+npm run fetch-wfp             # WFP food security data
+npm run fetch-btselem         # B'Tselem checkpoint data
 ```
 
 ### Data Processing
@@ -102,7 +108,8 @@ npm run fetch-goodshepherd    # Good Shepherd data
 npm run populate-unified      # Transform to unified format
 npm run validate-data         # Validate data quality
 npm run generate-manifest     # Generate data manifest
-npm run update-data           # Complete pipeline (fetch + process + validate)
+npm run generate-status       # Generate monitoring dashboard
+npm run update-data           # Complete pipeline (fetch + transform + validate + monitor)
 ```
 
 ### Testing & Verification
@@ -112,6 +119,12 @@ npm run check-pcbs-coverage   # Check PCBS coverage
 npm run test-pcbs             # Test PCBS transformation
 npm run test-pipeline         # Test unified pipeline
 npm run test-validation       # Test validation
+```
+
+### Monitoring
+```bash
+npm run generate-status       # Generate status dashboard (HTML + JSON)
+# Open data/status-dashboard.html in browser to view
 ```
 
 ## Data Sources
@@ -371,10 +384,20 @@ MIT License - See LICENSE file for details
 
 ---
 
-**Status**: Production Ready ✅  
-**Last Updated**: October 31, 2025  
-**Data Sources**: 9 active, fully automated  
-**Total Indicators**: 300+  
-**Total Records**: 18,000+
+**Status**: Production Ready ✅
+**Last Updated**: November 1, 2025
+**Data Sources**: 9 active, fully implemented
+**Automation**: GitHub Actions (6 workflows)
+**Monitoring**: Real-time status dashboard
+**Total Indicators**: 300+
+**Total Records**: 226,000+
+**Storage**: ~800MB
 
 **Get Started**: Run `npm install && npm run update-data`
+
+**New Features**:
+- ✅ All path inconsistencies fixed
+- ✅ All 9 data sources implemented
+- ✅ Configuration management (config.json)
+- ✅ Monitoring dashboard
+- ✅ Automatic failure notifications

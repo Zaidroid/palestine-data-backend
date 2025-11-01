@@ -13,7 +13,7 @@ import { fileURLToPath } from 'url';
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
-const UNIFIED_DIR = path.join(__dirname, '../public/data/unified/pcbs');
+const UNIFIED_DIR = path.join(__dirname, '../data/unified/pcbs');
 
 async function showSamples() {
   console.log('========================================');

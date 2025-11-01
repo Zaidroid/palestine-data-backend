@@ -17,7 +17,7 @@ import { createRateLimitedFetcher } from './utils/fetch-with-retry.js';
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
-const DATA_DIR = path.join(__dirname, '../public/data/who');
+const DATA_DIR = path.join(__dirname, '../data/who');
 const WHO_API_BASE = 'https://ghoapi.azureedge.net/api';
 const COUNTRY_CODE = 'PSE'; // Palestine
 const RATE_LIMIT_DELAY = 1000; // 1 second between requests

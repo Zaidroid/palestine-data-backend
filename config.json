@@ -1,0 +1,90 @@
+{
+  "dataDirectory": "./data",
+  "baselineDate": "2023-10-07",
+  "sources": {
+    "enabled": [
+      "tech4palestine",
+      "hdx",
+      "worldbank",
+      "pcbs",
+      "goodshepherd",
+      "who",
+      "unrwa",
+      "wfp",
+      "btselem"
+    ],
+    "disabled": []
+  },
+  "automation": {
+    "schedules": {
+      "realtime": {
+        "cron": "0 */6 * * *",
+        "description": "Every 6 hours",
+        "sources": ["tech4palestine"]
+      },
+      "daily": {
+        "cron": "0 0 * * *",
+        "description": "Daily at midnight UTC",
+        "sources": ["goodshepherd", "btselem"]
+      },
+      "weekly": {
+        "cron": "0 0 * * 0",
+        "description": "Weekly on Sunday",
+        "sources": ["hdx", "wfp"]
+      },
+      "monthly": {
+        "cron": "0 0 1 * *",
+        "description": "Monthly on 1st day",
+        "sources": ["worldbank", "who", "pcbs", "unrwa"]
+      }
+    }
+  },
+  "api": {
+    "hdx": {
+      "baseUrl": "https://data.humdata.org/api/3/action",
+      "rateLimit": 500,
+      "timeout": 30000,
+      "requiresKey": false
+    },
+    "tech4palestine": {
+      "baseUrl": "https://data.techforpalestine.org/api",
+      "rateLimit": 100,
+      "timeout": 10000,
+      "requiresKey": false
+    },
+    "goodshepherd": {
+      "baseUrl": "https://goodshepherdcollective.org/api",
+      "rateLimit": 100,
+      "timeout": 10000,
+      "requiresKey": false
+    },
+    "worldbank": {
+      "baseUrl": "https://api.worldbank.org/v2",
+      "rateLimit": 100,
+      "timeout": 30000,
+      "requiresKey": false
+    },
+    "who": {
+      "baseUrl": "https://ghoapi.azureedge.net/api",
+      "rateLimit": 100,
+      "timeout": 30000,
+      "requiresKey": false
+    }
+  },
+  "validation": {
+    "qualityThreshold": 0.8,
+    "completenessThreshold": 0.7,
+    "enableStrictMode": false
+  },
+  "partitioning": {
+    "enabled": true,
+    "strategy": "quarter",
+    "maxRecordsPerFile": 10000
+  },
+  "logging": {
+    "level": "info",
+    "enableConsole": true,
+    "enableFile": true,
+    "logDirectory": "./logs"
+  }
+}

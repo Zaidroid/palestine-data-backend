@@ -21,7 +21,7 @@ import { createLogger } from './utils/logger.js';
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
-const DATA_DIR = path.join(__dirname, '../public/data');
+const DATA_DIR = path.join(__dirname, '../data');
 const BASELINE_DATE = '2023-10-07';
 
 // Initialize logger
@@ -175,291 +175,6 @@ function partitionByQuarter(data, dateField = 'date') {
   return quarters;
 }
 
-// Fetch Tech4Palestine data
-async function fetchTech4Palestine() {
-  console.log('\n📊 Fetching Tech4Palestine data...');
-  
-  const API_BASE = 'https://data.techforpalestine.org/api';
-  const endpoints = {
-    killedInGaza: '/v3/killed-in-gaza.min.json',
-    pressKilled: '/v2/press_killed_in_gaza.json',
-    summary: '/v3/summary.json',
-    casualtiesDaily: '/v2/casualties_daily.json',
-    westBankDaily: '/v2/west_bank_daily.json',
-    infrastructure: '/v3/infrastructure-damaged.json',
-  };
-  
-  const results = {};
-  
-  for (const [key, endpoint] of Object.entries(endpoints)) {
-    try {
-      console.log(`  Fetching ${key}...`);
-      const response = await fetch(`${API_BASE}${endpoint}`);
-      
-      if (!response.ok) {
-        throw new Error(`HTTP ${response.status}`);
-      }
-      
-      const data = await response.json();
-      results[key] = data;
-      console.log(`  ✓ ${key}: ${Array.isArray(data) ? data.length : 'N/A'} records`);
-    } catch (error) {
-      console.error(`  ❌ Failed to fetch ${key}:`, error.message);
-      results[key] = null;
-    }
-  }
-  
-  return results;
-}
-
-// Save Tech4Palestine data
-async function saveTech4PalestineData(data) {
-  console.log('\n💾 Saving Tech4Palestine data...');
-  
-  const basePath = path.join(DATA_DIR, 'tech4palestine');
-  await ensureDir(basePath);
-  
-  // Save summary (current snapshot only)
-  if (data.summary) {
-    await writeJSON(path.join(basePath, 'summary.json'), {
-      metadata: {
-        source: 'tech4palestine',
-        last_updated: new Date().toISOString(),
-      },
-      data: data.summary,
-    });
-    console.log('  ✓ Saved summary.json');
-  }
-  
-  // Save press killed (complete list)
-  if (data.pressKilled) {
-    await writeJSON(path.join(basePath, 'press-killed.json'), {
-      metadata: {
-        source: 'tech4palestine',
-        last_updated: new Date().toISOString(),
-        record_count: data.pressKilled.length,
-      },
-      data: data.pressKilled,
-    });
-    console.log(`  ✓ Saved press-killed.json (${data.pressKilled.length} records)`);
-  }
-  
-  // Save casualties daily (partitioned)
-  if (data.casualtiesDaily && Array.isArray(data.casualtiesDaily)) {
-    const casualtiesPath = path.join(basePath, 'casualties');
-    await ensureDir(casualtiesPath);
-    
-    // Filter for post-Oct 7 data
-    const filtered = data.casualtiesDaily.filter(record => {
-      const date = record.report_date || record.date;
-      return date && date >= BASELINE_DATE;
-    });
-    
-    // Normalize data - keep API field names for compatibility
-    const normalized = filtered.map(record => ({
-      report_date: record.report_date || record.date,
-      date: record.report_date || record.date, // Keep both for compatibility
-      ext_killed_cum: record.ext_killed_cum || record.killed || 0,
-      killed: record.ext_killed_cum || record.killed || 0,
-      ext_injured_cum: record.ext_injured_cum || record.injured || 0,
-      injured: record.ext_injured_cum || record.injured || 0,
-      source: 'tech4palestine',
-    })).sort((a, b) => a.report_date.localeCompare(b.report_date));
-    
-    // Partition by quarter
-    const quarters = partitionByQuarter(normalized);
-    
-    for (const [quarter, quarterData] of Object.entries(quarters)) {
-      await writeJSON(path.join(casualtiesPath, `${quarter}.json`), {
-        metadata: {
-          source: 'tech4palestine',
-          dataset: 'casualties',
-          quarter,
-          record_count: quarterData.length,
-          last_updated: new Date().toISOString(),
-        },
-        data: quarterData,
-      });
-      console.log(`  ✓ Saved casualties/${quarter}.json (${quarterData.length} records)`);
-    }
-    
-    // Save recent (last 30 days)
-    const thirtyDaysAgo = new Date();
-    thirtyDaysAgo.setDate(thirtyDaysAgo.getDate() - 30);
-    const recent = normalized.filter(r => new Date(r.date) >= thirtyDaysAgo);
-    
-    if (recent.length > 0) {
-      await writeJSON(path.join(casualtiesPath, 'recent.json'), {
-        metadata: {
-          source: 'tech4palestine',
-          dataset: 'casualties',
-          record_count: recent.length,
-          last_updated: new Date().toISOString(),
-        },
-        data: recent,
-      });
-      console.log(`  ✓ Saved casualties/recent.json (${recent.length} records)`);
-    }
-    
-    // Save index
-    await writeJSON(path.join(casualtiesPath, 'index.json'), {
-      dataset: 'casualties',
-      date_range: {
-        start: normalized[0]?.date || BASELINE_DATE,
-        end: normalized[normalized.length - 1]?.date || new Date().toISOString().split('T')[0],
-        baseline_date: BASELINE_DATE,
-      },
-      files: Object.keys(quarters).sort().map(q => ({
-        file: `${q}.json`,
-        quarter: q,
-        records: quarters[q].length,
-      })),
-      last_updated: new Date().toISOString(),
-    });
-    console.log('  ✓ Saved casualties/index.json');
-  }
-  
-  // Save West Bank daily (partitioned)
-  if (data.westBankDaily && Array.isArray(data.westBankDaily)) {
-    const westBankPath = path.join(basePath, 'westbank');
-    await ensureDir(westBankPath);
-    
-    // Filter for post-Oct 7 data
-    const filtered = data.westBankDaily.filter(record => {
-      const date = record.report_date || record.date;
-      return date && date >= BASELINE_DATE;
-    });
-    
-    // Normalize data
-    const normalized = filtered.map(record => ({
-      report_date: record.report_date || record.date,
-      date: record.report_date || record.date,
-      killed: record.killed || 0,
-      injured: record.injured || 0,
-      source: 'tech4palestine',
-    })).sort((a, b) => a.report_date.localeCompare(b.report_date));
-    
-    // Partition by quarter
-    const quarters = partitionByQuarter(normalized);
-    
-    for (const [quarter, quarterData] of Object.entries(quarters)) {
-      await writeJSON(path.join(westBankPath, `${quarter}.json`), {
-        metadata: {
-          source: 'tech4palestine',
-          dataset: 'westbank',
-          quarter,
-          record_count: quarterData.length,
-          last_updated: new Date().toISOString(),
-        },
-        data: quarterData,
-      });
-      console.log(`  ✓ Saved westbank/${quarter}.json (${quarterData.length} records)`);
-    }
-    
-    // Save recent (last 30 days)
-    const thirtyDaysAgo = new Date();
-    thirtyDaysAgo.setDate(thirtyDaysAgo.getDate() - 30);
-    const recent = normalized.filter(r => new Date(r.date) >= thirtyDaysAgo);
-    
-    if (recent.length > 0) {
-      await writeJSON(path.join(westBankPath, 'recent.json'), {
-        metadata: {
-          source: 'tech4palestine',
-          dataset: 'westbank',
-          record_count: recent.length,
-          last_updated: new Date().toISOString(),
-        },
-        data: recent,
-      });
-      console.log(`  ✓ Saved westbank/recent.json (${recent.length} records)`);
-    }
-    
-    // Save index
-    await writeJSON(path.join(westBankPath, 'index.json'), {
-      dataset: 'westbank',
-      date_range: {
-        start: normalized[0]?.date || BASELINE_DATE,
-        end: normalized[normalized.length - 1]?.date || new Date().toISOString().split('T')[0],
-        baseline_date: BASELINE_DATE,
-      },
-      files: Object.keys(quarters).sort().map(q => ({
-        file: `${q}.json`,
-        quarter: q,
-        records: quarters[q].length,
-      })),
-      last_updated: new Date().toISOString(),
-    });
-    console.log('  ✓ Saved westbank/index.json');
-  }
-  
-  // Save killed in Gaza (partitioned)
-  if (data.killedInGaza && Array.isArray(data.killedInGaza)) {
-    const killedPath = path.join(basePath, 'killed-in-gaza');
-    await ensureDir(killedPath);
-    
-    // Filter for post-Oct 7 data
-    const filtered = data.killedInGaza.filter(record => {
-      const date = record.date_of_death || record.date;
-      return date && date >= BASELINE_DATE;
-    });
-    
-    // Normalize data
-    const normalized = filtered.map(record => ({
-      date: record.date_of_death || record.date,
-      name: record.name || record.en_name,
-      age: record.age,
-      sex: record.sex,
-      source: 'tech4palestine',
-    })).sort((a, b) => a.date.localeCompare(b.date));
-    
-    // Partition by quarter
-    const quarters = partitionByQuarter(normalized);
-    
-    for (const [quarter, quarterData] of Object.entries(quarters)) {
-      await writeJSON(path.join(killedPath, `${quarter}.json`), {
-        metadata: {
-          source: 'tech4palestine',
-          dataset: 'killed-in-gaza',
-          quarter,
-          record_count: quarterData.length,
-          last_updated: new Date().toISOString(),
-        },
-        data: quarterData,
-      });
-      console.log(`  ✓ Saved killed-in-gaza/${quarter}.json (${quarterData.length} records)`);
-    }
-    
-    // Save index
-    await writeJSON(path.join(killedPath, 'index.json'), {
-      dataset: 'killed-in-gaza',
-      date_range: {
-        start: normalized[0]?.date || BASELINE_DATE,
-        end: normalized[normalized.length - 1]?.date || new Date().toISOString().split('T')[0],
-        baseline_date: BASELINE_DATE,
-      },
-      files: Object.keys(quarters).sort().map(q => ({
-        file: `${q}.json`,
-        quarter: q,
-        records: quarters[q].length,
-      })),
-      last_updated: new Date().toISOString(),
-    });
-    console.log('  ✓ Saved killed-in-gaza/index.json');
-  }
-  
-  // Save metadata
-  await writeJSON(path.join(basePath, 'metadata.json'), {
-    source: 'tech4palestine',
-    last_updated: new Date().toISOString(),
-    datasets: {
-      summary: data.summary ? 'available' : 'unavailable',
-      pressKilled: data.pressKilled ? data.pressKilled.length : 0,
-      casualties: data.casualtiesDaily ? data.casualtiesDaily.length : 0,
-      killedInGaza: data.killedInGaza ? data.killedInGaza.length : 0,
-    },
-  });
-  console.log('  ✓ Saved metadata.json');
-}
 
 /**
  * Format bytes to human-readable string
@@ -741,8 +456,14 @@ async function main() {
   await logger.info('Starting consolidated data collection');
   
   try {
-    // Define all fetch scripts to run
+    // Define all fetch scripts to run (9 data sources)
     const fetchScripts = [
+      {
+        name: 'Tech4Palestine',
+        path: path.join(__dirname, 'fetch-tech4palestine-data.js'),
+        description: 'Tech4Palestine Data Collection',
+        required: false,
+      },
       {
         name: 'HDX-CKAN',
         path: path.join(__dirname, 'fetch-hdx-ckan-data.js'),
@@ -779,9 +500,21 @@ async function main() {
         description: 'UNRWA Refugee Data Collection',
         required: false,
       },
+      {
+        name: 'WFP',
+        path: path.join(__dirname, 'fetch-wfp-data.js'),
+        description: 'WFP Food Security Data Collection',
+        required: false,
+      },
+      {
+        name: 'BTselem',
+        path: path.join(__dirname, 'fetch-btselem-data.js'),
+        description: 'B\'Tselem Checkpoint Data Collection',
+        required: false,
+      },
     ];
     
-    const totalScripts = fetchScripts.length + 2; // +2 for Tech4Palestine and manifest (PCBS, WHO, UNRWA now in fetchScripts)
+    const totalScripts = fetchScripts.length + 1; // +1 for manifest generation
     let currentScript = 0;
     
     // Execute each fetch script
@@ -803,52 +536,6 @@ async function main() {
       }
       
       await executeScript(script.name, script.path, script.description);
-    }
-    
-    // Fetch Tech4Palestine data (inline)
-    currentScript++;
-    displayProgress(currentScript, totalScripts, 'Tech4Palestine Data Collection');
-    
-    console.log(`\n${'='.repeat(60)}`);
-    console.log(`📡 Tech4Palestine Data Collection`);
-    console.log(`${'='.repeat(60)}\n`);
-    
-    const tech4StartTime = Date.now();
-    try {
-      const tech4palestineData = await fetchTech4Palestine();
-      await saveTech4PalestineData(tech4palestineData);
-      
-      const tech4Duration = Date.now() - tech4StartTime;
-      await logger.success(`Tech4Palestine data collection completed in ${(tech4Duration / 1000).toFixed(2)}s`);
-      
-      executionTracker.scripts.push({
-        name: 'Tech4Palestine',
-        description: 'Tech4Palestine Data Collection',
-        startTime: tech4StartTime,
-        endTime: Date.now(),
-        duration: tech4Duration,
-        success: true,
-        error: null,
-      });
-    } catch (error) {
-      const tech4Duration = Date.now() - tech4StartTime;
-      await logger.error('Tech4Palestine data collection failed', error);
-      
-      executionTracker.errors.push({
-        script: 'Tech4Palestine',
-        error: error.message,
-        timestamp: new Date().toISOString(),
-      });
-      
-      executionTracker.scripts.push({
-        name: 'Tech4Palestine',
-        description: 'Tech4Palestine Data Collection',
-        startTime: tech4StartTime,
-        endTime: Date.now(),
-        duration: tech4Duration,
-        success: false,
-        error: error.message,
-      });
     }
     
     // Update global manifest
@@ -922,8 +609,8 @@ async function main() {
       console.log('\n⚠️  Some scripts failed. Check data-collection-summary.json for details.');
     }
     
-    console.log('\n📄 Summary report saved to: public/data/data-collection-summary.json');
-    console.log('📋 Global manifest updated: public/data/manifest.json');
+    console.log('\n📄 Summary report saved to: data/data-collection-summary.json');
+    console.log('📋 Global manifest updated: data/manifest.json');
     console.log('📝 Detailed logs: data-collection.log');
     
     await logger.logSummary();

@@ -19,7 +19,7 @@ import { validateDataset } from './utils/data-validator.js';
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
-const DATA_DIR = path.join(__dirname, '../public/data/goodshepherd');
+const DATA_DIR = path.join(__dirname, '../data/goodshepherd');
 const FALLBACK_DIR = path.join(__dirname, '../src/data');
 const BASELINE_DATE = '2023-10-07';
 const API_BASE = 'https://goodshepherdcollective.org/api';

@@ -12,7 +12,7 @@ import { fileURLToPath } from 'url';
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
-const DATA_DIR = path.join(__dirname, '../public/data');
+const DATA_DIR = path.join(__dirname, '../data');
 
 async function checkDataSource(sourceName, metadataPath) {
   try {

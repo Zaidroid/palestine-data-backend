@@ -14,8 +14,8 @@ import { PCBSTransformer } from './utils/pcbs-transformer.js';
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
-const DATA_DIR = path.join(__dirname, '../public/data/pcbs');
-const OUTPUT_DIR = path.join(__dirname, '../public/data/unified/pcbs');
+const DATA_DIR = path.join(__dirname, '../data/pcbs');
+const OUTPUT_DIR = path.join(__dirname, '../data/unified/pcbs');
 
 async function testComprehensive() {
   console.log('========================================');

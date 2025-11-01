@@ -16,7 +16,7 @@ import { createLogger } from './utils/logger.js';
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
-const DATA_DIR = path.join(__dirname, '../public/data');
+const DATA_DIR = path.join(__dirname, '../data');
 const OUTPUT_PATH = path.join(DATA_DIR, 'validation-report.json');
 
 const logger = createLogger({ 

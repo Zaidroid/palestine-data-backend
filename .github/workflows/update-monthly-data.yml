@@ -127,14 +127,14 @@ jobs:
       - name: Check for changes
         id: check_changes
         run: |
-          if git diff --quiet public/data/worldbank/ public/data/who/ public/data/unrwa/ public/data/pcbs/ public/data/unified/ public/data/manifest.json; then
+          if git diff --quiet data/worldbank/ data/who/ data/unrwa/ data/pcbs/ data/unified/ data/manifest.json; then
             echo "changed=false" >> $GITHUB_OUTPUT
             echo "ℹ️ No data changes detected"
           else
             echo "changed=true" >> $GITHUB_OUTPUT
             echo "✅ Data changes detected"
             # Show what changed
-            git diff --stat public/data/worldbank/ public/data/who/ public/data/unrwa/ public/data/pcbs/ public/data/unified/ public/data/manifest.json
+            git diff --stat data/worldbank/ data/who/ data/unrwa/ data/pcbs/ data/unified/ data/manifest.json
           fi
       
       # 12. Commit and push if data changed
@@ -143,14 +143,14 @@ jobs:
         run: |
           git config --local user.name "Monthly Data Bot"
           git config --local user.email "monthly-bot@palboard.net"
-          git add public/data/worldbank/
-          git add public/data/who/
-          git add public/data/unrwa/
-          git add public/data/pcbs/
-          git add public/data/unified/
-          git add public/data/manifest.json
-          git add public/data/validation-report.json
-          git add public/data/data-collection-summary.json
+          git add data/worldbank/
+          git add data/who/
+          git add data/unrwa/
+          git add data/pcbs/
+          git add data/unified/
+          git add data/manifest.json
+          git add data/validation-report.json
+          git add data/data-collection-summary.json
           git commit -m "🤖 Auto-update monthly data (World Bank, WHO, UNRWA, PCBS + Unified): $(date -u '+%Y-%m-%d %H:%M UTC')"
           git push
       
@@ -204,7 +204,7 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: validation-report-monthly
-          path: public/data/validation-report.json
+          path: data/validation-report.json
           retention-days: 30
       
       # 15. Upload summary report as artifact
@@ -213,7 +213,7 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: summary-report-monthly
-          path: public/data/data-collection-summary.json
+          path: data/data-collection-summary.json
           retention-days: 30
       
       # 16. Upload logs as artifact

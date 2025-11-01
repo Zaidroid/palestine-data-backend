@@ -29,7 +29,7 @@ const logger = createLogger({
 
 // Configuration
 const HDX_CKAN_BASE = 'https://data.humdata.org/api/3/action';
-const DATA_DIR = path.join(__dirname, '../public/data/hdx');
+const DATA_DIR = path.join(__dirname, '../data/hdx');
 const BASELINE_DATE = '2023-10-07';
 const RATE_LIMIT_DELAY = 1100; // 1.1 seconds
 

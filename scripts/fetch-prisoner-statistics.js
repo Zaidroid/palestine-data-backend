@@ -14,7 +14,7 @@ import { fileURLToPath } from 'url';
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
-const DATA_DIR = path.join(__dirname, '../public/data/goodshepherd/prisoners');
+const DATA_DIR = path.join(__dirname, '../data/goodshepherd/prisoners');
 const API_BASE = 'https://goodshepherdcollective.org/api';
 
 async function fetchJSON(url) {
@@ -95,9 +95,9 @@ async function main() {
     
     console.log('\n✅ Prisoner statistics downloaded successfully!');
     console.log('\nFiles created:');
-    console.log('  - public/data/goodshepherd/prisoners/statistics/monthly-totals.json');
-    console.log('  - public/data/goodshepherd/prisoners/statistics/child-age-groups.json');
-    console.log('  - public/data/goodshepherd/prisoners/statistics/index.json');
+    console.log('  - data/goodshepherd/prisoners/statistics/monthly-totals.json');
+    console.log('  - data/goodshepherd/prisoners/statistics/child-age-groups.json');
+    console.log('  - data/goodshepherd/prisoners/statistics/index.json');
     
   } catch (error) {
     console.error('\n❌ Error:', error.message);

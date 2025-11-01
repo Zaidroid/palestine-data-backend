@@ -19,7 +19,7 @@ import Papa from 'papaparse';
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
-const DATA_DIR = path.join(__dirname, '../public/data/who');
+const DATA_DIR = path.join(__dirname, '../data/who');
 const HDX_API_BASE = 'https://data.humdata.org/api/3/action';
 const RATE_LIMIT_DELAY = 1000;
 

@@ -12,7 +12,7 @@ import { fileURLToPath } from 'url';
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
-const DATA_DIR = path.join(__dirname, '../public/data/who-test');
+const DATA_DIR = path.join(__dirname, '../data/who-test');
 const WHO_API_BASE = 'https://ghoapi.azureedge.net/api';
 const COUNTRY_CODE = 'PSE';
 const RATE_LIMIT_DELAY = 1000;

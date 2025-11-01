@@ -20,7 +20,7 @@ import { fileURLToPath } from 'url';
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
-const DATA_DIR = path.join(__dirname, '../public/data');
+const DATA_DIR = path.join(__dirname, '../data');
 const BASELINE_DATE = '2023-10-07';
 const MAX_FILE_SIZE = 10 * 1024 * 1024; // 10MB
 

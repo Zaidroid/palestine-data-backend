@@ -13,7 +13,7 @@ const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
 // Read the test data
-const testDataPath = path.join(__dirname, '../public/data/who-test/test-data.json');
+const testDataPath = path.join(__dirname, '../data/who-test/test-data.json');
 
 async function testTransformer() {
   console.log('Testing WHO Transformer...\n');

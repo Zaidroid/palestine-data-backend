@@ -37,7 +37,7 @@ const logger = createLogger({
 
 // Configuration
 const HDX_CKAN_BASE = 'https://data.humdata.org/api/3/action';
-const DATA_DIR = path.join(__dirname, '../public/data/unrwa');
+const DATA_DIR = path.join(__dirname, '../data/unrwa');
 const RATE_LIMIT_DELAY = 1100; // 1.1 seconds
 
 // UNRWA-specific datasets to fetch from HDX
