@@ -1,6 +1,6 @@
 # Dependencies
 node_modules/
-package-lock.json
+# package-lock.json - KEEP THIS for GitHub Actions npm ci
 yarn.lock
 bun.lockb
 
