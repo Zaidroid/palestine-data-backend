@@ -1,0 +1,56 @@
+{
+  "dataset": "political-prisoners",
+  "date_range": {
+    "start": "2024-06-01T00:00:00.000Z",
+    "end": "2025-11-05T12:00:00.000Z",
+    "baseline_date": "2023-10-07"
+  },
+  "files": [
+    {
+      "file": "2024-Q2.json",
+      "quarter": "2024-Q2",
+      "records": 1
+    },
+    {
+      "file": "2024-Q3.json",
+      "quarter": "2024-Q3",
+      "records": 5
+    },
+    {
+      "file": "2024-Q4.json",
+      "quarter": "2024-Q4",
+      "records": 3
+    },
+    {
+      "file": "2025-Q1.json",
+      "quarter": "2025-Q1",
+      "records": 3
+    },
+    {
+      "file": "2025-Q2.json",
+      "quarter": "2025-Q2",
+      "records": 3
+    },
+    {
+      "file": "2025-Q3.json",
+      "quarter": "2025-Q3",
+      "records": 2
+    },
+    {
+      "file": "2025-Q4.json",
+      "quarter": "2025-Q4",
+      "records": 2
+    }
+  ],
+  "chunks": null,
+  "validation": {
+    "qualityScore": 0,
+    "completeness": 0,
+    "consistency": 0,
+    "accuracy": 0,
+    "meetsThreshold": false,
+    "errorCount": 57,
+    "warningCount": 0
+  },
+  "last_updated": "2025-11-25T11:30:29.074Z"
+}

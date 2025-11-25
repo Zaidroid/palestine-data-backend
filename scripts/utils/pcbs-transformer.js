@@ -22,9 +22,9 @@ export class PCBSTransformer extends BaseTransformer {
    * Transform raw PCBS data to unified format
    */
   transform(rawData, metadata) {
-    const records = Array.isArray(rawData) ? rawData : 
-                    (rawData.data ? rawData.data : []);
-    
+    const records = Array.isArray(rawData) ? rawData :
+      (rawData.data ? rawData.data : []);
+
     return records
       .filter(record => record && record.value !== null && record.value !== undefined)
       .map((record, index) => this.transformRecord(record, metadata, index));
@@ -39,16 +39,16 @@ export class PCBSTransformer extends BaseTransformer {
     const category = this.determineCategory(indicatorCode, indicatorName);
     const year = record.year || new Date(record.date).getFullYear();
     const date = `${year}-01-01`;
-    
+
     // Determine the unified data type based on category
     const unifiedType = this.getUnifiedType(category);
-    
+
     const baseRecord = {
       // Identity
       id: this.generateId('pcbs', { ...record, date }),
       type: unifiedType,
       category: category,
-      
+
       // Temporal
       date: date,
       timestamp: new Date(date).toISOString(),
@@ -56,14 +56,14 @@ export class PCBSTransformer extends BaseTransformer {
         type: 'year',
         value: year.toString(),
       },
-      
+
       // Spatial
       location: this.createPalestineLocation(record),
-      
+
       // Data
       value: parseFloat(record.value),
       unit: this.detectUnit(indicatorName, indicatorCode),
-      
+
       // Quality
       quality: this.enrichQuality({
         id: this.generateId('pcbs', record),
@@ -71,24 +71,24 @@ export class PCBSTransformer extends BaseTransformer {
         location: { name: record.region || 'Palestine' },
         value: record.value,
       }).quality,
-      
+
       // Provenance
       sources: [{
         name: 'Palestinian Central Bureau of Statistics (PCBS)',
         organization: 'PCBS',
-        url: record.source_detail === 'PCBS via World Bank API' 
-          ? 'https://api.worldbank.org/v2' 
+        url: record.source_detail === 'PCBS via World Bank API'
+          ? 'https://api.worldbank.org/v2'
           : 'https://www.pcbs.gov.ps',
         fetched_at: new Date().toISOString(),
         reliability_score: 0.95, // PCBS is official source
       }],
-      
+
       // Metadata
       created_at: new Date().toISOString(),
       updated_at: new Date().toISOString(),
       version: 1,
     };
-    
+
     // Add category-specific fields
     if (unifiedType === 'economic') {
       return {
@@ -104,7 +104,7 @@ export class PCBSTransformer extends BaseTransformer {
         demographic_category: this.getDemographicCategory(indicatorCode),
       };
     }
-    
+
     return {
       ...baseRecord,
       indicator_code: indicatorCode,
@@ -118,53 +118,53 @@ export class PCBSTransformer extends BaseTransformer {
   determineCategory(indicatorCode, indicatorName) {
     const code = indicatorCode.toUpperCase();
     const name = indicatorName.toLowerCase();
-    
+
     // Population indicators
-    if (code.startsWith('SP.POP') || code.startsWith('SP.DYN') || 
-        name.includes('population') || name.includes('birth rate') || 
-        name.includes('death rate') || name.includes('life expectancy')) {
+    if (code.startsWith('SP.POP') || code.startsWith('SP.DYN') ||
+      name.includes('population') || name.includes('birth rate') ||
+      name.includes('death rate') || name.includes('life expectancy')) {
       return 'population';
     }
-    
+
     // Labor indicators
-    if (code.startsWith('SL.') || name.includes('unemployment') || 
-        name.includes('labor force') || name.includes('employment')) {
+    if (code.startsWith('SL.') || name.includes('unemployment') ||
+      name.includes('labor force') || name.includes('employment')) {
       return 'labor';
     }
-    
+
     // Economic indicators
-    if (code.startsWith('NY.') || code.startsWith('NV.') || 
-        code.startsWith('NE.') || code.startsWith('FP.') ||
-        name.includes('gdp') || name.includes('inflation') || 
-        name.includes('trade') || name.includes('economic')) {
+    if (code.startsWith('NY.') || code.startsWith('NV.') ||
+      code.startsWith('NE.') || code.startsWith('FP.') ||
+      name.includes('gdp') || name.includes('inflation') ||
+      name.includes('trade') || name.includes('economic')) {
       return 'economic';
     }
-    
+
     // Poverty indicators
     if (code.startsWith('SI.POV') || code.startsWith('SI.DST') ||
-        name.includes('poverty') || name.includes('gini') || 
-        name.includes('income share')) {
+      name.includes('poverty') || name.includes('gini') ||
+      name.includes('income share')) {
       return 'poverty';
     }
-    
+
     // Education indicators
-    if (code.startsWith('SE.') || name.includes('education') || 
-        name.includes('school') || name.includes('literacy')) {
+    if (code.startsWith('SE.') || name.includes('education') ||
+      name.includes('school') || name.includes('literacy')) {
       return 'education';
     }
-    
+
     // Health indicators
     if (code.startsWith('SH.') && !code.startsWith('SH.H2O') && !code.startsWith('SH.STA.BASS')) {
       return 'health';
     }
-    
+
     // Housing/infrastructure indicators
-    if (code.startsWith('EG.ELC') || code.startsWith('SH.H2O') || 
-        code.startsWith('SH.STA.BASS') || name.includes('electricity') || 
-        name.includes('water') || name.includes('sanitation')) {
+    if (code.startsWith('EG.ELC') || code.startsWith('SH.H2O') ||
+      code.startsWith('SH.STA.BASS') || name.includes('electricity') ||
+      name.includes('water') || name.includes('sanitation')) {
       return 'housing';
     }
-    
+
     return 'other';
   }
 
@@ -182,7 +182,7 @@ export class PCBSTransformer extends BaseTransformer {
       'housing': 'infrastructure',
       'other': 'other',
     };
-    
+
     return typeMapping[category] || 'other';
   }
 
@@ -191,7 +191,7 @@ export class PCBSTransformer extends BaseTransformer {
    */
   getDemographicCategory(indicatorCode) {
     const code = indicatorCode.toUpperCase();
-    
+
     if (code.includes('POP.TOTL')) return 'total_population';
     if (code.includes('POP.GROW')) return 'population_growth';
     if (code.includes('URB')) return 'urbanization';
@@ -203,7 +203,7 @@ export class PCBSTransformer extends BaseTransformer {
     if (code.includes('CBRT')) return 'birth_rate';
     if (code.includes('CDRT')) return 'death_rate';
     if (code.includes('DPND')) return 'dependency_ratio';
-    
+
     return 'general';
   }
 
@@ -212,7 +212,7 @@ export class PCBSTransformer extends BaseTransformer {
    */
   createPalestineLocation(record) {
     const region = record.region || 'palestine';
-    
+
     return {
       name: this.formatRegionName(region),
       admin_levels: {
@@ -234,7 +234,7 @@ export class PCBSTransformer extends BaseTransformer {
       'westbank': 'West Bank',
       'east_jerusalem': 'East Jerusalem',
     };
-    
+
     return regionMap[region.toLowerCase()] || region;
   }
 
@@ -243,12 +243,12 @@ export class PCBSTransformer extends BaseTransformer {
    */
   normalizeRegion(region) {
     const normalized = region.toLowerCase().replace(/\s+/g, '_');
-    
-    if (normalized.includes('gaza')) return 'gaza';
-    if (normalized.includes('west') && normalized.includes('bank')) return 'west_bank';
-    if (normalized.includes('jerusalem')) return 'east_jerusalem';
-    
-    return 'palestine';
+
+    if (normalized.includes('gaza')) return 'Gaza Strip';
+    if (normalized.includes('west') && normalized.includes('bank')) return 'West Bank';
+    if (normalized.includes('jerusalem')) return 'East Jerusalem';
+
+    return 'Palestine';
   }
 
   /**
@@ -257,31 +257,31 @@ export class PCBSTransformer extends BaseTransformer {
   detectUnit(indicatorName, indicatorCode) {
     const name = indicatorName.toLowerCase();
     const code = indicatorCode.toUpperCase();
-    
+
     // Percentage indicators
     if (name.includes('(% of') || name.includes('(%)') || name.includes('percent')) {
       return 'percentage';
     }
-    
+
     // Currency indicators
     if (name.includes('us$') || name.includes('usd') || code.includes('CD')) {
       return 'currency_usd';
     }
-    
+
     // Rate per population
     if (name.includes('per 1,000')) return 'per_1000';
     if (name.includes('per 100,000')) return 'per_100000';
     if (name.includes('per 100 people')) return 'per_100';
-    
+
     // Specific units
     if (name.includes('births per woman')) return 'births_per_woman';
     if (name.includes('years')) return 'years';
     if (name.includes('ratio')) return 'ratio';
     if (name.includes('index')) return 'index';
-    
+
     // Count/number
     if (code.includes('TOTL.IN') || name.includes('total')) return 'count';
-    
+
     return 'number';
   }
 
@@ -301,7 +301,7 @@ export class PCBSTransformer extends BaseTransformer {
     return data.map(record => {
       const timeSeries = byIndicator[record.indicator_code] || [];
       const analysis = this.calculateTrendAnalysis(timeSeries, record);
-      
+
       return {
         ...record,
         analysis,
@@ -323,15 +323,15 @@ export class PCBSTransformer extends BaseTransformer {
     // Sort by date
     const sorted = [...timeSeries].sort((a, b) => a.date.localeCompare(b.date));
     const values = sorted.map(r => r.value);
-    
+
     // Calculate trend
     const trend = this.calculateLinearTrend(values);
     const growthRate = this.calculateAverageGrowth(values);
     const volatility = this.calculateStdDev(values);
-    
+
     // Recent change (last year)
     const currentIndex = sorted.findIndex(r => r.date === currentRecord.date);
-    const recentChange = currentIndex > 0 
+    const recentChange = currentIndex > 0
       ? ((sorted[currentIndex].value - sorted[currentIndex - 1].value) / sorted[currentIndex - 1].value) * 100
       : 0;
 
@@ -366,7 +366,7 @@ export class PCBSTransformer extends BaseTransformer {
     const sumX2 = (n * (n - 1) * (2 * n - 1)) / 6;
 
     const slope = (n * sumXY - sumX * sumY) / (n * sumX2 - sumX * sumX);
-    
+
     let direction = 'stable';
     if (slope > 0.01) direction = 'increasing';
     else if (slope < -0.01) direction = 'decreasing';
@@ -414,12 +414,12 @@ export class PCBSTransformer extends BaseTransformer {
     const baseline = timeSeries
       .filter(r => r.date <= baselineDate)
       .sort((a, b) => b.date.localeCompare(a.date))[0];
-    
+
     if (!baseline) return 0;
 
     const change = currentRecord.value - baseline.value;
-    const percentChange = baseline.value !== 0 
-      ? (change / baseline.value) * 100 
+    const percentChange = baseline.value !== 0
+      ? (change / baseline.value) * 100
       : 0;
 
     return percentChange;
@@ -430,23 +430,23 @@ export class PCBSTransformer extends BaseTransformer {
    */
   getUpdateFrequency(indicatorCode) {
     const code = indicatorCode.toUpperCase();
-    
+
     // Annual indicators
-    if (code.startsWith('NY.') || code.startsWith('SP.POP') || 
-        code.startsWith('SE.') || code.startsWith('SH.')) {
+    if (code.startsWith('NY.') || code.startsWith('SP.POP') ||
+      code.startsWith('SE.') || code.startsWith('SH.')) {
       return 'annual';
     }
-    
+
     // Quarterly indicators
     if (code.startsWith('SL.') || code.includes('GDP')) {
       return 'quarterly';
     }
-    
+
     // Monthly indicators
     if (code.includes('CPI') || code.includes('INFLATION')) {
       return 'monthly';
     }
-    
+
     return 'annual';
   }
 
@@ -456,7 +456,7 @@ export class PCBSTransformer extends BaseTransformer {
   validate(data) {
     const errors = [];
     const warnings = [];
-    
+
     data.forEach((record, index) => {
       // Check required fields
       if (!record.indicator_code) {
@@ -468,12 +468,12 @@ export class PCBSTransformer extends BaseTransformer {
       if (!record.date) {
         errors.push(`Record ${index}: Missing date`);
       }
-      
+
       // Check value ranges
       if (record.unit === 'percentage' && (record.value < 0 || record.value > 100)) {
         warnings.push(`Record ${index}: Percentage value out of range (${record.value})`);
       }
-      
+
       // Check date validity
       if (record.date) {
         const year = parseInt(record.date.split('-')[0]);
@@ -482,7 +482,7 @@ export class PCBSTransformer extends BaseTransformer {
         }
       }
     });
-    
+
     return {
       valid: errors.length === 0,
       errors,

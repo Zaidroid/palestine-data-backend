@@ -1,0 +1,2491 @@
+{
+  "metadata": {
+    "source": "goodshepherd",
+    "dataset": "healthcare-attacks",
+    "quarter": "2025-Q2",
+    "record_count": 155,
+    "last_updated": "2025-11-25T11:30:29.093Z"
+  },
+  "data": [
+    {
+      "date": "2025-04-01",
+      "facility_name": "Unknown",
+      "facility_type": "healthcare",
+      "location": "Unknown",
+      "incident_type": "attack",
+      "description": "01 April 2025: An INGO health worker was killed along with his family in an Israeli airstrike.\r\n",
+      "casualties": {
+        "killed": 1,
+        "injured": 0,
+        "kidnapped": 0
+      },
+      "latitude": 31.4183455,
+      "longitude": 34.3502476,
+      "source": "goodshepherd-api"
+    },
+    {
+      "date": "2025-04-01",
+      "facility_name": "Unknown",
+      "facility_type": "healthcare",
+      "location": "Unknown",
+      "incident_type": "attack",
+      "description": "Between early-February and at least 15 March 2025: International health care and humanitarian workers were denied entry by Israeli forces in the midst of an Israel-Hamas ceasefire deal. Half of doctors with preliminary approval through the World Health Organisation (WHO) learned about the refusal the night before their scheduled entry. ",
+      "casualties": {
+        "killed": 0,
+        "injured": 0,
+        "kidnapped": 0
+      },
+      "latitude": 31.4333502624,
+      "longitude": 34.3569960713,
+      "source": "goodshepherd-api"
+    },
+    {
+      "date": "2025-04-02",
+      "facility_name": "Unknown",
+      "facility_type": "healthcare",
+      "location": "Unknown",
+      "incident_type": "attack",
+      "description": "02 April 2025: A UN-agency health facility sheltering displaced people in a camp was hit by an Israeli airstrike, killing 22 Palestinians, including nine children, and injuring others. ",
+      "casualties": {
+        "killed": 0,
+        "injured": 0,
+        "kidnapped": 0
+      },
+      "latitude": 31.5290924248,
+      "longitude": 34.4840203437,
+      "source": "goodshepherd-api"
+    },
+    {
+      "date": "2025-04-03",
+      "facility_name": "Unknown",
+      "facility_type": "healthcare",
+      "location": "Unknown",
+      "incident_type": "attack",
+      "description": "03 April 2025: An aid warehouse partnered with an NGO was destroyed by an Israeli airstrike, burning of all pallets of medical supplies.\r\n",
+      "casualties": {
+        "killed": 0,
+        "injured": 0,
+        "kidnapped": 0
+      },
+      "latitude": 31.2752047,
+      "longitude": 34.2558269,
+      "source": "goodshepherd-api"
+    },
+    {
+      "date": "2025-04-05",
+      "facility_name": "Unknown",
+      "facility_type": "healthcare",
+      "location": "Unknown",
+      "incident_type": "attack",
+      "description": "05 April 2025: The vicinity of a medical facility was hit by an Israeli airstrike, killing two Palestinians. ",
+      "casualties": {
+        "killed": 0,
+        "injured": 0,
+        "kidnapped": 0
+      },
+      "latitude": 31.4200022681,
+      "longitude": 34.3597412109,
+      "source": "goodshepherd-api"
+    },
+    {
+      "date": "2025-04-05",
+      "facility_name": "Unknown",
+      "facility_type": "healthcare",
+      "location": "Unknown",
+      "incident_type": "attack",
+      "description": "05 April 2025: A medical health care worker and his brother were killed by Israeli forces airstrikes.",
+      "casualties": {
+        "killed": 1,
+        "injured": 0,
+        "kidnapped": 0
+      },
+      "latitude": 31.5050311,
+      "longitude": 34.4641381,
+      "source": "goodshepherd-api"
+    },
+    {
+      "date": "2025-04-07",
+      "facility_name": "Unknown",
+      "facility_type": "healthcare",
+      "location": "Unknown",
+      "incident_type": "attack",
+      "description": "07 April 2025: Two LNGO health workers were killed by an Israeli airstrike as they were leaving a medical facility.",
+      "casualties": {
+        "killed": 2,
+        "injured": 0,
+        "kidnapped": 0
+      },
+      "latitude": 31.5230199548,
+      "longitude": 34.4609365329,
+      "source": "goodshepherd-api"
+    },
+    {
+      "date": "2025-04-07",
+      "facility_name": "Unknown",
+      "facility_type": "healthcare",
+      "location": "Unknown",
+      "incident_type": "attack",
+      "description": "07 April 2025: A medical health worker  was detained by Israeli forces near a health facility. ",
+      "casualties": {
+        "killed": 0,
+        "injured": 0,
+        "kidnapped": 0
+      },
+      "latitude": 32.4620862094,
+      "longitude": 35.2915349538,
+      "source": "goodshepherd-api"
+    },
+    {
+      "date": "2025-04-07",
+      "facility_name": "Unknown",
+      "facility_type": "healthcare",
+      "location": "Unknown",
+      "incident_type": "attack",
+      "description": "07 April 2025: At a medical health facility a tent sheltering IDPs was struck by an Israeli airstrike. An unspecified number of people were killed and others were injured.",
+      "casualties": {
+        "killed": 0,
+        "injured": 0,
+        "kidnapped": 0
+      },
+      "latitude": 31.4200022681,
+      "longitude": 34.3597412109,
+      "source": "goodshepherd-api"
+    },
+    {
+      "date": "2025-04-07",
+      "facility_name": "Unknown",
+      "facility_type": "healthcare",
+      "location": "Unknown",
+      "incident_type": "attack",
+      "description": "07 April 2025: A health care worker and her family , including three children, were killed when Israeli airstrikes hit their home. ",
+      "casualties": {
+        "killed": 1,
+        "injured": 0,
+        "kidnapped": 0
+      },
+      "latitude": 31.4183455,
+      "longitude": 34.3502476,
+      "source": "goodshepherd-api"
+    },
+    {
+      "date": "2025-04-08",
+      "facility_name": "Unknown",
+      "facility_type": "healthcare",
+      "location": "Unknown",
+      "incident_type": "attack",
+      "description": "08 April 2025: Red Cross ambulances and fire trucks were blocked by Israeli forces from accessing a besieged house that was on fire.",
+      "casualties": {
+        "killed": 0,
+        "injured": 0,
+        "kidnapped": 0
+      },
+      "latitude": 32.2211327,
+      "longitude": 35.2607562,
+      "source": "goodshepherd-api"
+    },
+    {
+      "date": "2025-04-09",
+      "facility_name": "Unknown",
+      "facility_type": "healthcare",
+      "location": "Unknown",
+      "incident_type": "attack",
+      "description": "09 April 2025: Red Cross faced difficulty in accessing medical cases in a camp due to Israeli forces preventing its teams from moving. ",
+      "casualties": {
+        "killed": 0,
+        "injured": 0,
+        "kidnapped": 0
+      },
+      "latitude": 32.2053935884,
+      "longitude": 35.2865839068,
+      "source": "goodshepherd-api"
+    },
+    {
+      "date": "2025-04-09",
+      "facility_name": "Unknown",
+      "facility_type": "healthcare",
+      "location": "Unknown",
+      "incident_type": "attack",
+      "description": "09 April 2025: Around a medical health facility Israeli forces took up positions specifically in the area near a camp. An unspecified number of young men were detained and interrogated. ",
+      "casualties": {
+        "killed": 0,
+        "injured": 0,
+        "kidnapped": 0
+      },
+      "latitude": 32.3146240559,
+      "longitude": 35.0300467299,
+      "source": "goodshepherd-api"
+    },
+    {
+      "date": "2025-04-10",
+      "facility_name": "Unknown",
+      "facility_type": "healthcare",
+      "location": "Unknown",
+      "incident_type": "attack",
+      "description": "10 April 2025: The vicinity of a medical facility in a camp was struck by an airstrike from an Israeli helicopter, killing one person and injuring an unspecified number of others. ",
+      "casualties": {
+        "killed": 0,
+        "injured": 0,
+        "kidnapped": 0
+      },
+      "latitude": 31.3478325696,
+      "longitude": 34.2932331562,
+      "source": "goodshepherd-api"
+    },
+    {
+      "date": "2025-04-10",
+      "facility_name": "Unknown",
+      "facility_type": "healthcare",
+      "location": "Unknown",
+      "incident_type": "attack",
+      "description": "10 April 2025: Near the entrance of a medical health facility and a camp, Israeli forces detained several civilians, including municipality workers and one female patient for about three hours. ",
+      "casualties": {
+        "killed": 0,
+        "injured": 0,
+        "kidnapped": 0
+      },
+      "latitude": 32.4620862094,
+      "longitude": 35.2915349538,
+      "source": "goodshepherd-api"
+    },
+    {
+      "date": "2025-04-11",
+      "facility_name": "Unknown",
+      "facility_type": "healthcare",
+      "location": "Unknown",
+      "incident_type": "attack",
+      "description": "Between 11-12 April 2025: A UN-agency attempted for two days to reach a medical facility, but missions were denied by Israeli forces. ",
+      "casualties": {
+        "killed": 0,
+        "injured": 0,
+        "kidnapped": 0
+      },
+      "latitude": 31.5351927833,
+      "longitude": 34.5093655515,
+      "source": "goodshepherd-api"
+    },
+    {
+      "date": "2025-04-11",
+      "facility_name": "Unknown",
+      "facility_type": "healthcare",
+      "location": "Unknown",
+      "incident_type": "attack",
+      "description": "Between 11-12 April 2025: A UN-agency attempted for two days to reach a medical facility, but missions were denied by Israeli forces. ",
+      "casualties": {
+        "killed": 0,
+        "injured": 0,
+        "kidnapped": 0
+      },
+      "latitude": 31.5038940682,
+      "longitude": 34.4614505791,
+      "source": "goodshepherd-api"
+    },
+    {
+      "date": "2025-04-11",
+      "facility_name": "Unknown",
+      "facility_type": "healthcare",
+      "location": "Unknown",
+      "incident_type": "attack",
+      "description": "As reported on 11 April 2025: A medical health facility was hit by Israeli forces. ",
+      "casualties": {
+        "killed": 0,
+        "injured": 0,
+        "kidnapped": 0
+      },
+      "latitude": 31.4432234,
+      "longitude": 34.360007,
+      "source": "goodshepherd-api"
+    },
+    {
+      "date": "2025-04-11",
+      "facility_name": "Unknown",
+      "facility_type": "healthcare",
+      "location": "Unknown",
+      "incident_type": "attack",
+      "description": "11 April 2025: An IDP tent in a camp in the vicinity of a medical health facility  was struck by an Israeli airstrike, killing one person. ",
+      "casualties": {
+        "killed": 0,
+        "injured": 0,
+        "kidnapped": 0
+      },
+      "latitude": 31.3478325696,
+      "longitude": 34.2932331562,
+      "source": "goodshepherd-api"
+    },
+    {
+      "date": "2025-04-13",
+      "facility_name": "Unknown",
+      "facility_type": "healthcare",
+      "location": "Unknown",
+      "incident_type": "attack",
+      "description": "13 April 2025: A INGO medical facility was destroyed by Israeli airstrikes, causing fires and rendering it completely out of service. \r\n",
+      "casualties": {
+        "killed": 0,
+        "injured": 0,
+        "kidnapped": 0
+      },
+      "latitude": 31.5038940682,
+      "longitude": 34.4614505791,
+      "source": "goodshepherd-api"
+    },
+    {
+      "date": "2025-04-13",
+      "facility_name": "Unknown",
+      "facility_type": "healthcare",
+      "location": "Unknown",
+      "incident_type": "attack",
+      "description": "13 April 2025: A INGO medical facility was issued with a bomb threat by Israeli forces, giving patients 18 minutes to evacuate. A child patient died from the evacuation. \r\n",
+      "casualties": {
+        "killed": 0,
+        "injured": 0,
+        "kidnapped": 0
+      },
+      "latitude": 31.5038940682,
+      "longitude": 34.4614505791,
+      "source": "goodshepherd-api"
+    },
+    {
+      "date": "2025-04-13",
+      "facility_name": "Unknown",
+      "facility_type": "healthcare",
+      "location": "Unknown",
+      "incident_type": "attack",
+      "description": "13 April 2025: A health care worker was killed when the vicinity of an education facility was struck by an Israeli airstrike. ",
+      "casualties": {
+        "killed": 1,
+        "injured": 0,
+        "kidnapped": 0
+      },
+      "latitude": 31.5050311,
+      "longitude": 34.4641381,
+      "source": "goodshepherd-api"
+    },
+    {
+      "date": "2025-04-13",
+      "facility_name": "Unknown",
+      "facility_type": "healthcare",
+      "location": "Unknown",
+      "incident_type": "attack",
+      "description": "13 April 2025: A tent sheltering IDPs inside a medical health facility was hit in an Israeli airstrike. An unspecified number of people were killed and injured.",
+      "casualties": {
+        "killed": 0,
+        "injured": 0,
+        "kidnapped": 0
+      },
+      "latitude": 31.4200022681,
+      "longitude": 34.3597412109,
+      "source": "goodshepherd-api"
+    },
+    {
+      "date": "2025-04-14",
+      "facility_name": "Unknown",
+      "facility_type": "healthcare",
+      "location": "Unknown",
+      "incident_type": "attack",
+      "description": "14 April 2025: Israeli infantry units were deployed around a medical facility. ",
+      "casualties": {
+        "killed": 0,
+        "injured": 0,
+        "kidnapped": 0
+      },
+      "latitude": 32.4616576,
+      "longitude": 35.2934441,
+      "source": "goodshepherd-api"
+    },
+    {
+      "date": "2025-04-14",
+      "facility_name": "Unknown",
+      "facility_type": "healthcare",
+      "location": "Unknown",
+      "incident_type": "attack",
+      "description": "14 April 2025: The emergency and registration departments of a health facility in a camp were stormed by Israeli forces while a number of people and patients were present. They arrested a young man and detained a health worker member; both were later released.",
+      "casualties": {
+        "killed": 0,
+        "injured": 0,
+        "kidnapped": 0
+      },
+      "latitude": 32.4620862094,
+      "longitude": 35.2915349538,
+      "source": "goodshepherd-api"
+    },
+    {
+      "date": "2025-04-15",
+      "facility_name": "Unknown",
+      "facility_type": "healthcare",
+      "location": "Unknown",
+      "incident_type": "attack",
+      "description": "15 April 2025: An NGO supported medical facility was struck by Israeli airstrikes, killing a health worker and injuring nine health workers.",
+      "casualties": {
+        "killed": 1,
+        "injured": 9,
+        "kidnapped": 0
+      },
+      "latitude": 31.3581445998,
+      "longitude": 34.2728806682,
+      "source": "goodshepherd-api"
+    },
+    {
+      "date": "2025-04-15",
+      "facility_name": "Unknown",
+      "facility_type": "healthcare",
+      "location": "Unknown",
+      "incident_type": "attack",
+      "description": "15 April 2025: A house in the vicinity of a medical health facility was struck by an Israeli airstrike, killing one person and injuring another. ",
+      "casualties": {
+        "killed": 0,
+        "injured": 0,
+        "kidnapped": 0
+      },
+      "latitude": 31.4200022681,
+      "longitude": 34.3597412109,
+      "source": "goodshepherd-api"
+    },
+    {
+      "date": "2025-04-15",
+      "facility_name": "Unknown",
+      "facility_type": "healthcare",
+      "location": "Unknown",
+      "incident_type": "attack",
+      "description": "15 April 2025: In a temporary shelter, a tent sheltering IDPs near a medical facility was hit by an Israeli airstrike. One person was killed and an unspecified number of others were injured.",
+      "casualties": {
+        "killed": 0,
+        "injured": 0,
+        "kidnapped": 0
+      },
+      "latitude": 31.5168053,
+      "longitude": 34.4374877,
+      "source": "goodshepherd-api"
+    },
+    {
+      "date": "2025-04-16",
+      "facility_name": "Unknown",
+      "facility_type": "healthcare",
+      "location": "Unknown",
+      "incident_type": "attack",
+      "description": "16 April 2025: The premises of the Red Cross was struck and damaged by an explosive. ",
+      "casualties": {
+        "killed": 0,
+        "injured": 0,
+        "kidnapped": 0
+      },
+      "latitude": 31.4432234,
+      "longitude": 34.360007,
+      "source": "goodshepherd-api"
+    },
+    {
+      "date": "2025-04-19",
+      "facility_name": "Unknown",
+      "facility_type": "healthcare",
+      "location": "Unknown",
+      "incident_type": "attack",
+      "description": "19 April 2025: The vicinity of a medical health center was struck by an Israeli airstrike, killing a woman and her son. ",
+      "casualties": {
+        "killed": 0,
+        "injured": 0,
+        "kidnapped": 0
+      },
+      "latitude": 31.3478325696,
+      "longitude": 34.2932331562,
+      "source": "goodshepherd-api"
+    },
+    {
+      "date": "2025-04-21",
+      "facility_name": "Unknown",
+      "facility_type": "healthcare",
+      "location": "Unknown",
+      "incident_type": "attack",
+      "description": "21 April 2025: A medical health care worker was shot by Israeli forces after she got off a Ministry of Health bus.  ",
+      "casualties": {
+        "killed": 0,
+        "injured": 1,
+        "kidnapped": 0
+      },
+      "latitude": 31.3443293,
+      "longitude": 34.3095897,
+      "source": "goodshepherd-api"
+    },
+    {
+      "date": "2025-04-21",
+      "facility_name": "Unknown",
+      "facility_type": "healthcare",
+      "location": "Unknown",
+      "incident_type": "attack",
+      "description": "21 April 2025: A medical facility was directly opened fire at by Israeli forces. ",
+      "casualties": {
+        "killed": 0,
+        "injured": 0,
+        "kidnapped": 0
+      },
+      "latitude": 31.5038940682,
+      "longitude": 34.4614505791,
+      "source": "goodshepherd-api"
+    },
+    {
+      "date": "2025-04-21",
+      "facility_name": "Unknown",
+      "facility_type": "healthcare",
+      "location": "Unknown",
+      "incident_type": "attack",
+      "description": "As reported on 21 April: Hundreds of unidentified bodies were accumulating in a medical facility’s morgue, as Israel's blockade prevented the entry of DNA testing equipment needed to identify them. ",
+      "casualties": {
+        "killed": 0,
+        "injured": 0,
+        "kidnapped": 0
+      },
+      "latitude": 31.5240854092,
+      "longitude": 34.443495558,
+      "source": "goodshepherd-api"
+    },
+    {
+      "date": "2025-04-22",
+      "facility_name": "Unknown",
+      "facility_type": "healthcare",
+      "location": "Unknown",
+      "incident_type": "attack",
+      "description": "22 April 2025: The gate of a  NGO-supported health care facility was hit by Israeli forces, killing one staff member and destroying four ambulances.  ",
+      "casualties": {
+        "killed": 1,
+        "injured": 0,
+        "kidnapped": 0
+      },
+      "latitude": 31.3785395,
+      "longitude": 34.3086079,
+      "source": "goodshepherd-api"
+    },
+    {
+      "date": "2025-04-22",
+      "facility_name": "Unknown",
+      "facility_type": "healthcare",
+      "location": "Unknown",
+      "incident_type": "attack",
+      "description": "22 April 2025: A health care worker was killed in an Israeli airstrike. ",
+      "casualties": {
+        "killed": 1,
+        "injured": 0,
+        "kidnapped": 0
+      },
+      "latitude": 31.4181161843,
+      "longitude": 34.3494418889,
+      "source": "goodshepherd-api"
+    },
+    {
+      "date": "2025-04-23",
+      "facility_name": "Unknown",
+      "facility_type": "healthcare",
+      "location": "Unknown",
+      "incident_type": "attack",
+      "description": "23 April 2025: A medical facility was shelled by Israeli artillery, damaging the ICU and the solar panels and putting the hospital out of service. ",
+      "casualties": {
+        "killed": 0,
+        "injured": 0,
+        "kidnapped": 0
+      },
+      "latitude": 31.514929097,
+      "longitude": 34.4803443182,
+      "source": "goodshepherd-api"
+    },
+    {
+      "date": "2025-04-24",
+      "facility_name": "Unknown",
+      "facility_type": "healthcare",
+      "location": "Unknown",
+      "incident_type": "attack",
+      "description": "24 April 2025: The Palestinian red cross reported that their stock of food and relief items was running out. ",
+      "casualties": {
+        "killed": 0,
+        "injured": 0,
+        "kidnapped": 0
+      },
+      "latitude": 31.4432234,
+      "longitude": 34.360007,
+      "source": "goodshepherd-api"
+    },
+    {
+      "date": "2025-04-24",
+      "facility_name": "Unknown",
+      "facility_type": "healthcare",
+      "location": "Unknown",
+      "incident_type": "attack",
+      "description": "24 April 2025: A health worker was amongst at least 18 people killed, and others injured, in an Israeli airstrike on a home in a camp.",
+      "casualties": {
+        "killed": 1,
+        "injured": 0,
+        "kidnapped": 0
+      },
+      "latitude": 31.5290924248,
+      "longitude": 34.4840203437,
+      "source": "goodshepherd-api"
+    },
+    {
+      "date": "2025-04-24",
+      "facility_name": "Unknown",
+      "facility_type": "healthcare",
+      "location": "Unknown",
+      "incident_type": "attack",
+      "description": "24 April 2025: An ambulance transporting civilians, who had been shot by Israeli settlers, was stopped by Israeli forces at a checkpoint. ",
+      "casualties": {
+        "killed": 0,
+        "injured": 0,
+        "kidnapped": 0
+      },
+      "latitude": 32.3862146,
+      "longitude": 35.4806987,
+      "source": "goodshepherd-api"
+    },
+    {
+      "date": "2025-04-28",
+      "facility_name": "Unknown",
+      "facility_type": "healthcare",
+      "location": "Unknown",
+      "incident_type": "attack",
+      "description": "28 April 2025: The Palestinian Civil Defence reported that eight out of its 12 emergency vehicles, including fire, rescue, and ambulance services, were out of service due to fuel depletion. ",
+      "casualties": {
+        "killed": 0,
+        "injured": 0,
+        "kidnapped": 0
+      },
+      "latitude": 31.3443293,
+      "longitude": 34.3095897,
+      "source": "goodshepherd-api"
+    },
+    {
+      "date": "2025-04-28",
+      "facility_name": "Unknown",
+      "facility_type": "healthcare",
+      "location": "Unknown",
+      "incident_type": "attack",
+      "description": "28 April 2025: A red cross crew was forced to use their ambulance to block the road near a health facility by Israeli forces.",
+      "casualties": {
+        "killed": 0,
+        "injured": 0,
+        "kidnapped": 0
+      },
+      "latitude": 32.3111468,
+      "longitude": 35.0275505,
+      "source": "goodshepherd-api"
+    },
+    {
+      "date": "2025-04-28",
+      "facility_name": "Unknown",
+      "facility_type": "healthcare",
+      "location": "Unknown",
+      "incident_type": "attack",
+      "description": "28 April 2025: The vicinity of a medical facility was hit by an Israeli airstrike, killing seven people and injuring an unspecified number of others.",
+      "casualties": {
+        "killed": 0,
+        "injured": 0,
+        "kidnapped": 0
+      },
+      "latitude": 31.5473440388,
+      "longitude": 34.4575989674,
+      "source": "goodshepherd-api"
+    },
+    {
+      "date": "2025-04-29",
+      "facility_name": "Unknown",
+      "facility_type": "healthcare",
+      "location": "Unknown",
+      "incident_type": "attack",
+      "description": "29 April 2025: A female health worker was detained by Israeli forces after they raided her home. ",
+      "casualties": {
+        "killed": 0,
+        "injured": 0,
+        "kidnapped": 0
+      },
+      "latitude": 32.4150942,
+      "longitude": 35.2858998,
+      "source": "goodshepherd-api"
+    },
+    {
+      "date": "2025-05-01",
+      "facility_name": "Unknown",
+      "facility_type": "healthcare",
+      "location": "Unknown",
+      "incident_type": "attack",
+      "description": "May 2025: A medical health facility was attacked and destroyed by around 17 Israeli settlers. ",
+      "casualties": {
+        "killed": 0,
+        "injured": 0,
+        "kidnapped": 0
+      },
+      "latitude": 31.528902,
+      "longitude": 35.0944873,
+      "source": "goodshepherd-api"
+    },
+    {
+      "date": "2025-05-02",
+      "facility_name": "Unknown",
+      "facility_type": "healthcare",
+      "location": "Unknown",
+      "incident_type": "attack",
+      "description": "02 May 2025: An ambulance was obstructed while attempting to carry out its services in the morning. ",
+      "casualties": {
+        "killed": 0,
+        "injured": 0,
+        "kidnapped": 0
+      },
+      "latitude": 32.2205316,
+      "longitude": 35.2569374,
+      "source": "goodshepherd-api"
+    },
+    {
+      "date": "2025-05-05",
+      "facility_name": "Unknown",
+      "facility_type": "healthcare",
+      "location": "Unknown",
+      "incident_type": "attack",
+      "description": "05 May 2025: Red cross health workers were blocked by Israeli forces from entering a camp. ",
+      "casualties": {
+        "killed": 0,
+        "injured": 0,
+        "kidnapped": 0
+      },
+      "latitude": 32.317711389,
+      "longitude": 35.0592180861,
+      "source": "goodshepherd-api"
+    },
+    {
+      "date": "2025-05-05",
+      "facility_name": "Unknown",
+      "facility_type": "healthcare",
+      "location": "Unknown",
+      "incident_type": "attack",
+      "description": "05 May 2025: Two health care workers - a 55-year old male and a 24-year-old female from the same family - were killed by an Israeli forces airstrike. ",
+      "casualties": {
+        "killed": 2,
+        "injured": 0,
+        "kidnapped": 0
+      },
+      "latitude": 31.5050311,
+      "longitude": 34.4641381,
+      "source": "goodshepherd-api"
+    },
+    {
+      "date": "2025-05-06",
+      "facility_name": "Unknown",
+      "facility_type": "healthcare",
+      "location": "Unknown",
+      "incident_type": "attack",
+      "description": "06 May 2025: An unspecified number of ambulances were fired at by Israeli forces drones.",
+      "casualties": {
+        "killed": 0,
+        "injured": 0,
+        "kidnapped": 0
+      },
+      "latitude": 31.54977,
+      "longitude": 34.5024697,
+      "source": "goodshepherd-api"
+    },
+    {
+      "date": "2025-05-07",
+      "facility_name": "Unknown",
+      "facility_type": "healthcare",
+      "location": "Unknown",
+      "incident_type": "attack",
+      "description": "07 May 2025: A medical health care worker was killed in his home by Israeli airstrikes. ",
+      "casualties": {
+        "killed": 1,
+        "injured": 0,
+        "kidnapped": 0
+      },
+      "latitude": 31.341908688,
+      "longitude": 34.3082435191,
+      "source": "goodshepherd-api"
+    },
+    {
+      "date": "2025-05-07",
+      "facility_name": "Unknown",
+      "facility_type": "healthcare",
+      "location": "Unknown",
+      "incident_type": "attack",
+      "description": "07 May 2025: Two INGO workers were injured when an aerial bombardment hit close to an INGO medical facility.\r\n",
+      "casualties": {
+        "killed": 0,
+        "injured": 0,
+        "kidnapped": 0
+      },
+      "latitude": 31.5125568213,
+      "longitude": 34.4577653848,
+      "source": "goodshepherd-api"
+    },
+    {
+      "date": "2025-05-07",
+      "facility_name": "Unknown",
+      "facility_type": "healthcare",
+      "location": "Unknown",
+      "incident_type": "attack",
+      "description": "07 May 2025: A female NGO health worker was killed by missiles from an Israeli airstrike. ",
+      "casualties": {
+        "killed": 1,
+        "injured": 0,
+        "kidnapped": 0
+      },
+      "latitude": 31.5290924248,
+      "longitude": 34.4840203437,
+      "source": "goodshepherd-api"
+    },
+    {
+      "date": "2025-05-08",
+      "facility_name": "Unknown",
+      "facility_type": "healthcare",
+      "location": "Unknown",
+      "incident_type": "attack",
+      "description": "08 May 2025: A Civil Defense member was injured when a building collapsed on the team while attempting to retrieve the bodies of those killed or missing under the rubble from a previous Israeli strike. ",
+      "casualties": {
+        "killed": 0,
+        "injured": 1,
+        "kidnapped": 0
+      },
+      "latitude": 31.54977,
+      "longitude": 34.5024697,
+      "source": "goodshepherd-api"
+    },
+    {
+      "date": "2025-05-09",
+      "facility_name": "Unknown",
+      "facility_type": "healthcare",
+      "location": "Unknown",
+      "incident_type": "attack",
+      "description": "09 May 2025: An UNRWA health facility and aid distribution point was struck by an Israeli airstrike inside a camp, killing at least four people and injuring others. ",
+      "casualties": {
+        "killed": 0,
+        "injured": 0,
+        "kidnapped": 0
+      },
+      "latitude": 31.5290924248,
+      "longitude": 34.4840203437,
+      "source": "goodshepherd-api"
+    },
+    {
+      "date": "2025-05-10",
+      "facility_name": "Unknown",
+      "facility_type": "healthcare",
+      "location": "Unknown",
+      "incident_type": "attack",
+      "description": "10 May 2025: A medical facility was forced to reduce services due to the Israeli blockade imposed since 02 March, severely impacting the facility’s ability to provide medical care. ",
+      "casualties": {
+        "killed": 0,
+        "injured": 0,
+        "kidnapped": 0
+      },
+      "latitude": 31.3581445998,
+      "longitude": 34.2728806682,
+      "source": "goodshepherd-api"
+    },
+    {
+      "date": "2025-05-13",
+      "facility_name": "Unknown",
+      "facility_type": "healthcare",
+      "location": "Unknown",
+      "incident_type": "attack",
+      "description": "13 May 2025: A medical facility was struck by an Israeli forces airstrike, destroying the burn unit, 18 hospital beds in the surgical department, eight beds in the intensive care unit and ten inpatient beds. Two people were killed, including a journalist. Twelve other people were injured. The facility was one of only eight public medical facilities still partially operating. ",
+      "casualties": {
+        "killed": 0,
+        "injured": 0,
+        "kidnapped": 0
+      },
+      "latitude": 31.3478325696,
+      "longitude": 34.2932331562,
+      "source": "goodshepherd-api"
+    },
+    {
+      "date": "2025-05-13",
+      "facility_name": "Unknown",
+      "facility_type": "healthcare",
+      "location": "Unknown",
+      "incident_type": "attack",
+      "description": "13 May 2025: Two Civil Defence workers were injured when approaching a medical facility to assist casualties from a previous bombing by Israeli forces quadcopter drones. ",
+      "casualties": {
+        "killed": 0,
+        "injured": 2,
+        "kidnapped": 0
+      },
+      "latitude": 31.3023150385,
+      "longitude": 34.3195736658,
+      "source": "goodshepherd-api"
+    },
+    {
+      "date": "2025-05-13",
+      "facility_name": "Unknown",
+      "facility_type": "healthcare",
+      "location": "Unknown",
+      "incident_type": "attack",
+      "description": "13 May 2025: A UN medical facility was struck by six Israeli airstrikes which hit the internal courtyard and surrounding areas, killing 28 people and injuring others, including three Red Cross workers.  ",
+      "casualties": {
+        "killed": 0,
+        "injured": 0,
+        "kidnapped": 0
+      },
+      "latitude": 31.3023150385,
+      "longitude": 34.3195736658,
+      "source": "goodshepherd-api"
+    },
+    {
+      "date": "2025-05-14",
+      "facility_name": "Unknown",
+      "facility_type": "healthcare",
+      "location": "Unknown",
+      "incident_type": "attack",
+      "description": "14 May 2025: The vicinity of a medical facility was struck by Israeli forces airstrikes, killing 11 people, who were searching for bodies under the rubble.",
+      "casualties": {
+        "killed": 0,
+        "injured": 0,
+        "kidnapped": 0
+      },
+      "latitude": 31.3023150385,
+      "longitude": 34.3195736658,
+      "source": "goodshepherd-api"
+    },
+    {
+      "date": "2025-05-14",
+      "facility_name": "Unknown",
+      "facility_type": "healthcare",
+      "location": "Unknown",
+      "incident_type": "attack",
+      "description": "14 May 2025: Four medical health workers and all family members, were killed when their home was hit by Israeli airstrikes at dawn. ",
+      "casualties": {
+        "killed": 4,
+        "injured": 0,
+        "kidnapped": 0
+      },
+      "latitude": 31.5290924248,
+      "longitude": 34.4840203437,
+      "source": "goodshepherd-api"
+    },
+    {
+      "date": "2025-05-14",
+      "facility_name": "Unknown",
+      "facility_type": "healthcare",
+      "location": "Unknown",
+      "incident_type": "attack",
+      "description": "14 May 2025: An ambulance was prevented from transporting an injured patient by Israeli forces, who detained the patient. ",
+      "casualties": {
+        "killed": 0,
+        "injured": 0,
+        "kidnapped": 0
+      },
+      "latitude": 31.5303092,
+      "longitude": 35.0763328,
+      "source": "goodshepherd-api"
+    },
+    {
+      "date": "2025-05-15",
+      "facility_name": "Unknown",
+      "facility_type": "healthcare",
+      "location": "Unknown",
+      "incident_type": "attack",
+      "description": "Around 15 May 2025: A medical health care worker was injured when his home was hit by Israeli airstrikes. He died of his injuries on 15 May. ",
+      "casualties": {
+        "killed": 1,
+        "injured": 0,
+        "kidnapped": 0
+      },
+      "latitude": 31.341908688,
+      "longitude": 34.3082435191,
+      "source": "goodshepherd-api"
+    },
+    {
+      "date": "2025-05-15",
+      "facility_name": "Unknown",
+      "facility_type": "healthcare",
+      "location": "Unknown",
+      "incident_type": "attack",
+      "description": "15 May 2025: In a camp, an NGO-run medical facility was struck and damaged by an Israeli forces airstrike. \r\n",
+      "casualties": {
+        "killed": 0,
+        "injured": 0,
+        "kidnapped": 0
+      },
+      "latitude": 31.5338797038,
+      "longitude": 34.506565336,
+      "source": "goodshepherd-api"
+    },
+    {
+      "date": "2025-05-15",
+      "facility_name": "Unknown",
+      "facility_type": "healthcare",
+      "location": "Unknown",
+      "incident_type": "attack",
+      "description": "15 May 2025: An ambulance was blocked from reaching a civilian who had been assaulted by Israeli forces during a raid on his home. ",
+      "casualties": {
+        "killed": 0,
+        "injured": 0,
+        "kidnapped": 0
+      },
+      "latitude": 32.0441687908,
+      "longitude": 35.180933223,
+      "source": "goodshepherd-api"
+    },
+    {
+      "date": "2025-05-15",
+      "facility_name": "Unknown",
+      "facility_type": "healthcare",
+      "location": "Unknown",
+      "incident_type": "attack",
+      "description": "15 May 2025: A medical facility was struck and damaged by an Israeli airstrike. ",
+      "casualties": {
+        "killed": 0,
+        "injured": 0,
+        "kidnapped": 0
+      },
+      "latitude": 31.4523617091,
+      "longitude": 34.3889486144,
+      "source": "goodshepherd-api"
+    },
+    {
+      "date": "2025-05-15",
+      "facility_name": "Unknown",
+      "facility_type": "healthcare",
+      "location": "Unknown",
+      "incident_type": "attack",
+      "description": "15 May 2025: A health care worker was killed with his wife and five children when their home was hit by Israeli airstrikes. ",
+      "casualties": {
+        "killed": 1,
+        "injured": 0,
+        "kidnapped": 0
+      },
+      "latitude": 31.5290924248,
+      "longitude": 34.4840203437,
+      "source": "goodshepherd-api"
+    },
+    {
+      "date": "2025-05-15",
+      "facility_name": "Unknown",
+      "facility_type": "healthcare",
+      "location": "Unknown",
+      "incident_type": "attack",
+      "description": "15 May 2025: A medical facility and a prayer room were struck by an Israeli forces attack, killing 15 civilians, including 11 children and a woman, and injuring an unspecified number of others. ",
+      "casualties": {
+        "killed": 0,
+        "injured": 0,
+        "kidnapped": 0
+      },
+      "latitude": 31.5290924248,
+      "longitude": 34.4840203437,
+      "source": "goodshepherd-api"
+    },
+    {
+      "date": "2025-05-15",
+      "facility_name": "Unknown",
+      "facility_type": "healthcare",
+      "location": "Unknown",
+      "incident_type": "attack",
+      "description": "15 May 2025: A health care worker was killed when his home was hit by Israeli forces airstrikes. ",
+      "casualties": {
+        "killed": 1,
+        "injured": 0,
+        "kidnapped": 0
+      },
+      "latitude": 31.3439612379,
+      "longitude": 34.3085866615,
+      "source": "goodshepherd-api"
+    },
+    {
+      "date": "2025-05-16",
+      "facility_name": "Unknown",
+      "facility_type": "healthcare",
+      "location": "Unknown",
+      "incident_type": "attack",
+      "description": "16 May 2025: A red cross ambulance was struck by Israeli forces in a camp, hindering the transfer of injured individuals and resulting in an unspecified number of Palestinians being killed and injured. ",
+      "casualties": {
+        "killed": 0,
+        "injured": 0,
+        "kidnapped": 0
+      },
+      "latitude": 31.5290924248,
+      "longitude": 34.4840203437,
+      "source": "goodshepherd-api"
+    },
+    {
+      "date": "2025-05-16",
+      "facility_name": "Unknown",
+      "facility_type": "healthcare",
+      "location": "Unknown",
+      "incident_type": "attack",
+      "description": "As reported on 16 May 2025: The vicinity of a medical health facility was hit by an Israeli airstrike, disrupting access and raising the risk of closure.",
+      "casualties": {
+        "killed": 0,
+        "injured": 0,
+        "kidnapped": 0
+      },
+      "latitude": 31.5351927833,
+      "longitude": 34.5093655515,
+      "source": "goodshepherd-api"
+    },
+    {
+      "date": "2025-05-17",
+      "facility_name": "Unknown",
+      "facility_type": "healthcare",
+      "location": "Unknown",
+      "incident_type": "attack",
+      "description": "17 May 2025: A medical health care worker and his family were killed when their home was hit by Israeli airstrikes. ",
+      "casualties": {
+        "killed": 1,
+        "injured": 0,
+        "kidnapped": 0
+      },
+      "latitude": 31.341908688,
+      "longitude": 34.3082435191,
+      "source": "goodshepherd-api"
+    },
+    {
+      "date": "2025-05-17",
+      "facility_name": "Unknown",
+      "facility_type": "healthcare",
+      "location": "Unknown",
+      "incident_type": "attack",
+      "description": "17 May 2025: One person was killed and an unspecified number injured when Israeli helicopters struck a tent sheltering IDPs in the vicinity of a health facility.",
+      "casualties": {
+        "killed": 0,
+        "injured": 0,
+        "kidnapped": 0
+      },
+      "latitude": 31.4200022681,
+      "longitude": 34.3597412109,
+      "source": "goodshepherd-api"
+    },
+    {
+      "date": "2025-05-17",
+      "facility_name": "Unknown",
+      "facility_type": "healthcare",
+      "location": "Unknown",
+      "incident_type": "attack",
+      "description": "Around 17 May 2025: A medical health care worker was injured when his home was hit by an Israeli airstrike. He died of his injuries on 17 May. ",
+      "casualties": {
+        "killed": 1,
+        "injured": 1,
+        "kidnapped": 0
+      },
+      "latitude": 31.341908688,
+      "longitude": 34.3082435191,
+      "source": "goodshepherd-api"
+    },
+    {
+      "date": "2025-05-17",
+      "facility_name": "Unknown",
+      "facility_type": "healthcare",
+      "location": "Unknown",
+      "incident_type": "attack",
+      "description": "Around 26 May 2025: A medical health care worker was injured when his home in a camp was hit by an Israeli airstrike. ",
+      "casualties": {
+        "killed": 1,
+        "injured": 1,
+        "kidnapped": 0
+      },
+      "latitude": 31.5290924248,
+      "longitude": 34.4840203437,
+      "source": "goodshepherd-api"
+    },
+    {
+      "date": "2025-05-18",
+      "facility_name": "Unknown",
+      "facility_type": "healthcare",
+      "location": "Unknown",
+      "incident_type": "attack",
+      "description": "18 May 2025: Operations at primary medical facility were forced to cease operations after the facility came under direct attack. ",
+      "casualties": {
+        "killed": 0,
+        "injured": 0,
+        "kidnapped": 0
+      },
+      "latitude": 31.3772722572,
+      "longitude": 34.3343405509,
+      "source": "goodshepherd-api"
+    },
+    {
+      "date": "2025-05-18",
+      "facility_name": "Unknown",
+      "facility_type": "healthcare",
+      "location": "Unknown",
+      "incident_type": "attack",
+      "description": "18 May 2025: A medical facility was hit by Israeli airstrikes, further destroying the hospital’s infrastructure and oxygen lines. The attack complicated the hospital’s chances of reopening.",
+      "casualties": {
+        "killed": 0,
+        "injured": 0,
+        "kidnapped": 0
+      },
+      "latitude": 31.3023150385,
+      "longitude": 34.3195736658,
+      "source": "goodshepherd-api"
+    },
+    {
+      "date": "2025-05-18",
+      "facility_name": "Unknown",
+      "facility_type": "healthcare",
+      "location": "Unknown",
+      "incident_type": "attack",
+      "description": "18 May 2025: A medical facility was surrounded by Israeli tanks along with a bulldozer at the entrance of the hospital. Artillery was fired at the building, communications were cut with the hospital staff, and bulldozers demolished the northern fence of the facility. ",
+      "casualties": {
+        "killed": 0,
+        "injured": 0,
+        "kidnapped": 0
+      },
+      "latitude": 31.5351927833,
+      "longitude": 34.5093655515,
+      "source": "goodshepherd-api"
+    },
+    {
+      "date": "2025-05-18",
+      "facility_name": "Unknown",
+      "facility_type": "healthcare",
+      "location": "Unknown",
+      "incident_type": "attack",
+      "description": "Between 18-24 May 2025: A medical facility ran by the Red Cross was damaged by shrapnel after being hit by Israeli forces, forcing it to close. ",
+      "casualties": {
+        "killed": 0,
+        "injured": 0,
+        "kidnapped": 0
+      },
+      "latitude": 31.3517405124,
+      "longitude": 34.2981790731,
+      "source": "goodshepherd-api"
+    },
+    {
+      "date": "2025-05-18",
+      "facility_name": "Unknown",
+      "facility_type": "healthcare",
+      "location": "Unknown",
+      "incident_type": "attack",
+      "description": "18 May 2025: Tents sheltering IDPs, near an NGO-run medical facility, were bombed by Israeli helicopters, killing three civilians and injuring an unspecified number of others. ",
+      "casualties": {
+        "killed": 0,
+        "injured": 0,
+        "kidnapped": 0
+      },
+      "latitude": 31.35408779,
+      "longitude": 34.28046003,
+      "source": "goodshepherd-api"
+    },
+    {
+      "date": "2025-05-18",
+      "facility_name": "Unknown",
+      "facility_type": "healthcare",
+      "location": "Unknown",
+      "incident_type": "attack",
+      "description": "18 May 2025: In a camp, a medical facility and a house in its vicinity, was struck by Israeli forces artillery shelling. ",
+      "casualties": {
+        "killed": 0,
+        "injured": 0,
+        "kidnapped": 0
+      },
+      "latitude": 31.5338797038,
+      "longitude": 34.506565336,
+      "source": "goodshepherd-api"
+    },
+    {
+      "date": "2025-05-18",
+      "facility_name": "Unknown",
+      "facility_type": "healthcare",
+      "location": "Unknown",
+      "incident_type": "attack",
+      "description": "18 May 2025: A medical facility was damaged by Israeli shelling in its vicinity. Multiple departments, the main generators and the central electrical control panel were damaged as a result and all surgical operations were suspended.",
+      "casualties": {
+        "killed": 0,
+        "injured": 0,
+        "kidnapped": 0
+      },
+      "latitude": 31.3581445998,
+      "longitude": 34.2728806682,
+      "source": "goodshepherd-api"
+    },
+    {
+      "date": "2025-05-18",
+      "facility_name": "Unknown",
+      "facility_type": "healthcare",
+      "location": "Unknown",
+      "incident_type": "attack",
+      "description": "18 May 2025: A medical worker and seven others were killed in the vicinity of a school while digging a well. The site was struck by an Israeli forces drone. ",
+      "casualties": {
+        "killed": 1,
+        "injured": 0,
+        "kidnapped": 0
+      },
+      "latitude": 31.5050311,
+      "longitude": 34.4641381,
+      "source": "goodshepherd-api"
+    },
+    {
+      "date": "2025-05-19",
+      "facility_name": "Unknown",
+      "facility_type": "healthcare",
+      "location": "Unknown",
+      "incident_type": "attack",
+      "description": "19 May 2025: The electric generators in a medical facility were hit by Israeli forces, causing a fire to break out and a complete power outage. There were 55 people in the hospital, including patients and medical staff, with critical shortages of food and water. The facility was forced to suspend services.  \r\n02 June 2025: The remaining staff and patients in medical facility were evacuated. As a result, not a single hospital remained functional. ",
+      "casualties": {
+        "killed": 0,
+        "injured": 0,
+        "kidnapped": 0
+      },
+      "latitude": 31.5351927833,
+      "longitude": 34.5093655515,
+      "source": "goodshepherd-api"
+    },
+    {
+      "date": "2025-05-19",
+      "facility_name": "Unknown",
+      "facility_type": "healthcare",
+      "location": "Unknown",
+      "incident_type": "attack",
+      "description": "19 May 2025: The pharmaceutical warehouse of a medical facility was hit by an Israeli airstrike, killing at least six people and destroying much needed medical supplies and medication. The strike affected 15 pallets of medical supplies donated by UN partners. ",
+      "casualties": {
+        "killed": 0,
+        "injured": 0,
+        "kidnapped": 0
+      },
+      "latitude": 31.3478325696,
+      "longitude": 34.2932331562,
+      "source": "goodshepherd-api"
+    },
+    {
+      "date": "2025-05-19",
+      "facility_name": "Unknown",
+      "facility_type": "healthcare",
+      "location": "Unknown",
+      "incident_type": "attack",
+      "description": "19 May 2025: A request for the acting Deputy Humanitarian Coordinator to visit a health center was denied five times by Israeli authorities. ",
+      "casualties": {
+        "killed": 0,
+        "injured": 0,
+        "kidnapped": 0
+      },
+      "latitude": 31.3443293,
+      "longitude": 34.3095897,
+      "source": "goodshepherd-api"
+    },
+    {
+      "date": "2025-05-19",
+      "facility_name": "Unknown",
+      "facility_type": "healthcare",
+      "location": "Unknown",
+      "incident_type": "attack",
+      "description": "19 May 2025: A medical facility was hit by Israeli artillery shelling. The hospital was closed due to previous attacks. ",
+      "casualties": {
+        "killed": 0,
+        "injured": 0,
+        "kidnapped": 0
+      },
+      "latitude": 31.5473440388,
+      "longitude": 34.4575989674,
+      "source": "goodshepherd-api"
+    },
+    {
+      "date": "2025-05-19",
+      "facility_name": "Unknown",
+      "facility_type": "healthcare",
+      "location": "Unknown",
+      "incident_type": "attack",
+      "description": "19 May 2025: A house near a medical facility was hit by Israeli airstrikes.",
+      "casualties": {
+        "killed": 0,
+        "injured": 0,
+        "kidnapped": 0
+      },
+      "latitude": 31.5068080797,
+      "longitude": 34.4394027962,
+      "source": "goodshepherd-api"
+    },
+    {
+      "date": "2025-05-20",
+      "facility_name": "Unknown",
+      "facility_type": "healthcare",
+      "location": "Unknown",
+      "incident_type": "attack",
+      "description": "20 May 2025: A camp in the vicinity of a medical facility was hit by an Israeli airstrike, killing a man, woman, and their four children. ",
+      "casualties": {
+        "killed": 0,
+        "injured": 0,
+        "kidnapped": 0
+      },
+      "latitude": 31.3424951354,
+      "longitude": 34.308929804,
+      "source": "goodshepherd-api"
+    },
+    {
+      "date": "2025-05-20",
+      "facility_name": "Unknown",
+      "facility_type": "healthcare",
+      "location": "Unknown",
+      "incident_type": "attack",
+      "description": "20 May 2025: A medical facility ceased operations due to nearby hostilities. Patients and medical staff were forced to relocate, including six patients being treated in its malnutrition stabilization centre. ",
+      "casualties": {
+        "killed": 0,
+        "injured": 0,
+        "kidnapped": 0
+      },
+      "latitude": 31.5384016638,
+      "longitude": 34.5013082588,
+      "source": "goodshepherd-api"
+    },
+    {
+      "date": "2025-05-20",
+      "facility_name": "Unknown",
+      "facility_type": "healthcare",
+      "location": "Unknown",
+      "incident_type": "attack",
+      "description": "20 May 2025: In a camp, an ambulance was fired upon by Israeli quadcopters inside an NGO-run medical facility.",
+      "casualties": {
+        "killed": 0,
+        "injured": 0,
+        "kidnapped": 0
+      },
+      "latitude": 31.5338797038,
+      "longitude": 34.506565336,
+      "source": "goodshepherd-api"
+    },
+    {
+      "date": "2025-05-20",
+      "facility_name": "Unknown",
+      "facility_type": "healthcare",
+      "location": "Unknown",
+      "incident_type": "attack",
+      "description": "20 May 2025: Near a camp, a red cross ambulance was blocked from accessing the area during an Israeli offensive on the camp. ",
+      "casualties": {
+        "killed": 0,
+        "injured": 0,
+        "kidnapped": 0
+      },
+      "latitude": 32.2147254544,
+      "longitude": 35.3052053059,
+      "source": "goodshepherd-api"
+    },
+    {
+      "date": "2025-05-20",
+      "facility_name": "Unknown",
+      "facility_type": "healthcare",
+      "location": "Unknown",
+      "incident_type": "attack",
+      "description": "20 May 2025: A Red Cross ambulance was blocked from accessing the area during an Israeli offensive on the camp. ",
+      "casualties": {
+        "killed": 0,
+        "injured": 0,
+        "kidnapped": 0
+      },
+      "latitude": 32.2147254544,
+      "longitude": 35.3052053059,
+      "source": "goodshepherd-api"
+    },
+    {
+      "date": "2025-05-21",
+      "facility_name": "Unknown",
+      "facility_type": "healthcare",
+      "location": "Unknown",
+      "incident_type": "attack",
+      "description": "21 May 2025: Medical equipment was looted from a medical facility by unidentified perpetrators, including hospital beds, medicines, medical supplies, fuel for generators, and solar panels used to power local water wells. Israeli forces reportedly used quadcopters to provide aerial cover for the thieves during the theft. ",
+      "casualties": {
+        "killed": 0,
+        "injured": 0,
+        "kidnapped": 0
+      },
+      "latitude": 31.5384016638,
+      "longitude": 34.5013082588,
+      "source": "goodshepherd-api"
+    },
+    {
+      "date": "2025-05-21",
+      "facility_name": "Unknown",
+      "facility_type": "healthcare",
+      "location": "Unknown",
+      "incident_type": "attack",
+      "description": "21 May 2025: Residential building near a medical facility was bombarded by Israeli forces. ",
+      "casualties": {
+        "killed": 0,
+        "injured": 0,
+        "kidnapped": 0
+      },
+      "latitude": 31.542776898,
+      "longitude": 34.4705271578,
+      "source": "goodshepherd-api"
+    },
+    {
+      "date": "2025-05-21",
+      "facility_name": "Unknown",
+      "facility_type": "healthcare",
+      "location": "Unknown",
+      "incident_type": "attack",
+      "description": "21 May 2025: A medical health care worker and his family, including his young children, were killed when his home was hit by an Israeli airstrike. ",
+      "casualties": {
+        "killed": 1,
+        "injured": 0,
+        "kidnapped": 0
+      },
+      "latitude": 31.5290924248,
+      "longitude": 34.4840203437,
+      "source": "goodshepherd-api"
+    },
+    {
+      "date": "2025-05-21",
+      "facility_name": "Unknown",
+      "facility_type": "healthcare",
+      "location": "Unknown",
+      "incident_type": "attack",
+      "description": "21 May 2025: Two medical health care workers were killed when Israeli airstrikes fired at a group of people. ",
+      "casualties": {
+        "killed": 2,
+        "injured": 0,
+        "kidnapped": 0
+      },
+      "latitude": 31.3443293,
+      "longitude": 34.3095897,
+      "source": "goodshepherd-api"
+    },
+    {
+      "date": "2025-05-21",
+      "facility_name": "Unknown",
+      "facility_type": "healthcare",
+      "location": "Unknown",
+      "incident_type": "attack",
+      "description": "21 May 2025: In a camp, an NGO-run medical facility was shelled by Israeli artillery fire. Gunfire hit the water tanks. One health worker was injured.",
+      "casualties": {
+        "killed": 0,
+        "injured": 1,
+        "kidnapped": 0
+      },
+      "latitude": 31.5338797038,
+      "longitude": 34.506565336,
+      "source": "goodshepherd-api"
+    },
+    {
+      "date": "2025-05-22",
+      "facility_name": "Unknown",
+      "facility_type": "healthcare",
+      "location": "Unknown",
+      "incident_type": "attack",
+      "description": "22 May 2025: A medical facility was shot at by Israeli forces in vehicles as the siege on the facility continued.",
+      "casualties": {
+        "killed": 0,
+        "injured": 0,
+        "kidnapped": 0
+      },
+      "latitude": 31.5351927833,
+      "longitude": 34.5093655515,
+      "source": "goodshepherd-api"
+    },
+    {
+      "date": "2025-05-22",
+      "facility_name": "Unknown",
+      "facility_type": "healthcare",
+      "location": "Unknown",
+      "incident_type": "attack",
+      "description": " 22 May 2025: In a camp, an NGO-run medical facility was stormed by Israeli forces vehicles who opened heavy fire. Ambulance access was blocked and medical staff were unable to leave or reach the facility, with Israeli forces firing at any movement. Tents sheltering IDPs in the courtyard were set on fire. ",
+      "casualties": {
+        "killed": 0,
+        "injured": 0,
+        "kidnapped": 0
+      },
+      "latitude": 31.5338797038,
+      "longitude": 34.506565336,
+      "source": "goodshepherd-api"
+    },
+    {
+      "date": "2025-05-22",
+      "facility_name": "Unknown",
+      "facility_type": "healthcare",
+      "location": "Unknown",
+      "incident_type": "attack",
+      "description": "22 May 2025: In a camp, an NGO-run medical facility was hit by an Israeli airstrike, resulting in a fire in the medical supplies warehouse. The fire lasted more than two days and caused near-total destruction of the external facilities, including medical vehicles and equipment. ",
+      "casualties": {
+        "killed": 0,
+        "injured": 0,
+        "kidnapped": 0
+      },
+      "latitude": 31.5338797038,
+      "longitude": 34.506565336,
+      "source": "goodshepherd-api"
+    },
+    {
+      "date": "2025-05-22",
+      "facility_name": "Unknown",
+      "facility_type": "healthcare",
+      "location": "Unknown",
+      "incident_type": "attack",
+      "description": "22 May 2025: In a camp, an NGO-ran medical facility was hit twice by Israeli forces bombing. ",
+      "casualties": {
+        "killed": 0,
+        "injured": 0,
+        "kidnapped": 0
+      },
+      "latitude": 31.5338797038,
+      "longitude": 34.506565336,
+      "source": "goodshepherd-api"
+    },
+    {
+      "date": "2025-05-22",
+      "facility_name": "Unknown",
+      "facility_type": "healthcare",
+      "location": "Unknown",
+      "incident_type": "attack",
+      "description": "22 May 2025: An ambulance transferring a patient was stopped and a paramedic was detained at a military checkpoint. ",
+      "casualties": {
+        "killed": 0,
+        "injured": 0,
+        "kidnapped": 0
+      },
+      "latitude": 31.8985463001,
+      "longitude": 35.2139336933,
+      "source": "goodshepherd-api"
+    },
+    {
+      "date": "2025-05-23",
+      "facility_name": "Unknown",
+      "facility_type": "healthcare",
+      "location": "Unknown",
+      "incident_type": "attack",
+      "description": "23 May 2025: A medical health care worker was injured, and nine of his ten children - aged between seven months and 12 years old - were killed as a result of the airstrike on his home by the Israeli forces. The surviving child was injured, while the doctor received injuries to his brain, lungs, right arm and kidney; he was left in intensive care. On 01 June, the medical health care worker succumbed to his wounds. ",
+      "casualties": {
+        "killed": 1,
+        "injured": 0,
+        "kidnapped": 0
+      },
+      "latitude": 31.3436680192,
+      "longitude": 34.3082435191,
+      "source": "goodshepherd-api"
+    },
+    {
+      "date": "2025-05-23",
+      "facility_name": "Unknown",
+      "facility_type": "healthcare",
+      "location": "Unknown",
+      "incident_type": "attack",
+      "description": "23 May 2025: In a camp, in the vicinity of an NGO-run medical facility, Israeli forces blew up a booby-trapped robot. ",
+      "casualties": {
+        "killed": 0,
+        "injured": 0,
+        "kidnapped": 0
+      },
+      "latitude": 31.5338797038,
+      "longitude": 34.506565336,
+      "source": "goodshepherd-api"
+    },
+    {
+      "date": "2025-05-23",
+      "facility_name": "Unknown",
+      "facility_type": "healthcare",
+      "location": "Unknown",
+      "incident_type": "attack",
+      "description": "23 May 2025: In a camp, an NGO-run medical facility was struck by an Israeli drone attack, injuring at least three health workers.",
+      "casualties": {
+        "killed": 0,
+        "injured": 3,
+        "kidnapped": 0
+      },
+      "latitude": 31.5338797038,
+      "longitude": 34.506565336,
+      "source": "goodshepherd-api"
+    },
+    {
+      "date": "2025-05-23",
+      "facility_name": "Unknown",
+      "facility_type": "healthcare",
+      "location": "Unknown",
+      "incident_type": "attack",
+      "description": "23 May 2025: 31 aid trucks en route to a warehouse were attacked by looters, reportedly enabled by Israeli forces. Looters attempted to seize aid supplies and opened fire on the convoy. A group of security personnel intervened to prevent the looting, at least six were killed by Israeli missile strikes. Civilians who tried to rescue the bombed security team were also struck by Israeli forces. Ambulances dispatched to transport the injured were also struck, over eight consecutive Israeli airstrikes struck the area. ",
+      "casualties": {
+        "killed": 0,
+        "injured": 0,
+        "kidnapped": 0
+      },
+      "latitude": 31.4183455,
+      "longitude": 34.3502476,
+      "source": "goodshepherd-api"
+    },
+    {
+      "date": "2025-05-23",
+      "facility_name": "Unknown",
+      "facility_type": "healthcare",
+      "location": "Unknown",
+      "incident_type": "attack",
+      "description": "23 May 2025: Health and aid workers were among ten people killed and an unspecified number injured when Israeli drones fired at the entrance a town. Deaths and injuries were unspecified. ",
+      "casualties": {
+        "killed": 1,
+        "injured": 0,
+        "kidnapped": 0
+      },
+      "latitude": 31.4183455,
+      "longitude": 34.3502476,
+      "source": "goodshepherd-api"
+    },
+    {
+      "date": "2025-05-24",
+      "facility_name": "Unknown",
+      "facility_type": "healthcare",
+      "location": "Unknown",
+      "incident_type": "attack",
+      "description": "24 May 2025: Two health care workers were killed when their home was hit by an Israeli airstrike. ",
+      "casualties": {
+        "killed": 2,
+        "injured": 0,
+        "kidnapped": 0
+      },
+      "latitude": 31.3443293,
+      "longitude": 34.3095897,
+      "source": "goodshepherd-api"
+    },
+    {
+      "date": "2025-05-25",
+      "facility_name": "Unknown",
+      "facility_type": "healthcare",
+      "location": "Unknown",
+      "incident_type": "attack",
+      "description": "25 May 2025: In a camp, the head of operations for Palestinian Defense and his wife were killed in an Israeli airstrike on a home.",
+      "casualties": {
+        "killed": 1,
+        "injured": 0,
+        "kidnapped": 0
+      },
+      "latitude": 31.4482157917,
+      "longitude": 34.393408289,
+      "source": "goodshepherd-api"
+    },
+    {
+      "date": "2025-05-27",
+      "facility_name": "Unknown",
+      "facility_type": "healthcare",
+      "location": "Unknown",
+      "incident_type": "attack",
+      "description": "27 May 2025: An LNGO ambulance was fired upon by Israeli forces while it was transporting wounded individuals during a raid on the city. ",
+      "casualties": {
+        "killed": 0,
+        "injured": 0,
+        "kidnapped": 0
+      },
+      "latitude": 32.2211327,
+      "longitude": 35.2607562,
+      "source": "goodshepherd-api"
+    },
+    {
+      "date": "2025-05-27",
+      "facility_name": "Unknown",
+      "facility_type": "healthcare",
+      "location": "Unknown",
+      "incident_type": "attack",
+      "description": "27 May 2025: An ambulance was fired upon by Israeli forces while it was transporting wounded individuals during a raid. ",
+      "casualties": {
+        "killed": 0,
+        "injured": 0,
+        "kidnapped": 0
+      },
+      "latitude": 32.217449551,
+      "longitude": 35.2578738728,
+      "source": "goodshepherd-api"
+    },
+    {
+      "date": "2025-05-27",
+      "facility_name": "Unknown",
+      "facility_type": "healthcare",
+      "location": "Unknown",
+      "incident_type": "attack",
+      "description": "27 May 2025: One person was killed in an Israeli airstrike on three homes in a camp near a medical facility.",
+      "casualties": {
+        "killed": 0,
+        "injured": 0,
+        "kidnapped": 0
+      },
+      "latitude": 31.542776898,
+      "longitude": 34.4705271578,
+      "source": "goodshepherd-api"
+    },
+    {
+      "date": "2025-05-28",
+      "facility_name": "Unknown",
+      "facility_type": "healthcare",
+      "location": "Unknown",
+      "incident_type": "attack",
+      "description": "28 May 2025: A civilian was killed by an Israeli drone strike near a medical facility. ",
+      "casualties": {
+        "killed": 0,
+        "injured": 0,
+        "kidnapped": 0
+      },
+      "latitude": 31.3035067571,
+      "longitude": 34.3178123355,
+      "source": "goodshepherd-api"
+    },
+    {
+      "date": "2025-05-28",
+      "facility_name": "Unknown",
+      "facility_type": "healthcare",
+      "location": "Unknown",
+      "incident_type": "attack",
+      "description": "28 May 2025: The main building of a medical facility was hit when Israeli tanks opened heavy machine gunfire in a camp.",
+      "casualties": {
+        "killed": 0,
+        "injured": 0,
+        "kidnapped": 0
+      },
+      "latitude": 31.5290924248,
+      "longitude": 34.4840203437,
+      "source": "goodshepherd-api"
+    },
+    {
+      "date": "2025-05-29",
+      "facility_name": "Unknown",
+      "facility_type": "healthcare",
+      "location": "Unknown",
+      "incident_type": "attack",
+      "description": "29 May 2025: The medical team in a NGO-run medical facility was ordered to evacuate under threat of storming the facility as attacks intensified. The medical facility sheltering at least 160 people, was the only remaining partially functioning one. The facility was overwhelmed with injuries and critically low on supplies. Ongoing hostilities over the past two weeks damaged it, disrupted access, and created panic, deterring people from seeking care. ",
+      "casualties": {
+        "killed": 0,
+        "injured": 0,
+        "kidnapped": 0
+      },
+      "latitude": 31.5338797038,
+      "longitude": 34.506565336,
+      "source": "goodshepherd-api"
+    },
+    {
+      "date": "2025-05-29",
+      "facility_name": "Unknown",
+      "facility_type": "healthcare",
+      "location": "Unknown",
+      "incident_type": "attack",
+      "description": "29 May 2025: A volunteer health team was fired upon by Israeli forces at the entrance a the camp. ",
+      "casualties": {
+        "killed": 0,
+        "injured": 0,
+        "kidnapped": 0
+      },
+      "latitude": 32.3136127735,
+      "longitude": 35.0349283566,
+      "source": "goodshepherd-api"
+    },
+    {
+      "date": "2025-05-30",
+      "facility_name": "Unknown",
+      "facility_type": "healthcare",
+      "location": "Unknown",
+      "incident_type": "attack",
+      "description": "30 May 2025: An unspecified number of health workers were injured when a group of people was hit by an Israeli airstrike. ",
+      "casualties": {
+        "killed": 1,
+        "injured": 0,
+        "kidnapped": 0
+      },
+      "latitude": 31.5050311,
+      "longitude": 34.4641381,
+      "source": "goodshepherd-api"
+    },
+    {
+      "date": "2025-05-30",
+      "facility_name": "Unknown",
+      "facility_type": "healthcare",
+      "location": "Unknown",
+      "incident_type": "attack",
+      "description": "30 May 2025: The warehouses of a medical facility was stormed by a group ‎of armed individuals, looting large quantities of medical equipment, supplies, medicines and nutritional supplements intended for malnourished children. ",
+      "casualties": {
+        "killed": 0,
+        "injured": 0,
+        "kidnapped": 0
+      },
+      "latitude": 31.4183455,
+      "longitude": 34.3502476,
+      "source": "goodshepherd-api"
+    },
+    {
+      "date": "2025-05-31",
+      "facility_name": "Unknown",
+      "facility_type": "healthcare",
+      "location": "Unknown",
+      "incident_type": "attack",
+      "description": "31 May 2025: A pregnant medical health care worker was killed along with her husband and her unborn child in an Israeli airstrike while providing medical assistance to displaced families. ",
+      "casualties": {
+        "killed": 1,
+        "injured": 0,
+        "kidnapped": 0
+      },
+      "latitude": 31.5050311,
+      "longitude": 34.4641381,
+      "source": "goodshepherd-api"
+    },
+    {
+      "date": "2025-05-31",
+      "facility_name": "Unknown",
+      "facility_type": "healthcare",
+      "location": "Unknown",
+      "incident_type": "attack",
+      "description": "31 May 2025: Israeli authorities issued a displacement order which affected about 100,00 people. Two primary medical facilities and five medical points were within the displacement area – while three medical facilities, three field medical facilities, seven primary medical facilities and 20 medical points were located within 1,000 metres of it. ",
+      "casualties": {
+        "killed": 0,
+        "injured": 0,
+        "kidnapped": 0
+      },
+      "latitude": 31.3443293,
+      "longitude": 34.3095897,
+      "source": "goodshepherd-api"
+    },
+    {
+      "date": "2025-06-01",
+      "facility_name": "Unknown",
+      "facility_type": "healthcare",
+      "location": "Unknown",
+      "incident_type": "attack",
+      "description": "01 June 2025: A medical health facility was completely destroyed by Israeli forces’ bulldozers. ",
+      "casualties": {
+        "killed": 0,
+        "injured": 0,
+        "kidnapped": 0
+      },
+      "latitude": 31.5353611044,
+      "longitude": 34.5105403751,
+      "source": "goodshepherd-api"
+    },
+    {
+      "date": "2025-06-01",
+      "facility_name": "Unknown",
+      "facility_type": "healthcare",
+      "location": "Unknown",
+      "incident_type": "attack",
+      "description": "01 June 2025: A Red Cross ambulance was fired upon by an Israeli forces drone. ",
+      "casualties": {
+        "killed": 0,
+        "injured": 0,
+        "kidnapped": 0
+      },
+      "latitude": 31.4384767815,
+      "longitude": 34.4034718931,
+      "source": "goodshepherd-api"
+    },
+    {
+      "date": "2025-06-02",
+      "facility_name": "Unknown",
+      "facility_type": "healthcare",
+      "location": "Unknown",
+      "incident_type": "attack",
+      "description": "02 June 2025: A medical health care worker was killed by an Israeli forces airstrike. ",
+      "casualties": {
+        "killed": 1,
+        "injured": 0,
+        "kidnapped": 0
+      },
+      "latitude": 31.4183455,
+      "longitude": 34.3502476,
+      "source": "goodshepherd-api"
+    },
+    {
+      "date": "2025-06-02",
+      "facility_name": "Unknown",
+      "facility_type": "healthcare",
+      "location": "Unknown",
+      "incident_type": "attack",
+      "description": "05 June 2025: A medical health care worker was killed when Israeli forces airstrikes struck a group of people near Al-Shifa Tower. ",
+      "casualties": {
+        "killed": 1,
+        "injured": 0,
+        "kidnapped": 0
+      },
+      "latitude": 31.4183455,
+      "longitude": 34.3502476,
+      "source": "goodshepherd-api"
+    },
+    {
+      "date": "2025-06-03",
+      "facility_name": "Unknown",
+      "facility_type": "healthcare",
+      "location": "Unknown",
+      "incident_type": "attack",
+      "description": "03 June 2025: Drones were deployed into a besieged medical facility by Israeli forces. The facility was then raided by the forces who interrogated the guards, and forced them to prepare for the evacuation of patients and staff.",
+      "casualties": {
+        "killed": 0,
+        "injured": 0,
+        "kidnapped": 0
+      },
+      "latitude": 31.3035067571,
+      "longitude": 34.3178123355,
+      "source": "goodshepherd-api"
+    },
+    {
+      "date": "2025-06-04",
+      "facility_name": "Unknown",
+      "facility_type": "healthcare",
+      "location": "Unknown",
+      "incident_type": "attack",
+      "description": "04 June 2025: The roof of the administration building at a medical facility was struck by two Israeli armed drones, damaging water tanks. ",
+      "casualties": {
+        "killed": 0,
+        "injured": 0,
+        "kidnapped": 0
+      },
+      "latitude": 31.4200022681,
+      "longitude": 34.3597412109,
+      "source": "goodshepherd-api"
+    },
+    {
+      "date": "2025-06-05",
+      "facility_name": "Unknown",
+      "facility_type": "healthcare",
+      "location": "Unknown",
+      "incident_type": "attack",
+      "description": "05 June 2025: Facilities at a medical facility were destroyed by Israeli forces using bulldozers. They also opened fire on the hospital. ",
+      "casualties": {
+        "killed": 0,
+        "injured": 0,
+        "kidnapped": 0
+      },
+      "latitude": 31.5351927833,
+      "longitude": 34.5093655515,
+      "source": "goodshepherd-api"
+    },
+    {
+      "date": "2025-06-05",
+      "facility_name": "Unknown",
+      "facility_type": "healthcare",
+      "location": "Unknown",
+      "incident_type": "attack",
+      "description": "05 June 2025: The courtyard of a NGO-run medical facility was bombed by an Israeli forces drone, killing at least three journalists and wounding a fourth. ",
+      "casualties": {
+        "killed": 0,
+        "injured": 0,
+        "kidnapped": 0
+      },
+      "latitude": 31.5050311,
+      "longitude": 34.4641381,
+      "source": "goodshepherd-api"
+    },
+    {
+      "date": "2025-06-05",
+      "facility_name": "Unknown",
+      "facility_type": "healthcare",
+      "location": "Unknown",
+      "incident_type": "attack",
+      "description": "24 June 2025: A medical facility was opened fire at by Israeli forces drones.",
+      "casualties": {
+        "killed": 0,
+        "injured": 0,
+        "kidnapped": 0
+      },
+      "latitude": 31.5038940682,
+      "longitude": 34.4614505791,
+      "source": "goodshepherd-api"
+    },
+    {
+      "date": "2025-06-06",
+      "facility_name": "Unknown",
+      "facility_type": "healthcare",
+      "location": "Unknown",
+      "incident_type": "attack",
+      "description": "06 June 2025: The head of a departments at a medical facility was killed in his home with his brother and two daughters by Israeli airstrikes. ",
+      "casualties": {
+        "killed": 1,
+        "injured": 0,
+        "kidnapped": 0
+      },
+      "latitude": 31.5287997847,
+      "longitude": 34.4830071864,
+      "source": "goodshepherd-api"
+    },
+    {
+      "date": "2025-06-06",
+      "facility_name": "Unknown",
+      "facility_type": "healthcare",
+      "location": "Unknown",
+      "incident_type": "attack",
+      "description": "06 June 2025: Eight medical health care workers from the same family were killed in their home by an Israeli forces attack using artillery and airstrikes. ",
+      "casualties": {
+        "killed": 8,
+        "injured": 0,
+        "kidnapped": 0
+      },
+      "latitude": 31.5128679,
+      "longitude": 34.4581358,
+      "source": "goodshepherd-api"
+    },
+    {
+      "date": "2025-06-09",
+      "facility_name": "Unknown",
+      "facility_type": "healthcare",
+      "location": "Unknown",
+      "incident_type": "attack",
+      "description": "09 June 2025: Three health workers were killed by an Israeli forces air strike while they were evacuating the wounded from a previous Israeli attack. ",
+      "casualties": {
+        "killed": 3,
+        "injured": 0,
+        "kidnapped": 0
+      },
+      "latitude": 31.5050311,
+      "longitude": 34.4641381,
+      "source": "goodshepherd-api"
+    },
+    {
+      "date": "2025-06-10",
+      "facility_name": "Unknown",
+      "facility_type": "healthcare",
+      "location": "Unknown",
+      "incident_type": "attack",
+      "description": "10 June 2025: An ambulance was searched by Israeli forces during their ongoing raid on the city. ",
+      "casualties": {
+        "killed": 0,
+        "injured": 0,
+        "kidnapped": 0
+      },
+      "latitude": 32.2244188962,
+      "longitude": 35.2523813839,
+      "source": "goodshepherd-api"
+    },
+    {
+      "date": "2025-06-10",
+      "facility_name": "Unknown",
+      "facility_type": "healthcare",
+      "location": "Unknown",
+      "incident_type": "attack",
+      "description": "10 June 2025: A medical health care worker was injured by shrapnel from Israeli forces while attempting to evacuate an injured person during a raid on the town.",
+      "casualties": {
+        "killed": 0,
+        "injured": 1,
+        "kidnapped": 0
+      },
+      "latitude": 32.2948695,
+      "longitude": 35.4401202,
+      "source": "goodshepherd-api"
+    },
+    {
+      "date": "2025-06-11",
+      "facility_name": "Unknown",
+      "facility_type": "healthcare",
+      "location": "Unknown",
+      "incident_type": "attack",
+      "description": "11 June 2025: The vicinity of a medical facility was hit by an Israeli airstrike, killing and injuring an unspecified number of people. ",
+      "casualties": {
+        "killed": 0,
+        "injured": 0,
+        "kidnapped": 0
+      },
+      "latitude": 31.3478325696,
+      "longitude": 34.2932331562,
+      "source": "goodshepherd-api"
+    },
+    {
+      "date": "2025-06-11",
+      "facility_name": "Unknown",
+      "facility_type": "healthcare",
+      "location": "Unknown",
+      "incident_type": "attack",
+      "description": "20 June 2025: The vicinity of a medical facility was struck by an Israeli airstrike, killing three people and injuring an unspecified number of others. ",
+      "casualties": {
+        "killed": 0,
+        "injured": 0,
+        "kidnapped": 0
+      },
+      "latitude": 31.5336277465,
+      "longitude": 34.4596266904,
+      "source": "goodshepherd-api"
+    },
+    {
+      "date": "2025-06-11",
+      "facility_name": "Unknown",
+      "facility_type": "healthcare",
+      "location": "Unknown",
+      "incident_type": "attack",
+      "description": "11 June 2025: A medical health care worker was killed by Israeli bombing. ",
+      "casualties": {
+        "killed": 1,
+        "injured": 0,
+        "kidnapped": 0
+      },
+      "latitude": 31.3443293,
+      "longitude": 34.3095897,
+      "source": "goodshepherd-api"
+    },
+    {
+      "date": "2025-06-13",
+      "facility_name": "Unknown",
+      "facility_type": "healthcare",
+      "location": "Unknown",
+      "incident_type": "attack",
+      "description": "13 June 2025: A medical facility was hit by an Israeli airstrike, killing and injuring an unspecified number of people. ",
+      "casualties": {
+        "killed": 0,
+        "injured": 0,
+        "kidnapped": 0
+      },
+      "latitude": 31.3478325696,
+      "longitude": 34.2932331562,
+      "source": "goodshepherd-api"
+    },
+    {
+      "date": "2025-06-14",
+      "facility_name": "Unknown",
+      "facility_type": "healthcare",
+      "location": "Unknown",
+      "incident_type": "attack",
+      "description": "14 June 2025: The vicinity of a medical facility was hit by Israeli gunfire and artillery shelling. ",
+      "casualties": {
+        "killed": 0,
+        "injured": 0,
+        "kidnapped": 0
+      },
+      "latitude": 31.3478325696,
+      "longitude": 34.2932331562,
+      "source": "goodshepherd-api"
+    },
+    {
+      "date": "2025-06-16",
+      "facility_name": "Unknown",
+      "facility_type": "healthcare",
+      "location": "Unknown",
+      "incident_type": "attack",
+      "description": "16 June 2025: A medical facility was fired at by Israeli forces in vehicles. ",
+      "casualties": {
+        "killed": 0,
+        "injured": 0,
+        "kidnapped": 0
+      },
+      "latitude": 31.2752047,
+      "longitude": 34.2558269,
+      "source": "goodshepherd-api"
+    },
+    {
+      "date": "2025-06-17",
+      "facility_name": "Unknown",
+      "facility_type": "healthcare",
+      "location": "Unknown",
+      "incident_type": "attack",
+      "description": "17 June 2025: A medical health care worker and his two children aged five and seven, were killed when their tent was hit by an Israeli drone strike. His wife and two other children aged nine and 13 were severely wounded.",
+      "casualties": {
+        "killed": 1,
+        "injured": 0,
+        "kidnapped": 0
+      },
+      "latitude": 31.341908688,
+      "longitude": 34.3082435191,
+      "source": "goodshepherd-api"
+    },
+    {
+      "date": "2025-06-18",
+      "facility_name": "Unknown",
+      "facility_type": "healthcare",
+      "location": "Unknown",
+      "incident_type": "attack",
+      "description": "Between 18-24 May 2025: The first floor of the Red Crescent medical facility collapsed after being hit by Israeli forces, forcing it to close. ",
+      "casualties": {
+        "killed": 0,
+        "injured": 0,
+        "kidnapped": 0
+      },
+      "latitude": 31.3443293,
+      "longitude": 34.3095897,
+      "source": "goodshepherd-api"
+    },
+    {
+      "date": "2025-06-19",
+      "facility_name": "Unknown",
+      "facility_type": "healthcare",
+      "location": "Unknown",
+      "incident_type": "attack",
+      "description": "19 June 2025: Tents sheltering IDPs near a medical facility were hit by an Israeli airstrike, killing five people and injuring an unspecified number of others.",
+      "casualties": {
+        "killed": 0,
+        "injured": 0,
+        "kidnapped": 0
+      },
+      "latitude": 31.5057881419,
+      "longitude": 34.4304817915,
+      "source": "goodshepherd-api"
+    },
+    {
+      "date": "2025-06-20",
+      "facility_name": "Unknown",
+      "facility_type": "healthcare",
+      "location": "Unknown",
+      "incident_type": "attack",
+      "description": "20 June 2025: A medical health care worker was killed when Israeli forces airstrikes hit a gathering of people.",
+      "casualties": {
+        "killed": 1,
+        "injured": 0,
+        "kidnapped": 0
+      },
+      "latitude": 31.5050311,
+      "longitude": 34.4641381,
+      "source": "goodshepherd-api"
+    },
+    {
+      "date": "2025-06-24",
+      "facility_name": "Unknown",
+      "facility_type": "healthcare",
+      "location": "Unknown",
+      "incident_type": "attack",
+      "description": "24 June 2025: A NGO-run medical facility  was opened fire at by Israeli forces drones.",
+      "casualties": {
+        "killed": 0,
+        "injured": 0,
+        "kidnapped": 0
+      },
+      "latitude": 31.5038940682,
+      "longitude": 34.4614505791,
+      "source": "goodshepherd-api"
+    },
+    {
+      "date": "2025-06-24",
+      "facility_name": "Unknown",
+      "facility_type": "healthcare",
+      "location": "Unknown",
+      "incident_type": "attack",
+      "description": "24 June 2025: A medical health care worker was severely beaten for 30 minutes and injured by Israeli forces soldiers. He was later denied medical treatment. ",
+      "casualties": {
+        "killed": 0,
+        "injured": 1,
+        "kidnapped": 0
+      },
+      "latitude": 31.9471636,
+      "longitude": 35.3815714,
+      "source": "goodshepherd-api"
+    },
+    {
+      "date": "2025-06-25",
+      "facility_name": "Unknown",
+      "facility_type": "healthcare",
+      "location": "Unknown",
+      "incident_type": "attack",
+      "description": "25 June 2025: Red Cross ambulances were blocked from evacuating injured people by Israeli forces. ",
+      "casualties": {
+        "killed": 0,
+        "injured": 0,
+        "kidnapped": 0
+      },
+      "latitude": 31.9894218,
+      "longitude": 35.3091068,
+      "source": "goodshepherd-api"
+    },
+    {
+      "date": "2025-06-25",
+      "facility_name": "Unknown",
+      "facility_type": "healthcare",
+      "location": "Unknown",
+      "incident_type": "attack",
+      "description": "25 June 2025: Red cross ambulances were blocked from evacuating injured people by Israeli forces following an attack by armed settlers. ",
+      "casualties": {
+        "killed": 0,
+        "injured": 0,
+        "kidnapped": 0
+      },
+      "latitude": 31.9894218,
+      "longitude": 35.3091068,
+      "source": "goodshepherd-api"
+    },
+    {
+      "date": "2025-06-26",
+      "facility_name": "Unknown",
+      "facility_type": "healthcare",
+      "location": "Unknown",
+      "incident_type": "attack",
+      "description": "Around 26 June 2025: One of the few remaining operational medical facilities, was hit by an armed Israeli-backed group led by Yasser Abu Shabab. The group initially claimed responsibility for the assault but deleted the statement hours later and issued a full denial. ",
+      "casualties": {
+        "killed": 0,
+        "injured": 0,
+        "kidnapped": 0
+      },
+      "latitude": 31.3478325696,
+      "longitude": 34.2932331562,
+      "source": "goodshepherd-api"
+    },
+    {
+      "date": "2025-06-26",
+      "facility_name": "Unknown",
+      "facility_type": "healthcare",
+      "location": "Unknown",
+      "incident_type": "attack",
+      "description": "26 June 2025: Red cross ambulances were blocked from reaching injured people following an attack by armed settlers during their invasion of the town. ",
+      "casualties": {
+        "killed": 0,
+        "injured": 0,
+        "kidnapped": 0
+      },
+      "latitude": 32.0357062,
+      "longitude": 35.2859036,
+      "source": "goodshepherd-api"
+    },
+    {
+      "date": "2025-06-26",
+      "facility_name": "Unknown",
+      "facility_type": "healthcare",
+      "location": "Unknown",
+      "incident_type": "attack",
+      "description": "June 2025: A volunteer health worker was killed by Israeli forces airstrikes that hit a group of people.",
+      "casualties": {
+        "killed": 1,
+        "injured": 0,
+        "kidnapped": 0
+      },
+      "latitude": 31.4183455,
+      "longitude": 34.3502476,
+      "source": "goodshepherd-api"
+    },
+    {
+      "date": "2025-06-26",
+      "facility_name": "Unknown",
+      "facility_type": "healthcare",
+      "location": "Unknown",
+      "incident_type": "attack",
+      "description": "26 June 2025: A medical  worker and his niece were killed in their tent when tents sheltering IDPs were bombed by Israeli forces airstrikes.",
+      "casualties": {
+        "killed": 1,
+        "injured": 0,
+        "kidnapped": 0
+      },
+      "latitude": 31.3443293,
+      "longitude": 34.3095897,
+      "source": "goodshepherd-api"
+    },
+    {
+      "date": "2025-06-28",
+      "facility_name": "Unknown",
+      "facility_type": "healthcare",
+      "location": "Unknown",
+      "incident_type": "attack",
+      "description": "28 May 2025: A medical facility was hit by gunfire from Israeli forces in the morning, causing injuries and spreading fear among patients. ",
+      "casualties": {
+        "killed": 0,
+        "injured": 0,
+        "kidnapped": 0
+      },
+      "latitude": 31.3035067571,
+      "longitude": 34.3178123355,
+      "source": "goodshepherd-api"
+    },
+    {
+      "date": "2025-06-28",
+      "facility_name": "Unknown",
+      "facility_type": "healthcare",
+      "location": "Unknown",
+      "incident_type": "attack",
+      "description": "28 June 2025: A medical health care worker, his daughter and eight others were  killed when their tent was hit by Israeli forces airstrikes.",
+      "casualties": {
+        "killed": 1,
+        "injured": 0,
+        "kidnapped": 0
+      },
+      "latitude": 31.3443293,
+      "longitude": 34.3095897,
+      "source": "goodshepherd-api"
+    },
+    {
+      "date": "2025-06-30",
+      "facility_name": "Unknown",
+      "facility_type": "healthcare",
+      "location": "Unknown",
+      "incident_type": "attack",
+      "description": "30 June 2025: Tents sheltering IDPs in the yard of a medical facility were hit by Israeli forces airstrikes, damaging the hospital's internal medicine department and injuring five people including a journalist. The airstrike also affected its oxygen supply line. ",
+      "casualties": {
+        "killed": 0,
+        "injured": 0,
+        "kidnapped": 0
+      },
+      "latitude": 31.4200022681,
+      "longitude": 34.3597412109,
+      "source": "goodshepherd-api"
+    },
+    {
+      "date": "2025-06-30",
+      "facility_name": "Unknown",
+      "facility_type": "healthcare",
+      "location": "Unknown",
+      "incident_type": "attack",
+      "description": "30 June 2025: A health worker and an aid worker were killed by an Israeli forces airstrike. ",
+      "casualties": {
+        "killed": 1,
+        "injured": 0,
+        "kidnapped": 0
+      },
+      "latitude": 31.5255989737,
+      "longitude": 34.4364096942,
+      "source": "goodshepherd-api"
+    }
+  ]
+}

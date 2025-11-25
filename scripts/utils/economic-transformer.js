@@ -16,9 +16,9 @@ export class EconomicTransformer extends BaseTransformer {
    * Transform raw World Bank data to unified format
    */
   transform(rawData, metadata) {
-    const records = Array.isArray(rawData) ? rawData : 
-                    (rawData.data ? rawData.data : []);
-    
+    const records = Array.isArray(rawData) ? rawData :
+      (rawData.data ? rawData.data : []);
+
     return records
       .filter(record => record && record.value !== null && record.value !== undefined)
       .map((record, index) => this.transformRecord(record, metadata, index));
@@ -32,13 +32,13 @@ export class EconomicTransformer extends BaseTransformer {
     const indicatorName = record.indicator_name || metadata.indicator_name || 'Unknown Indicator';
     const year = record.year || new Date(record.date).getFullYear();
     const date = `${year}-01-01`;
-    
+
     return {
       // Identity
       id: this.generateId('economic', { ...record, date }),
       type: 'economic',
       category: 'economic',
-      
+
       // Temporal
       date: date,
       timestamp: new Date(date).toISOString(),
@@ -46,24 +46,24 @@ export class EconomicTransformer extends BaseTransformer {
         type: 'year',
         value: year.toString(),
       },
-      
+
       // Spatial
       location: {
         name: record.country || 'Palestine',
         admin_levels: {
           level1: 'Palestine',
         },
-        region: 'palestine',
+        region: 'Palestine',
       },
-      
+
       // Data
       value: parseFloat(record.value),
       unit: this.detectUnit(indicatorName),
-      
+
       // Economic-specific
       indicator_code: indicatorCode,
       indicator_name: indicatorName,
-      
+
       // Quality
       quality: this.enrichQuality({
         id: this.generateId('economic', record),
@@ -71,14 +71,14 @@ export class EconomicTransformer extends BaseTransformer {
         location: { name: 'Palestine' },
         value: record.value,
       }).quality,
-      
+
       // Provenance
       sources: [{
         name: metadata.source || 'World Bank',
         organization: metadata.organization || 'World Bank',
         fetched_at: new Date().toISOString(),
       }],
-      
+
       // Metadata
       created_at: new Date().toISOString(),
       updated_at: new Date().toISOString(),
@@ -91,7 +91,7 @@ export class EconomicTransformer extends BaseTransformer {
    */
   detectUnit(indicatorName) {
     const name = indicatorName.toLowerCase();
-    
+
     if (name.includes('(% of') || name.includes('(%)')) return 'percentage';
     if (name.includes('us$') || name.includes('usd')) return 'currency_usd';
     if (name.includes('per 1,000')) return 'per_1000';
@@ -101,7 +101,7 @@ export class EconomicTransformer extends BaseTransformer {
     if (name.includes('metric tons')) return 'metric_tons';
     if (name.includes('births per woman')) return 'births_per_woman';
     if (name.includes('years')) return 'years';
-    
+
     return 'number';
   }
 
@@ -121,7 +121,7 @@ export class EconomicTransformer extends BaseTransformer {
     return data.map(record => {
       const timeSeries = byIndicator[record.indicator_code] || [];
       const analysis = this.calculateTrendAnalysis(timeSeries, record);
-      
+
       return {
         ...record,
         analysis,
@@ -138,15 +138,15 @@ export class EconomicTransformer extends BaseTransformer {
     // Sort by date
     const sorted = [...timeSeries].sort((a, b) => a.date.localeCompare(b.date));
     const values = sorted.map(r => r.value);
-    
+
     // Calculate trend
     const trend = this.calculateLinearTrend(values);
     const growthRate = this.calculateAverageGrowth(values);
     const volatility = this.calculateStdDev(values);
-    
+
     // Recent change (last year)
     const currentIndex = sorted.findIndex(r => r.date === currentRecord.date);
-    const recentChange = currentIndex > 0 
+    const recentChange = currentIndex > 0
       ? ((sorted[currentIndex].value - sorted[currentIndex - 1].value) / sorted[currentIndex - 1].value) * 100
       : 0;
 
@@ -176,7 +176,7 @@ export class EconomicTransformer extends BaseTransformer {
     const sumX2 = (n * (n - 1) * (2 * n - 1)) / 6;
 
     const slope = (n * sumXY - sumX * sumY) / (n * sumX2 - sumX * sumX);
-    
+
     let direction = 'stable';
     if (slope > 0.01) direction = 'increasing';
     else if (slope < -0.01) direction = 'decreasing';
@@ -224,8 +224,8 @@ export class EconomicTransformer extends BaseTransformer {
     if (!baseline) return 0;
 
     const change = currentRecord.value - baseline.value;
-    const percentChange = baseline.value !== 0 
-      ? (change / baseline.value) * 100 
+    const percentChange = baseline.value !== 0
+      ? (change / baseline.value) * 100
       : 0;
 
     return percentChange;

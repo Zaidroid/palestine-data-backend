@@ -22,7 +22,7 @@ const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
 // Initialize logger
-const logger = createLogger({ 
+const logger = createLogger({
   context: 'HDX-Fetcher',
   logLevel: 'INFO',
 });
@@ -53,7 +53,7 @@ const PRIORITY_HDX_DATASETS = {
     { id: 'explosive-remnants-war-palestine', name: 'Explosive Remnants', priority: 14 },
     { id: 'civilian-casualties-detailed-palestine', name: 'Detailed Civilian Casualties', priority: 15 },
   ],
-  
+
   // Expanded Education (8 datasets - 3 new)
   education: [
     { id: 'education-facilities-palestine', name: 'Education Facilities', priority: 1 },
@@ -65,7 +65,7 @@ const PRIORITY_HDX_DATASETS = {
     { id: 'education-funding-palestine', name: 'Education Funding', priority: 7 },
     { id: 'school-attendance-rates-palestine', name: 'School Attendance', priority: 8 },
   ],
-  
+
   // Expanded Water (7 datasets - 3 new)
   water: [
     { id: 'water-sanitation-access-palestine', name: 'Water Access', priority: 1 },
@@ -76,7 +76,7 @@ const PRIORITY_HDX_DATASETS = {
     { id: 'sewage-system-status-palestine', name: 'Sewage System Status', priority: 6 },
     { id: 'water-trucking-operations-palestine', name: 'Water Trucking', priority: 7 },
   ],
-  
+
   // Expanded Infrastructure (10 datasets - 4 new)
   infrastructure: [
     { id: 'infrastructure-damage-assessment-gaza', name: 'Infrastructure Damage', priority: 1 },
@@ -90,15 +90,15 @@ const PRIORITY_HDX_DATASETS = {
     { id: 'agricultural-infrastructure-palestine', name: 'Agricultural Infrastructure', priority: 9 },
     { id: 'cultural-heritage-damage-palestine', name: 'Cultural Heritage Damage', priority: 10 },
   ],
-  
+
   refugees: [
-    { id: 'refugee-statistics-palestine', name: 'Refugee Statistics', priority: 1 },
+    { id: 'state-of-palestine-refugees', name: 'State of Palestine Refugees', priority: 1 },
     { id: 'displacement-tracking-gaza', name: 'Displacement Tracking', priority: 2 },
     { id: 'idp-data-palestine', name: 'IDP Data', priority: 3 },
     { id: 'refugee-camp-populations', name: 'Refugee Camps', priority: 4 },
     { id: 'displacement-movements', name: 'Displacement Movements', priority: 5 },
   ],
-  
+
   humanitarian: [
     { id: 'humanitarian-needs-overview-palestine', name: 'Humanitarian Needs', priority: 1 },
     { id: 'humanitarian-response-plan', name: 'Response Plan', priority: 2 },
@@ -107,7 +107,7 @@ const PRIORITY_HDX_DATASETS = {
     { id: 'protection-concerns-palestine', name: 'Protection Concerns', priority: 5 },
     { id: 'humanitarian-funding-palestine', name: 'Humanitarian Funding', priority: 6 },
   ],
-  
+
   // NEW: Health Category (15 datasets)
   health: [
     { id: 'health-facilities-status-palestine', name: 'Health Facilities Status', priority: 1 },
@@ -126,7 +126,7 @@ const PRIORITY_HDX_DATASETS = {
     { id: 'medical-equipment-status-palestine', name: 'Medical Equipment Status', priority: 14 },
     { id: 'health-facility-damage-assessment', name: 'Health Facility Damage', priority: 15 },
   ],
-  
+
   // NEW: Shelter Category (12 datasets)
   shelter: [
     { id: 'housing-damage-assessment-gaza', name: 'Housing Damage Assessment', priority: 1 },
@@ -188,9 +188,9 @@ async function writeJSON(filePath, data) {
 // Create organized folder structure for all categories
 async function createCategoryFolders() {
   await logger.info('Creating organized folder structure...');
-  
+
   const categories = Object.keys(PRIORITY_HDX_DATASETS);
-  
+
   for (const category of categories) {
     try {
       const categoryDir = path.join(DATA_DIR, category);
@@ -201,7 +201,7 @@ async function createCategoryFolders() {
       throw error;
     }
   }
-  
+
   await logger.info(`Total categories: ${categories.length}`);
 }
 
@@ -209,46 +209,68 @@ async function createCategoryFolders() {
 async function fetchDatasetByCategory(category, datasets) {
   const categoryLogger = logger.child(category);
   await categoryLogger.info(`Processing ${category} datasets...`);
-  
+
   const categoryConfig = PRIORITY_HDX_DATASETS[category];
   if (!categoryConfig) {
     await categoryLogger.warn(`No configuration found for category: ${category}`);
     return { downloaded: 0, failed: 0, datasets: [] };
   }
-  
+
   const categoryDir = path.join(DATA_DIR, category);
-  
+
   try {
     await ensureDir(categoryDir);
   } catch (error) {
     await categoryLogger.error(`Failed to create category directory: ${categoryDir}`, error);
     return { downloaded: 0, failed: 0, datasets: [] };
   }
-  
+
   let downloaded = 0;
   let failed = 0;
   const downloadedDatasets = [];
   const errors = [];
-  
+
   // Sort by priority
   const sortedDatasets = [...categoryConfig].sort((a, b) => a.priority - b.priority);
-  
+
   for (const datasetConfig of sortedDatasets) {
     await categoryLogger.info(`[${datasetConfig.priority}] ${datasetConfig.name}`);
-    
+
     try {
       // Try to find dataset by ID or search by name
       let dataset = datasets.find(ds => ds.id === datasetConfig.id || ds.name === datasetConfig.id);
-      
+
       if (!dataset) {
         // Search for dataset
         try {
-          const searchUrl = `${HDX_CKAN_BASE}/package_search?q=${encodeURIComponent(datasetConfig.name)}&rows=5`;
+          // Strict search for Palestine data
+          const searchUrl = `${HDX_CKAN_BASE}/package_search?q=${encodeURIComponent(datasetConfig.name)}&fq=(locations:pse OR locations:palestine OR groups:pse)&rows=5`;
           const searchResult = await fetchWithRetry(searchUrl);
-          
+
           if (searchResult.success && searchResult.result.results.length > 0) {
-            dataset = searchResult.result.results[0];
-            await categoryLogger.info(`Found via search: ${dataset.title}`);
+            // Double check that the result is actually relevant
+            const candidate = searchResult.result.results[0];
+            const candidateString = JSON.stringify(candidate).toLowerCase();
+
+            // Anti-keywords to avoid "World Bank Indicators for Philippines" matching "Indicators"
+            const antiKeywords = ['philippines', 'turkey', 'ukraine', 'yemen', 'sudan', 'afghanistan', 'somalia', 'myanmar'];
+            const hasAntiKeyword = antiKeywords.some(kw => candidate.title.toLowerCase().includes(kw));
+
+            // Title similarity check: Ensure the found dataset title contains words from the requested name
+            // This prevents "Sewage System Status" from matching "Health Indicators" just because they are both in Palestine
+            const requestedWords = datasetConfig.name.toLowerCase().split(/[^a-z0-9]+/);
+            const candidateTitle = candidate.title.toLowerCase();
+            const hasRelevantKeyword = requestedWords.some(word =>
+              word.length > 3 && candidateTitle.includes(word) &&
+              !['data', 'dataset', 'palestine', 'state', 'gaza', 'west', 'bank'].includes(word)
+            );
+
+            if (!hasAntiKeyword && (hasRelevantKeyword || candidateTitle.includes(datasetConfig.name.toLowerCase()))) {
+              dataset = candidate;
+              await categoryLogger.info(`Found via search: ${dataset.title}`);
+            } else {
+              await categoryLogger.warn(`Search result rejected (irrelevant/mismatch): ${candidate.title} (Requested: ${datasetConfig.name})`);
+            }
           } else {
             await categoryLogger.warn(`Dataset not found: ${datasetConfig.name}, skipping`);
             failed++;
@@ -262,7 +284,7 @@ async function fetchDatasetByCategory(category, datasets) {
           continue;
         }
       }
-      
+
       // Get full dataset details
       let fullDataset;
       try {
@@ -279,7 +301,7 @@ async function fetchDatasetByCategory(category, datasets) {
         errors.push({ dataset: dataset.id, error: detailsError.message });
         continue;
       }
-      
+
       // Extract and store metadata
       let metadata;
       try {
@@ -290,36 +312,36 @@ async function fetchDatasetByCategory(category, datasets) {
         errors.push({ dataset: fullDataset.id, error: `Metadata extraction failed: ${metadataError.message}` });
         continue;
       }
-      
+
       // Find downloadable resources (CSV, JSON, or ZIP with size limits)
       const dataResources = fullDataset.resources?.filter(r => {
         const format = r.format?.toLowerCase() || '';
         const name = r.name?.toLowerCase() || '';
-        
+
         // Allow CSV, JSON, GeoJSON, or ZIP
         const isValidFormat = format === 'csv' || format === 'json' || format === 'geojson' || format === 'zip' || name.endsWith('.zip');
-        
+
         // Block other archive formats
         const isNotOtherArchive = format !== 'rar' && format !== '7z' && format !== 'tar' &&
-                                  !name.endsWith('.rar') && !name.endsWith('.7z');
-        
+          !name.endsWith('.rar') && !name.endsWith('.7z');
+
         // Skip files larger than 50MB
         const isReasonableSize = !r.size || (r.size / (1024 * 1024)) <= 50;
-        
+
         return isValidFormat && isNotOtherArchive && isReasonableSize;
       }) || [];
-      
+
       if (dataResources.length === 0) {
         await categoryLogger.warn(`No downloadable resources found for ${fullDataset.name} (only large files or unsupported formats)`);
         failed++;
         errors.push({ dataset: fullDataset.name, error: 'No downloadable resources' });
         continue;
       }
-      
+
       // Download first suitable resource
       const resource = dataResources[0];
       await categoryLogger.info(`Downloading: ${resource.name} (${resource.format})`);
-      
+
       let data;
       try {
         data = await downloadResource(resource);
@@ -329,18 +351,30 @@ async function fetchDatasetByCategory(category, datasets) {
         errors.push({ dataset: fullDataset.name, resource: resource.name, error: downloadError.message });
         continue;
       }
-      
+
       if (data) {
         try {
           // Create dataset-specific directory
           const datasetDir = path.join(categoryDir, sanitizeFilename(fullDataset.name));
           await ensureDir(datasetDir);
-          
+
           // Save metadata
           await writeJSON(path.join(datasetDir, 'metadata.json'), metadata);
-          
+
           // Transform data based on category
           const rawDataContent = data.format === 'csv' ? { csv: data.data } : data;
+
+          // HXL Tag Cleanup: Remove rows that look like HXL tags (starting with #)
+          if (rawDataContent.csv && Array.isArray(rawDataContent.csv)) {
+            rawDataContent.csv = rawDataContent.csv.filter(row => {
+              const values = Object.values(row);
+              // If the first few values start with #, it's likely a tag row being read as data
+              // Or if the keys themselves are tags, we might need re-parsing, but for now let's just filter out tag-only rows
+              const isTagRow = values.some(v => typeof v === 'string' && v.trim().startsWith('#'));
+              return !isTagRow;
+            });
+          }
+
           let transformed;
           try {
             transformed = transformDataByCategory(rawDataContent, category, metadata);
@@ -350,7 +384,7 @@ async function fetchDatasetByCategory(category, datasets) {
             errors.push({ dataset: fullDataset.name, error: `Transformation failed: ${transformError.message}` });
             continue;
           }
-          
+
           // Save raw data
           const dataFile = data.format === 'csv' ? 'data.csv.json' : 'data.json';
           await writeJSON(path.join(datasetDir, dataFile), {
@@ -364,7 +398,7 @@ async function fetchDatasetByCategory(category, datasets) {
             },
             data: rawDataContent,
           });
-          
+
           // Save transformed data and partition if necessary
           let partitionInfo = null;
           let validationResult = null;
@@ -372,14 +406,14 @@ async function fetchDatasetByCategory(category, datasets) {
             // Validate transformed data
             try {
               validationResult = await validateDataset(transformed.data, category);
-              
+
               // Log validation results
               if (validationResult.meetsThreshold) {
                 await categoryLogger.success(`Validation passed (score: ${(validationResult.qualityScore * 100).toFixed(1)}%)`);
               } else {
                 await categoryLogger.warn(`Validation quality below threshold (score: ${(validationResult.qualityScore * 100).toFixed(1)}%)`);
               }
-              
+
               // Log errors and warnings summary
               if (validationResult.errors.length > 0) {
                 await categoryLogger.warn(`Found ${validationResult.errors.length} validation errors`);
@@ -391,7 +425,7 @@ async function fetchDatasetByCategory(category, datasets) {
               await categoryLogger.warn(`Validation failed for ${fullDataset.name}`, validationError);
               // Continue anyway - validation failure shouldn't stop the download
             }
-            
+
             await writeJSON(path.join(datasetDir, 'transformed.json'), {
               source: 'hdx-ckan',
               category,
@@ -409,13 +443,13 @@ async function fetchDatasetByCategory(category, datasets) {
               data: transformed.data,
             });
             await categoryLogger.success(`Transformed ${transformed.recordCount} records`);
-            
+
             // Save validation report if available
             if (validationResult) {
               await writeJSON(path.join(datasetDir, 'validation.json'), validationResult);
               await categoryLogger.debug(`Saved validation report`);
             }
-            
+
             // Partition data if needed
             try {
               partitionInfo = await partitionAndSaveDataset(datasetDir, transformed, fullDataset.name);
@@ -424,7 +458,7 @@ async function fetchDatasetByCategory(category, datasets) {
               // Continue anyway - partitioning is not critical
             }
           }
-          
+
           downloaded++;
           downloadedDatasets.push({
             id: fullDataset.id,
@@ -442,7 +476,7 @@ async function fetchDatasetByCategory(category, datasets) {
             } : null,
             metadata,
           });
-          
+
           await categoryLogger.success(`Downloaded to ${category}/${sanitizeFilename(fullDataset.name)}/`);
         } catch (saveError) {
           await categoryLogger.error(`Failed to save dataset ${fullDataset.name}`, saveError);
@@ -454,20 +488,20 @@ async function fetchDatasetByCategory(category, datasets) {
         failed++;
         errors.push({ dataset: fullDataset.name, error: 'No data downloaded' });
       }
-      
+
     } catch (error) {
       await categoryLogger.error(`Unexpected error processing ${datasetConfig.name}`, error);
       failed++;
       errors.push({ dataset: datasetConfig.name, error: error.message, stack: error.stack });
     }
   }
-  
+
   await categoryLogger.info(`Summary: ${downloaded} downloaded, ${failed} failed`);
-  
+
   if (errors.length > 0) {
     await categoryLogger.warn(`Errors encountered:`, { count: errors.length, errors });
   }
-  
+
   return { downloaded, failed, datasets: downloadedDatasets, errors };
 }
 
@@ -477,7 +511,7 @@ function extractDatasetMetadata(dataset, category) {
   const governorates = extractGovernorates(dataset);
   const conflictRelated = isConflictRelated(dataset);
   const reliability = assessSourceReliability(dataset.organization);
-  
+
   return {
     id: dataset.id,
     name: dataset.name,
@@ -530,11 +564,96 @@ function sanitizeFilename(name) {
 
 // Data Transformation Functions
 
+import GeospatialEnricher from './utils/geospatial-enricher.js';
+
+// Initialize enricher for geospatial checks
+const geoEnricher = new GeospatialEnricher();
+
+// Helper: Check if a record is relevant to Palestine
+function isRecordPalestineRelevant(record) {
+  if (!record) return false;
+
+  // 1. Check Coordinates (High Confidence)
+  // If we have valid coordinates, check if they fall within Palestine bounds
+  const lat = parseFloat(record.latitude || record.lat || record.y);
+  const lon = parseFloat(record.longitude || record.lon || record.long || record.x);
+
+  if (!isNaN(lat) && !isNaN(lon)) {
+    // Use the enricher's governorate finder to check if point is in a known Palestinian governorate
+    const governorate = geoEnricher.findGovernorate(lon, lat);
+    if (governorate) {
+      return true; // Definite match based on location
+    }
+
+    // If it has coordinates but is NOT in our bounding boxes, it might be outside Palestine.
+    // However, our bounding boxes might be approximate, so we don't auto-reject, 
+    // but we definitely don't auto-accept unless it matches.
+    // We could implement a "definitely outside" check here if we had a bounding box for "World excluding Palestine",
+    // but for now we'll fall back to text matching if coordinates don't match a governorate.
+  }
+
+  const palestineKeywords = [
+    'palestine', 'palestinian', 'gaza', 'west bank', 'westbank',
+    'opt', 'occupied palestinian territory', 'pse',
+    'jerusalem', 'hebron', 'nablus', 'jenin', 'ramallah',
+    'rafah', 'khan yunis', 'deir al-balah', 'tulkarm', 'qalqilya',
+    'salfit', 'tubas', 'bethlehem', 'jericho',
+    'al-aqsa', 'sheikh jarrah', 'silwan', 'beit lahiya', 'beit hanoun',
+    'jabalia', 'nuseirat', 'bureij', 'maghazi', 'shuja\'iyya'
+  ];
+
+  const excludeKeywords = [
+    'philippines', 'philippine', 'manila', 'mindanao',
+    'syria', 'syrian', 'lebanon', 'lebanese', 'jordan', 'jordanian',
+    'yemen', 'yemeni', 'iraq', 'iraqi', 'afghanistan', 'afghan',
+    'somalia', 'somali', 'sudan', 'sudanese', 'ethiopia', 'ethiopian',
+    'myanmar', 'burma', 'bangladesh', 'rohingya',
+    'ukraine', 'ukrainian', 'venezuela', 'venezuelan',
+    'egypt', 'egyptian', 'cairo', 'sinai',
+    'libya', 'libyan', 'tripoli',
+    'pakistan', 'pakistani', 'india', 'indian',
+    'colombia', 'colombian', 'haiti', 'haitian',
+    'mali', 'nigeria', 'niger', 'chad', 'cameroon',
+    'burkina faso', 'drc', 'congo', 'turkey', 'turkish', 'ankara', 'istanbul'
+  ];
+
+  // Fields to check specifically for location/country
+  const locationFields = [
+    'country', 'country_name', 'admin0', 'admin0_name',
+    'location', 'region', 'governorate', 'district', 'area',
+    'admin1', 'admin1_name', 'admin2', 'admin2_name'
+  ];
+
+  let locationText = '';
+  for (const field of locationFields) {
+    if (record[field]) locationText += ` ${record[field]}`;
+  }
+  locationText = locationText.toLowerCase();
+
+  // If we found location text, prioritize it
+  if (locationText.trim()) {
+    if (excludeKeywords.some(kw => locationText.includes(kw))) return false;
+    if (palestineKeywords.some(kw => locationText.includes(kw))) return true;
+  }
+
+  // Fallback: check all string fields
+  const allText = Object.values(record)
+    .filter(v => typeof v === 'string')
+    .join(' ')
+    .toLowerCase();
+
+  if (excludeKeywords.some(kw => allText.includes(kw))) return false;
+
+  // If we are here, it doesn't have exclude keywords.
+  // Does it have palestine keywords?
+  return palestineKeywords.some(kw => allText.includes(kw));
+}
+
 // Transform conflict/ACLED data
 function transformConflictData(rawData, metadata) {
   try {
     let records = [];
-    
+
     // Handle different data formats
     if (Array.isArray(rawData)) {
       records = rawData;
@@ -543,18 +662,18 @@ function transformConflictData(rawData, metadata) {
     } else if (rawData.data && Array.isArray(rawData.data)) {
       records = rawData.data;
     }
-    
-    // Filter out empty records
-    records = records.filter(record => record && Object.keys(record).length > 0);
-    
+
+    // Filter out empty records and non-Palestine records
+    records = records.filter(record => record && Object.keys(record).length > 0 && isRecordPalestineRelevant(record));
+
     if (records.length === 0) {
       console.log(`    ℹ️  No records found in conflict data`);
       return { format: 'json', data: [], recordCount: 0 };
     }
-    
+
     console.log(`    ℹ️  Transforming ${records.length} conflict records`);
     console.log(`    ℹ️  Sample fields: ${Object.keys(records[0]).slice(0, 5).join(', ')}`);
-    
+
     // Transform to standardized format - keep original data if transformation fields don't exist
     const transformed = records.map(record => {
       const base = {
@@ -577,13 +696,13 @@ function transformConflictData(rawData, metadata) {
         source: record.source || metadata.organization.title,
         source_url: record.source_url || metadata.source_url,
       };
-      
+
       // Keep all original fields as well
       return { ...record, ...base, _original: record };
     });
-    
+
     return { format: 'json', data: transformed, recordCount: transformed.length };
-    
+
   } catch (error) {
     console.log(`    ⚠️  Conflict data transformation error: ${error.message}`);
     return { format: 'raw', data: rawData, recordCount: Array.isArray(rawData) ? rawData.length : 0 };
@@ -593,17 +712,17 @@ function transformConflictData(rawData, metadata) {
 // Transform education facility data
 function transformEducationData(rawData, metadata) {
   try {
-    let records = Array.isArray(rawData) ? rawData : 
-                  (rawData.csv && Array.isArray(rawData.csv)) ? rawData.csv :
-                  (rawData.data || []);
-    records = records.filter(record => record && Object.keys(record).length > 0);
-    
+    let records = Array.isArray(rawData) ? rawData :
+      (rawData.csv && Array.isArray(rawData.csv)) ? rawData.csv :
+        (rawData.data || []);
+    records = records.filter(record => record && Object.keys(record).length > 0 && isRecordPalestineRelevant(record));
+
     if (records.length === 0) {
       return { format: 'json', data: [], recordCount: 0 };
     }
-    
+
     console.log(`    ℹ️  Transforming ${records.length} education records`);
-    
+
     const transformed = records.map(record => {
       const base = {
         facility_id: record.id || record.facility_id || null,
@@ -621,13 +740,13 @@ function transformEducationData(rawData, metadata) {
         last_assessed: normalizeDate(record.assessment_date || record.last_updated),
         source: metadata.organization.title,
       };
-      
+
       // Keep all original fields
       return { ...record, ...base };
     });
-    
+
     return { format: 'json', data: transformed, recordCount: transformed.length };
-    
+
   } catch (error) {
     console.log(`    ⚠️  Education data transformation error: ${error.message}`);
     return { format: 'raw', data: rawData, recordCount: Array.isArray(rawData) ? rawData.length : 0 };
@@ -638,12 +757,12 @@ function transformEducationData(rawData, metadata) {
 function transformWaterData(rawData, metadata) {
   try {
     let records = Array.isArray(rawData) ? rawData : (rawData.data || []);
-    records = records.filter(record => record && Object.keys(record).length > 0);
-    
+    records = records.filter(record => record && Object.keys(record).length > 0 && isRecordPalestineRelevant(record));
+
     if (records.length === 0) {
       return { format: 'json', data: [], recordCount: 0 };
     }
-    
+
     const transformed = records.map(record => ({
       facility_id: record.id || record.facility_id || null,
       name: record.name || record.facility_name || 'unknown',
@@ -660,9 +779,9 @@ function transformWaterData(rawData, metadata) {
       last_assessed: normalizeDate(record.assessment_date || record.last_updated),
       source: metadata.organization.title,
     }));
-    
+
     return { format: 'json', data: transformed, recordCount: transformed.length };
-    
+
   } catch (error) {
     logger.warn(`Water data transformation error: ${error.message}`);
     return { format: 'raw', data: rawData, recordCount: 0 };
@@ -673,12 +792,12 @@ function transformWaterData(rawData, metadata) {
 function transformInfrastructureData(rawData, metadata) {
   try {
     let records = Array.isArray(rawData) ? rawData : (rawData.data || []);
-    records = records.filter(record => record && Object.keys(record).length > 0);
-    
+    records = records.filter(record => record && Object.keys(record).length > 0 && isRecordPalestineRelevant(record));
+
     if (records.length === 0) {
       return { format: 'json', data: [], recordCount: 0 };
     }
-    
+
     const transformed = records.map(record => ({
       structure_id: record.id || record.structure_id || null,
       name: record.name || record.building_name || 'unknown',
@@ -695,9 +814,9 @@ function transformInfrastructureData(rawData, metadata) {
       status: record.status || record.current_status || 'damaged',
       source: metadata.organization.title,
     }));
-    
+
     return { format: 'json', data: transformed, recordCount: transformed.length };
-    
+
   } catch (error) {
     logger.warn(`Infrastructure data transformation error: ${error.message}`);
     return { format: 'raw', data: rawData, recordCount: 0 };
@@ -708,12 +827,12 @@ function transformInfrastructureData(rawData, metadata) {
 function transformRefugeeData(rawData, metadata) {
   try {
     let records = Array.isArray(rawData) ? rawData : (rawData.data || []);
-    records = records.filter(record => record && Object.keys(record).length > 0);
-    
+    records = records.filter(record => record && Object.keys(record).length > 0 && isRecordPalestineRelevant(record));
+
     if (records.length === 0) {
       return { format: 'json', data: [], recordCount: 0 };
     }
-    
+
     const transformed = records.map(record => ({
       date: normalizeDate(record.date || record.reporting_date || record.timestamp),
       location: {
@@ -730,9 +849,9 @@ function transformRefugeeData(rawData, metadata) {
       reason: record.reason || record.displacement_reason || null,
       source: metadata.organization.title,
     }));
-    
+
     return { format: 'json', data: transformed, recordCount: transformed.length };
-    
+
   } catch (error) {
     logger.warn(`Refugee data transformation error: ${error.message}`);
     return { format: 'raw', data: rawData, recordCount: 0 };
@@ -743,12 +862,12 @@ function transformRefugeeData(rawData, metadata) {
 function transformHumanitarianData(rawData, metadata) {
   try {
     let records = Array.isArray(rawData) ? rawData : (rawData.data || []);
-    records = records.filter(record => record && Object.keys(record).length > 0);
-    
+    records = records.filter(record => record && Object.keys(record).length > 0 && isRecordPalestineRelevant(record));
+
     if (records.length === 0) {
       return { format: 'json', data: [], recordCount: 0 };
     }
-    
+
     const transformed = records.map(record => ({
       date: normalizeDate(record.date || record.reporting_date || record.assessment_date),
       location: {
@@ -766,9 +885,9 @@ function transformHumanitarianData(rawData, metadata) {
       funding_received: parseFloat(record.funding_received || record.funded || 0),
       source: metadata.organization.title,
     }));
-    
+
     return { format: 'json', data: transformed, recordCount: transformed.length };
-    
+
   } catch (error) {
     logger.warn(`Humanitarian data transformation error: ${error.message}`);
     return { format: 'raw', data: rawData, recordCount: 0 };
@@ -778,12 +897,12 @@ function transformHumanitarianData(rawData, metadata) {
 // Normalize date formats
 function normalizeDate(dateValue) {
   if (!dateValue) return null;
-  
+
   try {
     // Handle various date formats
     const date = new Date(dateValue);
     if (isNaN(date.getTime())) return dateValue; // Return original if invalid
-    
+
     // Return ISO format YYYY-MM-DD
     return date.toISOString().split('T')[0];
   } catch (error) {
@@ -795,12 +914,12 @@ function normalizeDate(dateValue) {
 function transformHealthData(rawData, metadata) {
   try {
     let records = Array.isArray(rawData) ? rawData : (rawData.data || []);
-    records = records.filter(record => record && Object.keys(record).length > 0);
-    
+    records = records.filter(record => record && Object.keys(record).length > 0 && isRecordPalestineRelevant(record));
+
     if (records.length === 0) {
       return { format: 'json', data: [], recordCount: 0 };
     }
-    
+
     const transformed = records.map(record => ({
       facility_id: record.id || record.facility_id || null,
       name: record.name || record.facility_name || record.hospital_name || 'unknown',
@@ -824,9 +943,9 @@ function transformHealthData(rawData, metadata) {
       last_assessed: normalizeDate(record.assessment_date || record.last_updated),
       source: metadata.organization.title,
     }));
-    
+
     return { format: 'json', data: transformed, recordCount: transformed.length };
-    
+
   } catch (error) {
     logger.warn(`Health data transformation error: ${error.message}`);
     return { format: 'raw', data: rawData, recordCount: 0 };
@@ -837,12 +956,12 @@ function transformHealthData(rawData, metadata) {
 function transformShelterData(rawData, metadata) {
   try {
     let records = Array.isArray(rawData) ? rawData : (rawData.data || []);
-    records = records.filter(record => record && Object.keys(record).length > 0);
-    
+    records = records.filter(record => record && Object.keys(record).length > 0 && isRecordPalestineRelevant(record));
+
     if (records.length === 0) {
       return { format: 'json', data: [], recordCount: 0 };
     }
-    
+
     const transformed = records.map(record => ({
       shelter_id: record.id || record.shelter_id || record.building_id || null,
       name: record.name || record.shelter_name || record.building_name || 'unknown',
@@ -864,9 +983,9 @@ function transformShelterData(rawData, metadata) {
       last_assessed: normalizeDate(record.assessment_date || record.last_updated),
       source: metadata.organization.title,
     }));
-    
+
     return { format: 'json', data: transformed, recordCount: transformed.length };
-    
+
   } catch (error) {
     logger.warn(`Shelter data transformation error: ${error.message}`);
     return { format: 'raw', data: rawData, recordCount: 0 };
@@ -877,7 +996,7 @@ function transformShelterData(rawData, metadata) {
 function transformGenericData(rawData, category, metadata) {
   try {
     let records = [];
-    
+
     // Handle different data formats
     if (Array.isArray(rawData)) {
       records = rawData;
@@ -894,19 +1013,19 @@ function transformGenericData(rawData, category, metadata) {
         console.log(`    ℹ️  Found data in property: ${arrayProp}`);
       }
     }
-    
-    // Filter out empty records
-    records = records.filter(record => record && Object.keys(record).length > 0);
-    
+
+    // Filter out empty records and non-Palestine records
+    records = records.filter(record => record && Object.keys(record).length > 0 && isRecordPalestineRelevant(record));
+
     if (records.length === 0) {
       console.log(`    ℹ️  No records found in ${category} data`);
       console.log(`    ℹ️  Raw data type: ${typeof rawData}, keys: ${Object.keys(rawData || {}).join(', ')}`);
       return { format: 'json', data: [], recordCount: 0 };
     }
-    
+
     console.log(`    ℹ️  Found ${records.length} records in ${category} data`);
     console.log(`    ℹ️  Sample fields: ${Object.keys(records[0]).slice(0, 10).join(', ')}`);
-    
+
     // Add metadata to each record
     const enriched = records.map(record => ({
       ...record,
@@ -916,15 +1035,15 @@ function transformGenericData(rawData, category, metadata) {
       _dataset_id: metadata.id,
       _dataset_name: metadata.name,
     }));
-    
+
     return { format: 'json', data: enriched, recordCount: enriched.length };
-    
+
   } catch (error) {
     console.log(`    ⚠️  Generic transformation error: ${error.message}`);
     // Return raw data with count
-    const count = Array.isArray(rawData) ? rawData.length : 
-                  (rawData.csv && Array.isArray(rawData.csv)) ? rawData.csv.length :
-                  (rawData.data && Array.isArray(rawData.data)) ? rawData.data.length : 0;
+    const count = Array.isArray(rawData) ? rawData.length :
+      (rawData.csv && Array.isArray(rawData.csv)) ? rawData.csv.length :
+        (rawData.data && Array.isArray(rawData.data)) ? rawData.data.length : 0;
     return { format: 'raw', data: rawData, recordCount: count };
   }
 }
@@ -963,13 +1082,13 @@ function transformDataByCategory(rawData, category, metadata) {
         console.log(`    ℹ️  No specific transformation for ${category}, using generic`);
         result = transformGenericData(rawData, category, metadata);
     }
-    
+
     // If category-specific transformation returned 0 records, try generic
     if (result.recordCount === 0 && result.format !== 'raw') {
       console.log(`    ℹ️  Category transformation returned 0 records, trying generic`);
       result = transformGenericData(rawData, category, metadata);
     }
-    
+
     return result;
   } catch (error) {
     console.log(`    ⚠️  Error transforming data for category ${category}: ${error.message}`);
@@ -982,17 +1101,17 @@ function transformDataByCategory(rawData, category, metadata) {
 // Partition data by quarter
 function partitionByQuarter(data, dateField = 'date') {
   const partitions = new Map();
-  
+
   for (const record of data) {
     const dateValue = record[dateField];
     if (!dateValue) continue;
-    
+
     try {
       const date = new Date(dateValue);
       const year = date.getFullYear();
       const quarter = Math.floor(date.getMonth() / 3) + 1;
       const quarterKey = `${year}-Q${quarter}`;
-      
+
       if (!partitions.has(quarterKey)) {
         partitions.set(quarterKey, []);
       }
@@ -1002,7 +1121,7 @@ function partitionByQuarter(data, dateField = 'date') {
       continue;
     }
   }
-  
+
   return partitions;
 }
 
@@ -1010,11 +1129,11 @@ function partitionByQuarter(data, dateField = 'date') {
 function generateRecentData(data, dateField = 'date', days = 90) {
   const cutoffDate = new Date();
   cutoffDate.setDate(cutoffDate.getDate() - days);
-  
+
   const recentData = data.filter(record => {
     const dateValue = record[dateField];
     if (!dateValue) return false;
-    
+
     try {
       const recordDate = new Date(dateValue);
       return recordDate >= cutoffDate;
@@ -1022,7 +1141,7 @@ function generateRecentData(data, dateField = 'date', days = 90) {
       return false;
     }
   });
-  
+
   return recentData;
 }
 
@@ -1034,12 +1153,12 @@ function createPartitionIndex(partitions, datasetName) {
     dateRange: getDateRange(records),
     fileName: `${quarter}.json`,
   }));
-  
+
   // Sort by quarter
   partitionList.sort((a, b) => a.quarter.localeCompare(b.quarter));
-  
+
   const totalRecords = Array.from(partitions.values()).reduce((sum, records) => sum + records.length, 0);
-  
+
   return {
     dataset: datasetName,
     totalPartitions: partitionList.length,
@@ -1054,16 +1173,16 @@ function createPartitionIndex(partitions, datasetName) {
 // Get date range from records
 function getDateRange(records, dateField = 'date') {
   if (records.length === 0) return { start: null, end: null };
-  
+
   const dates = records
     .map(r => r[dateField])
     .filter(d => d)
     .map(d => new Date(d))
     .filter(d => !isNaN(d.getTime()))
     .sort((a, b) => a - b);
-  
+
   if (dates.length === 0) return { start: null, end: null };
-  
+
   return {
     start: dates[0].toISOString().split('T')[0],
     end: dates[dates.length - 1].toISOString().split('T')[0],
@@ -1076,14 +1195,14 @@ async function partitionAndSaveDataset(datasetDir, transformedData, datasetName)
     console.log('    ⚠️  No data to partition');
     return null;
   }
-  
+
   const recordCount = transformedData.data.length;
   console.log(`    Partitioning ${recordCount} records...`);
-  
+
   // Only partition if > 1000 records
   if (recordCount > 1000) {
     const partitions = partitionByQuarter(transformedData.data);
-    
+
     // Save each partition
     for (const [quarter, records] of partitions.entries()) {
       const partitionFile = path.join(datasetDir, `${quarter}.json`);
@@ -1095,7 +1214,7 @@ async function partitionAndSaveDataset(datasetDir, transformedData, datasetName)
       });
       console.log(`      ✓ Saved ${quarter}.json (${records.length} records)`);
     }
-    
+
     // Generate recent.json
     const recentData = generateRecentData(transformedData.data);
     if (recentData.length > 0) {
@@ -1107,12 +1226,12 @@ async function partitionAndSaveDataset(datasetDir, transformedData, datasetName)
       });
       console.log(`      ✓ Saved recent.json (${recentData.length} records)`);
     }
-    
+
     // Create index
     const index = createPartitionIndex(partitions, datasetName);
     await writeJSON(path.join(datasetDir, 'index.json'), index);
     console.log(`      ✓ Saved index.json (${partitions.size} partitions)`);
-    
+
     return {
       partitioned: true,
       partitionCount: partitions.size,
@@ -1136,7 +1255,7 @@ function filterPalestineRelevant(datasets) {
     'jerusalem', 'hebron', 'nablus', 'jenin', 'ramallah',
     'rafah', 'khan yunis', 'deir al-balah', 'tulkarm', 'qalqilya',
   ];
-  
+
   // Keywords that indicate OTHER countries (not Palestine)
   const excludeKeywords = [
     'philippines', 'philippine', 'manila', 'mindanao',
@@ -1146,16 +1265,16 @@ function filterPalestineRelevant(datasets) {
     'myanmar', 'burma', 'bangladesh', 'rohingya',
     'ukraine', 'ukrainian', 'venezuela', 'venezuelan',
   ];
-  
+
   return datasets.filter(dataset => {
     const searchText = `${dataset.title || ''} ${dataset.notes || ''} ${dataset.tags?.map(t => t.name).join(' ') || ''}`.toLowerCase();
-    
+
     // Must contain Palestine keywords
     const hasPalestineKeyword = palestineKeywords.some(keyword => searchText.includes(keyword));
-    
+
     // Must NOT contain exclude keywords
     const hasExcludeKeyword = excludeKeywords.some(keyword => searchText.includes(keyword));
-    
+
     return hasPalestineKeyword && !hasExcludeKeyword;
   });
 }
@@ -1164,7 +1283,7 @@ function filterPalestineRelevant(datasets) {
 function extractRegions(dataset) {
   const regions = new Set();
   const text = `${dataset.title || ''} ${dataset.notes || ''}`.toLowerCase();
-  
+
   if (text.includes('gaza')) regions.add('gaza');
   if (text.includes('west bank') || text.includes('westbank')) regions.add('west_bank');
   if (text.includes('jerusalem')) regions.add('east_jerusalem');
@@ -1173,7 +1292,7 @@ function extractRegions(dataset) {
     regions.add('gaza');
     regions.add('west_bank');
   }
-  
+
   return Array.from(regions);
 }
 
@@ -1184,7 +1303,7 @@ function extractGovernorates(dataset) {
     'Jenin', 'Tubas', 'Tulkarm', 'Nablus', 'Qalqilya', 'Salfit',
     'Ramallah', 'Jericho', 'Jerusalem', 'Bethlehem', 'Hebron',
   ];
-  
+
   const text = `${dataset.title || ''} ${dataset.notes || ''}`.toLowerCase();
   return governorates.filter(gov => text.includes(gov.toLowerCase()));
 }
@@ -1196,7 +1315,7 @@ function isConflictRelated(dataset) {
     'military', 'armed', 'clash', 'incident', 'fatalities', 'deaths',
     'war', 'hostilities', 'bombardment', 'strike', 'raid',
   ];
-  
+
   const text = `${dataset.title || ''} ${dataset.notes || ''} ${dataset.tags?.map(t => t.name).join(' ') || ''}`.toLowerCase();
   return conflictKeywords.some(keyword => text.includes(keyword));
 }
@@ -1205,9 +1324,9 @@ function isConflictRelated(dataset) {
 function assessSourceReliability(organization) {
   const highReliability = ['unocha', 'who', 'unicef', 'unhcr', 'wfp', 'unrwa', 'undp'];
   const mediumReliability = ['ngo', 'humanitarian', 'international'];
-  
+
   const orgName = (organization?.name || '').toLowerCase();
-  
+
   if (highReliability.some(name => orgName.includes(name))) {
     return 'high';
   } else if (mediumReliability.some(name => orgName.includes(name))) {
@@ -1219,7 +1338,7 @@ function assessSourceReliability(organization) {
 // Search for Palestine datasets with more comprehensive queries
 async function searchPalestineDatasets() {
   console.log('\n🔍 Searching for Palestine datasets...');
-  
+
   // More specific queries with location filters
   const queries = [
     'groups:pse',  // Palestine country group
@@ -1235,17 +1354,17 @@ async function searchPalestineDatasets() {
     'state of palestine',
     'palestinian territories',
   ];
-  
+
   const allDatasets = new Map();
-  
+
   for (const query of queries) {
     try {
       const url = `${HDX_CKAN_BASE}/package_search?fq=${encodeURIComponent(query)}&rows=50`;
       const response = await fetchWithRetry(url);
-      
+
       if (response.success && response.result.results) {
         console.log(`  ✓ Found ${response.result.results.length} datasets for "${query}"`);
-        
+
         response.result.results.forEach(dataset => {
           if (!allDatasets.has(dataset.id)) {
             allDatasets.set(dataset.id, dataset);
@@ -1256,14 +1375,14 @@ async function searchPalestineDatasets() {
       console.error(`  ❌ Failed to search for "${query}":`, error.message);
     }
   }
-  
+
   // Filter to only Palestine-relevant datasets
   const allDatasetsArray = Array.from(allDatasets.values());
   const palestineDatasets = filterPalestineRelevant(allDatasetsArray);
-  
+
   console.log(`\n  Total unique datasets found: ${allDatasets.size}`);
   console.log(`  Palestine-relevant datasets: ${palestineDatasets.length}`);
-  
+
   // Log some examples
   if (palestineDatasets.length > 0) {
     console.log(`\n  Sample datasets:`);
@@ -1271,7 +1390,7 @@ async function searchPalestineDatasets() {
       console.log(`    - ${ds.title}`);
     });
   }
-  
+
   return palestineDatasets;
 }
 
@@ -1280,7 +1399,7 @@ async function getDatasetDetails(datasetId) {
   try {
     const url = `${HDX_CKAN_BASE}/package_show?id=${datasetId}`;
     const response = await fetchWithRetry(url);
-    
+
     if (response.success) {
       return response.result;
     }
@@ -1295,7 +1414,7 @@ async function downloadResource(resource) {
   try {
     const format = resource.format?.toLowerCase() || '';
     const name = resource.name?.toLowerCase() || '';
-    
+
     // Check file size before downloading (if available)
     if (resource.size) {
       const sizeInMB = resource.size / (1024 * 1024);
@@ -1304,7 +1423,7 @@ async function downloadResource(resource) {
         return null;
       }
     }
-    
+
     // Handle ZIP files with safe extraction
     if (format === 'zip' || name.endsWith('.zip')) {
       console.log(`    📦 Extracting ZIP: ${resource.name}`);
@@ -1315,28 +1434,28 @@ async function downloadResource(resource) {
           maxFileSize: 50 * 1024 * 1024, // 50 MB per file
           maxFiles: 50, // Max 50 files
         });
-        
+
         if (extractedFiles.length === 0) {
           console.log(`    ⚠️  No valid files in ZIP`);
           return null;
         }
-        
+
         // Find the first CSV or JSON file
         const dataFile = extractedFiles.find(f => {
           const ext = path.extname(f.name).toLowerCase();
           return ext === '.csv' || ext === '.json' || ext === '.geojson';
         });
-        
+
         if (!dataFile) {
           console.log(`    ⚠️  No CSV/JSON files found in ZIP`);
           return null;
         }
-        
+
         console.log(`    ✓ Using: ${dataFile.name} from ZIP`);
-        
+
         // Parse the extracted file
         const parsed = parseExtractedFile(dataFile);
-        
+
         if (parsed.format === 'csv') {
           // Parse CSV using papaparse
           const csvParsed = Papa.parse(parsed.data, {
@@ -1347,10 +1466,10 @@ async function downloadResource(resource) {
               return header.toLowerCase().trim().replace(/\s+/g, '_');
             },
           });
-          
-          return { 
-            format: 'csv', 
-            data: csvParsed.data, 
+
+          return {
+            format: 'csv',
+            data: csvParsed.data,
             meta: csvParsed.meta,
             fromZip: true,
             zipFileName: dataFile.name,
@@ -1367,30 +1486,30 @@ async function downloadResource(resource) {
         return null;
       }
     }
-    
+
     // Block other archive formats
     if (format === 'rar' || format === '7z' || format === 'tar' || format === 'gz' ||
-        name.endsWith('.rar') || name.endsWith('.7z')) {
+      name.endsWith('.rar') || name.endsWith('.7z')) {
       console.log(`    ⚠️  Skipping unsupported archive: ${resource.name} (${format})`);
       return null;
     }
-    
+
     // Only allow CSV, JSON, and GeoJSON for direct download
     if (format !== 'csv' && format !== 'json' && format !== 'geojson') {
       console.log(`    ⚠️  Skipping unsupported format: ${format}`);
       return null;
     }
-    
+
     console.log(`    Downloading: ${resource.name} (${format})`);
     const response = await fetch(resource.url);
-    
+
     if (!response.ok) {
       throw new Error(`HTTP ${response.status}`);
     }
-    
+
     // Check content type
     const contentType = response.headers.get('content-type') || '';
-    
+
     // Check content length
     const contentLength = response.headers.get('content-length');
     if (contentLength) {
@@ -1400,12 +1519,12 @@ async function downloadResource(resource) {
         return null;
       }
     }
-    
+
     if (contentType.includes('json') || format === 'json' || format === 'geojson') {
       return await response.json();
     } else if (contentType.includes('csv') || format === 'csv') {
       const text = await response.text();
-      
+
       // Parse CSV using papaparse
       const parsed = Papa.parse(text, {
         header: true,
@@ -1415,11 +1534,11 @@ async function downloadResource(resource) {
           return header.toLowerCase().trim().replace(/\s+/g, '_');
         },
       });
-      
+
       if (parsed.errors.length > 0) {
         console.log(`    ⚠️  CSV parsing warnings: ${parsed.errors.length} errors`);
       }
-      
+
       return { format: 'csv', data: parsed.data, meta: parsed.meta };
     } else {
       console.log(`    ⚠️  Unsupported content type: ${contentType}`);
@@ -1434,9 +1553,9 @@ async function downloadResource(resource) {
 // Save dataset catalog
 async function saveDatasetCatalog(datasets) {
   console.log('\n💾 Saving dataset catalog...');
-  
+
   await ensureDir(DATA_DIR);
-  
+
   const catalog = {
     generated_at: new Date().toISOString(),
     baseline_date: BASELINE_DATE,
@@ -1453,7 +1572,7 @@ async function saveDatasetCatalog(datasets) {
       data_update_frequency: ds.data_update_frequency,
     })),
   };
-  
+
   await writeJSON(path.join(DATA_DIR, 'catalog.json'), catalog);
   console.log(`  ✓ Saved catalog with ${datasets.length} datasets`);
 }
@@ -1461,12 +1580,12 @@ async function saveDatasetCatalog(datasets) {
 // Update HDX catalog with downloaded datasets
 async function updateHDXCatalog(categoriesData) {
   console.log('\n📋 Updating HDX catalog with downloaded datasets...');
-  
+
   const categories = {};
   let totalDatasets = 0;
   let totalRecords = 0;
   let totalPartitioned = 0;
-  
+
   for (const [category, categoryData] of Object.entries(categoriesData)) {
     const datasets = categoryData.datasets.map(ds => ({
       id: ds.id,
@@ -1481,7 +1600,7 @@ async function updateHDXCatalog(categoriesData) {
       tags: ds.metadata.tags,
       sourceUrl: ds.metadata.source_url,
     }));
-    
+
     categories[category] = {
       name: category,
       datasetCount: datasets.length,
@@ -1489,12 +1608,12 @@ async function updateHDXCatalog(categoriesData) {
       partitionedDatasets: datasets.filter(ds => ds.partitioned).length,
       datasets,
     };
-    
+
     totalDatasets += datasets.length;
     totalRecords += categories[category].totalRecords;
     totalPartitioned += categories[category].partitionedDatasets;
   }
-  
+
   const catalog = {
     source: 'hdx-ckan',
     generated_at: new Date().toISOString(),
@@ -1507,23 +1626,23 @@ async function updateHDXCatalog(categoriesData) {
     },
     categories,
   };
-  
+
   await writeJSON(path.join(DATA_DIR, 'catalog.json'), catalog);
   console.log(`  ✓ Updated catalog with ${totalDatasets} datasets across ${Object.keys(categories).length} categories`);
   console.log(`  ✓ Total records: ${totalRecords}`);
   console.log(`  ✓ Partitioned datasets: ${totalPartitioned}`);
-  
+
   return catalog;
 }
 
 // Process key datasets
 async function processKeyDatasets(datasets) {
   console.log('\n📊 Processing key datasets...');
-  
+
   // Look for specific datasets
   const keyDatasets = {
-    casualties: datasets.filter(ds => 
-      ds.name.includes('casualties') || 
+    casualties: datasets.filter(ds =>
+      ds.name.includes('casualties') ||
       ds.name.includes('killed') ||
       ds.title.toLowerCase().includes('casualties')
     ),
@@ -1538,17 +1657,17 @@ async function processKeyDatasets(datasets) {
       ds.title.toLowerCase().includes('violence')
     ),
   };
-  
+
   console.log(`  Found ${keyDatasets.casualties.length} casualty datasets`);
   console.log(`  Found ${keyDatasets.displacement.length} displacement datasets`);
   console.log(`  Found ${keyDatasets.conflict.length} conflict datasets`);
-  
+
   // Save summaries
   for (const [category, categoryDatasets] of Object.entries(keyDatasets)) {
     if (categoryDatasets.length > 0) {
       const categoryDir = path.join(DATA_DIR, category);
       await ensureDir(categoryDir);
-      
+
       const summary = {
         category,
         generated_at: new Date().toISOString(),
@@ -1567,19 +1686,19 @@ async function processKeyDatasets(datasets) {
           })) || [],
         })),
       };
-      
+
       await writeJSON(path.join(categoryDir, 'datasets.json'), summary);
       console.log(`  ✓ Saved ${category} datasets summary`);
     }
   }
-  
+
   return keyDatasets;
 }
 
 // Download priority datasets
 async function downloadPriorityDatasets(datasets) {
   console.log('\n📥 Downloading priority datasets...');
-  
+
   // Priority keywords for datasets we want to download
   const priorities = [
     { keywords: ['casualties', 'killed', 'fatalities'], category: 'casualties', limit: 3 },
@@ -1588,45 +1707,45 @@ async function downloadPriorityDatasets(datasets) {
     { keywords: ['health', 'medical', 'hospital'], category: 'health', limit: 2 },
     { keywords: ['water', 'sanitation', 'wash'], category: 'water', limit: 2 },
   ];
-  
+
   let totalDownloaded = 0;
-  
+
   for (const priority of priorities) {
     console.log(`\n  Category: ${priority.category}`);
-    
+
     // Find matching datasets
-    const matching = datasets.filter(ds => 
-      priority.keywords.some(kw => 
-        ds.title.toLowerCase().includes(kw) || 
+    const matching = datasets.filter(ds =>
+      priority.keywords.some(kw =>
+        ds.title.toLowerCase().includes(kw) ||
         ds.name.toLowerCase().includes(kw)
       )
     ).slice(0, priority.limit);
-    
+
     for (const dataset of matching) {
       console.log(`    Dataset: ${dataset.title}`);
-      
+
       // Find CSV or JSON resources
-      const dataResources = dataset.resources?.filter(r => 
-        r.format?.toLowerCase() === 'csv' || 
+      const dataResources = dataset.resources?.filter(r =>
+        r.format?.toLowerCase() === 'csv' ||
         r.format?.toLowerCase() === 'json'
       ) || [];
-      
+
       if (dataResources.length === 0) {
         console.log(`      ⚠️  No CSV/JSON resources found`);
         continue;
       }
-      
+
       // Download first resource
       const resource = dataResources[0];
       console.log(`      Downloading: ${resource.name} (${resource.format})`);
-      
+
       try {
         const data = await downloadResource(resource);
         if (data) {
           // Save to category directory
           const categoryDir = path.join(DATA_DIR, priority.category);
           await ensureDir(categoryDir);
-          
+
           const fileName = `${dataset.name.substring(0, 50)}.json`;
           await writeJSON(path.join(categoryDir, fileName), {
             metadata: {
@@ -1639,7 +1758,7 @@ async function downloadPriorityDatasets(datasets) {
             },
             data: data.format === 'csv' ? { csv: data.data } : data,
           });
-          
+
           totalDownloaded++;
           console.log(`      ✓ Saved to ${priority.category}/${fileName}`);
         }
@@ -1648,7 +1767,7 @@ async function downloadPriorityDatasets(datasets) {
       }
     }
   }
-  
+
   console.log(`\n  Total datasets downloaded: ${totalDownloaded}`);
   return totalDownloaded;
 }
@@ -1659,42 +1778,42 @@ async function main() {
   await logger.info('======================================================');
   await logger.info(`Baseline Date: ${BASELINE_DATE}`);
   await logger.info(`Data Directory: ${DATA_DIR}`);
-  
+
   try {
     // Create organized folder structure
     await createCategoryFolders();
-    
+
     // Search for datasets
     await logger.info('🔍 Searching for Palestine datasets...');
     const datasets = await searchPalestineDatasets();
-    
+
     if (datasets.length === 0) {
       await logger.warn('No datasets found');
       await logger.logSummary();
       return;
     }
-    
+
     await logger.success(`Found ${datasets.length} total datasets`);
-    
+
     // Download priority datasets by category
     const categoriesData = {};
     const categories = Object.keys(PRIORITY_HDX_DATASETS);
-    
+
     for (const category of categories) {
       const result = await fetchDatasetByCategory(category, datasets);
       categoriesData[category] = result;
     }
-    
+
     // Calculate totals
     const totalDownloaded = Object.values(categoriesData).reduce((sum, cat) => sum + cat.downloaded, 0);
     const totalFailed = Object.values(categoriesData).reduce((sum, cat) => sum + cat.failed, 0);
     const totalRecords = Object.values(categoriesData)
       .flatMap(cat => cat.datasets)
       .reduce((sum, ds) => sum + (ds.recordCount || 0), 0);
-    
+
     // Update HDX catalog
     const catalog = await updateHDXCatalog(categoriesData);
-    
+
     // Save metadata
     const metadata = {
       source: 'hdx-ckan',
@@ -1716,9 +1835,9 @@ async function main() {
         return acc;
       }, {}),
     };
-    
+
     await writeJSON(path.join(DATA_DIR, 'metadata.json'), metadata);
-    
+
     await logger.success('✅ HDX CKAN data fetch completed successfully!');
     await logger.info('📊 Summary:');
     await logger.info(`  Categories processed: ${categories.length}`);
@@ -1730,10 +1849,10 @@ async function main() {
       const categoryRecords = data.datasets.reduce((sum, ds) => sum + (ds.recordCount || 0), 0);
       await logger.info(`  ${category}: ${data.downloaded} datasets, ${categoryRecords} records`);
     }
-    
+
     // Log operation summary
     await logger.logSummary();
-    
+
   } catch (error) {
     await logger.error('Fatal error in HDX fetch script', error);
     await logger.logSummary();

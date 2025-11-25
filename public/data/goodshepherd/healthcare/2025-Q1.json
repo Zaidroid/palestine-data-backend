@@ -1,0 +1,2155 @@
+{
+  "metadata": {
+    "source": "goodshepherd",
+    "dataset": "healthcare-attacks",
+    "quarter": "2025-Q1",
+    "record_count": 134,
+    "last_updated": "2025-11-25T11:30:29.093Z"
+  },
+  "data": [
+    {
+      "date": "2025-01-02",
+      "facility_name": "Unknown",
+      "facility_type": "healthcare",
+      "location": "Unknown",
+      "incident_type": "attack",
+      "description": "02 January 2025: The wall of a medical facility was bulldozed by Israeli forces.",
+      "casualties": {
+        "killed": 0,
+        "injured": 0,
+        "kidnapped": 0
+      },
+      "latitude": 31.5351927833,
+      "longitude": 34.5093655515,
+      "source": "goodshepherd-api"
+    },
+    {
+      "date": "2025-01-03",
+      "facility_name": "Unknown",
+      "facility_type": "healthcare",
+      "location": "Unknown",
+      "incident_type": "attack",
+      "description": "03 January 2025: An NGO-ran medical facility in a camp was threatened to evacuate immediately or face bombing.",
+      "casualties": {
+        "killed": 0,
+        "injured": 0,
+        "kidnapped": 0
+      },
+      "latitude": 31.5338797038,
+      "longitude": 34.506565336,
+      "source": "goodshepherd-api"
+    },
+    {
+      "date": "2025-01-03",
+      "facility_name": "Unknown",
+      "facility_type": "healthcare",
+      "location": "Unknown",
+      "incident_type": "attack",
+      "description": "03 January 2025: An NGO-ran medical facility in a camp was hit by Israeli flare bombs from drones, injuring several health workers.",
+      "casualties": {
+        "killed": 0,
+        "injured": 1,
+        "kidnapped": 0
+      },
+      "latitude": 31.5338797038,
+      "longitude": 34.506565336,
+      "source": "goodshepherd-api"
+    },
+    {
+      "date": "2025-01-03",
+      "facility_name": "Unknown",
+      "facility_type": "healthcare",
+      "location": "Unknown",
+      "incident_type": "attack",
+      "description": "03 January 2025: An NGO-ran medical facility in a camp was shelled by Israeli forces.",
+      "casualties": {
+        "killed": 0,
+        "injured": 1,
+        "kidnapped": 0
+      },
+      "latitude": 31.5338797038,
+      "longitude": 34.506565336,
+      "source": "goodshepherd-api"
+    },
+    {
+      "date": "2025-01-03",
+      "facility_name": "Unknown",
+      "facility_type": "healthcare",
+      "location": "Unknown",
+      "incident_type": "attack",
+      "description": "03 January 2025: A health worker and his family were killed when their home was hit by an Israeli airstrike. ",
+      "casualties": {
+        "killed": 1,
+        "injured": 0,
+        "kidnapped": 0
+      },
+      "latitude": 31.5075809342,
+      "longitude": 34.4518386794,
+      "source": "goodshepherd-api"
+    },
+    {
+      "date": "2025-01-03",
+      "facility_name": "Unknown",
+      "facility_type": "healthcare",
+      "location": "Unknown",
+      "incident_type": "attack",
+      "description": "03 January 2025: A hospital in a camp was taken over and turned into a IHL military barracks by Israeli forces. An unspecified number of nurses treating were arrested.",
+      "casualties": {
+        "killed": 0,
+        "injured": 0,
+        "kidnapped": 0
+      },
+      "latitude": 32.4620862094,
+      "longitude": 35.2915349538,
+      "source": "goodshepherd-api"
+    },
+    {
+      "date": "2025-01-03",
+      "facility_name": "Unknown",
+      "facility_type": "healthcare",
+      "location": "Unknown",
+      "incident_type": "attack",
+      "description": "As reported on 04 January 2025: Ambulances were prevented from entering the camp to evacuate and treat injured civilians in the aftermath of a raid by the Israeli forces. ",
+      "casualties": {
+        "killed": 0,
+        "injured": 0,
+        "kidnapped": 0
+      },
+      "latitude": 32.2054798,
+      "longitude": 35.2864958,
+      "source": "goodshepherd-api"
+    },
+    {
+      "date": "2025-01-03",
+      "facility_name": "Unknown",
+      "facility_type": "healthcare",
+      "location": "Unknown",
+      "incident_type": "attack",
+      "description": "03 January 2025: A Red Cross ambulance vehicle was fired at with tear gas bombs and its work obstructed by the Israeli forces.",
+      "casualties": {
+        "killed": 0,
+        "injured": 0,
+        "kidnapped": 0
+      },
+      "latitude": 32.142272,
+      "longitude": 35.2856583,
+      "source": "goodshepherd-api"
+    },
+    {
+      "date": "2025-01-03",
+      "facility_name": "Unknown",
+      "facility_type": "healthcare",
+      "location": "Unknown",
+      "incident_type": "attack",
+      "description": "03 January 2025: A medical facility was besieged and fired at by Israeli vehicles before being forcefully evacuated.",
+      "casualties": {
+        "killed": 0,
+        "injured": 0,
+        "kidnapped": 0
+      },
+      "latitude": 31.5351927833,
+      "longitude": 34.5093655515,
+      "source": "goodshepherd-api"
+    },
+    {
+      "date": "2025-01-03",
+      "facility_name": "Unknown",
+      "facility_type": "healthcare",
+      "location": "Unknown",
+      "incident_type": "attack",
+      "description": "03 January 2025: The entrance of a medical facility was hit by Israeli airstrikes, killing and injuring an unspecified number of people.",
+      "casualties": {
+        "killed": 0,
+        "injured": 0,
+        "kidnapped": 0
+      },
+      "latitude": 31.5240854092,
+      "longitude": 34.443495558,
+      "source": "goodshepherd-api"
+    },
+    {
+      "date": "2025-01-03",
+      "facility_name": "Unknown",
+      "facility_type": "healthcare",
+      "location": "Unknown",
+      "incident_type": "attack",
+      "description": "03 January 2025: In a temporary shelter, IDP tents in the vicinity of a medical facility were hit by Israeli airstrikes, injuring an unspecified number of people. ",
+      "casualties": {
+        "killed": 0,
+        "injured": 0,
+        "kidnapped": 0
+      },
+      "latitude": 31.4200022681,
+      "longitude": 34.3597412109,
+      "source": "goodshepherd-api"
+    },
+    {
+      "date": "2025-01-04",
+      "facility_name": "Unknown",
+      "facility_type": "healthcare",
+      "location": "Unknown",
+      "incident_type": "attack",
+      "description": "04 January 2025: A Red Cross medical center was damaged  by an Israeli airstrike targeting a nearby home. ",
+      "casualties": {
+        "killed": 0,
+        "injured": 0,
+        "kidnapped": 0
+      },
+      "latitude": 31.3517405124,
+      "longitude": 34.2981790731,
+      "source": "goodshepherd-api"
+    },
+    {
+      "date": "2025-01-04",
+      "facility_name": "Unknown",
+      "facility_type": "healthcare",
+      "location": "Unknown",
+      "incident_type": "attack",
+      "description": "04 January 2025: Ambulance staff were fired upon during an Israeli drone attack.",
+      "casualties": {
+        "killed": 0,
+        "injured": 0,
+        "kidnapped": 0
+      },
+      "latitude": 31.5128679,
+      "longitude": 34.4581358,
+      "source": "goodshepherd-api"
+    },
+    {
+      "date": "2025-01-04",
+      "facility_name": "Unknown",
+      "facility_type": "healthcare",
+      "location": "Unknown",
+      "incident_type": "attack",
+      "description": "04 January 2025: An INGO health worker was detained by Israeli authorities.\r\n",
+      "casualties": {
+        "killed": 0,
+        "injured": 0,
+        "kidnapped": 0
+      },
+      "latitude": 31.4432234,
+      "longitude": 34.360007,
+      "source": "goodshepherd-api"
+    },
+    {
+      "date": "2025-01-04",
+      "facility_name": "Unknown",
+      "facility_type": "healthcare",
+      "location": "Unknown",
+      "incident_type": "attack",
+      "description": "04 January 2025: Flares were fired over an NGO-supported medical facility by Israeli forces.",
+      "casualties": {
+        "killed": 0,
+        "injured": 0,
+        "kidnapped": 0
+      },
+      "latitude": 31.5038940682,
+      "longitude": 34.4614505791,
+      "source": "goodshepherd-api"
+    },
+    {
+      "date": "2025-01-05",
+      "facility_name": "Unknown",
+      "facility_type": "healthcare",
+      "location": "Unknown",
+      "incident_type": "attack",
+      "description": "05 January 2025: An ambulance attempting to reach a besieged house was denied access by Israeli forces. ",
+      "casualties": {
+        "killed": 0,
+        "injured": 0,
+        "kidnapped": 0
+      },
+      "latitude": 32.3478183,
+      "longitude": 35.2738072,
+      "source": "goodshepherd-api"
+    },
+    {
+      "date": "2025-01-05",
+      "facility_name": "Unknown",
+      "facility_type": "healthcare",
+      "location": "Unknown",
+      "incident_type": "attack",
+      "description": "05 January 2025: A doctor was killed when her home in a camp was hit by an Israeli airstrike. ",
+      "casualties": {
+        "killed": 1,
+        "injured": 0,
+        "kidnapped": 0
+      },
+      "latitude": 31.4482157917,
+      "longitude": 34.393408289,
+      "source": "goodshepherd-api"
+    },
+    {
+      "date": "2025-01-05",
+      "facility_name": "Unknown",
+      "facility_type": "healthcare",
+      "location": "Unknown",
+      "incident_type": "attack",
+      "description": "As reported on 05 January 2025: The vicinity of a medical center was fired at by Israeli drones. ",
+      "casualties": {
+        "killed": 0,
+        "injured": 0,
+        "kidnapped": 0
+      },
+      "latitude": 31.4225658441,
+      "longitude": 34.3863701789,
+      "source": "goodshepherd-api"
+    },
+    {
+      "date": "2025-01-05",
+      "facility_name": "Unknown",
+      "facility_type": "healthcare",
+      "location": "Unknown",
+      "incident_type": "attack",
+      "description": "As reported on 05 January 2025: In a camp, the vicinity of a medical facility was fired at by Israeli drones.",
+      "casualties": {
+        "killed": 0,
+        "injured": 0,
+        "kidnapped": 0
+      },
+      "latitude": 31.4225658441,
+      "longitude": 34.3863701789,
+      "source": "goodshepherd-api"
+    },
+    {
+      "date": "2025-01-06",
+      "facility_name": "Unknown",
+      "facility_type": "healthcare",
+      "location": "Unknown",
+      "incident_type": "attack",
+      "description": "06 January 2025: A Palestinian medical worker was injured on her head by an Israeli shrapnel and left to bleed.  ",
+      "casualties": {
+        "killed": 0,
+        "injured": 1,
+        "kidnapped": 0
+      },
+      "latitude": 31.5351927833,
+      "longitude": 34.5093655515,
+      "source": "goodshepherd-api"
+    },
+    {
+      "date": "2025-01-06",
+      "facility_name": "Unknown",
+      "facility_type": "healthcare",
+      "location": "Unknown",
+      "incident_type": "attack",
+      "description": "06 January 2025: The vicinity of the the NGO-supported Kuwait Hospital was hit by an Israeli airstrike, killing one person and injuring an unspecified number, including children.",
+      "casualties": {
+        "killed": 0,
+        "injured": 0,
+        "kidnapped": 0
+      },
+      "latitude": 31.2884899745,
+      "longitude": 34.2498028286,
+      "source": "goodshepherd-api"
+    },
+    {
+      "date": "2025-01-06",
+      "facility_name": "Unknown",
+      "facility_type": "healthcare",
+      "location": "Unknown",
+      "incident_type": "attack",
+      "description": "06 January 2025: Tents sheltering IDPs near a health facility were struck by an Israeli airstrike, killing an unspecified number of people, including a woman and children and injuring others. ",
+      "casualties": {
+        "killed": 0,
+        "injured": 0,
+        "kidnapped": 0
+      },
+      "latitude": 31.3443293,
+      "longitude": 34.3095897,
+      "source": "goodshepherd-api"
+    },
+    {
+      "date": "2025-01-07",
+      "facility_name": "Unknown",
+      "facility_type": "healthcare",
+      "location": "Unknown",
+      "incident_type": "attack",
+      "description": "As reported on 07 January 20254: An ambulance was used by Israeli forces during a raid on the camp in December 2024. ",
+      "casualties": {
+        "killed": 0,
+        "injured": 0,
+        "kidnapped": 0
+      },
+      "latitude": 32.2053935884,
+      "longitude": 35.2865839068,
+      "source": "goodshepherd-api"
+    },
+    {
+      "date": "2025-01-07",
+      "facility_name": "Unknown",
+      "facility_type": "healthcare",
+      "location": "Unknown",
+      "incident_type": "attack",
+      "description": "07 January 2025: The vicinity of a medical center was reportedly hit by Israeli drones. \r\n",
+      "casualties": {
+        "killed": 0,
+        "injured": 0,
+        "kidnapped": 0
+      },
+      "latitude": 31.5326589024,
+      "longitude": 34.4701615322,
+      "source": "goodshepherd-api"
+    },
+    {
+      "date": "2025-01-07",
+      "facility_name": "Unknown",
+      "facility_type": "healthcare",
+      "location": "Unknown",
+      "incident_type": "attack",
+      "description": "07 January 2025: A medical facility warned their electricity generators would cease functioning in 24 hours due to depletion of fuel, putting premature babies and ICU patients under threat,",
+      "casualties": {
+        "killed": 0,
+        "injured": 0,
+        "kidnapped": 0
+      },
+      "latitude": 31.3023150385,
+      "longitude": 34.3195736658,
+      "source": "goodshepherd-api"
+    },
+    {
+      "date": "2025-01-08",
+      "facility_name": "Unknown",
+      "facility_type": "healthcare",
+      "location": "Unknown",
+      "incident_type": "attack",
+      "description": "08 January 2025: An INGO warned that a medical facility they support was on the verge of closure due to lack of fuel, placing newborns at risk.",
+      "casualties": {
+        "killed": 0,
+        "injured": 0,
+        "kidnapped": 0
+      },
+      "latitude": 31.4200022681,
+      "longitude": 34.3597412109,
+      "source": "goodshepherd-api"
+    },
+    {
+      "date": "2025-01-08",
+      "facility_name": "Unknown",
+      "facility_type": "healthcare",
+      "location": "Unknown",
+      "incident_type": "attack",
+      "description": "08 January 2025: The vicinity of an NGO-ran medical facility in a camp was hit by Israeli artillery.",
+      "casualties": {
+        "killed": 0,
+        "injured": 0,
+        "kidnapped": 0
+      },
+      "latitude": 31.5338797038,
+      "longitude": 34.506565336,
+      "source": "goodshepherd-api"
+    },
+    {
+      "date": "2025-01-08",
+      "facility_name": "Unknown",
+      "facility_type": "healthcare",
+      "location": "Unknown",
+      "incident_type": "attack",
+      "description": "08 January 2025: A medical facility in a camp reported all their generators had stopped. Only a small generator remained with three hours of fuel.",
+      "casualties": {
+        "killed": 0,
+        "injured": 0,
+        "kidnapped": 0
+      },
+      "latitude": 31.3478325696,
+      "longitude": 34.2932331562,
+      "source": "goodshepherd-api"
+    },
+    {
+      "date": "2025-01-08",
+      "facility_name": "Unknown",
+      "facility_type": "healthcare",
+      "location": "Unknown",
+      "incident_type": "attack",
+      "description": "08 January 2025: An NGO-ran medical facility sheltering IDPs in a camp was besieged and continuously fired at by Israeli forces tanks for at least five days, preventing movement in and out of the facility.",
+      "casualties": {
+        "killed": 0,
+        "injured": 0,
+        "kidnapped": 0
+      },
+      "latitude": 31.5338797038,
+      "longitude": 34.506565336,
+      "source": "goodshepherd-api"
+    },
+    {
+      "date": "2025-01-09",
+      "facility_name": "Unknown",
+      "facility_type": "healthcare",
+      "location": "Unknown",
+      "incident_type": "attack",
+      "description": "As reported on 09 January 2025: In a camp, a power outage led to the spoilage of approximately 1,600 vials of insulin in a UN agency health clinic, which had been non-operational since the Palestinian Authority’s operation began. A UN agency offered camp residents health services at the nearby health center, but they were largely unable to visit it due to access difficulties. ",
+      "casualties": {
+        "killed": 0,
+        "injured": 0,
+        "kidnapped": 0
+      },
+      "latitude": 32.4601429368,
+      "longitude": 35.2877427919,
+      "source": "goodshepherd-api"
+    },
+    {
+      "date": "2025-01-10",
+      "facility_name": "Unknown",
+      "facility_type": "healthcare",
+      "location": "Unknown",
+      "incident_type": "attack",
+      "description": "10 January 2025: A besieged NGO-ran medical facility in a camp was critically low on fuel and essential medical supplies.",
+      "casualties": {
+        "killed": 0,
+        "injured": 0,
+        "kidnapped": 0
+      },
+      "latitude": 31.5338797038,
+      "longitude": 34.506565336,
+      "source": "goodshepherd-api"
+    },
+    {
+      "date": "2025-01-10",
+      "facility_name": "Unknown",
+      "facility_type": "healthcare",
+      "location": "Unknown",
+      "incident_type": "attack",
+      "description": "10 January 2025: An NGO-ran medical facility in a camp was fired at by Israeli artillery.",
+      "casualties": {
+        "killed": 0,
+        "injured": 0,
+        "kidnapped": 0
+      },
+      "latitude": 31.5338797038,
+      "longitude": 34.506565336,
+      "source": "goodshepherd-api"
+    },
+    {
+      "date": "2025-01-10",
+      "facility_name": "Unknown",
+      "facility_type": "healthcare",
+      "location": "Unknown",
+      "incident_type": "attack",
+      "description": "10 January 2025: Civil defense teams were prevented from extinguishing a fire by Israeli forces. The fire broke out at a goods store, located under a residential building, the teams were blocked from reaching the area to treat the flames. ",
+      "casualties": {
+        "killed": 0,
+        "injured": 0,
+        "kidnapped": 0
+      },
+      "latitude": 32.4095293,
+      "longitude": 35.2800574,
+      "source": "goodshepherd-api"
+    },
+    {
+      "date": "2025-01-11",
+      "facility_name": "Unknown",
+      "facility_type": "healthcare",
+      "location": "Unknown",
+      "incident_type": "attack",
+      "description": "11-12 January 2025: An NGO health worker was injured by an Israeli airstrike in a camp while responding to casualties and later succumbed to his wounds.",
+      "casualties": {
+        "killed": 1,
+        "injured": 1,
+        "kidnapped": 0
+      },
+      "latitude": 31.5290924248,
+      "longitude": 34.4840203437,
+      "source": "goodshepherd-api"
+    },
+    {
+      "date": "2025-01-13",
+      "facility_name": "Unknown",
+      "facility_type": "healthcare",
+      "location": "Unknown",
+      "incident_type": "attack",
+      "description": "13 January 2025: A medical facility was damaged by Israeli forces airstrikes, injuring a health worker.\r\n",
+      "casualties": {
+        "killed": 0,
+        "injured": 1,
+        "kidnapped": 0
+      },
+      "latitude": 31.5351927833,
+      "longitude": 34.5093655515,
+      "source": "goodshepherd-api"
+    },
+    {
+      "date": "2025-01-14",
+      "facility_name": "Unknown",
+      "facility_type": "healthcare",
+      "location": "Unknown",
+      "incident_type": "attack",
+      "description": "14 January 2025: A UN mission to evacuate patients and deliver food, water, fuel and supplies to an NGO-run medical facility in a camp was denied by Israeli authorities. The mission reached the facility the following day.",
+      "casualties": {
+        "killed": 0,
+        "injured": 0,
+        "kidnapped": 0
+      },
+      "latitude": 31.5338797038,
+      "longitude": 34.506565336,
+      "source": "goodshepherd-api"
+    },
+    {
+      "date": "2025-01-14",
+      "facility_name": "Unknown",
+      "facility_type": "healthcare",
+      "location": "Unknown",
+      "incident_type": "attack",
+      "description": "14 January 2025: A UN mission to evacuate patients and deliver food, water, fuel and supplies to a medical facility was denied by Israeli authorities.",
+      "casualties": {
+        "killed": 0,
+        "injured": 0,
+        "kidnapped": 0
+      },
+      "latitude": 31.5351927833,
+      "longitude": 34.5093655515,
+      "source": "goodshepherd-api"
+    },
+    {
+      "date": "2025-01-14",
+      "facility_name": "Unknown",
+      "facility_type": "healthcare",
+      "location": "Unknown",
+      "incident_type": "attack",
+      "description": "14 January 2025: In the vicinity of a medical facility a house sheltering IDPs was struck by Israeli forces airstrikes, killing at least twelve people, including four women, one of whom was pregnant, and two children. ",
+      "casualties": {
+        "killed": 0,
+        "injured": 0,
+        "kidnapped": 0
+      },
+      "latitude": 31.3443293,
+      "longitude": 34.3095897,
+      "source": "goodshepherd-api"
+    },
+    {
+      "date": "2025-01-14",
+      "facility_name": "Unknown",
+      "facility_type": "healthcare",
+      "location": "Unknown",
+      "incident_type": "attack",
+      "description": "14 January 2025: An NGO health worker, her husband who was an aid worker, and their four children, were amongst 20 people killed when their house in a camp was hit by Israeli airstrikes. ",
+      "casualties": {
+        "killed": 1,
+        "injured": 0,
+        "kidnapped": 0
+      },
+      "latitude": 31.4482157917,
+      "longitude": 34.393408289,
+      "source": "goodshepherd-api"
+    },
+    {
+      "date": "2025-01-15",
+      "facility_name": "Unknown",
+      "facility_type": "healthcare",
+      "location": "Unknown",
+      "incident_type": "attack",
+      "description": "15 January 2025: A Red Cross ambulance was struck by an Israeli bullet in a camp during a UN-agency mission to a medical facility. ",
+      "casualties": {
+        "killed": 0,
+        "injured": 0,
+        "kidnapped": 0
+      },
+      "latitude": 31.5290924248,
+      "longitude": 34.4840203437,
+      "source": "goodshepherd-api"
+    },
+    {
+      "date": "2025-01-15",
+      "facility_name": "Unknown",
+      "facility_type": "healthcare",
+      "location": "Unknown",
+      "incident_type": "attack",
+      "description": "15 January 2025: A health worker was killed in her home by Israeli airstrikes, minutes after the ceasefire announcement.\r\n",
+      "casualties": {
+        "killed": 1,
+        "injured": 0,
+        "kidnapped": 0
+      },
+      "latitude": 31.5168183,
+      "longitude": 34.4633091862,
+      "source": "goodshepherd-api"
+    },
+    {
+      "date": "2025-01-15",
+      "facility_name": "Unknown",
+      "facility_type": "healthcare",
+      "location": "Unknown",
+      "incident_type": "attack",
+      "description": "15 January 2025: An ambulance belonging to an NGO was struck by a bullet fired by Israeli forces during a UN Agency mission to a medical facility.",
+      "casualties": {
+        "killed": 0,
+        "injured": 0,
+        "kidnapped": 0
+      },
+      "latitude": 31.5290924248,
+      "longitude": 34.4840203437,
+      "source": "goodshepherd-api"
+    },
+    {
+      "date": "2025-01-16",
+      "facility_name": "Unknown",
+      "facility_type": "healthcare",
+      "location": "Unknown",
+      "incident_type": "attack",
+      "description": "16 January 2025: A health worker and his family, were killed by an Israeli forces airstrike. ",
+      "casualties": {
+        "killed": 1,
+        "injured": 0,
+        "kidnapped": 0
+      },
+      "latitude": 31.5128679,
+      "longitude": 34.4581358,
+      "source": "goodshepherd-api"
+    },
+    {
+      "date": "2025-01-17",
+      "facility_name": "Unknown",
+      "facility_type": "healthcare",
+      "location": "Unknown",
+      "incident_type": "attack",
+      "description": "17 January 2025: The vicinity of a health facility was raided by Israeli forces.",
+      "casualties": {
+        "killed": 0,
+        "injured": 0,
+        "kidnapped": 0
+      },
+      "latitude": 32.222953,
+      "longitude": 35.2551483,
+      "source": "goodshepherd-api"
+    },
+    {
+      "date": "2025-01-17",
+      "facility_name": "Unknown",
+      "facility_type": "healthcare",
+      "location": "Unknown",
+      "incident_type": "attack",
+      "description": "17 January 2025: In a temporary shelter, a tent sheltering IDPs at the entrance of a medical facility was bombed by Israeli helicopters, killing three people and injuring an unspecified number of others.",
+      "casualties": {
+        "killed": 0,
+        "injured": 0,
+        "kidnapped": 0
+      },
+      "latitude": 31.3478325696,
+      "longitude": 34.2932331562,
+      "source": "goodshepherd-api"
+    },
+    {
+      "date": "2025-01-19",
+      "facility_name": "Unknown",
+      "facility_type": "healthcare",
+      "location": "Unknown",
+      "incident_type": "attack",
+      "description": "19 January 2025: A paramedic was injured when a Red Cross ambulance en route to evacuate the wounded was struck by Israeli forces. ",
+      "casualties": {
+        "killed": 0,
+        "injured": 1,
+        "kidnapped": 0
+      },
+      "latitude": 31.3443293,
+      "longitude": 34.3095897,
+      "source": "goodshepherd-api"
+    },
+    {
+      "date": "2025-01-19",
+      "facility_name": "Unknown",
+      "facility_type": "healthcare",
+      "location": "Unknown",
+      "incident_type": "attack",
+      "description": "19 January 2025: The area surrounding a Red Cross medical facility was under fire by Israeli forces. ",
+      "casualties": {
+        "killed": 0,
+        "injured": 0,
+        "kidnapped": 0
+      },
+      "latitude": 31.5057881419,
+      "longitude": 34.4304817915,
+      "source": "goodshepherd-api"
+    },
+    {
+      "date": "2025-01-19",
+      "facility_name": "Unknown",
+      "facility_type": "healthcare",
+      "location": "Unknown",
+      "incident_type": "attack",
+      "description": "19 January 2025: A health worker was killed by an Israeli forces quadcopter.",
+      "casualties": {
+        "killed": 1,
+        "injured": 0,
+        "kidnapped": 0
+      },
+      "latitude": 31.2830204,
+      "longitude": 34.2805069,
+      "source": "goodshepherd-api"
+    },
+    {
+      "date": "2025-01-21",
+      "facility_name": "Unknown",
+      "facility_type": "healthcare",
+      "location": "Unknown",
+      "incident_type": "attack",
+      "description": "21 January 2025: Medical teams from the Red Cross were obstructed from providing assistance to a civilian in a camp who had been shot by Israeli forces.",
+      "casualties": {
+        "killed": 0,
+        "injured": 0,
+        "kidnapped": 0
+      },
+      "latitude": 32.4601429368,
+      "longitude": 35.2877427919,
+      "source": "goodshepherd-api"
+    },
+    {
+      "date": "2025-01-21",
+      "facility_name": "Unknown",
+      "facility_type": "healthcare",
+      "location": "Unknown",
+      "incident_type": "attack",
+      "description": "21 January 2025: A site near a group of Red Crescent volunteer paramedics in a camp was struck by two missiles from Israeli drones.",
+      "casualties": {
+        "killed": 0,
+        "injured": 0,
+        "kidnapped": 0
+      },
+      "latitude": 32.4601429368,
+      "longitude": 35.2877427919,
+      "source": "goodshepherd-api"
+    },
+    {
+      "date": "2025-01-21",
+      "facility_name": "Unknown",
+      "facility_type": "healthcare",
+      "location": "Unknown",
+      "incident_type": "attack",
+      "description": "21 January 2025: Five health workers were shot and injured by Israeli forces snipers who fired into the courtyard of a hospital. ",
+      "casualties": {
+        "killed": 0,
+        "injured": 5,
+        "kidnapped": 0
+      },
+      "latitude": 32.4616576,
+      "longitude": 35.2934441,
+      "source": "goodshepherd-api"
+    },
+    {
+      "date": "2025-01-21",
+      "facility_name": "Unknown",
+      "facility_type": "healthcare",
+      "location": "Unknown",
+      "incident_type": "attack",
+      "description": "21 January 2025: The movement of Red Cross ambulances were obstructed by Israeli forces. ",
+      "casualties": {
+        "killed": 0,
+        "injured": 0,
+        "kidnapped": 0
+      },
+      "latitude": 32.4618837,
+      "longitude": 35.297566,
+      "source": "goodshepherd-api"
+    },
+    {
+      "date": "2025-01-21",
+      "facility_name": "Unknown",
+      "facility_type": "healthcare",
+      "location": "Unknown",
+      "incident_type": "attack",
+      "description": "21 January 2025: A medical facility was besieged by Israeli forces, allowing no-one to enter or leave the facility, except one ambulance which was subjected to inspection when leaving or entering. New patients were only accepted under Israeli supervision.",
+      "casualties": {
+        "killed": 0,
+        "injured": 0,
+        "kidnapped": 0
+      },
+      "latitude": 32.4616576,
+      "longitude": 35.2934441,
+      "source": "goodshepherd-api"
+    },
+    {
+      "date": "2025-01-21",
+      "facility_name": "Unknown",
+      "facility_type": "healthcare",
+      "location": "Unknown",
+      "incident_type": "attack",
+      "description": "21 January 2025: A medical facility was disconnected from the water grid and electricity network due to an ongoing operation in the area with airstrikes, causing damage to the energy infrastructure. It relied on dwindling water reserves from emergency tanks that were installed just weeks ago in preparation for such situations. ",
+      "casualties": {
+        "killed": 0,
+        "injured": 0,
+        "kidnapped": 0
+      },
+      "latitude": 32.4620862094,
+      "longitude": 35.2915349538,
+      "source": "goodshepherd-api"
+    },
+    {
+      "date": "2025-01-22",
+      "facility_name": "Unknown",
+      "facility_type": "healthcare",
+      "location": "Unknown",
+      "incident_type": "attack",
+      "description": "22 January 2025: The entrance to a hospital was blocked by the Israeli forces' dirt barricades, with the road infrastructure leading to the hospital destroyed, obstructing the ambulances' access to the facility. Patients, medical staff, and companions were trapped inside the hospital, unable to leave. ",
+      "casualties": {
+        "killed": 0,
+        "injured": 0,
+        "kidnapped": 0
+      },
+      "latitude": 32.4620862094,
+      "longitude": 35.2915349538,
+      "source": "goodshepherd-api"
+    },
+    {
+      "date": "2025-01-22",
+      "facility_name": "Unknown",
+      "facility_type": "healthcare",
+      "location": "Unknown",
+      "incident_type": "attack",
+      "description": "22 January 2025: A Red Cross ambulance carrying a woman suffering from a heart attack was obstructed by Israeli forces, preventing the woman from reaching hospital. She died as a result of the obstruction. ",
+      "casualties": {
+        "killed": 0,
+        "injured": 0,
+        "kidnapped": 0
+      },
+      "latitude": 31.5779224792,
+      "longitude": 35.1392370689,
+      "source": "goodshepherd-api"
+    },
+    {
+      "date": "2025-01-22",
+      "facility_name": "Unknown",
+      "facility_type": "healthcare",
+      "location": "Unknown",
+      "incident_type": "attack",
+      "description": "22 January 2025: The surroundings of a hospital were bulldozed by Israeli forces. ",
+      "casualties": {
+        "killed": 0,
+        "injured": 0,
+        "kidnapped": 0
+      },
+      "latitude": 32.468330249,
+      "longitude": 35.2869923852,
+      "source": "goodshepherd-api"
+    },
+    {
+      "date": "2025-01-22",
+      "facility_name": "Unknown",
+      "facility_type": "healthcare",
+      "location": "Unknown",
+      "incident_type": "attack",
+      "description": "22 January 2025: A health facility was raided by security forces who arrested a wounded man they believed to be a member of the Jenin Battalion. ",
+      "casualties": {
+        "killed": 0,
+        "injured": 0,
+        "kidnapped": 0
+      },
+      "latitude": 32.4581139,
+      "longitude": 35.3008139,
+      "source": "goodshepherd-api"
+    },
+    {
+      "date": "2025-01-24",
+      "facility_name": "Unknown",
+      "facility_type": "healthcare",
+      "location": "Unknown",
+      "incident_type": "attack",
+      "description": "24 January 2025: 11 international NGO health workers were prevented by Israeli forces from leaving the Gaza Strip, despite the completion of their mission. ",
+      "casualties": {
+        "killed": 0,
+        "injured": 0,
+        "kidnapped": 0
+      },
+      "latitude": 31.4553455873,
+      "longitude": 34.4148337378,
+      "source": "goodshepherd-api"
+    },
+    {
+      "date": "2025-01-25",
+      "facility_name": "Unknown",
+      "facility_type": "healthcare",
+      "location": "Unknown",
+      "incident_type": "attack",
+      "description": "Around 25 January 2025: The three water supply lines serving a medical facility were damaged by Israeli forces. As a result it ran out of water. ",
+      "casualties": {
+        "killed": 0,
+        "injured": 0,
+        "kidnapped": 0
+      },
+      "latitude": 32.4620862094,
+      "longitude": 35.2915349538,
+      "source": "goodshepherd-api"
+    },
+    {
+      "date": "2025-01-26",
+      "facility_name": "Unknown",
+      "facility_type": "healthcare",
+      "location": "Unknown",
+      "incident_type": "attack",
+      "description": "26 January 2025: An ambulance was blocked by Israeli forces at a checkpoint while attempting to transport emergency cases. Soldiers seized the crew's identification cards and the vehicle's keys.",
+      "casualties": {
+        "killed": 0,
+        "injured": 0,
+        "kidnapped": 0
+      },
+      "latitude": 32.0853628,
+      "longitude": 35.2580971,
+      "source": "goodshepherd-api"
+    },
+    {
+      "date": "2025-01-26",
+      "facility_name": "Unknown",
+      "facility_type": "healthcare",
+      "location": "Unknown",
+      "incident_type": "attack",
+      "description": "26 January 2025: Red Cross ambulances were stopped and subjected to searches by Israeli forces. ",
+      "casualties": {
+        "killed": 0,
+        "injured": 0,
+        "kidnapped": 0
+      },
+      "latitude": 32.4618837,
+      "longitude": 35.297566,
+      "source": "goodshepherd-api"
+    },
+    {
+      "date": "2025-01-27",
+      "facility_name": "Unknown",
+      "facility_type": "healthcare",
+      "location": "Unknown",
+      "incident_type": "attack",
+      "description": "27 January 2025: A health facility entrance was blocked by Israeli forces who had stationed there for at least three days. They obstructed the work of ambulances by stopping them, searching them, and interrogating their crews. ",
+      "casualties": {
+        "killed": 0,
+        "injured": 0,
+        "kidnapped": 0
+      },
+      "latitude": 32.3102824433,
+      "longitude": 35.0242058477,
+      "source": "goodshepherd-api"
+    },
+    {
+      "date": "2025-01-27",
+      "facility_name": "Unknown",
+      "facility_type": "healthcare",
+      "location": "Unknown",
+      "incident_type": "attack",
+      "description": "27 January 2025: A health facility was surrounded by Israeli forces. ",
+      "casualties": {
+        "killed": 0,
+        "injured": 0,
+        "kidnapped": 0
+      },
+      "latitude": 32.3146240559,
+      "longitude": 35.0300467299,
+      "source": "goodshepherd-api"
+    },
+    {
+      "date": "2025-01-27",
+      "facility_name": "Unknown",
+      "facility_type": "healthcare",
+      "location": "Unknown",
+      "incident_type": "attack",
+      "description": "27 January 2025: A health facility was besieged for two consecutive days. The entrance was blocked by Israeli forces who had stationed there. They obstructed the work of ambulances by stopping them, searching them, and interrogating their crews. ",
+      "casualties": {
+        "killed": 0,
+        "injured": 0,
+        "kidnapped": 0
+      },
+      "latitude": 32.3146240559,
+      "longitude": 35.0300467299,
+      "source": "goodshepherd-api"
+    },
+    {
+      "date": "2025-01-28",
+      "facility_name": "Unknown",
+      "facility_type": "healthcare",
+      "location": "Unknown",
+      "incident_type": "attack",
+      "description": "28 January 2025: A red cross ambulance was shot at by Israeli snipers.",
+      "casualties": {
+        "killed": 0,
+        "injured": 0,
+        "kidnapped": 0
+      },
+      "latitude": 31.2752039559,
+      "longitude": 34.2557788121,
+      "source": "goodshepherd-api"
+    },
+    {
+      "date": "2025-01-28",
+      "facility_name": "Unknown",
+      "facility_type": "healthcare",
+      "location": "Unknown",
+      "incident_type": "attack",
+      "description": "28 January 2025: Red Cross ambulances and medical crews were fired at and obstructed by Israeli forces. ",
+      "casualties": {
+        "killed": 0,
+        "injured": 0,
+        "kidnapped": 0
+      },
+      "latitude": 32.3111468,
+      "longitude": 35.0275505,
+      "source": "goodshepherd-api"
+    },
+    {
+      "date": "2025-01-28",
+      "facility_name": "Unknown",
+      "facility_type": "healthcare",
+      "location": "Unknown",
+      "incident_type": "attack",
+      "description": "28 January 2025: Israeli forces blocked access to an ambulance for hours. ",
+      "casualties": {
+        "killed": 0,
+        "injured": 0,
+        "kidnapped": 0
+      },
+      "latitude": 32.4618837,
+      "longitude": 35.297566,
+      "source": "goodshepherd-api"
+    },
+    {
+      "date": "2025-01-29",
+      "facility_name": "Unknown",
+      "facility_type": "healthcare",
+      "location": "Unknown",
+      "incident_type": "attack",
+      "description": "29 January 2025: Red Cross ambulances were stopped and subjected to searches by Israeli forces. ",
+      "casualties": {
+        "killed": 0,
+        "injured": 0,
+        "kidnapped": 0
+      },
+      "latitude": 32.4618837,
+      "longitude": 35.297566,
+      "source": "goodshepherd-api"
+    },
+    {
+      "date": "2025-01-29",
+      "facility_name": "Unknown",
+      "facility_type": "healthcare",
+      "location": "Unknown",
+      "incident_type": "attack",
+      "description": "29 January 2025: A Red Cross ambulance vehicle was detained by Israeli forces, preventing the emergency crew from reaching an injured civilian who was injured by bombing. ",
+      "casualties": {
+        "killed": 0,
+        "injured": 0,
+        "kidnapped": 0
+      },
+      "latitude": 32.4618837,
+      "longitude": 35.297566,
+      "source": "goodshepherd-api"
+    },
+    {
+      "date": "2025-01-29",
+      "facility_name": "Unknown",
+      "facility_type": "healthcare",
+      "location": "Unknown",
+      "incident_type": "attack",
+      "description": "29 January 2025: Ambulances were prevented from entering a camp.",
+      "casualties": {
+        "killed": 0,
+        "injured": 0,
+        "kidnapped": 0
+      },
+      "latitude": 32.3136127735,
+      "longitude": 35.0349283566,
+      "source": "goodshepherd-api"
+    },
+    {
+      "date": "2025-01-29",
+      "facility_name": "Unknown",
+      "facility_type": "healthcare",
+      "location": "Unknown",
+      "incident_type": "attack",
+      "description": "29 January 2025: A Red Cross ambulance was fired at by Israeli forces. \r\n",
+      "casualties": {
+        "killed": 0,
+        "injured": 0,
+        "kidnapped": 0
+      },
+      "latitude": 31.2752047,
+      "longitude": 34.2558269,
+      "source": "goodshepherd-api"
+    },
+    {
+      "date": "2025-01-30",
+      "facility_name": "Unknown",
+      "facility_type": "healthcare",
+      "location": "Unknown",
+      "incident_type": "attack",
+      "description": "30 January 2025: The yard of the Red Cross headquarters was raided by Israeli forces who ordered its crews to remove their vehicles and leave immediately under the threat of arms. ",
+      "casualties": {
+        "killed": 0,
+        "injured": 0,
+        "kidnapped": 0
+      },
+      "latitude": 32.3111468,
+      "longitude": 35.0275505,
+      "source": "goodshepherd-api"
+    },
+    {
+      "date": "2025-01-30",
+      "facility_name": "Unknown",
+      "facility_type": "healthcare",
+      "location": "Unknown",
+      "incident_type": "attack",
+      "description": "30 January 2025: A Red Cross ambulance was struck by an Israeli forces vehicle to prevent them from reaching a civilian shot and  injured by Israeli forces inside a camp.",
+      "casualties": {
+        "killed": 0,
+        "injured": 0,
+        "kidnapped": 0
+      },
+      "latitude": 32.4601429368,
+      "longitude": 35.2877427919,
+      "source": "goodshepherd-api"
+    },
+    {
+      "date": "2025-01-30",
+      "facility_name": "Unknown",
+      "facility_type": "healthcare",
+      "location": "Unknown",
+      "incident_type": "attack",
+      "description": "As reported on 30 January 2025: Nearly three kilometres of roads inside and near the camp were bulldozed by Israeli forces, including those leading to a medical center in a camp, causing damage to critical water and sewage infrastructure as well as telecommunication networks. ",
+      "casualties": {
+        "killed": 0,
+        "injured": 0,
+        "kidnapped": 0
+      },
+      "latitude": 32.4620862094,
+      "longitude": 35.2915349538,
+      "source": "goodshepherd-api"
+    },
+    {
+      "date": "2025-01-30",
+      "facility_name": "Unknown",
+      "facility_type": "healthcare",
+      "location": "Unknown",
+      "incident_type": "attack",
+      "description": "30 January 2025: A UN agency ban by the Israeli's came into effect, depriving tens of thousands of Palestinian refugees of services, including education and health care. The staff were moved to Jerusalem after the offices were forcibly closed. All international  staff had left by 27 March.",
+      "casualties": {
+        "killed": 0,
+        "injured": 0,
+        "kidnapped": 0
+      },
+      "latitude": 32.0254688,
+      "longitude": 35.2888075,
+      "source": "goodshepherd-api"
+    },
+    {
+      "date": "2025-01-31",
+      "facility_name": "Unknown",
+      "facility_type": "healthcare",
+      "location": "Unknown",
+      "incident_type": "attack",
+      "description": "31 January 2025: Ambulances were blocked from entering and leaving a hospital. ",
+      "casualties": {
+        "killed": 0,
+        "injured": 0,
+        "kidnapped": 0
+      },
+      "latitude": 32.4620862094,
+      "longitude": 35.2915349538,
+      "source": "goodshepherd-api"
+    },
+    {
+      "date": "2025-02-01",
+      "facility_name": "Unknown",
+      "facility_type": "healthcare",
+      "location": "Unknown",
+      "incident_type": "attack",
+      "description": "01 February 2025: A nurse was killed when Israeli airstrikes hit a nearby motorbike. The three civilians on the bike were also killed. ",
+      "casualties": {
+        "killed": 1,
+        "injured": 0,
+        "kidnapped": 0
+      },
+      "latitude": 32.4618837,
+      "longitude": 35.297566,
+      "source": "goodshepherd-api"
+    },
+    {
+      "date": "2025-02-02",
+      "facility_name": "Unknown",
+      "facility_type": "healthcare",
+      "location": "Unknown",
+      "incident_type": "attack",
+      "description": "02 February 2025: A Red Cross medical team was prevented by Israeli forces from reaching a patient in a camp, delaying the provision of medical assistance.",
+      "casualties": {
+        "killed": 0,
+        "injured": 0,
+        "kidnapped": 0
+      },
+      "latitude": 32.293336275,
+      "longitude": 35.3447556496,
+      "source": "goodshepherd-api"
+    },
+    {
+      "date": "2025-02-02",
+      "facility_name": "Unknown",
+      "facility_type": "healthcare",
+      "location": "Unknown",
+      "incident_type": "attack",
+      "description": "02 February 2025: The entrance to a Red Crescent’s (PRCS) branch was closed by Israeli forces, preventing ambulance vehicles from operating during the ongoing invasion.",
+      "casualties": {
+        "killed": 0,
+        "injured": 0,
+        "kidnapped": 0
+      },
+      "latitude": 32.3111468,
+      "longitude": 35.0275505,
+      "source": "goodshepherd-api"
+    },
+    {
+      "date": "2025-02-02",
+      "facility_name": "Unknown",
+      "facility_type": "healthcare",
+      "location": "Unknown",
+      "incident_type": "attack",
+      "description": "02 February 2025: A hospital in a camp was struck with live ammunition that damaged parts of it.",
+      "casualties": {
+        "killed": 0,
+        "injured": 0,
+        "kidnapped": 0
+      },
+      "latitude": 32.4620862094,
+      "longitude": 35.2915349538,
+      "source": "goodshepherd-api"
+    },
+    {
+      "date": "2025-02-03",
+      "facility_name": "Unknown",
+      "facility_type": "healthcare",
+      "location": "Unknown",
+      "incident_type": "attack",
+      "description": "03 February 2025: An ambulance was stopped and restricted by Israeli forces at a military checkpoint. ",
+      "casualties": {
+        "killed": 0,
+        "injured": 0,
+        "kidnapped": 0
+      },
+      "latitude": 32.083629,
+      "longitude": 35.3633272,
+      "source": "goodshepherd-api"
+    },
+    {
+      "date": "2025-02-03",
+      "facility_name": "Unknown",
+      "facility_type": "healthcare",
+      "location": "Unknown",
+      "incident_type": "attack",
+      "description": "03 February 2025: A hospital in a camp was damaged by explosions during the demolition of nearby homes by Israeli forces.",
+      "casualties": {
+        "killed": 0,
+        "injured": 0,
+        "kidnapped": 0
+      },
+      "latitude": 32.4620862094,
+      "longitude": 35.2915349538,
+      "source": "goodshepherd-api"
+    },
+    {
+      "date": "2025-02-03",
+      "facility_name": "Unknown",
+      "facility_type": "healthcare",
+      "location": "Unknown",
+      "incident_type": "attack",
+      "description": "03 February 2025: Red Cross ambulances were searched and mistreated by Israeli forces during a military raid on the town.",
+      "casualties": {
+        "killed": 0,
+        "injured": 0,
+        "kidnapped": 0
+      },
+      "latitude": 32.28275,
+      "longitude": 35.384776,
+      "source": "goodshepherd-api"
+    },
+    {
+      "date": "2025-02-03",
+      "facility_name": "Unknown",
+      "facility_type": "healthcare",
+      "location": "Unknown",
+      "incident_type": "attack",
+      "description": "03 February 2025: A patient was interrogated at a health facility emergency department by Israeli forces.",
+      "casualties": {
+        "killed": 0,
+        "injured": 0,
+        "kidnapped": 0
+      },
+      "latitude": 32.3146240559,
+      "longitude": 35.0300467299,
+      "source": "goodshepherd-api"
+    },
+    {
+      "date": "2025-02-03",
+      "facility_name": "Unknown",
+      "facility_type": "healthcare",
+      "location": "Unknown",
+      "incident_type": "attack",
+      "description": "03 February 2025: A Red Cross ambulance point in a camp was raided and searched by Israeli forces who confiscated staff material and restricted their movement. ",
+      "casualties": {
+        "killed": 0,
+        "injured": 0,
+        "kidnapped": 0
+      },
+      "latitude": 32.293336275,
+      "longitude": 35.3447556496,
+      "source": "goodshepherd-api"
+    },
+    {
+      "date": "2025-02-03",
+      "facility_name": "Unknown",
+      "facility_type": "healthcare",
+      "location": "Unknown",
+      "incident_type": "attack",
+      "description": "03 February 2025: A health facility was raided by Israeli forces, to detain a patient at the hospital. The man had recently arrived in an ambulance. A woman who was accompanying the patient was also detained and later released after questioning. ",
+      "casualties": {
+        "killed": 0,
+        "injured": 0,
+        "kidnapped": 0
+      },
+      "latitude": 32.3146240559,
+      "longitude": 35.0300467299,
+      "source": "goodshepherd-api"
+    },
+    {
+      "date": "2025-02-03",
+      "facility_name": "Unknown",
+      "facility_type": "healthcare",
+      "location": "Unknown",
+      "incident_type": "attack",
+      "description": "03 February 2025: A health facility was besieged by Israeli forces, hindering the work of ambulance and medical crews and obstructing patients’ access to the hospital. ",
+      "casualties": {
+        "killed": 0,
+        "injured": 0,
+        "kidnapped": 0
+      },
+      "latitude": 32.3102824433,
+      "longitude": 35.0242058477,
+      "source": "goodshepherd-api"
+    },
+    {
+      "date": "2025-02-04",
+      "facility_name": "Unknown",
+      "facility_type": "healthcare",
+      "location": "Unknown",
+      "incident_type": "attack",
+      "description": "04 February 2025: A Red Cross ambulance was stopped at the entrance of a health facility by Israeli forces. They held equipment and property of a patient and the Red Cross staff. The forces later allowed patients to enter the health facility but forced a Red Cross health worker out of the ambulance and detained him for over an hour. ",
+      "casualties": {
+        "killed": 0,
+        "injured": 0,
+        "kidnapped": 0
+      },
+      "latitude": 32.3146240559,
+      "longitude": 35.0300467299,
+      "source": "goodshepherd-api"
+    },
+    {
+      "date": "2025-02-04",
+      "facility_name": "Unknown",
+      "facility_type": "healthcare",
+      "location": "Unknown",
+      "incident_type": "attack",
+      "description": "04 February 2025: A Red Cross vehicle was detained by Israeli forces while working in the town. ",
+      "casualties": {
+        "killed": 0,
+        "injured": 0,
+        "kidnapped": 0
+      },
+      "latitude": 32.2921086538,
+      "longitude": 35.371328671,
+      "source": "goodshepherd-api"
+    },
+    {
+      "date": "2025-02-04",
+      "facility_name": "Unknown",
+      "facility_type": "healthcare",
+      "location": "Unknown",
+      "incident_type": "attack",
+      "description": "04 February 2025: Access to health care was disrupted when the IDF closed a checkpoint.",
+      "casualties": {
+        "killed": 0,
+        "injured": 0,
+        "kidnapped": 0
+      },
+      "latitude": 32.3273424,
+      "longitude": 35.4630601,
+      "source": "goodshepherd-api"
+    },
+    {
+      "date": "2025-02-06",
+      "facility_name": "Unknown",
+      "facility_type": "healthcare",
+      "location": "Unknown",
+      "incident_type": "attack",
+      "description": "06 February 2025: An ambulance was fired at and damaged by Israeli forces, damaging it.",
+      "casualties": {
+        "killed": 0,
+        "injured": 0,
+        "kidnapped": 0
+      },
+      "latitude": 32.28275,
+      "longitude": 35.384776,
+      "source": "goodshepherd-api"
+    },
+    {
+      "date": "2025-02-06",
+      "facility_name": "Unknown",
+      "facility_type": "healthcare",
+      "location": "Unknown",
+      "incident_type": "attack",
+      "description": "06 February 2025: An ambulance was fired at by Israeli forces causing damage to the vehicle.",
+      "casualties": {
+        "killed": 0,
+        "injured": 0,
+        "kidnapped": 0
+      },
+      "latitude": 32.2835,
+      "longitude": 35.3837,
+      "source": "goodshepherd-api"
+    },
+    {
+      "date": "2025-02-06",
+      "facility_name": "Unknown",
+      "facility_type": "healthcare",
+      "location": "Unknown",
+      "incident_type": "attack",
+      "description": "06-09 February 2025: The entry of emergency crews from the Red Cross to a camp, as well as food and water, was obstructed by Israeli forces. ",
+      "casualties": {
+        "killed": 0,
+        "injured": 0,
+        "kidnapped": 0
+      },
+      "latitude": 32.293336275,
+      "longitude": 35.3447556496,
+      "source": "goodshepherd-api"
+    },
+    {
+      "date": "2025-02-07",
+      "facility_name": "Unknown",
+      "facility_type": "healthcare",
+      "location": "Unknown",
+      "incident_type": "attack",
+      "description": "07 February 2025: A health facility was besieged by the Israeli forces. ",
+      "casualties": {
+        "killed": 0,
+        "injured": 0,
+        "kidnapped": 0
+      },
+      "latitude": 32.3146240559,
+      "longitude": 35.0300467299,
+      "source": "goodshepherd-api"
+    },
+    {
+      "date": "2025-02-07",
+      "facility_name": "Unknown",
+      "facility_type": "healthcare",
+      "location": "Unknown",
+      "incident_type": "attack",
+      "description": "07 February 2025: Red Cross ambulance crews were attacked while on duty during an Israeli forces raid. Israeli soldiers fired stun grenades directly at the ambulance, causing significant damage to the vehicle and injuring one paramedic.",
+      "casualties": {
+        "killed": 0,
+        "injured": 1,
+        "kidnapped": 0
+      },
+      "latitude": 32.142272,
+      "longitude": 35.2856583,
+      "source": "goodshepherd-api"
+    },
+    {
+      "date": "2025-02-08",
+      "facility_name": "Unknown",
+      "facility_type": "healthcare",
+      "location": "Unknown",
+      "incident_type": "attack",
+      "description": "08 February 2025: A Red Cross ambulance was rammed by an Israeli forces military vehicle while it was transporting a patient in a camp. ",
+      "casualties": {
+        "killed": 0,
+        "injured": 0,
+        "kidnapped": 0
+      },
+      "latitude": 32.293336275,
+      "longitude": 35.3447556496,
+      "source": "goodshepherd-api"
+    },
+    {
+      "date": "2025-02-09",
+      "facility_name": "Unknown",
+      "facility_type": "healthcare",
+      "location": "Unknown",
+      "incident_type": "attack",
+      "description": "09 February 2025: An ambulance trying to evacuate a pregnant woman in a camp who had been shot and killed by the Israeli forces was blocked from reaching her.  Despite their efforts, her unborn baby died.",
+      "casualties": {
+        "killed": 0,
+        "injured": 0,
+        "kidnapped": 0
+      },
+      "latitude": 32.317711389,
+      "longitude": 35.0592180861,
+      "source": "goodshepherd-api"
+    },
+    {
+      "date": "2025-02-09",
+      "facility_name": "Unknown",
+      "facility_type": "healthcare",
+      "location": "Unknown",
+      "incident_type": "attack",
+      "description": "09 February 2025: A Red Cross vehicle was fired at by Israeli forces while they were en route to assist the injured. ",
+      "casualties": {
+        "killed": 0,
+        "injured": 0,
+        "kidnapped": 0
+      },
+      "latitude": 31.5050311,
+      "longitude": 34.4641381,
+      "source": "goodshepherd-api"
+    },
+    {
+      "date": "2025-02-10",
+      "facility_name": "Unknown",
+      "facility_type": "healthcare",
+      "location": "Unknown",
+      "incident_type": "attack",
+      "description": "10 February 2025: Health workers were detained, and their vehicle was seized by Israeli forces, preventing the evacuation of sick and displaced individuals in a camp. ",
+      "casualties": {
+        "killed": 0,
+        "injured": 0,
+        "kidnapped": 0
+      },
+      "latitude": 32.317711389,
+      "longitude": 35.0592180861,
+      "source": "goodshepherd-api"
+    },
+    {
+      "date": "2025-02-12",
+      "facility_name": "Unknown",
+      "facility_type": "healthcare",
+      "location": "Unknown",
+      "incident_type": "attack",
+      "description": "12 February 2025: A Red Cross vehicle was rammed by Israeli forces who obstructed the team’s efforts to evacuate civilians from a camp.",
+      "casualties": {
+        "killed": 0,
+        "injured": 0,
+        "kidnapped": 0
+      },
+      "latitude": 32.317711389,
+      "longitude": 35.0592180861,
+      "source": "goodshepherd-api"
+    },
+    {
+      "date": "2025-02-12",
+      "facility_name": "Unknown",
+      "facility_type": "healthcare",
+      "location": "Unknown",
+      "incident_type": "attack",
+      "description": "12 February 2025: A Red Cross ambulance vehicle was prevented from entering a neighborhood by Israeli forces.",
+      "casualties": {
+        "killed": 0,
+        "injured": 0,
+        "kidnapped": 0
+      },
+      "latitude": 32.4618837,
+      "longitude": 35.297566,
+      "source": "goodshepherd-api"
+    },
+    {
+      "date": "2025-02-12",
+      "facility_name": "Unknown",
+      "facility_type": "healthcare",
+      "location": "Unknown",
+      "incident_type": "attack",
+      "description": "12 February 2025: A United Nations clinic in a camp was stormed by Israeli forces who broke its doors, destroyed its contents, and turned it into a field investigation centre. ",
+      "casualties": {
+        "killed": 0,
+        "injured": 0,
+        "kidnapped": 0
+      },
+      "latitude": 31.6231834693,
+      "longitude": 35.1370892003,
+      "source": "goodshepherd-api"
+    },
+    {
+      "date": "2025-02-12",
+      "facility_name": "Unknown",
+      "facility_type": "healthcare",
+      "location": "Unknown",
+      "incident_type": "attack",
+      "description": "12 February 2025: Israeli forces used a UN agency medical facility in a camp as a temporary detention site. 26 Palestinians were detained, 22 were subsequently released, and four were taken into custody. According to testimonies, Israeli forces physically assaulted them.",
+      "casualties": {
+        "killed": 0,
+        "injured": 0,
+        "kidnapped": 0
+      },
+      "latitude": 31.6231834693,
+      "longitude": 35.1370892003,
+      "source": "goodshepherd-api"
+    },
+    {
+      "date": "2025-02-13",
+      "facility_name": "Unknown",
+      "facility_type": "healthcare",
+      "location": "Unknown",
+      "incident_type": "attack",
+      "description": "As reported on 13 February 2025: Access to a health center remained extremely limited, with ambulances searched and delayed at the entrances. ",
+      "casualties": {
+        "killed": 0,
+        "injured": 0,
+        "kidnapped": 0
+      },
+      "latitude": 32.4620862094,
+      "longitude": 35.2915349538,
+      "source": "goodshepherd-api"
+    },
+    {
+      "date": "2025-02-13",
+      "facility_name": "Unknown",
+      "facility_type": "healthcare",
+      "location": "Unknown",
+      "incident_type": "attack",
+      "description": "As reported on 13 February 2025: Access to a health center remained extremely limited, with ambulances searched and delayed at the entrances. ",
+      "casualties": {
+        "killed": 0,
+        "injured": 0,
+        "kidnapped": 0
+      },
+      "latitude": 32.468330249,
+      "longitude": 35.2869923852,
+      "source": "goodshepherd-api"
+    },
+    {
+      "date": "2025-02-16",
+      "facility_name": "Unknown",
+      "facility_type": "healthcare",
+      "location": "Unknown",
+      "incident_type": "attack",
+      "description": "16 February 2025: Ambulance crews were prevented from entering a school by Israeli forces, where they were attempting to treat casualties.",
+      "casualties": {
+        "killed": 0,
+        "injured": 0,
+        "kidnapped": 0
+      },
+      "latitude": 32.2205316,
+      "longitude": 35.2569374,
+      "source": "goodshepherd-api"
+    },
+    {
+      "date": "2025-02-17",
+      "facility_name": "Unknown",
+      "facility_type": "healthcare",
+      "location": "Unknown",
+      "incident_type": "attack",
+      "description": "17 February 2025: Red Cross ambulance health care workers were beaten by Israeli forces, while transporting an injured patient in a camp.",
+      "casualties": {
+        "killed": 0,
+        "injured": 1,
+        "kidnapped": 0
+      },
+      "latitude": 32.4601429368,
+      "longitude": 35.2877427919,
+      "source": "goodshepherd-api"
+    },
+    {
+      "date": "2025-02-20",
+      "facility_name": "Unknown",
+      "facility_type": "healthcare",
+      "location": "Unknown",
+      "incident_type": "attack",
+      "description": "20 February 2025: An unspecified number of Palestinians were abused in a camp by Israeli forces near a medical facility.",
+      "casualties": {
+        "killed": 0,
+        "injured": 0,
+        "kidnapped": 0
+      },
+      "latitude": 32.4620862094,
+      "longitude": 35.2915349538,
+      "source": "goodshepherd-api"
+    },
+    {
+      "date": "2025-02-25",
+      "facility_name": "Unknown",
+      "facility_type": "healthcare",
+      "location": "Unknown",
+      "incident_type": "attack",
+      "description": "25 February 2025: A patient was attempted to be abducted from a Red Cross ambulance by Israeli forces after they shot and injured him. ",
+      "casualties": {
+        "killed": 0,
+        "injured": 0,
+        "kidnapped": 0
+      },
+      "latitude": 32.2204983691,
+      "longitude": 35.2565005146,
+      "source": "goodshepherd-api"
+    },
+    {
+      "date": "2025-02-27",
+      "facility_name": "Unknown",
+      "facility_type": "healthcare",
+      "location": "Unknown",
+      "incident_type": "attack",
+      "description": "27 February 2025: A doctor was shot by an Israeli soldier in a camp. ",
+      "casualties": {
+        "killed": 0,
+        "injured": 1,
+        "kidnapped": 0
+      },
+      "latitude": 32.4601429368,
+      "longitude": 35.2877427919,
+      "source": "goodshepherd-api"
+    },
+    {
+      "date": "2025-02-27",
+      "facility_name": "Unknown",
+      "facility_type": "healthcare",
+      "location": "Unknown",
+      "incident_type": "attack",
+      "description": "27 February 2025: A medical team was fired at by Israeli forces while attempting to reach a civilian who had been shot. ",
+      "casualties": {
+        "killed": 0,
+        "injured": 0,
+        "kidnapped": 0
+      },
+      "latitude": 32.4601429368,
+      "longitude": 35.2877427919,
+      "source": "goodshepherd-api"
+    },
+    {
+      "date": "2025-03-02",
+      "facility_name": "Unknown",
+      "facility_type": "healthcare",
+      "location": "Unknown",
+      "incident_type": "attack",
+      "description": "02 March 2025: The rear entrance of a medical facility in a camp was blocked with an earth barrier by Israeli forces. The entrance continued to be blocked until at least 18 March.",
+      "casualties": {
+        "killed": 0,
+        "injured": 0,
+        "kidnapped": 0
+      },
+      "latitude": 32.4620862094,
+      "longitude": 35.2915349538,
+      "source": "goodshepherd-api"
+    },
+    {
+      "date": "2025-03-02",
+      "facility_name": "Unknown",
+      "facility_type": "healthcare",
+      "location": "Unknown",
+      "incident_type": "attack",
+      "description": "02 March 2025: The rear entrance of a hospital in a camp was blocked with an earth barrier by Israeli forces. The entrance continued to be blocked until at least 18 March. ",
+      "casualties": {
+        "killed": 0,
+        "injured": 0,
+        "kidnapped": 0
+      },
+      "latitude": 32.4620862094,
+      "longitude": 35.2915349538,
+      "source": "goodshepherd-api"
+    },
+    {
+      "date": "2025-03-04",
+      "facility_name": "Unknown",
+      "facility_type": "healthcare",
+      "location": "Unknown",
+      "incident_type": "attack",
+      "description": "04 March 2025: Red Cross ambulances, coordinated with the WHO, were struck by tank fire while transporting patients for medical treatment. They later awaited permission to proceed.\r\n",
+      "casualties": {
+        "killed": 0,
+        "injured": 0,
+        "kidnapped": 0
+      },
+      "latitude": 31.2505249045,
+      "longitude": 34.2606962436,
+      "source": "goodshepherd-api"
+    },
+    {
+      "date": "2025-03-08",
+      "facility_name": "Unknown",
+      "facility_type": "healthcare",
+      "location": "Unknown",
+      "incident_type": "attack",
+      "description": "08-09 March 2025: The premises of a hospital was raided by Israeli forces. During the raid, Israeli forces confiscated camera recording devices from the hospital's security department. They also temporarily detained several of the hospital’s security guards and arrested the chief security guard. ",
+      "casualties": {
+        "killed": 0,
+        "injured": 0,
+        "kidnapped": 0
+      },
+      "latitude": 31.5565007,
+      "longitude": 35.0830924,
+      "source": "goodshepherd-api"
+    },
+    {
+      "date": "2025-03-11",
+      "facility_name": "Unknown",
+      "facility_type": "healthcare",
+      "location": "Unknown",
+      "incident_type": "attack",
+      "description": "11 March 2025: An ambulance was fired upon and prevented from reaching an injured person by Israeli forces. ",
+      "casualties": {
+        "killed": 0,
+        "injured": 0,
+        "kidnapped": 0
+      },
+      "latitude": 32.4622672576,
+      "longitude": 35.2922086954,
+      "source": "goodshepherd-api"
+    },
+    {
+      "date": "2025-03-17",
+      "facility_name": "Unknown",
+      "facility_type": "healthcare",
+      "location": "Unknown",
+      "incident_type": "attack",
+      "description": "March 2025: At least two Red Cross paramedics were beaten by Israeli forces.",
+      "casualties": {
+        "killed": 0,
+        "injured": 2,
+        "kidnapped": 0
+      },
+      "latitude": 32.219929,
+      "longitude": 35.264049,
+      "source": "goodshepherd-api"
+    },
+    {
+      "date": "2025-03-17",
+      "facility_name": "Unknown",
+      "facility_type": "healthcare",
+      "location": "Unknown",
+      "incident_type": "attack",
+      "description": "17 March 2025: Ambulances were prevented by Israeli forces from reaching wounded civilians. ",
+      "casualties": {
+        "killed": 0,
+        "injured": 0,
+        "kidnapped": 0
+      },
+      "latitude": 32.1791358773,
+      "longitude": 35.3348851542,
+      "source": "goodshepherd-api"
+    },
+    {
+      "date": "2025-03-18",
+      "facility_name": "Unknown",
+      "facility_type": "healthcare",
+      "location": "Unknown",
+      "incident_type": "attack",
+      "description": "18 March 2025: An INGO health worker was killed by an Israeli airstrike on his home. ",
+      "casualties": {
+        "killed": 1,
+        "injured": 0,
+        "kidnapped": 0
+      },
+      "latitude": 31.4183455,
+      "longitude": 34.3502476,
+      "source": "goodshepherd-api"
+    },
+    {
+      "date": "2025-03-18",
+      "facility_name": "Unknown",
+      "facility_type": "healthcare",
+      "location": "Unknown",
+      "incident_type": "attack",
+      "description": "18 March 2025: The vicinity of a medical facility was struck by Israeli airstrikes.",
+      "casualties": {
+        "killed": 0,
+        "injured": 0,
+        "kidnapped": 0
+      },
+      "latitude": 31.5336277465,
+      "longitude": 34.4596266904,
+      "source": "goodshepherd-api"
+    },
+    {
+      "date": "2025-03-18",
+      "facility_name": "Unknown",
+      "facility_type": "healthcare",
+      "location": "Unknown",
+      "incident_type": "attack",
+      "description": "18 March 2025: An LNGO health workers was killed by an Israeli forces missile in his home with his family. ",
+      "casualties": {
+        "killed": 1,
+        "injured": 0,
+        "kidnapped": 0
+      },
+      "latitude": 31.4203604,
+      "longitude": 34.3721462,
+      "source": "goodshepherd-api"
+    },
+    {
+      "date": "2025-03-18",
+      "facility_name": "Unknown",
+      "facility_type": "healthcare",
+      "location": "Unknown",
+      "incident_type": "attack",
+      "description": "18 March 2025: Red cross ambulances and medical crews were obstructed by the Israeli forces, preventing them from reaching injured individuals for treatment. ",
+      "casualties": {
+        "killed": 0,
+        "injured": 0,
+        "kidnapped": 0
+      },
+      "latitude": 32.1881333,
+      "longitude": 34.9679208,
+      "source": "goodshepherd-api"
+    },
+    {
+      "date": "2025-03-18",
+      "facility_name": "Unknown",
+      "facility_type": "healthcare",
+      "location": "Unknown",
+      "incident_type": "attack",
+      "description": "18 March 2025: Red Cross ambulances and medical crews were obstructed by the Israeli forces, preventing them from reaching injured individuals for treatment. ",
+      "casualties": {
+        "killed": 0,
+        "injured": 0,
+        "kidnapped": 0
+      },
+      "latitude": 32.1881333,
+      "longitude": 34.9679208,
+      "source": "goodshepherd-api"
+    },
+    {
+      "date": "2025-03-18",
+      "facility_name": "Unknown",
+      "facility_type": "healthcare",
+      "location": "Unknown",
+      "incident_type": "attack",
+      "description": "18 March 2025: A house near a medical health facility was hit by suspected Israeli forces and killed ten civilians between 2:10 and 2:45. ",
+      "casualties": {
+        "killed": 0,
+        "injured": 0,
+        "kidnapped": 0
+      },
+      "latitude": 31.4200022681,
+      "longitude": 34.3597412109,
+      "source": "goodshepherd-api"
+    },
+    {
+      "date": "2025-03-21",
+      "facility_name": "Unknown",
+      "facility_type": "healthcare",
+      "location": "Unknown",
+      "incident_type": "attack",
+      "description": "21 March 2025: A medical facility was destroyed by Israeli forces explosives, after occupying it since July 2024, on claims that the facility was used by Hamas. ",
+      "casualties": {
+        "killed": 0,
+        "injured": 0,
+        "kidnapped": 0
+      },
+      "latitude": 31.4794493865,
+      "longitude": 34.4117117284,
+      "source": "goodshepherd-api"
+    },
+    {
+      "date": "2025-03-21",
+      "facility_name": "Unknown",
+      "facility_type": "healthcare",
+      "location": "Unknown",
+      "incident_type": "attack",
+      "description": "21 March 2025: The vicinity of medical facility in a camp was struck by Israeli airstrikes.",
+      "casualties": {
+        "killed": 0,
+        "injured": 0,
+        "kidnapped": 0
+      },
+      "latitude": 31.5363212588,
+      "longitude": 34.4962499376,
+      "source": "goodshepherd-api"
+    },
+    {
+      "date": "2025-03-22",
+      "facility_name": "Unknown",
+      "facility_type": "healthcare",
+      "location": "Unknown",
+      "incident_type": "attack",
+      "description": "22 March 2025: A health worker, his wife and two children were killed in an Israeli airstrike that struck their home.",
+      "casualties": {
+        "killed": 1,
+        "injured": 0,
+        "kidnapped": 0
+      },
+      "latitude": 31.28146495,
+      "longitude": 34.3324289702,
+      "source": "goodshepherd-api"
+    },
+    {
+      "date": "2025-03-23",
+      "facility_name": "Unknown",
+      "facility_type": "healthcare",
+      "location": "Unknown",
+      "incident_type": "attack",
+      "description": "23 March 2025: Two Red Cross health workers were killed when their ambulance was shot at by Israeli forces while responding to casualties of an airstrike. Another crew member survived but was detained and interrogated by Israeli soldiers before being released.",
+      "casualties": {
+        "killed": 2,
+        "injured": 0,
+        "kidnapped": 0
+      },
+      "latitude": 31.3106567516,
+      "longitude": 34.255907564,
+      "source": "goodshepherd-api"
+    },
+    {
+      "date": "2025-03-23",
+      "facility_name": "Unknown",
+      "facility_type": "healthcare",
+      "location": "Unknown",
+      "incident_type": "attack",
+      "description": "23 March 2025: A convoy of five Red Cross ambulances, a fire truck and a UN vehicle was fired at by Israeli forces whilst retrieving two health workers killed in a previous attack. Contact with the teams was lost for seven days. Rescue teams were denied access. The convoy was found destroyed days later. Eight Red Cross health workers, six civil defense members and a UN staff were found killed a week later. One had his hands tied. One Red Cross member was missing; it was confirmed that he had been arrested, detained, and released on 29 April.",
+      "casualties": {
+        "killed": 12,
+        "injured": 0,
+        "kidnapped": 0
+      },
+      "latitude": 31.3072834885,
+      "longitude": 34.2413157059,
+      "source": "goodshepherd-api"
+    },
+    {
+      "date": "2025-03-23",
+      "facility_name": "Unknown",
+      "facility_type": "healthcare",
+      "location": "Unknown",
+      "incident_type": "attack",
+      "description": "23 March 2025: A medical facility in a camp was damaged by an Israeli airstrike, killing at least two patients, including a child, and injuring eight others. The electrical system was destroyed and the facility partially out of service.",
+      "casualties": {
+        "killed": 0,
+        "injured": 0,
+        "kidnapped": 0
+      },
+      "latitude": 31.3478325696,
+      "longitude": 34.2932331562,
+      "source": "goodshepherd-api"
+    },
+    {
+      "date": "2025-03-24",
+      "facility_name": "Unknown",
+      "facility_type": "healthcare",
+      "location": "Unknown",
+      "incident_type": "attack",
+      "description": "24 March 2025: A Red Cross building was shelled by an Israeli military tank, despite being clearly marked and notified to all parties. ",
+      "casualties": {
+        "killed": 0,
+        "injured": 0,
+        "kidnapped": 0
+      },
+      "latitude": 31.3288705451,
+      "longitude": 34.2300214531,
+      "source": "goodshepherd-api"
+    },
+    {
+      "date": "2025-03-25",
+      "facility_name": "Unknown",
+      "facility_type": "healthcare",
+      "location": "Unknown",
+      "incident_type": "attack",
+      "description": "25 March 2025: A Red Cross medical team was forcibly expelled from the area by Israeli forces who beat crew members and vandalised the ambulances. Ambulance keys were confiscated. \r\n",
+      "casualties": {
+        "killed": 0,
+        "injured": 1,
+        "kidnapped": 0
+      },
+      "latitude": 31.4800625744,
+      "longitude": 35.0608918242,
+      "source": "goodshepherd-api"
+    },
+    {
+      "date": "2025-03-28",
+      "facility_name": "Unknown",
+      "facility_type": "healthcare",
+      "location": "Unknown",
+      "incident_type": "attack",
+      "description": "28 March 2025: An ambulance attempting to treat an injured person was blocked by Israeli forces. \r\n",
+      "casualties": {
+        "killed": 0,
+        "injured": 0,
+        "kidnapped": 0
+      },
+      "latitude": 32.3478183,
+      "longitude": 35.2738072,
+      "source": "goodshepherd-api"
+    }
+  ]
+}

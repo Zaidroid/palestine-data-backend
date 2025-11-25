@@ -1,0 +1,61 @@
+{
+  "generated_at": "2025-11-19T16:19:04.218Z",
+  "system_status": "healthy",
+  "sources": [
+    {
+      "id": "tech4palestine",
+      "name": "Tech4Palestine",
+      "status": "healthy",
+      "last_updated": "2025-11-19T15:36:14.200Z",
+      "record_count": 2,
+      "message": ""
+    },
+    {
+      "id": "hdx",
+      "name": "HDX (Humanitarian Data Exchange)",
+      "status": "healthy",
+      "last_updated": "2025-11-19T15:36:14.137Z",
+      "record_count": 1,
+      "message": ""
+    },
+    {
+      "id": "worldbank",
+      "name": "World Bank",
+      "status": "healthy",
+      "record_count": 285,
+      "message": ""
+    },
+    {
+      "id": "who",
+      "name": "WHO (World Health Organization)",
+      "status": "healthy",
+      "last_updated": "2025-11-19T15:32:15.480Z",
+      "record_count": 8,
+      "message": ""
+    },
+    {
+      "id": "pcbs",
+      "name": "PCBS (Palestinian Central Bureau of Statistics)",
+      "status": "healthy",
+      "last_updated": "2025-11-19T15:32:49.180Z",
+      "record_count": 69,
+      "message": ""
+    },
+    {
+      "id": "unrwa",
+      "name": "UNRWA",
+      "status": "disabled",
+      "last_updated": null,
+      "record_count": 0,
+      "message": "Source API deprecated/broken. See scripts/UNRWA_DISABLED.md"
+    },
+    {
+      "id": "goodshepherd",
+      "name": "Good Shepherd Collective",
+      "status": "healthy",
+      "last_updated": "2025-11-19T15:36:14.141Z",
+      "record_count": 0,
+      "message": ""
+    }
+  ]
+}

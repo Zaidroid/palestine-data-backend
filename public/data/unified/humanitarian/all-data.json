@@ -1,0 +1,1438 @@
+{
+  "data": [
+    {
+      "id": "humanitarian-1if16t",
+      "type": "humanitarian",
+      "category": "humanitarian",
+      "date": "2025-01-01",
+      "location": {
+        "name": "PSE",
+        "coordinates": null,
+        "admin_levels": {
+          "level1": null,
+          "level2": null,
+          "level3": null
+        },
+        "region": "Palestine",
+        "region_type": null
+      },
+      "value": 4073058682,
+      "unit": "usd",
+      "indicator": "funding_requirements",
+      "sector": "cluster | en | Flash appeal",
+      "people_in_need": 0,
+      "people_targeted": 0,
+      "people_reached": 0,
+      "funding_requirements": 4073058682,
+      "severity": null,
+      "priority": null,
+      "quality": {
+        "score": 0.8888888888888888,
+        "completeness": 0.6666666666666666,
+        "consistency": 1,
+        "accuracy": 1,
+        "verified": false,
+        "confidence": 0.8
+      },
+      "sources": [
+        {
+          "name": "HDX",
+          "organization": "HDX",
+          "fetched_at": "2025-11-25T18:04:36.745Z"
+        }
+      ],
+      "created_at": "2025-11-25T18:04:36.745Z",
+      "updated_at": "2025-11-25T18:04:36.745Z",
+      "version": 1,
+      "temporal_context": {
+        "days_since_baseline": 452,
+        "baseline_period": "after_baseline",
+        "conflict_phase": "ongoing-conflict",
+        "season": "winter"
+      }
+    },
+    {
+      "id": "humanitarian-ndeisg",
+      "type": "humanitarian",
+      "category": "humanitarian",
+      "date": "2024-01-01",
+      "location": {
+        "name": "PSE",
+        "coordinates": null,
+        "admin_levels": {
+          "level1": null,
+          "level2": null,
+          "level3": null
+        },
+        "region": "Palestine",
+        "region_type": null
+      },
+      "value": 3422855934,
+      "unit": "usd",
+      "indicator": "funding_requirements",
+      "sector": "cluster | en | Flash appeal",
+      "people_in_need": 0,
+      "people_targeted": 0,
+      "people_reached": 0,
+      "funding_requirements": 3422855934,
+      "severity": null,
+      "priority": null,
+      "quality": {
+        "score": 0.8888888888888888,
+        "completeness": 0.6666666666666666,
+        "consistency": 1,
+        "accuracy": 1,
+        "verified": false,
+        "confidence": 0.8
+      },
+      "sources": [
+        {
+          "name": "HDX",
+          "organization": "HDX",
+          "fetched_at": "2025-11-25T18:04:36.745Z"
+        }
+      ],
+      "created_at": "2025-11-25T18:04:36.745Z",
+      "updated_at": "2025-11-25T18:04:36.745Z",
+      "version": 1,
+      "temporal_context": {
+        "days_since_baseline": 86,
+        "baseline_period": "after_baseline",
+        "conflict_phase": "ongoing-conflict",
+        "season": "winter"
+      }
+    },
+    {
+      "id": "humanitarian-avk9ph",
+      "type": "humanitarian",
+      "category": "humanitarian",
+      "date": "2023-10-01",
+      "location": {
+        "name": "PSE",
+        "coordinates": null,
+        "admin_levels": {
+          "level1": null,
+          "level2": null,
+          "level3": null
+        },
+        "region": "Palestine",
+        "region_type": null
+      },
+      "value": 629098307,
+      "unit": "usd",
+      "indicator": "funding_requirements",
+      "sector": "cluster | en | Flash appeal",
+      "people_in_need": 0,
+      "people_targeted": 0,
+      "people_reached": 0,
+      "funding_requirements": 629098307,
+      "severity": null,
+      "priority": null,
+      "quality": {
+        "score": 0.8888888888888888,
+        "completeness": 0.6666666666666666,
+        "consistency": 1,
+        "accuracy": 1,
+        "verified": false,
+        "confidence": 0.8
+      },
+      "sources": [
+        {
+          "name": "HDX",
+          "organization": "HDX",
+          "fetched_at": "2025-11-25T18:04:36.746Z"
+        }
+      ],
+      "created_at": "2025-11-25T18:04:36.746Z",
+      "updated_at": "2025-11-25T18:04:36.746Z",
+      "version": 1,
+      "temporal_context": {
+        "days_since_baseline": -6,
+        "baseline_period": "before_baseline",
+        "conflict_phase": "pre-escalation",
+        "season": "autumn"
+      }
+    },
+    {
+      "id": "humanitarian-11yvmy",
+      "type": "humanitarian",
+      "category": "humanitarian",
+      "date": "2023-01-01",
+      "location": {
+        "name": " | PSE | ",
+        "coordinates": null,
+        "admin_levels": {
+          "level1": null,
+          "level2": null,
+          "level3": null
+        },
+        "region": "Palestine",
+        "region_type": null
+      },
+      "value": 376729201,
+      "unit": "usd",
+      "indicator": "funding_requirements",
+      "sector": "cluster | en | Humanitarian response plan",
+      "people_in_need": 0,
+      "people_targeted": 0,
+      "people_reached": 0,
+      "funding_requirements": 376729201,
+      "severity": null,
+      "priority": null,
+      "quality": {
+        "score": 0.8888888888888888,
+        "completeness": 0.6666666666666666,
+        "consistency": 1,
+        "accuracy": 1,
+        "verified": false,
+        "confidence": 0.8
+      },
+      "sources": [
+        {
+          "name": "HDX",
+          "organization": "HDX",
+          "fetched_at": "2025-11-25T18:04:36.746Z"
+        }
+      ],
+      "created_at": "2025-11-25T18:04:36.746Z",
+      "updated_at": "2025-11-25T18:04:36.746Z",
+      "version": 1,
+      "temporal_context": {
+        "days_since_baseline": -279,
+        "baseline_period": "before_baseline",
+        "conflict_phase": "pre-escalation",
+        "season": "winter"
+      }
+    },
+    {
+      "id": "humanitarian-y8o9l",
+      "type": "humanitarian",
+      "category": "humanitarian",
+      "date": "2022-01-01",
+      "location": {
+        "name": " |  | PSE",
+        "coordinates": null,
+        "admin_levels": {
+          "level1": null,
+          "level2": null,
+          "level3": null
+        },
+        "region": "Palestine",
+        "region_type": null
+      },
+      "value": 509872202,
+      "unit": "usd",
+      "indicator": "funding_requirements",
+      "sector": "cluster | en | Humanitarian response plan",
+      "people_in_need": 0,
+      "people_targeted": 0,
+      "people_reached": 0,
+      "funding_requirements": 509872202,
+      "severity": null,
+      "priority": null,
+      "quality": {
+        "score": 0.8888888888888888,
+        "completeness": 0.6666666666666666,
+        "consistency": 1,
+        "accuracy": 1,
+        "verified": false,
+        "confidence": 0.8
+      },
+      "sources": [
+        {
+          "name": "HDX",
+          "organization": "HDX",
+          "fetched_at": "2025-11-25T18:04:36.746Z"
+        }
+      ],
+      "created_at": "2025-11-25T18:04:36.746Z",
+      "updated_at": "2025-11-25T18:04:36.746Z",
+      "version": 1,
+      "temporal_context": {
+        "days_since_baseline": -644,
+        "baseline_period": "before_baseline",
+        "conflict_phase": "pre-escalation",
+        "season": "winter"
+      }
+    },
+    {
+      "id": "humanitarian-k7xevf",
+      "type": "humanitarian",
+      "category": "humanitarian",
+      "date": "2021-05-27",
+      "location": {
+        "name": " |  | PSE",
+        "coordinates": null,
+        "admin_levels": {
+          "level1": null,
+          "level2": null,
+          "level3": null
+        },
+        "region": "Palestine",
+        "region_type": null
+      },
+      "value": 94862068,
+      "unit": "usd",
+      "indicator": "funding_requirements",
+      "sector": "cluster | en | Flash appeal",
+      "people_in_need": 0,
+      "people_targeted": 0,
+      "people_reached": 0,
+      "funding_requirements": 94862068,
+      "severity": null,
+      "priority": null,
+      "quality": {
+        "score": 0.8888888888888888,
+        "completeness": 0.6666666666666666,
+        "consistency": 1,
+        "accuracy": 1,
+        "verified": false,
+        "confidence": 0.8
+      },
+      "sources": [
+        {
+          "name": "HDX",
+          "organization": "HDX",
+          "fetched_at": "2025-11-25T18:04:36.746Z"
+        }
+      ],
+      "created_at": "2025-11-25T18:04:36.746Z",
+      "updated_at": "2025-11-25T18:04:36.746Z",
+      "version": 1,
+      "temporal_context": {
+        "days_since_baseline": -863,
+        "baseline_period": "before_baseline",
+        "conflict_phase": "pre-escalation",
+        "season": "spring"
+      }
+    },
+    {
+      "id": "humanitarian-xas5fu",
+      "type": "humanitarian",
+      "category": "humanitarian",
+      "date": "2021-01-01",
+      "location": {
+        "name": "PSE |  | ",
+        "coordinates": null,
+        "admin_levels": {
+          "level1": null,
+          "level2": null,
+          "level3": null
+        },
+        "region": "Palestine",
+        "region_type": null
+      },
+      "value": 417567330,
+      "unit": "usd",
+      "indicator": "funding_requirements",
+      "sector": "cluster | en | Humanitarian response plan",
+      "people_in_need": 0,
+      "people_targeted": 0,
+      "people_reached": 0,
+      "funding_requirements": 417567330,
+      "severity": null,
+      "priority": null,
+      "quality": {
+        "score": 0.8888888888888888,
+        "completeness": 0.6666666666666666,
+        "consistency": 1,
+        "accuracy": 1,
+        "verified": false,
+        "confidence": 0.8
+      },
+      "sources": [
+        {
+          "name": "HDX",
+          "organization": "HDX",
+          "fetched_at": "2025-11-25T18:04:36.746Z"
+        }
+      ],
+      "created_at": "2025-11-25T18:04:36.746Z",
+      "updated_at": "2025-11-25T18:04:36.746Z",
+      "version": 1,
+      "temporal_context": {
+        "days_since_baseline": -1009,
+        "baseline_period": "before_baseline",
+        "conflict_phase": "pre-escalation",
+        "season": "winter"
+      }
+    },
+    {
+      "id": "humanitarian-tqn024",
+      "type": "humanitarian",
+      "category": "humanitarian",
+      "date": "2020-05-01",
+      "location": {
+        "name": "ZWE | YEM | BFA | BGD | VEN | ZMB | TUR | JOR | AGO | SDN | SLE | EGY | COL | TZA | SYR | RWA | TGO | SSD | SOM | PAK | PSE | MMR | LBR | LSO | IRN | COD | TCD | CMR | BEN | AFG |  | LBY | UKR | UGA | HTI | PHL | NGA | NER | MOZ | MLI | LBN | KEN | IRQ | ETH | ECU | PRK | DJI | CAF | BDI",
+        "coordinates": null,
+        "admin_levels": {
+          "level1": null,
+          "level2": null,
+          "level3": null
+        },
+        "region": "Unknown",
+        "region_type": null
+      },
+      "value": 500000000,
+      "unit": "usd",
+      "indicator": "funding_requirements",
+      "sector": "Other | sector | en",
+      "people_in_need": 0,
+      "people_targeted": 0,
+      "people_reached": 0,
+      "funding_requirements": 500000000,
+      "severity": null,
+      "priority": null,
+      "quality": {
+        "score": 0.8888888888888888,
+        "completeness": 0.6666666666666666,
+        "consistency": 1,
+        "accuracy": 1,
+        "verified": false,
+        "confidence": 0.8
+      },
+      "sources": [
+        {
+          "name": "HDX",
+          "organization": "HDX",
+          "fetched_at": "2025-11-25T18:04:36.746Z"
+        }
+      ],
+      "created_at": "2025-11-25T18:04:36.746Z",
+      "updated_at": "2025-11-25T18:04:36.746Z",
+      "version": 1,
+      "temporal_context": {
+        "days_since_baseline": -1254,
+        "baseline_period": "before_baseline",
+        "conflict_phase": "pre-escalation",
+        "season": "spring"
+      }
+    },
+    {
+      "id": "humanitarian-fo7sxn",
+      "type": "humanitarian",
+      "category": "humanitarian",
+      "date": "2020-05-01",
+      "location": {
+        "name": "AFG | ZWE | VEN | UKR | BEN | BDI | LSO | LBR | LBY | MLI | MOZ | MMR | NER | NGA | EGY | ETH | PSE | PAK | PHL | RWA | SLE | SOM | SSD | SDN | SYR | TZA | TGO | TUR | UGA | YEM | ZMB |  | BGD | AGO | BFA | CMR | CAF | TCD | DJI | PRK | COD | COL | ECU | HTI | IRN | IRQ | JOR | KEN | LBN",
+        "coordinates": null,
+        "admin_levels": {
+          "level1": null,
+          "level2": null,
+          "level3": null
+        },
+        "region": "Unknown",
+        "region_type": null
+      },
+      "value": 300000000,
+      "unit": "usd",
+      "indicator": "funding_requirements",
+      "sector": "sector | en | Other",
+      "people_in_need": 0,
+      "people_targeted": 0,
+      "people_reached": 0,
+      "funding_requirements": 300000000,
+      "severity": null,
+      "priority": null,
+      "quality": {
+        "score": 0.8888888888888888,
+        "completeness": 0.6666666666666666,
+        "consistency": 1,
+        "accuracy": 1,
+        "verified": false,
+        "confidence": 0.8
+      },
+      "sources": [
+        {
+          "name": "HDX",
+          "organization": "HDX",
+          "fetched_at": "2025-11-25T18:04:36.746Z"
+        }
+      ],
+      "created_at": "2025-11-25T18:04:36.746Z",
+      "updated_at": "2025-11-25T18:04:36.746Z",
+      "version": 1,
+      "temporal_context": {
+        "days_since_baseline": -1254,
+        "baseline_period": "before_baseline",
+        "conflict_phase": "pre-escalation",
+        "season": "spring"
+      }
+    },
+    {
+      "id": "humanitarian-1u0ewd",
+      "type": "humanitarian",
+      "category": "humanitarian",
+      "date": "2020-03-25",
+      "location": {
+        "name": "NER | PRK | KEN | NGA | GUY | PAN | MEX | BRA | CUW |  | TTO | PER | URY | EGY | DJI | JOR | CRI | BFA | YEM | RWA | AGO | COG | ETH | TUR | PRY | ECU | SSD | SDN | SOM | IRQ | COD | LBN | CAF | MLI | BGD | ABW | CMR | UKR | UGA | VEN | TZA | ZMB | BOL | DOM | CHL | COL | TCD | AFG | SYR | ARG | LBY | IRN | PSE | MMR | HTI | BDI",
+        "coordinates": null,
+        "admin_levels": {
+          "level1": null,
+          "level2": null,
+          "level3": null
+        },
+        "region": "Unknown",
+        "region_type": null
+      },
+      "value": 2010000000,
+      "unit": "usd",
+      "indicator": "funding_requirements",
+      "sector": "sector | en | Other",
+      "people_in_need": 0,
+      "people_targeted": 0,
+      "people_reached": 0,
+      "funding_requirements": 2010000000,
+      "severity": null,
+      "priority": null,
+      "quality": {
+        "score": 0.8888888888888888,
+        "completeness": 0.6666666666666666,
+        "consistency": 1,
+        "accuracy": 1,
+        "verified": false,
+        "confidence": 0.8
+      },
+      "sources": [
+        {
+          "name": "HDX",
+          "organization": "HDX",
+          "fetched_at": "2025-11-25T18:04:36.746Z"
+        }
+      ],
+      "created_at": "2025-11-25T18:04:36.746Z",
+      "updated_at": "2025-11-25T18:04:36.746Z",
+      "version": 1,
+      "temporal_context": {
+        "days_since_baseline": -1291,
+        "baseline_period": "before_baseline",
+        "conflict_phase": "pre-escalation",
+        "season": "spring"
+      }
+    },
+    {
+      "id": "humanitarian-x37l9n",
+      "type": "humanitarian",
+      "category": "humanitarian",
+      "date": "2020-01-01",
+      "location": {
+        "name": "PSE",
+        "coordinates": null,
+        "admin_levels": {
+          "level1": null,
+          "level2": null,
+          "level3": null
+        },
+        "region": "Palestine",
+        "region_type": null
+      },
+      "value": 420381684,
+      "unit": "usd",
+      "indicator": "funding_requirements",
+      "sector": "Humanitarian response plan | cluster | en",
+      "people_in_need": 0,
+      "people_targeted": 0,
+      "people_reached": 0,
+      "funding_requirements": 420381684,
+      "severity": null,
+      "priority": null,
+      "quality": {
+        "score": 0.8888888888888888,
+        "completeness": 0.6666666666666666,
+        "consistency": 1,
+        "accuracy": 1,
+        "verified": false,
+        "confidence": 0.8
+      },
+      "sources": [
+        {
+          "name": "HDX",
+          "organization": "HDX",
+          "fetched_at": "2025-11-25T18:04:36.746Z"
+        }
+      ],
+      "created_at": "2025-11-25T18:04:36.746Z",
+      "updated_at": "2025-11-25T18:04:36.746Z",
+      "version": 1,
+      "temporal_context": {
+        "days_since_baseline": -1375,
+        "baseline_period": "before_baseline",
+        "conflict_phase": "pre-escalation",
+        "season": "winter"
+      }
+    },
+    {
+      "id": "humanitarian-9iq0r1",
+      "type": "humanitarian",
+      "category": "humanitarian",
+      "date": "2019-01-01",
+      "location": {
+        "name": "PSE",
+        "coordinates": null,
+        "admin_levels": {
+          "level1": null,
+          "level2": null,
+          "level3": null
+        },
+        "region": "Palestine",
+        "region_type": null
+      },
+      "value": 350589271,
+      "unit": "usd",
+      "indicator": "funding_requirements",
+      "sector": "cluster | en | Humanitarian response plan",
+      "people_in_need": 0,
+      "people_targeted": 0,
+      "people_reached": 0,
+      "funding_requirements": 350589271,
+      "severity": null,
+      "priority": null,
+      "quality": {
+        "score": 0.8555555555555555,
+        "completeness": 0.6666666666666666,
+        "consistency": 1,
+        "accuracy": 0.9,
+        "verified": false,
+        "confidence": 0.8
+      },
+      "sources": [
+        {
+          "name": "HDX",
+          "organization": "HDX",
+          "fetched_at": "2025-11-25T18:04:36.746Z"
+        }
+      ],
+      "created_at": "2025-11-25T18:04:36.746Z",
+      "updated_at": "2025-11-25T18:04:36.746Z",
+      "version": 1,
+      "temporal_context": {
+        "days_since_baseline": -1740,
+        "baseline_period": "before_baseline",
+        "conflict_phase": "pre-escalation",
+        "season": "winter"
+      }
+    },
+    {
+      "id": "humanitarian-48ph9b",
+      "type": "humanitarian",
+      "category": "humanitarian",
+      "date": "2018-01-01",
+      "location": {
+        "name": "PSE",
+        "coordinates": null,
+        "admin_levels": {
+          "level1": null,
+          "level2": null,
+          "level3": null
+        },
+        "region": "Palestine",
+        "region_type": null
+      },
+      "value": 539721755,
+      "unit": "usd",
+      "indicator": "funding_requirements",
+      "sector": "cluster | en | Humanitarian response plan",
+      "people_in_need": 0,
+      "people_targeted": 0,
+      "people_reached": 0,
+      "funding_requirements": 539721755,
+      "severity": null,
+      "priority": null,
+      "quality": {
+        "score": 0.8555555555555555,
+        "completeness": 0.6666666666666666,
+        "consistency": 1,
+        "accuracy": 0.9,
+        "verified": false,
+        "confidence": 0.8
+      },
+      "sources": [
+        {
+          "name": "HDX",
+          "organization": "HDX",
+          "fetched_at": "2025-11-25T18:04:36.746Z"
+        }
+      ],
+      "created_at": "2025-11-25T18:04:36.746Z",
+      "updated_at": "2025-11-25T18:04:36.746Z",
+      "version": 1,
+      "temporal_context": {
+        "days_since_baseline": -2105,
+        "baseline_period": "before_baseline",
+        "conflict_phase": "pre-escalation",
+        "season": "winter"
+      }
+    },
+    {
+      "id": "humanitarian-ejfyeu",
+      "type": "humanitarian",
+      "category": "humanitarian",
+      "date": "2017-01-01",
+      "location": {
+        "name": "PSE |  | ",
+        "coordinates": null,
+        "admin_levels": {
+          "level1": null,
+          "level2": null,
+          "level3": null
+        },
+        "region": "Palestine",
+        "region_type": null
+      },
+      "value": 551876643,
+      "unit": "usd",
+      "indicator": "funding_requirements",
+      "sector": "cluster | en | Humanitarian response plan",
+      "people_in_need": 0,
+      "people_targeted": 0,
+      "people_reached": 0,
+      "funding_requirements": 551876643,
+      "severity": null,
+      "priority": null,
+      "quality": {
+        "score": 0.8555555555555555,
+        "completeness": 0.6666666666666666,
+        "consistency": 1,
+        "accuracy": 0.9,
+        "verified": false,
+        "confidence": 0.8
+      },
+      "sources": [
+        {
+          "name": "HDX",
+          "organization": "HDX",
+          "fetched_at": "2025-11-25T18:04:36.746Z"
+        }
+      ],
+      "created_at": "2025-11-25T18:04:36.746Z",
+      "updated_at": "2025-11-25T18:04:36.746Z",
+      "version": 1,
+      "temporal_context": {
+        "days_since_baseline": -2470,
+        "baseline_period": "before_baseline",
+        "conflict_phase": "pre-escalation",
+        "season": "winter"
+      }
+    },
+    {
+      "id": "humanitarian-6qsdxz",
+      "type": "humanitarian",
+      "category": "humanitarian",
+      "date": "2016-01-01",
+      "location": {
+        "name": "PSE",
+        "coordinates": null,
+        "admin_levels": {
+          "level1": null,
+          "level2": null,
+          "level3": null
+        },
+        "region": "Palestine",
+        "region_type": null
+      },
+      "value": 570702496,
+      "unit": "usd",
+      "indicator": "funding_requirements",
+      "sector": "cluster | en | Humanitarian response plan",
+      "people_in_need": 0,
+      "people_targeted": 0,
+      "people_reached": 0,
+      "funding_requirements": 570702496,
+      "severity": null,
+      "priority": null,
+      "quality": {
+        "score": 0.8555555555555555,
+        "completeness": 0.6666666666666666,
+        "consistency": 1,
+        "accuracy": 0.9,
+        "verified": false,
+        "confidence": 0.8
+      },
+      "sources": [
+        {
+          "name": "HDX",
+          "organization": "HDX",
+          "fetched_at": "2025-11-25T18:04:36.746Z"
+        }
+      ],
+      "created_at": "2025-11-25T18:04:36.746Z",
+      "updated_at": "2025-11-25T18:04:36.746Z",
+      "version": 1,
+      "temporal_context": {
+        "days_since_baseline": -2836,
+        "baseline_period": "before_baseline",
+        "conflict_phase": "pre-escalation",
+        "season": "winter"
+      }
+    },
+    {
+      "id": "humanitarian-9k55o1",
+      "type": "humanitarian",
+      "category": "humanitarian",
+      "date": "2015-01-01",
+      "location": {
+        "name": "PSE",
+        "coordinates": null,
+        "admin_levels": {
+          "level1": null,
+          "level2": null,
+          "level3": null
+        },
+        "region": "Palestine",
+        "region_type": null
+      },
+      "value": 706051110,
+      "unit": "usd",
+      "indicator": "funding_requirements",
+      "sector": "en | Strategic response plan | cluster",
+      "people_in_need": 0,
+      "people_targeted": 0,
+      "people_reached": 0,
+      "funding_requirements": 706051110,
+      "severity": null,
+      "priority": null,
+      "quality": {
+        "score": 0.8555555555555555,
+        "completeness": 0.6666666666666666,
+        "consistency": 1,
+        "accuracy": 0.9,
+        "verified": false,
+        "confidence": 0.8
+      },
+      "sources": [
+        {
+          "name": "HDX",
+          "organization": "HDX",
+          "fetched_at": "2025-11-25T18:04:36.746Z"
+        }
+      ],
+      "created_at": "2025-11-25T18:04:36.746Z",
+      "updated_at": "2025-11-25T18:04:36.746Z",
+      "version": 1,
+      "temporal_context": {
+        "days_since_baseline": -3201,
+        "baseline_period": "before_baseline",
+        "conflict_phase": "pre-escalation",
+        "season": "winter"
+      }
+    },
+    {
+      "id": "humanitarian-yu69x3",
+      "type": "humanitarian",
+      "category": "humanitarian",
+      "date": "2014-01-01",
+      "location": {
+        "name": "PSE",
+        "coordinates": null,
+        "admin_levels": {
+          "level1": null,
+          "level2": null,
+          "level3": null
+        },
+        "region": "Palestine",
+        "region_type": null
+      },
+      "value": 931086454,
+      "unit": "usd",
+      "indicator": "funding_requirements",
+      "sector": "Strategic response plan | cluster | en",
+      "people_in_need": 0,
+      "people_targeted": 0,
+      "people_reached": 0,
+      "funding_requirements": 931086454,
+      "severity": null,
+      "priority": null,
+      "quality": {
+        "score": 0.8555555555555555,
+        "completeness": 0.6666666666666666,
+        "consistency": 1,
+        "accuracy": 0.9,
+        "verified": false,
+        "confidence": 0.8
+      },
+      "sources": [
+        {
+          "name": "HDX",
+          "organization": "HDX",
+          "fetched_at": "2025-11-25T18:04:36.746Z"
+        }
+      ],
+      "created_at": "2025-11-25T18:04:36.746Z",
+      "updated_at": "2025-11-25T18:04:36.746Z",
+      "version": 1,
+      "temporal_context": {
+        "days_since_baseline": -3566,
+        "baseline_period": "before_baseline",
+        "conflict_phase": "pre-escalation",
+        "season": "winter"
+      }
+    },
+    {
+      "id": "humanitarian-lw48ih",
+      "type": "humanitarian",
+      "category": "humanitarian",
+      "date": "2013-01-01",
+      "location": {
+        "name": "PSE",
+        "coordinates": null,
+        "admin_levels": {
+          "level1": null,
+          "level2": null,
+          "level3": null
+        },
+        "region": "Palestine",
+        "region_type": null
+      },
+      "value": 400839740,
+      "unit": "usd",
+      "indicator": "funding_requirements",
+      "sector": "Consolidated appeals process",
+      "people_in_need": 0,
+      "people_targeted": 0,
+      "people_reached": 0,
+      "funding_requirements": 400839740,
+      "severity": null,
+      "priority": null,
+      "quality": {
+        "score": 0.8555555555555555,
+        "completeness": 0.6666666666666666,
+        "consistency": 1,
+        "accuracy": 0.9,
+        "verified": false,
+        "confidence": 0.8
+      },
+      "sources": [
+        {
+          "name": "HDX",
+          "organization": "HDX",
+          "fetched_at": "2025-11-25T18:04:36.746Z"
+        }
+      ],
+      "created_at": "2025-11-25T18:04:36.746Z",
+      "updated_at": "2025-11-25T18:04:36.746Z",
+      "version": 1,
+      "temporal_context": {
+        "days_since_baseline": -3931,
+        "baseline_period": "before_baseline",
+        "conflict_phase": "pre-escalation",
+        "season": "winter"
+      }
+    },
+    {
+      "id": "humanitarian-qfybr1",
+      "type": "humanitarian",
+      "category": "humanitarian",
+      "date": "2012-01-01",
+      "location": {
+        "name": "PSE",
+        "coordinates": null,
+        "admin_levels": {
+          "level1": null,
+          "level2": null,
+          "level3": null
+        },
+        "region": "Palestine",
+        "region_type": null
+      },
+      "value": 419907202,
+      "unit": "usd",
+      "indicator": "funding_requirements",
+      "sector": "Consolidated appeals process",
+      "people_in_need": 0,
+      "people_targeted": 0,
+      "people_reached": 0,
+      "funding_requirements": 419907202,
+      "severity": null,
+      "priority": null,
+      "quality": {
+        "score": 0.8555555555555555,
+        "completeness": 0.6666666666666666,
+        "consistency": 1,
+        "accuracy": 0.9,
+        "verified": false,
+        "confidence": 0.8
+      },
+      "sources": [
+        {
+          "name": "HDX",
+          "organization": "HDX",
+          "fetched_at": "2025-11-25T18:04:36.746Z"
+        }
+      ],
+      "created_at": "2025-11-25T18:04:36.746Z",
+      "updated_at": "2025-11-25T18:04:36.746Z",
+      "version": 1,
+      "temporal_context": {
+        "days_since_baseline": -4297,
+        "baseline_period": "before_baseline",
+        "conflict_phase": "pre-escalation",
+        "season": "winter"
+      }
+    },
+    {
+      "id": "humanitarian-9l4xyl",
+      "type": "humanitarian",
+      "category": "humanitarian",
+      "date": "2011-01-01",
+      "location": {
+        "name": "PSE",
+        "coordinates": null,
+        "admin_levels": {
+          "level1": null,
+          "level2": null,
+          "level3": null
+        },
+        "region": "Palestine",
+        "region_type": null
+      },
+      "value": 536927963,
+      "unit": "usd",
+      "indicator": "funding_requirements",
+      "sector": "Consolidated appeals process",
+      "people_in_need": 0,
+      "people_targeted": 0,
+      "people_reached": 0,
+      "funding_requirements": 536927963,
+      "severity": null,
+      "priority": null,
+      "quality": {
+        "score": 0.8555555555555555,
+        "completeness": 0.6666666666666666,
+        "consistency": 1,
+        "accuracy": 0.9,
+        "verified": false,
+        "confidence": 0.8
+      },
+      "sources": [
+        {
+          "name": "HDX",
+          "organization": "HDX",
+          "fetched_at": "2025-11-25T18:04:36.746Z"
+        }
+      ],
+      "created_at": "2025-11-25T18:04:36.746Z",
+      "updated_at": "2025-11-25T18:04:36.746Z",
+      "version": 1,
+      "temporal_context": {
+        "days_since_baseline": -4662,
+        "baseline_period": "before_baseline",
+        "conflict_phase": "pre-escalation",
+        "season": "winter"
+      }
+    },
+    {
+      "id": "humanitarian-1xpuqr",
+      "type": "humanitarian",
+      "category": "humanitarian",
+      "date": "2010-01-01",
+      "location": {
+        "name": "PSE",
+        "coordinates": null,
+        "admin_levels": {
+          "level1": null,
+          "level2": null,
+          "level3": null
+        },
+        "region": "Palestine",
+        "region_type": null
+      },
+      "value": 603408539,
+      "unit": "usd",
+      "indicator": "funding_requirements",
+      "sector": "Consolidated appeals process",
+      "people_in_need": 0,
+      "people_targeted": 0,
+      "people_reached": 0,
+      "funding_requirements": 603408539,
+      "severity": null,
+      "priority": null,
+      "quality": {
+        "score": 0.8555555555555555,
+        "completeness": 0.6666666666666666,
+        "consistency": 1,
+        "accuracy": 0.9,
+        "verified": false,
+        "confidence": 0.8
+      },
+      "sources": [
+        {
+          "name": "HDX",
+          "organization": "HDX",
+          "fetched_at": "2025-11-25T18:04:36.746Z"
+        }
+      ],
+      "created_at": "2025-11-25T18:04:36.746Z",
+      "updated_at": "2025-11-25T18:04:36.746Z",
+      "version": 1,
+      "temporal_context": {
+        "days_since_baseline": -5027,
+        "baseline_period": "before_baseline",
+        "conflict_phase": "pre-escalation",
+        "season": "winter"
+      }
+    },
+    {
+      "id": "humanitarian-m3t1t8",
+      "type": "humanitarian",
+      "category": "humanitarian",
+      "date": "2009-01-01",
+      "location": {
+        "name": "PSE",
+        "coordinates": null,
+        "admin_levels": {
+          "level1": null,
+          "level2": null,
+          "level3": null
+        },
+        "region": "Palestine",
+        "region_type": null
+      },
+      "value": 804522005,
+      "unit": "usd",
+      "indicator": "funding_requirements",
+      "sector": "Consolidated appeals process",
+      "people_in_need": 0,
+      "people_targeted": 0,
+      "people_reached": 0,
+      "funding_requirements": 804522005,
+      "severity": null,
+      "priority": null,
+      "quality": {
+        "score": 0.8555555555555555,
+        "completeness": 0.6666666666666666,
+        "consistency": 1,
+        "accuracy": 0.9,
+        "verified": false,
+        "confidence": 0.8
+      },
+      "sources": [
+        {
+          "name": "HDX",
+          "organization": "HDX",
+          "fetched_at": "2025-11-25T18:04:36.746Z"
+        }
+      ],
+      "created_at": "2025-11-25T18:04:36.746Z",
+      "updated_at": "2025-11-25T18:04:36.746Z",
+      "version": 1,
+      "temporal_context": {
+        "days_since_baseline": -5392,
+        "baseline_period": "before_baseline",
+        "conflict_phase": "pre-escalation",
+        "season": "winter"
+      }
+    },
+    {
+      "id": "humanitarian-crl5ce",
+      "type": "humanitarian",
+      "category": "humanitarian",
+      "date": "2008-01-01",
+      "location": {
+        "name": "PSE",
+        "coordinates": null,
+        "admin_levels": {
+          "level1": null,
+          "level2": null,
+          "level3": null
+        },
+        "region": "Palestine",
+        "region_type": null
+      },
+      "value": 452223961,
+      "unit": "usd",
+      "indicator": "funding_requirements",
+      "sector": "Consolidated appeals process",
+      "people_in_need": 0,
+      "people_targeted": 0,
+      "people_reached": 0,
+      "funding_requirements": 452223961,
+      "severity": null,
+      "priority": null,
+      "quality": {
+        "score": 0.8555555555555555,
+        "completeness": 0.6666666666666666,
+        "consistency": 1,
+        "accuracy": 0.9,
+        "verified": false,
+        "confidence": 0.8
+      },
+      "sources": [
+        {
+          "name": "HDX",
+          "organization": "HDX",
+          "fetched_at": "2025-11-25T18:04:36.746Z"
+        }
+      ],
+      "created_at": "2025-11-25T18:04:36.746Z",
+      "updated_at": "2025-11-25T18:04:36.746Z",
+      "version": 1,
+      "temporal_context": {
+        "days_since_baseline": -5758,
+        "baseline_period": "before_baseline",
+        "conflict_phase": "pre-escalation",
+        "season": "winter"
+      }
+    },
+    {
+      "id": "humanitarian-1zsozx",
+      "type": "humanitarian",
+      "category": "humanitarian",
+      "date": "2007-01-01",
+      "location": {
+        "name": "PSE",
+        "coordinates": null,
+        "admin_levels": {
+          "level1": null,
+          "level2": null,
+          "level3": null
+        },
+        "region": "Palestine",
+        "region_type": null
+      },
+      "value": 426324665,
+      "unit": "usd",
+      "indicator": "funding_requirements",
+      "sector": "Consolidated appeals process",
+      "people_in_need": 0,
+      "people_targeted": 0,
+      "people_reached": 0,
+      "funding_requirements": 426324665,
+      "severity": null,
+      "priority": null,
+      "quality": {
+        "score": 0.8555555555555555,
+        "completeness": 0.6666666666666666,
+        "consistency": 1,
+        "accuracy": 0.9,
+        "verified": false,
+        "confidence": 0.8
+      },
+      "sources": [
+        {
+          "name": "HDX",
+          "organization": "HDX",
+          "fetched_at": "2025-11-25T18:04:36.746Z"
+        }
+      ],
+      "created_at": "2025-11-25T18:04:36.746Z",
+      "updated_at": "2025-11-25T18:04:36.746Z",
+      "version": 1,
+      "temporal_context": {
+        "days_since_baseline": -6123,
+        "baseline_period": "before_baseline",
+        "conflict_phase": "pre-escalation",
+        "season": "winter"
+      }
+    },
+    {
+      "id": "humanitarian-99dmir",
+      "type": "humanitarian",
+      "category": "humanitarian",
+      "date": "2006-01-01",
+      "location": {
+        "name": "PSE",
+        "coordinates": null,
+        "admin_levels": {
+          "level1": null,
+          "level2": null,
+          "level3": null
+        },
+        "region": "Palestine",
+        "region_type": null
+      },
+      "value": 394883810,
+      "unit": "usd",
+      "indicator": "funding_requirements",
+      "sector": "Consolidated appeals process",
+      "people_in_need": 0,
+      "people_targeted": 0,
+      "people_reached": 0,
+      "funding_requirements": 394883810,
+      "severity": null,
+      "priority": null,
+      "quality": {
+        "score": 0.8555555555555555,
+        "completeness": 0.6666666666666666,
+        "consistency": 1,
+        "accuracy": 0.9,
+        "verified": false,
+        "confidence": 0.8
+      },
+      "sources": [
+        {
+          "name": "HDX",
+          "organization": "HDX",
+          "fetched_at": "2025-11-25T18:04:36.746Z"
+        }
+      ],
+      "created_at": "2025-11-25T18:04:36.746Z",
+      "updated_at": "2025-11-25T18:04:36.746Z",
+      "version": 1,
+      "temporal_context": {
+        "days_since_baseline": -6488,
+        "baseline_period": "before_baseline",
+        "conflict_phase": "pre-escalation",
+        "season": "winter"
+      }
+    },
+    {
+      "id": "humanitarian-8p7omz",
+      "type": "humanitarian",
+      "category": "humanitarian",
+      "date": "2005-01-01",
+      "location": {
+        "name": "PSE",
+        "coordinates": null,
+        "admin_levels": {
+          "level1": null,
+          "level2": null,
+          "level3": null
+        },
+        "region": "Palestine",
+        "region_type": null
+      },
+      "value": 301452508,
+      "unit": "usd",
+      "indicator": "funding_requirements",
+      "sector": "Consolidated appeals process",
+      "people_in_need": 0,
+      "people_targeted": 0,
+      "people_reached": 0,
+      "funding_requirements": 301452508,
+      "severity": null,
+      "priority": null,
+      "quality": {
+        "score": 0.8555555555555555,
+        "completeness": 0.6666666666666666,
+        "consistency": 1,
+        "accuracy": 0.9,
+        "verified": false,
+        "confidence": 0.8
+      },
+      "sources": [
+        {
+          "name": "HDX",
+          "organization": "HDX",
+          "fetched_at": "2025-11-25T18:04:36.746Z"
+        }
+      ],
+      "created_at": "2025-11-25T18:04:36.746Z",
+      "updated_at": "2025-11-25T18:04:36.746Z",
+      "version": 1,
+      "temporal_context": {
+        "days_since_baseline": -6853,
+        "baseline_period": "before_baseline",
+        "conflict_phase": "pre-escalation",
+        "season": "winter"
+      }
+    },
+    {
+      "id": "humanitarian-17saem",
+      "type": "humanitarian",
+      "category": "humanitarian",
+      "date": "2004-01-01",
+      "location": {
+        "name": "PSE",
+        "coordinates": null,
+        "admin_levels": {
+          "level1": null,
+          "level2": null,
+          "level3": null
+        },
+        "region": "Palestine",
+        "region_type": null
+      },
+      "value": 300479250,
+      "unit": "usd",
+      "indicator": "funding_requirements",
+      "sector": "Consolidated appeals process",
+      "people_in_need": 0,
+      "people_targeted": 0,
+      "people_reached": 0,
+      "funding_requirements": 300479250,
+      "severity": null,
+      "priority": null,
+      "quality": {
+        "score": 0.8555555555555555,
+        "completeness": 0.6666666666666666,
+        "consistency": 1,
+        "accuracy": 0.9,
+        "verified": false,
+        "confidence": 0.8
+      },
+      "sources": [
+        {
+          "name": "HDX",
+          "organization": "HDX",
+          "fetched_at": "2025-11-25T18:04:36.746Z"
+        }
+      ],
+      "created_at": "2025-11-25T18:04:36.746Z",
+      "updated_at": "2025-11-25T18:04:36.746Z",
+      "version": 1,
+      "temporal_context": {
+        "days_since_baseline": -7219,
+        "baseline_period": "before_baseline",
+        "conflict_phase": "pre-escalation",
+        "season": "winter"
+      }
+    },
+    {
+      "id": "humanitarian-96v86f",
+      "type": "humanitarian",
+      "category": "humanitarian",
+      "date": "2003-01-01",
+      "location": {
+        "name": "PSE",
+        "coordinates": null,
+        "admin_levels": {
+          "level1": null,
+          "level2": null,
+          "level3": null
+        },
+        "region": "Palestine",
+        "region_type": null
+      },
+      "value": 293774854,
+      "unit": "usd",
+      "indicator": "funding_requirements",
+      "sector": "Consolidated inter-agency appeal",
+      "people_in_need": 0,
+      "people_targeted": 0,
+      "people_reached": 0,
+      "funding_requirements": 293774854,
+      "severity": null,
+      "priority": null,
+      "quality": {
+        "score": 0.8555555555555555,
+        "completeness": 0.6666666666666666,
+        "consistency": 1,
+        "accuracy": 0.9,
+        "verified": false,
+        "confidence": 0.8
+      },
+      "sources": [
+        {
+          "name": "HDX",
+          "organization": "HDX",
+          "fetched_at": "2025-11-25T18:04:36.746Z"
+        }
+      ],
+      "created_at": "2025-11-25T18:04:36.746Z",
+      "updated_at": "2025-11-25T18:04:36.746Z",
+      "version": 1,
+      "temporal_context": {
+        "days_since_baseline": -7584,
+        "baseline_period": "before_baseline",
+        "conflict_phase": "pre-escalation",
+        "season": "winter"
+      }
+    }
+  ],
+  "metadata": {
+    "total_records": 28,
+    "generated_at": "2025-11-25T18:04:36.768Z",
+    "source": "HDX",
+    "category": "humanitarian"
+  }
+}

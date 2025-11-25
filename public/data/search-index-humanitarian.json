@@ -1,0 +1,678 @@
+{
+  "category": "humanitarian",
+  "total_entries": 28,
+  "index": [
+    {
+      "id": "humanitarian-1if16t",
+      "category": "humanitarian",
+      "text": "[object object]",
+      "preview": {
+        "title": "Untitled",
+        "date": "2025-01-01",
+        "location": {
+          "name": "PSE",
+          "coordinates": null,
+          "admin_levels": {
+            "level1": null,
+            "level2": null,
+            "level3": null
+          },
+          "region": "Palestine",
+          "region_type": null
+        }
+      },
+      "ref": {
+        "category": "humanitarian",
+        "id": "humanitarian-1if16t"
+      }
+    },
+    {
+      "id": "humanitarian-ndeisg",
+      "category": "humanitarian",
+      "text": "[object object]",
+      "preview": {
+        "title": "Untitled",
+        "date": "2024-01-01",
+        "location": {
+          "name": "PSE",
+          "coordinates": null,
+          "admin_levels": {
+            "level1": null,
+            "level2": null,
+            "level3": null
+          },
+          "region": "Palestine",
+          "region_type": null
+        }
+      },
+      "ref": {
+        "category": "humanitarian",
+        "id": "humanitarian-ndeisg"
+      }
+    },
+    {
+      "id": "humanitarian-avk9ph",
+      "category": "humanitarian",
+      "text": "[object object]",
+      "preview": {
+        "title": "Untitled",
+        "date": "2023-10-01",
+        "location": {
+          "name": "PSE",
+          "coordinates": null,
+          "admin_levels": {
+            "level1": null,
+            "level2": null,
+            "level3": null
+          },
+          "region": "Palestine",
+          "region_type": null
+        }
+      },
+      "ref": {
+        "category": "humanitarian",
+        "id": "humanitarian-avk9ph"
+      }
+    },
+    {
+      "id": "humanitarian-11yvmy",
+      "category": "humanitarian",
+      "text": "[object object]",
+      "preview": {
+        "title": "Untitled",
+        "date": "2023-01-01",
+        "location": {
+          "name": " | PSE | ",
+          "coordinates": null,
+          "admin_levels": {
+            "level1": null,
+            "level2": null,
+            "level3": null
+          },
+          "region": "Palestine",
+          "region_type": null
+        }
+      },
+      "ref": {
+        "category": "humanitarian",
+        "id": "humanitarian-11yvmy"
+      }
+    },
+    {
+      "id": "humanitarian-y8o9l",
+      "category": "humanitarian",
+      "text": "[object object]",
+      "preview": {
+        "title": "Untitled",
+        "date": "2022-01-01",
+        "location": {
+          "name": " |  | PSE",
+          "coordinates": null,
+          "admin_levels": {
+            "level1": null,
+            "level2": null,
+            "level3": null
+          },
+          "region": "Palestine",
+          "region_type": null
+        }
+      },
+      "ref": {
+        "category": "humanitarian",
+        "id": "humanitarian-y8o9l"
+      }
+    },
+    {
+      "id": "humanitarian-k7xevf",
+      "category": "humanitarian",
+      "text": "[object object]",
+      "preview": {
+        "title": "Untitled",
+        "date": "2021-05-27",
+        "location": {
+          "name": " |  | PSE",
+          "coordinates": null,
+          "admin_levels": {
+            "level1": null,
+            "level2": null,
+            "level3": null
+          },
+          "region": "Palestine",
+          "region_type": null
+        }
+      },
+      "ref": {
+        "category": "humanitarian",
+        "id": "humanitarian-k7xevf"
+      }
+    },
+    {
+      "id": "humanitarian-xas5fu",
+      "category": "humanitarian",
+      "text": "[object object]",
+      "preview": {
+        "title": "Untitled",
+        "date": "2021-01-01",
+        "location": {
+          "name": "PSE |  | ",
+          "coordinates": null,
+          "admin_levels": {
+            "level1": null,
+            "level2": null,
+            "level3": null
+          },
+          "region": "Palestine",
+          "region_type": null
+        }
+      },
+      "ref": {
+        "category": "humanitarian",
+        "id": "humanitarian-xas5fu"
+      }
+    },
+    {
+      "id": "humanitarian-tqn024",
+      "category": "humanitarian",
+      "text": "[object object]",
+      "preview": {
+        "title": "Untitled",
+        "date": "2020-05-01",
+        "location": {
+          "name": "ZWE | YEM | BFA | BGD | VEN | ZMB | TUR | JOR | AGO | SDN | SLE | EGY | COL | TZA | SYR | RWA | TGO | SSD | SOM | PAK | PSE | MMR | LBR | LSO | IRN | COD | TCD | CMR | BEN | AFG |  | LBY | UKR | UGA | HTI | PHL | NGA | NER | MOZ | MLI | LBN | KEN | IRQ | ETH | ECU | PRK | DJI | CAF | BDI",
+          "coordinates": null,
+          "admin_levels": {
+            "level1": null,
+            "level2": null,
+            "level3": null
+          },
+          "region": "Unknown",
+          "region_type": null
+        }
+      },
+      "ref": {
+        "category": "humanitarian",
+        "id": "humanitarian-tqn024"
+      }
+    },
+    {
+      "id": "humanitarian-fo7sxn",
+      "category": "humanitarian",
+      "text": "[object object]",
+      "preview": {
+        "title": "Untitled",
+        "date": "2020-05-01",
+        "location": {
+          "name": "AFG | ZWE | VEN | UKR | BEN | BDI | LSO | LBR | LBY | MLI | MOZ | MMR | NER | NGA | EGY | ETH | PSE | PAK | PHL | RWA | SLE | SOM | SSD | SDN | SYR | TZA | TGO | TUR | UGA | YEM | ZMB |  | BGD | AGO | BFA | CMR | CAF | TCD | DJI | PRK | COD | COL | ECU | HTI | IRN | IRQ | JOR | KEN | LBN",
+          "coordinates": null,
+          "admin_levels": {
+            "level1": null,
+            "level2": null,
+            "level3": null
+          },
+          "region": "Unknown",
+          "region_type": null
+        }
+      },
+      "ref": {
+        "category": "humanitarian",
+        "id": "humanitarian-fo7sxn"
+      }
+    },
+    {
+      "id": "humanitarian-1u0ewd",
+      "category": "humanitarian",
+      "text": "[object object]",
+      "preview": {
+        "title": "Untitled",
+        "date": "2020-03-25",
+        "location": {
+          "name": "NER | PRK | KEN | NGA | GUY | PAN | MEX | BRA | CUW |  | TTO | PER | URY | EGY | DJI | JOR | CRI | BFA | YEM | RWA | AGO | COG | ETH | TUR | PRY | ECU | SSD | SDN | SOM | IRQ | COD | LBN | CAF | MLI | BGD | ABW | CMR | UKR | UGA | VEN | TZA | ZMB | BOL | DOM | CHL | COL | TCD | AFG | SYR | ARG | LBY | IRN | PSE | MMR | HTI | BDI",
+          "coordinates": null,
+          "admin_levels": {
+            "level1": null,
+            "level2": null,
+            "level3": null
+          },
+          "region": "Unknown",
+          "region_type": null
+        }
+      },
+      "ref": {
+        "category": "humanitarian",
+        "id": "humanitarian-1u0ewd"
+      }
+    },
+    {
+      "id": "humanitarian-x37l9n",
+      "category": "humanitarian",
+      "text": "[object object]",
+      "preview": {
+        "title": "Untitled",
+        "date": "2020-01-01",
+        "location": {
+          "name": "PSE",
+          "coordinates": null,
+          "admin_levels": {
+            "level1": null,
+            "level2": null,
+            "level3": null
+          },
+          "region": "Palestine",
+          "region_type": null
+        }
+      },
+      "ref": {
+        "category": "humanitarian",
+        "id": "humanitarian-x37l9n"
+      }
+    },
+    {
+      "id": "humanitarian-9iq0r1",
+      "category": "humanitarian",
+      "text": "[object object]",
+      "preview": {
+        "title": "Untitled",
+        "date": "2019-01-01",
+        "location": {
+          "name": "PSE",
+          "coordinates": null,
+          "admin_levels": {
+            "level1": null,
+            "level2": null,
+            "level3": null
+          },
+          "region": "Palestine",
+          "region_type": null
+        }
+      },
+      "ref": {
+        "category": "humanitarian",
+        "id": "humanitarian-9iq0r1"
+      }
+    },
+    {
+      "id": "humanitarian-48ph9b",
+      "category": "humanitarian",
+      "text": "[object object]",
+      "preview": {
+        "title": "Untitled",
+        "date": "2018-01-01",
+        "location": {
+          "name": "PSE",
+          "coordinates": null,
+          "admin_levels": {
+            "level1": null,
+            "level2": null,
+            "level3": null
+          },
+          "region": "Palestine",
+          "region_type": null
+        }
+      },
+      "ref": {
+        "category": "humanitarian",
+        "id": "humanitarian-48ph9b"
+      }
+    },
+    {
+      "id": "humanitarian-ejfyeu",
+      "category": "humanitarian",
+      "text": "[object object]",
+      "preview": {
+        "title": "Untitled",
+        "date": "2017-01-01",
+        "location": {
+          "name": "PSE |  | ",
+          "coordinates": null,
+          "admin_levels": {
+            "level1": null,
+            "level2": null,
+            "level3": null
+          },
+          "region": "Palestine",
+          "region_type": null
+        }
+      },
+      "ref": {
+        "category": "humanitarian",
+        "id": "humanitarian-ejfyeu"
+      }
+    },
+    {
+      "id": "humanitarian-6qsdxz",
+      "category": "humanitarian",
+      "text": "[object object]",
+      "preview": {
+        "title": "Untitled",
+        "date": "2016-01-01",
+        "location": {
+          "name": "PSE",
+          "coordinates": null,
+          "admin_levels": {
+            "level1": null,
+            "level2": null,
+            "level3": null
+          },
+          "region": "Palestine",
+          "region_type": null
+        }
+      },
+      "ref": {
+        "category": "humanitarian",
+        "id": "humanitarian-6qsdxz"
+      }
+    },
+    {
+      "id": "humanitarian-9k55o1",
+      "category": "humanitarian",
+      "text": "[object object]",
+      "preview": {
+        "title": "Untitled",
+        "date": "2015-01-01",
+        "location": {
+          "name": "PSE",
+          "coordinates": null,
+          "admin_levels": {
+            "level1": null,
+            "level2": null,
+            "level3": null
+          },
+          "region": "Palestine",
+          "region_type": null
+        }
+      },
+      "ref": {
+        "category": "humanitarian",
+        "id": "humanitarian-9k55o1"
+      }
+    },
+    {
+      "id": "humanitarian-yu69x3",
+      "category": "humanitarian",
+      "text": "[object object]",
+      "preview": {
+        "title": "Untitled",
+        "date": "2014-01-01",
+        "location": {
+          "name": "PSE",
+          "coordinates": null,
+          "admin_levels": {
+            "level1": null,
+            "level2": null,
+            "level3": null
+          },
+          "region": "Palestine",
+          "region_type": null
+        }
+      },
+      "ref": {
+        "category": "humanitarian",
+        "id": "humanitarian-yu69x3"
+      }
+    },
+    {
+      "id": "humanitarian-lw48ih",
+      "category": "humanitarian",
+      "text": "[object object]",
+      "preview": {
+        "title": "Untitled",
+        "date": "2013-01-01",
+        "location": {
+          "name": "PSE",
+          "coordinates": null,
+          "admin_levels": {
+            "level1": null,
+            "level2": null,
+            "level3": null
+          },
+          "region": "Palestine",
+          "region_type": null
+        }
+      },
+      "ref": {
+        "category": "humanitarian",
+        "id": "humanitarian-lw48ih"
+      }
+    },
+    {
+      "id": "humanitarian-qfybr1",
+      "category": "humanitarian",
+      "text": "[object object]",
+      "preview": {
+        "title": "Untitled",
+        "date": "2012-01-01",
+        "location": {
+          "name": "PSE",
+          "coordinates": null,
+          "admin_levels": {
+            "level1": null,
+            "level2": null,
+            "level3": null
+          },
+          "region": "Palestine",
+          "region_type": null
+        }
+      },
+      "ref": {
+        "category": "humanitarian",
+        "id": "humanitarian-qfybr1"
+      }
+    },
+    {
+      "id": "humanitarian-9l4xyl",
+      "category": "humanitarian",
+      "text": "[object object]",
+      "preview": {
+        "title": "Untitled",
+        "date": "2011-01-01",
+        "location": {
+          "name": "PSE",
+          "coordinates": null,
+          "admin_levels": {
+            "level1": null,
+            "level2": null,
+            "level3": null
+          },
+          "region": "Palestine",
+          "region_type": null
+        }
+      },
+      "ref": {
+        "category": "humanitarian",
+        "id": "humanitarian-9l4xyl"
+      }
+    },
+    {
+      "id": "humanitarian-1xpuqr",
+      "category": "humanitarian",
+      "text": "[object object]",
+      "preview": {
+        "title": "Untitled",
+        "date": "2010-01-01",
+        "location": {
+          "name": "PSE",
+          "coordinates": null,
+          "admin_levels": {
+            "level1": null,
+            "level2": null,
+            "level3": null
+          },
+          "region": "Palestine",
+          "region_type": null
+        }
+      },
+      "ref": {
+        "category": "humanitarian",
+        "id": "humanitarian-1xpuqr"
+      }
+    },
+    {
+      "id": "humanitarian-m3t1t8",
+      "category": "humanitarian",
+      "text": "[object object]",
+      "preview": {
+        "title": "Untitled",
+        "date": "2009-01-01",
+        "location": {
+          "name": "PSE",
+          "coordinates": null,
+          "admin_levels": {
+            "level1": null,
+            "level2": null,
+            "level3": null
+          },
+          "region": "Palestine",
+          "region_type": null
+        }
+      },
+      "ref": {
+        "category": "humanitarian",
+        "id": "humanitarian-m3t1t8"
+      }
+    },
+    {
+      "id": "humanitarian-crl5ce",
+      "category": "humanitarian",
+      "text": "[object object]",
+      "preview": {
+        "title": "Untitled",
+        "date": "2008-01-01",
+        "location": {
+          "name": "PSE",
+          "coordinates": null,
+          "admin_levels": {
+            "level1": null,
+            "level2": null,
+            "level3": null
+          },
+          "region": "Palestine",
+          "region_type": null
+        }
+      },
+      "ref": {
+        "category": "humanitarian",
+        "id": "humanitarian-crl5ce"
+      }
+    },
+    {
+      "id": "humanitarian-1zsozx",
+      "category": "humanitarian",
+      "text": "[object object]",
+      "preview": {
+        "title": "Untitled",
+        "date": "2007-01-01",
+        "location": {
+          "name": "PSE",
+          "coordinates": null,
+          "admin_levels": {
+            "level1": null,
+            "level2": null,
+            "level3": null
+          },
+          "region": "Palestine",
+          "region_type": null
+        }
+      },
+      "ref": {
+        "category": "humanitarian",
+        "id": "humanitarian-1zsozx"
+      }
+    },
+    {
+      "id": "humanitarian-99dmir",
+      "category": "humanitarian",
+      "text": "[object object]",
+      "preview": {
+        "title": "Untitled",
+        "date": "2006-01-01",
+        "location": {
+          "name": "PSE",
+          "coordinates": null,
+          "admin_levels": {
+            "level1": null,
+            "level2": null,
+            "level3": null
+          },
+          "region": "Palestine",
+          "region_type": null
+        }
+      },
+      "ref": {
+        "category": "humanitarian",
+        "id": "humanitarian-99dmir"
+      }
+    },
+    {
+      "id": "humanitarian-8p7omz",
+      "category": "humanitarian",
+      "text": "[object object]",
+      "preview": {
+        "title": "Untitled",
+        "date": "2005-01-01",
+        "location": {
+          "name": "PSE",
+          "coordinates": null,
+          "admin_levels": {
+            "level1": null,
+            "level2": null,
+            "level3": null
+          },
+          "region": "Palestine",
+          "region_type": null
+        }
+      },
+      "ref": {
+        "category": "humanitarian",
+        "id": "humanitarian-8p7omz"
+      }
+    },
+    {
+      "id": "humanitarian-17saem",
+      "category": "humanitarian",
+      "text": "[object object]",
+      "preview": {
+        "title": "Untitled",
+        "date": "2004-01-01",
+        "location": {
+          "name": "PSE",
+          "coordinates": null,
+          "admin_levels": {
+            "level1": null,
+            "level2": null,
+            "level3": null
+          },
+          "region": "Palestine",
+          "region_type": null
+        }
+      },
+      "ref": {
+        "category": "humanitarian",
+        "id": "humanitarian-17saem"
+      }
+    },
+    {
+      "id": "humanitarian-96v86f",
+      "category": "humanitarian",
+      "text": "[object object]",
+      "preview": {
+        "title": "Untitled",
+        "date": "2003-01-01",
+        "location": {
+          "name": "PSE",
+          "coordinates": null,
+          "admin_levels": {
+            "level1": null,
+            "level2": null,
+            "level3": null
+          },
+          "region": "Palestine",
+          "region_type": null
+        }
+      },
+      "ref": {
+        "category": "humanitarian",
+        "id": "humanitarian-96v86f"
+      }
+    }
+  ]
+}

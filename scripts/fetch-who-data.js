@@ -15,9 +15,16 @@ import fs from 'fs/promises';
 import path from 'path';
 import { fileURLToPath } from 'url';
 import Papa from 'papaparse';
+import { createLogger } from './utils/logger.js';
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
+
+// Initialize logger
+const logger = createLogger({
+  context: 'WHO-Fetcher',
+  logLevel: 'INFO',
+});
 
 const DATA_DIR = path.join(__dirname, '../public/data/who');
 const HDX_API_BASE = 'https://data.humdata.org/api/3/action';
@@ -41,39 +48,39 @@ const writeJSON = async (filePath, data) => {
  * Find WHO health indicators dataset for Palestine
  */
 async function findWHODataset() {
-  console.log('Searching for WHO health indicators dataset...\n');
-  
+  await logger.info('Searching for WHO health indicators dataset...');
+
   const query = 'health AND groups:pse';
   const url = `${HDX_API_BASE}/package_search?q=${encodeURIComponent(query)}&rows=100`;
-  
+
   const response = await fetch(url);
   if (!response.ok) {
     throw new Error(`HDX API error: ${response.status}`);
   }
-  
+
   const data = await response.json();
   const datasets = data?.result?.results || [];
-  
+
   // Find WHO dataset
   const whoDataset = datasets.find(ds => {
-    const isWHO = ds.organization?.name === 'who' || 
-                  ds.organization?.title?.toLowerCase().includes('world health organization');
+    const isWHO = ds.organization?.name === 'who' ||
+      ds.organization?.title?.toLowerCase().includes('world health organization');
     const isHealthIndicators = ds.title?.toLowerCase().includes('health indicators');
     return isWHO && isHealthIndicators;
   });
-  
+
   if (!whoDataset) {
-    console.log('Available health datasets:');
-    datasets.slice(0, 10).forEach((ds, i) => {
-      console.log(`  ${i + 1}. ${ds.title} (${ds.organization?.title}) [org: ${ds.organization?.name}]`);
+    await logger.warn('Available health datasets:');
+    datasets.slice(0, 10).forEach(async (ds, i) => {
+      await logger.warn(`  ${i + 1}. ${ds.title} (${ds.organization?.title}) [org: ${ds.organization?.name}]`);
     });
     throw new Error('WHO Health Indicators dataset not found');
   }
-  
-  console.log(`✓ Found: ${whoDataset.title}`);
-  console.log(`  Organization: ${whoDataset.organization?.title}`);
-  console.log(`  Resources: ${whoDataset.resources?.length}\n`);
-  
+
+  await logger.success(`Found: ${whoDataset.title}`);
+  await logger.info(`Organization: ${whoDataset.organization?.title}`);
+  await logger.info(`Resources: ${whoDataset.resources?.length}`);
+
   return whoDataset;
 }
 
@@ -82,19 +89,19 @@ async function findWHODataset() {
  */
 async function downloadResource(resource) {
   try {
-    console.log(`  Downloading: ${resource.name}`);
-    console.log(`    Format: ${resource.format}`);
-    console.log(`    Size: ${(resource.size / 1024).toFixed(2)} KB`);
-    
+    await logger.info(`Downloading: ${resource.name}`);
+    await logger.debug(`Format: ${resource.format}`);
+    await logger.debug(`Size: ${(resource.size / 1024).toFixed(2)} KB`);
+
     const response = await fetch(resource.url);
     if (!response.ok) {
       throw new Error(`HTTP ${response.status}`);
     }
-    
+
     const format = resource.format?.toLowerCase();
     let data;
     let records = [];
-    
+
     if (format === 'json' || format === 'geojson') {
       data = await response.json();
       records = Array.isArray(data) ? data : [data];
@@ -107,12 +114,12 @@ async function downloadResource(resource) {
       });
       records = parsed.data || [];
     } else {
-      console.log(`    ⊘ Skipping unsupported format: ${format}`);
+      await logger.warn(`Skipping unsupported format: ${format}`);
       return null;
     }
-    
-    console.log(`    ✓ Downloaded ${records.length} records`);
-    
+
+    await logger.success(`Downloaded ${records.length} records`);
+
     return {
       resource_id: resource.id,
       resource_name: resource.name,
@@ -123,9 +130,9 @@ async function downloadResource(resource) {
       record_count: records.length,
       downloaded_at: new Date().toISOString(),
     };
-    
+
   } catch (error) {
-    console.error(`    ✗ Failed: ${error.message}`);
+    await logger.error(`Failed: ${error.message}`, error);
     return null;
   }
 }
@@ -147,10 +154,10 @@ function categorizeResources(resources) {
     wash: [],
     other: [],
   };
-  
+
   resources.forEach(resource => {
     const name = resource.resource_name.toLowerCase();
-    
+
     if (name.includes('mortality') || name.includes('life expectancy')) {
       categories.mortality.push(resource);
     } else if (name.includes('maternal') || name.includes('child') || name.includes('birth')) {
@@ -175,7 +182,7 @@ function categorizeResources(resources) {
       categories.other.push(resource);
     }
   });
-  
+
   return categories;
 }
 
@@ -183,22 +190,22 @@ function categorizeResources(resources) {
  * Main fetch function
  */
 async function fetchWHOData() {
-  console.log('========================================');
-  console.log('WHO Data Fetcher (FIXED)');
-  console.log('========================================');
-  console.log('Source: HDX (Humanitarian Data Exchange)');
-  console.log('Note: WHO GHO API is deprecated\n');
-  console.log('========================================\n');
-  
+  await logger.info('========================================');
+  await logger.info('WHO Data Fetcher');
+  await logger.info('========================================');
+  await logger.info('Source: HDX (Humanitarian Data Exchange)');
+  await logger.info('Note: WHO GHO API is deprecated');
+  await logger.info('========================================');
+
   await ensureDir(DATA_DIR);
-  
+
   // Find WHO dataset
   const dataset = await findWHODataset();
-  
+
   // Download all resources
-  console.log('Downloading resources...\n');
+  await logger.info('Downloading resources...');
   const downloadedResources = [];
-  
+
   for (const resource of dataset.resources) {
     const result = await downloadResource(resource);
     if (result) {
@@ -206,15 +213,15 @@ async function fetchWHOData() {
     }
     await sleep(RATE_LIMIT_DELAY);
   }
-  
-  console.log(`\n✓ Downloaded ${downloadedResources.length} resources\n`);
-  
+
+  await logger.success(`Downloaded ${downloadedResources.length} resources`);
+
   // Categorize resources
   const categories = categorizeResources(downloadedResources);
-  
+
   // Calculate summary
   const totalRecords = downloadedResources.reduce((sum, r) => sum + r.record_count, 0);
-  
+
   // Save all data
   const allData = {
     source: 'WHO (via HDX)',
@@ -243,11 +250,11 @@ async function fetchWHOData() {
       tags: dataset.tags?.map(t => t.name) || [],
     },
   };
-  
+
   const allDataPath = path.join(DATA_DIR, 'all-data.json');
   await writeJSON(allDataPath, allData);
-  console.log(`✓ Saved complete data to: ${allDataPath}`);
-  
+  await logger.success(`Saved complete data to: ${allDataPath}`);
+
   // Save category-specific files
   for (const [categoryName, resources] of Object.entries(categories)) {
     if (resources.length > 0) {
@@ -257,10 +264,10 @@ async function fetchWHOData() {
         resources: resources,
         total_records: resources.reduce((sum, r) => sum + r.record_count, 0),
       });
-      console.log(`✓ Saved ${categoryName} data (${resources.length} resources)`);
+      await logger.success(`Saved ${categoryName} data (${resources.length} resources)`);
     }
   }
-  
+
   // Save metadata
   const metadata = {
     source: 'WHO (via HDX)',
@@ -272,38 +279,38 @@ async function fetchWHOData() {
     summary: allData.summary,
     note: 'WHO GHO API (ghoapi.azureedge.net) has been deprecated. Data is now sourced from HDX where WHO publishes their datasets.',
   };
-  
+
   const metadataPath = path.join(DATA_DIR, 'metadata.json');
   await writeJSON(metadataPath, metadata);
-  console.log(`✓ Saved metadata to: ${metadataPath}`);
-  
+  await logger.success(`Saved metadata to: ${metadataPath}`);
+
   // Print summary
-  console.log('\n========================================');
-  console.log('Fetch Summary');
-  console.log('========================================');
-  console.log(`Dataset: ${dataset.title}`);
-  console.log(`Organization: ${dataset.organization?.title}`);
-  console.log(`Total resources: ${allData.summary.total_resources}`);
-  console.log(`Total records: ${allData.summary.total_records}`);
-  console.log('\nBy category:');
-  allData.summary.by_category.forEach(cat => {
-    console.log(`  ${cat.category}: ${cat.resources} resources, ${cat.records} records`);
+  await logger.info('========================================');
+  await logger.info('Fetch Summary');
+  await logger.info('========================================');
+  await logger.info(`Dataset: ${dataset.title}`);
+  await logger.info(`Organization: ${dataset.organization?.title}`);
+  await logger.info(`Total resources: ${allData.summary.total_resources}`);
+  await logger.info(`Total records: ${allData.summary.total_records}`);
+  await logger.info('By category:');
+  allData.summary.by_category.forEach(async cat => {
+    await logger.info(`  ${cat.category}: ${cat.resources} resources, ${cat.records} records`);
   });
-  console.log('========================================');
-  
+  await logger.info('========================================');
+
   return allData;
 }
 
 // Run
 if (import.meta.url === `file://${process.argv[1]}`) {
   fetchWHOData()
-    .then(() => {
-      console.log('\n✓ WHO data fetch completed successfully\n');
+    .then(async () => {
+      await logger.success('WHO data fetch completed successfully');
       process.exit(0);
     })
-    .catch((error) => {
-      console.error('\n✗ WHO data fetch failed:', error);
-      console.error('Stack:', error.stack);
+    .catch(async (error) => {
+      await logger.error('WHO data fetch failed', error);
+      await logger.error('Stack:', error.stack);
       process.exit(1);
     });
 }

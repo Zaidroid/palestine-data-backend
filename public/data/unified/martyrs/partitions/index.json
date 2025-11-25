@@ -1,0 +1,19 @@
+{
+  "dataset": "dataset",
+  "totalPartitions": 1,
+  "totalRecords": 60199,
+  "partitions": [
+    {
+      "quarter": "2023-Q4",
+      "recordCount": 60199,
+      "dateRange": {
+        "start": "2023-10-07",
+        "end": "2023-10-07"
+      },
+      "fileName": "2023-Q4.json"
+    }
+  ],
+  "hasRecentFile": true,
+  "recentFileName": "recent.json",
+  "generated_at": "2025-11-25T18:04:35.181Z"
+}

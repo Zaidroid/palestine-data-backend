@@ -20,7 +20,7 @@ export const VALIDATION_SCHEMAS = {
       date: 'string',
       killed: 'number',
       injured: 'number',
-      location: 'string',
+      location: 'object',
       region: 'string',
       incident_type: 'string',
       source: 'string',
@@ -31,13 +31,13 @@ export const VALIDATION_SCHEMAS = {
     },
     dateFormats: ['YYYY-MM-DD', 'YYYY-MM-DDTHH:mm:ss', 'YYYY-MM-DDTHH:mm:ss.sssZ'],
   },
-  
+
   demolitions: {
     requiredFields: ['date', 'location', 'structures'],
     optionalFields: ['structure_type', 'people_affected', 'reason', 'demolished_by', 'region'],
     fieldTypes: {
       date: 'string',
-      location: 'string',
+      location: 'object',
       structures: 'number',
       structure_type: 'string',
       people_affected: 'number',
@@ -51,18 +51,18 @@ export const VALIDATION_SCHEMAS = {
     },
     dateFormats: ['YYYY-MM-DD', 'YYYY-MM-DDTHH:mm:ss', 'YYYY-MM-DDTHH:mm:ss.sssZ'],
   },
-  
+
   healthcare: {
-    requiredFields: ['date', 'facility_name', 'incident_type'],
-    optionalFields: ['facility_type', 'location', 'casualties', 'damage', 'region'],
+    requiredFields: ['date'],
+    optionalFields: ['facility_name', 'incident_type', 'facility_type', 'location', 'casualties', 'damage_level', 'region'],
     fieldTypes: {
       date: 'string',
       facility_name: 'string',
       incident_type: 'string',
       facility_type: 'string',
-      location: 'string',
+      location: 'object',
       casualties: 'number',
-      damage: 'string',
+      damage_level: 'string',
       region: 'string',
     },
     numericRanges: {
@@ -70,11 +70,11 @@ export const VALIDATION_SCHEMAS = {
     },
     dateFormats: ['YYYY-MM-DD', 'YYYY-MM-DDTHH:mm:ss', 'YYYY-MM-DDTHH:mm:ss.sssZ'],
     enumValues: {
-      facility_type: ['hospital', 'clinic', 'pharmacy', 'ambulance', 'medical_center'],
-      damage: ['destroyed', 'damaged', 'minor', 'severe'],
+      facility_type: ['hospital', 'clinic', 'pharmacy', 'ambulance', 'medical_center', 'health_facility'],
+      damage_level: ['destroyed', 'damaged', 'minor', 'severe', 'unknown'],
     },
   },
-  
+
   ngo: {
     requiredFields: ['name', 'type'],
     optionalFields: ['sector', 'funding', 'funding_year', 'location', 'beneficiaries'],
@@ -84,7 +84,7 @@ export const VALIDATION_SCHEMAS = {
       sector: 'array',
       funding: 'number',
       funding_year: 'number',
-      location: 'string',
+      location: 'object',
       beneficiaries: 'number',
     },
     numericRanges: {
@@ -93,7 +93,7 @@ export const VALIDATION_SCHEMAS = {
       beneficiaries: { min: 0, max: 10000000 },
     },
   },
-  
+
   worldbank: {
     requiredFields: ['year', 'value', 'country'],
     optionalFields: ['countryiso3code', 'indicator', 'unit'],
@@ -109,14 +109,14 @@ export const VALIDATION_SCHEMAS = {
       year: { min: 1960, max: 2030 },
     },
   },
-  
+
   conflict: {
     requiredFields: ['date', 'event_type', 'location'],
     optionalFields: ['fatalities', 'region', 'actor1', 'actor2', 'notes', 'source'],
     fieldTypes: {
       date: 'string',
       event_type: 'string',
-      location: 'string',
+      location: 'object',
       fatalities: 'number',
       region: 'string',
       actor1: 'string',
@@ -129,28 +129,40 @@ export const VALIDATION_SCHEMAS = {
     },
     dateFormats: ['YYYY-MM-DD', 'YYYY-MM-DDTHH:mm:ss', 'YYYY-MM-DDTHH:mm:ss.sssZ'],
   },
-  
+
   infrastructure: {
-    requiredFields: ['date', 'facility_type', 'damage_level'],
-    optionalFields: ['location', 'region', 'description', 'estimated_cost'],
+    requiredFields: ['date', 'metrics', 'status'],
+    optionalFields: ['location', 'region', 'value', 'unit'],
     fieldTypes: {
       date: 'string',
-      facility_type: 'string',
-      damage_level: 'string',
-      location: 'string',
+      metrics: 'object',
+      status: 'string',
+      location: 'object',
       region: 'string',
-      description: 'string',
-      estimated_cost: 'number',
+      value: 'number',
+      unit: 'string',
     },
     dateFormats: ['YYYY-MM-DD', 'YYYY-MM-DDTHH:mm:ss', 'YYYY-MM-DDTHH:mm:ss.sssZ'],
-    enumValues: {
-      damage_level: ['destroyed', 'severe', 'moderate', 'minor'],
-    },
   },
-  
+
+  water: {
+    requiredFields: ['date', 'value', 'unit'],
+    optionalFields: ['location', 'indicator', 'status', 'source_dataset'],
+    fieldTypes: {
+      date: 'string',
+      value: 'number',
+      unit: 'string',
+      location: 'object',
+      indicator: 'object',
+      status: 'string',
+      source_dataset: 'string',
+    },
+    dateFormats: ['YYYY-MM-DD', 'YYYY-MM-DDTHH:mm:ss', 'YYYY-MM-DDTHH:mm:ss.sssZ'],
+  },
+
   humanitarian: {
-    requiredFields: ['date', 'indicator', 'value'],
-    optionalFields: ['region', 'category', 'unit', 'source'],
+    requiredFields: ['date', 'value'],
+    optionalFields: ['indicator', 'region', 'category', 'unit', 'source'],
     fieldTypes: {
       date: 'string',
       indicator: 'string',
@@ -162,7 +174,24 @@ export const VALIDATION_SCHEMAS = {
     },
     dateFormats: ['YYYY-MM-DD', 'YYYY-MM-DDTHH:mm:ss', 'YYYY-MM-DDTHH:mm:ss.sssZ'],
   },
-  
+
+  news: {
+    requiredFields: ['title', 'date', 'link'],
+    optionalFields: ['description', 'source', 'category', 'language', 'reliability', 'location'],
+    fieldTypes: {
+      title: 'string',
+      date: 'string',
+      link: 'string',
+      description: 'string',
+      source: 'string',
+      category: 'string',
+      language: 'string',
+      reliability: 'string',
+      location: 'string',
+    },
+    dateFormats: ['YYYY-MM-DD', 'YYYY-MM-DDTHH:mm:ss', 'YYYY-MM-DDTHH:mm:ss.sssZ'],
+  },
+
   // Generic schema for unknown dataset types
   generic: {
     requiredFields: [],
@@ -190,14 +219,14 @@ function isValidDate(dateString, formats) {
   if (!dateString || typeof dateString !== 'string') {
     return false;
   }
-  
+
   // ISO 8601 format: YYYY-MM-DD or YYYY-MM-DDTHH:mm:ss
   const isoDateRegex = /^\d{4}-\d{2}-\d{2}(T\d{2}:\d{2}:\d{2}(\.\d{3}Z?)?)?$/;
-  
+
   if (!isoDateRegex.test(dateString)) {
     return false;
   }
-  
+
   // Try to parse the date
   const date = new Date(dateString);
   return !isNaN(date.getTime());
@@ -210,7 +239,7 @@ function validateFieldType(value, expectedType) {
   if (value === null || value === undefined) {
     return false;
   }
-  
+
   switch (expectedType) {
     case 'string':
       return typeof value === 'string' && value.trim().length > 0;
@@ -234,15 +263,15 @@ function validateNumericRange(value, range) {
   if (typeof value !== 'number' || isNaN(value)) {
     return false;
   }
-  
+
   if (range.min !== undefined && value < range.min) {
     return false;
   }
-  
+
   if (range.max !== undefined && value > range.max) {
     return false;
   }
-  
+
   return true;
 }
 
@@ -265,7 +294,7 @@ export function validateDataStructure(data, schema) {
   const errors = [];
   const warnings = [];
   let validRecords = 0;
-  
+
   if (!Array.isArray(data)) {
     errors.push({
       field: 'root',
@@ -273,7 +302,7 @@ export function validateDataStructure(data, schema) {
       severity: 'critical',
       affectedRecords: 0,
     });
-    
+
     return {
       isValid: false,
       errors,
@@ -283,7 +312,7 @@ export function validateDataStructure(data, schema) {
       totalRecords: 0,
     };
   }
-  
+
   if (data.length === 0) {
     warnings.push({
       field: 'root',
@@ -292,11 +321,11 @@ export function validateDataStructure(data, schema) {
       affectedRecords: 0,
     });
   }
-  
+
   // Validate each record
   data.forEach((record, index) => {
     let recordValid = true;
-    
+
     // Check required fields
     schema.requiredFields.forEach(field => {
       if (!(field in record) || record[field] === null || record[field] === undefined) {
@@ -310,7 +339,7 @@ export function validateDataStructure(data, schema) {
         recordValid = false;
       }
     });
-    
+
     // Check field types
     Object.keys(schema.fieldTypes).forEach(field => {
       if (field in record && record[field] !== null && record[field] !== undefined) {
@@ -327,7 +356,7 @@ export function validateDataStructure(data, schema) {
         }
       }
     });
-    
+
     // Check numeric ranges
     if (schema.numericRanges) {
       Object.keys(schema.numericRanges).forEach(field => {
@@ -345,7 +374,7 @@ export function validateDataStructure(data, schema) {
         }
       });
     }
-    
+
     // Check date formats
     if (schema.dateFormats && 'date' in record) {
       if (!isValidDate(record.date, schema.dateFormats)) {
@@ -359,7 +388,7 @@ export function validateDataStructure(data, schema) {
         recordValid = false;
       }
     }
-    
+
     // Check enum values
     if (schema.enumValues) {
       Object.keys(schema.enumValues).forEach(field => {
@@ -377,14 +406,14 @@ export function validateDataStructure(data, schema) {
         }
       });
     }
-    
+
     if (recordValid) {
       validRecords++;
     }
   });
-  
+
   const qualityScore = data.length > 0 ? (validRecords / data.length) : 0;
-  
+
   return {
     isValid: errors.length === 0,
     errors,
@@ -411,31 +440,31 @@ export function validateDataCompleteness(data, requiredFields) {
       completeRecords: 0,
     };
   }
-  
+
   const missingFields = {};
   let completeRecords = 0;
-  
+
   requiredFields.forEach(field => {
     missingFields[field] = 0;
   });
-  
+
   data.forEach(record => {
     let recordComplete = true;
-    
+
     requiredFields.forEach(field => {
       if (!(field in record) || record[field] === null || record[field] === undefined || record[field] === '') {
         missingFields[field]++;
         recordComplete = false;
       }
     });
-    
+
     if (recordComplete) {
       completeRecords++;
     }
   });
-  
+
   const completeness = data.length > 0 ? (completeRecords / data.length) : 0;
-  
+
   return {
     completeness,
     missingFields,
@@ -454,23 +483,23 @@ export function validateDataCompleteness(data, requiredFields) {
 export function validateDataQuality(data, schema) {
   // Validate structure
   const structureResult = validateDataStructure(data, schema);
-  
+
   // Validate completeness
   const completenessResult = validateDataCompleteness(data, schema.requiredFields);
-  
+
   // Calculate consistency score (% of records with valid formats)
   const consistency = structureResult.qualityScore;
-  
+
   // Calculate accuracy score (% of records passing all validation rules)
   const accuracy = structureResult.validRecords / Math.max(data.length, 1);
-  
+
   // Calculate overall quality score (weighted average)
   const overallScore = (
     completenessResult.completeness * 0.4 +  // 40% weight on completeness
     consistency * 0.3 +                       // 30% weight on consistency
     accuracy * 0.3                            // 30% weight on accuracy
   );
-  
+
   return {
     completeness: completenessResult.completeness,
     consistency,
@@ -491,19 +520,24 @@ export function validateDataQuality(data, schema) {
  * @returns {Object} - Validation schema
  */
 export function getSchemaForDatasetType(datasetType) {
+  if (!datasetType) {
+    logger.warn('No dataset type provided, using generic schema');
+    return VALIDATION_SCHEMAS.generic;
+  }
+
   const normalizedType = datasetType.toLowerCase();
-  
+
   if (VALIDATION_SCHEMAS[normalizedType]) {
     return VALIDATION_SCHEMAS[normalizedType];
   }
-  
+
   // Try to match partial type names
   for (const [schemaType, schema] of Object.entries(VALIDATION_SCHEMAS)) {
     if (normalizedType.includes(schemaType) || schemaType.includes(normalizedType)) {
       return schema;
     }
   }
-  
+
   // Return generic schema if no match found
   logger.warn(`No specific schema found for dataset type: ${datasetType}, using generic schema`);
   return VALIDATION_SCHEMAS.generic;
@@ -518,26 +552,26 @@ export function getSchemaForDatasetType(datasetType) {
  */
 export async function validateDataset(data, datasetType) {
   await logger.info(`Validating dataset: ${datasetType} (${data.length} records)`);
-  
+
   const schema = getSchemaForDatasetType(datasetType);
   const qualityResult = validateDataQuality(data, schema);
-  
+
   // Log validation results
   if (qualityResult.meetsThreshold) {
     await logger.success(`Dataset ${datasetType} passed validation (score: ${(qualityResult.overallScore * 100).toFixed(1)}%)`);
   } else {
     await logger.warn(`Dataset ${datasetType} quality below threshold (score: ${(qualityResult.overallScore * 100).toFixed(1)}%)`);
   }
-  
+
   // Log errors and warnings
   if (qualityResult.details.structure.errors.length > 0) {
     await logger.warn(`Found ${qualityResult.details.structure.errors.length} validation errors in ${datasetType}`);
   }
-  
+
   if (qualityResult.details.structure.warnings.length > 0) {
     await logger.debug(`Found ${qualityResult.details.structure.warnings.length} validation warnings in ${datasetType}`);
   }
-  
+
   return {
     datasetType,
     recordCount: data.length,

@@ -1,0 +1,199 @@
+{
+  "generated_at": "2025-11-25T18:04:40.610Z",
+  "categories": {
+    "conflict": {
+      "count": 1816,
+      "date_range": {
+        "start": "2023-10-07",
+        "end": "2025-11-23"
+      },
+      "regions": [
+        "Gaza Strip",
+        "West Bank"
+      ],
+      "last_updated": "2025-11-25T18:04:33.978Z",
+      "sources": [
+        "Tech4Palestine"
+      ]
+    },
+    "culture": {
+      "count": 315,
+      "date_range": {
+        "start": "2025-11-25",
+        "end": "2025-11-25"
+      },
+      "regions": [
+        "East Jerusalem",
+        "Gaza Strip",
+        "West Bank"
+      ],
+      "last_updated": "2025-11-25T18:04:38.196Z",
+      "sources": []
+    },
+    "economic": {
+      "count": 1522,
+      "date_range": {
+        "start": "2010-01-01",
+        "end": "2024-01-01"
+      },
+      "regions": [
+        "Palestine"
+      ],
+      "last_updated": "2025-11-25T11:32:34.614Z",
+      "sources": []
+    },
+    "education": {
+      "count": 12082,
+      "date_range": {
+        "start": "2025-11-25",
+        "end": "2025-11-25"
+      },
+      "regions": [
+        "Palestine",
+        "West Bank"
+      ],
+      "last_updated": "2025-11-25T18:04:38.278Z",
+      "sources": []
+    },
+    "health": {
+      "count": 40207,
+      "date_range": {
+        "start": "1975-01-01",
+        "end": "2025-07-07"
+      },
+      "regions": [
+        "Gaza Strip",
+        "Palestine",
+        "West Bank"
+      ],
+      "last_updated": "2025-11-25T18:04:38.056Z",
+      "sources": []
+    },
+    "historical": {
+      "count": 47,
+      "date_range": {
+        "start": "1948-01-01",
+        "end": "1990-01-01"
+      },
+      "regions": [
+        "gaza",
+        "west_bank"
+      ],
+      "last_updated": "2025-11-25T18:04:38.385Z",
+      "sources": []
+    },
+    "humanitarian": {
+      "count": 28,
+      "date_range": {
+        "start": "2003-01-01",
+        "end": "2025-01-01"
+      },
+      "regions": [
+        "Palestine",
+        "Unknown"
+      ],
+      "last_updated": "2025-11-25T18:04:36.768Z",
+      "sources": []
+    },
+    "infrastructure": {
+      "count": 730,
+      "date_range": {
+        "start": "2023-10-07",
+        "end": "2025-10-05"
+      },
+      "regions": [
+        "Gaza Strip"
+      ],
+      "last_updated": "2025-11-25T18:04:40.572Z",
+      "sources": []
+    },
+    "land": {
+      "count": 465,
+      "date_range": {
+        "start": "2024-01-01",
+        "end": "2025-11-25"
+      },
+      "regions": [
+        "East Jerusalem",
+        "West Bank"
+      ],
+      "last_updated": "2025-11-25T18:04:38.209Z",
+      "sources": []
+    },
+    "martyrs": {
+      "count": 60199,
+      "date_range": {
+        "start": "2023-10-07",
+        "end": "2023-10-07"
+      },
+      "regions": [
+        "Gaza Strip"
+      ],
+      "last_updated": "2025-11-25T18:04:35.181Z",
+      "sources": []
+    },
+    "news": {
+      "count": 72,
+      "date_range": {
+        "start": "Fri, 07 Nov 2025 15:50:14 +0000",
+        "end": "Wed, 19 Nov 2025 16:27:31 +0000"
+      },
+      "regions": [
+        "east_jerusalem",
+        "gaza",
+        "unknown",
+        "west_bank"
+      ],
+      "last_updated": "2025-11-25T18:04:38.187Z",
+      "sources": []
+    },
+    "pcbs": {
+      "count": 845,
+      "date_range": {
+        "start": "2010-01-01",
+        "end": "2024-01-01"
+      },
+      "regions": [
+        "Palestine"
+      ],
+      "last_updated": "2025-11-25T18:04:41.325Z",
+      "sources": []
+    },
+    "refugees": {
+      "count": 1478,
+      "date_range": {
+        "start": "1970-01-01",
+        "end": "1970-01-01"
+      },
+      "regions": [
+        "Palestine"
+      ],
+      "last_updated": "2025-11-25T18:04:36.822Z",
+      "sources": []
+    },
+    "water": {
+      "count": 95928,
+      "date_range": {
+        "start": "2024-11-29T13:59:01.319Z",
+        "end": "2025-11-19T15:21:44.135Z"
+      },
+      "regions": [
+        "Palestine"
+      ],
+      "last_updated": "2025-11-25T18:04:40.101Z",
+      "sources": []
+    }
+  },
+  "total_records": 215734,
+  "regions": [
+    "East Jerusalem",
+    "Gaza Strip",
+    "Palestine",
+    "Unknown",
+    "West Bank",
+    "east_jerusalem",
+    "gaza",
+    "unknown",
+    "west_bank"
+  ]
+}

@@ -13,7 +13,7 @@ export class GeospatialEnricher {
       'Deir al-Balah': { region: 'gaza', bounds: { minLat: 31.40, maxLat: 31.50, minLon: 34.30, maxLon: 34.40 } },
       'Khan Yunis': { region: 'gaza', bounds: { minLat: 31.30, maxLat: 31.40, minLon: 34.25, maxLon: 34.35 } },
       'Rafah': { region: 'gaza', bounds: { minLat: 31.25, maxLat: 31.35, minLon: 34.20, maxLon: 34.30 } },
-      
+
       // West Bank governorates
       'Jenin': { region: 'west_bank', bounds: { minLat: 32.40, maxLat: 32.50, minLon: 35.25, maxLon: 35.35 } },
       'Tubas': { region: 'west_bank', bounds: { minLat: 32.30, maxLat: 32.40, minLon: 35.35, maxLon: 35.45 } },
@@ -35,28 +35,51 @@ export class GeospatialEnricher {
   enrichLocation(location) {
     if (!location) return location;
 
-    const enriched = { ...location };
+    let enriched;
+    if (typeof location === 'string') {
+      enriched = { name: location };
+    } else {
+      enriched = { ...location };
+    }
+
+    // If coordinates are missing, try to find them based on location name
+    if (!enriched.coordinates) {
+      const centroid = this.getCentroid(enriched.name);
+      if (centroid) {
+        enriched.coordinates = centroid;
+      }
+    }
 
     // Enrich admin levels if coordinates available
-    if (location.coordinates) {
-      const [lon, lat] = location.coordinates;
-      enriched.admin_levels = {
-        ...location.admin_levels,
-        level1: location.admin_levels?.level1 || this.findGovernorate(lon, lat),
-      };
+    if (enriched.coordinates) {
+      let lon, lat;
+
+      if (Array.isArray(enriched.coordinates)) {
+        [lon, lat] = enriched.coordinates;
+      } else if (typeof enriched.coordinates === 'object') {
+        lon = enriched.coordinates.lon;
+        lat = enriched.coordinates.lat;
+      }
+
+      if (lon !== undefined && lat !== undefined) {
+        enriched.admin_levels = {
+          ...enriched.admin_levels,
+          level1: enriched.admin_levels?.level1 || this.findGovernorate(lon, lat),
+        };
+      }
     }
 
     // Classify region if not already set
     if (!enriched.region) {
-      enriched.region = this.classifyRegion(location.name);
+      enriched.region = this.classifyRegion(enriched.name);
     }
 
     // Add region type
-    enriched.region_type = this.classifyRegionType(location.name);
+    enriched.region_type = this.classifyRegionType(enriched.name);
 
     // Add proximity information if coordinates available
-    if (location.coordinates) {
-      enriched.proximity = this.calculateProximity(location.coordinates);
+    if (enriched.coordinates) {
+      enriched.proximity = this.calculateProximity(enriched.coordinates);
     }
 
     return enriched;
@@ -87,10 +110,10 @@ export class GeospatialEnricher {
     if (!locationName) return 'unknown';
 
     // Handle object with value property
-    const nameStr = typeof locationName === 'object' && locationName.value 
-      ? locationName.value 
+    const nameStr = typeof locationName === 'object' && locationName.value
+      ? locationName.value
       : locationName;
-    
+
     if (typeof nameStr !== 'string') return 'unknown';
 
     const name = nameStr.toLowerCase();
@@ -116,10 +139,10 @@ export class GeospatialEnricher {
     if (!locationName) return null;
 
     // Handle object with value property
-    const nameStr = typeof locationName === 'object' && locationName.value 
-      ? locationName.value 
+    const nameStr = typeof locationName === 'object' && locationName.value
+      ? locationName.value
       : locationName;
-    
+
     if (typeof nameStr !== 'string') return null;
 
     const name = nameStr.toLowerCase();
@@ -139,9 +162,17 @@ export class GeospatialEnricher {
    * Calculate proximity to key locations
    */
   calculateProximity(coordinates) {
-    if (!coordinates || coordinates.length !== 2) return null;
+    if (!coordinates) return null;
 
-    const [lon, lat] = coordinates;
+    let lon, lat;
+    if (Array.isArray(coordinates) && coordinates.length === 2) {
+      [lon, lat] = coordinates;
+    } else if (typeof coordinates === 'object' && coordinates.lat !== undefined && coordinates.lon !== undefined) {
+      lon = coordinates.lon;
+      lat = coordinates.lat;
+    } else {
+      return null;
+    }
 
     return {
       nearest_city: this.findNearestCity(lon, lat),
@@ -219,9 +250,9 @@ export class GeospatialEnricher {
     const a =
       Math.sin(dLat / 2) * Math.sin(dLat / 2) +
       Math.cos(this.toRadians(lat1)) *
-        Math.cos(this.toRadians(lat2)) *
-        Math.sin(dLon / 2) *
-        Math.sin(dLon / 2);
+      Math.cos(this.toRadians(lat2)) *
+      Math.sin(dLon / 2) *
+      Math.sin(dLon / 2);
 
     const c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
     return R * c;
@@ -232,6 +263,58 @@ export class GeospatialEnricher {
    */
   toRadians(degrees) {
     return degrees * (Math.PI / 180);
+  }
+  /**
+   * Get centroid coordinates for a known location name
+   */
+  getCentroid(locationName) {
+    if (!locationName) return null;
+
+    // Handle object with value property
+    const nameStr = typeof locationName === 'object' && locationName.value
+      ? locationName.value
+      : locationName;
+
+    if (typeof nameStr !== 'string') return null;
+    const name = nameStr.toLowerCase();
+
+    // Check cities first
+    const cities = {
+      'gaza city': [34.45, 31.50],
+      'gaza': [34.45, 31.50], // Default to city if just "Gaza"
+      'khan yunis': [34.30, 31.35],
+      'rafah': [34.25, 31.30],
+      'ramallah': [35.20, 31.90],
+      'nablus': [35.25, 32.20],
+      'hebron': [35.10, 31.50],
+      'bethlehem': [35.20, 31.70],
+      'jenin': [35.30, 32.45],
+      'jericho': [35.45, 31.85],
+      'tulkarm': [35.03, 32.31],
+      'qalqilya': [34.98, 32.19],
+      'tubas': [35.37, 32.32],
+      'salfit': [35.18, 32.08],
+      'jerusalem': [35.21, 31.76],
+      'east jerusalem': [35.23, 31.78],
+    };
+
+    for (const [cityName, coords] of Object.entries(cities)) {
+      if (name.includes(cityName)) {
+        return coords;
+      }
+    }
+
+    // Check governorates
+    for (const [govName, data] of Object.entries(this.governorates)) {
+      if (name.includes(govName.toLowerCase())) {
+        const { bounds } = data;
+        const centerLat = (bounds.minLat + bounds.maxLat) / 2;
+        const centerLon = (bounds.minLon + bounds.maxLon) / 2;
+        return [centerLon, centerLat];
+      }
+    }
+
+    return null;
   }
 }
 

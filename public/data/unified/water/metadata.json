@@ -1,0 +1,14 @@
+{
+  "category": "water",
+  "total_records": 12900,
+  "last_updated": "2025-11-25T18:04:36.738Z",
+  "sources": [
+    "HDX"
+  ],
+  "quality": {
+    "average_score": 0.9624651162790697,
+    "completeness": 1,
+    "consistency": 0.9374418604651162,
+    "accuracy": 0.9374418604651162
+  }
+}

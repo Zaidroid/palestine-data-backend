@@ -1,0 +1,55 @@
+ℹ️  ======================================== 
+ℹ️  Land & Settlements Data Fetcher 
+ℹ️  Using Real Data Sources 
+ℹ️  ========================================
+ 
+ℹ️  Fetching settlements data from HDX (Peace Now source)... 
+ℹ️  Downloading from: https://data.humdata.org/dataset/state-of-palestine-settlements/resource/05d6421b-e796-4940-ae9e-a55858e96664/download/settlements_peacenow.zip 
+✅ Downloaded: settlements_peacenow.zip (202.01 KB) 
+ℹ️  Extracting: settlements_peacenow.zip 
+✅ Extracted 8 files 
+ℹ️  Parsing shapefile: Settlements_Buildup_PeaceNow.shp 
+✅ Parsed 201 features from shapefile 
+ℹ️  Raw geometry for Ariel: type=MultiPolygon, coords=[[[[704180.603746818,3554502.7747489796],[704195.4268006198,3554457.873880464],[704203.9627069946,35... 
+ℹ️  Coordinate transform for Ariel: [704074.7170738113, 3554394.446959063] -> [35.162843121434484, 32.10745701114948] 
+✅ Transformed 201 settlement records 
+ℹ️  Settlement Types found: [ 'Settlement' ]
+ℹ️  Settlement Statuses found: [ 'Authorized' ]
+ℹ️  Attempting to fetch outposts data from HDX... 
+ℹ️  Searching for outpost datasets on HDX... 
+ℹ️  Found 2 datasets for query "Peace Now" 
+⚠️  No specific outpost datasets found on HDX 
+ℹ️  Attempting to fetch checkpoints/barriers data from HDX... 
+ℹ️  Searching for checkpoint/closure datasets on HDX... 
+ℹ️  Found 10 datasets for query "west bank closure" 
+✅ Found dataset: "West Bank Separation Barrier" with 1 geo resources 
+ℹ️  Processing dataset: "West Bank Separation Barrier" 
+ℹ️  Downloading from: https://data.humdata.org/dataset/e782d4c9-d0ce-412c-ad1e-6771be2969b0/resource/95470fef-0d9d-4967-bbd6-cf247b80d578/download/barrier_jan2018.zip 
+✅ Downloaded: Barrier.zip (210.27 KB) 
+ℹ️  Extracting: Barrier.zip 
+✅ Extracted 8 files 
+ℹ️  Parsing shapefile: Barrier_Jan2018.shp 
+✅ Parsed 261 features from shapefile 
+✅ Transformed 261 checkpoint/barrier records 
+✅ Written: settlements.json 
+✅ Written: checkpoints.json 
+✅ Written: summary.json 
+ℹ️  
+======================================== 
+✅ ✅ Land data fetch completed! 
+ℹ️  Summary: {
+  "settlements": {
+    "total": 201,
+    "authorized": 201,
+    "outposts": 0,
+    "source": "HDX/Peace Now",
+    "real_data": true
+  },
+  "checkpoints": {
+    "total": 261,
+    "source": "OCHA Reports",
+    "note": "Sample of 849+ total obstacles documented by OCHA"
+  },
+  "last_updated": "2025-11-25T10:30:32.918Z"
+}
+ℹ️  ======================================== 

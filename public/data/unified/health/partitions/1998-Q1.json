@@ -1,0 +1,5939 @@
+{
+  "quarter": "1998-Q1",
+  "recordCount": 121,
+  "dateRange": {
+    "start": "1998-01-01",
+    "end": "1998-01-01"
+  },
+  "data": [
+    {
+      "id": "health-ixdq9e",
+      "type": "health",
+      "category": "health",
+      "date": "1998-01-01",
+      "location": {
+        "name": "State of Palestine",
+        "coordinates": null,
+        "admin_levels": {
+          "level1": "Eastern Mediterranean",
+          "level2": null,
+          "level3": null
+        },
+        "region": "Palestine",
+        "region_type": null
+      },
+      "value": 3,
+      "unit": "count",
+      "facility_name": "Pertussis - number of reported cases",
+      "facility_type": "indicator",
+      "status": "unknown",
+      "damage_level": null,
+      "bed_capacity": 0,
+      "staff_count": 0,
+      "quality": {
+        "score": 0.8555555555555555,
+        "completeness": 0.6666666666666666,
+        "consistency": 1,
+        "accuracy": 0.9,
+        "verified": false,
+        "confidence": 0.8
+      },
+      "sources": [
+        {
+          "name": "HDX",
+          "organization": "UN OCHA",
+          "fetched_at": "2025-11-25T18:04:35.842Z"
+        }
+      ],
+      "created_at": "2025-11-25T18:04:35.842Z",
+      "updated_at": "2025-11-25T18:04:35.842Z",
+      "version": 1,
+      "temporal_context": {
+        "days_since_baseline": -9410,
+        "baseline_period": "before_baseline",
+        "conflict_phase": "pre-escalation",
+        "season": "winter"
+      }
+    },
+    {
+      "id": "health-c214vb",
+      "type": "health",
+      "category": "health",
+      "date": "1998-01-01",
+      "location": {
+        "name": "State of Palestine",
+        "coordinates": null,
+        "admin_levels": {
+          "level1": "Eastern Mediterranean",
+          "level2": null,
+          "level3": null
+        },
+        "region": "Palestine",
+        "region_type": null
+      },
+      "value": 197,
+      "unit": "count",
+      "facility_name": "Number of deaths among adolescents (10 to 19 years of age)",
+      "facility_type": "indicator",
+      "status": "unknown",
+      "damage_level": null,
+      "bed_capacity": 0,
+      "staff_count": 0,
+      "quality": {
+        "score": 0.8555555555555555,
+        "completeness": 0.6666666666666666,
+        "consistency": 1,
+        "accuracy": 0.9,
+        "verified": false,
+        "confidence": 0.8
+      },
+      "sources": [
+        {
+          "name": "HDX",
+          "organization": "UN OCHA",
+          "fetched_at": "2025-11-25T18:04:35.842Z"
+        }
+      ],
+      "created_at": "2025-11-25T18:04:35.842Z",
+      "updated_at": "2025-11-25T18:04:35.842Z",
+      "version": 1,
+      "temporal_context": {
+        "days_since_baseline": -9410,
+        "baseline_period": "before_baseline",
+        "conflict_phase": "pre-escalation",
+        "season": "winter"
+      }
+    },
+    {
+      "id": "health-ixcwzl",
+      "type": "health",
+      "category": "health",
+      "date": "1998-01-01",
+      "location": {
+        "name": "State of Palestine",
+        "coordinates": null,
+        "admin_levels": {
+          "level1": "Eastern Mediterranean",
+          "level2": null,
+          "level3": null
+        },
+        "region": "Palestine",
+        "region_type": null
+      },
+      "value": 21.311961,
+      "unit": "count",
+      "facility_name": "Prevalence of overweight among children and adolescents, BMI > +1 standard deviations above the median (crude estimate) (%)",
+      "facility_type": "indicator",
+      "status": "unknown",
+      "damage_level": null,
+      "bed_capacity": 0,
+      "staff_count": 0,
+      "quality": {
+        "score": 0.8555555555555555,
+        "completeness": 0.6666666666666666,
+        "consistency": 1,
+        "accuracy": 0.9,
+        "verified": false,
+        "confidence": 0.8
+      },
+      "sources": [
+        {
+          "name": "HDX",
+          "organization": "UN OCHA",
+          "fetched_at": "2025-11-25T18:04:35.845Z"
+        }
+      ],
+      "created_at": "2025-11-25T18:04:35.845Z",
+      "updated_at": "2025-11-25T18:04:35.845Z",
+      "version": 1,
+      "temporal_context": {
+        "days_since_baseline": -9410,
+        "baseline_period": "before_baseline",
+        "conflict_phase": "pre-escalation",
+        "season": "winter"
+      }
+    },
+    {
+      "id": "health-69zm79",
+      "type": "health",
+      "category": "health",
+      "date": "1998-01-01",
+      "location": {
+        "name": "State of Palestine",
+        "coordinates": null,
+        "admin_levels": {
+          "level1": "Eastern Mediterranean",
+          "level2": null,
+          "level3": null
+        },
+        "region": "Palestine",
+        "region_type": null
+      },
+      "value": 41.829559402,
+      "unit": "count",
+      "facility_name": "Under-five mortality rate (probability of dying by age 5 per 1000 live births)",
+      "facility_type": "indicator",
+      "status": "unknown",
+      "damage_level": null,
+      "bed_capacity": 0,
+      "staff_count": 0,
+      "quality": {
+        "score": 0.8555555555555555,
+        "completeness": 0.6666666666666666,
+        "consistency": 1,
+        "accuracy": 0.9,
+        "verified": false,
+        "confidence": 0.8
+      },
+      "sources": [
+        {
+          "name": "HDX",
+          "organization": "UN OCHA",
+          "fetched_at": "2025-11-25T18:04:35.845Z"
+        }
+      ],
+      "created_at": "2025-11-25T18:04:35.845Z",
+      "updated_at": "2025-11-25T18:04:35.845Z",
+      "version": 1,
+      "temporal_context": {
+        "days_since_baseline": -9410,
+        "baseline_period": "before_baseline",
+        "conflict_phase": "pre-escalation",
+        "season": "winter"
+      }
+    },
+    {
+      "id": "health-hikymj",
+      "type": "health",
+      "category": "health",
+      "date": "1998-01-01",
+      "location": {
+        "name": "State of Palestine",
+        "coordinates": null,
+        "admin_levels": {
+          "level1": "Eastern Mediterranean",
+          "level2": null,
+          "level3": null
+        },
+        "region": "Palestine",
+        "region_type": null
+      },
+      "value": 158,
+      "unit": "count",
+      "facility_name": "Number of deaths among children 5 to 14 years of age",
+      "facility_type": "indicator",
+      "status": "unknown",
+      "damage_level": null,
+      "bed_capacity": 0,
+      "staff_count": 0,
+      "quality": {
+        "score": 0.8555555555555555,
+        "completeness": 0.6666666666666666,
+        "consistency": 1,
+        "accuracy": 0.9,
+        "verified": false,
+        "confidence": 0.8
+      },
+      "sources": [
+        {
+          "name": "HDX",
+          "organization": "UN OCHA",
+          "fetched_at": "2025-11-25T18:04:35.846Z"
+        }
+      ],
+      "created_at": "2025-11-25T18:04:35.846Z",
+      "updated_at": "2025-11-25T18:04:35.846Z",
+      "version": 1,
+      "temporal_context": {
+        "days_since_baseline": -9410,
+        "baseline_period": "before_baseline",
+        "conflict_phase": "pre-escalation",
+        "season": "winter"
+      }
+    },
+    {
+      "id": "health-9ivq70",
+      "type": "health",
+      "category": "health",
+      "date": "1998-01-01",
+      "location": {
+        "name": "State of Palestine",
+        "coordinates": null,
+        "admin_levels": {
+          "level1": "Eastern Mediterranean",
+          "level2": null,
+          "level3": null
+        },
+        "region": "Palestine",
+        "region_type": null
+      },
+      "value": 18.427338,
+      "unit": "count",
+      "facility_name": "Prevalence of diabetes, age-standardized",
+      "facility_type": "indicator",
+      "status": "unknown",
+      "damage_level": null,
+      "bed_capacity": 0,
+      "staff_count": 0,
+      "quality": {
+        "score": 0.8555555555555555,
+        "completeness": 0.6666666666666666,
+        "consistency": 1,
+        "accuracy": 0.9,
+        "verified": false,
+        "confidence": 0.8
+      },
+      "sources": [
+        {
+          "name": "HDX",
+          "organization": "UN OCHA",
+          "fetched_at": "2025-11-25T18:04:35.847Z"
+        }
+      ],
+      "created_at": "2025-11-25T18:04:35.847Z",
+      "updated_at": "2025-11-25T18:04:35.847Z",
+      "version": 1,
+      "temporal_context": {
+        "days_since_baseline": -9410,
+        "baseline_period": "before_baseline",
+        "conflict_phase": "pre-escalation",
+        "season": "winter"
+      }
+    },
+    {
+      "id": "health-jigcs3",
+      "type": "health",
+      "category": "health",
+      "date": "1998-01-01",
+      "location": {
+        "name": "State of Palestine",
+        "coordinates": null,
+        "admin_levels": {
+          "level1": "Eastern Mediterranean",
+          "level2": null,
+          "level3": null
+        },
+        "region": "Palestine",
+        "region_type": null
+      },
+      "value": 21.017608252,
+      "unit": "count",
+      "facility_name": "Under-five mortality rate (probability of dying by age 5 per 1000 live births)",
+      "facility_type": "indicator",
+      "status": "unknown",
+      "damage_level": null,
+      "bed_capacity": 0,
+      "staff_count": 0,
+      "quality": {
+        "score": 0.8555555555555555,
+        "completeness": 0.6666666666666666,
+        "consistency": 1,
+        "accuracy": 0.9,
+        "verified": false,
+        "confidence": 0.8
+      },
+      "sources": [
+        {
+          "name": "HDX",
+          "organization": "UN OCHA",
+          "fetched_at": "2025-11-25T18:04:35.848Z"
+        }
+      ],
+      "created_at": "2025-11-25T18:04:35.848Z",
+      "updated_at": "2025-11-25T18:04:35.848Z",
+      "version": 1,
+      "temporal_context": {
+        "days_since_baseline": -9410,
+        "baseline_period": "before_baseline",
+        "conflict_phase": "pre-escalation",
+        "season": "winter"
+      }
+    },
+    {
+      "id": "health-mnjavl",
+      "type": "health",
+      "category": "health",
+      "date": "1998-01-01",
+      "location": {
+        "name": "State of Palestine",
+        "coordinates": null,
+        "admin_levels": {
+          "level1": "Eastern Mediterranean",
+          "level2": null,
+          "level3": null
+        },
+        "region": "Palestine",
+        "region_type": null
+      },
+      "value": 1,
+      "unit": "count",
+      "facility_name": "Neonatal tetanus - number of reported cases",
+      "facility_type": "indicator",
+      "status": "unknown",
+      "damage_level": null,
+      "bed_capacity": 0,
+      "staff_count": 0,
+      "quality": {
+        "score": 0.8555555555555555,
+        "completeness": 0.6666666666666666,
+        "consistency": 1,
+        "accuracy": 0.9,
+        "verified": false,
+        "confidence": 0.8
+      },
+      "sources": [
+        {
+          "name": "HDX",
+          "organization": "UN OCHA",
+          "fetched_at": "2025-11-25T18:04:35.850Z"
+        }
+      ],
+      "created_at": "2025-11-25T18:04:35.850Z",
+      "updated_at": "2025-11-25T18:04:35.850Z",
+      "version": 1,
+      "temporal_context": {
+        "days_since_baseline": -9410,
+        "baseline_period": "before_baseline",
+        "conflict_phase": "pre-escalation",
+        "season": "winter"
+      }
+    },
+    {
+      "id": "health-h7meru",
+      "type": "health",
+      "category": "health",
+      "date": "1998-01-01",
+      "location": {
+        "name": "State of Palestine",
+        "coordinates": null,
+        "admin_levels": {
+          "level1": "Eastern Mediterranean",
+          "level2": null,
+          "level3": null
+        },
+        "region": "Palestine",
+        "region_type": null
+      },
+      "value": 69.4995602,
+      "unit": "count",
+      "facility_name": "Number of maternal deaths",
+      "facility_type": "indicator",
+      "status": "unknown",
+      "damage_level": null,
+      "bed_capacity": 0,
+      "staff_count": 0,
+      "quality": {
+        "score": 0.8555555555555555,
+        "completeness": 0.6666666666666666,
+        "consistency": 1,
+        "accuracy": 0.9,
+        "verified": false,
+        "confidence": 0.8
+      },
+      "sources": [
+        {
+          "name": "HDX",
+          "organization": "UN OCHA",
+          "fetched_at": "2025-11-25T18:04:35.853Z"
+        }
+      ],
+      "created_at": "2025-11-25T18:04:35.853Z",
+      "updated_at": "2025-11-25T18:04:35.853Z",
+      "version": 1,
+      "temporal_context": {
+        "days_since_baseline": -9410,
+        "baseline_period": "before_baseline",
+        "conflict_phase": "pre-escalation",
+        "season": "winter"
+      }
+    },
+    {
+      "id": "health-v51wam",
+      "type": "health",
+      "category": "health",
+      "date": "1998-01-01",
+      "location": {
+        "name": "State of Palestine",
+        "coordinates": null,
+        "admin_levels": {
+          "level1": "Eastern Mediterranean",
+          "level2": null,
+          "level3": null
+        },
+        "region": "Palestine",
+        "region_type": null
+      },
+      "value": 83,
+      "unit": "count",
+      "facility_name": "Number of deaths among adolescents (10 to 19 years of age)",
+      "facility_type": "indicator",
+      "status": "unknown",
+      "damage_level": null,
+      "bed_capacity": 0,
+      "staff_count": 0,
+      "quality": {
+        "score": 0.8555555555555555,
+        "completeness": 0.6666666666666666,
+        "consistency": 1,
+        "accuracy": 0.9,
+        "verified": false,
+        "confidence": 0.8
+      },
+      "sources": [
+        {
+          "name": "HDX",
+          "organization": "UN OCHA",
+          "fetched_at": "2025-11-25T18:04:35.858Z"
+        }
+      ],
+      "created_at": "2025-11-25T18:04:35.858Z",
+      "updated_at": "2025-11-25T18:04:35.858Z",
+      "version": 1,
+      "temporal_context": {
+        "days_since_baseline": -9410,
+        "baseline_period": "before_baseline",
+        "conflict_phase": "pre-escalation",
+        "season": "winter"
+      }
+    },
+    {
+      "id": "health-za79y0",
+      "type": "health",
+      "category": "health",
+      "date": "1998-01-01",
+      "location": {
+        "name": "State of Palestine",
+        "coordinates": null,
+        "admin_levels": {
+          "level1": "Eastern Mediterranean",
+          "level2": null,
+          "level3": null
+        },
+        "region": "Palestine",
+        "region_type": null
+      },
+      "value": 3.1862773,
+      "unit": "count",
+      "facility_name": "Prevalence of thinness among children and adolescents, BMI < -2 standard deviations below the median (crude estimate) (%)",
+      "facility_type": "indicator",
+      "status": "unknown",
+      "damage_level": null,
+      "bed_capacity": 0,
+      "staff_count": 0,
+      "quality": {
+        "score": 0.8555555555555555,
+        "completeness": 0.6666666666666666,
+        "consistency": 1,
+        "accuracy": 0.9,
+        "verified": false,
+        "confidence": 0.8
+      },
+      "sources": [
+        {
+          "name": "HDX",
+          "organization": "UN OCHA",
+          "fetched_at": "2025-11-25T18:04:35.863Z"
+        }
+      ],
+      "created_at": "2025-11-25T18:04:35.863Z",
+      "updated_at": "2025-11-25T18:04:35.863Z",
+      "version": 1,
+      "temporal_context": {
+        "days_since_baseline": -9410,
+        "baseline_period": "before_baseline",
+        "conflict_phase": "pre-escalation",
+        "season": "winter"
+      }
+    },
+    {
+      "id": "health-eahp00",
+      "type": "health",
+      "category": "health",
+      "date": "1998-01-01",
+      "location": {
+        "name": "State of Palestine",
+        "coordinates": null,
+        "admin_levels": {
+          "level1": "Eastern Mediterranean",
+          "level2": null,
+          "level3": null
+        },
+        "region": "Palestine",
+        "region_type": null
+      },
+      "value": 3736,
+      "unit": "count",
+      "facility_name": "Number of under-five deaths",
+      "facility_type": "indicator",
+      "status": "unknown",
+      "damage_level": null,
+      "bed_capacity": 0,
+      "staff_count": 0,
+      "quality": {
+        "score": 0.8555555555555555,
+        "completeness": 0.6666666666666666,
+        "consistency": 1,
+        "accuracy": 0.9,
+        "verified": false,
+        "confidence": 0.8
+      },
+      "sources": [
+        {
+          "name": "HDX",
+          "organization": "UN OCHA",
+          "fetched_at": "2025-11-25T18:04:35.863Z"
+        }
+      ],
+      "created_at": "2025-11-25T18:04:35.863Z",
+      "updated_at": "2025-11-25T18:04:35.863Z",
+      "version": 1,
+      "temporal_context": {
+        "days_since_baseline": -9410,
+        "baseline_period": "before_baseline",
+        "conflict_phase": "pre-escalation",
+        "season": "winter"
+      }
+    },
+    {
+      "id": "health-tmqdzd",
+      "type": "health",
+      "category": "health",
+      "date": "1998-01-01",
+      "location": {
+        "name": "State of Palestine",
+        "coordinates": null,
+        "admin_levels": {
+          "level1": "Eastern Mediterranean",
+          "level2": null,
+          "level3": null
+        },
+        "region": "Palestine",
+        "region_type": null
+      },
+      "value": 2.7507465,
+      "unit": "count",
+      "facility_name": "Prevalence of thinness among children and adolescents, BMI < -2 standard deviations below the median (crude estimate) (%)",
+      "facility_type": "indicator",
+      "status": "unknown",
+      "damage_level": null,
+      "bed_capacity": 0,
+      "staff_count": 0,
+      "quality": {
+        "score": 0.8555555555555555,
+        "completeness": 0.6666666666666666,
+        "consistency": 1,
+        "accuracy": 0.9,
+        "verified": false,
+        "confidence": 0.8
+      },
+      "sources": [
+        {
+          "name": "HDX",
+          "organization": "UN OCHA",
+          "fetched_at": "2025-11-25T18:04:35.863Z"
+        }
+      ],
+      "created_at": "2025-11-25T18:04:35.863Z",
+      "updated_at": "2025-11-25T18:04:35.863Z",
+      "version": 1,
+      "temporal_context": {
+        "days_since_baseline": -9410,
+        "baseline_period": "before_baseline",
+        "conflict_phase": "pre-escalation",
+        "season": "winter"
+      }
+    },
+    {
+      "id": "health-eqjjk0",
+      "type": "health",
+      "category": "health",
+      "date": "1998-01-01",
+      "location": {
+        "name": "State of Palestine",
+        "coordinates": null,
+        "admin_levels": {
+          "level1": "Eastern Mediterranean",
+          "level2": null,
+          "level3": null
+        },
+        "region": "Palestine",
+        "region_type": null
+      },
+      "value": 16.73151,
+      "unit": "count",
+      "facility_name": "Prevalence of diabetes, crude",
+      "facility_type": "indicator",
+      "status": "unknown",
+      "damage_level": null,
+      "bed_capacity": 0,
+      "staff_count": 0,
+      "quality": {
+        "score": 0.8555555555555555,
+        "completeness": 0.6666666666666666,
+        "consistency": 1,
+        "accuracy": 0.9,
+        "verified": false,
+        "confidence": 0.8
+      },
+      "sources": [
+        {
+          "name": "HDX",
+          "organization": "UN OCHA",
+          "fetched_at": "2025-11-25T18:04:35.865Z"
+        }
+      ],
+      "created_at": "2025-11-25T18:04:35.865Z",
+      "updated_at": "2025-11-25T18:04:35.865Z",
+      "version": 1,
+      "temporal_context": {
+        "days_since_baseline": -9410,
+        "baseline_period": "before_baseline",
+        "conflict_phase": "pre-escalation",
+        "season": "winter"
+      }
+    },
+    {
+      "id": "health-4p4f72",
+      "type": "health",
+      "category": "health",
+      "date": "1998-01-01",
+      "location": {
+        "name": "State of Palestine",
+        "coordinates": null,
+        "admin_levels": {
+          "level1": "Eastern Mediterranean",
+          "level2": null,
+          "level3": null
+        },
+        "region": "Palestine",
+        "region_type": null
+      },
+      "value": 761,
+      "unit": "count",
+      "facility_name": "Number of under-five deaths",
+      "facility_type": "indicator",
+      "status": "unknown",
+      "damage_level": null,
+      "bed_capacity": 0,
+      "staff_count": 0,
+      "quality": {
+        "score": 0.8555555555555555,
+        "completeness": 0.6666666666666666,
+        "consistency": 1,
+        "accuracy": 0.9,
+        "verified": false,
+        "confidence": 0.8
+      },
+      "sources": [
+        {
+          "name": "HDX",
+          "organization": "UN OCHA",
+          "fetched_at": "2025-11-25T18:04:35.866Z"
+        }
+      ],
+      "created_at": "2025-11-25T18:04:35.866Z",
+      "updated_at": "2025-11-25T18:04:35.866Z",
+      "version": 1,
+      "temporal_context": {
+        "days_since_baseline": -9410,
+        "baseline_period": "before_baseline",
+        "conflict_phase": "pre-escalation",
+        "season": "winter"
+      }
+    },
+    {
+      "id": "health-82omms",
+      "type": "health",
+      "category": "health",
+      "date": "1998-01-01",
+      "location": {
+        "name": "State of Palestine",
+        "coordinates": null,
+        "admin_levels": {
+          "level1": "Eastern Mediterranean",
+          "level2": null,
+          "level3": null
+        },
+        "region": "Palestine",
+        "region_type": null
+      },
+      "value": 2.7764628,
+      "unit": "count",
+      "facility_name": "Prevalence of underweight among adults, BMI < 18 (crude estimate) (%)",
+      "facility_type": "indicator",
+      "status": "unknown",
+      "damage_level": null,
+      "bed_capacity": 0,
+      "staff_count": 0,
+      "quality": {
+        "score": 0.8555555555555555,
+        "completeness": 0.6666666666666666,
+        "consistency": 1,
+        "accuracy": 0.9,
+        "verified": false,
+        "confidence": 0.8
+      },
+      "sources": [
+        {
+          "name": "HDX",
+          "organization": "UN OCHA",
+          "fetched_at": "2025-11-25T18:04:35.866Z"
+        }
+      ],
+      "created_at": "2025-11-25T18:04:35.866Z",
+      "updated_at": "2025-11-25T18:04:35.866Z",
+      "version": 1,
+      "temporal_context": {
+        "days_since_baseline": -9410,
+        "baseline_period": "before_baseline",
+        "conflict_phase": "pre-escalation",
+        "season": "winter"
+      }
+    },
+    {
+      "id": "health-lv2vdg",
+      "type": "health",
+      "category": "health",
+      "date": "1998-01-01",
+      "location": {
+        "name": "State of Palestine",
+        "coordinates": null,
+        "admin_levels": {
+          "level1": "Eastern Mediterranean",
+          "level2": null,
+          "level3": null
+        },
+        "region": "Palestine",
+        "region_type": null
+      },
+      "value": 5.7163268,
+      "unit": "count",
+      "facility_name": "Prevalence of obesity among children and adolescents, BMI > +2 standard deviations above the median (crude estimate) (%)",
+      "facility_type": "indicator",
+      "status": "unknown",
+      "damage_level": null,
+      "bed_capacity": 0,
+      "staff_count": 0,
+      "quality": {
+        "score": 0.8555555555555555,
+        "completeness": 0.6666666666666666,
+        "consistency": 1,
+        "accuracy": 0.9,
+        "verified": false,
+        "confidence": 0.8
+      },
+      "sources": [
+        {
+          "name": "HDX",
+          "organization": "UN OCHA",
+          "fetched_at": "2025-11-25T18:04:35.867Z"
+        }
+      ],
+      "created_at": "2025-11-25T18:04:35.867Z",
+      "updated_at": "2025-11-25T18:04:35.867Z",
+      "version": 1,
+      "temporal_context": {
+        "days_since_baseline": -9410,
+        "baseline_period": "before_baseline",
+        "conflict_phase": "pre-escalation",
+        "season": "winter"
+      }
+    },
+    {
+      "id": "health-mu6378",
+      "type": "health",
+      "category": "health",
+      "date": "1998-01-01",
+      "location": {
+        "name": "State of Palestine",
+        "coordinates": null,
+        "admin_levels": {
+          "level1": "Eastern Mediterranean",
+          "level2": null,
+          "level3": null
+        },
+        "region": "Palestine",
+        "region_type": null
+      },
+      "value": 15.25055,
+      "unit": "count",
+      "facility_name": "Prevalence of diabetes, age-standardized",
+      "facility_type": "indicator",
+      "status": "unknown",
+      "damage_level": null,
+      "bed_capacity": 0,
+      "staff_count": 0,
+      "quality": {
+        "score": 0.8555555555555555,
+        "completeness": 0.6666666666666666,
+        "consistency": 1,
+        "accuracy": 0.9,
+        "verified": false,
+        "confidence": 0.8
+      },
+      "sources": [
+        {
+          "name": "HDX",
+          "organization": "UN OCHA",
+          "fetched_at": "2025-11-25T18:04:35.868Z"
+        }
+      ],
+      "created_at": "2025-11-25T18:04:35.868Z",
+      "updated_at": "2025-11-25T18:04:35.868Z",
+      "version": 1,
+      "temporal_context": {
+        "days_since_baseline": -9410,
+        "baseline_period": "before_baseline",
+        "conflict_phase": "pre-escalation",
+        "season": "winter"
+      }
+    },
+    {
+      "id": "health-rhlkm",
+      "type": "health",
+      "category": "health",
+      "date": "1998-01-01",
+      "location": {
+        "name": "State of Palestine",
+        "coordinates": null,
+        "admin_levels": {
+          "level1": "Eastern Mediterranean",
+          "level2": null,
+          "level3": null
+        },
+        "region": "Palestine",
+        "region_type": null
+      },
+      "value": 4.555545799,
+      "unit": "count",
+      "facility_name": "Mortality rate for 5-14 year-olds (probability of dying per 1000 children aged 5-14 years)",
+      "facility_type": "indicator",
+      "status": "unknown",
+      "damage_level": null,
+      "bed_capacity": 0,
+      "staff_count": 0,
+      "quality": {
+        "score": 0.8555555555555555,
+        "completeness": 0.6666666666666666,
+        "consistency": 1,
+        "accuracy": 0.9,
+        "verified": false,
+        "confidence": 0.8
+      },
+      "sources": [
+        {
+          "name": "HDX",
+          "organization": "UN OCHA",
+          "fetched_at": "2025-11-25T18:04:35.868Z"
+        }
+      ],
+      "created_at": "2025-11-25T18:04:35.868Z",
+      "updated_at": "2025-11-25T18:04:35.868Z",
+      "version": 1,
+      "temporal_context": {
+        "days_since_baseline": -9410,
+        "baseline_period": "before_baseline",
+        "conflict_phase": "pre-escalation",
+        "season": "winter"
+      }
+    },
+    {
+      "id": "health-1ykt1n",
+      "type": "health",
+      "category": "health",
+      "date": "1998-01-01",
+      "location": {
+        "name": "State of Palestine",
+        "coordinates": null,
+        "admin_levels": {
+          "level1": "Eastern Mediterranean",
+          "level2": null,
+          "level3": null
+        },
+        "region": "Palestine",
+        "region_type": null
+      },
+      "value": 2039,
+      "unit": "count",
+      "facility_name": "Number of under-five deaths",
+      "facility_type": "indicator",
+      "status": "unknown",
+      "damage_level": null,
+      "bed_capacity": 0,
+      "staff_count": 0,
+      "quality": {
+        "score": 0.8555555555555555,
+        "completeness": 0.6666666666666666,
+        "consistency": 1,
+        "accuracy": 0.9,
+        "verified": false,
+        "confidence": 0.8
+      },
+      "sources": [
+        {
+          "name": "HDX",
+          "organization": "UN OCHA",
+          "fetched_at": "2025-11-25T18:04:35.868Z"
+        }
+      ],
+      "created_at": "2025-11-25T18:04:35.868Z",
+      "updated_at": "2025-11-25T18:04:35.868Z",
+      "version": 1,
+      "temporal_context": {
+        "days_since_baseline": -9410,
+        "baseline_period": "before_baseline",
+        "conflict_phase": "pre-escalation",
+        "season": "winter"
+      }
+    },
+    {
+      "id": "health-mxnk7p",
+      "type": "health",
+      "category": "health",
+      "date": "1998-01-01",
+      "location": {
+        "name": "State of Palestine",
+        "coordinates": null,
+        "admin_levels": {
+          "level1": "Eastern Mediterranean",
+          "level2": null,
+          "level3": null
+        },
+        "region": "Palestine",
+        "region_type": null
+      },
+      "value": 4.6783868,
+      "unit": "count",
+      "facility_name": "Prevalence of obesity among children and adolescents, BMI > +2 standard deviations above the median (crude estimate) (%)",
+      "facility_type": "indicator",
+      "status": "unknown",
+      "damage_level": null,
+      "bed_capacity": 0,
+      "staff_count": 0,
+      "quality": {
+        "score": 0.8555555555555555,
+        "completeness": 0.6666666666666666,
+        "consistency": 1,
+        "accuracy": 0.9,
+        "verified": false,
+        "confidence": 0.8
+      },
+      "sources": [
+        {
+          "name": "HDX",
+          "organization": "UN OCHA",
+          "fetched_at": "2025-11-25T18:04:35.870Z"
+        }
+      ],
+      "created_at": "2025-11-25T18:04:35.870Z",
+      "updated_at": "2025-11-25T18:04:35.870Z",
+      "version": 1,
+      "temporal_context": {
+        "days_since_baseline": -9410,
+        "baseline_period": "before_baseline",
+        "conflict_phase": "pre-escalation",
+        "season": "winter"
+      }
+    },
+    {
+      "id": "health-6e88m2",
+      "type": "health",
+      "category": "health",
+      "date": "1998-01-01",
+      "location": {
+        "name": "State of Palestine",
+        "coordinates": null,
+        "admin_levels": {
+          "level1": "Eastern Mediterranean",
+          "level2": null,
+          "level3": null
+        },
+        "region": "Palestine",
+        "region_type": null
+      },
+      "value": 48.362345,
+      "unit": "count",
+      "facility_name": "Diabetes treatment coverage, age-standardized",
+      "facility_type": "indicator",
+      "status": "unknown",
+      "damage_level": null,
+      "bed_capacity": 0,
+      "staff_count": 0,
+      "quality": {
+        "score": 0.8555555555555555,
+        "completeness": 0.6666666666666666,
+        "consistency": 1,
+        "accuracy": 0.9,
+        "verified": false,
+        "confidence": 0.8
+      },
+      "sources": [
+        {
+          "name": "HDX",
+          "organization": "UN OCHA",
+          "fetched_at": "2025-11-25T18:04:35.873Z"
+        }
+      ],
+      "created_at": "2025-11-25T18:04:35.873Z",
+      "updated_at": "2025-11-25T18:04:35.873Z",
+      "version": 1,
+      "temporal_context": {
+        "days_since_baseline": -9410,
+        "baseline_period": "before_baseline",
+        "conflict_phase": "pre-escalation",
+        "season": "winter"
+      }
+    },
+    {
+      "id": "health-5wwabk",
+      "type": "health",
+      "category": "health",
+      "date": "1998-01-01",
+      "location": {
+        "name": "State of Palestine",
+        "coordinates": null,
+        "admin_levels": {
+          "level1": "Eastern Mediterranean",
+          "level2": null,
+          "level3": null
+        },
+        "region": "Palestine",
+        "region_type": null
+      },
+      "value": 4.8478488,
+      "unit": "count",
+      "facility_name": "Prevalence of obesity among children and adolescents, BMI > +2 standard deviations above the median (crude estimate) (%)",
+      "facility_type": "indicator",
+      "status": "unknown",
+      "damage_level": null,
+      "bed_capacity": 0,
+      "staff_count": 0,
+      "quality": {
+        "score": 0.8555555555555555,
+        "completeness": 0.6666666666666666,
+        "consistency": 1,
+        "accuracy": 0.9,
+        "verified": false,
+        "confidence": 0.8
+      },
+      "sources": [
+        {
+          "name": "HDX",
+          "organization": "UN OCHA",
+          "fetched_at": "2025-11-25T18:04:35.873Z"
+        }
+      ],
+      "created_at": "2025-11-25T18:04:35.873Z",
+      "updated_at": "2025-11-25T18:04:35.873Z",
+      "version": 1,
+      "temporal_context": {
+        "days_since_baseline": -9410,
+        "baseline_period": "before_baseline",
+        "conflict_phase": "pre-escalation",
+        "season": "winter"
+      }
+    },
+    {
+      "id": "health-ikj4hp",
+      "type": "health",
+      "category": "health",
+      "date": "1998-01-01",
+      "location": {
+        "name": "State of Palestine",
+        "coordinates": null,
+        "admin_levels": {
+          "level1": "Eastern Mediterranean",
+          "level2": null,
+          "level3": null
+        },
+        "region": "Palestine",
+        "region_type": null
+      },
+      "value": 20.206974,
+      "unit": "count",
+      "facility_name": "Prevalence of diabetes, age-standardized",
+      "facility_type": "indicator",
+      "status": "unknown",
+      "damage_level": null,
+      "bed_capacity": 0,
+      "staff_count": 0,
+      "quality": {
+        "score": 0.8555555555555555,
+        "completeness": 0.6666666666666666,
+        "consistency": 1,
+        "accuracy": 0.9,
+        "verified": false,
+        "confidence": 0.8
+      },
+      "sources": [
+        {
+          "name": "HDX",
+          "organization": "UN OCHA",
+          "fetched_at": "2025-11-25T18:04:35.875Z"
+        }
+      ],
+      "created_at": "2025-11-25T18:04:35.875Z",
+      "updated_at": "2025-11-25T18:04:35.875Z",
+      "version": 1,
+      "temporal_context": {
+        "days_since_baseline": -9410,
+        "baseline_period": "before_baseline",
+        "conflict_phase": "pre-escalation",
+        "season": "winter"
+      }
+    },
+    {
+      "id": "health-xi64vf",
+      "type": "health",
+      "category": "health",
+      "date": "1998-01-01",
+      "location": {
+        "name": "State of Palestine",
+        "coordinates": null,
+        "admin_levels": {
+          "level1": "Eastern Mediterranean",
+          "level2": null,
+          "level3": null
+        },
+        "region": "Palestine",
+        "region_type": null
+      },
+      "value": 5.997045462,
+      "unit": "count",
+      "facility_name": "Adolescent mortality rate (per 1 000 age specific cohort)",
+      "facility_type": "indicator",
+      "status": "unknown",
+      "damage_level": null,
+      "bed_capacity": 0,
+      "staff_count": 0,
+      "quality": {
+        "score": 0.8555555555555555,
+        "completeness": 0.6666666666666666,
+        "consistency": 1,
+        "accuracy": 0.9,
+        "verified": false,
+        "confidence": 0.8
+      },
+      "sources": [
+        {
+          "name": "HDX",
+          "organization": "UN OCHA",
+          "fetched_at": "2025-11-25T18:04:35.876Z"
+        }
+      ],
+      "created_at": "2025-11-25T18:04:35.876Z",
+      "updated_at": "2025-11-25T18:04:35.876Z",
+      "version": 1,
+      "temporal_context": {
+        "days_since_baseline": -9410,
+        "baseline_period": "before_baseline",
+        "conflict_phase": "pre-escalation",
+        "season": "winter"
+      }
+    },
+    {
+      "id": "health-ltu09u",
+      "type": "health",
+      "category": "health",
+      "date": "1998-01-01",
+      "location": {
+        "name": "State of Palestine",
+        "coordinates": null,
+        "admin_levels": {
+          "level1": "Eastern Mediterranean",
+          "level2": null,
+          "level3": null
+        },
+        "region": "Palestine",
+        "region_type": null
+      },
+      "value": 33.019064291,
+      "unit": "count",
+      "facility_name": "Under-five mortality rate (probability of dying by age 5 per 1000 live births)",
+      "facility_type": "indicator",
+      "status": "unknown",
+      "damage_level": null,
+      "bed_capacity": 0,
+      "staff_count": 0,
+      "quality": {
+        "score": 0.8555555555555555,
+        "completeness": 0.6666666666666666,
+        "consistency": 1,
+        "accuracy": 0.9,
+        "verified": false,
+        "confidence": 0.8
+      },
+      "sources": [
+        {
+          "name": "HDX",
+          "organization": "UN OCHA",
+          "fetched_at": "2025-11-25T18:04:35.877Z"
+        }
+      ],
+      "created_at": "2025-11-25T18:04:35.877Z",
+      "updated_at": "2025-11-25T18:04:35.877Z",
+      "version": 1,
+      "temporal_context": {
+        "days_since_baseline": -9410,
+        "baseline_period": "before_baseline",
+        "conflict_phase": "pre-escalation",
+        "season": "winter"
+      }
+    },
+    {
+      "id": "health-bh3q2j",
+      "type": "health",
+      "category": "health",
+      "date": "1998-01-01",
+      "location": {
+        "name": "State of Palestine",
+        "coordinates": null,
+        "admin_levels": {
+          "level1": "Eastern Mediterranean",
+          "level2": null,
+          "level3": null
+        },
+        "region": "Palestine",
+        "region_type": null
+      },
+      "value": 20.491432,
+      "unit": "count",
+      "facility_name": "Prevalence of overweight among children and adolescents, BMI > +1 standard deviations above the median (crude estimate) (%)",
+      "facility_type": "indicator",
+      "status": "unknown",
+      "damage_level": null,
+      "bed_capacity": 0,
+      "staff_count": 0,
+      "quality": {
+        "score": 0.8555555555555555,
+        "completeness": 0.6666666666666666,
+        "consistency": 1,
+        "accuracy": 0.9,
+        "verified": false,
+        "confidence": 0.8
+      },
+      "sources": [
+        {
+          "name": "HDX",
+          "organization": "UN OCHA",
+          "fetched_at": "2025-11-25T18:04:35.878Z"
+        }
+      ],
+      "created_at": "2025-11-25T18:04:35.878Z",
+      "updated_at": "2025-11-25T18:04:35.878Z",
+      "version": 1,
+      "temporal_context": {
+        "days_since_baseline": -9410,
+        "baseline_period": "before_baseline",
+        "conflict_phase": "pre-escalation",
+        "season": "winter"
+      }
+    },
+    {
+      "id": "health-oarzt6",
+      "type": "health",
+      "category": "health",
+      "date": "1998-01-01",
+      "location": {
+        "name": "State of Palestine",
+        "coordinates": null,
+        "admin_levels": {
+          "level1": "Eastern Mediterranean",
+          "level2": null,
+          "level3": null
+        },
+        "region": "Palestine",
+        "region_type": null
+      },
+      "value": 456,
+      "unit": "count",
+      "facility_name": "Number of deaths among adolescents (10 to 19 years of age)",
+      "facility_type": "indicator",
+      "status": "unknown",
+      "damage_level": null,
+      "bed_capacity": 0,
+      "staff_count": 0,
+      "quality": {
+        "score": 0.8555555555555555,
+        "completeness": 0.6666666666666666,
+        "consistency": 1,
+        "accuracy": 0.9,
+        "verified": false,
+        "confidence": 0.8
+      },
+      "sources": [
+        {
+          "name": "HDX",
+          "organization": "UN OCHA",
+          "fetched_at": "2025-11-25T18:04:35.878Z"
+        }
+      ],
+      "created_at": "2025-11-25T18:04:35.878Z",
+      "updated_at": "2025-11-25T18:04:35.878Z",
+      "version": 1,
+      "temporal_context": {
+        "days_since_baseline": -9410,
+        "baseline_period": "before_baseline",
+        "conflict_phase": "pre-escalation",
+        "season": "winter"
+      }
+    },
+    {
+      "id": "health-qniq6j",
+      "type": "health",
+      "category": "health",
+      "date": "1998-01-01",
+      "location": {
+        "name": "State of Palestine",
+        "coordinates": null,
+        "admin_levels": {
+          "level1": "Eastern Mediterranean",
+          "level2": null,
+          "level3": null
+        },
+        "region": "Palestine",
+        "region_type": null
+      },
+      "value": 225,
+      "unit": "count",
+      "facility_name": "Number of deaths among children ages 5 to 9 years",
+      "facility_type": "indicator",
+      "status": "unknown",
+      "damage_level": null,
+      "bed_capacity": 0,
+      "staff_count": 0,
+      "quality": {
+        "score": 0.8555555555555555,
+        "completeness": 0.6666666666666666,
+        "consistency": 1,
+        "accuracy": 0.9,
+        "verified": false,
+        "confidence": 0.8
+      },
+      "sources": [
+        {
+          "name": "HDX",
+          "organization": "UN OCHA",
+          "fetched_at": "2025-11-25T18:04:35.880Z"
+        }
+      ],
+      "created_at": "2025-11-25T18:04:35.880Z",
+      "updated_at": "2025-11-25T18:04:35.880Z",
+      "version": 1,
+      "temporal_context": {
+        "days_since_baseline": -9410,
+        "baseline_period": "before_baseline",
+        "conflict_phase": "pre-escalation",
+        "season": "winter"
+      }
+    },
+    {
+      "id": "health-qwgmrm",
+      "type": "health",
+      "category": "health",
+      "date": "1998-01-01",
+      "location": {
+        "name": "State of Palestine",
+        "coordinates": null,
+        "admin_levels": {
+          "level1": "Eastern Mediterranean",
+          "level2": null,
+          "level3": null
+        },
+        "region": "Palestine",
+        "region_type": null
+      },
+      "value": 26.349231431,
+      "unit": "count",
+      "facility_name": "Infant mortality rate (probability of dying between birth and age 1 per 1000 live births)",
+      "facility_type": "indicator",
+      "status": "unknown",
+      "damage_level": null,
+      "bed_capacity": 0,
+      "staff_count": 0,
+      "quality": {
+        "score": 0.8555555555555555,
+        "completeness": 0.6666666666666666,
+        "consistency": 1,
+        "accuracy": 0.9,
+        "verified": false,
+        "confidence": 0.8
+      },
+      "sources": [
+        {
+          "name": "HDX",
+          "organization": "UN OCHA",
+          "fetched_at": "2025-11-25T18:04:35.880Z"
+        }
+      ],
+      "created_at": "2025-11-25T18:04:35.880Z",
+      "updated_at": "2025-11-25T18:04:35.880Z",
+      "version": 1,
+      "temporal_context": {
+        "days_since_baseline": -9410,
+        "baseline_period": "before_baseline",
+        "conflict_phase": "pre-escalation",
+        "season": "winter"
+      }
+    },
+    {
+      "id": "health-qblyd3",
+      "type": "health",
+      "category": "health",
+      "date": "1998-01-01",
+      "location": {
+        "name": "State of Palestine",
+        "coordinates": null,
+        "admin_levels": {
+          "level1": "Eastern Mediterranean",
+          "level2": null,
+          "level3": null
+        },
+        "region": "Palestine",
+        "region_type": null
+      },
+      "value": 58.528745,
+      "unit": "count",
+      "facility_name": "Prevalence of overweight among adults, BMI &GreaterEqual; 25 (crude estimate) (%)",
+      "facility_type": "indicator",
+      "status": "unknown",
+      "damage_level": null,
+      "bed_capacity": 0,
+      "staff_count": 0,
+      "quality": {
+        "score": 0.8555555555555555,
+        "completeness": 0.6666666666666666,
+        "consistency": 1,
+        "accuracy": 0.9,
+        "verified": false,
+        "confidence": 0.8
+      },
+      "sources": [
+        {
+          "name": "HDX",
+          "organization": "UN OCHA",
+          "fetched_at": "2025-11-25T18:04:35.881Z"
+        }
+      ],
+      "created_at": "2025-11-25T18:04:35.881Z",
+      "updated_at": "2025-11-25T18:04:35.881Z",
+      "version": 1,
+      "temporal_context": {
+        "days_since_baseline": -9410,
+        "baseline_period": "before_baseline",
+        "conflict_phase": "pre-escalation",
+        "season": "winter"
+      }
+    },
+    {
+      "id": "health-8i4ns9",
+      "type": "health",
+      "category": "health",
+      "date": "1998-01-01",
+      "location": {
+        "name": "State of Palestine",
+        "coordinates": null,
+        "admin_levels": {
+          "level1": "Eastern Mediterranean",
+          "level2": null,
+          "level3": null
+        },
+        "region": "Palestine",
+        "region_type": null
+      },
+      "value": 17.949812,
+      "unit": "count",
+      "facility_name": "Prevalence of overweight among children and adolescents, BMI > +1 standard deviations above the median (crude estimate) (%)",
+      "facility_type": "indicator",
+      "status": "unknown",
+      "damage_level": null,
+      "bed_capacity": 0,
+      "staff_count": 0,
+      "quality": {
+        "score": 0.8555555555555555,
+        "completeness": 0.6666666666666666,
+        "consistency": 1,
+        "accuracy": 0.9,
+        "verified": false,
+        "confidence": 0.8
+      },
+      "sources": [
+        {
+          "name": "HDX",
+          "organization": "UN OCHA",
+          "fetched_at": "2025-11-25T18:04:35.881Z"
+        }
+      ],
+      "created_at": "2025-11-25T18:04:35.881Z",
+      "updated_at": "2025-11-25T18:04:35.881Z",
+      "version": 1,
+      "temporal_context": {
+        "days_since_baseline": -9410,
+        "baseline_period": "before_baseline",
+        "conflict_phase": "pre-escalation",
+        "season": "winter"
+      }
+    },
+    {
+      "id": "health-44vay5",
+      "type": "health",
+      "category": "health",
+      "date": "1998-01-01",
+      "location": {
+        "name": "State of Palestine",
+        "coordinates": null,
+        "admin_levels": {
+          "level1": "Eastern Mediterranean",
+          "level2": null,
+          "level3": null
+        },
+        "region": "Palestine",
+        "region_type": null
+      },
+      "value": 3.657153987,
+      "unit": "count",
+      "facility_name": "Mortality rate for 5-14 year-olds (probability of dying per 1000 children aged 5-14 years)",
+      "facility_type": "indicator",
+      "status": "unknown",
+      "damage_level": null,
+      "bed_capacity": 0,
+      "staff_count": 0,
+      "quality": {
+        "score": 0.8555555555555555,
+        "completeness": 0.6666666666666666,
+        "consistency": 1,
+        "accuracy": 0.9,
+        "verified": false,
+        "confidence": 0.8
+      },
+      "sources": [
+        {
+          "name": "HDX",
+          "organization": "UN OCHA",
+          "fetched_at": "2025-11-25T18:04:35.881Z"
+        }
+      ],
+      "created_at": "2025-11-25T18:04:35.881Z",
+      "updated_at": "2025-11-25T18:04:35.881Z",
+      "version": 1,
+      "temporal_context": {
+        "days_since_baseline": -9410,
+        "baseline_period": "before_baseline",
+        "conflict_phase": "pre-escalation",
+        "season": "winter"
+      }
+    },
+    {
+      "id": "health-up6nyw",
+      "type": "health",
+      "category": "health",
+      "date": "1998-01-01",
+      "location": {
+        "name": "State of Palestine",
+        "coordinates": null,
+        "admin_levels": {
+          "level1": "Eastern Mediterranean",
+          "level2": null,
+          "level3": null
+        },
+        "region": "Palestine",
+        "region_type": null
+      },
+      "value": 4.2833842,
+      "unit": "count",
+      "facility_name": "Prevalence of thinness among children and adolescents, BMI < -2 standard deviations below the median (crude estimate) (%)",
+      "facility_type": "indicator",
+      "status": "unknown",
+      "damage_level": null,
+      "bed_capacity": 0,
+      "staff_count": 0,
+      "quality": {
+        "score": 0.8555555555555555,
+        "completeness": 0.6666666666666666,
+        "consistency": 1,
+        "accuracy": 0.9,
+        "verified": false,
+        "confidence": 0.8
+      },
+      "sources": [
+        {
+          "name": "HDX",
+          "organization": "UN OCHA",
+          "fetched_at": "2025-11-25T18:04:35.881Z"
+        }
+      ],
+      "created_at": "2025-11-25T18:04:35.881Z",
+      "updated_at": "2025-11-25T18:04:35.881Z",
+      "version": 1,
+      "temporal_context": {
+        "days_since_baseline": -9410,
+        "baseline_period": "before_baseline",
+        "conflict_phase": "pre-escalation",
+        "season": "winter"
+      }
+    },
+    {
+      "id": "health-ow3k5u",
+      "type": "health",
+      "category": "health",
+      "date": "1998-01-01",
+      "location": {
+        "name": "State of Palestine",
+        "coordinates": null,
+        "admin_levels": {
+          "level1": "Eastern Mediterranean",
+          "level2": null,
+          "level3": null
+        },
+        "region": "Palestine",
+        "region_type": null
+      },
+      "value": 18.897232,
+      "unit": "count",
+      "facility_name": "Prevalence of overweight among children and adolescents, BMI > +1 standard deviations above the median (crude estimate) (%)",
+      "facility_type": "indicator",
+      "status": "unknown",
+      "damage_level": null,
+      "bed_capacity": 0,
+      "staff_count": 0,
+      "quality": {
+        "score": 0.8555555555555555,
+        "completeness": 0.6666666666666666,
+        "consistency": 1,
+        "accuracy": 0.9,
+        "verified": false,
+        "confidence": 0.8
+      },
+      "sources": [
+        {
+          "name": "HDX",
+          "organization": "UN OCHA",
+          "fetched_at": "2025-11-25T18:04:35.881Z"
+        }
+      ],
+      "created_at": "2025-11-25T18:04:35.881Z",
+      "updated_at": "2025-11-25T18:04:35.881Z",
+      "version": 1,
+      "temporal_context": {
+        "days_since_baseline": -9410,
+        "baseline_period": "before_baseline",
+        "conflict_phase": "pre-escalation",
+        "season": "winter"
+      }
+    },
+    {
+      "id": "health-x204iq",
+      "type": "health",
+      "category": "health",
+      "date": "1998-01-01",
+      "location": {
+        "name": "State of Palestine",
+        "coordinates": null,
+        "admin_levels": {
+          "level1": "Eastern Mediterranean",
+          "level2": null,
+          "level3": null
+        },
+        "region": "Palestine",
+        "region_type": null
+      },
+      "value": 2.736708024,
+      "unit": "count",
+      "facility_name": "Adolescent mortality rate (per 1 000 age specific cohort)",
+      "facility_type": "indicator",
+      "status": "unknown",
+      "damage_level": null,
+      "bed_capacity": 0,
+      "staff_count": 0,
+      "quality": {
+        "score": 0.8555555555555555,
+        "completeness": 0.6666666666666666,
+        "consistency": 1,
+        "accuracy": 0.9,
+        "verified": false,
+        "confidence": 0.8
+      },
+      "sources": [
+        {
+          "name": "HDX",
+          "organization": "UN OCHA",
+          "fetched_at": "2025-11-25T18:04:35.886Z"
+        }
+      ],
+      "created_at": "2025-11-25T18:04:35.886Z",
+      "updated_at": "2025-11-25T18:04:35.886Z",
+      "version": 1,
+      "temporal_context": {
+        "days_since_baseline": -9410,
+        "baseline_period": "before_baseline",
+        "conflict_phase": "pre-escalation",
+        "season": "winter"
+      }
+    },
+    {
+      "id": "health-dlroj7",
+      "type": "health",
+      "category": "health",
+      "date": "1998-01-01",
+      "location": {
+        "name": "State of Palestine",
+        "coordinates": null,
+        "admin_levels": {
+          "level1": "Eastern Mediterranean",
+          "level2": null,
+          "level3": null
+        },
+        "region": "Palestine",
+        "region_type": null
+      },
+      "value": 2.687457964,
+      "unit": "count",
+      "facility_name": "Mortality rate among children ages 5 to 9 years (per 1000 children aged 5)",
+      "facility_type": "indicator",
+      "status": "unknown",
+      "damage_level": null,
+      "bed_capacity": 0,
+      "staff_count": 0,
+      "quality": {
+        "score": 0.8555555555555555,
+        "completeness": 0.6666666666666666,
+        "consistency": 1,
+        "accuracy": 0.9,
+        "verified": false,
+        "confidence": 0.8
+      },
+      "sources": [
+        {
+          "name": "HDX",
+          "organization": "UN OCHA",
+          "fetched_at": "2025-11-25T18:04:35.887Z"
+        }
+      ],
+      "created_at": "2025-11-25T18:04:35.887Z",
+      "updated_at": "2025-11-25T18:04:35.887Z",
+      "version": 1,
+      "temporal_context": {
+        "days_since_baseline": -9410,
+        "baseline_period": "before_baseline",
+        "conflict_phase": "pre-escalation",
+        "season": "winter"
+      }
+    },
+    {
+      "id": "health-s3j5wq",
+      "type": "health",
+      "category": "health",
+      "date": "1998-01-01",
+      "location": {
+        "name": "State of Palestine",
+        "coordinates": null,
+        "admin_levels": {
+          "level1": "Eastern Mediterranean",
+          "level2": null,
+          "level3": null
+        },
+        "region": "Palestine",
+        "region_type": null
+      },
+      "value": 1774,
+      "unit": "count",
+      "facility_name": "Number of infant deaths",
+      "facility_type": "indicator",
+      "status": "unknown",
+      "damage_level": null,
+      "bed_capacity": 0,
+      "staff_count": 0,
+      "quality": {
+        "score": 0.8555555555555555,
+        "completeness": 0.6666666666666666,
+        "consistency": 1,
+        "accuracy": 0.9,
+        "verified": false,
+        "confidence": 0.8
+      },
+      "sources": [
+        {
+          "name": "HDX",
+          "organization": "UN OCHA",
+          "fetched_at": "2025-11-25T18:04:35.889Z"
+        }
+      ],
+      "created_at": "2025-11-25T18:04:35.889Z",
+      "updated_at": "2025-11-25T18:04:35.889Z",
+      "version": 1,
+      "temporal_context": {
+        "days_since_baseline": -9410,
+        "baseline_period": "before_baseline",
+        "conflict_phase": "pre-escalation",
+        "season": "winter"
+      }
+    },
+    {
+      "id": "health-xtqls1",
+      "type": "health",
+      "category": "health",
+      "date": "1998-01-01",
+      "location": {
+        "name": "State of Palestine",
+        "coordinates": null,
+        "admin_levels": {
+          "level1": "Eastern Mediterranean",
+          "level2": null,
+          "level3": null
+        },
+        "region": "Palestine",
+        "region_type": null
+      },
+      "value": 1.722908945,
+      "unit": "count",
+      "facility_name": "Adolescent mortality rate (per 1 000 age specific cohort)",
+      "facility_type": "indicator",
+      "status": "unknown",
+      "damage_level": null,
+      "bed_capacity": 0,
+      "staff_count": 0,
+      "quality": {
+        "score": 0.8555555555555555,
+        "completeness": 0.6666666666666666,
+        "consistency": 1,
+        "accuracy": 0.9,
+        "verified": false,
+        "confidence": 0.8
+      },
+      "sources": [
+        {
+          "name": "HDX",
+          "organization": "UN OCHA",
+          "fetched_at": "2025-11-25T18:04:35.893Z"
+        }
+      ],
+      "created_at": "2025-11-25T18:04:35.893Z",
+      "updated_at": "2025-11-25T18:04:35.893Z",
+      "version": 1,
+      "temporal_context": {
+        "days_since_baseline": -9410,
+        "baseline_period": "before_baseline",
+        "conflict_phase": "pre-escalation",
+        "season": "winter"
+      }
+    },
+    {
+      "id": "health-jt7d9h",
+      "type": "health",
+      "category": "health",
+      "date": "1998-01-01",
+      "location": {
+        "name": "State of Palestine",
+        "coordinates": null,
+        "admin_levels": {
+          "level1": "Eastern Mediterranean",
+          "level2": null,
+          "level3": null
+        },
+        "region": "Palestine",
+        "region_type": null
+      },
+      "value": 40,
+      "unit": "count",
+      "facility_name": "Measles - number of reported cases",
+      "facility_type": "indicator",
+      "status": "unknown",
+      "damage_level": null,
+      "bed_capacity": 0,
+      "staff_count": 0,
+      "quality": {
+        "score": 0.8555555555555555,
+        "completeness": 0.6666666666666666,
+        "consistency": 1,
+        "accuracy": 0.9,
+        "verified": false,
+        "confidence": 0.8
+      },
+      "sources": [
+        {
+          "name": "HDX",
+          "organization": "UN OCHA",
+          "fetched_at": "2025-11-25T18:04:35.895Z"
+        }
+      ],
+      "created_at": "2025-11-25T18:04:35.895Z",
+      "updated_at": "2025-11-25T18:04:35.895Z",
+      "version": 1,
+      "temporal_context": {
+        "days_since_baseline": -9410,
+        "baseline_period": "before_baseline",
+        "conflict_phase": "pre-escalation",
+        "season": "winter"
+      }
+    },
+    {
+      "id": "health-fmvb6b",
+      "type": "health",
+      "category": "health",
+      "date": "1998-01-01",
+      "location": {
+        "name": "State of Palestine",
+        "coordinates": null,
+        "admin_levels": {
+          "level1": "Eastern Mediterranean",
+          "level2": null,
+          "level3": null
+        },
+        "region": "Palestine",
+        "region_type": null
+      },
+      "value": 2.4898872,
+      "unit": "count",
+      "facility_name": "Prevalence of underweight among adults, BMI < 18 (crude estimate) (%)",
+      "facility_type": "indicator",
+      "status": "unknown",
+      "damage_level": null,
+      "bed_capacity": 0,
+      "staff_count": 0,
+      "quality": {
+        "score": 0.8555555555555555,
+        "completeness": 0.6666666666666666,
+        "consistency": 1,
+        "accuracy": 0.9,
+        "verified": false,
+        "confidence": 0.8
+      },
+      "sources": [
+        {
+          "name": "HDX",
+          "organization": "UN OCHA",
+          "fetched_at": "2025-11-25T18:04:35.897Z"
+        }
+      ],
+      "created_at": "2025-11-25T18:04:35.897Z",
+      "updated_at": "2025-11-25T18:04:35.897Z",
+      "version": 1,
+      "temporal_context": {
+        "days_since_baseline": -9410,
+        "baseline_period": "before_baseline",
+        "conflict_phase": "pre-escalation",
+        "season": "winter"
+      }
+    },
+    {
+      "id": "health-lqmc8s",
+      "type": "health",
+      "category": "health",
+      "date": "1998-01-01",
+      "location": {
+        "name": "State of Palestine",
+        "coordinates": null,
+        "admin_levels": {
+          "level1": "Eastern Mediterranean",
+          "level2": null,
+          "level3": null
+        },
+        "region": "Palestine",
+        "region_type": null
+      },
+      "value": 17.855659948,
+      "unit": "count",
+      "facility_name": "Neonatal mortality rate (per 1000 live births)",
+      "facility_type": "indicator",
+      "status": "unknown",
+      "damage_level": null,
+      "bed_capacity": 0,
+      "staff_count": 0,
+      "quality": {
+        "score": 0.8555555555555555,
+        "completeness": 0.6666666666666666,
+        "consistency": 1,
+        "accuracy": 0.9,
+        "verified": false,
+        "confidence": 0.8
+      },
+      "sources": [
+        {
+          "name": "HDX",
+          "organization": "UN OCHA",
+          "fetched_at": "2025-11-25T18:04:35.897Z"
+        }
+      ],
+      "created_at": "2025-11-25T18:04:35.897Z",
+      "updated_at": "2025-11-25T18:04:35.897Z",
+      "version": 1,
+      "temporal_context": {
+        "days_since_baseline": -9410,
+        "baseline_period": "before_baseline",
+        "conflict_phase": "pre-escalation",
+        "season": "winter"
+      }
+    },
+    {
+      "id": "health-fimpve",
+      "type": "health",
+      "category": "health",
+      "date": "1998-01-01",
+      "location": {
+        "name": "State of Palestine",
+        "coordinates": null,
+        "admin_levels": {
+          "level1": "Eastern Mediterranean",
+          "level2": null,
+          "level3": null
+        },
+        "region": "Palestine",
+        "region_type": null
+      },
+      "value": 16.542758,
+      "unit": "count",
+      "facility_name": "Prevalence of overweight among children and adolescents, BMI > +1 standard deviations above the median (crude estimate) (%)",
+      "facility_type": "indicator",
+      "status": "unknown",
+      "damage_level": null,
+      "bed_capacity": 0,
+      "staff_count": 0,
+      "quality": {
+        "score": 0.8555555555555555,
+        "completeness": 0.6666666666666666,
+        "consistency": 1,
+        "accuracy": 0.9,
+        "verified": false,
+        "confidence": 0.8
+      },
+      "sources": [
+        {
+          "name": "HDX",
+          "organization": "UN OCHA",
+          "fetched_at": "2025-11-25T18:04:35.898Z"
+        }
+      ],
+      "created_at": "2025-11-25T18:04:35.898Z",
+      "updated_at": "2025-11-25T18:04:35.898Z",
+      "version": 1,
+      "temporal_context": {
+        "days_since_baseline": -9410,
+        "baseline_period": "before_baseline",
+        "conflict_phase": "pre-escalation",
+        "season": "winter"
+      }
+    },
+    {
+      "id": "health-kfnivh",
+      "type": "health",
+      "category": "health",
+      "date": "1998-01-01",
+      "location": {
+        "name": "State of Palestine",
+        "coordinates": null,
+        "admin_levels": {
+          "level1": "Eastern Mediterranean",
+          "level2": null,
+          "level3": null
+        },
+        "region": "Palestine",
+        "region_type": null
+      },
+      "value": 2.320466826,
+      "unit": "count",
+      "facility_name": "Mortality rate among children ages 5 to 9 years (per 1000 children aged 5)",
+      "facility_type": "indicator",
+      "status": "unknown",
+      "damage_level": null,
+      "bed_capacity": 0,
+      "staff_count": 0,
+      "quality": {
+        "score": 0.8555555555555555,
+        "completeness": 0.6666666666666666,
+        "consistency": 1,
+        "accuracy": 0.9,
+        "verified": false,
+        "confidence": 0.8
+      },
+      "sources": [
+        {
+          "name": "HDX",
+          "organization": "UN OCHA",
+          "fetched_at": "2025-11-25T18:04:35.899Z"
+        }
+      ],
+      "created_at": "2025-11-25T18:04:35.899Z",
+      "updated_at": "2025-11-25T18:04:35.899Z",
+      "version": 1,
+      "temporal_context": {
+        "days_since_baseline": -9410,
+        "baseline_period": "before_baseline",
+        "conflict_phase": "pre-escalation",
+        "season": "winter"
+      }
+    },
+    {
+      "id": "health-o6wc0e",
+      "type": "health",
+      "category": "health",
+      "date": "1998-01-01",
+      "location": {
+        "name": "State of Palestine",
+        "coordinates": null,
+        "admin_levels": {
+          "level1": "Eastern Mediterranean",
+          "level2": null,
+          "level3": null
+        },
+        "region": "Palestine",
+        "region_type": null
+      },
+      "value": 18.614967,
+      "unit": "count",
+      "facility_name": "Prevalence of overweight among children and adolescents, BMI > +1 standard deviations above the median (crude estimate) (%)",
+      "facility_type": "indicator",
+      "status": "unknown",
+      "damage_level": null,
+      "bed_capacity": 0,
+      "staff_count": 0,
+      "quality": {
+        "score": 0.8555555555555555,
+        "completeness": 0.6666666666666666,
+        "consistency": 1,
+        "accuracy": 0.9,
+        "verified": false,
+        "confidence": 0.8
+      },
+      "sources": [
+        {
+          "name": "HDX",
+          "organization": "UN OCHA",
+          "fetched_at": "2025-11-25T18:04:35.899Z"
+        }
+      ],
+      "created_at": "2025-11-25T18:04:35.899Z",
+      "updated_at": "2025-11-25T18:04:35.899Z",
+      "version": 1,
+      "temporal_context": {
+        "days_since_baseline": -9410,
+        "baseline_period": "before_baseline",
+        "conflict_phase": "pre-escalation",
+        "season": "winter"
+      }
+    },
+    {
+      "id": "health-gejv2t",
+      "type": "health",
+      "category": "health",
+      "date": "1998-01-01",
+      "location": {
+        "name": "State of Palestine",
+        "coordinates": null,
+        "admin_levels": {
+          "level1": "Eastern Mediterranean",
+          "level2": null,
+          "level3": null
+        },
+        "region": "Palestine",
+        "region_type": null
+      },
+      "value": 5.5292744,
+      "unit": "count",
+      "facility_name": "Prevalence of thinness among children and adolescents, BMI < -2 standard deviations below the median (crude estimate) (%)",
+      "facility_type": "indicator",
+      "status": "unknown",
+      "damage_level": null,
+      "bed_capacity": 0,
+      "staff_count": 0,
+      "quality": {
+        "score": 0.8555555555555555,
+        "completeness": 0.6666666666666666,
+        "consistency": 1,
+        "accuracy": 0.9,
+        "verified": false,
+        "confidence": 0.8
+      },
+      "sources": [
+        {
+          "name": "HDX",
+          "organization": "UN OCHA",
+          "fetched_at": "2025-11-25T18:04:35.901Z"
+        }
+      ],
+      "created_at": "2025-11-25T18:04:35.901Z",
+      "updated_at": "2025-11-25T18:04:35.901Z",
+      "version": 1,
+      "temporal_context": {
+        "days_since_baseline": -9410,
+        "baseline_period": "before_baseline",
+        "conflict_phase": "pre-escalation",
+        "season": "winter"
+      }
+    },
+    {
+      "id": "health-7cf8m4",
+      "type": "health",
+      "category": "health",
+      "date": "1998-01-01",
+      "location": {
+        "name": "State of Palestine",
+        "coordinates": null,
+        "admin_levels": {
+          "level1": "Eastern Mediterranean",
+          "level2": null,
+          "level3": null
+        },
+        "region": "Palestine",
+        "region_type": null
+      },
+      "value": 176,
+      "unit": "count",
+      "facility_name": "Number of deaths among adolescents (10 to 19 years of age)",
+      "facility_type": "indicator",
+      "status": "unknown",
+      "damage_level": null,
+      "bed_capacity": 0,
+      "staff_count": 0,
+      "quality": {
+        "score": 0.8555555555555555,
+        "completeness": 0.6666666666666666,
+        "consistency": 1,
+        "accuracy": 0.9,
+        "verified": false,
+        "confidence": 0.8
+      },
+      "sources": [
+        {
+          "name": "HDX",
+          "organization": "UN OCHA",
+          "fetched_at": "2025-11-25T18:04:35.904Z"
+        }
+      ],
+      "created_at": "2025-11-25T18:04:35.904Z",
+      "updated_at": "2025-11-25T18:04:35.904Z",
+      "version": 1,
+      "temporal_context": {
+        "days_since_baseline": -9410,
+        "baseline_period": "before_baseline",
+        "conflict_phase": "pre-escalation",
+        "season": "winter"
+      }
+    },
+    {
+      "id": "health-tra1xy",
+      "type": "health",
+      "category": "health",
+      "date": "1998-01-01",
+      "location": {
+        "name": "State of Palestine",
+        "coordinates": null,
+        "admin_levels": {
+          "level1": "Eastern Mediterranean",
+          "level2": null,
+          "level3": null
+        },
+        "region": "Palestine",
+        "region_type": null
+      },
+      "value": 16.285095,
+      "unit": "count",
+      "facility_name": "Prevalence of diabetes, age-standardized",
+      "facility_type": "indicator",
+      "status": "unknown",
+      "damage_level": null,
+      "bed_capacity": 0,
+      "staff_count": 0,
+      "quality": {
+        "score": 0.8555555555555555,
+        "completeness": 0.6666666666666666,
+        "consistency": 1,
+        "accuracy": 0.9,
+        "verified": false,
+        "confidence": 0.8
+      },
+      "sources": [
+        {
+          "name": "HDX",
+          "organization": "UN OCHA",
+          "fetched_at": "2025-11-25T18:04:35.907Z"
+        }
+      ],
+      "created_at": "2025-11-25T18:04:35.907Z",
+      "updated_at": "2025-11-25T18:04:35.907Z",
+      "version": 1,
+      "temporal_context": {
+        "days_since_baseline": -9410,
+        "baseline_period": "before_baseline",
+        "conflict_phase": "pre-escalation",
+        "season": "winter"
+      }
+    },
+    {
+      "id": "health-gxeb0c",
+      "type": "health",
+      "category": "health",
+      "date": "1998-01-01",
+      "location": {
+        "name": "State of Palestine",
+        "coordinates": null,
+        "admin_levels": {
+          "level1": "Eastern Mediterranean",
+          "level2": null,
+          "level3": null
+        },
+        "region": "Palestine",
+        "region_type": null
+      },
+      "value": 964,
+      "unit": "count",
+      "facility_name": "Number of under-five deaths",
+      "facility_type": "indicator",
+      "status": "unknown",
+      "damage_level": null,
+      "bed_capacity": 0,
+      "staff_count": 0,
+      "quality": {
+        "score": 0.8555555555555555,
+        "completeness": 0.6666666666666666,
+        "consistency": 1,
+        "accuracy": 0.9,
+        "verified": false,
+        "confidence": 0.8
+      },
+      "sources": [
+        {
+          "name": "HDX",
+          "organization": "UN OCHA",
+          "fetched_at": "2025-11-25T18:04:35.908Z"
+        }
+      ],
+      "created_at": "2025-11-25T18:04:35.908Z",
+      "updated_at": "2025-11-25T18:04:35.908Z",
+      "version": 1,
+      "temporal_context": {
+        "days_since_baseline": -9410,
+        "baseline_period": "before_baseline",
+        "conflict_phase": "pre-escalation",
+        "season": "winter"
+      }
+    },
+    {
+      "id": "health-2o9k3d",
+      "type": "health",
+      "category": "health",
+      "date": "1998-01-01",
+      "location": {
+        "name": "State of Palestine",
+        "coordinates": null,
+        "admin_levels": {
+          "level1": "Eastern Mediterranean",
+          "level2": null,
+          "level3": null
+        },
+        "region": "Palestine",
+        "region_type": null
+      },
+      "value": 27.531874,
+      "unit": "count",
+      "facility_name": "Prevalence of obesity among adults, BMI &GreaterEqual; 30 (crude estimate) (%)",
+      "facility_type": "indicator",
+      "status": "unknown",
+      "damage_level": null,
+      "bed_capacity": 0,
+      "staff_count": 0,
+      "quality": {
+        "score": 0.8555555555555555,
+        "completeness": 0.6666666666666666,
+        "consistency": 1,
+        "accuracy": 0.9,
+        "verified": false,
+        "confidence": 0.8
+      },
+      "sources": [
+        {
+          "name": "HDX",
+          "organization": "UN OCHA",
+          "fetched_at": "2025-11-25T18:04:35.908Z"
+        }
+      ],
+      "created_at": "2025-11-25T18:04:35.908Z",
+      "updated_at": "2025-11-25T18:04:35.908Z",
+      "version": 1,
+      "temporal_context": {
+        "days_since_baseline": -9410,
+        "baseline_period": "before_baseline",
+        "conflict_phase": "pre-escalation",
+        "season": "winter"
+      }
+    },
+    {
+      "id": "health-dzt83i",
+      "type": "health",
+      "category": "health",
+      "date": "1998-01-01",
+      "location": {
+        "name": "State of Palestine",
+        "coordinates": null,
+        "admin_levels": {
+          "level1": "Eastern Mediterranean",
+          "level2": null,
+          "level3": null
+        },
+        "region": "Palestine",
+        "region_type": null
+      },
+      "value": 4.335805065,
+      "unit": "count",
+      "facility_name": "Adolescent mortality rate (per 1 000 age specific cohort)",
+      "facility_type": "indicator",
+      "status": "unknown",
+      "damage_level": null,
+      "bed_capacity": 0,
+      "staff_count": 0,
+      "quality": {
+        "score": 0.8555555555555555,
+        "completeness": 0.6666666666666666,
+        "consistency": 1,
+        "accuracy": 0.9,
+        "verified": false,
+        "confidence": 0.8
+      },
+      "sources": [
+        {
+          "name": "HDX",
+          "organization": "UN OCHA",
+          "fetched_at": "2025-11-25T18:04:35.910Z"
+        }
+      ],
+      "created_at": "2025-11-25T18:04:35.910Z",
+      "updated_at": "2025-11-25T18:04:35.910Z",
+      "version": 1,
+      "temporal_context": {
+        "days_since_baseline": -9410,
+        "baseline_period": "before_baseline",
+        "conflict_phase": "pre-escalation",
+        "season": "winter"
+      }
+    },
+    {
+      "id": "health-91ip71",
+      "type": "health",
+      "category": "health",
+      "date": "1998-01-01",
+      "location": {
+        "name": "State of Palestine",
+        "coordinates": null,
+        "admin_levels": {
+          "level1": "Eastern Mediterranean",
+          "level2": null,
+          "level3": null
+        },
+        "region": "Palestine",
+        "region_type": null
+      },
+      "value": 15.452172,
+      "unit": "count",
+      "facility_name": "Prevalence of diabetes, crude",
+      "facility_type": "indicator",
+      "status": "unknown",
+      "damage_level": null,
+      "bed_capacity": 0,
+      "staff_count": 0,
+      "quality": {
+        "score": 0.8555555555555555,
+        "completeness": 0.6666666666666666,
+        "consistency": 1,
+        "accuracy": 0.9,
+        "verified": false,
+        "confidence": 0.8
+      },
+      "sources": [
+        {
+          "name": "HDX",
+          "organization": "UN OCHA",
+          "fetched_at": "2025-11-25T18:04:35.910Z"
+        }
+      ],
+      "created_at": "2025-11-25T18:04:35.910Z",
+      "updated_at": "2025-11-25T18:04:35.910Z",
+      "version": 1,
+      "temporal_context": {
+        "days_since_baseline": -9410,
+        "baseline_period": "before_baseline",
+        "conflict_phase": "pre-escalation",
+        "season": "winter"
+      }
+    },
+    {
+      "id": "health-nena8o",
+      "type": "health",
+      "category": "health",
+      "date": "1998-01-01",
+      "location": {
+        "name": "State of Palestine",
+        "coordinates": null,
+        "admin_levels": {
+          "level1": "Eastern Mediterranean",
+          "level2": null,
+          "level3": null
+        },
+        "region": "Palestine",
+        "region_type": null
+      },
+      "value": 14.039624,
+      "unit": "count",
+      "facility_name": "Prevalence of diabetes, age-standardized",
+      "facility_type": "indicator",
+      "status": "unknown",
+      "damage_level": null,
+      "bed_capacity": 0,
+      "staff_count": 0,
+      "quality": {
+        "score": 0.8555555555555555,
+        "completeness": 0.6666666666666666,
+        "consistency": 1,
+        "accuracy": 0.9,
+        "verified": false,
+        "confidence": 0.8
+      },
+      "sources": [
+        {
+          "name": "HDX",
+          "organization": "UN OCHA",
+          "fetched_at": "2025-11-25T18:04:35.914Z"
+        }
+      ],
+      "created_at": "2025-11-25T18:04:35.914Z",
+      "updated_at": "2025-11-25T18:04:35.914Z",
+      "version": 1,
+      "temporal_context": {
+        "days_since_baseline": -9410,
+        "baseline_period": "before_baseline",
+        "conflict_phase": "pre-escalation",
+        "season": "winter"
+      }
+    },
+    {
+      "id": "health-4etzag",
+      "type": "health",
+      "category": "health",
+      "date": "1998-01-01",
+      "location": {
+        "name": "State of Palestine",
+        "coordinates": null,
+        "admin_levels": {
+          "level1": "Eastern Mediterranean",
+          "level2": null,
+          "level3": null
+        },
+        "region": "Palestine",
+        "region_type": null
+      },
+      "value": 29.054784214,
+      "unit": "count",
+      "facility_name": "Under-five mortality rate (probability of dying by age 5 per 1000 live births)",
+      "facility_type": "indicator",
+      "status": "unknown",
+      "damage_level": null,
+      "bed_capacity": 0,
+      "staff_count": 0,
+      "quality": {
+        "score": 0.8555555555555555,
+        "completeness": 0.6666666666666666,
+        "consistency": 1,
+        "accuracy": 0.9,
+        "verified": false,
+        "confidence": 0.8
+      },
+      "sources": [
+        {
+          "name": "HDX",
+          "organization": "UN OCHA",
+          "fetched_at": "2025-11-25T18:04:35.915Z"
+        }
+      ],
+      "created_at": "2025-11-25T18:04:35.915Z",
+      "updated_at": "2025-11-25T18:04:35.915Z",
+      "version": 1,
+      "temporal_context": {
+        "days_since_baseline": -9410,
+        "baseline_period": "before_baseline",
+        "conflict_phase": "pre-escalation",
+        "season": "winter"
+      }
+    },
+    {
+      "id": "health-gsbqwz",
+      "type": "health",
+      "category": "health",
+      "date": "1998-01-01",
+      "location": {
+        "name": "State of Palestine",
+        "coordinates": null,
+        "admin_levels": {
+          "level1": "Eastern Mediterranean",
+          "level2": null,
+          "level3": null
+        },
+        "region": "Palestine",
+        "region_type": null
+      },
+      "value": 4.5636453,
+      "unit": "count",
+      "facility_name": "Prevalence of obesity among children and adolescents, BMI > +2 standard deviations above the median (crude estimate) (%)",
+      "facility_type": "indicator",
+      "status": "unknown",
+      "damage_level": null,
+      "bed_capacity": 0,
+      "staff_count": 0,
+      "quality": {
+        "score": 0.8555555555555555,
+        "completeness": 0.6666666666666666,
+        "consistency": 1,
+        "accuracy": 0.9,
+        "verified": false,
+        "confidence": 0.8
+      },
+      "sources": [
+        {
+          "name": "HDX",
+          "organization": "UN OCHA",
+          "fetched_at": "2025-11-25T18:04:35.916Z"
+        }
+      ],
+      "created_at": "2025-11-25T18:04:35.916Z",
+      "updated_at": "2025-11-25T18:04:35.916Z",
+      "version": 1,
+      "temporal_context": {
+        "days_since_baseline": -9410,
+        "baseline_period": "before_baseline",
+        "conflict_phase": "pre-escalation",
+        "season": "winter"
+      }
+    },
+    {
+      "id": "health-o3d63w",
+      "type": "health",
+      "category": "health",
+      "date": "1998-01-01",
+      "location": {
+        "name": "State of Palestine",
+        "coordinates": null,
+        "admin_levels": {
+          "level1": "Eastern Mediterranean",
+          "level2": null,
+          "level3": null
+        },
+        "region": "Palestine",
+        "region_type": null
+      },
+      "value": 5,
+      "unit": "count",
+      "facility_name": "Total tetanus - number of reported cases",
+      "facility_type": "indicator",
+      "status": "unknown",
+      "damage_level": null,
+      "bed_capacity": 0,
+      "staff_count": 0,
+      "quality": {
+        "score": 0.8555555555555555,
+        "completeness": 0.6666666666666666,
+        "consistency": 1,
+        "accuracy": 0.9,
+        "verified": false,
+        "confidence": 0.8
+      },
+      "sources": [
+        {
+          "name": "HDX",
+          "organization": "UN OCHA",
+          "fetched_at": "2025-11-25T18:04:35.916Z"
+        }
+      ],
+      "created_at": "2025-11-25T18:04:35.916Z",
+      "updated_at": "2025-11-25T18:04:35.916Z",
+      "version": 1,
+      "temporal_context": {
+        "days_since_baseline": -9410,
+        "baseline_period": "before_baseline",
+        "conflict_phase": "pre-escalation",
+        "season": "winter"
+      }
+    },
+    {
+      "id": "health-7lidr1",
+      "type": "health",
+      "category": "health",
+      "date": "1998-01-01",
+      "location": {
+        "name": "State of Palestine",
+        "coordinates": null,
+        "admin_levels": {
+          "level1": "Eastern Mediterranean",
+          "level2": null,
+          "level3": null
+        },
+        "region": "Palestine",
+        "region_type": null
+      },
+      "value": 401,
+      "unit": "count",
+      "facility_name": "Number of deaths among children 5 to 14 years of age",
+      "facility_type": "indicator",
+      "status": "unknown",
+      "damage_level": null,
+      "bed_capacity": 0,
+      "staff_count": 0,
+      "quality": {
+        "score": 0.8555555555555555,
+        "completeness": 0.6666666666666666,
+        "consistency": 1,
+        "accuracy": 0.9,
+        "verified": false,
+        "confidence": 0.8
+      },
+      "sources": [
+        {
+          "name": "HDX",
+          "organization": "UN OCHA",
+          "fetched_at": "2025-11-25T18:04:35.916Z"
+        }
+      ],
+      "created_at": "2025-11-25T18:04:35.916Z",
+      "updated_at": "2025-11-25T18:04:35.916Z",
+      "version": 1,
+      "temporal_context": {
+        "days_since_baseline": -9410,
+        "baseline_period": "before_baseline",
+        "conflict_phase": "pre-escalation",
+        "season": "winter"
+      }
+    },
+    {
+      "id": "health-dejphs",
+      "type": "health",
+      "category": "health",
+      "date": "1998-01-01",
+      "location": {
+        "name": "State of Palestine",
+        "coordinates": null,
+        "admin_levels": {
+          "level1": "Eastern Mediterranean",
+          "level2": null,
+          "level3": null
+        },
+        "region": "Palestine",
+        "region_type": null
+      },
+      "value": 29.897544282,
+      "unit": "count",
+      "facility_name": "Infant mortality rate (probability of dying between birth and age 1 per 1000 live births)",
+      "facility_type": "indicator",
+      "status": "unknown",
+      "damage_level": null,
+      "bed_capacity": 0,
+      "staff_count": 0,
+      "quality": {
+        "score": 0.8555555555555555,
+        "completeness": 0.6666666666666666,
+        "consistency": 1,
+        "accuracy": 0.9,
+        "verified": false,
+        "confidence": 0.8
+      },
+      "sources": [
+        {
+          "name": "HDX",
+          "organization": "UN OCHA",
+          "fetched_at": "2025-11-25T18:04:35.918Z"
+        }
+      ],
+      "created_at": "2025-11-25T18:04:35.918Z",
+      "updated_at": "2025-11-25T18:04:35.918Z",
+      "version": 1,
+      "temporal_context": {
+        "days_since_baseline": -9410,
+        "baseline_period": "before_baseline",
+        "conflict_phase": "pre-escalation",
+        "season": "winter"
+      }
+    },
+    {
+      "id": "health-djik5o",
+      "type": "health",
+      "category": "health",
+      "date": "1998-01-01",
+      "location": {
+        "name": "State of Palestine",
+        "coordinates": null,
+        "admin_levels": {
+          "level1": "Eastern Mediterranean",
+          "level2": null,
+          "level3": null
+        },
+        "region": "Palestine",
+        "region_type": null
+      },
+      "value": 49.109781,
+      "unit": "count",
+      "facility_name": "Diabetes treatment coverage, age-standardized",
+      "facility_type": "indicator",
+      "status": "unknown",
+      "damage_level": null,
+      "bed_capacity": 0,
+      "staff_count": 0,
+      "quality": {
+        "score": 0.8555555555555555,
+        "completeness": 0.6666666666666666,
+        "consistency": 1,
+        "accuracy": 0.9,
+        "verified": false,
+        "confidence": 0.8
+      },
+      "sources": [
+        {
+          "name": "HDX",
+          "organization": "UN OCHA",
+          "fetched_at": "2025-11-25T18:04:35.918Z"
+        }
+      ],
+      "created_at": "2025-11-25T18:04:35.918Z",
+      "updated_at": "2025-11-25T18:04:35.918Z",
+      "version": 1,
+      "temporal_context": {
+        "days_since_baseline": -9410,
+        "baseline_period": "before_baseline",
+        "conflict_phase": "pre-escalation",
+        "season": "winter"
+      }
+    },
+    {
+      "id": "health-m41dry",
+      "type": "health",
+      "category": "health",
+      "date": "1998-01-01",
+      "location": {
+        "name": "State of Palestine",
+        "coordinates": null,
+        "admin_levels": {
+          "level1": "Eastern Mediterranean",
+          "level2": null,
+          "level3": null
+        },
+        "region": "Palestine",
+        "region_type": null
+      },
+      "value": 2.2077482,
+      "unit": "count",
+      "facility_name": "Prevalence of underweight among adults, BMI < 18 (crude estimate) (%)",
+      "facility_type": "indicator",
+      "status": "unknown",
+      "damage_level": null,
+      "bed_capacity": 0,
+      "staff_count": 0,
+      "quality": {
+        "score": 0.8555555555555555,
+        "completeness": 0.6666666666666666,
+        "consistency": 1,
+        "accuracy": 0.9,
+        "verified": false,
+        "confidence": 0.8
+      },
+      "sources": [
+        {
+          "name": "HDX",
+          "organization": "UN OCHA",
+          "fetched_at": "2025-11-25T18:04:35.918Z"
+        }
+      ],
+      "created_at": "2025-11-25T18:04:35.918Z",
+      "updated_at": "2025-11-25T18:04:35.918Z",
+      "version": 1,
+      "temporal_context": {
+        "days_since_baseline": -9410,
+        "baseline_period": "before_baseline",
+        "conflict_phase": "pre-escalation",
+        "season": "winter"
+      }
+    },
+    {
+      "id": "health-ju6223",
+      "type": "health",
+      "category": "health",
+      "date": "1998-01-01",
+      "location": {
+        "name": "State of Palestine",
+        "coordinates": null,
+        "admin_levels": {
+          "level1": "Eastern Mediterranean",
+          "level2": null,
+          "level3": null
+        },
+        "region": "Palestine",
+        "region_type": null
+      },
+      "value": 28.173696516,
+      "unit": "count",
+      "facility_name": "Infant mortality rate (probability of dying between birth and age 1 per 1000 live births)",
+      "facility_type": "indicator",
+      "status": "unknown",
+      "damage_level": null,
+      "bed_capacity": 0,
+      "staff_count": 0,
+      "quality": {
+        "score": 0.8555555555555555,
+        "completeness": 0.6666666666666666,
+        "consistency": 1,
+        "accuracy": 0.9,
+        "verified": false,
+        "confidence": 0.8
+      },
+      "sources": [
+        {
+          "name": "HDX",
+          "organization": "UN OCHA",
+          "fetched_at": "2025-11-25T18:04:35.923Z"
+        }
+      ],
+      "created_at": "2025-11-25T18:04:35.923Z",
+      "updated_at": "2025-11-25T18:04:35.923Z",
+      "version": 1,
+      "temporal_context": {
+        "days_since_baseline": -9410,
+        "baseline_period": "before_baseline",
+        "conflict_phase": "pre-escalation",
+        "season": "winter"
+      }
+    },
+    {
+      "id": "health-ex1bkj",
+      "type": "health",
+      "category": "health",
+      "date": "1998-01-01",
+      "location": {
+        "name": "State of Palestine",
+        "coordinates": null,
+        "admin_levels": {
+          "level1": "Eastern Mediterranean",
+          "level2": null,
+          "level3": null
+        },
+        "region": "Palestine",
+        "region_type": null
+      },
+      "value": 6.0393006,
+      "unit": "count",
+      "facility_name": "Prevalence of thinness among children and adolescents, BMI < -2 standard deviations below the median (crude estimate) (%)",
+      "facility_type": "indicator",
+      "status": "unknown",
+      "damage_level": null,
+      "bed_capacity": 0,
+      "staff_count": 0,
+      "quality": {
+        "score": 0.8555555555555555,
+        "completeness": 0.6666666666666666,
+        "consistency": 1,
+        "accuracy": 0.9,
+        "verified": false,
+        "confidence": 0.8
+      },
+      "sources": [
+        {
+          "name": "HDX",
+          "organization": "UN OCHA",
+          "fetched_at": "2025-11-25T18:04:35.924Z"
+        }
+      ],
+      "created_at": "2025-11-25T18:04:35.924Z",
+      "updated_at": "2025-11-25T18:04:35.924Z",
+      "version": 1,
+      "temporal_context": {
+        "days_since_baseline": -9410,
+        "baseline_period": "before_baseline",
+        "conflict_phase": "pre-escalation",
+        "season": "winter"
+      }
+    },
+    {
+      "id": "health-bah7e9",
+      "type": "health",
+      "category": "health",
+      "date": "1998-01-01",
+      "location": {
+        "name": "State of Palestine",
+        "coordinates": null,
+        "admin_levels": {
+          "level1": "Eastern Mediterranean",
+          "level2": null,
+          "level3": null
+        },
+        "region": "Palestine",
+        "region_type": null
+      },
+      "value": 1.6609188,
+      "unit": "count",
+      "facility_name": "Prevalence of underweight among adults, BMI < 18 (age-standardized estimate) (%)",
+      "facility_type": "indicator",
+      "status": "unknown",
+      "damage_level": null,
+      "bed_capacity": 0,
+      "staff_count": 0,
+      "quality": {
+        "score": 0.8555555555555555,
+        "completeness": 0.6666666666666666,
+        "consistency": 1,
+        "accuracy": 0.9,
+        "verified": false,
+        "confidence": 0.8
+      },
+      "sources": [
+        {
+          "name": "HDX",
+          "organization": "UN OCHA",
+          "fetched_at": "2025-11-25T18:04:35.929Z"
+        }
+      ],
+      "created_at": "2025-11-25T18:04:35.929Z",
+      "updated_at": "2025-11-25T18:04:35.929Z",
+      "version": 1,
+      "temporal_context": {
+        "days_since_baseline": -9410,
+        "baseline_period": "before_baseline",
+        "conflict_phase": "pre-escalation",
+        "season": "winter"
+      }
+    },
+    {
+      "id": "health-6k5ufb",
+      "type": "health",
+      "category": "health",
+      "date": "1998-01-01",
+      "location": {
+        "name": "State of Palestine",
+        "coordinates": null,
+        "admin_levels": {
+          "level1": "Eastern Mediterranean",
+          "level2": null,
+          "level3": null
+        },
+        "region": "Palestine",
+        "region_type": null
+      },
+      "value": 50.460297,
+      "unit": "count",
+      "facility_name": "Prevalence of overweight among adults, BMI &GreaterEqual; 25 (crude estimate) (%)",
+      "facility_type": "indicator",
+      "status": "unknown",
+      "damage_level": null,
+      "bed_capacity": 0,
+      "staff_count": 0,
+      "quality": {
+        "score": 0.8555555555555555,
+        "completeness": 0.6666666666666666,
+        "consistency": 1,
+        "accuracy": 0.9,
+        "verified": false,
+        "confidence": 0.8
+      },
+      "sources": [
+        {
+          "name": "HDX",
+          "organization": "UN OCHA",
+          "fetched_at": "2025-11-25T18:04:35.930Z"
+        }
+      ],
+      "created_at": "2025-11-25T18:04:35.930Z",
+      "updated_at": "2025-11-25T18:04:35.930Z",
+      "version": 1,
+      "temporal_context": {
+        "days_since_baseline": -9410,
+        "baseline_period": "before_baseline",
+        "conflict_phase": "pre-escalation",
+        "season": "winter"
+      }
+    },
+    {
+      "id": "health-66jux2",
+      "type": "health",
+      "category": "health",
+      "date": "1998-01-01",
+      "location": {
+        "name": "State of Palestine",
+        "coordinates": null,
+        "admin_levels": {
+          "level1": "Eastern Mediterranean",
+          "level2": null,
+          "level3": null
+        },
+        "region": "Palestine",
+        "region_type": null
+      },
+      "value": 30.170930725,
+      "unit": "count",
+      "facility_name": "Under-five mortality rate (probability of dying by age 5 per 1000 live births)",
+      "facility_type": "indicator",
+      "status": "unknown",
+      "damage_level": null,
+      "bed_capacity": 0,
+      "staff_count": 0,
+      "quality": {
+        "score": 0.8555555555555555,
+        "completeness": 0.6666666666666666,
+        "consistency": 1,
+        "accuracy": 0.9,
+        "verified": false,
+        "confidence": 0.8
+      },
+      "sources": [
+        {
+          "name": "HDX",
+          "organization": "UN OCHA",
+          "fetched_at": "2025-11-25T18:04:35.931Z"
+        }
+      ],
+      "created_at": "2025-11-25T18:04:35.931Z",
+      "updated_at": "2025-11-25T18:04:35.931Z",
+      "version": 1,
+      "temporal_context": {
+        "days_since_baseline": -9410,
+        "baseline_period": "before_baseline",
+        "conflict_phase": "pre-escalation",
+        "season": "winter"
+      }
+    },
+    {
+      "id": "health-3uocq8",
+      "type": "health",
+      "category": "health",
+      "date": "1998-01-01",
+      "location": {
+        "name": "State of Palestine",
+        "coordinates": null,
+        "admin_levels": {
+          "level1": "Eastern Mediterranean",
+          "level2": null,
+          "level3": null
+        },
+        "region": "Palestine",
+        "region_type": null
+      },
+      "value": 25.827804,
+      "unit": "count",
+      "facility_name": "Prevalence of obesity among adults, BMI &GreaterEqual; 30 (age-standardized estimate) (%)",
+      "facility_type": "indicator",
+      "status": "unknown",
+      "damage_level": null,
+      "bed_capacity": 0,
+      "staff_count": 0,
+      "quality": {
+        "score": 0.8555555555555555,
+        "completeness": 0.6666666666666666,
+        "consistency": 1,
+        "accuracy": 0.9,
+        "verified": false,
+        "confidence": 0.8
+      },
+      "sources": [
+        {
+          "name": "HDX",
+          "organization": "UN OCHA",
+          "fetched_at": "2025-11-25T18:04:35.932Z"
+        }
+      ],
+      "created_at": "2025-11-25T18:04:35.932Z",
+      "updated_at": "2025-11-25T18:04:35.932Z",
+      "version": 1,
+      "temporal_context": {
+        "days_since_baseline": -9410,
+        "baseline_period": "before_baseline",
+        "conflict_phase": "pre-escalation",
+        "season": "winter"
+      }
+    },
+    {
+      "id": "health-3w1so6",
+      "type": "health",
+      "category": "health",
+      "date": "1998-01-01",
+      "location": {
+        "name": "State of Palestine",
+        "coordinates": null,
+        "admin_levels": {
+          "level1": "Eastern Mediterranean",
+          "level2": null,
+          "level3": null
+        },
+        "region": "Palestine",
+        "region_type": null
+      },
+      "value": 2.617405672,
+      "unit": "count",
+      "facility_name": "Adolescent mortality rate (per 1 000 age specific cohort)",
+      "facility_type": "indicator",
+      "status": "unknown",
+      "damage_level": null,
+      "bed_capacity": 0,
+      "staff_count": 0,
+      "quality": {
+        "score": 0.8555555555555555,
+        "completeness": 0.6666666666666666,
+        "consistency": 1,
+        "accuracy": 0.9,
+        "verified": false,
+        "confidence": 0.8
+      },
+      "sources": [
+        {
+          "name": "HDX",
+          "organization": "UN OCHA",
+          "fetched_at": "2025-11-25T18:04:35.932Z"
+        }
+      ],
+      "created_at": "2025-11-25T18:04:35.932Z",
+      "updated_at": "2025-11-25T18:04:35.932Z",
+      "version": 1,
+      "temporal_context": {
+        "days_since_baseline": -9410,
+        "baseline_period": "before_baseline",
+        "conflict_phase": "pre-escalation",
+        "season": "winter"
+      }
+    },
+    {
+      "id": "health-gzcge7",
+      "type": "health",
+      "category": "health",
+      "date": "1998-01-01",
+      "location": {
+        "name": "State of Palestine",
+        "coordinates": null,
+        "admin_levels": {
+          "level1": "Eastern Mediterranean",
+          "level2": null,
+          "level3": null
+        },
+        "region": "Palestine",
+        "region_type": null
+      },
+      "value": 1.937583322,
+      "unit": "count",
+      "facility_name": "Mortality rate among children ages 5 to 9 years (per 1000 children aged 5)",
+      "facility_type": "indicator",
+      "status": "unknown",
+      "damage_level": null,
+      "bed_capacity": 0,
+      "staff_count": 0,
+      "quality": {
+        "score": 0.8555555555555555,
+        "completeness": 0.6666666666666666,
+        "consistency": 1,
+        "accuracy": 0.9,
+        "verified": false,
+        "confidence": 0.8
+      },
+      "sources": [
+        {
+          "name": "HDX",
+          "organization": "UN OCHA",
+          "fetched_at": "2025-11-25T18:04:35.937Z"
+        }
+      ],
+      "created_at": "2025-11-25T18:04:35.937Z",
+      "updated_at": "2025-11-25T18:04:35.937Z",
+      "version": 1,
+      "temporal_context": {
+        "days_since_baseline": -9410,
+        "baseline_period": "before_baseline",
+        "conflict_phase": "pre-escalation",
+        "season": "winter"
+      }
+    },
+    {
+      "id": "health-1oeomt",
+      "type": "health",
+      "category": "health",
+      "date": "1998-01-01",
+      "location": {
+        "name": "State of Palestine",
+        "coordinates": null,
+        "admin_levels": {
+          "level1": "Eastern Mediterranean",
+          "level2": null,
+          "level3": null
+        },
+        "region": "Palestine",
+        "region_type": null
+      },
+      "value": 0,
+      "unit": "count",
+      "facility_name": "Yellow fever - number of reported cases",
+      "facility_type": "indicator",
+      "status": "unknown",
+      "damage_level": null,
+      "bed_capacity": 0,
+      "staff_count": 0,
+      "quality": {
+        "score": 0.8555555555555555,
+        "completeness": 0.6666666666666666,
+        "consistency": 1,
+        "accuracy": 0.9,
+        "verified": false,
+        "confidence": 0.8
+      },
+      "sources": [
+        {
+          "name": "HDX",
+          "organization": "UN OCHA",
+          "fetched_at": "2025-11-25T18:04:35.937Z"
+        }
+      ],
+      "created_at": "2025-11-25T18:04:35.937Z",
+      "updated_at": "2025-11-25T18:04:35.937Z",
+      "version": 1,
+      "temporal_context": {
+        "days_since_baseline": -9410,
+        "baseline_period": "before_baseline",
+        "conflict_phase": "pre-escalation",
+        "season": "winter"
+      }
+    },
+    {
+      "id": "health-9rw2h5",
+      "type": "health",
+      "category": "health",
+      "date": "1998-01-01",
+      "location": {
+        "name": "State of Palestine",
+        "coordinates": null,
+        "admin_levels": {
+          "level1": "Eastern Mediterranean",
+          "level2": null,
+          "level3": null
+        },
+        "region": "Palestine",
+        "region_type": null
+      },
+      "value": 5.8332726,
+      "unit": "count",
+      "facility_name": "Prevalence of thinness among children and adolescents, BMI < -2 standard deviations below the median (crude estimate) (%)",
+      "facility_type": "indicator",
+      "status": "unknown",
+      "damage_level": null,
+      "bed_capacity": 0,
+      "staff_count": 0,
+      "quality": {
+        "score": 0.8555555555555555,
+        "completeness": 0.6666666666666666,
+        "consistency": 1,
+        "accuracy": 0.9,
+        "verified": false,
+        "confidence": 0.8
+      },
+      "sources": [
+        {
+          "name": "HDX",
+          "organization": "UN OCHA",
+          "fetched_at": "2025-11-25T18:04:35.938Z"
+        }
+      ],
+      "created_at": "2025-11-25T18:04:35.938Z",
+      "updated_at": "2025-11-25T18:04:35.938Z",
+      "version": 1,
+      "temporal_context": {
+        "days_since_baseline": -9410,
+        "baseline_period": "before_baseline",
+        "conflict_phase": "pre-escalation",
+        "season": "winter"
+      }
+    },
+    {
+      "id": "health-xcko8p",
+      "type": "health",
+      "category": "health",
+      "date": "1998-01-01",
+      "location": {
+        "name": "State of Palestine",
+        "coordinates": null,
+        "admin_levels": {
+          "level1": "Eastern Mediterranean",
+          "level2": null,
+          "level3": null
+        },
+        "region": "Palestine",
+        "region_type": null
+      },
+      "value": 5.416811201,
+      "unit": "count",
+      "facility_name": "Mortality rate for 5-14 year-olds (probability of dying per 1000 children aged 5-14 years)",
+      "facility_type": "indicator",
+      "status": "unknown",
+      "damage_level": null,
+      "bed_capacity": 0,
+      "staff_count": 0,
+      "quality": {
+        "score": 0.8555555555555555,
+        "completeness": 0.6666666666666666,
+        "consistency": 1,
+        "accuracy": 0.9,
+        "verified": false,
+        "confidence": 0.8
+      },
+      "sources": [
+        {
+          "name": "HDX",
+          "organization": "UN OCHA",
+          "fetched_at": "2025-11-25T18:04:35.939Z"
+        }
+      ],
+      "created_at": "2025-11-25T18:04:35.939Z",
+      "updated_at": "2025-11-25T18:04:35.939Z",
+      "version": 1,
+      "temporal_context": {
+        "days_since_baseline": -9410,
+        "baseline_period": "before_baseline",
+        "conflict_phase": "pre-escalation",
+        "season": "winter"
+      }
+    },
+    {
+      "id": "health-cccsru",
+      "type": "health",
+      "category": "health",
+      "date": "1998-01-01",
+      "location": {
+        "name": "State of Palestine",
+        "coordinates": null,
+        "admin_levels": {
+          "level1": "Eastern Mediterranean",
+          "level2": null,
+          "level3": null
+        },
+        "region": "Palestine",
+        "region_type": null
+      },
+      "value": 21.743006,
+      "unit": "count",
+      "facility_name": "Prevalence of diabetes, age-standardized",
+      "facility_type": "indicator",
+      "status": "unknown",
+      "damage_level": null,
+      "bed_capacity": 0,
+      "staff_count": 0,
+      "quality": {
+        "score": 0.8555555555555555,
+        "completeness": 0.6666666666666666,
+        "consistency": 1,
+        "accuracy": 0.9,
+        "verified": false,
+        "confidence": 0.8
+      },
+      "sources": [
+        {
+          "name": "HDX",
+          "organization": "UN OCHA",
+          "fetched_at": "2025-11-25T18:04:35.939Z"
+        }
+      ],
+      "created_at": "2025-11-25T18:04:35.939Z",
+      "updated_at": "2025-11-25T18:04:35.939Z",
+      "version": 1,
+      "temporal_context": {
+        "days_since_baseline": -9410,
+        "baseline_period": "before_baseline",
+        "conflict_phase": "pre-escalation",
+        "season": "winter"
+      }
+    },
+    {
+      "id": "health-dieve8",
+      "type": "health",
+      "category": "health",
+      "date": "1998-01-01",
+      "location": {
+        "name": "State of Palestine",
+        "coordinates": null,
+        "admin_levels": {
+          "level1": "Eastern Mediterranean",
+          "level2": null,
+          "level3": null
+        },
+        "region": "Palestine",
+        "region_type": null
+      },
+      "value": 66,
+      "unit": "count",
+      "facility_name": "Number of deaths among adolescents (10 to 19 years of age)",
+      "facility_type": "indicator",
+      "status": "unknown",
+      "damage_level": null,
+      "bed_capacity": 0,
+      "staff_count": 0,
+      "quality": {
+        "score": 0.8555555555555555,
+        "completeness": 0.6666666666666666,
+        "consistency": 1,
+        "accuracy": 0.9,
+        "verified": false,
+        "confidence": 0.8
+      },
+      "sources": [
+        {
+          "name": "HDX",
+          "organization": "UN OCHA",
+          "fetched_at": "2025-11-25T18:04:35.940Z"
+        }
+      ],
+      "created_at": "2025-11-25T18:04:35.940Z",
+      "updated_at": "2025-11-25T18:04:35.940Z",
+      "version": 1,
+      "temporal_context": {
+        "days_since_baseline": -9410,
+        "baseline_period": "before_baseline",
+        "conflict_phase": "pre-escalation",
+        "season": "winter"
+      }
+    },
+    {
+      "id": "health-qkuhe3",
+      "type": "health",
+      "category": "health",
+      "date": "1998-01-01",
+      "location": {
+        "name": "State of Palestine",
+        "coordinates": null,
+        "admin_levels": {
+          "level1": "Eastern Mediterranean",
+          "level2": null,
+          "level3": null
+        },
+        "region": "Palestine",
+        "region_type": null
+      },
+      "value": 54.525995,
+      "unit": "count",
+      "facility_name": "Prevalence of overweight among adults, BMI &GreaterEqual; 25 (crude estimate) (%)",
+      "facility_type": "indicator",
+      "status": "unknown",
+      "damage_level": null,
+      "bed_capacity": 0,
+      "staff_count": 0,
+      "quality": {
+        "score": 0.8555555555555555,
+        "completeness": 0.6666666666666666,
+        "consistency": 1,
+        "accuracy": 0.9,
+        "verified": false,
+        "confidence": 0.8
+      },
+      "sources": [
+        {
+          "name": "HDX",
+          "organization": "UN OCHA",
+          "fetched_at": "2025-11-25T18:04:35.942Z"
+        }
+      ],
+      "created_at": "2025-11-25T18:04:35.942Z",
+      "updated_at": "2025-11-25T18:04:35.942Z",
+      "version": 1,
+      "temporal_context": {
+        "days_since_baseline": -9410,
+        "baseline_period": "before_baseline",
+        "conflict_phase": "pre-escalation",
+        "season": "winter"
+      }
+    },
+    {
+      "id": "health-40u3st",
+      "type": "health",
+      "category": "health",
+      "date": "1998-01-01",
+      "location": {
+        "name": "State of Palestine",
+        "coordinates": null,
+        "admin_levels": {
+          "level1": "Eastern Mediterranean",
+          "level2": null,
+          "level3": null
+        },
+        "region": "Palestine",
+        "region_type": null
+      },
+      "value": 33.609039,
+      "unit": "count",
+      "facility_name": "Prevalence of obesity among adults, BMI &GreaterEqual; 30 (age-standardized estimate) (%)",
+      "facility_type": "indicator",
+      "status": "unknown",
+      "damage_level": null,
+      "bed_capacity": 0,
+      "staff_count": 0,
+      "quality": {
+        "score": 0.8555555555555555,
+        "completeness": 0.6666666666666666,
+        "consistency": 1,
+        "accuracy": 0.9,
+        "verified": false,
+        "confidence": 0.8
+      },
+      "sources": [
+        {
+          "name": "HDX",
+          "organization": "UN OCHA",
+          "fetched_at": "2025-11-25T18:04:35.943Z"
+        }
+      ],
+      "created_at": "2025-11-25T18:04:35.943Z",
+      "updated_at": "2025-11-25T18:04:35.943Z",
+      "version": 1,
+      "temporal_context": {
+        "days_since_baseline": -9410,
+        "baseline_period": "before_baseline",
+        "conflict_phase": "pre-escalation",
+        "season": "winter"
+      }
+    },
+    {
+      "id": "health-6mge8t",
+      "type": "health",
+      "category": "health",
+      "date": "1998-01-01",
+      "location": {
+        "name": "State of Palestine",
+        "coordinates": null,
+        "admin_levels": {
+          "level1": "Eastern Mediterranean",
+          "level2": null,
+          "level3": null
+        },
+        "region": "Palestine",
+        "region_type": null
+      },
+      "value": 2.2821406,
+      "unit": "count",
+      "facility_name": "Prevalence of underweight among adults, BMI < 18 (age-standardized estimate) (%)",
+      "facility_type": "indicator",
+      "status": "unknown",
+      "damage_level": null,
+      "bed_capacity": 0,
+      "staff_count": 0,
+      "quality": {
+        "score": 0.8555555555555555,
+        "completeness": 0.6666666666666666,
+        "consistency": 1,
+        "accuracy": 0.9,
+        "verified": false,
+        "confidence": 0.8
+      },
+      "sources": [
+        {
+          "name": "HDX",
+          "organization": "UN OCHA",
+          "fetched_at": "2025-11-25T18:04:35.944Z"
+        }
+      ],
+      "created_at": "2025-11-25T18:04:35.944Z",
+      "updated_at": "2025-11-25T18:04:35.944Z",
+      "version": 1,
+      "temporal_context": {
+        "days_since_baseline": -9410,
+        "baseline_period": "before_baseline",
+        "conflict_phase": "pre-escalation",
+        "season": "winter"
+      }
+    },
+    {
+      "id": "health-knyn0f",
+      "type": "health",
+      "category": "health",
+      "date": "1998-01-01",
+      "location": {
+        "name": "State of Palestine",
+        "coordinates": null,
+        "admin_levels": {
+          "level1": "Eastern Mediterranean",
+          "level2": null,
+          "level3": null
+        },
+        "region": "Palestine",
+        "region_type": null
+      },
+      "value": 3263,
+      "unit": "count",
+      "facility_name": "Number of infant deaths",
+      "facility_type": "indicator",
+      "status": "unknown",
+      "damage_level": null,
+      "bed_capacity": 0,
+      "staff_count": 0,
+      "quality": {
+        "score": 0.8555555555555555,
+        "completeness": 0.6666666666666666,
+        "consistency": 1,
+        "accuracy": 0.9,
+        "verified": false,
+        "confidence": 0.8
+      },
+      "sources": [
+        {
+          "name": "HDX",
+          "organization": "UN OCHA",
+          "fetched_at": "2025-11-25T18:04:35.945Z"
+        }
+      ],
+      "created_at": "2025-11-25T18:04:35.945Z",
+      "updated_at": "2025-11-25T18:04:35.945Z",
+      "version": 1,
+      "temporal_context": {
+        "days_since_baseline": -9410,
+        "baseline_period": "before_baseline",
+        "conflict_phase": "pre-escalation",
+        "season": "winter"
+      }
+    },
+    {
+      "id": "health-5sywdc",
+      "type": "health",
+      "category": "health",
+      "date": "1998-01-01",
+      "location": {
+        "name": "State of Palestine",
+        "coordinates": null,
+        "admin_levels": {
+          "level1": "Eastern Mediterranean",
+          "level2": null,
+          "level3": null
+        },
+        "region": "Palestine",
+        "region_type": null
+      },
+      "value": 149,
+      "unit": "count",
+      "facility_name": "Number of deaths among adolescents (10 to 19 years of age)",
+      "facility_type": "indicator",
+      "status": "unknown",
+      "damage_level": null,
+      "bed_capacity": 0,
+      "staff_count": 0,
+      "quality": {
+        "score": 0.8555555555555555,
+        "completeness": 0.6666666666666666,
+        "consistency": 1,
+        "accuracy": 0.9,
+        "verified": false,
+        "confidence": 0.8
+      },
+      "sources": [
+        {
+          "name": "HDX",
+          "organization": "UN OCHA",
+          "fetched_at": "2025-11-25T18:04:35.945Z"
+        }
+      ],
+      "created_at": "2025-11-25T18:04:35.945Z",
+      "updated_at": "2025-11-25T18:04:35.945Z",
+      "version": 1,
+      "temporal_context": {
+        "days_since_baseline": -9410,
+        "baseline_period": "before_baseline",
+        "conflict_phase": "pre-escalation",
+        "season": "winter"
+      }
+    },
+    {
+      "id": "health-ss9twf",
+      "type": "health",
+      "category": "health",
+      "date": "1998-01-01",
+      "location": {
+        "name": "State of Palestine",
+        "coordinates": null,
+        "admin_levels": {
+          "level1": "Eastern Mediterranean",
+          "level2": null,
+          "level3": null
+        },
+        "region": "Palestine",
+        "region_type": null
+      },
+      "value": 4.3232854,
+      "unit": "count",
+      "facility_name": "Prevalence of thinness among children and adolescents, BMI < -2 standard deviations below the median (crude estimate) (%)",
+      "facility_type": "indicator",
+      "status": "unknown",
+      "damage_level": null,
+      "bed_capacity": 0,
+      "staff_count": 0,
+      "quality": {
+        "score": 0.8555555555555555,
+        "completeness": 0.6666666666666666,
+        "consistency": 1,
+        "accuracy": 0.9,
+        "verified": false,
+        "confidence": 0.8
+      },
+      "sources": [
+        {
+          "name": "HDX",
+          "organization": "UN OCHA",
+          "fetched_at": "2025-11-25T18:04:35.947Z"
+        }
+      ],
+      "created_at": "2025-11-25T18:04:35.947Z",
+      "updated_at": "2025-11-25T18:04:35.947Z",
+      "version": 1,
+      "temporal_context": {
+        "days_since_baseline": -9410,
+        "baseline_period": "before_baseline",
+        "conflict_phase": "pre-escalation",
+        "season": "winter"
+      }
+    },
+    {
+      "id": "health-vq4il5",
+      "type": "health",
+      "category": "health",
+      "date": "1998-01-01",
+      "location": {
+        "name": "State of Palestine",
+        "coordinates": null,
+        "admin_levels": {
+          "level1": "Eastern Mediterranean",
+          "level2": null,
+          "level3": null
+        },
+        "region": "Palestine",
+        "region_type": null
+      },
+      "value": 61.533368,
+      "unit": "count",
+      "facility_name": "Prevalence of overweight among adults, BMI &GreaterEqual; 25 (age-standardized estimate) (%)",
+      "facility_type": "indicator",
+      "status": "unknown",
+      "damage_level": null,
+      "bed_capacity": 0,
+      "staff_count": 0,
+      "quality": {
+        "score": 0.8555555555555555,
+        "completeness": 0.6666666666666666,
+        "consistency": 1,
+        "accuracy": 0.9,
+        "verified": false,
+        "confidence": 0.8
+      },
+      "sources": [
+        {
+          "name": "HDX",
+          "organization": "UN OCHA",
+          "fetched_at": "2025-11-25T18:04:35.953Z"
+        }
+      ],
+      "created_at": "2025-11-25T18:04:35.953Z",
+      "updated_at": "2025-11-25T18:04:35.953Z",
+      "version": 1,
+      "temporal_context": {
+        "days_since_baseline": -9410,
+        "baseline_period": "before_baseline",
+        "conflict_phase": "pre-escalation",
+        "season": "winter"
+      }
+    },
+    {
+      "id": "health-opqldj",
+      "type": "health",
+      "category": "health",
+      "date": "1998-01-01",
+      "location": {
+        "name": "State of Palestine",
+        "coordinates": null,
+        "admin_levels": {
+          "level1": "Eastern Mediterranean",
+          "level2": null,
+          "level3": null
+        },
+        "region": "Palestine",
+        "region_type": null
+      },
+      "value": 48.75181,
+      "unit": "count",
+      "facility_name": "Diabetes treatment coverage, age-standardized",
+      "facility_type": "indicator",
+      "status": "unknown",
+      "damage_level": null,
+      "bed_capacity": 0,
+      "staff_count": 0,
+      "quality": {
+        "score": 0.8555555555555555,
+        "completeness": 0.6666666666666666,
+        "consistency": 1,
+        "accuracy": 0.9,
+        "verified": false,
+        "confidence": 0.8
+      },
+      "sources": [
+        {
+          "name": "HDX",
+          "organization": "UN OCHA",
+          "fetched_at": "2025-11-25T18:04:35.954Z"
+        }
+      ],
+      "created_at": "2025-11-25T18:04:35.954Z",
+      "updated_at": "2025-11-25T18:04:35.954Z",
+      "version": 1,
+      "temporal_context": {
+        "days_since_baseline": -9410,
+        "baseline_period": "before_baseline",
+        "conflict_phase": "pre-escalation",
+        "season": "winter"
+      }
+    },
+    {
+      "id": "health-bwnp3w",
+      "type": "health",
+      "category": "health",
+      "date": "1998-01-01",
+      "location": {
+        "name": "State of Palestine",
+        "coordinates": null,
+        "admin_levels": {
+          "level1": "Eastern Mediterranean",
+          "level2": null,
+          "level3": null
+        },
+        "region": "Palestine",
+        "region_type": null
+      },
+      "value": 2.240277462,
+      "unit": "count",
+      "facility_name": "Adolescent mortality rate (per 1 000 age specific cohort)",
+      "facility_type": "indicator",
+      "status": "unknown",
+      "damage_level": null,
+      "bed_capacity": 0,
+      "staff_count": 0,
+      "quality": {
+        "score": 0.8555555555555555,
+        "completeness": 0.6666666666666666,
+        "consistency": 1,
+        "accuracy": 0.9,
+        "verified": false,
+        "confidence": 0.8
+      },
+      "sources": [
+        {
+          "name": "HDX",
+          "organization": "UN OCHA",
+          "fetched_at": "2025-11-25T18:04:35.957Z"
+        }
+      ],
+      "created_at": "2025-11-25T18:04:35.957Z",
+      "updated_at": "2025-11-25T18:04:35.957Z",
+      "version": 1,
+      "temporal_context": {
+        "days_since_baseline": -9410,
+        "baseline_period": "before_baseline",
+        "conflict_phase": "pre-escalation",
+        "season": "winter"
+      }
+    },
+    {
+      "id": "health-sot93r",
+      "type": "health",
+      "category": "health",
+      "date": "1998-01-01",
+      "location": {
+        "name": "State of Palestine",
+        "coordinates": null,
+        "admin_levels": {
+          "level1": "Eastern Mediterranean",
+          "level2": null,
+          "level3": null
+        },
+        "region": "Palestine",
+        "region_type": null
+      },
+      "value": 16.578557,
+      "unit": "count",
+      "facility_name": "Prevalence of overweight among children and adolescents, BMI > +1 standard deviations above the median (crude estimate) (%)",
+      "facility_type": "indicator",
+      "status": "unknown",
+      "damage_level": null,
+      "bed_capacity": 0,
+      "staff_count": 0,
+      "quality": {
+        "score": 0.8555555555555555,
+        "completeness": 0.6666666666666666,
+        "consistency": 1,
+        "accuracy": 0.9,
+        "verified": false,
+        "confidence": 0.8
+      },
+      "sources": [
+        {
+          "name": "HDX",
+          "organization": "UN OCHA",
+          "fetched_at": "2025-11-25T18:04:35.958Z"
+        }
+      ],
+      "created_at": "2025-11-25T18:04:35.958Z",
+      "updated_at": "2025-11-25T18:04:35.958Z",
+      "version": 1,
+      "temporal_context": {
+        "days_since_baseline": -9410,
+        "baseline_period": "before_baseline",
+        "conflict_phase": "pre-escalation",
+        "season": "winter"
+      }
+    },
+    {
+      "id": "health-1tbnwk",
+      "type": "health",
+      "category": "health",
+      "date": "1998-01-01",
+      "location": {
+        "name": "State of Palestine",
+        "coordinates": null,
+        "admin_levels": {
+          "level1": "Eastern Mediterranean",
+          "level2": null,
+          "level3": null
+        },
+        "region": "Palestine",
+        "region_type": null
+      },
+      "value": 5.1472411,
+      "unit": "count",
+      "facility_name": "Prevalence of obesity among children and adolescents, BMI > +2 standard deviations above the median (crude estimate) (%)",
+      "facility_type": "indicator",
+      "status": "unknown",
+      "damage_level": null,
+      "bed_capacity": 0,
+      "staff_count": 0,
+      "quality": {
+        "score": 0.8555555555555555,
+        "completeness": 0.6666666666666666,
+        "consistency": 1,
+        "accuracy": 0.9,
+        "verified": false,
+        "confidence": 0.8
+      },
+      "sources": [
+        {
+          "name": "HDX",
+          "organization": "UN OCHA",
+          "fetched_at": "2025-11-25T18:04:35.958Z"
+        }
+      ],
+      "created_at": "2025-11-25T18:04:35.958Z",
+      "updated_at": "2025-11-25T18:04:35.958Z",
+      "version": 1,
+      "temporal_context": {
+        "days_since_baseline": -9410,
+        "baseline_period": "before_baseline",
+        "conflict_phase": "pre-escalation",
+        "season": "winter"
+      }
+    },
+    {
+      "id": "health-c35s2d",
+      "type": "health",
+      "category": "health",
+      "date": "1998-01-01",
+      "location": {
+        "name": "State of Palestine",
+        "coordinates": null,
+        "admin_levels": {
+          "level1": "Eastern Mediterranean",
+          "level2": null,
+          "level3": null
+        },
+        "region": "Palestine",
+        "region_type": null
+      },
+      "value": 6.571450877,
+      "unit": "count",
+      "facility_name": "Adolescent mortality rate (per 1 000 age specific cohort)",
+      "facility_type": "indicator",
+      "status": "unknown",
+      "damage_level": null,
+      "bed_capacity": 0,
+      "staff_count": 0,
+      "quality": {
+        "score": 0.8555555555555555,
+        "completeness": 0.6666666666666666,
+        "consistency": 1,
+        "accuracy": 0.9,
+        "verified": false,
+        "confidence": 0.8
+      },
+      "sources": [
+        {
+          "name": "HDX",
+          "organization": "UN OCHA",
+          "fetched_at": "2025-11-25T18:04:35.958Z"
+        }
+      ],
+      "created_at": "2025-11-25T18:04:35.958Z",
+      "updated_at": "2025-11-25T18:04:35.958Z",
+      "version": 1,
+      "temporal_context": {
+        "days_since_baseline": -9410,
+        "baseline_period": "before_baseline",
+        "conflict_phase": "pre-escalation",
+        "season": "winter"
+      }
+    },
+    {
+      "id": "health-54yd3i",
+      "type": "health",
+      "category": "health",
+      "date": "1998-01-01",
+      "location": {
+        "name": "State of Palestine",
+        "coordinates": null,
+        "admin_levels": {
+          "level1": "Eastern Mediterranean",
+          "level2": null,
+          "level3": null
+        },
+        "region": "Palestine",
+        "region_type": null
+      },
+      "value": 280,
+      "unit": "count",
+      "facility_name": "Number of deaths among adolescents (10 to 19 years of age)",
+      "facility_type": "indicator",
+      "status": "unknown",
+      "damage_level": null,
+      "bed_capacity": 0,
+      "staff_count": 0,
+      "quality": {
+        "score": 0.8555555555555555,
+        "completeness": 0.6666666666666666,
+        "consistency": 1,
+        "accuracy": 0.9,
+        "verified": false,
+        "confidence": 0.8
+      },
+      "sources": [
+        {
+          "name": "HDX",
+          "organization": "UN OCHA",
+          "fetched_at": "2025-11-25T18:04:35.964Z"
+        }
+      ],
+      "created_at": "2025-11-25T18:04:35.964Z",
+      "updated_at": "2025-11-25T18:04:35.964Z",
+      "version": 1,
+      "temporal_context": {
+        "days_since_baseline": -9410,
+        "baseline_period": "before_baseline",
+        "conflict_phase": "pre-escalation",
+        "season": "winter"
+      }
+    },
+    {
+      "id": "health-ev81ar",
+      "type": "health",
+      "category": "health",
+      "date": "1998-01-01",
+      "location": {
+        "name": "State of Palestine",
+        "coordinates": null,
+        "admin_levels": {
+          "level1": "Eastern Mediterranean",
+          "level2": null,
+          "level3": null
+        },
+        "region": "Palestine",
+        "region_type": null
+      },
+      "value": 65.832889,
+      "unit": "count",
+      "facility_name": "Prevalence of overweight among adults, BMI &GreaterEqual; 25 (age-standardized estimate) (%)",
+      "facility_type": "indicator",
+      "status": "unknown",
+      "damage_level": null,
+      "bed_capacity": 0,
+      "staff_count": 0,
+      "quality": {
+        "score": 0.8555555555555555,
+        "completeness": 0.6666666666666666,
+        "consistency": 1,
+        "accuracy": 0.9,
+        "verified": false,
+        "confidence": 0.8
+      },
+      "sources": [
+        {
+          "name": "HDX",
+          "organization": "UN OCHA",
+          "fetched_at": "2025-11-25T18:04:35.969Z"
+        }
+      ],
+      "created_at": "2025-11-25T18:04:35.969Z",
+      "updated_at": "2025-11-25T18:04:35.969Z",
+      "version": 1,
+      "temporal_context": {
+        "days_since_baseline": -9410,
+        "baseline_period": "before_baseline",
+        "conflict_phase": "pre-escalation",
+        "season": "winter"
+      }
+    },
+    {
+      "id": "health-ro8ycz",
+      "type": "health",
+      "category": "health",
+      "date": "1998-01-01",
+      "location": {
+        "name": "State of Palestine",
+        "coordinates": null,
+        "admin_levels": {
+          "level1": "Eastern Mediterranean",
+          "level2": null,
+          "level3": null
+        },
+        "region": "Palestine",
+        "region_type": null
+      },
+      "value": 8.717341324,
+      "unit": "count",
+      "facility_name": "Adolescent mortality rate (per 1 000 age specific cohort)",
+      "facility_type": "indicator",
+      "status": "unknown",
+      "damage_level": null,
+      "bed_capacity": 0,
+      "staff_count": 0,
+      "quality": {
+        "score": 0.8555555555555555,
+        "completeness": 0.6666666666666666,
+        "consistency": 1,
+        "accuracy": 0.9,
+        "verified": false,
+        "confidence": 0.8
+      },
+      "sources": [
+        {
+          "name": "HDX",
+          "organization": "UN OCHA",
+          "fetched_at": "2025-11-25T18:04:35.969Z"
+        }
+      ],
+      "created_at": "2025-11-25T18:04:35.969Z",
+      "updated_at": "2025-11-25T18:04:35.969Z",
+      "version": 1,
+      "temporal_context": {
+        "days_since_baseline": -9410,
+        "baseline_period": "before_baseline",
+        "conflict_phase": "pre-escalation",
+        "season": "winter"
+      }
+    },
+    {
+      "id": "health-9flt6j",
+      "type": "health",
+      "category": "health",
+      "date": "1998-01-01",
+      "location": {
+        "name": "State of Palestine",
+        "coordinates": null,
+        "admin_levels": {
+          "level1": "Eastern Mediterranean",
+          "level2": null,
+          "level3": null
+        },
+        "region": "Palestine",
+        "region_type": null
+      },
+      "value": 14.555241,
+      "unit": "count",
+      "facility_name": "Prevalence of overweight among children and adolescents, BMI > +1 standard deviations above the median (crude estimate) (%)",
+      "facility_type": "indicator",
+      "status": "unknown",
+      "damage_level": null,
+      "bed_capacity": 0,
+      "staff_count": 0,
+      "quality": {
+        "score": 0.8555555555555555,
+        "completeness": 0.6666666666666666,
+        "consistency": 1,
+        "accuracy": 0.9,
+        "verified": false,
+        "confidence": 0.8
+      },
+      "sources": [
+        {
+          "name": "HDX",
+          "organization": "UN OCHA",
+          "fetched_at": "2025-11-25T18:04:35.970Z"
+        }
+      ],
+      "created_at": "2025-11-25T18:04:35.970Z",
+      "updated_at": "2025-11-25T18:04:35.970Z",
+      "version": 1,
+      "temporal_context": {
+        "days_since_baseline": -9410,
+        "baseline_period": "before_baseline",
+        "conflict_phase": "pre-escalation",
+        "season": "winter"
+      }
+    },
+    {
+      "id": "health-o8zr09",
+      "type": "health",
+      "category": "health",
+      "date": "1998-01-01",
+      "location": {
+        "name": "State of Palestine",
+        "coordinates": null,
+        "admin_levels": {
+          "level1": "Eastern Mediterranean",
+          "level2": null,
+          "level3": null
+        },
+        "region": "Palestine",
+        "region_type": null
+      },
+      "value": 11.110566,
+      "unit": "count",
+      "facility_name": "Prevalence of diabetes, crude",
+      "facility_type": "indicator",
+      "status": "unknown",
+      "damage_level": null,
+      "bed_capacity": 0,
+      "staff_count": 0,
+      "quality": {
+        "score": 0.8555555555555555,
+        "completeness": 0.6666666666666666,
+        "consistency": 1,
+        "accuracy": 0.9,
+        "verified": false,
+        "confidence": 0.8
+      },
+      "sources": [
+        {
+          "name": "HDX",
+          "organization": "UN OCHA",
+          "fetched_at": "2025-11-25T18:04:35.973Z"
+        }
+      ],
+      "created_at": "2025-11-25T18:04:35.973Z",
+      "updated_at": "2025-11-25T18:04:35.973Z",
+      "version": 1,
+      "temporal_context": {
+        "days_since_baseline": -9410,
+        "baseline_period": "before_baseline",
+        "conflict_phase": "pre-escalation",
+        "season": "winter"
+      }
+    },
+    {
+      "id": "health-3ob1ma",
+      "type": "health",
+      "category": "health",
+      "date": "1998-01-01",
+      "location": {
+        "name": "State of Palestine",
+        "coordinates": null,
+        "admin_levels": {
+          "level1": "Eastern Mediterranean",
+          "level2": null,
+          "level3": null
+        },
+        "region": "Palestine",
+        "region_type": null
+      },
+      "value": 133,
+      "unit": "count",
+      "facility_name": "Number of deaths among children ages 5 to 9 years",
+      "facility_type": "indicator",
+      "status": "unknown",
+      "damage_level": null,
+      "bed_capacity": 0,
+      "staff_count": 0,
+      "quality": {
+        "score": 0.8555555555555555,
+        "completeness": 0.6666666666666666,
+        "consistency": 1,
+        "accuracy": 0.9,
+        "verified": false,
+        "confidence": 0.8
+      },
+      "sources": [
+        {
+          "name": "HDX",
+          "organization": "UN OCHA",
+          "fetched_at": "2025-11-25T18:04:35.973Z"
+        }
+      ],
+      "created_at": "2025-11-25T18:04:35.973Z",
+      "updated_at": "2025-11-25T18:04:35.973Z",
+      "version": 1,
+      "temporal_context": {
+        "days_since_baseline": -9410,
+        "baseline_period": "before_baseline",
+        "conflict_phase": "pre-escalation",
+        "season": "winter"
+      }
+    },
+    {
+      "id": "health-43frrx",
+      "type": "health",
+      "category": "health",
+      "date": "1998-01-01",
+      "location": {
+        "name": "State of Palestine",
+        "coordinates": null,
+        "admin_levels": {
+          "level1": "Eastern Mediterranean",
+          "level2": null,
+          "level3": null
+        },
+        "region": "Palestine",
+        "region_type": null
+      },
+      "value": 4.7622927,
+      "unit": "count",
+      "facility_name": "Prevalence of obesity among children and adolescents, BMI > +2 standard deviations above the median (crude estimate) (%)",
+      "facility_type": "indicator",
+      "status": "unknown",
+      "damage_level": null,
+      "bed_capacity": 0,
+      "staff_count": 0,
+      "quality": {
+        "score": 0.8555555555555555,
+        "completeness": 0.6666666666666666,
+        "consistency": 1,
+        "accuracy": 0.9,
+        "verified": false,
+        "confidence": 0.8
+      },
+      "sources": [
+        {
+          "name": "HDX",
+          "organization": "UN OCHA",
+          "fetched_at": "2025-11-25T18:04:35.973Z"
+        }
+      ],
+      "created_at": "2025-11-25T18:04:35.973Z",
+      "updated_at": "2025-11-25T18:04:35.973Z",
+      "version": 1,
+      "temporal_context": {
+        "days_since_baseline": -9410,
+        "baseline_period": "before_baseline",
+        "conflict_phase": "pre-escalation",
+        "season": "winter"
+      }
+    },
+    {
+      "id": "health-xqf6ej",
+      "type": "health",
+      "category": "health",
+      "date": "1998-01-01",
+      "location": {
+        "name": "State of Palestine",
+        "coordinates": null,
+        "admin_levels": {
+          "level1": "Eastern Mediterranean",
+          "level2": null,
+          "level3": null
+        },
+        "region": "Palestine",
+        "region_type": null
+      },
+      "value": 21.233307,
+      "unit": "count",
+      "facility_name": "Prevalence of obesity among adults, BMI &GreaterEqual; 30 (crude estimate) (%)",
+      "facility_type": "indicator",
+      "status": "unknown",
+      "damage_level": null,
+      "bed_capacity": 0,
+      "staff_count": 0,
+      "quality": {
+        "score": 0.8555555555555555,
+        "completeness": 0.6666666666666666,
+        "consistency": 1,
+        "accuracy": 0.9,
+        "verified": false,
+        "confidence": 0.8
+      },
+      "sources": [
+        {
+          "name": "HDX",
+          "organization": "UN OCHA",
+          "fetched_at": "2025-11-25T18:04:35.974Z"
+        }
+      ],
+      "created_at": "2025-11-25T18:04:35.974Z",
+      "updated_at": "2025-11-25T18:04:35.974Z",
+      "version": 1,
+      "temporal_context": {
+        "days_since_baseline": -9410,
+        "baseline_period": "before_baseline",
+        "conflict_phase": "pre-escalation",
+        "season": "winter"
+      }
+    },
+    {
+      "id": "health-dr653c",
+      "type": "health",
+      "category": "health",
+      "date": "1998-01-01",
+      "location": {
+        "name": "State of Palestine",
+        "coordinates": null,
+        "admin_levels": {
+          "level1": "Eastern Mediterranean",
+          "level2": null,
+          "level3": null
+        },
+        "region": "Palestine",
+        "region_type": null
+      },
+      "value": 670,
+      "unit": "count",
+      "facility_name": "Number of under-five deaths",
+      "facility_type": "indicator",
+      "status": "unknown",
+      "damage_level": null,
+      "bed_capacity": 0,
+      "staff_count": 0,
+      "quality": {
+        "score": 0.8555555555555555,
+        "completeness": 0.6666666666666666,
+        "consistency": 1,
+        "accuracy": 0.9,
+        "verified": false,
+        "confidence": 0.8
+      },
+      "sources": [
+        {
+          "name": "HDX",
+          "organization": "UN OCHA",
+          "fetched_at": "2025-11-25T18:04:35.974Z"
+        }
+      ],
+      "created_at": "2025-11-25T18:04:35.974Z",
+      "updated_at": "2025-11-25T18:04:35.974Z",
+      "version": 1,
+      "temporal_context": {
+        "days_since_baseline": -9410,
+        "baseline_period": "before_baseline",
+        "conflict_phase": "pre-escalation",
+        "season": "winter"
+      }
+    },
+    {
+      "id": "health-cj3vau",
+      "type": "health",
+      "category": "health",
+      "date": "1998-01-01",
+      "location": {
+        "name": "State of Palestine",
+        "coordinates": null,
+        "admin_levels": {
+          "level1": "Eastern Mediterranean",
+          "level2": null,
+          "level3": null
+        },
+        "region": "Palestine",
+        "region_type": null
+      },
+      "value": 1697,
+      "unit": "count",
+      "facility_name": "Number of under-five deaths",
+      "facility_type": "indicator",
+      "status": "unknown",
+      "damage_level": null,
+      "bed_capacity": 0,
+      "staff_count": 0,
+      "quality": {
+        "score": 0.8555555555555555,
+        "completeness": 0.6666666666666666,
+        "consistency": 1,
+        "accuracy": 0.9,
+        "verified": false,
+        "confidence": 0.8
+      },
+      "sources": [
+        {
+          "name": "HDX",
+          "organization": "UN OCHA",
+          "fetched_at": "2025-11-25T18:04:35.976Z"
+        }
+      ],
+      "created_at": "2025-11-25T18:04:35.976Z",
+      "updated_at": "2025-11-25T18:04:35.976Z",
+      "version": 1,
+      "temporal_context": {
+        "days_since_baseline": -9410,
+        "baseline_period": "before_baseline",
+        "conflict_phase": "pre-escalation",
+        "season": "winter"
+      }
+    },
+    {
+      "id": "health-on17rt",
+      "type": "health",
+      "category": "health",
+      "date": "1998-01-01",
+      "location": {
+        "name": "State of Palestine",
+        "coordinates": null,
+        "admin_levels": {
+          "level1": "Eastern Mediterranean",
+          "level2": null,
+          "level3": null
+        },
+        "region": "Palestine",
+        "region_type": null
+      },
+      "value": 2.4561392,
+      "unit": "count",
+      "facility_name": "Prevalence of thinness among children and adolescents, BMI < -2 standard deviations below the median (crude estimate) (%)",
+      "facility_type": "indicator",
+      "status": "unknown",
+      "damage_level": null,
+      "bed_capacity": 0,
+      "staff_count": 0,
+      "quality": {
+        "score": 0.8555555555555555,
+        "completeness": 0.6666666666666666,
+        "consistency": 1,
+        "accuracy": 0.9,
+        "verified": false,
+        "confidence": 0.8
+      },
+      "sources": [
+        {
+          "name": "HDX",
+          "organization": "UN OCHA",
+          "fetched_at": "2025-11-25T18:04:35.976Z"
+        }
+      ],
+      "created_at": "2025-11-25T18:04:35.976Z",
+      "updated_at": "2025-11-25T18:04:35.976Z",
+      "version": 1,
+      "temporal_context": {
+        "days_since_baseline": -9410,
+        "baseline_period": "before_baseline",
+        "conflict_phase": "pre-escalation",
+        "season": "winter"
+      }
+    },
+    {
+      "id": "health-vjcmyo",
+      "type": "health",
+      "category": "health",
+      "date": "1998-01-01",
+      "location": {
+        "name": "State of Palestine",
+        "coordinates": null,
+        "admin_levels": {
+          "level1": "Eastern Mediterranean",
+          "level2": null,
+          "level3": null
+        },
+        "region": "Palestine",
+        "region_type": null
+      },
+      "value": 4.340898231,
+      "unit": "count",
+      "facility_name": "Adolescent mortality rate (per 1 000 age specific cohort)",
+      "facility_type": "indicator",
+      "status": "unknown",
+      "damage_level": null,
+      "bed_capacity": 0,
+      "staff_count": 0,
+      "quality": {
+        "score": 0.8555555555555555,
+        "completeness": 0.6666666666666666,
+        "consistency": 1,
+        "accuracy": 0.9,
+        "verified": false,
+        "confidence": 0.8
+      },
+      "sources": [
+        {
+          "name": "HDX",
+          "organization": "UN OCHA",
+          "fetched_at": "2025-11-25T18:04:35.978Z"
+        }
+      ],
+      "created_at": "2025-11-25T18:04:35.978Z",
+      "updated_at": "2025-11-25T18:04:35.978Z",
+      "version": 1,
+      "temporal_context": {
+        "days_since_baseline": -9410,
+        "baseline_period": "before_baseline",
+        "conflict_phase": "pre-escalation",
+        "season": "winter"
+      }
+    },
+    {
+      "id": "health-y9zedl",
+      "type": "health",
+      "category": "health",
+      "date": "1998-01-01",
+      "location": {
+        "name": "State of Palestine",
+        "coordinates": null,
+        "admin_levels": {
+          "level1": "Eastern Mediterranean",
+          "level2": null,
+          "level3": null
+        },
+        "region": "Palestine",
+        "region_type": null
+      },
+      "value": 4.0148661,
+      "unit": "count",
+      "facility_name": "Prevalence of obesity among children and adolescents, BMI > +2 standard deviations above the median (crude estimate) (%)",
+      "facility_type": "indicator",
+      "status": "unknown",
+      "damage_level": null,
+      "bed_capacity": 0,
+      "staff_count": 0,
+      "quality": {
+        "score": 0.8555555555555555,
+        "completeness": 0.6666666666666666,
+        "consistency": 1,
+        "accuracy": 0.9,
+        "verified": false,
+        "confidence": 0.8
+      },
+      "sources": [
+        {
+          "name": "HDX",
+          "organization": "UN OCHA",
+          "fetched_at": "2025-11-25T18:04:35.979Z"
+        }
+      ],
+      "created_at": "2025-11-25T18:04:35.979Z",
+      "updated_at": "2025-11-25T18:04:35.979Z",
+      "version": 1,
+      "temporal_context": {
+        "days_since_baseline": -9410,
+        "baseline_period": "before_baseline",
+        "conflict_phase": "pre-escalation",
+        "season": "winter"
+      }
+    },
+    {
+      "id": "health-j7r3hj",
+      "type": "health",
+      "category": "health",
+      "date": "1998-01-01",
+      "location": {
+        "name": "State of Palestine",
+        "coordinates": null,
+        "admin_levels": {
+          "level1": "Eastern Mediterranean",
+          "level2": null,
+          "level3": null
+        },
+        "region": "Palestine",
+        "region_type": null
+      },
+      "value": 14.835688,
+      "unit": "count",
+      "facility_name": "Prevalence of obesity among adults, BMI &GreaterEqual; 30 (crude estimate) (%)",
+      "facility_type": "indicator",
+      "status": "unknown",
+      "damage_level": null,
+      "bed_capacity": 0,
+      "staff_count": 0,
+      "quality": {
+        "score": 0.8555555555555555,
+        "completeness": 0.6666666666666666,
+        "consistency": 1,
+        "accuracy": 0.9,
+        "verified": false,
+        "confidence": 0.8
+      },
+      "sources": [
+        {
+          "name": "HDX",
+          "organization": "UN OCHA",
+          "fetched_at": "2025-11-25T18:04:35.982Z"
+        }
+      ],
+      "created_at": "2025-11-25T18:04:35.982Z",
+      "updated_at": "2025-11-25T18:04:35.982Z",
+      "version": 1,
+      "temporal_context": {
+        "days_since_baseline": -9410,
+        "baseline_period": "before_baseline",
+        "conflict_phase": "pre-escalation",
+        "season": "winter"
+      }
+    },
+    {
+      "id": "health-lavxn2",
+      "type": "health",
+      "category": "health",
+      "date": "1998-01-01",
+      "location": {
+        "name": "State of Palestine",
+        "coordinates": null,
+        "admin_levels": {
+          "level1": "Eastern Mediterranean",
+          "level2": null,
+          "level3": null
+        },
+        "region": "Palestine",
+        "region_type": null
+      },
+      "value": 17.985478,
+      "unit": "count",
+      "facility_name": "Prevalence of diabetes, crude",
+      "facility_type": "indicator",
+      "status": "unknown",
+      "damage_level": null,
+      "bed_capacity": 0,
+      "staff_count": 0,
+      "quality": {
+        "score": 0.8555555555555555,
+        "completeness": 0.6666666666666666,
+        "consistency": 1,
+        "accuracy": 0.9,
+        "verified": false,
+        "confidence": 0.8
+      },
+      "sources": [
+        {
+          "name": "HDX",
+          "organization": "UN OCHA",
+          "fetched_at": "2025-11-25T18:04:35.982Z"
+        }
+      ],
+      "created_at": "2025-11-25T18:04:35.982Z",
+      "updated_at": "2025-11-25T18:04:35.982Z",
+      "version": 1,
+      "temporal_context": {
+        "days_since_baseline": -9410,
+        "baseline_period": "before_baseline",
+        "conflict_phase": "pre-escalation",
+        "season": "winter"
+      }
+    },
+    {
+      "id": "health-aa9wac",
+      "type": "health",
+      "category": "health",
+      "date": "1998-01-01",
+      "location": {
+        "name": "State of Palestine",
+        "coordinates": null,
+        "admin_levels": {
+          "level1": "Eastern Mediterranean",
+          "level2": null,
+          "level3": null
+        },
+        "region": "Palestine",
+        "region_type": null
+      },
+      "value": 37.177845892,
+      "unit": "count",
+      "facility_name": "Under-five mortality rate (probability of dying by age 5 per 1000 live births)",
+      "facility_type": "indicator",
+      "status": "unknown",
+      "damage_level": null,
+      "bed_capacity": 0,
+      "staff_count": 0,
+      "quality": {
+        "score": 0.8555555555555555,
+        "completeness": 0.6666666666666666,
+        "consistency": 1,
+        "accuracy": 0.9,
+        "verified": false,
+        "confidence": 0.8
+      },
+      "sources": [
+        {
+          "name": "HDX",
+          "organization": "UN OCHA",
+          "fetched_at": "2025-11-25T18:04:35.983Z"
+        }
+      ],
+      "created_at": "2025-11-25T18:04:35.983Z",
+      "updated_at": "2025-11-25T18:04:35.983Z",
+      "version": 1,
+      "temporal_context": {
+        "days_since_baseline": -9410,
+        "baseline_period": "before_baseline",
+        "conflict_phase": "pre-escalation",
+        "season": "winter"
+      }
+    },
+    {
+      "id": "health-ev1lif",
+      "type": "health",
+      "category": "health",
+      "date": "1998-01-01",
+      "location": {
+        "name": "State of Palestine",
+        "coordinates": null,
+        "admin_levels": {
+          "level1": "Eastern Mediterranean",
+          "level2": null,
+          "level3": null
+        },
+        "region": "Palestine",
+        "region_type": null
+      },
+      "value": 34.543947042,
+      "unit": "count",
+      "facility_name": "Under-five mortality rate (probability of dying by age 5 per 1000 live births)",
+      "facility_type": "indicator",
+      "status": "unknown",
+      "damage_level": null,
+      "bed_capacity": 0,
+      "staff_count": 0,
+      "quality": {
+        "score": 0.8555555555555555,
+        "completeness": 0.6666666666666666,
+        "consistency": 1,
+        "accuracy": 0.9,
+        "verified": false,
+        "confidence": 0.8
+      },
+      "sources": [
+        {
+          "name": "HDX",
+          "organization": "UN OCHA",
+          "fetched_at": "2025-11-25T18:04:35.983Z"
+        }
+      ],
+      "created_at": "2025-11-25T18:04:35.983Z",
+      "updated_at": "2025-11-25T18:04:35.983Z",
+      "version": 1,
+      "temporal_context": {
+        "days_since_baseline": -9410,
+        "baseline_period": "before_baseline",
+        "conflict_phase": "pre-escalation",
+        "season": "winter"
+      }
+    },
+    {
+      "id": "health-sasihg",
+      "type": "health",
+      "category": "health",
+      "date": "1998-01-01",
+      "location": {
+        "name": "State of Palestine",
+        "coordinates": null,
+        "admin_levels": {
+          "level1": "Eastern Mediterranean",
+          "level2": null,
+          "level3": null
+        },
+        "region": "Palestine",
+        "region_type": null
+      },
+      "value": 17.351738,
+      "unit": "count",
+      "facility_name": "Prevalence of obesity among adults, BMI &GreaterEqual; 30 (age-standardized estimate) (%)",
+      "facility_type": "indicator",
+      "status": "unknown",
+      "damage_level": null,
+      "bed_capacity": 0,
+      "staff_count": 0,
+      "quality": {
+        "score": 0.8555555555555555,
+        "completeness": 0.6666666666666666,
+        "consistency": 1,
+        "accuracy": 0.9,
+        "verified": false,
+        "confidence": 0.8
+      },
+      "sources": [
+        {
+          "name": "HDX",
+          "organization": "UN OCHA",
+          "fetched_at": "2025-11-25T18:04:35.984Z"
+        }
+      ],
+      "created_at": "2025-11-25T18:04:35.984Z",
+      "updated_at": "2025-11-25T18:04:35.984Z",
+      "version": 1,
+      "temporal_context": {
+        "days_since_baseline": -9410,
+        "baseline_period": "before_baseline",
+        "conflict_phase": "pre-escalation",
+        "season": "winter"
+      }
+    },
+    {
+      "id": "health-kv0yqo",
+      "type": "health",
+      "category": "health",
+      "date": "1998-01-01",
+      "location": {
+        "name": "State of Palestine",
+        "coordinates": null,
+        "admin_levels": {
+          "level1": "Eastern Mediterranean",
+          "level2": null,
+          "level3": null
+        },
+        "region": "Palestine",
+        "region_type": null
+      },
+      "value": 484,
+      "unit": "count",
+      "facility_name": "Number of under-five deaths",
+      "facility_type": "indicator",
+      "status": "unknown",
+      "damage_level": null,
+      "bed_capacity": 0,
+      "staff_count": 0,
+      "quality": {
+        "score": 0.8555555555555555,
+        "completeness": 0.6666666666666666,
+        "consistency": 1,
+        "accuracy": 0.9,
+        "verified": false,
+        "confidence": 0.8
+      },
+      "sources": [
+        {
+          "name": "HDX",
+          "organization": "UN OCHA",
+          "fetched_at": "2025-11-25T18:04:35.984Z"
+        }
+      ],
+      "created_at": "2025-11-25T18:04:35.984Z",
+      "updated_at": "2025-11-25T18:04:35.984Z",
+      "version": 1,
+      "temporal_context": {
+        "days_since_baseline": -9410,
+        "baseline_period": "before_baseline",
+        "conflict_phase": "pre-escalation",
+        "season": "winter"
+      }
+    },
+    {
+      "id": "health-304v6r",
+      "type": "health",
+      "category": "health",
+      "date": "1998-01-01",
+      "location": {
+        "name": "State of Palestine",
+        "coordinates": null,
+        "admin_levels": {
+          "level1": "Eastern Mediterranean",
+          "level2": null,
+          "level3": null
+        },
+        "region": "Palestine",
+        "region_type": null
+      },
+      "value": 9.7504474,
+      "unit": "count",
+      "facility_name": "Prevalence of diabetes, crude",
+      "facility_type": "indicator",
+      "status": "unknown",
+      "damage_level": null,
+      "bed_capacity": 0,
+      "staff_count": 0,
+      "quality": {
+        "score": 0.8555555555555555,
+        "completeness": 0.6666666666666666,
+        "consistency": 1,
+        "accuracy": 0.9,
+        "verified": false,
+        "confidence": 0.8
+      },
+      "sources": [
+        {
+          "name": "HDX",
+          "organization": "UN OCHA",
+          "fetched_at": "2025-11-25T18:04:35.986Z"
+        }
+      ],
+      "created_at": "2025-11-25T18:04:35.986Z",
+      "updated_at": "2025-11-25T18:04:35.986Z",
+      "version": 1,
+      "temporal_context": {
+        "days_since_baseline": -9410,
+        "baseline_period": "before_baseline",
+        "conflict_phase": "pre-escalation",
+        "season": "winter"
+      }
+    },
+    {
+      "id": "health-u9kkyd",
+      "type": "health",
+      "category": "health",
+      "date": "1998-01-01",
+      "location": {
+        "name": "State of Palestine",
+        "coordinates": null,
+        "admin_levels": {
+          "level1": "Eastern Mediterranean",
+          "level2": null,
+          "level3": null
+        },
+        "region": "Palestine",
+        "region_type": null
+      },
+      "value": 10.429868,
+      "unit": "count",
+      "facility_name": "Prevalence of diabetes, crude",
+      "facility_type": "indicator",
+      "status": "unknown",
+      "damage_level": null,
+      "bed_capacity": 0,
+      "staff_count": 0,
+      "quality": {
+        "score": 0.8555555555555555,
+        "completeness": 0.6666666666666666,
+        "consistency": 1,
+        "accuracy": 0.9,
+        "verified": false,
+        "confidence": 0.8
+      },
+      "sources": [
+        {
+          "name": "HDX",
+          "organization": "UN OCHA",
+          "fetched_at": "2025-11-25T18:04:35.987Z"
+        }
+      ],
+      "created_at": "2025-11-25T18:04:35.987Z",
+      "updated_at": "2025-11-25T18:04:35.987Z",
+      "version": 1,
+      "temporal_context": {
+        "days_since_baseline": -9410,
+        "baseline_period": "before_baseline",
+        "conflict_phase": "pre-escalation",
+        "season": "winter"
+      }
+    },
+    {
+      "id": "health-1w92j0",
+      "type": "health",
+      "category": "health",
+      "date": "1998-01-01",
+      "location": {
+        "name": "State of Palestine",
+        "coordinates": null,
+        "admin_levels": {
+          "level1": "Eastern Mediterranean",
+          "level2": null,
+          "level3": null
+        },
+        "region": "Palestine",
+        "region_type": null
+      },
+      "value": 32.41977241,
+      "unit": "count",
+      "facility_name": "Under-five mortality rate (probability of dying by age 5 per 1000 live births)",
+      "facility_type": "indicator",
+      "status": "unknown",
+      "damage_level": null,
+      "bed_capacity": 0,
+      "staff_count": 0,
+      "quality": {
+        "score": 0.8555555555555555,
+        "completeness": 0.6666666666666666,
+        "consistency": 1,
+        "accuracy": 0.9,
+        "verified": false,
+        "confidence": 0.8
+      },
+      "sources": [
+        {
+          "name": "HDX",
+          "organization": "UN OCHA",
+          "fetched_at": "2025-11-25T18:04:35.989Z"
+        }
+      ],
+      "created_at": "2025-11-25T18:04:35.989Z",
+      "updated_at": "2025-11-25T18:04:35.989Z",
+      "version": 1,
+      "temporal_context": {
+        "days_since_baseline": -9410,
+        "baseline_period": "before_baseline",
+        "conflict_phase": "pre-escalation",
+        "season": "winter"
+      }
+    },
+    {
+      "id": "health-8p4vzh",
+      "type": "health",
+      "category": "health",
+      "date": "1998-01-01",
+      "location": {
+        "name": "State of Palestine",
+        "coordinates": null,
+        "admin_levels": {
+          "level1": "Eastern Mediterranean",
+          "level2": null,
+          "level3": null
+        },
+        "region": "Palestine",
+        "region_type": null
+      },
+      "value": 92,
+      "unit": "count",
+      "facility_name": "Number of deaths among children ages 5 to 9 years",
+      "facility_type": "indicator",
+      "status": "unknown",
+      "damage_level": null,
+      "bed_capacity": 0,
+      "staff_count": 0,
+      "quality": {
+        "score": 0.8555555555555555,
+        "completeness": 0.6666666666666666,
+        "consistency": 1,
+        "accuracy": 0.9,
+        "verified": false,
+        "confidence": 0.8
+      },
+      "sources": [
+        {
+          "name": "HDX",
+          "organization": "UN OCHA",
+          "fetched_at": "2025-11-25T18:04:35.989Z"
+        }
+      ],
+      "created_at": "2025-11-25T18:04:35.989Z",
+      "updated_at": "2025-11-25T18:04:35.989Z",
+      "version": 1,
+      "temporal_context": {
+        "days_since_baseline": -9410,
+        "baseline_period": "before_baseline",
+        "conflict_phase": "pre-escalation",
+        "season": "winter"
+      }
+    },
+    {
+      "id": "health-9t4ywv",
+      "type": "health",
+      "category": "health",
+      "date": "1998-01-01",
+      "location": {
+        "name": "State of Palestine",
+        "coordinates": null,
+        "admin_levels": {
+          "level1": "Eastern Mediterranean",
+          "level2": null,
+          "level3": null
+        },
+        "region": "Palestine",
+        "region_type": null
+      },
+      "value": 23.136297,
+      "unit": "count",
+      "facility_name": "Prevalence of overweight among children and adolescents, BMI > +1 standard deviations above the median (crude estimate) (%)",
+      "facility_type": "indicator",
+      "status": "unknown",
+      "damage_level": null,
+      "bed_capacity": 0,
+      "staff_count": 0,
+      "quality": {
+        "score": 0.8555555555555555,
+        "completeness": 0.6666666666666666,
+        "consistency": 1,
+        "accuracy": 0.9,
+        "verified": false,
+        "confidence": 0.8
+      },
+      "sources": [
+        {
+          "name": "HDX",
+          "organization": "UN OCHA",
+          "fetched_at": "2025-11-25T18:04:35.991Z"
+        }
+      ],
+      "created_at": "2025-11-25T18:04:35.991Z",
+      "updated_at": "2025-11-25T18:04:35.991Z",
+      "version": 1,
+      "temporal_context": {
+        "days_since_baseline": -9410,
+        "baseline_period": "before_baseline",
+        "conflict_phase": "pre-escalation",
+        "season": "winter"
+      }
+    },
+    {
+      "id": "health-1y3786",
+      "type": "health",
+      "category": "health",
+      "date": "1998-01-01",
+      "location": {
+        "name": "State of Palestine",
+        "coordinates": null,
+        "admin_levels": {
+          "level1": "Eastern Mediterranean",
+          "level2": null,
+          "level3": null
+        },
+        "region": "Palestine",
+        "region_type": null
+      },
+      "value": 4.3822154,
+      "unit": "count",
+      "facility_name": "Prevalence of thinness among children and adolescents, BMI < -2 standard deviations below the median (crude estimate) (%)",
+      "facility_type": "indicator",
+      "status": "unknown",
+      "damage_level": null,
+      "bed_capacity": 0,
+      "staff_count": 0,
+      "quality": {
+        "score": 0.8555555555555555,
+        "completeness": 0.6666666666666666,
+        "consistency": 1,
+        "accuracy": 0.9,
+        "verified": false,
+        "confidence": 0.8
+      },
+      "sources": [
+        {
+          "name": "HDX",
+          "organization": "UN OCHA",
+          "fetched_at": "2025-11-25T18:04:35.992Z"
+        }
+      ],
+      "created_at": "2025-11-25T18:04:35.992Z",
+      "updated_at": "2025-11-25T18:04:35.992Z",
+      "version": 1,
+      "temporal_context": {
+        "days_since_baseline": -9410,
+        "baseline_period": "before_baseline",
+        "conflict_phase": "pre-escalation",
+        "season": "winter"
+      }
+    },
+    {
+      "id": "health-shfoca",
+      "type": "health",
+      "category": "health",
+      "date": "1998-01-01",
+      "location": {
+        "name": "State of Palestine",
+        "coordinates": null,
+        "admin_levels": {
+          "level1": "Eastern Mediterranean",
+          "level2": null,
+          "level3": null
+        },
+        "region": "Palestine",
+        "region_type": null
+      },
+      "value": 0,
+      "unit": "count",
+      "facility_name": "Diphtheria - number of reported cases",
+      "facility_type": "indicator",
+      "status": "unknown",
+      "damage_level": null,
+      "bed_capacity": 0,
+      "staff_count": 0,
+      "quality": {
+        "score": 0.8555555555555555,
+        "completeness": 0.6666666666666666,
+        "consistency": 1,
+        "accuracy": 0.9,
+        "verified": false,
+        "confidence": 0.8
+      },
+      "sources": [
+        {
+          "name": "HDX",
+          "organization": "UN OCHA",
+          "fetched_at": "2025-11-25T18:04:35.996Z"
+        }
+      ],
+      "created_at": "2025-11-25T18:04:35.996Z",
+      "updated_at": "2025-11-25T18:04:35.996Z",
+      "version": 1,
+      "temporal_context": {
+        "days_since_baseline": -9410,
+        "baseline_period": "before_baseline",
+        "conflict_phase": "pre-escalation",
+        "season": "winter"
+      }
+    },
+    {
+      "id": "health-nsvwpc",
+      "type": "health",
+      "category": "health",
+      "date": "1998-01-01",
+      "location": {
+        "name": "State of Palestine",
+        "coordinates": null,
+        "admin_levels": {
+          "level1": "Eastern Mediterranean",
+          "level2": null,
+          "level3": null
+        },
+        "region": "Palestine",
+        "region_type": null
+      },
+      "value": 4.3727525,
+      "unit": "count",
+      "facility_name": "Prevalence of obesity among children and adolescents, BMI > +2 standard deviations above the median (crude estimate) (%)",
+      "facility_type": "indicator",
+      "status": "unknown",
+      "damage_level": null,
+      "bed_capacity": 0,
+      "staff_count": 0,
+      "quality": {
+        "score": 0.8555555555555555,
+        "completeness": 0.6666666666666666,
+        "consistency": 1,
+        "accuracy": 0.9,
+        "verified": false,
+        "confidence": 0.8
+      },
+      "sources": [
+        {
+          "name": "HDX",
+          "organization": "UN OCHA",
+          "fetched_at": "2025-11-25T18:04:35.996Z"
+        }
+      ],
+      "created_at": "2025-11-25T18:04:35.996Z",
+      "updated_at": "2025-11-25T18:04:35.996Z",
+      "version": 1,
+      "temporal_context": {
+        "days_since_baseline": -9410,
+        "baseline_period": "before_baseline",
+        "conflict_phase": "pre-escalation",
+        "season": "winter"
+      }
+    },
+    {
+      "id": "health-kairc6",
+      "type": "health",
+      "category": "health",
+      "date": "1998-01-01",
+      "location": {
+        "name": "State of Palestine",
+        "coordinates": null,
+        "admin_levels": {
+          "level1": "Eastern Mediterranean",
+          "level2": null,
+          "level3": null
+        },
+        "region": "Palestine",
+        "region_type": null
+      },
+      "value": 2100,
+      "unit": "count",
+      "facility_name": "Number of neonatal deaths",
+      "facility_type": "indicator",
+      "status": "unknown",
+      "damage_level": null,
+      "bed_capacity": 0,
+      "staff_count": 0,
+      "quality": {
+        "score": 0.8555555555555555,
+        "completeness": 0.6666666666666666,
+        "consistency": 1,
+        "accuracy": 0.9,
+        "verified": false,
+        "confidence": 0.8
+      },
+      "sources": [
+        {
+          "name": "HDX",
+          "organization": "UN OCHA",
+          "fetched_at": "2025-11-25T18:04:36.003Z"
+        }
+      ],
+      "created_at": "2025-11-25T18:04:36.003Z",
+      "updated_at": "2025-11-25T18:04:36.003Z",
+      "version": 1,
+      "temporal_context": {
+        "days_since_baseline": -9410,
+        "baseline_period": "before_baseline",
+        "conflict_phase": "pre-escalation",
+        "season": "winter"
+      }
+    },
+    {
+      "id": "health-rlzjqn",
+      "type": "health",
+      "category": "health",
+      "date": "1998-01-01",
+      "location": {
+        "name": "State of Palestine",
+        "coordinates": null,
+        "admin_levels": {
+          "level1": "Eastern Mediterranean",
+          "level2": null,
+          "level3": null
+        },
+        "region": "Palestine",
+        "region_type": null
+      },
+      "value": 110,
+      "unit": "count",
+      "facility_name": "Number of deaths among adolescents (10 to 19 years of age)",
+      "facility_type": "indicator",
+      "status": "unknown",
+      "damage_level": null,
+      "bed_capacity": 0,
+      "staff_count": 0,
+      "quality": {
+        "score": 0.8555555555555555,
+        "completeness": 0.6666666666666666,
+        "consistency": 1,
+        "accuracy": 0.9,
+        "verified": false,
+        "confidence": 0.8
+      },
+      "sources": [
+        {
+          "name": "HDX",
+          "organization": "UN OCHA",
+          "fetched_at": "2025-11-25T18:04:36.005Z"
+        }
+      ],
+      "created_at": "2025-11-25T18:04:36.005Z",
+      "updated_at": "2025-11-25T18:04:36.005Z",
+      "version": 1,
+      "temporal_context": {
+        "days_since_baseline": -9410,
+        "baseline_period": "before_baseline",
+        "conflict_phase": "pre-escalation",
+        "season": "winter"
+      }
+    },
+    {
+      "id": "health-fnx3v2",
+      "type": "health",
+      "category": "health",
+      "date": "1998-01-01",
+      "location": {
+        "name": "State of Palestine",
+        "coordinates": null,
+        "admin_levels": {
+          "level1": "Eastern Mediterranean",
+          "level2": null,
+          "level3": null
+        },
+        "region": "Palestine",
+        "region_type": null
+      },
+      "value": 56.860721,
+      "unit": "count",
+      "facility_name": "Prevalence of overweight among adults, BMI &GreaterEqual; 25 (age-standardized estimate) (%)",
+      "facility_type": "indicator",
+      "status": "unknown",
+      "damage_level": null,
+      "bed_capacity": 0,
+      "staff_count": 0,
+      "quality": {
+        "score": 0.8555555555555555,
+        "completeness": 0.6666666666666666,
+        "consistency": 1,
+        "accuracy": 0.9,
+        "verified": false,
+        "confidence": 0.8
+      },
+      "sources": [
+        {
+          "name": "HDX",
+          "organization": "UN OCHA",
+          "fetched_at": "2025-11-25T18:04:36.006Z"
+        }
+      ],
+      "created_at": "2025-11-25T18:04:36.006Z",
+      "updated_at": "2025-11-25T18:04:36.006Z",
+      "version": 1,
+      "temporal_context": {
+        "days_since_baseline": -9410,
+        "baseline_period": "before_baseline",
+        "conflict_phase": "pre-escalation",
+        "season": "winter"
+      }
+    },
+    {
+      "id": "health-d2osfn",
+      "type": "health",
+      "category": "health",
+      "date": "1998-01-01",
+      "location": {
+        "name": "State of Palestine",
+        "coordinates": null,
+        "admin_levels": {
+          "level1": "Eastern Mediterranean",
+          "level2": null,
+          "level3": null
+        },
+        "region": "Palestine",
+        "region_type": null
+      },
+      "value": 1489,
+      "unit": "count",
+      "facility_name": "Number of infant deaths",
+      "facility_type": "indicator",
+      "status": "unknown",
+      "damage_level": null,
+      "bed_capacity": 0,
+      "staff_count": 0,
+      "quality": {
+        "score": 0.8555555555555555,
+        "completeness": 0.6666666666666666,
+        "consistency": 1,
+        "accuracy": 0.9,
+        "verified": false,
+        "confidence": 0.8
+      },
+      "sources": [
+        {
+          "name": "HDX",
+          "organization": "UN OCHA",
+          "fetched_at": "2025-11-25T18:04:36.007Z"
+        }
+      ],
+      "created_at": "2025-11-25T18:04:36.007Z",
+      "updated_at": "2025-11-25T18:04:36.007Z",
+      "version": 1,
+      "temporal_context": {
+        "days_since_baseline": -9410,
+        "baseline_period": "before_baseline",
+        "conflict_phase": "pre-escalation",
+        "season": "winter"
+      }
+    },
+    {
+      "id": "health-wb6r91",
+      "type": "health",
+      "category": "health",
+      "date": "1998-01-01",
+      "location": {
+        "name": "State of Palestine",
+        "coordinates": null,
+        "admin_levels": {
+          "level1": "Eastern Mediterranean",
+          "level2": null,
+          "level3": null
+        },
+        "region": "Palestine",
+        "region_type": null
+      },
+      "value": 307,
+      "unit": "count",
+      "facility_name": "Number of deaths among adolescents (10 to 19 years of age)",
+      "facility_type": "indicator",
+      "status": "unknown",
+      "damage_level": null,
+      "bed_capacity": 0,
+      "staff_count": 0,
+      "quality": {
+        "score": 0.8555555555555555,
+        "completeness": 0.6666666666666666,
+        "consistency": 1,
+        "accuracy": 0.9,
+        "verified": false,
+        "confidence": 0.8
+      },
+      "sources": [
+        {
+          "name": "HDX",
+          "organization": "UN OCHA",
+          "fetched_at": "2025-11-25T18:04:36.008Z"
+        }
+      ],
+      "created_at": "2025-11-25T18:04:36.008Z",
+      "updated_at": "2025-11-25T18:04:36.008Z",
+      "version": 1,
+      "temporal_context": {
+        "days_since_baseline": -9410,
+        "baseline_period": "before_baseline",
+        "conflict_phase": "pre-escalation",
+        "season": "winter"
+      }
+    },
+    {
+      "id": "health-4tu2zk",
+      "type": "health",
+      "category": "health",
+      "date": "1998-01-01",
+      "location": {
+        "name": "State of Palestine",
+        "coordinates": null,
+        "admin_levels": {
+          "level1": "Eastern Mediterranean",
+          "level2": null,
+          "level3": null
+        },
+        "region": "Palestine",
+        "region_type": null
+      },
+      "value": 243,
+      "unit": "count",
+      "facility_name": "Number of deaths among children 5 to 14 years of age",
+      "facility_type": "indicator",
+      "status": "unknown",
+      "damage_level": null,
+      "bed_capacity": 0,
+      "staff_count": 0,
+      "quality": {
+        "score": 0.8555555555555555,
+        "completeness": 0.6666666666666666,
+        "consistency": 1,
+        "accuracy": 0.9,
+        "verified": false,
+        "confidence": 0.8
+      },
+      "sources": [
+        {
+          "name": "HDX",
+          "organization": "UN OCHA",
+          "fetched_at": "2025-11-25T18:04:36.008Z"
+        }
+      ],
+      "created_at": "2025-11-25T18:04:36.008Z",
+      "updated_at": "2025-11-25T18:04:36.008Z",
+      "version": 1,
+      "temporal_context": {
+        "days_since_baseline": -9410,
+        "baseline_period": "before_baseline",
+        "conflict_phase": "pre-escalation",
+        "season": "winter"
+      }
+    },
+    {
+      "id": "health-kaxwh9",
+      "type": "health",
+      "category": "health",
+      "date": "1998-01-01",
+      "location": {
+        "name": "State of Palestine",
+        "coordinates": null,
+        "admin_levels": {
+          "level1": "Eastern Mediterranean",
+          "level2": null,
+          "level3": null
+        },
+        "region": "Palestine",
+        "region_type": null
+      },
+      "value": 1.9562963,
+      "unit": "count",
+      "facility_name": "Prevalence of underweight among adults, BMI < 18 (age-standardized estimate) (%)",
+      "facility_type": "indicator",
+      "status": "unknown",
+      "damage_level": null,
+      "bed_capacity": 0,
+      "staff_count": 0,
+      "quality": {
+        "score": 0.8555555555555555,
+        "completeness": 0.6666666666666666,
+        "consistency": 1,
+        "accuracy": 0.9,
+        "verified": false,
+        "confidence": 0.8
+      },
+      "sources": [
+        {
+          "name": "HDX",
+          "organization": "UN OCHA",
+          "fetched_at": "2025-11-25T18:04:36.009Z"
+        }
+      ],
+      "created_at": "2025-11-25T18:04:36.009Z",
+      "updated_at": "2025-11-25T18:04:36.009Z",
+      "version": 1,
+      "temporal_context": {
+        "days_since_baseline": -9410,
+        "baseline_period": "before_baseline",
+        "conflict_phase": "pre-escalation",
+        "season": "winter"
+      }
+    },
+    {
+      "id": "health-36vl29",
+      "type": "health",
+      "category": "health",
+      "date": "1998-01-01",
+      "location": {
+        "name": "State of Palestine",
+        "coordinates": null,
+        "admin_levels": {
+          "level1": "Eastern Mediterranean",
+          "level2": null,
+          "level3": null
+        },
+        "region": "Palestine",
+        "region_type": null
+      },
+      "value": 4.2281825,
+      "unit": "count",
+      "facility_name": "Prevalence of obesity among children and adolescents, BMI > +2 standard deviations above the median (crude estimate) (%)",
+      "facility_type": "indicator",
+      "status": "unknown",
+      "damage_level": null,
+      "bed_capacity": 0,
+      "staff_count": 0,
+      "quality": {
+        "score": 0.8555555555555555,
+        "completeness": 0.6666666666666666,
+        "consistency": 1,
+        "accuracy": 0.9,
+        "verified": false,
+        "confidence": 0.8
+      },
+      "sources": [
+        {
+          "name": "HDX",
+          "organization": "UN OCHA",
+          "fetched_at": "2025-11-25T18:04:36.013Z"
+        }
+      ],
+      "created_at": "2025-11-25T18:04:36.013Z",
+      "updated_at": "2025-11-25T18:04:36.013Z",
+      "version": 1,
+      "temporal_context": {
+        "days_since_baseline": -9410,
+        "baseline_period": "before_baseline",
+        "conflict_phase": "pre-escalation",
+        "season": "winter"
+      }
+    },
+    {
+      "id": "health-nvs4cc",
+      "type": "health",
+      "category": "health",
+      "date": "1998-01-01",
+      "location": {
+        "name": "State of Palestine",
+        "coordinates": null,
+        "admin_levels": {
+          "level1": "Eastern Mediterranean",
+          "level2": null,
+          "level3": null
+        },
+        "region": "Palestine",
+        "region_type": null
+      },
+      "value": 857,
+      "unit": "count",
+      "facility_name": "Number of under-five deaths",
+      "facility_type": "indicator",
+      "status": "unknown",
+      "damage_level": null,
+      "bed_capacity": 0,
+      "staff_count": 0,
+      "quality": {
+        "score": 0.8555555555555555,
+        "completeness": 0.6666666666666666,
+        "consistency": 1,
+        "accuracy": 0.9,
+        "verified": false,
+        "confidence": 0.8
+      },
+      "sources": [
+        {
+          "name": "HDX",
+          "organization": "UN OCHA",
+          "fetched_at": "2025-11-25T18:04:36.017Z"
+        }
+      ],
+      "created_at": "2025-11-25T18:04:36.017Z",
+      "updated_at": "2025-11-25T18:04:36.017Z",
+      "version": 1,
+      "temporal_context": {
+        "days_since_baseline": -9410,
+        "baseline_period": "before_baseline",
+        "conflict_phase": "pre-escalation",
+        "season": "winter"
+      }
+    }
+  ]
+}

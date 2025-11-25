@@ -1,0 +1,417 @@
+{
+  "datasetType": "casualties",
+  "recordCount": 19,
+  "qualityScore": 0,
+  "completeness": 0,
+  "consistency": 0,
+  "accuracy": 0,
+  "meetsThreshold": false,
+  "errors": [
+    {
+      "field": "killed",
+      "message": "Missing required field: killed",
+      "severity": "error",
+      "affectedRecords": 1,
+      "recordIndex": 0
+    },
+    {
+      "field": "injured",
+      "message": "Missing required field: injured",
+      "severity": "error",
+      "affectedRecords": 1,
+      "recordIndex": 0
+    },
+    {
+      "field": "location",
+      "message": "Invalid type for field location: expected object, got string",
+      "severity": "error",
+      "affectedRecords": 1,
+      "recordIndex": 0
+    },
+    {
+      "field": "killed",
+      "message": "Missing required field: killed",
+      "severity": "error",
+      "affectedRecords": 1,
+      "recordIndex": 1
+    },
+    {
+      "field": "injured",
+      "message": "Missing required field: injured",
+      "severity": "error",
+      "affectedRecords": 1,
+      "recordIndex": 1
+    },
+    {
+      "field": "location",
+      "message": "Invalid type for field location: expected object, got string",
+      "severity": "error",
+      "affectedRecords": 1,
+      "recordIndex": 1
+    },
+    {
+      "field": "killed",
+      "message": "Missing required field: killed",
+      "severity": "error",
+      "affectedRecords": 1,
+      "recordIndex": 2
+    },
+    {
+      "field": "injured",
+      "message": "Missing required field: injured",
+      "severity": "error",
+      "affectedRecords": 1,
+      "recordIndex": 2
+    },
+    {
+      "field": "location",
+      "message": "Invalid type for field location: expected object, got string",
+      "severity": "error",
+      "affectedRecords": 1,
+      "recordIndex": 2
+    },
+    {
+      "field": "killed",
+      "message": "Missing required field: killed",
+      "severity": "error",
+      "affectedRecords": 1,
+      "recordIndex": 3
+    },
+    {
+      "field": "injured",
+      "message": "Missing required field: injured",
+      "severity": "error",
+      "affectedRecords": 1,
+      "recordIndex": 3
+    },
+    {
+      "field": "location",
+      "message": "Invalid type for field location: expected object, got string",
+      "severity": "error",
+      "affectedRecords": 1,
+      "recordIndex": 3
+    },
+    {
+      "field": "killed",
+      "message": "Missing required field: killed",
+      "severity": "error",
+      "affectedRecords": 1,
+      "recordIndex": 4
+    },
+    {
+      "field": "injured",
+      "message": "Missing required field: injured",
+      "severity": "error",
+      "affectedRecords": 1,
+      "recordIndex": 4
+    },
+    {
+      "field": "location",
+      "message": "Invalid type for field location: expected object, got string",
+      "severity": "error",
+      "affectedRecords": 1,
+      "recordIndex": 4
+    },
+    {
+      "field": "killed",
+      "message": "Missing required field: killed",
+      "severity": "error",
+      "affectedRecords": 1,
+      "recordIndex": 5
+    },
+    {
+      "field": "injured",
+      "message": "Missing required field: injured",
+      "severity": "error",
+      "affectedRecords": 1,
+      "recordIndex": 5
+    },
+    {
+      "field": "location",
+      "message": "Invalid type for field location: expected object, got string",
+      "severity": "error",
+      "affectedRecords": 1,
+      "recordIndex": 5
+    },
+    {
+      "field": "killed",
+      "message": "Missing required field: killed",
+      "severity": "error",
+      "affectedRecords": 1,
+      "recordIndex": 6
+    },
+    {
+      "field": "injured",
+      "message": "Missing required field: injured",
+      "severity": "error",
+      "affectedRecords": 1,
+      "recordIndex": 6
+    },
+    {
+      "field": "location",
+      "message": "Invalid type for field location: expected object, got string",
+      "severity": "error",
+      "affectedRecords": 1,
+      "recordIndex": 6
+    },
+    {
+      "field": "killed",
+      "message": "Missing required field: killed",
+      "severity": "error",
+      "affectedRecords": 1,
+      "recordIndex": 7
+    },
+    {
+      "field": "injured",
+      "message": "Missing required field: injured",
+      "severity": "error",
+      "affectedRecords": 1,
+      "recordIndex": 7
+    },
+    {
+      "field": "location",
+      "message": "Invalid type for field location: expected object, got string",
+      "severity": "error",
+      "affectedRecords": 1,
+      "recordIndex": 7
+    },
+    {
+      "field": "killed",
+      "message": "Missing required field: killed",
+      "severity": "error",
+      "affectedRecords": 1,
+      "recordIndex": 8
+    },
+    {
+      "field": "injured",
+      "message": "Missing required field: injured",
+      "severity": "error",
+      "affectedRecords": 1,
+      "recordIndex": 8
+    },
+    {
+      "field": "location",
+      "message": "Invalid type for field location: expected object, got string",
+      "severity": "error",
+      "affectedRecords": 1,
+      "recordIndex": 8
+    },
+    {
+      "field": "killed",
+      "message": "Missing required field: killed",
+      "severity": "error",
+      "affectedRecords": 1,
+      "recordIndex": 9
+    },
+    {
+      "field": "injured",
+      "message": "Missing required field: injured",
+      "severity": "error",
+      "affectedRecords": 1,
+      "recordIndex": 9
+    },
+    {
+      "field": "location",
+      "message": "Invalid type for field location: expected object, got string",
+      "severity": "error",
+      "affectedRecords": 1,
+      "recordIndex": 9
+    },
+    {
+      "field": "killed",
+      "message": "Missing required field: killed",
+      "severity": "error",
+      "affectedRecords": 1,
+      "recordIndex": 10
+    },
+    {
+      "field": "injured",
+      "message": "Missing required field: injured",
+      "severity": "error",
+      "affectedRecords": 1,
+      "recordIndex": 10
+    },
+    {
+      "field": "location",
+      "message": "Invalid type for field location: expected object, got string",
+      "severity": "error",
+      "affectedRecords": 1,
+      "recordIndex": 10
+    },
+    {
+      "field": "killed",
+      "message": "Missing required field: killed",
+      "severity": "error",
+      "affectedRecords": 1,
+      "recordIndex": 11
+    },
+    {
+      "field": "injured",
+      "message": "Missing required field: injured",
+      "severity": "error",
+      "affectedRecords": 1,
+      "recordIndex": 11
+    },
+    {
+      "field": "location",
+      "message": "Invalid type for field location: expected object, got string",
+      "severity": "error",
+      "affectedRecords": 1,
+      "recordIndex": 11
+    },
+    {
+      "field": "killed",
+      "message": "Missing required field: killed",
+      "severity": "error",
+      "affectedRecords": 1,
+      "recordIndex": 12
+    },
+    {
+      "field": "injured",
+      "message": "Missing required field: injured",
+      "severity": "error",
+      "affectedRecords": 1,
+      "recordIndex": 12
+    },
+    {
+      "field": "location",
+      "message": "Invalid type for field location: expected object, got string",
+      "severity": "error",
+      "affectedRecords": 1,
+      "recordIndex": 12
+    },
+    {
+      "field": "killed",
+      "message": "Missing required field: killed",
+      "severity": "error",
+      "affectedRecords": 1,
+      "recordIndex": 13
+    },
+    {
+      "field": "injured",
+      "message": "Missing required field: injured",
+      "severity": "error",
+      "affectedRecords": 1,
+      "recordIndex": 13
+    },
+    {
+      "field": "location",
+      "message": "Invalid type for field location: expected object, got string",
+      "severity": "error",
+      "affectedRecords": 1,
+      "recordIndex": 13
+    },
+    {
+      "field": "killed",
+      "message": "Missing required field: killed",
+      "severity": "error",
+      "affectedRecords": 1,
+      "recordIndex": 14
+    },
+    {
+      "field": "injured",
+      "message": "Missing required field: injured",
+      "severity": "error",
+      "affectedRecords": 1,
+      "recordIndex": 14
+    },
+    {
+      "field": "location",
+      "message": "Invalid type for field location: expected object, got string",
+      "severity": "error",
+      "affectedRecords": 1,
+      "recordIndex": 14
+    },
+    {
+      "field": "killed",
+      "message": "Missing required field: killed",
+      "severity": "error",
+      "affectedRecords": 1,
+      "recordIndex": 15
+    },
+    {
+      "field": "injured",
+      "message": "Missing required field: injured",
+      "severity": "error",
+      "affectedRecords": 1,
+      "recordIndex": 15
+    },
+    {
+      "field": "location",
+      "message": "Invalid type for field location: expected object, got string",
+      "severity": "error",
+      "affectedRecords": 1,
+      "recordIndex": 15
+    },
+    {
+      "field": "killed",
+      "message": "Missing required field: killed",
+      "severity": "error",
+      "affectedRecords": 1,
+      "recordIndex": 16
+    },
+    {
+      "field": "injured",
+      "message": "Missing required field: injured",
+      "severity": "error",
+      "affectedRecords": 1,
+      "recordIndex": 16
+    },
+    {
+      "field": "location",
+      "message": "Invalid type for field location: expected object, got string",
+      "severity": "error",
+      "affectedRecords": 1,
+      "recordIndex": 16
+    },
+    {
+      "field": "killed",
+      "message": "Missing required field: killed",
+      "severity": "error",
+      "affectedRecords": 1,
+      "recordIndex": 17
+    },
+    {
+      "field": "injured",
+      "message": "Missing required field: injured",
+      "severity": "error",
+      "affectedRecords": 1,
+      "recordIndex": 17
+    },
+    {
+      "field": "location",
+      "message": "Invalid type for field location: expected object, got string",
+      "severity": "error",
+      "affectedRecords": 1,
+      "recordIndex": 17
+    },
+    {
+      "field": "killed",
+      "message": "Missing required field: killed",
+      "severity": "error",
+      "affectedRecords": 1,
+      "recordIndex": 18
+    },
+    {
+      "field": "injured",
+      "message": "Missing required field: injured",
+      "severity": "error",
+      "affectedRecords": 1,
+      "recordIndex": 18
+    },
+    {
+      "field": "location",
+      "message": "Invalid type for field location: expected object, got string",
+      "severity": "error",
+      "affectedRecords": 1,
+      "recordIndex": 18
+    }
+  ],
+  "warnings": [],
+  "missingFields": {
+    "date": 0,
+    "killed": 19,
+    "injured": 19
+  },
+  "timestamp": "2025-11-25T11:30:29.071Z"
+}

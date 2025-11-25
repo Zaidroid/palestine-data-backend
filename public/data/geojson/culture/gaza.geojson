@@ -1,0 +1,2826 @@
+{
+  "type": "FeatureCollection",
+  "name": "culture",
+  "crs": {
+    "type": "name",
+    "properties": {
+      "name": "urn:ogc:def:crs:OGC:1.3:CRS84"
+    }
+  },
+  "features": [
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          34.302549,
+          31.343609
+        ]
+      },
+      "properties": {
+        "id": "culture-7i7f83",
+        "type": "culture",
+        "category": "culture",
+        "date": "2025-11-25",
+        "timestamp": "2025-11-25T00:00:00.000Z",
+        "period": {
+          "type": "point",
+          "value": "2025-11-25"
+        },
+        "location": {
+          "name": "Gaza Strip",
+          "admin_levels": {
+            "level1": "Gaza Strip",
+            "level2": "Gaza Strip"
+          },
+          "region": "Gaza Strip",
+          "coordinates": {
+            "lat": 31.343609,
+            "lon": 34.302549
+          },
+          "region_type": "urban",
+          "proximity": {
+            "nearest_city": "Khan Yunis",
+            "distance_to_border": 11382.938999999582
+          }
+        },
+        "name": "Great Mosque of Khan Yunis",
+        "site_type": "Religious",
+        "status": "Intact",
+        "historical_period": "Unknown",
+        "description": "No description available",
+        "protection_level": "National Heritage",
+        "damage": null,
+        "images": [],
+        "quality": {
+          "score": 0.8888888888888888,
+          "completeness": 0.6666666666666666,
+          "consistency": 1,
+          "accuracy": 1,
+          "verified": false,
+          "confidence": 0.8
+        },
+        "sources": [
+          {
+            "name": "UNESCO, Ministry of Tourism, NGO Reports",
+            "organization": "Multiple",
+            "fetched_at": "2025-11-25T11:32:40.684Z"
+          }
+        ],
+        "created_at": "2025-11-25T11:32:40.684Z",
+        "updated_at": "2025-11-25T11:32:40.684Z",
+        "version": 1,
+        "temporal_context": {
+          "days_since_baseline": 780,
+          "baseline_period": "after_baseline",
+          "conflict_phase": "ongoing-conflict",
+          "season": "autumn"
+        }
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          34.4674,
+          31.5589
+        ]
+      },
+      "properties": {
+        "id": "culture-w7og4c",
+        "type": "culture",
+        "category": "culture",
+        "date": "2025-11-25",
+        "timestamp": "2025-11-25T00:00:00.000Z",
+        "period": {
+          "type": "point",
+          "value": "2025-11-25"
+        },
+        "location": {
+          "name": "Gaza Strip",
+          "admin_levels": {
+            "level1": "Gaza Strip",
+            "level2": "Gaza Strip"
+          },
+          "region": "Gaza Strip",
+          "coordinates": {
+            "lat": 31.5589,
+            "lon": 34.4674
+          },
+          "region_type": "urban",
+          "proximity": {
+            "nearest_city": "Gaza City",
+            "distance_to_border": 4562.100000000015
+          }
+        },
+        "name": "Q12242746",
+        "site_type": "Cultural",
+        "status": "Intact",
+        "historical_period": "Unknown",
+        "description": "No description available",
+        "protection_level": "National Heritage",
+        "damage": null,
+        "images": [],
+        "quality": {
+          "score": 0.8888888888888888,
+          "completeness": 0.6666666666666666,
+          "consistency": 1,
+          "accuracy": 1,
+          "verified": false,
+          "confidence": 0.8
+        },
+        "sources": [
+          {
+            "name": "UNESCO, Ministry of Tourism, NGO Reports",
+            "organization": "Multiple",
+            "fetched_at": "2025-11-25T11:32:40.684Z"
+          }
+        ],
+        "created_at": "2025-11-25T11:32:40.684Z",
+        "updated_at": "2025-11-25T11:32:40.684Z",
+        "version": 1,
+        "temporal_context": {
+          "days_since_baseline": 780,
+          "baseline_period": "after_baseline",
+          "conflict_phase": "ongoing-conflict",
+          "season": "autumn"
+        }
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          34.499722,
+          31.530556
+        ]
+      },
+      "properties": {
+        "id": "culture-dj4r9k",
+        "type": "culture",
+        "category": "culture",
+        "date": "2025-11-25",
+        "timestamp": "2025-11-25T00:00:00.000Z",
+        "period": {
+          "type": "point",
+          "value": "2025-11-25"
+        },
+        "location": {
+          "name": "Gaza Strip",
+          "admin_levels": {
+            "level1": "Gaza Strip",
+            "level2": "Gaza Strip"
+          },
+          "region": "Gaza Strip",
+          "coordinates": {
+            "lat": 31.530556,
+            "lon": 34.499722
+          },
+          "region_type": "urban",
+          "proximity": {
+            "nearest_city": "Gaza City",
+            "distance_to_border": 7708.284000000081
+          }
+        },
+        "name": "Q12242833",
+        "site_type": "Cultural",
+        "status": "Intact",
+        "historical_period": "Unknown",
+        "description": "No description available",
+        "protection_level": "National Heritage",
+        "damage": null,
+        "images": [],
+        "quality": {
+          "score": 0.8888888888888888,
+          "completeness": 0.6666666666666666,
+          "consistency": 1,
+          "accuracy": 1,
+          "verified": false,
+          "confidence": 0.8
+        },
+        "sources": [
+          {
+            "name": "UNESCO, Ministry of Tourism, NGO Reports",
+            "organization": "Multiple",
+            "fetched_at": "2025-11-25T11:32:40.685Z"
+          }
+        ],
+        "created_at": "2025-11-25T11:32:40.685Z",
+        "updated_at": "2025-11-25T11:32:40.685Z",
+        "version": 1,
+        "temporal_context": {
+          "days_since_baseline": 780,
+          "baseline_period": "after_baseline",
+          "conflict_phase": "ongoing-conflict",
+          "season": "autumn"
+        }
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          34.46334722,
+          31.50805556
+        ]
+      },
+      "properties": {
+        "id": "culture-x43rxm",
+        "type": "culture",
+        "category": "culture",
+        "date": "2025-11-25",
+        "timestamp": "2025-11-25T00:00:00.000Z",
+        "period": {
+          "type": "point",
+          "value": "2025-11-25"
+        },
+        "location": {
+          "name": "Gaza Strip",
+          "admin_levels": {
+            "level1": "Gaza Strip",
+            "level2": "Gaza Strip"
+          },
+          "region": "Gaza Strip",
+          "coordinates": {
+            "lat": 31.50805556,
+            "lon": 34.46334722
+          },
+          "region_type": "urban",
+          "proximity": {
+            "nearest_city": "Gaza City",
+            "distance_to_border": 10205.832840000274
+          }
+        },
+        "name": "Sayed al-Hashim Mosque",
+        "site_type": "Religious",
+        "status": "Intact",
+        "historical_period": "Unknown",
+        "description": "mosque in Gaza Strip, Palestine",
+        "protection_level": "National Heritage",
+        "damage": null,
+        "images": [],
+        "quality": {
+          "score": 0.8888888888888888,
+          "completeness": 0.6666666666666666,
+          "consistency": 1,
+          "accuracy": 1,
+          "verified": false,
+          "confidence": 0.8
+        },
+        "sources": [
+          {
+            "name": "UNESCO, Ministry of Tourism, NGO Reports",
+            "organization": "Multiple",
+            "fetched_at": "2025-11-25T11:32:40.685Z"
+          }
+        ],
+        "created_at": "2025-11-25T11:32:40.685Z",
+        "updated_at": "2025-11-25T11:32:40.685Z",
+        "version": 1,
+        "temporal_context": {
+          "days_since_baseline": 780,
+          "baseline_period": "after_baseline",
+          "conflict_phase": "ongoing-conflict",
+          "season": "autumn"
+        }
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          34.536151,
+          31.541528
+        ]
+      },
+      "properties": {
+        "id": "culture-xi3tdi",
+        "type": "culture",
+        "category": "culture",
+        "date": "2025-11-25",
+        "timestamp": "2025-11-25T00:00:00.000Z",
+        "period": {
+          "type": "point",
+          "value": "2025-11-25"
+        },
+        "location": {
+          "name": "Gaza Strip",
+          "admin_levels": {
+            "level1": "Gaza Strip",
+            "level2": "Gaza Strip"
+          },
+          "region": "Gaza Strip",
+          "coordinates": {
+            "lat": 31.541528,
+            "lon": 34.536151
+          },
+          "region_type": "urban",
+          "proximity": {
+            "nearest_city": "Gaza City",
+            "distance_to_border": 6490.392000000206
+          }
+        },
+        "name": "Umm al-Naser Mosque",
+        "site_type": "Religious",
+        "status": "Intact",
+        "historical_period": "Unknown",
+        "description": "mosque in Gaza Strip, Palestine",
+        "protection_level": "National Heritage",
+        "damage": null,
+        "images": [],
+        "quality": {
+          "score": 0.8888888888888888,
+          "completeness": 0.6666666666666666,
+          "consistency": 1,
+          "accuracy": 1,
+          "verified": false,
+          "confidence": 0.8
+        },
+        "sources": [
+          {
+            "name": "UNESCO, Ministry of Tourism, NGO Reports",
+            "organization": "Multiple",
+            "fetched_at": "2025-11-25T11:32:40.685Z"
+          }
+        ],
+        "created_at": "2025-11-25T11:32:40.685Z",
+        "updated_at": "2025-11-25T11:32:40.685Z",
+        "version": 1,
+        "temporal_context": {
+          "days_since_baseline": 780,
+          "baseline_period": "after_baseline",
+          "conflict_phase": "ongoing-conflict",
+          "season": "autumn"
+        }
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          34.481806,
+          31.530901
+        ]
+      },
+      "properties": {
+        "id": "culture-qgq41",
+        "type": "culture",
+        "category": "culture",
+        "date": "2025-11-25",
+        "timestamp": "2025-11-25T00:00:00.000Z",
+        "period": {
+          "type": "point",
+          "value": "2025-11-25"
+        },
+        "location": {
+          "name": "Gaza Strip",
+          "admin_levels": {
+            "level1": "Gaza Strip",
+            "level2": "Gaza Strip"
+          },
+          "region": "Gaza Strip",
+          "coordinates": {
+            "lat": 31.530901,
+            "lon": 34.481806
+          },
+          "region_type": "urban",
+          "proximity": {
+            "nearest_city": "Gaza City",
+            "distance_to_border": 7669.989000000151
+          }
+        },
+        "name": "Q20425020",
+        "site_type": "Cultural",
+        "status": "Intact",
+        "historical_period": "Unknown",
+        "description": "No description available",
+        "protection_level": "National Heritage",
+        "damage": null,
+        "images": [],
+        "quality": {
+          "score": 0.8888888888888888,
+          "completeness": 0.6666666666666666,
+          "consistency": 1,
+          "accuracy": 1,
+          "verified": false,
+          "confidence": 0.8
+        },
+        "sources": [
+          {
+            "name": "UNESCO, Ministry of Tourism, NGO Reports",
+            "organization": "Multiple",
+            "fetched_at": "2025-11-25T11:32:40.685Z"
+          }
+        ],
+        "created_at": "2025-11-25T11:32:40.685Z",
+        "updated_at": "2025-11-25T11:32:40.685Z",
+        "version": 1,
+        "temporal_context": {
+          "days_since_baseline": 780,
+          "baseline_period": "after_baseline",
+          "conflict_phase": "ongoing-conflict",
+          "season": "autumn"
+        }
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          34.455838,
+          31.547838
+        ]
+      },
+      "properties": {
+        "id": "culture-g5fo34",
+        "type": "culture",
+        "category": "culture",
+        "date": "2025-11-25",
+        "timestamp": "2025-11-25T00:00:00.000Z",
+        "period": {
+          "type": "point",
+          "value": "2025-11-25"
+        },
+        "location": {
+          "name": "Gaza Strip",
+          "admin_levels": {
+            "level1": "Gaza Strip",
+            "level2": "Gaza Strip"
+          },
+          "region": "Gaza Strip",
+          "coordinates": {
+            "lat": 31.547838,
+            "lon": 34.455838
+          },
+          "region_type": "urban",
+          "proximity": {
+            "nearest_city": "Gaza City",
+            "distance_to_border": 5789.9820000003
+          }
+        },
+        "name": "Al-Khaldi Mosque",
+        "site_type": "Religious",
+        "status": "Intact",
+        "historical_period": "Unknown",
+        "description": "mosque in Palestine",
+        "protection_level": "National Heritage",
+        "damage": null,
+        "images": [],
+        "quality": {
+          "score": 0.8888888888888888,
+          "completeness": 0.6666666666666666,
+          "consistency": 1,
+          "accuracy": 1,
+          "verified": false,
+          "confidence": 0.8
+        },
+        "sources": [
+          {
+            "name": "UNESCO, Ministry of Tourism, NGO Reports",
+            "organization": "Multiple",
+            "fetched_at": "2025-11-25T11:32:40.685Z"
+          }
+        ],
+        "created_at": "2025-11-25T11:32:40.685Z",
+        "updated_at": "2025-11-25T11:32:40.685Z",
+        "version": 1,
+        "temporal_context": {
+          "days_since_baseline": 780,
+          "baseline_period": "after_baseline",
+          "conflict_phase": "ongoing-conflict",
+          "season": "autumn"
+        }
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          34.3663,
+          31.4472
+        ]
+      },
+      "properties": {
+        "id": "culture-6gqk4t",
+        "type": "culture",
+        "category": "culture",
+        "date": "2025-11-25",
+        "timestamp": "2025-11-25T00:00:00.000Z",
+        "period": {
+          "type": "point",
+          "value": "2025-11-25"
+        },
+        "location": {
+          "name": "Gaza Strip",
+          "admin_levels": {
+            "level1": "Gaza Strip",
+            "level2": "Gaza Strip"
+          },
+          "region": "Gaza Strip",
+          "coordinates": {
+            "lat": 31.4472,
+            "lon": 34.3663
+          },
+          "region_type": "urban",
+          "proximity": {
+            "nearest_city": "Gaza City",
+            "distance_to_border": 16960.8000000003
+          }
+        },
+        "name": "Saint Hilarion monastery",
+        "site_type": "Religious",
+        "status": "Intact",
+        "historical_period": "Unknown",
+        "description": "Old christian monastery in Palestine dedicated to Saint Hilarion of Gaza",
+        "unesco_status": "World Heritage Site",
+        "protection_level": "UNESCO Protected",
+        "damage": null,
+        "images": [],
+        "quality": {
+          "score": 0.8888888888888888,
+          "completeness": 0.6666666666666666,
+          "consistency": 1,
+          "accuracy": 1,
+          "verified": false,
+          "confidence": 0.8
+        },
+        "sources": [
+          {
+            "name": "UNESCO, Ministry of Tourism, NGO Reports",
+            "organization": "Multiple",
+            "fetched_at": "2025-11-25T11:32:40.685Z"
+          }
+        ],
+        "created_at": "2025-11-25T11:32:40.685Z",
+        "updated_at": "2025-11-25T11:32:40.685Z",
+        "version": 1,
+        "temporal_context": {
+          "days_since_baseline": 780,
+          "baseline_period": "after_baseline",
+          "conflict_phase": "ongoing-conflict",
+          "season": "autumn"
+        }
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          34.447093292,
+          31.52958846
+        ]
+      },
+      "properties": {
+        "id": "culture-jze76l",
+        "type": "culture",
+        "category": "culture",
+        "date": "2025-11-25",
+        "timestamp": "2025-11-25T00:00:00.000Z",
+        "period": {
+          "type": "point",
+          "value": "2025-11-25"
+        },
+        "location": {
+          "name": "Gaza Strip",
+          "admin_levels": {
+            "level1": "Gaza Strip",
+            "level2": "Gaza Strip"
+          },
+          "region": "Gaza Strip",
+          "coordinates": {
+            "lat": 31.52958846,
+            "lon": 34.447093292
+          },
+          "region_type": "urban",
+          "proximity": {
+            "nearest_city": "Gaza City",
+            "distance_to_border": 7815.680940000228
+          }
+        },
+        "name": "Q123158508",
+        "site_type": "Religious",
+        "status": "Intact",
+        "historical_period": "Unknown",
+        "description": "mosque in Gaza City, Palestine",
+        "protection_level": "National Heritage",
+        "damage": null,
+        "images": [],
+        "quality": {
+          "score": 0.8888888888888888,
+          "completeness": 0.6666666666666666,
+          "consistency": 1,
+          "accuracy": 1,
+          "verified": false,
+          "confidence": 0.8
+        },
+        "sources": [
+          {
+            "name": "UNESCO, Ministry of Tourism, NGO Reports",
+            "organization": "Multiple",
+            "fetched_at": "2025-11-25T11:32:40.685Z"
+          }
+        ],
+        "created_at": "2025-11-25T11:32:40.685Z",
+        "updated_at": "2025-11-25T11:32:40.685Z",
+        "version": 1,
+        "temporal_context": {
+          "days_since_baseline": 780,
+          "baseline_period": "after_baseline",
+          "conflict_phase": "ongoing-conflict",
+          "season": "autumn"
+        }
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          34.468601,
+          31.508349
+        ]
+      },
+      "properties": {
+        "id": "culture-1298fg",
+        "type": "culture",
+        "category": "culture",
+        "date": "2025-11-25",
+        "timestamp": "2025-11-25T00:00:00.000Z",
+        "period": {
+          "type": "point",
+          "value": "2025-11-25"
+        },
+        "location": {
+          "name": "Gaza Strip",
+          "admin_levels": {
+            "level1": "Gaza Strip",
+            "level2": "Gaza Strip"
+          },
+          "region": "Gaza Strip",
+          "coordinates": {
+            "lat": 31.508349,
+            "lon": 34.468601
+          },
+          "region_type": "urban",
+          "proximity": {
+            "nearest_city": "Gaza City",
+            "distance_to_border": 10173.261000000262
+          }
+        },
+        "name": "Aybaki Mosque",
+        "site_type": "Religious",
+        "status": "Intact",
+        "historical_period": "Unknown",
+        "description": "Mosque in Gaza City, Gaza Strip",
+        "protection_level": "National Heritage",
+        "damage": null,
+        "images": [],
+        "quality": {
+          "score": 0.8888888888888888,
+          "completeness": 0.6666666666666666,
+          "consistency": 1,
+          "accuracy": 1,
+          "verified": false,
+          "confidence": 0.8
+        },
+        "sources": [
+          {
+            "name": "UNESCO, Ministry of Tourism, NGO Reports",
+            "organization": "Multiple",
+            "fetched_at": "2025-11-25T11:32:40.685Z"
+          }
+        ],
+        "created_at": "2025-11-25T11:32:40.685Z",
+        "updated_at": "2025-11-25T11:32:40.685Z",
+        "version": 1,
+        "temporal_context": {
+          "days_since_baseline": 780,
+          "baseline_period": "after_baseline",
+          "conflict_phase": "ongoing-conflict",
+          "season": "autumn"
+        }
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          34.451993035,
+          31.524083501
+        ]
+      },
+      "properties": {
+        "id": "culture-srjpb4",
+        "type": "culture",
+        "category": "culture",
+        "date": "2025-11-25",
+        "timestamp": "2025-11-25T00:00:00.000Z",
+        "period": {
+          "type": "point",
+          "value": "2025-11-25"
+        },
+        "location": {
+          "name": "Gaza Strip",
+          "admin_levels": {
+            "level1": "Gaza Strip",
+            "level2": "Gaza Strip"
+          },
+          "region": "Gaza Strip",
+          "coordinates": {
+            "lat": 31.524083501,
+            "lon": 34.451993035
+          },
+          "region_type": "urban",
+          "proximity": {
+            "nearest_city": "Gaza City",
+            "distance_to_border": 8426.731389000182
+          }
+        },
+        "name": "Holy Family Church",
+        "site_type": "Religious",
+        "status": "Intact",
+        "historical_period": "Unknown",
+        "description": "church in Gaza",
+        "protection_level": "National Heritage",
+        "damage": null,
+        "images": [],
+        "quality": {
+          "score": 0.8888888888888888,
+          "completeness": 0.6666666666666666,
+          "consistency": 1,
+          "accuracy": 1,
+          "verified": false,
+          "confidence": 0.8
+        },
+        "sources": [
+          {
+            "name": "UNESCO, Ministry of Tourism, NGO Reports",
+            "organization": "Multiple",
+            "fetched_at": "2025-11-25T11:32:40.685Z"
+          }
+        ],
+        "created_at": "2025-11-25T11:32:40.685Z",
+        "updated_at": "2025-11-25T11:32:40.685Z",
+        "version": 1,
+        "temporal_context": {
+          "days_since_baseline": 780,
+          "baseline_period": "after_baseline",
+          "conflict_phase": "ongoing-conflict",
+          "season": "autumn"
+        }
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          34.469014,
+          31.504164
+        ]
+      },
+      "properties": {
+        "id": "culture-9xfery",
+        "type": "culture",
+        "category": "culture",
+        "date": "2025-11-25",
+        "timestamp": "2025-11-25T00:00:00.000Z",
+        "period": {
+          "type": "point",
+          "value": "2025-11-25"
+        },
+        "location": {
+          "name": "Gaza Strip",
+          "admin_levels": {
+            "level1": "Gaza Strip",
+            "level2": "Gaza Strip"
+          },
+          "region": "Gaza Strip",
+          "coordinates": {
+            "lat": 31.504164,
+            "lon": 34.469014
+          },
+          "region_type": "urban",
+          "proximity": {
+            "nearest_city": "Gaza City",
+            "distance_to_border": 10637.796000000226
+          }
+        },
+        "name": "Ibn Marwan Mosque",
+        "site_type": "Religious",
+        "status": "Intact",
+        "historical_period": "Unknown",
+        "description": "mosque in Gaza City, Palestine",
+        "protection_level": "National Heritage",
+        "damage": null,
+        "images": [],
+        "quality": {
+          "score": 0.8888888888888888,
+          "completeness": 0.6666666666666666,
+          "consistency": 1,
+          "accuracy": 1,
+          "verified": false,
+          "confidence": 0.8
+        },
+        "sources": [
+          {
+            "name": "UNESCO, Ministry of Tourism, NGO Reports",
+            "organization": "Multiple",
+            "fetched_at": "2025-11-25T11:32:40.685Z"
+          }
+        ],
+        "created_at": "2025-11-25T11:32:40.685Z",
+        "updated_at": "2025-11-25T11:32:40.685Z",
+        "version": 1,
+        "temporal_context": {
+          "days_since_baseline": 780,
+          "baseline_period": "after_baseline",
+          "conflict_phase": "ongoing-conflict",
+          "season": "autumn"
+        }
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          34.4619903,
+          31.5018723
+        ]
+      },
+      "properties": {
+        "id": "culture-qs38an",
+        "type": "culture",
+        "category": "culture",
+        "date": "2025-11-25",
+        "timestamp": "2025-11-25T00:00:00.000Z",
+        "period": {
+          "type": "point",
+          "value": "2025-11-25"
+        },
+        "location": {
+          "name": "Gaza Strip",
+          "admin_levels": {
+            "level1": "Gaza Strip",
+            "level2": "Gaza Strip"
+          },
+          "region": "Gaza Strip",
+          "coordinates": {
+            "lat": 31.5018723,
+            "lon": 34.4619903
+          },
+          "region_type": "urban",
+          "proximity": {
+            "nearest_city": "Gaza City",
+            "distance_to_border": 10892.1747000003
+          }
+        },
+        "name": "Al-Shamah Mosque",
+        "site_type": "Religious",
+        "status": "Intact",
+        "historical_period": "Unknown",
+        "description": "mosque in Gaza, Palestine",
+        "protection_level": "National Heritage",
+        "damage": null,
+        "images": [],
+        "quality": {
+          "score": 0.8888888888888888,
+          "completeness": 0.6666666666666666,
+          "consistency": 1,
+          "accuracy": 1,
+          "verified": false,
+          "confidence": 0.8
+        },
+        "sources": [
+          {
+            "name": "UNESCO, Ministry of Tourism, NGO Reports",
+            "organization": "Multiple",
+            "fetched_at": "2025-11-25T11:32:40.685Z"
+          }
+        ],
+        "created_at": "2025-11-25T11:32:40.685Z",
+        "updated_at": "2025-11-25T11:32:40.685Z",
+        "version": 1,
+        "temporal_context": {
+          "days_since_baseline": 780,
+          "baseline_period": "after_baseline",
+          "conflict_phase": "ongoing-conflict",
+          "season": "autumn"
+        }
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          34.46731,
+          31.501
+        ]
+      },
+      "properties": {
+        "id": "culture-jiookw",
+        "type": "culture",
+        "category": "culture",
+        "date": "2025-11-25",
+        "timestamp": "2025-11-25T00:00:00.000Z",
+        "period": {
+          "type": "point",
+          "value": "2025-11-25"
+        },
+        "location": {
+          "name": "Gaza Strip",
+          "admin_levels": {
+            "level1": "Gaza Strip",
+            "level2": "Gaza Strip"
+          },
+          "region": "Gaza Strip",
+          "coordinates": {
+            "lat": 31.501,
+            "lon": 34.46731
+          },
+          "region_type": "urban",
+          "proximity": {
+            "nearest_city": "Gaza City",
+            "distance_to_border": 10989.000000000022
+          }
+        },
+        "name": "Al-Zafar Mosque",
+        "site_type": "Religious",
+        "status": "Intact",
+        "historical_period": "Unknown",
+        "description": "mosque in Gaza Strip, Palestine",
+        "protection_level": "National Heritage",
+        "damage": null,
+        "images": [],
+        "quality": {
+          "score": 0.8888888888888888,
+          "completeness": 0.6666666666666666,
+          "consistency": 1,
+          "accuracy": 1,
+          "verified": false,
+          "confidence": 0.8
+        },
+        "sources": [
+          {
+            "name": "UNESCO, Ministry of Tourism, NGO Reports",
+            "organization": "Multiple",
+            "fetched_at": "2025-11-25T11:32:40.685Z"
+          }
+        ],
+        "created_at": "2025-11-25T11:32:40.685Z",
+        "updated_at": "2025-11-25T11:32:40.685Z",
+        "version": 1,
+        "temporal_context": {
+          "days_since_baseline": 780,
+          "baseline_period": "after_baseline",
+          "conflict_phase": "ongoing-conflict",
+          "season": "autumn"
+        }
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          34.4624,
+          31.5039
+        ]
+      },
+      "properties": {
+        "id": "culture-d61uzl",
+        "type": "culture",
+        "category": "culture",
+        "date": "2025-11-25",
+        "timestamp": "2025-11-25T00:00:00.000Z",
+        "period": {
+          "type": "point",
+          "value": "2025-11-25"
+        },
+        "location": {
+          "name": "Gaza Strip",
+          "admin_levels": {
+            "level1": "Gaza Strip",
+            "level2": "Gaza Strip"
+          },
+          "region": "Gaza Strip",
+          "coordinates": {
+            "lat": 31.5039,
+            "lon": 34.4624
+          },
+          "region_type": "urban",
+          "proximity": {
+            "nearest_city": "Gaza City",
+            "distance_to_border": 10667.099999999984
+          }
+        },
+        "name": "Welayat Mosque",
+        "site_type": "Religious",
+        "status": "Intact",
+        "historical_period": "Unknown",
+        "description": "Late medieval mosque in Gaza City",
+        "protection_level": "National Heritage",
+        "damage": null,
+        "images": [],
+        "quality": {
+          "score": 0.8888888888888888,
+          "completeness": 0.6666666666666666,
+          "consistency": 1,
+          "accuracy": 1,
+          "verified": false,
+          "confidence": 0.8
+        },
+        "sources": [
+          {
+            "name": "UNESCO, Ministry of Tourism, NGO Reports",
+            "organization": "Multiple",
+            "fetched_at": "2025-11-25T11:32:40.685Z"
+          }
+        ],
+        "created_at": "2025-11-25T11:32:40.685Z",
+        "updated_at": "2025-11-25T11:32:40.685Z",
+        "version": 1,
+        "temporal_context": {
+          "days_since_baseline": 780,
+          "baseline_period": "after_baseline",
+          "conflict_phase": "ongoing-conflict",
+          "season": "autumn"
+        }
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          34.469375,
+          31.499889
+        ]
+      },
+      "properties": {
+        "id": "culture-pf2s2j",
+        "type": "culture",
+        "category": "culture",
+        "date": "2025-11-25",
+        "timestamp": "2025-11-25T00:00:00.000Z",
+        "period": {
+          "type": "point",
+          "value": "2025-11-25"
+        },
+        "location": {
+          "name": "Gaza Strip",
+          "admin_levels": {
+            "level1": "Gaza Strip",
+            "level2": "Gaza Strip"
+          },
+          "region": "Gaza Strip",
+          "coordinates": {
+            "lat": 31.499889,
+            "lon": 34.469375
+          },
+          "region_type": "urban",
+          "proximity": {
+            "nearest_city": "Gaza City",
+            "distance_to_border": 11112.321000000204
+          }
+        },
+        "name": "Ibn Uthman Mosque",
+        "site_type": "Religious",
+        "status": "Intact",
+        "historical_period": "Unknown",
+        "description": "mosque in Gaza City, Gaza Strip, Palestine",
+        "protection_level": "National Heritage",
+        "damage": null,
+        "images": [],
+        "quality": {
+          "score": 0.8888888888888888,
+          "completeness": 0.6666666666666666,
+          "consistency": 1,
+          "accuracy": 1,
+          "verified": false,
+          "confidence": 0.8
+        },
+        "sources": [
+          {
+            "name": "UNESCO, Ministry of Tourism, NGO Reports",
+            "organization": "Multiple",
+            "fetched_at": "2025-11-25T11:32:40.685Z"
+          }
+        ],
+        "created_at": "2025-11-25T11:32:40.685Z",
+        "updated_at": "2025-11-25T11:32:40.685Z",
+        "version": 1,
+        "temporal_context": {
+          "days_since_baseline": 780,
+          "baseline_period": "after_baseline",
+          "conflict_phase": "ongoing-conflict",
+          "season": "autumn"
+        }
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          34.404722222,
+          31.475833333
+        ]
+      },
+      "properties": {
+        "id": "culture-o65qt5",
+        "type": "culture",
+        "category": "culture",
+        "date": "2025-11-25",
+        "timestamp": "2025-11-25T00:00:00.000Z",
+        "period": {
+          "type": "point",
+          "value": "2025-11-25"
+        },
+        "location": {
+          "name": "Gaza Strip",
+          "admin_levels": {
+            "level1": "Gaza Strip",
+            "level2": "Gaza Strip"
+          },
+          "region": "Gaza Strip",
+          "coordinates": {
+            "lat": 31.475833333,
+            "lon": 34.404722222
+          },
+          "region_type": "urban",
+          "proximity": {
+            "nearest_city": "Gaza City",
+            "distance_to_border": 13782.500037000087
+          }
+        },
+        "name": "Tell es-Sakan",
+        "site_type": "Archaeological",
+        "status": "Intact",
+        "historical_period": "Unknown",
+        "description": "archaeological site in Palestine",
+        "protection_level": "National Heritage",
+        "damage": null,
+        "images": [],
+        "quality": {
+          "score": 0.8888888888888888,
+          "completeness": 0.6666666666666666,
+          "consistency": 1,
+          "accuracy": 1,
+          "verified": false,
+          "confidence": 0.8
+        },
+        "sources": [
+          {
+            "name": "UNESCO, Ministry of Tourism, NGO Reports",
+            "organization": "Multiple",
+            "fetched_at": "2025-11-25T11:32:40.686Z"
+          }
+        ],
+        "created_at": "2025-11-25T11:32:40.686Z",
+        "updated_at": "2025-11-25T11:32:40.686Z",
+        "version": 1,
+        "temporal_context": {
+          "days_since_baseline": 780,
+          "baseline_period": "after_baseline",
+          "conflict_phase": "ongoing-conflict",
+          "season": "autumn"
+        }
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          34.4043,
+          31.4677
+        ]
+      },
+      "properties": {
+        "id": "culture-sp08mb",
+        "type": "culture",
+        "category": "culture",
+        "date": "2025-11-25",
+        "timestamp": "2025-11-25T00:00:00.000Z",
+        "period": {
+          "type": "point",
+          "value": "2025-11-25"
+        },
+        "location": {
+          "name": "Gaza Strip",
+          "admin_levels": {
+            "level1": "Gaza Strip",
+            "level2": "Gaza Strip"
+          },
+          "region": "Gaza Strip",
+          "coordinates": {
+            "lat": 31.4677,
+            "lon": 34.4043
+          },
+          "region_type": "urban",
+          "proximity": {
+            "nearest_city": "Gaza City",
+            "distance_to_border": 14685.300000000083
+          }
+        },
+        "name": "Tell el-'Ajjul",
+        "site_type": "Archaeological",
+        "status": "Intact",
+        "historical_period": "Unknown",
+        "description": "archaeological site",
+        "protection_level": "National Heritage",
+        "damage": null,
+        "images": [],
+        "quality": {
+          "score": 0.8888888888888888,
+          "completeness": 0.6666666666666666,
+          "consistency": 1,
+          "accuracy": 1,
+          "verified": false,
+          "confidence": 0.8
+        },
+        "sources": [
+          {
+            "name": "UNESCO, Ministry of Tourism, NGO Reports",
+            "organization": "Multiple",
+            "fetched_at": "2025-11-25T11:32:40.686Z"
+          }
+        ],
+        "created_at": "2025-11-25T11:32:40.686Z",
+        "updated_at": "2025-11-25T11:32:40.686Z",
+        "version": 1,
+        "temporal_context": {
+          "days_since_baseline": 780,
+          "baseline_period": "after_baseline",
+          "conflict_phase": "ongoing-conflict",
+          "season": "autumn"
+        }
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          34.4644,
+          31.504
+        ]
+      },
+      "properties": {
+        "id": "culture-92kmls",
+        "type": "culture",
+        "category": "culture",
+        "date": "2025-11-25",
+        "timestamp": "2025-11-25T00:00:00.000Z",
+        "period": {
+          "type": "point",
+          "value": "2025-11-25"
+        },
+        "location": {
+          "name": "Gaza Strip",
+          "admin_levels": {
+            "level1": "Gaza Strip",
+            "level2": "Gaza Strip"
+          },
+          "region": "Gaza Strip",
+          "coordinates": {
+            "lat": 31.504,
+            "lon": 34.4644
+          },
+          "region_type": "urban",
+          "proximity": {
+            "nearest_city": "Gaza City",
+            "distance_to_border": 10656.00000000001
+          }
+        },
+        "name": "Great Mosque of Gaza",
+        "site_type": "Religious",
+        "status": "Intact",
+        "historical_period": "Unknown",
+        "description": "mosque in Gaza City, Palestine",
+        "protection_level": "National Heritage",
+        "damage": null,
+        "images": [],
+        "quality": {
+          "score": 0.8888888888888888,
+          "completeness": 0.6666666666666666,
+          "consistency": 1,
+          "accuracy": 1,
+          "verified": false,
+          "confidence": 0.8
+        },
+        "sources": [
+          {
+            "name": "UNESCO, Ministry of Tourism, NGO Reports",
+            "organization": "Multiple",
+            "fetched_at": "2025-11-25T11:32:40.686Z"
+          }
+        ],
+        "created_at": "2025-11-25T11:32:40.686Z",
+        "updated_at": "2025-11-25T11:32:40.686Z",
+        "version": 1,
+        "temporal_context": {
+          "days_since_baseline": 780,
+          "baseline_period": "after_baseline",
+          "conflict_phase": "ongoing-conflict",
+          "season": "autumn"
+        }
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          34.328055555,
+          31.415277777
+        ]
+      },
+      "properties": {
+        "id": "culture-ymx706",
+        "type": "culture",
+        "category": "culture",
+        "date": "2025-11-25",
+        "timestamp": "2025-11-25T00:00:00.000Z",
+        "period": {
+          "type": "point",
+          "value": "2025-11-25"
+        },
+        "location": {
+          "name": "Gaza Strip",
+          "admin_levels": {
+            "level1": "Gaza Strip",
+            "level2": "Gaza Strip"
+          },
+          "region": "Gaza Strip",
+          "coordinates": {
+            "lat": 31.415277777,
+            "lon": 34.328055555
+          },
+          "region_type": "urban",
+          "proximity": {
+            "nearest_city": "Khan Yunis",
+            "distance_to_border": 14214.166604999555
+          }
+        },
+        "name": "Tell Ruqeish",
+        "site_type": "Archaeological",
+        "status": "Intact",
+        "historical_period": "Unknown",
+        "description": "archeological site in Palestine",
+        "protection_level": "National Heritage",
+        "damage": null,
+        "images": [],
+        "quality": {
+          "score": 0.8888888888888888,
+          "completeness": 0.6666666666666666,
+          "consistency": 1,
+          "accuracy": 1,
+          "verified": false,
+          "confidence": 0.8
+        },
+        "sources": [
+          {
+            "name": "UNESCO, Ministry of Tourism, NGO Reports",
+            "organization": "Multiple",
+            "fetched_at": "2025-11-25T11:32:40.686Z"
+          }
+        ],
+        "created_at": "2025-11-25T11:32:40.686Z",
+        "updated_at": "2025-11-25T11:32:40.686Z",
+        "version": 1,
+        "temporal_context": {
+          "days_since_baseline": 780,
+          "baseline_period": "after_baseline",
+          "conflict_phase": "ongoing-conflict",
+          "season": "autumn"
+        }
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          34.4697,
+          31.5019
+        ]
+      },
+      "properties": {
+        "id": "culture-eh1dqe",
+        "type": "culture",
+        "category": "culture",
+        "date": "2025-11-25",
+        "timestamp": "2025-11-25T00:00:00.000Z",
+        "period": {
+          "type": "point",
+          "value": "2025-11-25"
+        },
+        "location": {
+          "name": "Gaza Strip",
+          "admin_levels": {
+            "level1": "Gaza Strip",
+            "level2": "Gaza Strip"
+          },
+          "region": "Gaza Strip",
+          "coordinates": {
+            "lat": 31.5019,
+            "lon": 34.4697
+          },
+          "region_type": "urban",
+          "proximity": {
+            "nearest_city": "Gaza City",
+            "distance_to_border": 10889.100000000255
+          }
+        },
+        "name": "Mahkamah Mosque",
+        "site_type": "Religious",
+        "status": "Intact",
+        "historical_period": "Unknown",
+        "description": "mosque in Gaza City, Palestine",
+        "protection_level": "National Heritage",
+        "damage": null,
+        "images": [],
+        "quality": {
+          "score": 0.8888888888888888,
+          "completeness": 0.6666666666666666,
+          "consistency": 1,
+          "accuracy": 1,
+          "verified": false,
+          "confidence": 0.8
+        },
+        "sources": [
+          {
+            "name": "UNESCO, Ministry of Tourism, NGO Reports",
+            "organization": "Multiple",
+            "fetched_at": "2025-11-25T11:32:40.686Z"
+          }
+        ],
+        "created_at": "2025-11-25T11:32:40.686Z",
+        "updated_at": "2025-11-25T11:32:40.686Z",
+        "version": 1,
+        "temporal_context": {
+          "days_since_baseline": 780,
+          "baseline_period": "after_baseline",
+          "conflict_phase": "ongoing-conflict",
+          "season": "autumn"
+        }
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          34.466277777,
+          31.548722222
+        ]
+      },
+      "properties": {
+        "id": "culture-7ytc92",
+        "type": "culture",
+        "category": "culture",
+        "date": "2025-11-25",
+        "timestamp": "2025-11-25T00:00:00.000Z",
+        "period": {
+          "type": "point",
+          "value": "2025-11-25"
+        },
+        "location": {
+          "name": "Gaza Strip",
+          "admin_levels": {
+            "level1": "Gaza Strip",
+            "level2": "Gaza Strip"
+          },
+          "region": "Gaza Strip",
+          "coordinates": {
+            "lat": 31.548722222,
+            "lon": 34.466277777
+          },
+          "region_type": "urban",
+          "proximity": {
+            "nearest_city": "Gaza City",
+            "distance_to_border": 5691.83335800032
+          }
+        },
+        "name": "Ard-al-Moharbeen necropolis",
+        "site_type": "Archaeological",
+        "status": "Intact",
+        "historical_period": "Unknown",
+        "description": "destroyed archaeological site in Palestine",
+        "protection_level": "National Heritage",
+        "damage": null,
+        "images": [],
+        "quality": {
+          "score": 0.8888888888888888,
+          "completeness": 0.6666666666666666,
+          "consistency": 1,
+          "accuracy": 1,
+          "verified": false,
+          "confidence": 0.8
+        },
+        "sources": [
+          {
+            "name": "UNESCO, Ministry of Tourism, NGO Reports",
+            "organization": "Multiple",
+            "fetched_at": "2025-11-25T11:32:40.686Z"
+          }
+        ],
+        "created_at": "2025-11-25T11:32:40.686Z",
+        "updated_at": "2025-11-25T11:32:40.686Z",
+        "version": 1,
+        "temporal_context": {
+          "days_since_baseline": 780,
+          "baseline_period": "after_baseline",
+          "conflict_phase": "ongoing-conflict",
+          "season": "autumn"
+        }
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          34.432944444,
+          31.523083333
+        ]
+      },
+      "properties": {
+        "id": "culture-aqcv1q",
+        "type": "culture",
+        "category": "culture",
+        "date": "2025-11-25",
+        "timestamp": "2025-11-25T00:00:00.000Z",
+        "period": {
+          "type": "point",
+          "value": "2025-11-25"
+        },
+        "location": {
+          "name": "Gaza Strip",
+          "admin_levels": {
+            "level1": "Gaza Strip",
+            "level2": "Gaza Strip"
+          },
+          "region": "Gaza Strip",
+          "coordinates": {
+            "lat": 31.523083333,
+            "lon": 34.432944444
+          },
+          "region_type": "urban",
+          "proximity": {
+            "nearest_city": "Gaza City",
+            "distance_to_border": 8537.750037000284
+          }
+        },
+        "name": "Al Hassaina Mosque",
+        "site_type": "Religious",
+        "status": "Intact",
+        "historical_period": "Unknown",
+        "description": "mosque with 2 minarets by the Port of Gaza",
+        "protection_level": "National Heritage",
+        "damage": null,
+        "images": [],
+        "quality": {
+          "score": 0.8888888888888888,
+          "completeness": 0.6666666666666666,
+          "consistency": 1,
+          "accuracy": 1,
+          "verified": false,
+          "confidence": 0.8
+        },
+        "sources": [
+          {
+            "name": "UNESCO, Ministry of Tourism, NGO Reports",
+            "organization": "Multiple",
+            "fetched_at": "2025-11-25T11:32:40.686Z"
+          }
+        ],
+        "created_at": "2025-11-25T11:32:40.686Z",
+        "updated_at": "2025-11-25T11:32:40.686Z",
+        "version": 1,
+        "temporal_context": {
+          "days_since_baseline": 780,
+          "baseline_period": "after_baseline",
+          "conflict_phase": "ongoing-conflict",
+          "season": "autumn"
+        }
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          34.415555555,
+          31.4725
+        ]
+      },
+      "properties": {
+        "id": "culture-9ip0sk",
+        "type": "culture",
+        "category": "culture",
+        "date": "2025-11-25",
+        "timestamp": "2025-11-25T00:00:00.000Z",
+        "period": {
+          "type": "point",
+          "value": "2025-11-25"
+        },
+        "location": {
+          "name": "Gaza Strip",
+          "admin_levels": {
+            "level1": "Gaza Strip",
+            "level2": "Gaza Strip"
+          },
+          "region": "Gaza Strip",
+          "coordinates": {
+            "lat": 31.4725,
+            "lon": 34.415555555
+          },
+          "region_type": "urban",
+          "proximity": {
+            "nearest_city": "Gaza City",
+            "distance_to_border": 14152.500000000142
+          }
+        },
+        "name": "al-Moghraqa",
+        "site_type": "Archaeological",
+        "status": "Intact",
+        "historical_period": "Unknown",
+        "description": "archaeological site in Palestine",
+        "protection_level": "National Heritage",
+        "damage": null,
+        "images": [],
+        "quality": {
+          "score": 0.8888888888888888,
+          "completeness": 0.6666666666666666,
+          "consistency": 1,
+          "accuracy": 1,
+          "verified": false,
+          "confidence": 0.8
+        },
+        "sources": [
+          {
+            "name": "UNESCO, Ministry of Tourism, NGO Reports",
+            "organization": "Multiple",
+            "fetched_at": "2025-11-25T11:32:40.686Z"
+          }
+        ],
+        "created_at": "2025-11-25T11:32:40.686Z",
+        "updated_at": "2025-11-25T11:32:40.686Z",
+        "version": 1,
+        "temporal_context": {
+          "days_since_baseline": 780,
+          "baseline_period": "after_baseline",
+          "conflict_phase": "ongoing-conflict",
+          "season": "autumn"
+        }
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          34.456,
+          31.5445
+        ]
+      },
+      "properties": {
+        "id": "culture-eb37qi",
+        "type": "culture",
+        "category": "culture",
+        "date": "2025-11-25",
+        "timestamp": "2025-11-25T00:00:00.000Z",
+        "period": {
+          "type": "point",
+          "value": "2025-11-25"
+        },
+        "location": {
+          "name": "Gaza Strip",
+          "admin_levels": {
+            "level1": "Gaza Strip",
+            "level2": "Gaza Strip"
+          },
+          "region": "Gaza Strip",
+          "coordinates": {
+            "lat": 31.5445,
+            "lon": 34.456
+          },
+          "region_type": "urban",
+          "proximity": {
+            "nearest_city": "Gaza City",
+            "distance_to_border": 6160.500000000234
+          }
+        },
+        "name": "Blakhiya Byzantine cemetery",
+        "site_type": "Archaeological",
+        "status": "Intact",
+        "historical_period": "Unknown",
+        "description": "cemetery and archaeological site in Gaza",
+        "protection_level": "National Heritage",
+        "damage": null,
+        "images": [],
+        "quality": {
+          "score": 0.8888888888888888,
+          "completeness": 0.6666666666666666,
+          "consistency": 1,
+          "accuracy": 1,
+          "verified": false,
+          "confidence": 0.8
+        },
+        "sources": [
+          {
+            "name": "UNESCO, Ministry of Tourism, NGO Reports",
+            "organization": "Multiple",
+            "fetched_at": "2025-11-25T11:32:40.686Z"
+          }
+        ],
+        "created_at": "2025-11-25T11:32:40.686Z",
+        "updated_at": "2025-11-25T11:32:40.686Z",
+        "version": 1,
+        "temporal_context": {
+          "days_since_baseline": 780,
+          "baseline_period": "after_baseline",
+          "conflict_phase": "ongoing-conflict",
+          "season": "autumn"
+        }
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          34.464578,
+          31.503126
+        ]
+      },
+      "properties": {
+        "id": "culture-yl43ns",
+        "type": "culture",
+        "category": "culture",
+        "date": "2025-11-25",
+        "timestamp": "2025-11-25T00:00:00.000Z",
+        "period": {
+          "type": "point",
+          "value": "2025-11-25"
+        },
+        "location": {
+          "name": "Gaza Strip",
+          "admin_levels": {
+            "level1": "Gaza Strip",
+            "level2": "Gaza Strip"
+          },
+          "region": "Gaza Strip",
+          "coordinates": {
+            "lat": 31.503126,
+            "lon": 34.464578
+          },
+          "region_type": "urban",
+          "proximity": {
+            "nearest_city": "Gaza City",
+            "distance_to_border": 10753.013999999965
+          }
+        },
+        "name": "Al Ajemi Mosque",
+        "site_type": "Religious",
+        "status": "Intact",
+        "historical_period": "Unknown",
+        "description": "mosque in Gaza City",
+        "protection_level": "National Heritage",
+        "damage": null,
+        "images": [],
+        "quality": {
+          "score": 0.8888888888888888,
+          "completeness": 0.6666666666666666,
+          "consistency": 1,
+          "accuracy": 1,
+          "verified": false,
+          "confidence": 0.8
+        },
+        "sources": [
+          {
+            "name": "UNESCO, Ministry of Tourism, NGO Reports",
+            "organization": "Multiple",
+            "fetched_at": "2025-11-25T11:32:40.686Z"
+          }
+        ],
+        "created_at": "2025-11-25T11:32:40.686Z",
+        "updated_at": "2025-11-25T11:32:40.686Z",
+        "version": 1,
+        "temporal_context": {
+          "days_since_baseline": 780,
+          "baseline_period": "after_baseline",
+          "conflict_phase": "ongoing-conflict",
+          "season": "autumn"
+        }
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          34.3842,
+          31.4635
+        ]
+      },
+      "properties": {
+        "id": "culture-munwzk",
+        "type": "culture",
+        "category": "culture",
+        "date": "2025-11-25",
+        "timestamp": "2025-11-25T00:00:00.000Z",
+        "period": {
+          "type": "point",
+          "value": "2025-11-25"
+        },
+        "location": {
+          "name": "Gaza Strip",
+          "admin_levels": {
+            "level1": "Gaza Strip",
+            "level2": "Gaza Strip"
+          },
+          "region": "Gaza Strip",
+          "coordinates": {
+            "lat": 31.4635,
+            "lon": 34.3842
+          },
+          "region_type": "urban",
+          "proximity": {
+            "nearest_city": "Gaza City",
+            "distance_to_border": 15151.50000000018
+          }
+        },
+        "name": "Tell es-Sanam",
+        "site_type": "Archaeological",
+        "status": "Intact",
+        "historical_period": "Unknown",
+        "description": "archaeological site in Palestine",
+        "protection_level": "National Heritage",
+        "damage": null,
+        "images": [],
+        "quality": {
+          "score": 0.8888888888888888,
+          "completeness": 0.6666666666666666,
+          "consistency": 1,
+          "accuracy": 1,
+          "verified": false,
+          "confidence": 0.8
+        },
+        "sources": [
+          {
+            "name": "UNESCO, Ministry of Tourism, NGO Reports",
+            "organization": "Multiple",
+            "fetched_at": "2025-11-25T11:32:40.686Z"
+          }
+        ],
+        "created_at": "2025-11-25T11:32:40.686Z",
+        "updated_at": "2025-11-25T11:32:40.686Z",
+        "version": 1,
+        "temporal_context": {
+          "days_since_baseline": 780,
+          "baseline_period": "after_baseline",
+          "conflict_phase": "ongoing-conflict",
+          "season": "autumn"
+        }
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          34.344828,
+          31.418342
+        ]
+      },
+      "properties": {
+        "id": "culture-w2fglv",
+        "type": "culture",
+        "category": "culture",
+        "date": "2025-11-25",
+        "timestamp": "2025-11-25T00:00:00.000Z",
+        "period": {
+          "type": "point",
+          "value": "2025-11-25"
+        },
+        "location": {
+          "name": "Gaza Strip",
+          "admin_levels": {
+            "level1": "Gaza Strip",
+            "level2": "Gaza Strip"
+          },
+          "region": "Gaza Strip",
+          "coordinates": {
+            "lat": 31.418342,
+            "lon": 34.344828
+          },
+          "region_type": "urban",
+          "proximity": {
+            "nearest_city": "Khan Yunis",
+            "distance_to_border": 16075.90799999965
+          }
+        },
+        "name": "Yaffa mosque",
+        "site_type": "Religious",
+        "status": "Intact",
+        "historical_period": "Unknown",
+        "description": "mosque in Deir al-Balah, Palestine",
+        "protection_level": "National Heritage",
+        "damage": null,
+        "images": [],
+        "quality": {
+          "score": 0.8888888888888888,
+          "completeness": 0.6666666666666666,
+          "consistency": 1,
+          "accuracy": 1,
+          "verified": false,
+          "confidence": 0.8
+        },
+        "sources": [
+          {
+            "name": "UNESCO, Ministry of Tourism, NGO Reports",
+            "organization": "Multiple",
+            "fetched_at": "2025-11-25T11:32:40.686Z"
+          }
+        ],
+        "created_at": "2025-11-25T11:32:40.686Z",
+        "updated_at": "2025-11-25T11:32:40.686Z",
+        "version": 1,
+        "temporal_context": {
+          "days_since_baseline": 780,
+          "baseline_period": "after_baseline",
+          "conflict_phase": "ongoing-conflict",
+          "season": "autumn"
+        }
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          34.474444444,
+          31.490277777
+        ]
+      },
+      "properties": {
+        "id": "culture-m13tn",
+        "type": "culture",
+        "category": "culture",
+        "date": "2025-11-25",
+        "timestamp": "2025-11-25T00:00:00.000Z",
+        "period": {
+          "type": "point",
+          "value": "2025-11-25"
+        },
+        "location": {
+          "name": "Gaza Strip",
+          "admin_levels": {
+            "level1": "Gaza Strip",
+            "level2": "Gaza Strip"
+          },
+          "region": "Gaza Strip",
+          "coordinates": {
+            "lat": 31.490277777,
+            "lon": 34.474444444
+          },
+          "region_type": "urban",
+          "proximity": {
+            "nearest_city": "Gaza City",
+            "distance_to_border": 12179.166753000234
+          }
+        },
+        "name": "Tell Ali Muntar",
+        "site_type": "Archaeological",
+        "status": "Intact",
+        "historical_period": "Unknown",
+        "description": "mountain in Gaza",
+        "protection_level": "National Heritage",
+        "damage": null,
+        "images": [],
+        "quality": {
+          "score": 0.8888888888888888,
+          "completeness": 0.6666666666666666,
+          "consistency": 1,
+          "accuracy": 1,
+          "verified": false,
+          "confidence": 0.8
+        },
+        "sources": [
+          {
+            "name": "UNESCO, Ministry of Tourism, NGO Reports",
+            "organization": "Multiple",
+            "fetched_at": "2025-11-25T11:32:40.686Z"
+          }
+        ],
+        "created_at": "2025-11-25T11:32:40.686Z",
+        "updated_at": "2025-11-25T11:32:40.686Z",
+        "version": 1,
+        "temporal_context": {
+          "days_since_baseline": 780,
+          "baseline_period": "after_baseline",
+          "conflict_phase": "ongoing-conflict",
+          "season": "autumn"
+        }
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          34.2856,
+          31.3812
+        ]
+      },
+      "properties": {
+        "id": "culture-d37wtt",
+        "type": "culture",
+        "category": "culture",
+        "date": "2025-11-25",
+        "timestamp": "2025-11-25T00:00:00.000Z",
+        "period": {
+          "type": "point",
+          "value": "2025-11-25"
+        },
+        "location": {
+          "name": "Gaza Strip",
+          "admin_levels": {
+            "level1": "Gaza Strip",
+            "level2": "Gaza Strip"
+          },
+          "region": "Gaza Strip",
+          "coordinates": {
+            "lat": 31.3812,
+            "lon": 34.2856
+          },
+          "region_type": "urban",
+          "proximity": {
+            "nearest_city": "Khan Yunis",
+            "distance_to_border": 9501.59999999994
+          }
+        },
+        "name": "Tell Ridan",
+        "site_type": "Archaeological",
+        "status": "Intact",
+        "historical_period": "Unknown",
+        "description": "archaeological site in Palestine",
+        "protection_level": "National Heritage",
+        "damage": null,
+        "images": [],
+        "quality": {
+          "score": 0.8888888888888888,
+          "completeness": 0.6666666666666666,
+          "consistency": 1,
+          "accuracy": 1,
+          "verified": false,
+          "confidence": 0.8
+        },
+        "sources": [
+          {
+            "name": "UNESCO, Ministry of Tourism, NGO Reports",
+            "organization": "Multiple",
+            "fetched_at": "2025-11-25T11:32:40.686Z"
+          }
+        ],
+        "created_at": "2025-11-25T11:32:40.686Z",
+        "updated_at": "2025-11-25T11:32:40.686Z",
+        "version": 1,
+        "temporal_context": {
+          "days_since_baseline": 780,
+          "baseline_period": "after_baseline",
+          "conflict_phase": "ongoing-conflict",
+          "season": "autumn"
+        }
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          34.45264,
+          31.51291
+        ]
+      },
+      "properties": {
+        "id": "culture-qyn9qb",
+        "type": "culture",
+        "category": "culture",
+        "date": "2025-11-25",
+        "timestamp": "2025-11-25T00:00:00.000Z",
+        "period": {
+          "type": "point",
+          "value": "2025-11-25"
+        },
+        "location": {
+          "name": "Gaza Strip",
+          "admin_levels": {
+            "level1": "Gaza Strip",
+            "level2": "Gaza Strip"
+          },
+          "region": "Gaza Strip",
+          "coordinates": {
+            "lat": 31.51291,
+            "lon": 34.45264
+          },
+          "region_type": "urban",
+          "proximity": {
+            "nearest_city": "Gaza City",
+            "distance_to_border": 9666.989999999987
+          }
+        },
+        "name": "Abu Khadra Mosque",
+        "site_type": "Religious",
+        "status": "Intact",
+        "historical_period": "Unknown",
+        "description": "mosque in Gaza City, Palestine",
+        "protection_level": "National Heritage",
+        "damage": null,
+        "images": [],
+        "quality": {
+          "score": 0.8888888888888888,
+          "completeness": 0.6666666666666666,
+          "consistency": 1,
+          "accuracy": 1,
+          "verified": false,
+          "confidence": 0.8
+        },
+        "sources": [
+          {
+            "name": "UNESCO, Ministry of Tourism, NGO Reports",
+            "organization": "Multiple",
+            "fetched_at": "2025-11-25T11:32:40.686Z"
+          }
+        ],
+        "created_at": "2025-11-25T11:32:40.686Z",
+        "updated_at": "2025-11-25T11:32:40.686Z",
+        "version": 1,
+        "temporal_context": {
+          "days_since_baseline": 780,
+          "baseline_period": "after_baseline",
+          "conflict_phase": "ongoing-conflict",
+          "season": "autumn"
+        }
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          34.2551043,
+          31.2802398
+        ]
+      },
+      "properties": {
+        "id": "culture-3q47ct",
+        "type": "culture",
+        "category": "culture",
+        "date": "2025-11-25",
+        "timestamp": "2025-11-25T00:00:00.000Z",
+        "period": {
+          "type": "point",
+          "value": "2025-11-25"
+        },
+        "location": {
+          "name": "Gaza Strip",
+          "admin_levels": {
+            "level1": "Gaza Strip",
+            "level2": "Gaza Strip"
+          },
+          "region": "Gaza Strip",
+          "coordinates": {
+            "lat": 31.2802398,
+            "lon": 34.2551043
+          },
+          "region_type": "urban",
+          "proximity": {
+            "nearest_city": "Rafah",
+            "distance_to_border": 6116.577299999605
+          }
+        },
+        "name": "Q130285120",
+        "site_type": "Cultural",
+        "status": "Intact",
+        "historical_period": "Unknown",
+        "description": "No description available",
+        "protection_level": "National Heritage",
+        "damage": null,
+        "images": [],
+        "quality": {
+          "score": 0.8888888888888888,
+          "completeness": 0.6666666666666666,
+          "consistency": 1,
+          "accuracy": 1,
+          "verified": false,
+          "confidence": 0.8
+        },
+        "sources": [
+          {
+            "name": "UNESCO, Ministry of Tourism, NGO Reports",
+            "organization": "Multiple",
+            "fetched_at": "2025-11-25T11:32:40.686Z"
+          }
+        ],
+        "created_at": "2025-11-25T11:32:40.686Z",
+        "updated_at": "2025-11-25T11:32:40.686Z",
+        "version": 1,
+        "temporal_context": {
+          "days_since_baseline": 780,
+          "baseline_period": "after_baseline",
+          "conflict_phase": "ongoing-conflict",
+          "season": "autumn"
+        }
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          34.470498,
+          31.499886
+        ]
+      },
+      "properties": {
+        "id": "culture-bbtnlq",
+        "type": "culture",
+        "category": "culture",
+        "date": "2025-11-25",
+        "timestamp": "2025-11-25T00:00:00.000Z",
+        "period": {
+          "type": "point",
+          "value": "2025-11-25"
+        },
+        "location": {
+          "name": "Gaza Strip",
+          "admin_levels": {
+            "level1": "Gaza Strip",
+            "level2": "Gaza Strip"
+          },
+          "region": "Gaza Strip",
+          "coordinates": {
+            "lat": 31.499886,
+            "lon": 34.470498
+          },
+          "region_type": "urban",
+          "proximity": {
+            "nearest_city": "Gaza City",
+            "distance_to_border": 11112.654000000151
+          }
+        },
+        "name": "Sitt Roqaya Mosque",
+        "site_type": "Religious",
+        "status": "Intact",
+        "historical_period": "Unknown",
+        "description": "mosque in Gaza Strip",
+        "protection_level": "National Heritage",
+        "damage": null,
+        "images": [],
+        "quality": {
+          "score": 0.8888888888888888,
+          "completeness": 0.6666666666666666,
+          "consistency": 1,
+          "accuracy": 1,
+          "verified": false,
+          "confidence": 0.8
+        },
+        "sources": [
+          {
+            "name": "UNESCO, Ministry of Tourism, NGO Reports",
+            "organization": "Multiple",
+            "fetched_at": "2025-11-25T11:32:40.686Z"
+          }
+        ],
+        "created_at": "2025-11-25T11:32:40.686Z",
+        "updated_at": "2025-11-25T11:32:40.686Z",
+        "version": 1,
+        "temporal_context": {
+          "days_since_baseline": 780,
+          "baseline_period": "after_baseline",
+          "conflict_phase": "ongoing-conflict",
+          "season": "autumn"
+        }
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          34.461388888,
+          31.508611111
+        ]
+      },
+      "properties": {
+        "id": "culture-s4pru8",
+        "type": "culture",
+        "category": "culture",
+        "date": "2025-11-25",
+        "timestamp": "2025-11-25T00:00:00.000Z",
+        "period": {
+          "type": "point",
+          "value": "2025-11-25"
+        },
+        "location": {
+          "name": "Gaza Strip",
+          "admin_levels": {
+            "level1": "Gaza Strip",
+            "level2": "Gaza Strip"
+          },
+          "region": "Gaza Strip",
+          "coordinates": {
+            "lat": 31.508611111,
+            "lon": 34.461388888
+          },
+          "region_type": "urban",
+          "proximity": {
+            "nearest_city": "Gaza City",
+            "distance_to_border": 10144.166679000107
+          }
+        },
+        "name": "Sheikh Zakareya Mosque",
+        "site_type": "Religious",
+        "status": "Intact",
+        "historical_period": "Unknown",
+        "description": "mosque in Gaza City, Palestine",
+        "protection_level": "National Heritage",
+        "damage": null,
+        "images": [],
+        "quality": {
+          "score": 0.8888888888888888,
+          "completeness": 0.6666666666666666,
+          "consistency": 1,
+          "accuracy": 1,
+          "verified": false,
+          "confidence": 0.8
+        },
+        "sources": [
+          {
+            "name": "UNESCO, Ministry of Tourism, NGO Reports",
+            "organization": "Multiple",
+            "fetched_at": "2025-11-25T11:32:40.686Z"
+          }
+        ],
+        "created_at": "2025-11-25T11:32:40.686Z",
+        "updated_at": "2025-11-25T11:32:40.686Z",
+        "version": 1,
+        "temporal_context": {
+          "days_since_baseline": 780,
+          "baseline_period": "after_baseline",
+          "conflict_phase": "ongoing-conflict",
+          "season": "autumn"
+        }
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          34.4141,
+          31.4537
+        ]
+      },
+      "properties": {
+        "id": "culture-yptfki",
+        "type": "culture",
+        "category": "culture",
+        "date": "2025-11-25",
+        "timestamp": "2025-11-25T00:00:00.000Z",
+        "period": {
+          "type": "point",
+          "value": "2025-11-25"
+        },
+        "location": {
+          "name": "Gaza Strip",
+          "admin_levels": {
+            "level1": "Gaza Strip",
+            "level2": "Gaza Strip"
+          },
+          "region": "Gaza Strip",
+          "coordinates": {
+            "lat": 31.4537,
+            "lon": 34.4141
+          },
+          "region_type": "urban",
+          "proximity": {
+            "nearest_city": "Gaza City",
+            "distance_to_border": 16239.30000000001
+          }
+        },
+        "name": "Taur Ikhbeineh",
+        "site_type": "Archaeological",
+        "status": "Intact",
+        "historical_period": "Unknown",
+        "description": "archaeological site in Palestine",
+        "protection_level": "National Heritage",
+        "damage": null,
+        "images": [],
+        "quality": {
+          "score": 0.8888888888888888,
+          "completeness": 0.6666666666666666,
+          "consistency": 1,
+          "accuracy": 1,
+          "verified": false,
+          "confidence": 0.8
+        },
+        "sources": [
+          {
+            "name": "UNESCO, Ministry of Tourism, NGO Reports",
+            "organization": "Multiple",
+            "fetched_at": "2025-11-25T11:32:40.686Z"
+          }
+        ],
+        "created_at": "2025-11-25T11:32:40.686Z",
+        "updated_at": "2025-11-25T11:32:40.686Z",
+        "version": 1,
+        "temporal_context": {
+          "days_since_baseline": 780,
+          "baseline_period": "after_baseline",
+          "conflict_phase": "ongoing-conflict",
+          "season": "autumn"
+        }
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          34.5117,
+          31.539
+        ]
+      },
+      "properties": {
+        "id": "culture-vf7umy",
+        "type": "culture",
+        "category": "culture",
+        "date": "2025-11-25",
+        "timestamp": "2025-11-25T00:00:00.000Z",
+        "period": {
+          "type": "point",
+          "value": "2025-11-25"
+        },
+        "location": {
+          "name": "Gaza Strip",
+          "admin_levels": {
+            "level1": "Gaza Strip",
+            "level2": "Gaza Strip"
+          },
+          "region": "Gaza Strip",
+          "coordinates": {
+            "lat": 31.539,
+            "lon": 34.5117
+          },
+          "region_type": "urban",
+          "proximity": {
+            "nearest_city": "Gaza City",
+            "distance_to_border": 6770.999999999994
+          }
+        },
+        "name": "Sheikh Zayed Al Nahyan",
+        "site_type": "Religious",
+        "status": "Intact",
+        "historical_period": "Unknown",
+        "description": "mosque in the Gaza Strip, Palestine",
+        "protection_level": "National Heritage",
+        "damage": null,
+        "images": [],
+        "quality": {
+          "score": 0.8888888888888888,
+          "completeness": 0.6666666666666666,
+          "consistency": 1,
+          "accuracy": 1,
+          "verified": false,
+          "confidence": 0.8
+        },
+        "sources": [
+          {
+            "name": "UNESCO, Ministry of Tourism, NGO Reports",
+            "organization": "Multiple",
+            "fetched_at": "2025-11-25T11:32:40.686Z"
+          }
+        ],
+        "created_at": "2025-11-25T11:32:40.686Z",
+        "updated_at": "2025-11-25T11:32:40.686Z",
+        "version": 1,
+        "temporal_context": {
+          "days_since_baseline": 780,
+          "baseline_period": "after_baseline",
+          "conflict_phase": "ongoing-conflict",
+          "season": "autumn"
+        }
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          34.3922,
+          31.46
+        ]
+      },
+      "properties": {
+        "id": "culture-til123",
+        "type": "culture",
+        "category": "culture",
+        "date": "2025-11-25",
+        "timestamp": "2025-11-25T00:00:00.000Z",
+        "period": {
+          "type": "point",
+          "value": "2025-11-25"
+        },
+        "location": {
+          "name": "Gaza Strip",
+          "admin_levels": {
+            "level1": "Gaza Strip",
+            "level2": "Gaza Strip"
+          },
+          "region": "Gaza Strip",
+          "coordinates": {
+            "lat": 31.46,
+            "lon": 34.3922
+          },
+          "region_type": "urban",
+          "proximity": {
+            "nearest_city": "Gaza City",
+            "distance_to_border": 15540.000000000064
+          }
+        },
+        "name": "Hassan el-Banna Mosque",
+        "site_type": "Religious",
+        "status": "Intact",
+        "historical_period": "Unknown",
+        "description": "mosque in the Gaza Strip, Palestine",
+        "protection_level": "National Heritage",
+        "damage": null,
+        "images": [],
+        "quality": {
+          "score": 0.8888888888888888,
+          "completeness": 0.6666666666666666,
+          "consistency": 1,
+          "accuracy": 1,
+          "verified": false,
+          "confidence": 0.8
+        },
+        "sources": [
+          {
+            "name": "UNESCO, Ministry of Tourism, NGO Reports",
+            "organization": "Multiple",
+            "fetched_at": "2025-11-25T11:32:40.686Z"
+          }
+        ],
+        "created_at": "2025-11-25T11:32:40.686Z",
+        "updated_at": "2025-11-25T11:32:40.686Z",
+        "version": 1,
+        "temporal_context": {
+          "days_since_baseline": 780,
+          "baseline_period": "after_baseline",
+          "conflict_phase": "ongoing-conflict",
+          "season": "autumn"
+        }
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          34.432547,
+          31.520533
+        ]
+      },
+      "properties": {
+        "id": "culture-e11fwv",
+        "type": "culture",
+        "category": "culture",
+        "date": "2025-11-25",
+        "timestamp": "2025-11-25T00:00:00.000Z",
+        "period": {
+          "type": "point",
+          "value": "2025-11-25"
+        },
+        "location": {
+          "name": "Gaza Strip",
+          "admin_levels": {
+            "level1": "Gaza Strip",
+            "level2": "Gaza Strip"
+          },
+          "region": "Gaza Strip",
+          "coordinates": {
+            "lat": 31.520533,
+            "lon": 34.432547
+          },
+          "region_type": "urban",
+          "proximity": {
+            "nearest_city": "Gaza City",
+            "distance_to_border": 8820.837000000118
+          }
+        },
+        "name": "Gaza synagogue",
+        "site_type": "Cultural",
+        "status": "Intact",
+        "historical_period": "Unknown",
+        "description": "ancient synagogue",
+        "protection_level": "National Heritage",
+        "damage": null,
+        "images": [],
+        "quality": {
+          "score": 0.8888888888888888,
+          "completeness": 0.6666666666666666,
+          "consistency": 1,
+          "accuracy": 1,
+          "verified": false,
+          "confidence": 0.8
+        },
+        "sources": [
+          {
+            "name": "UNESCO, Ministry of Tourism, NGO Reports",
+            "organization": "Multiple",
+            "fetched_at": "2025-11-25T11:32:40.687Z"
+          }
+        ],
+        "created_at": "2025-11-25T11:32:40.687Z",
+        "updated_at": "2025-11-25T11:32:40.687Z",
+        "version": 1,
+        "temporal_context": {
+          "days_since_baseline": 780,
+          "baseline_period": "after_baseline",
+          "conflict_phase": "ongoing-conflict",
+          "season": "autumn"
+        }
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          34.46203,
+          31.503959
+        ]
+      },
+      "properties": {
+        "id": "culture-v336fx",
+        "type": "culture",
+        "category": "culture",
+        "date": "2025-11-25",
+        "timestamp": "2025-11-25T00:00:00.000Z",
+        "period": {
+          "type": "point",
+          "value": "2025-11-25"
+        },
+        "location": {
+          "name": "Gaza Strip",
+          "admin_levels": {
+            "level1": "Gaza Strip",
+            "level2": "Gaza Strip"
+          },
+          "region": "Gaza Strip",
+          "coordinates": {
+            "lat": 31.503959,
+            "lon": 34.46203
+          },
+          "region_type": "urban",
+          "proximity": {
+            "nearest_city": "Gaza City",
+            "distance_to_border": 10660.55100000035
+          }
+        },
+        "name": "Church of Saint Porphyrius",
+        "site_type": "Religious",
+        "status": "Intact",
+        "historical_period": "Unknown",
+        "description": "church building in Gaza City, State of Palestine",
+        "protection_level": "National Heritage",
+        "damage": null,
+        "images": [],
+        "quality": {
+          "score": 0.8888888888888888,
+          "completeness": 0.6666666666666666,
+          "consistency": 1,
+          "accuracy": 1,
+          "verified": false,
+          "confidence": 0.8
+        },
+        "sources": [
+          {
+            "name": "UNESCO, Ministry of Tourism, NGO Reports",
+            "organization": "Multiple",
+            "fetched_at": "2025-11-25T11:32:40.687Z"
+          }
+        ],
+        "created_at": "2025-11-25T11:32:40.687Z",
+        "updated_at": "2025-11-25T11:32:40.687Z",
+        "version": 1,
+        "temporal_context": {
+          "days_since_baseline": 780,
+          "baseline_period": "after_baseline",
+          "conflict_phase": "ongoing-conflict",
+          "season": "autumn"
+        }
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          34.3518,
+          31.4167
+        ]
+      },
+      "properties": {
+        "id": "culture-ejry8",
+        "type": "culture",
+        "category": "culture",
+        "date": "2025-11-25",
+        "timestamp": "2025-11-25T00:00:00.000Z",
+        "period": {
+          "type": "point",
+          "value": "2025-11-25"
+        },
+        "location": {
+          "name": "Gaza Strip",
+          "admin_levels": {
+            "level1": "Gaza Strip",
+            "level2": "Gaza Strip"
+          },
+          "region": "Gaza Strip",
+          "coordinates": {
+            "lat": 31.4167,
+            "lon": 34.3518
+          },
+          "region_type": "urban",
+          "proximity": {
+            "nearest_city": "Khan Yunis",
+            "distance_to_border": 16849.799999999377
+          }
+        },
+        "name": "Deir al-Balah Bronze Age cemetery",
+        "site_type": "Cultural",
+        "status": "Intact",
+        "historical_period": "Unknown",
+        "description": "cemetery in the Gaza Strip, Palestine",
+        "protection_level": "National Heritage",
+        "damage": null,
+        "images": [],
+        "quality": {
+          "score": 0.8888888888888888,
+          "completeness": 0.6666666666666666,
+          "consistency": 1,
+          "accuracy": 1,
+          "verified": false,
+          "confidence": 0.8
+        },
+        "sources": [
+          {
+            "name": "UNESCO, Ministry of Tourism, NGO Reports",
+            "organization": "Multiple",
+            "fetched_at": "2025-11-25T11:32:40.688Z"
+          }
+        ],
+        "created_at": "2025-11-25T11:32:40.688Z",
+        "updated_at": "2025-11-25T11:32:40.688Z",
+        "version": 1,
+        "temporal_context": {
+          "days_since_baseline": 780,
+          "baseline_period": "after_baseline",
+          "conflict_phase": "ongoing-conflict",
+          "season": "autumn"
+        }
+      }
+    }
+  ],
+  "metadata": {
+    "description": "Cultural heritage sites",
+    "featureCount": 40,
+    "skippedCount": 2,
+    "generatedAt": "2025-11-25T11:32:47.644Z",
+    "filteredBy": "bounding box",
+    "bbox": [
+      34.2,
+      31.2,
+      34.6,
+      31.6
+    ]
+  }
+}

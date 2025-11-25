@@ -1,0 +1,647 @@
+{
+  "quarter": "1985-Q1",
+  "recordCount": 13,
+  "dateRange": {
+    "start": "1985-01-01",
+    "end": "1985-01-01"
+  },
+  "data": [
+    {
+      "id": "health-8twh3h",
+      "type": "health",
+      "category": "health",
+      "date": "1985-01-01",
+      "location": {
+        "name": "State of Palestine",
+        "coordinates": null,
+        "admin_levels": {
+          "level1": "Eastern Mediterranean",
+          "level2": null,
+          "level3": null
+        },
+        "region": "Palestine",
+        "region_type": null
+      },
+      "value": 2440,
+      "unit": "count",
+      "facility_name": "Number of under-five deaths",
+      "facility_type": "indicator",
+      "status": "unknown",
+      "damage_level": null,
+      "bed_capacity": 0,
+      "staff_count": 0,
+      "quality": {
+        "score": 0.8555555555555555,
+        "completeness": 0.6666666666666666,
+        "consistency": 1,
+        "accuracy": 0.9,
+        "verified": false,
+        "confidence": 0.8
+      },
+      "sources": [
+        {
+          "name": "HDX",
+          "organization": "UN OCHA",
+          "fetched_at": "2025-11-25T18:04:35.853Z"
+        }
+      ],
+      "created_at": "2025-11-25T18:04:35.853Z",
+      "updated_at": "2025-11-25T18:04:35.853Z",
+      "version": 1,
+      "temporal_context": {
+        "days_since_baseline": -14158,
+        "baseline_period": "before_baseline",
+        "conflict_phase": "pre-escalation",
+        "season": "winter"
+      }
+    },
+    {
+      "id": "health-vawom3",
+      "type": "health",
+      "category": "health",
+      "date": "1985-01-01",
+      "location": {
+        "name": "State of Palestine",
+        "coordinates": null,
+        "admin_levels": {
+          "level1": "Eastern Mediterranean",
+          "level2": null,
+          "level3": null
+        },
+        "region": "Palestine",
+        "region_type": null
+      },
+      "value": 4006,
+      "unit": "count",
+      "facility_name": "Number of infant deaths",
+      "facility_type": "indicator",
+      "status": "unknown",
+      "damage_level": null,
+      "bed_capacity": 0,
+      "staff_count": 0,
+      "quality": {
+        "score": 0.8555555555555555,
+        "completeness": 0.6666666666666666,
+        "consistency": 1,
+        "accuracy": 0.9,
+        "verified": false,
+        "confidence": 0.8
+      },
+      "sources": [
+        {
+          "name": "HDX",
+          "organization": "UN OCHA",
+          "fetched_at": "2025-11-25T18:04:35.870Z"
+        }
+      ],
+      "created_at": "2025-11-25T18:04:35.870Z",
+      "updated_at": "2025-11-25T18:04:35.870Z",
+      "version": 1,
+      "temporal_context": {
+        "days_since_baseline": -14158,
+        "baseline_period": "before_baseline",
+        "conflict_phase": "pre-escalation",
+        "season": "winter"
+      }
+    },
+    {
+      "id": "health-2xshfe",
+      "type": "health",
+      "category": "health",
+      "date": "1985-01-01",
+      "location": {
+        "name": "State of Palestine",
+        "coordinates": null,
+        "admin_levels": {
+          "level1": "Eastern Mediterranean",
+          "level2": null,
+          "level3": null
+        },
+        "region": "Palestine",
+        "region_type": null
+      },
+      "value": 2136,
+      "unit": "count",
+      "facility_name": "Number of infant deaths",
+      "facility_type": "indicator",
+      "status": "unknown",
+      "damage_level": null,
+      "bed_capacity": 0,
+      "staff_count": 0,
+      "quality": {
+        "score": 0.8555555555555555,
+        "completeness": 0.6666666666666666,
+        "consistency": 1,
+        "accuracy": 0.9,
+        "verified": false,
+        "confidence": 0.8
+      },
+      "sources": [
+        {
+          "name": "HDX",
+          "organization": "UN OCHA",
+          "fetched_at": "2025-11-25T18:04:35.884Z"
+        }
+      ],
+      "created_at": "2025-11-25T18:04:35.884Z",
+      "updated_at": "2025-11-25T18:04:35.884Z",
+      "version": 1,
+      "temporal_context": {
+        "days_since_baseline": -14158,
+        "baseline_period": "before_baseline",
+        "conflict_phase": "pre-escalation",
+        "season": "winter"
+      }
+    },
+    {
+      "id": "health-lqqb3q",
+      "type": "health",
+      "category": "health",
+      "date": "1985-01-01",
+      "location": {
+        "name": "State of Palestine",
+        "coordinates": null,
+        "admin_levels": {
+          "level1": "Eastern Mediterranean",
+          "level2": null,
+          "level3": null
+        },
+        "region": "Palestine",
+        "region_type": null
+      },
+      "value": 58.916930462,
+      "unit": "count",
+      "facility_name": "Under-five mortality rate (probability of dying by age 5 per 1000 live births)",
+      "facility_type": "indicator",
+      "status": "unknown",
+      "damage_level": null,
+      "bed_capacity": 0,
+      "staff_count": 0,
+      "quality": {
+        "score": 0.8555555555555555,
+        "completeness": 0.6666666666666666,
+        "consistency": 1,
+        "accuracy": 0.9,
+        "verified": false,
+        "confidence": 0.8
+      },
+      "sources": [
+        {
+          "name": "HDX",
+          "organization": "UN OCHA",
+          "fetched_at": "2025-11-25T18:04:35.898Z"
+        }
+      ],
+      "created_at": "2025-11-25T18:04:35.898Z",
+      "updated_at": "2025-11-25T18:04:35.898Z",
+      "version": 1,
+      "temporal_context": {
+        "days_since_baseline": -14158,
+        "baseline_period": "before_baseline",
+        "conflict_phase": "pre-escalation",
+        "season": "winter"
+      }
+    },
+    {
+      "id": "health-dhd9g8",
+      "type": "health",
+      "category": "health",
+      "date": "1985-01-01",
+      "location": {
+        "name": "State of Palestine",
+        "coordinates": null,
+        "admin_levels": {
+          "level1": "Eastern Mediterranean",
+          "level2": null,
+          "level3": null
+        },
+        "region": "Palestine",
+        "region_type": null
+      },
+      "value": 4568,
+      "unit": "count",
+      "facility_name": "Number of under-five deaths",
+      "facility_type": "indicator",
+      "status": "unknown",
+      "damage_level": null,
+      "bed_capacity": 0,
+      "staff_count": 0,
+      "quality": {
+        "score": 0.8555555555555555,
+        "completeness": 0.6666666666666666,
+        "consistency": 1,
+        "accuracy": 0.9,
+        "verified": false,
+        "confidence": 0.8
+      },
+      "sources": [
+        {
+          "name": "HDX",
+          "organization": "UN OCHA",
+          "fetched_at": "2025-11-25T18:04:35.910Z"
+        }
+      ],
+      "created_at": "2025-11-25T18:04:35.910Z",
+      "updated_at": "2025-11-25T18:04:35.910Z",
+      "version": 1,
+      "temporal_context": {
+        "days_since_baseline": -14158,
+        "baseline_period": "before_baseline",
+        "conflict_phase": "pre-escalation",
+        "season": "winter"
+      }
+    },
+    {
+      "id": "health-lgbmgp",
+      "type": "health",
+      "category": "health",
+      "date": "1985-01-01",
+      "location": {
+        "name": "State of Palestine",
+        "coordinates": null,
+        "admin_levels": {
+          "level1": "Eastern Mediterranean",
+          "level2": null,
+          "level3": null
+        },
+        "region": "Palestine",
+        "region_type": null
+      },
+      "value": 1870,
+      "unit": "count",
+      "facility_name": "Number of infant deaths",
+      "facility_type": "indicator",
+      "status": "unknown",
+      "damage_level": null,
+      "bed_capacity": 0,
+      "staff_count": 0,
+      "quality": {
+        "score": 0.8555555555555555,
+        "completeness": 0.6666666666666666,
+        "consistency": 1,
+        "accuracy": 0.9,
+        "verified": false,
+        "confidence": 0.8
+      },
+      "sources": [
+        {
+          "name": "HDX",
+          "organization": "UN OCHA",
+          "fetched_at": "2025-11-25T18:04:35.915Z"
+        }
+      ],
+      "created_at": "2025-11-25T18:04:35.915Z",
+      "updated_at": "2025-11-25T18:04:35.915Z",
+      "version": 1,
+      "temporal_context": {
+        "days_since_baseline": -14158,
+        "baseline_period": "before_baseline",
+        "conflict_phase": "pre-escalation",
+        "season": "winter"
+      }
+    },
+    {
+      "id": "health-jwag8u",
+      "type": "health",
+      "category": "health",
+      "date": "1985-01-01",
+      "location": {
+        "name": "State of Palestine",
+        "coordinates": null,
+        "admin_levels": {
+          "level1": "Eastern Mediterranean",
+          "level2": null,
+          "level3": null
+        },
+        "region": "Palestine",
+        "region_type": null
+      },
+      "value": 51.136830425,
+      "unit": "count",
+      "facility_name": "Infant mortality rate (probability of dying between birth and age 1 per 1000 live births)",
+      "facility_type": "indicator",
+      "status": "unknown",
+      "damage_level": null,
+      "bed_capacity": 0,
+      "staff_count": 0,
+      "quality": {
+        "score": 0.8555555555555555,
+        "completeness": 0.6666666666666666,
+        "consistency": 1,
+        "accuracy": 0.9,
+        "verified": false,
+        "confidence": 0.8
+      },
+      "sources": [
+        {
+          "name": "HDX",
+          "organization": "UN OCHA",
+          "fetched_at": "2025-11-25T18:04:35.923Z"
+        }
+      ],
+      "created_at": "2025-11-25T18:04:35.923Z",
+      "updated_at": "2025-11-25T18:04:35.923Z",
+      "version": 1,
+      "temporal_context": {
+        "days_since_baseline": -14158,
+        "baseline_period": "before_baseline",
+        "conflict_phase": "pre-escalation",
+        "season": "winter"
+      }
+    },
+    {
+      "id": "health-85mfxg",
+      "type": "health",
+      "category": "health",
+      "date": "1985-01-01",
+      "location": {
+        "name": "State of Palestine",
+        "coordinates": null,
+        "admin_levels": {
+          "level1": "Eastern Mediterranean",
+          "level2": null,
+          "level3": null
+        },
+        "region": "Palestine",
+        "region_type": null
+      },
+      "value": 56.216954285,
+      "unit": "count",
+      "facility_name": "Under-five mortality rate (probability of dying by age 5 per 1000 live births)",
+      "facility_type": "indicator",
+      "status": "unknown",
+      "damage_level": null,
+      "bed_capacity": 0,
+      "staff_count": 0,
+      "quality": {
+        "score": 0.8555555555555555,
+        "completeness": 0.6666666666666666,
+        "consistency": 1,
+        "accuracy": 0.9,
+        "verified": false,
+        "confidence": 0.8
+      },
+      "sources": [
+        {
+          "name": "HDX",
+          "organization": "UN OCHA",
+          "fetched_at": "2025-11-25T18:04:35.946Z"
+        }
+      ],
+      "created_at": "2025-11-25T18:04:35.946Z",
+      "updated_at": "2025-11-25T18:04:35.946Z",
+      "version": 1,
+      "temporal_context": {
+        "days_since_baseline": -14158,
+        "baseline_period": "before_baseline",
+        "conflict_phase": "pre-escalation",
+        "season": "winter"
+      }
+    },
+    {
+      "id": "health-dvfcyo",
+      "type": "health",
+      "category": "health",
+      "date": "1985-01-01",
+      "location": {
+        "name": "State of Palestine",
+        "coordinates": null,
+        "admin_levels": {
+          "level1": "Eastern Mediterranean",
+          "level2": null,
+          "level3": null
+        },
+        "region": "Palestine",
+        "region_type": null
+      },
+      "value": 48.894983746,
+      "unit": "count",
+      "facility_name": "Infant mortality rate (probability of dying between birth and age 1 per 1000 live births)",
+      "facility_type": "indicator",
+      "status": "unknown",
+      "damage_level": null,
+      "bed_capacity": 0,
+      "staff_count": 0,
+      "quality": {
+        "score": 0.8555555555555555,
+        "completeness": 0.6666666666666666,
+        "consistency": 1,
+        "accuracy": 0.9,
+        "verified": false,
+        "confidence": 0.8
+      },
+      "sources": [
+        {
+          "name": "HDX",
+          "organization": "UN OCHA",
+          "fetched_at": "2025-11-25T18:04:35.956Z"
+        }
+      ],
+      "created_at": "2025-11-25T18:04:35.956Z",
+      "updated_at": "2025-11-25T18:04:35.956Z",
+      "version": 1,
+      "temporal_context": {
+        "days_since_baseline": -14158,
+        "baseline_period": "before_baseline",
+        "conflict_phase": "pre-escalation",
+        "season": "winter"
+      }
+    },
+    {
+      "id": "health-4b4c2i",
+      "type": "health",
+      "category": "health",
+      "date": "1985-01-01",
+      "location": {
+        "name": "State of Palestine",
+        "coordinates": null,
+        "admin_levels": {
+          "level1": "Eastern Mediterranean",
+          "level2": null,
+          "level3": null
+        },
+        "region": "Palestine",
+        "region_type": null
+      },
+      "value": 2128,
+      "unit": "count",
+      "facility_name": "Number of under-five deaths",
+      "facility_type": "indicator",
+      "status": "unknown",
+      "damage_level": null,
+      "bed_capacity": 0,
+      "staff_count": 0,
+      "quality": {
+        "score": 0.8555555555555555,
+        "completeness": 0.6666666666666666,
+        "consistency": 1,
+        "accuracy": 0.9,
+        "verified": false,
+        "confidence": 0.8
+      },
+      "sources": [
+        {
+          "name": "HDX",
+          "organization": "UN OCHA",
+          "fetched_at": "2025-11-25T18:04:35.987Z"
+        }
+      ],
+      "created_at": "2025-11-25T18:04:35.987Z",
+      "updated_at": "2025-11-25T18:04:35.987Z",
+      "version": 1,
+      "temporal_context": {
+        "days_since_baseline": -14158,
+        "baseline_period": "before_baseline",
+        "conflict_phase": "pre-escalation",
+        "season": "winter"
+      }
+    },
+    {
+      "id": "health-hht4d0",
+      "type": "health",
+      "category": "health",
+      "date": "1985-01-01",
+      "location": {
+        "name": "State of Palestine",
+        "coordinates": null,
+        "admin_levels": {
+          "level1": "Eastern Mediterranean",
+          "level2": null,
+          "level3": null
+        },
+        "region": "Palestine",
+        "region_type": null
+      },
+      "value": 81.93515952,
+      "unit": "count",
+      "facility_name": "Number of maternal deaths",
+      "facility_type": "indicator",
+      "status": "unknown",
+      "damage_level": null,
+      "bed_capacity": 0,
+      "staff_count": 0,
+      "quality": {
+        "score": 0.8555555555555555,
+        "completeness": 0.6666666666666666,
+        "consistency": 1,
+        "accuracy": 0.9,
+        "verified": false,
+        "confidence": 0.8
+      },
+      "sources": [
+        {
+          "name": "HDX",
+          "organization": "UN OCHA",
+          "fetched_at": "2025-11-25T18:04:35.993Z"
+        }
+      ],
+      "created_at": "2025-11-25T18:04:35.993Z",
+      "updated_at": "2025-11-25T18:04:35.993Z",
+      "version": 1,
+      "temporal_context": {
+        "days_since_baseline": -14158,
+        "baseline_period": "before_baseline",
+        "conflict_phase": "pre-escalation",
+        "season": "winter"
+      }
+    },
+    {
+      "id": "health-lodm9z",
+      "type": "health",
+      "category": "health",
+      "date": "1985-01-01",
+      "location": {
+        "name": "State of Palestine",
+        "coordinates": null,
+        "admin_levels": {
+          "level1": "Eastern Mediterranean",
+          "level2": null,
+          "level3": null
+        },
+        "region": "Palestine",
+        "region_type": null
+      },
+      "value": 61.459943658,
+      "unit": "count",
+      "facility_name": "Under-five mortality rate (probability of dying by age 5 per 1000 live births)",
+      "facility_type": "indicator",
+      "status": "unknown",
+      "damage_level": null,
+      "bed_capacity": 0,
+      "staff_count": 0,
+      "quality": {
+        "score": 0.8555555555555555,
+        "completeness": 0.6666666666666666,
+        "consistency": 1,
+        "accuracy": 0.9,
+        "verified": false,
+        "confidence": 0.8
+      },
+      "sources": [
+        {
+          "name": "HDX",
+          "organization": "UN OCHA",
+          "fetched_at": "2025-11-25T18:04:36.006Z"
+        }
+      ],
+      "created_at": "2025-11-25T18:04:36.006Z",
+      "updated_at": "2025-11-25T18:04:36.006Z",
+      "version": 1,
+      "temporal_context": {
+        "days_since_baseline": -14158,
+        "baseline_period": "before_baseline",
+        "conflict_phase": "pre-escalation",
+        "season": "winter"
+      }
+    },
+    {
+      "id": "health-b2c6wn",
+      "type": "health",
+      "category": "health",
+      "date": "1985-01-01",
+      "location": {
+        "name": "State of Palestine",
+        "coordinates": null,
+        "admin_levels": {
+          "level1": "Eastern Mediterranean",
+          "level2": null,
+          "level3": null
+        },
+        "region": "Palestine",
+        "region_type": null
+      },
+      "value": 53.223434981,
+      "unit": "count",
+      "facility_name": "Infant mortality rate (probability of dying between birth and age 1 per 1000 live births)",
+      "facility_type": "indicator",
+      "status": "unknown",
+      "damage_level": null,
+      "bed_capacity": 0,
+      "staff_count": 0,
+      "quality": {
+        "score": 0.8555555555555555,
+        "completeness": 0.6666666666666666,
+        "consistency": 1,
+        "accuracy": 0.9,
+        "verified": false,
+        "confidence": 0.8
+      },
+      "sources": [
+        {
+          "name": "HDX",
+          "organization": "UN OCHA",
+          "fetched_at": "2025-11-25T18:04:36.006Z"
+        }
+      ],
+      "created_at": "2025-11-25T18:04:36.006Z",
+      "updated_at": "2025-11-25T18:04:36.006Z",
+      "version": 1,
+      "temporal_context": {
+        "days_since_baseline": -14158,
+        "baseline_period": "before_baseline",
+        "conflict_phase": "pre-escalation",
+        "season": "winter"
+      }
+    }
+  ]
+}

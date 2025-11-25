@@ -1,0 +1,36 @@
+{
+  "generated_at": "2025-11-25T11:32:53.448Z",
+  "summary": {
+    "total_tests": 24,
+    "passed": 24,
+    "failed": 0,
+    "success_rate": "100.0%",
+    "status": "passed"
+  },
+  "errors": [],
+  "details": {
+    "manifest": true,
+    "json_syntax": {
+      "valid": 770,
+      "total": 770
+    },
+    "file_sizes": {
+      "valid": 770,
+      "total": 770
+    },
+    "time_series": {
+      "valid": 18,
+      "total": 18,
+      "failed_files": []
+    },
+    "dates": {
+      "valid_format": true,
+      "after_baseline": true
+    },
+    "index_files": {
+      "valid": 25,
+      "total": 25,
+      "failed_files": []
+    }
+  }
+}

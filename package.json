@@ -1,3 +1,43 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:7c749ca25e310f4b0f84491c4be734d35276bf30bb205f54e4da3bb02ba0b5f6
-size 1834
+{
+  "name": "palestine-data-backend",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Backend data aggregation system for Palestine Data",
+  "scripts": {
+    "fetch-all-data": "node scripts/fetch-all-data.js",
+    "fetch-hdx-ckan": "node scripts/fetch-hdx-ckan-data.js",
+    "fetch-who": "node scripts/fetch-who-data.js",
+    "fetch-unrwa": "node scripts/fetch-unrwa-data.js",
+    "fetch-news": "node scripts/fetch-rss-feeds.js",
+    "fetch-historical": "node scripts/fetch-historical-data.js",
+    "fetch-water": "node scripts/fetch-water-data.js",
+    "fetch-infrastructure": "node scripts/fetch-infrastructure-data.js",
+    "fetch-culture": "node scripts/fetch-culture-data.js",
+    "fetch-land": "node scripts/fetch-land-data.js",
+    "populate-unified": "node scripts/populate-unified-data.js",
+    "generate-manifest": "node scripts/generate-manifest.js",
+    "generate-search": "node scripts/generate-search-index.js",
+    "generate-analytics": "node scripts/generate-analytics.js",
+    "validate-data": "node scripts/validate-data.js",
+    "generate-geojson": "node scripts/generate-geojson-layers.js",
+    "update-data": "npm run fetch-all-data && npm run fetch-news && npm run fetch-historical && npm run populate-unified && npm run generate-geojson && npm run generate-search && npm run generate-analytics && npm run generate-manifest && npm run validate-data",
+    "start-api": "node src/api/server.js"
+  },
+  "dependencies": {
+    "adm-zip": "^0.5.16",
+    "apicache": "^1.6.3",
+    "compression": "^1.8.1",
+    "cors": "^2.8.5",
+    "express": "^5.1.0",
+    "express-rate-limit": "^8.2.1",
+    "helmet": "^8.1.0",
+    "minisearch": "^7.2.0",
+    "morgan": "^1.10.1",
+    "papaparse": "^5.5.3",
+    "proj4": "^2.20.2",
+    "shapefile": "^0.6.6",
+    "swagger-jsdoc": "^6.2.8",
+    "swagger-ui-express": "^5.0.1"
+  },
+  "type": "module"
+}

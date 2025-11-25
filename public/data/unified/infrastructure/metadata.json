@@ -1,0 +1,14 @@
+{
+  "category": "infrastructure",
+  "total_records": 631,
+  "last_updated": "2025-11-24T17:12:15.526Z",
+  "sources": [
+    "HDX"
+  ],
+  "quality": {
+    "average_score": 0,
+    "completeness": 0,
+    "consistency": 0,
+    "accuracy": 0
+  }
+}

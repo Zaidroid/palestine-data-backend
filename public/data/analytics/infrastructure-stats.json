@@ -1,0 +1,10 @@
+{
+  "total": 15961,
+  "by_type": {
+    "infrastructure": 15961
+  },
+  "by_damage_level": {
+    "unknown": 631,
+    "destroyed": 15330
+  }
+}

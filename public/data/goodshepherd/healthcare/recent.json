@@ -1,0 +1,874 @@
+{
+  "metadata": {
+    "source": "goodshepherd",
+    "dataset": "healthcare-attacks",
+    "record_count": 54,
+    "last_updated": "2025-11-25T11:30:29.095Z"
+  },
+  "data": [
+    {
+      "date": "2025-08-28",
+      "facility_name": "Unknown",
+      "facility_type": "healthcare",
+      "location": "Unknown",
+      "incident_type": "attack",
+      "description": "28 August 2025: The body of a medical health care worker who is also the head of the Department at Nasser Medical Complex, was found two weeks after being reported missing. ",
+      "casualties": {
+        "killed": 1,
+        "injured": 0,
+        "kidnapped": 0
+      },
+      "latitude": 31.3443293,
+      "longitude": 34.3095897,
+      "source": "goodshepherd-api"
+    },
+    {
+      "date": "2025-09-01",
+      "facility_name": "Unknown",
+      "facility_type": "healthcare",
+      "location": "Unknown",
+      "incident_type": "attack",
+      "description": "01 September 2025: An unspecified number of tents sheltering IDPs inside a medical health facility were hit by an Israeli airstrike, injuring an unspecified number of people and damaging it. ",
+      "casualties": {
+        "killed": 0,
+        "injured": 0,
+        "kidnapped": 0
+      },
+      "latitude": 31.4200022681,
+      "longitude": 34.3597412109,
+      "source": "goodshepherd-api"
+    },
+    {
+      "date": "2025-09-02",
+      "facility_name": "Unknown",
+      "facility_type": "healthcare",
+      "location": "Unknown",
+      "incident_type": "attack",
+      "description": "02 September 2025: The vicinity of a medical health facility was hit by an Israeli airstrike, killing two people and injuring 11 others.",
+      "casualties": {
+        "killed": 0,
+        "injured": 0,
+        "kidnapped": 0
+      },
+      "latitude": 31.5068080797,
+      "longitude": 34.4394027962,
+      "source": "goodshepherd-api"
+    },
+    {
+      "date": "2025-09-03",
+      "facility_name": "Unknown",
+      "facility_type": "healthcare",
+      "location": "Unknown",
+      "incident_type": "attack",
+      "description": "03 September 2025: An unspecified number of tents sheltering IDPs near a medical health facility were struck by unspecified weapons fired from Israeli helicopters. Seven people were killed and an unspecified number of others injured.",
+      "casualties": {
+        "killed": 0,
+        "injured": 0,
+        "kidnapped": 0
+      },
+      "latitude": 31.5323480241,
+      "longitude": 34.4616007643,
+      "source": "goodshepherd-api"
+    },
+    {
+      "date": "2025-09-04",
+      "facility_name": "Unknown",
+      "facility_type": "healthcare",
+      "location": "Unknown",
+      "incident_type": "attack",
+      "description": "04 September 2025: A tent sheltering IDPs in the vicinity of a Red Cross medical health facility was shelled by Israeli artillery, injuring an unspecified number of people. ",
+      "casualties": {
+        "killed": 0,
+        "injured": 0,
+        "kidnapped": 0
+      },
+      "latitude": 31.5057881419,
+      "longitude": 34.4304817915,
+      "source": "goodshepherd-api"
+    },
+    {
+      "date": "2025-09-04",
+      "facility_name": "Unknown",
+      "facility_type": "healthcare",
+      "location": "Unknown",
+      "incident_type": "attack",
+      "description": "04 September 2025: A tent sheltering IDPs in the vicinity of a medical health facility was hit by an Israeli airstrike, killing and injuring an unspecified number of people. ",
+      "casualties": {
+        "killed": 0,
+        "injured": 0,
+        "kidnapped": 0
+      },
+      "latitude": 31.5240854092,
+      "longitude": 34.443495558,
+      "source": "goodshepherd-api"
+    },
+    {
+      "date": "2025-09-06",
+      "facility_name": "Unknown",
+      "facility_type": "healthcare",
+      "location": "Unknown",
+      "incident_type": "attack",
+      "description": "06 September 2025: An ambulance was fired upon by armed Israeli settlers. ",
+      "casualties": {
+        "killed": 0,
+        "injured": 0,
+        "kidnapped": 0
+      },
+      "latitude": 31.5153373487,
+      "longitude": 35.0820786085,
+      "source": "goodshepherd-api"
+    },
+    {
+      "date": "2025-09-07",
+      "facility_name": "Unknown",
+      "facility_type": "healthcare",
+      "location": "Unknown",
+      "incident_type": "attack",
+      "description": "07 September 2025: A tent sheltering IDPs near an NGO run medical health facility was hit by an Israeli airstrike, killing two people and injuring an unspecified number of others. ",
+      "casualties": {
+        "killed": 0,
+        "injured": 0,
+        "kidnapped": 0
+      },
+      "latitude": 31.5134844,
+      "longitude": 34.4528214,
+      "source": "goodshepherd-api"
+    },
+    {
+      "date": "2025-09-08",
+      "facility_name": "Unknown",
+      "facility_type": "healthcare",
+      "location": "Unknown",
+      "incident_type": "attack",
+      "description": "08 September 2025: A medical health care worker was killed when Israeli airstrikes struck a residential apartment. ",
+      "casualties": {
+        "killed": 1,
+        "injured": 0,
+        "kidnapped": 0
+      },
+      "latitude": 31.5128679,
+      "longitude": 34.4581358,
+      "source": "goodshepherd-api"
+    },
+    {
+      "date": "2025-09-08",
+      "facility_name": "Unknown",
+      "facility_type": "healthcare",
+      "location": "Unknown",
+      "incident_type": "attack",
+      "description": "08 September 2025: The vicinity of a medical health facility was hit by an Israeli airstrike, killing and injuring an unspecified number of people. ",
+      "casualties": {
+        "killed": 0,
+        "injured": 0,
+        "kidnapped": 0
+      },
+      "latitude": 31.5038940682,
+      "longitude": 34.4614505791,
+      "source": "goodshepherd-api"
+    },
+    {
+      "date": "2025-09-09",
+      "facility_name": "Unknown",
+      "facility_type": "healthcare",
+      "location": "Unknown",
+      "incident_type": "attack",
+      "description": "09 September 2025: A medical health care worker was killed alongside her family when an Israeli airstrike hit her home at dawn. ",
+      "casualties": {
+        "killed": 1,
+        "injured": 0,
+        "kidnapped": 0
+      },
+      "latitude": 31.5128679,
+      "longitude": 34.4581358,
+      "source": "goodshepherd-api"
+    },
+    {
+      "date": "2025-09-10",
+      "facility_name": "Unknown",
+      "facility_type": "healthcare",
+      "location": "Unknown",
+      "incident_type": "attack",
+      "description": "10 September 2025: A tent for displaced families near a medical facility was struck by Israeli drones, killing one person and wounding several others. ",
+      "casualties": {
+        "killed": 0,
+        "injured": 0,
+        "kidnapped": 0
+      },
+      "latitude": 31.5038940682,
+      "longitude": 34.4614505791,
+      "source": "goodshepherd-api"
+    },
+    {
+      "date": "2025-09-11",
+      "facility_name": "Unknown",
+      "facility_type": "healthcare",
+      "location": "Unknown",
+      "incident_type": "attack",
+      "description": "11 September 2025: The Najm building near a medical health facility was demolished by Israeli helicopter fire. ",
+      "casualties": {
+        "killed": 0,
+        "injured": 0,
+        "kidnapped": 0
+      },
+      "latitude": 31.5356020826,
+      "longitude": 34.4470303046,
+      "source": "goodshepherd-api"
+    },
+    {
+      "date": "2025-09-11",
+      "facility_name": "Unknown",
+      "facility_type": "healthcare",
+      "location": "Unknown",
+      "incident_type": "attack",
+      "description": "11 September 2025: A home near a medical health facility in a camp was hit by an Israeli airstrike, injuring an unspecified number of people. ",
+      "casualties": {
+        "killed": 0,
+        "injured": 0,
+        "kidnapped": 0
+      },
+      "latitude": 31.5356020826,
+      "longitude": 34.4470303046,
+      "source": "goodshepherd-api"
+    },
+    {
+      "date": "2025-09-12",
+      "facility_name": "Unknown",
+      "facility_type": "healthcare",
+      "location": "Unknown",
+      "incident_type": "attack",
+      "description": "12 September 2025: The vicinity of a medical health facility was shelled by Israeli artillery, killing and injuring an unspecified number of people.",
+      "casualties": {
+        "killed": 0,
+        "injured": 0,
+        "kidnapped": 0
+      },
+      "latitude": 31.512286996,
+      "longitude": 34.458521601,
+      "source": "goodshepherd-api"
+    },
+    {
+      "date": "2025-09-12",
+      "facility_name": "Unknown",
+      "facility_type": "healthcare",
+      "location": "Unknown",
+      "incident_type": "attack",
+      "description": "12 September 2025: Al Karama Towers and a building behind a medical health facility in a camp were hit by an Israeli airstrike, killing and injuring an unspecified number of people. ",
+      "casualties": {
+        "killed": 0,
+        "injured": 0,
+        "kidnapped": 0
+      },
+      "latitude": 31.5356020826,
+      "longitude": 34.4470303046,
+      "source": "goodshepherd-api"
+    },
+    {
+      "date": "2025-09-12",
+      "facility_name": "Unknown",
+      "facility_type": "healthcare",
+      "location": "Unknown",
+      "incident_type": "attack",
+      "description": "12 September 2025: The vicinity of a medical health facility was hit by an Israeli airstrike, killing and injuring an unspecified number of people.",
+      "casualties": {
+        "killed": 0,
+        "injured": 0,
+        "kidnapped": 0
+      },
+      "latitude": 31.4200022681,
+      "longitude": 34.3597412109,
+      "source": "goodshepherd-api"
+    },
+    {
+      "date": "2025-09-13",
+      "facility_name": "Unknown",
+      "facility_type": "healthcare",
+      "location": "Unknown",
+      "incident_type": "attack",
+      "description": "13 September 2025: An unspecified number of buildings sheltering IDPs in the vicinity of a Red Cross medical health facility were hit by an Israeli airstrike, killing at least two people and injuring an unspecified number of others. ",
+      "casualties": {
+        "killed": 0,
+        "injured": 0,
+        "kidnapped": 0
+      },
+      "latitude": 31.5057881419,
+      "longitude": 34.4304817915,
+      "source": "goodshepherd-api"
+    },
+    {
+      "date": "2025-09-13",
+      "facility_name": "Unknown",
+      "facility_type": "healthcare",
+      "location": "Unknown",
+      "incident_type": "attack",
+      "description": "13 September 2025: The vicinity of a medical health facility in a camp was fired at by an Israeli quadcopter drone, killing and injuring an unspecified number of people.",
+      "casualties": {
+        "killed": 0,
+        "injured": 0,
+        "kidnapped": 0
+      },
+      "latitude": 31.5356020826,
+      "longitude": 34.4470303046,
+      "source": "goodshepherd-api"
+    },
+    {
+      "date": "2025-09-26",
+      "facility_name": "Unknown",
+      "facility_type": "healthcare",
+      "location": "Unknown",
+      "incident_type": "attack",
+      "description": "26 September 2025: An INGO suspended its activities after Israeli forces encircled its facilities.",
+      "casualties": {
+        "killed": 0,
+        "injured": 0,
+        "kidnapped": 0
+      },
+      "latitude": 31.5128679,
+      "longitude": 34.4581358,
+      "source": "goodshepherd-api"
+    },
+    {
+      "date": "2025-09-27",
+      "facility_name": "Unknown",
+      "facility_type": "healthcare",
+      "location": "Unknown",
+      "incident_type": "attack",
+      "description": "27 September 2025: A health worker was killed when his home was struck by an Israeli airstrike.",
+      "casualties": {
+        "killed": 1,
+        "injured": 0,
+        "kidnapped": 0
+      },
+      "latitude": 31.4282236855,
+      "longitude": 34.3648916364,
+      "source": "goodshepherd-api"
+    },
+    {
+      "date": "2025-09-28",
+      "facility_name": "Unknown",
+      "facility_type": "healthcare",
+      "location": "Unknown",
+      "incident_type": "attack",
+      "description": "28 September 2025: The vicinity of a medical facility was hit by an Israeli airstrike.",
+      "casualties": {
+        "killed": 0,
+        "injured": 0,
+        "kidnapped": 0
+      },
+      "latitude": 31.5240854092,
+      "longitude": 34.443495558,
+      "source": "goodshepherd-api"
+    },
+    {
+      "date": "2025-09-29",
+      "facility_name": "Unknown",
+      "facility_type": "healthcare",
+      "location": "Unknown",
+      "incident_type": "attack",
+      "description": "29 September 2025: The vicinity of an NGO medical facility was bombed by Israeli drones.",
+      "casualties": {
+        "killed": 0,
+        "injured": 0,
+        "kidnapped": 0
+      },
+      "latitude": 31.5102562,
+      "longitude": 34.4585173,
+      "source": "goodshepherd-api"
+    },
+    {
+      "date": "2025-09-29",
+      "facility_name": "Unknown",
+      "facility_type": "healthcare",
+      "location": "Unknown",
+      "incident_type": "attack",
+      "description": "29 September 2025: In a camp, the vicinity of a medical facility was struck by an Israeli drone, injuring an unspecified number of people. ",
+      "casualties": {
+        "killed": 0,
+        "injured": 0,
+        "kidnapped": 0
+      },
+      "latitude": 31.5351004893,
+      "longitude": 34.447782289,
+      "source": "goodshepherd-api"
+    },
+    {
+      "date": "2025-09-29",
+      "facility_name": "Unknown",
+      "facility_type": "healthcare",
+      "location": "Unknown",
+      "incident_type": "attack",
+      "description": "29 September 2025: A medical building was hit by an Israeli airstrike, killing four people. \r\n",
+      "casualties": {
+        "killed": 0,
+        "injured": 0,
+        "kidnapped": 0
+      },
+      "latitude": 31.5168053,
+      "longitude": 34.4374877,
+      "source": "goodshepherd-api"
+    },
+    {
+      "date": "2025-09-29",
+      "facility_name": "Unknown",
+      "facility_type": "healthcare",
+      "location": "Unknown",
+      "incident_type": "attack",
+      "description": "29 September 2025: A medical facility was shelled by Israeli artillery, killing and injuring an unspecified number of people.\r\n",
+      "casualties": {
+        "killed": 0,
+        "injured": 0,
+        "kidnapped": 0
+      },
+      "latitude": 31.5240854092,
+      "longitude": 34.443495558,
+      "source": "goodshepherd-api"
+    },
+    {
+      "date": "2025-09-29",
+      "facility_name": "Unknown",
+      "facility_type": "healthcare",
+      "location": "Unknown",
+      "incident_type": "attack",
+      "description": "29 September 2025: A medical facility was besieged and hit by an Israeli airstrike, injuring an unspecified number of people. Soldiers restricted movement in and out of the facility.\r\n",
+      "casualties": {
+        "killed": 0,
+        "injured": 0,
+        "kidnapped": 0
+      },
+      "latitude": 31.5240854092,
+      "longitude": 34.443495558,
+      "source": "goodshepherd-api"
+    },
+    {
+      "date": "2025-09-30",
+      "facility_name": "Unknown",
+      "facility_type": "healthcare",
+      "location": "Unknown",
+      "incident_type": "attack",
+      "description": "30 September 2025: In a camp, the gate of an NGO medical facility was bombed by Israeli forces, injuring two health workers. One succumbed to his injuries on 07 October. ",
+      "casualties": {
+        "killed": 1,
+        "injured": 2,
+        "kidnapped": 0
+      },
+      "latitude": 31.4523617091,
+      "longitude": 34.3889486144,
+      "source": "goodshepherd-api"
+    },
+    {
+      "date": "2025-09-30",
+      "facility_name": "Unknown",
+      "facility_type": "healthcare",
+      "location": "Unknown",
+      "incident_type": "attack",
+      "description": "30 September 2025: In the vicinity of a makeshift medical facility, Israeli forces were hit by Hamas mortar fire.\r\n",
+      "casualties": {
+        "killed": 0,
+        "injured": 0,
+        "kidnapped": 0
+      },
+      "latitude": 31.5068080797,
+      "longitude": 34.4394027962,
+      "source": "goodshepherd-api"
+    },
+    {
+      "date": "2025-09-30",
+      "facility_name": "Unknown",
+      "facility_type": "healthcare",
+      "location": "Unknown",
+      "incident_type": "attack",
+      "description": "30 September 2025: The vicinity of a medical facility was hit by Israeli helicopter fire, injuring six people. \r\n",
+      "casualties": {
+        "killed": 0,
+        "injured": 0,
+        "kidnapped": 0
+      },
+      "latitude": 31.5240854092,
+      "longitude": 34.443495558,
+      "source": "goodshepherd-api"
+    },
+    {
+      "date": "2025-09-30",
+      "facility_name": "Unknown",
+      "facility_type": "healthcare",
+      "location": "Unknown",
+      "incident_type": "attack",
+      "description": "30 September 2025: The vicinity of a Red Cross medical facility was hit by an Israeli airstrike.",
+      "casualties": {
+        "killed": 0,
+        "injured": 0,
+        "kidnapped": 0
+      },
+      "latitude": 31.5057881419,
+      "longitude": 34.4304817915,
+      "source": "goodshepherd-api"
+    },
+    {
+      "date": "2025-10-01",
+      "facility_name": "Unknown",
+      "facility_type": "healthcare",
+      "location": "Unknown",
+      "incident_type": "attack",
+      "description": "01 October 2025: A tent sheltering IDPs near a medical facility was hit by an Israeli airstrike, killing four people and injuring an unspecified number of others.\r\n",
+      "casualties": {
+        "killed": 0,
+        "injured": 0,
+        "kidnapped": 0
+      },
+      "latitude": 31.4280772078,
+      "longitude": 34.3654937761,
+      "source": "goodshepherd-api"
+    },
+    {
+      "date": "2025-10-01",
+      "facility_name": "Unknown",
+      "facility_type": "healthcare",
+      "location": "Unknown",
+      "incident_type": "attack",
+      "description": "01 October 2025: A Red Cross ambulance crew was assaulted and their ambulance seized by Israeli forces while on duty.\r\n",
+      "casualties": {
+        "killed": 0,
+        "injured": 0,
+        "kidnapped": 0
+      },
+      "latitude": 32.483853,
+      "longitude": 35.2299459,
+      "source": "goodshepherd-api"
+    },
+    {
+      "date": "2025-10-01",
+      "facility_name": "Unknown",
+      "facility_type": "healthcare",
+      "location": "Unknown",
+      "incident_type": "attack",
+      "description": "01 October 2025: A tent sheltering IDPs inside a medical facility was hit by an Israeli airstrike, killing one person.\r\n",
+      "casualties": {
+        "killed": 0,
+        "injured": 0,
+        "kidnapped": 0
+      },
+      "latitude": 31.4200022681,
+      "longitude": 34.3597412109,
+      "source": "goodshepherd-api"
+    },
+    {
+      "date": "2025-10-01",
+      "facility_name": "Unknown",
+      "facility_type": "healthcare",
+      "location": "Unknown",
+      "incident_type": "attack",
+      "description": "01-02 October 2025: Medical access was obstructed by Israeli forces during a raid on the area. ",
+      "casualties": {
+        "killed": 0,
+        "injured": 0,
+        "kidnapped": 0
+      },
+      "latitude": 32.483853,
+      "longitude": 35.2299459,
+      "source": "goodshepherd-api"
+    },
+    {
+      "date": "2025-10-02",
+      "facility_name": "Unknown",
+      "facility_type": "healthcare",
+      "location": "Unknown",
+      "incident_type": "attack",
+      "description": "02 October 2025: The vicinity of a medical facility was struck by Israeli drones.",
+      "casualties": {
+        "killed": 0,
+        "injured": 0,
+        "kidnapped": 0
+      },
+      "latitude": 31.4282236855,
+      "longitude": 34.3648916364,
+      "source": "goodshepherd-api"
+    },
+    {
+      "date": "2025-10-02",
+      "facility_name": "Unknown",
+      "facility_type": "healthcare",
+      "location": "Unknown",
+      "incident_type": "attack",
+      "description": "02 October 2025: A health INGO team was hit by an Israeli forces airstrike while waiting to go to work; one health worker was killed and four were injured. All staff were clearly marked. One succumbed to their injuries days later.",
+      "casualties": {
+        "killed": 2,
+        "injured": 4,
+        "kidnapped": 0
+      },
+      "latitude": 31.4183455,
+      "longitude": 34.3502476,
+      "source": "goodshepherd-api"
+    },
+    {
+      "date": "2025-10-02",
+      "facility_name": "Unknown",
+      "facility_type": "healthcare",
+      "location": "Unknown",
+      "incident_type": "attack",
+      "description": "02 October 2025: A health worker was abducted by Israeli special forces after they infiltrated a makeshift medical facility. She was assaulted, gagged, and dragged into a vehicle. Soldiers fired to disperse those attempting to intervene.\r\n",
+      "casualties": {
+        "killed": 0,
+        "injured": 0,
+        "kidnapped": 1
+      },
+      "latitude": 31.349905193,
+      "longitude": 34.26337939,
+      "source": "goodshepherd-api"
+    },
+    {
+      "date": "2025-10-03",
+      "facility_name": "Unknown",
+      "facility_type": "healthcare",
+      "location": "Unknown",
+      "incident_type": "attack",
+      "description": "03 October 2025: Access to a medical facility was restricted after Hamas imposed a curfew following clashes in the area between the Sahm Unit and a Palestinian clan.\r\n",
+      "casualties": {
+        "killed": 0,
+        "injured": 0,
+        "kidnapped": 0
+      },
+      "latitude": 31.3478325696,
+      "longitude": 34.2932331562,
+      "source": "goodshepherd-api"
+    },
+    {
+      "date": "2025-10-03",
+      "facility_name": "Unknown",
+      "facility_type": "healthcare",
+      "location": "Unknown",
+      "incident_type": "attack",
+      "description": "03 October 2025: A UN agency centre for a disability was hit by an Israeli airstrike.",
+      "casualties": {
+        "killed": 0,
+        "injured": 0,
+        "kidnapped": 0
+      },
+      "latitude": 31.5128679,
+      "longitude": 34.4581358,
+      "source": "goodshepherd-api"
+    },
+    {
+      "date": "2025-10-04",
+      "facility_name": "Unknown",
+      "facility_type": "healthcare",
+      "location": "Unknown",
+      "incident_type": "attack",
+      "description": "04 October 2025: A health worker was killed by Israeli forces bombing. ",
+      "casualties": {
+        "killed": 1,
+        "injured": 0,
+        "kidnapped": 0
+      },
+      "latitude": 31.5128679,
+      "longitude": 34.4581358,
+      "source": "goodshepherd-api"
+    },
+    {
+      "date": "2025-10-05",
+      "facility_name": "Unknown",
+      "facility_type": "healthcare",
+      "location": "Unknown",
+      "incident_type": "attack",
+      "description": "05 October 2025: The vicinity of a medical facility was shelled by Israeli artillery.",
+      "casualties": {
+        "killed": 0,
+        "injured": 0,
+        "kidnapped": 0
+      },
+      "latitude": 31.5176924866,
+      "longitude": 34.460088032,
+      "source": "goodshepherd-api"
+    },
+    {
+      "date": "2025-10-06",
+      "facility_name": "Unknown",
+      "facility_type": "healthcare",
+      "location": "Unknown",
+      "incident_type": "attack",
+      "description": "06 October 2025: In the vicinity of a medical facility, a booby-trapped armoured vehicle and explosive-laden remotely-operated vehicles were detonated by Israeli forces.",
+      "casualties": {
+        "killed": 0,
+        "injured": 0,
+        "kidnapped": 0
+      },
+      "latitude": 31.5068080797,
+      "longitude": 34.4394027962,
+      "source": "goodshepherd-api"
+    },
+    {
+      "date": "2025-10-07",
+      "facility_name": "Unknown",
+      "facility_type": "healthcare",
+      "location": "Unknown",
+      "incident_type": "attack",
+      "description": "07 October 2025: The vicinity of a medical facility was bombed and fired upon by Israeli quadcopter drones.",
+      "casualties": {
+        "killed": 0,
+        "injured": 0,
+        "kidnapped": 0
+      },
+      "latitude": 31.5240854092,
+      "longitude": 34.443495558,
+      "source": "goodshepherd-api"
+    },
+    {
+      "date": "2025-10-11",
+      "facility_name": "Unknown",
+      "facility_type": "healthcare",
+      "location": "Unknown",
+      "incident_type": "attack",
+      "description": "11 October 2025: In the vicinity of a makeshift medical facility, masked Hamas members exchanged fire with clan fighters. ",
+      "casualties": {
+        "killed": 0,
+        "injured": 0,
+        "kidnapped": 0
+      },
+      "latitude": 31.5068080797,
+      "longitude": 34.4394027962,
+      "source": "goodshepherd-api"
+    },
+    {
+      "date": "2025-10-11",
+      "facility_name": "Unknown",
+      "facility_type": "healthcare",
+      "location": "Unknown",
+      "incident_type": "attack",
+      "description": "11 October 2025: Ambulance crews were prevented by Israeli forces from reaching a patient.\r\n",
+      "casualties": {
+        "killed": 0,
+        "injured": 0,
+        "kidnapped": 0
+      },
+      "latitude": 31.4904083,
+      "longitude": 35.0214714,
+      "source": "goodshepherd-api"
+    },
+    {
+      "date": "2025-10-13",
+      "facility_name": "Unknown",
+      "facility_type": "healthcare",
+      "location": "Unknown",
+      "incident_type": "attack",
+      "description": "13 October 2025: A Red Cross health worker was attacked and injured by Israeli settlers, preventing him from reaching an affected family and forcing him to withdraw.",
+      "casualties": {
+        "killed": 0,
+        "injured": 1,
+        "kidnapped": 0
+      },
+      "latitude": 31.6232013,
+      "longitude": 35.1538688,
+      "source": "goodshepherd-api"
+    },
+    {
+      "date": "2025-10-19",
+      "facility_name": "Unknown",
+      "facility_type": "healthcare",
+      "location": "Unknown",
+      "incident_type": "attack",
+      "description": "19 October 2025: The vicinity of a medical facility was struck by an Israeli drone.",
+      "casualties": {
+        "killed": 0,
+        "injured": 0,
+        "kidnapped": 0
+      },
+      "latitude": 31.5240854092,
+      "longitude": 34.443495558,
+      "source": "goodshepherd-api"
+    },
+    {
+      "date": "2025-10-19",
+      "facility_name": "Unknown",
+      "facility_type": "healthcare",
+      "location": "Unknown",
+      "incident_type": "attack",
+      "description": "19 October 2025: A camp was raided by Israeli forces with live ammunition, killing a Palestinian inside his home and assaulting a relative. Medical teams trying to reach the shot man were delayed, and a health worker physically assaulted. Four other people were detained, including one who was also shot and injured. ",
+      "casualties": {
+        "killed": 0,
+        "injured": 1,
+        "kidnapped": 0
+      },
+      "latitude": 32.2303822729,
+      "longitude": 35.2502507007,
+      "source": "goodshepherd-api"
+    },
+    {
+      "date": "2025-10-21",
+      "facility_name": "Unknown",
+      "facility_type": "healthcare",
+      "location": "Unknown",
+      "incident_type": "attack",
+      "description": "21 October 2025: An ambulance was prevented from transferring a patient by Israeli forces. ",
+      "casualties": {
+        "killed": 0,
+        "injured": 0,
+        "kidnapped": 0
+      },
+      "latitude": 32.1791437,
+      "longitude": 35.3349466,
+      "source": "goodshepherd-api"
+    },
+    {
+      "date": "2025-10-23",
+      "facility_name": "Unknown",
+      "facility_type": "healthcare",
+      "location": "Unknown",
+      "incident_type": "attack",
+      "description": "As reported on 23 October 2025: A medical facility suspended elective surgeries amid shortages of essential drugs, disposables, and IV solutions. \r\n",
+      "casualties": {
+        "killed": 0,
+        "injured": 0,
+        "kidnapped": 0
+      },
+      "latitude": 31.5124882217,
+      "longitude": 34.4377558829,
+      "source": "goodshepherd-api"
+    },
+    {
+      "date": "2025-10-23",
+      "facility_name": "Unknown",
+      "facility_type": "healthcare",
+      "location": "Unknown",
+      "incident_type": "attack",
+      "description": "As reported on 23 October 2025: A medical facility suspended elective surgeries amid shortages of essential drugs, disposables, and IV solutions. \r\n",
+      "casualties": {
+        "killed": 0,
+        "injured": 0,
+        "kidnapped": 0
+      },
+      "latitude": 31.2884899745,
+      "longitude": 34.2498028286,
+      "source": "goodshepherd-api"
+    },
+    {
+      "date": "2025-10-23",
+      "facility_name": "Unknown",
+      "facility_type": "healthcare",
+      "location": "Unknown",
+      "incident_type": "attack",
+      "description": "23 October 2025: A health worker was killed during Israeli airstrikes.",
+      "casualties": {
+        "killed": 1,
+        "injured": 0,
+        "kidnapped": 0
+      },
+      "latitude": 31.3401107,
+      "longitude": 34.3222778,
+      "source": "goodshepherd-api"
+    },
+    {
+      "date": "2025-10-28",
+      "facility_name": "Unknown",
+      "facility_type": "healthcare",
+      "location": "Unknown",
+      "incident_type": "attack",
+      "description": "28 October 2025: The yard of a medical facility was hit by Israeli airstrikes. \r\n",
+      "casualties": {
+        "killed": 0,
+        "injured": 0,
+        "kidnapped": 0
+      },
+      "latitude": 31.5240854092,
+      "longitude": 34.443495558,
+      "source": "goodshepherd-api"
+    }
+  ]
+}

@@ -1,0 +1,14 @@
+{
+  "category": "education",
+  "total_records": 9723,
+  "last_updated": "2025-11-25T18:04:35.794Z",
+  "sources": [
+    "HDX"
+  ],
+  "quality": {
+    "average_score": 1,
+    "completeness": 1,
+    "consistency": 1,
+    "accuracy": 1
+  }
+}

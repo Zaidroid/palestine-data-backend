@@ -1,0 +1,16 @@
+{
+  "category": "culture",
+  "total_records": 315,
+  "last_updated": "2025-11-25T18:04:38.199Z",
+  "sources": [
+    "UNESCO",
+    "Ministry of Tourism",
+    "NGO Reports"
+  ],
+  "quality": {
+    "average_score": 1,
+    "completeness": 1,
+    "consistency": 1,
+    "accuracy": 1
+  }
+}

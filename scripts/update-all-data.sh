@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # Complete Data Update Pipeline
-# This script runs the full data update workflow
+# This script runs the full data update workflow with monitoring
 
 set -e  # Exit on error
 
@@ -29,14 +29,26 @@ print_error() {
     echo -e "${RED}✗ $1${NC}"
 }
 
+# Initialize monitoring
+echo "Initializing monitoring system..."
+if npm run monitor-init 2>/dev/null; then
+    print_success "Monitoring initialized"
+else
+    print_warning "Monitoring initialization failed (continuing without monitoring)"
+fi
+echo ""
+
 # Step 1: Fetch all data
 echo "Step 1: Fetching data from all sources..."
 echo "-------------------------------------------"
+
+echo "  > Fetching all data sources (Core, News, Historical, Water, Infrastructure, Culture, Land)..."
 if npm run fetch-all-data; then
-    print_success "Data fetching completed"
+    print_success "All data fetching completed"
 else
     print_warning "Data fetching completed with some errors (check logs)"
 fi
+echo ""
 echo ""
 
 # Step 2: Transform to unified format
@@ -49,8 +61,18 @@ else
 fi
 echo ""
 
-# Step 3: Generate manifest
-echo "Step 3: Generating data manifest..."
+# Step 3: Generate GeoJSON layers
+echo "Step 3: Generating GeoJSON layers..."
+echo "-------------------------------------------"
+if npm run generate-geojson; then
+    print_success "GeoJSON generation completed"
+else
+    print_error "GeoJSON generation failed"
+fi
+echo ""
+
+# Step 4: Generate manifest
+echo "Step 4: Generating data manifest..."
 echo "-------------------------------------------"
 if npm run generate-manifest; then
     print_success "Manifest generation completed"
@@ -59,8 +81,8 @@ else
 fi
 echo ""
 
-# Step 4: Validate data
-echo "Step 4: Validating data quality..."
+# Step 5: Validate data
+echo "Step 5: Validating data quality..."
 echo "-------------------------------------------"
 if npm run validate-data; then
     print_success "Data validation completed"
@@ -78,10 +100,12 @@ echo "Summary files generated:"
 echo "  - public/data/data-collection-summary.json"
 echo "  - public/data/validation-report.json"
 echo "  - public/data/manifest.json"
+echo "  - public/data/unified/unified-manifest.json"
 echo ""
 echo "Data locations:"
 echo "  - Raw data: public/data/[source]/"
 echo "  - Unified data: public/data/unified/"
+echo "  - GeoJSON: public/data/geojson/"
 echo ""
 echo "Next steps:"
 echo "  1. Review summary: cat public/data/data-collection-summary.json | jq"

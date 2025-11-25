@@ -1,0 +1,14 @@
+{
+  "category": "economic",
+  "total_records": 1522,
+  "last_updated": "2025-11-25T11:32:34.621Z",
+  "sources": [
+    "World Bank"
+  ],
+  "quality": {
+    "average_score": 1,
+    "completeness": 1,
+    "consistency": 1,
+    "accuracy": 1
+  }
+}

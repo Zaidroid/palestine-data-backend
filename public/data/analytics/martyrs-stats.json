@@ -1,0 +1,19 @@
+{
+  "total": 60199,
+  "by_gender": {
+    "unknown": 60199
+  },
+  "by_age_group": {
+    "children": 18457,
+    "adults": 37313,
+    "elderly": 4429,
+    "unknown": 0
+  },
+  "by_location": {
+    "[object Object]": 60199
+  },
+  "demographics": {
+    "children_percentage": "30.66",
+    "women_percentage": "0.00"
+  }
+}

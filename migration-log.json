@@ -1,0 +1,68 @@
+[
+  {
+    "timestamp": "2025-10-31T11:41:28.644Z",
+    "step": "HDX Catalog Migration",
+    "status": "error",
+    "details": "Unexpected token 'v', \"version ht\"... is not valid JSON"
+  },
+  {
+    "timestamp": "2025-10-31T11:41:28.646Z",
+    "step": "PCBS Metadata Migration",
+    "status": "error",
+    "details": "Unexpected token 'v', \"version ht\"... is not valid JSON"
+  },
+  {
+    "timestamp": "2025-10-31T11:41:28.647Z",
+    "step": "UNRWA Metadata Migration",
+    "status": "error",
+    "details": "Unexpected token 'v', \"version ht\"... is not valid JSON"
+  },
+  {
+    "timestamp": "2025-10-31T11:41:28.647Z",
+    "step": "Index Creation: conflict",
+    "status": "success",
+    "details": "Standardized index created"
+  },
+  {
+    "timestamp": "2025-10-31T11:41:28.647Z",
+    "step": "Index Creation: education",
+    "status": "success",
+    "details": "Standardized index created"
+  },
+  {
+    "timestamp": "2025-10-31T11:41:28.648Z",
+    "step": "Index Creation: water",
+    "status": "success",
+    "details": "Standardized index created"
+  },
+  {
+    "timestamp": "2025-10-31T11:41:28.648Z",
+    "step": "Index Creation: infrastructure",
+    "status": "success",
+    "details": "Standardized index created"
+  },
+  {
+    "timestamp": "2025-10-31T11:41:28.648Z",
+    "step": "Index Creation: refugees",
+    "status": "success",
+    "details": "Standardized index created"
+  },
+  {
+    "timestamp": "2025-10-31T11:41:28.648Z",
+    "step": "Index Creation: humanitarian",
+    "status": "success",
+    "details": "Standardized index created"
+  },
+  {
+    "timestamp": "2025-10-31T11:41:28.648Z",
+    "step": "Index Creation: health",
+    "status": "success",
+    "details": "Standardized index created"
+  },
+  {
+    "timestamp": "2025-10-31T11:41:28.649Z",
+    "step": "Index Creation: shelter",
+    "status": "success",
+    "details": "Standardized index created"
+  }
+]

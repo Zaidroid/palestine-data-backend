@@ -75,12 +75,12 @@ async function countRecordsInFile(filePath) {
   try {
     const data = await readJSON(filePath);
     if (!data) return 0;
-    
+
     // Check for metadata.record_count first (Good Shepherd format)
     if (data.metadata && typeof data.metadata.record_count === 'number') {
       return data.metadata.record_count;
     }
-    
+
     // Handle different data structures
     if (Array.isArray(data)) {
       return data.length;
@@ -101,7 +101,7 @@ async function countRecordsInFile(filePath) {
 
 function extractDateRange(data) {
   if (!data || !Array.isArray(data)) return null;
-  
+
   const dates = [];
   for (const record of data) {
     const dateStr = record.date || record.Date || record.year || record.Year;
@@ -109,9 +109,9 @@ function extractDateRange(data) {
       dates.push(new Date(dateStr));
     }
   }
-  
+
   if (dates.length === 0) return null;
-  
+
   dates.sort((a, b) => a - b);
   return {
     start: dates[0].toISOString().split('T')[0],
@@ -122,10 +122,10 @@ function extractDateRange(data) {
 // HDX Manifest Generation
 async function generateHDXManifest() {
   console.log('📊 Generating HDX manifest...');
-  
+
   const hdxPath = path.join(DATA_DIR, 'hdx');
   const categories = ['casualties', 'conflict', 'displacement', 'food-security', 'health', 'humanitarian', 'infrastructure'];
-  
+
   const manifest = {
     source: 'hdx-ckan',
     last_updated: new Date().toISOString(),
@@ -135,37 +135,37 @@ async function generateHDXManifest() {
     datasets: [],
     categories: {}
   };
-  
+
   for (const category of categories) {
     const categoryPath = path.join(hdxPath, category);
     const categoryExists = await fileExists(categoryPath);
-    
+
     if (!categoryExists) {
       manifest.categories[category] = 0;
       continue;
     }
-    
+
     let categoryDatasets = 0;
     const entries = await fs.readdir(categoryPath, { withFileTypes: true });
-    
+
     for (const entry of entries) {
       if (entry.name === 'datasets.json' || entry.name === 'index.json') continue;
-      
+
       const entryPath = path.join(categoryPath, entry.name);
-      
+
       if (entry.isDirectory()) {
         // Check for partitioned dataset
         const indexPath = path.join(entryPath, 'index.json');
         const indexExists = await fileExists(indexPath);
-        
+
         if (indexExists) {
           const index = await readJSON(indexPath);
           const recentPath = path.join(entryPath, 'recent.json');
           const recentRecords = await countRecordsInFile(recentPath);
-          
+
           let totalRecords = 0;
           const partitions = [];
-          
+
           if (index && index.partitions) {
             for (const partition of index.partitions) {
               const partPath = path.join(entryPath, partition.file);
@@ -179,7 +179,7 @@ async function generateHDXManifest() {
               });
             }
           }
-          
+
           manifest.datasets.push({
             id: entry.name,
             name: entry.name.replace(/-/g, ' ').replace(/\b\w/g, l => l.toUpperCase()),
@@ -192,7 +192,7 @@ async function generateHDXManifest() {
             has_recent_file: recentRecords > 0,
             recent_records: recentRecords
           });
-          
+
           manifest.total_records += totalRecords;
           categoryDatasets++;
         }
@@ -201,7 +201,7 @@ async function generateHDXManifest() {
         const records = await countRecordsInFile(entryPath);
         const data = await readJSON(entryPath);
         const dateRange = extractDateRange(data);
-        
+
         manifest.datasets.push({
           id: entry.name.replace('.json', ''),
           name: entry.name.replace('.json', '').replace(/-/g, ' ').replace(/\b\w/g, l => l.toUpperCase()),
@@ -211,30 +211,30 @@ async function generateHDXManifest() {
           partitioned: false,
           file: entry.name
         });
-        
+
         manifest.total_records += records;
         categoryDatasets++;
       }
     }
-    
+
     manifest.categories[category] = categoryDatasets;
     manifest.total_datasets += categoryDatasets;
   }
-  
+
   // Write HDX catalog
   await writeJSON(path.join(hdxPath, 'metadata.json'), manifest);
   console.log(`  ✓ HDX: ${manifest.total_datasets} datasets, ${manifest.total_records} records`);
-  
+
   return manifest;
 }
 
 // Good Shepherd Manifest Generation
 async function generateGoodShepherdManifest() {
   console.log('📊 Generating Good Shepherd manifest...');
-  
+
   const gsPath = path.join(DATA_DIR, 'goodshepherd');
-  const categories = ['healthcare', 'demolitions', 'ngo', 'prisoners'];
-  
+  const categories = ['healthcare', 'demolitions', 'ngo', 'prisoners/political', 'prisoners/children', 'westbank'];
+
   const manifest = {
     source: 'goodshepherd',
     api_base: 'https://goodshepherdcollective.org/api',
@@ -247,29 +247,31 @@ async function generateGoodShepherdManifest() {
       total_partitions: 0
     }
   };
-  
+
   for (const category of categories) {
     const categoryPath = path.join(gsPath, category);
     const categoryExists = await fileExists(categoryPath);
-    
+
     if (!categoryExists) continue;
-    
+
     const entries = await fs.readdir(categoryPath, { withFileTypes: true });
-    
+
     // Check for partitioned data
     const indexPath = path.join(categoryPath, 'index.json');
     const indexExists = await fileExists(indexPath);
-    
+
     if (indexExists) {
       const index = await readJSON(indexPath);
       const recentPath = path.join(categoryPath, 'recent.json');
       const recentRecords = await countRecordsInFile(recentPath);
-      
+
       let totalRecords = 0;
       const partitions = [];
-      
-      if (index && index.partitions) {
-        for (const partition of index.partitions) {
+
+      const partitionList = index.partitions || index.files;
+
+      if (partitionList) {
+        for (const partition of partitionList) {
           const partPath = path.join(categoryPath, partition.file);
           const records = await countRecordsInFile(partPath);
           totalRecords += records;
@@ -280,14 +282,19 @@ async function generateGoodShepherdManifest() {
           });
         }
       }
-      
+
       // If no records from partitions, try to get from recent file
       if (totalRecords === 0 && recentRecords > 0) {
         totalRecords = recentRecords;
       }
-      
+
+      // Format name: "prisoners/political" -> "Political Prisoners"
+      const name = category.includes('/')
+        ? category.split('/').reverse().map(w => w.charAt(0).toUpperCase() + w.slice(1)).join(' ')
+        : category.charAt(0).toUpperCase() + category.slice(1);
+
       manifest.datasets[category] = {
-        name: category.charAt(0).toUpperCase() + category.slice(1),
+        name: name,
         category: category,
         record_count: totalRecords,
         date_range: index.date_range || null,
@@ -296,25 +303,25 @@ async function generateGoodShepherdManifest() {
         partition_strategy: 'quarter',
         has_recent_file: recentRecords > 0
       };
-      
+
       manifest.summary.total_records += totalRecords;
       manifest.summary.total_partitions += partitions.length;
       manifest.summary.total_datasets++;
     } else {
       // Check for non-partitioned data (like NGO)
       const files = entries.filter(e => e.isFile() && e.name.endsWith('.json'));
-      
+
       if (files.length > 0) {
         let totalRecords = 0;
         const fileList = [];
-        
+
         for (const file of files) {
           const filePath = path.join(categoryPath, file.name);
           const records = await countRecordsInFile(filePath);
           totalRecords += records;
           fileList.push(file.name);
         }
-        
+
         manifest.datasets[category] = {
           name: category.charAt(0).toUpperCase() + category.slice(1),
           category: category,
@@ -322,26 +329,26 @@ async function generateGoodShepherdManifest() {
           partitioned: false,
           files: fileList
         };
-        
+
         manifest.summary.total_records += totalRecords;
         manifest.summary.total_datasets++;
       }
     }
   }
-  
+
   // Write Good Shepherd metadata
   await writeJSON(path.join(gsPath, 'metadata.json'), manifest);
   console.log(`  ✓ Good Shepherd: ${manifest.summary.total_datasets} datasets, ${manifest.summary.total_records} records`);
-  
+
   return manifest;
 }
 
 // World Bank Manifest Generation
 async function generateWorldBankManifest() {
   console.log('📊 Generating World Bank manifest...');
-  
+
   const wbPath = path.join(DATA_DIR, 'worldbank');
-  
+
   const manifest = {
     metadata: {
       source: 'worldbank',
@@ -353,25 +360,25 @@ async function generateWorldBankManifest() {
     },
     indicators: []
   };
-  
+
   // Read all indicator files
   const entries = await fs.readdir(wbPath, { withFileTypes: true });
-  const indicatorFiles = entries.filter(e => 
-    e.isFile() && 
-    e.name.endsWith('.json') && 
-    e.name !== 'metadata.json' && 
+  const indicatorFiles = entries.filter(e =>
+    e.isFile() &&
+    e.name.endsWith('.json') &&
+    e.name !== 'metadata.json' &&
     e.name !== 'all-indicators.json'
   );
-  
+
   for (const file of indicatorFiles) {
     const filePath = path.join(wbPath, file.name);
     const data = await readJSON(filePath);
-    
+
     if (!data) continue;
-    
+
     const dataPoints = data.data ? data.data.length : 0;
     const indicatorCode = file.name.replace('.json', '').toUpperCase().replace(/_/g, '.');
-    
+
     // Determine category based on indicator code
     let category = 'other';
     if (indicatorCode.startsWith('NY.') || indicatorCode.startsWith('NE.') || indicatorCode.startsWith('FP.')) {
@@ -395,7 +402,7 @@ async function generateWorldBankManifest() {
     } else if (indicatorCode.startsWith('FB.') || indicatorCode.startsWith('FS.') || indicatorCode.startsWith('FM.')) {
       category = 'financial';
     }
-    
+
     // Determine unit
     let unit = 'number';
     const name = data.indicator_name || '';
@@ -418,7 +425,7 @@ async function generateWorldBankManifest() {
     } else if (name.includes('TEU')) {
       unit = 'teu';
     }
-    
+
     manifest.indicators.push({
       code: indicatorCode,
       name: data.indicator_name || indicatorCode,
@@ -426,12 +433,12 @@ async function generateWorldBankManifest() {
       data_points: dataPoints,
       unit: unit
     });
-    
+
     manifest.metadata.total_data_points += dataPoints;
   }
-  
+
   manifest.metadata.indicators = manifest.indicators.length;
-  
+
   // Sort indicators by category and code
   manifest.indicators.sort((a, b) => {
     if (a.category !== b.category) {
@@ -439,10 +446,10 @@ async function generateWorldBankManifest() {
     }
     return a.code.localeCompare(b.code);
   });
-  
+
   // Write World Bank metadata
   await writeJSON(path.join(wbPath, 'metadata.json'), manifest);
-  
+
   // Also update all-indicators.json
   const allIndicators = {
     generated_at: new Date().toISOString(),
@@ -450,24 +457,24 @@ async function generateWorldBankManifest() {
     indicators: manifest.indicators
   };
   await writeJSON(path.join(wbPath, 'all-indicators.json'), allIndicators);
-  
+
   console.log(`  ✓ World Bank: ${manifest.metadata.indicators} indicators, ${manifest.metadata.total_data_points} data points`);
-  
+
   return manifest;
 }
 
 // Tech4Palestine Manifest Generation
 async function generateTech4PalestineManifest() {
   console.log('📊 Generating Tech4Palestine manifest...');
-  
+
   const t4pPath = path.join(DATA_DIR, 'tech4palestine');
-  
+
   const manifest = {
     source: 'tech4palestine',
     last_updated: new Date().toISOString(),
     datasets: {}
   };
-  
+
   // Check for summary file
   const summaryPath = path.join(t4pPath, 'summary.json');
   if (await fileExists(summaryPath)) {
@@ -476,14 +483,14 @@ async function generateTech4PalestineManifest() {
       manifest.datasets.summary = 'available';
     }
   }
-  
+
   // Check for press killed
   const pressPath = path.join(t4pPath, 'press-killed.json');
   if (await fileExists(pressPath)) {
     const records = await countRecordsInFile(pressPath);
     manifest.datasets.pressKilled = records;
   }
-  
+
   // Check for casualties
   const casualtiesPath = path.join(t4pPath, 'casualties');
   if (await fileExists(casualtiesPath)) {
@@ -496,7 +503,7 @@ async function generateTech4PalestineManifest() {
     }
     manifest.datasets.casualties = totalRecords;
   }
-  
+
   // Check for killed in Gaza
   const killedPath = path.join(t4pPath, 'killed-in-gaza');
   if (await fileExists(killedPath)) {
@@ -509,18 +516,18 @@ async function generateTech4PalestineManifest() {
     }
     manifest.datasets.killedInGaza = totalRecords;
   }
-  
+
   // Write Tech4Palestine metadata
   await writeJSON(path.join(t4pPath, 'metadata.json'), manifest);
   console.log(`  ✓ Tech4Palestine: ${Object.keys(manifest.datasets).length} datasets`);
-  
+
   return manifest;
 }
 
 // Generate Global Manifest
 async function generateGlobalManifest(hdxManifest, gsManifest, wbManifest, t4pManifest) {
   console.log('📊 Generating global manifest...');
-  
+
   const manifest = {
     generated_at: new Date().toISOString(),
     version: '3.0.0',
@@ -534,7 +541,7 @@ async function generateGlobalManifest(hdxManifest, gsManifest, wbManifest, t4pMa
       total_size_mb: 0
     }
   };
-  
+
   // HDX
   const hdxSize = await getDirectorySize(path.join(DATA_DIR, 'hdx'));
   manifest.sources.hdx = {
@@ -551,7 +558,7 @@ async function generateGlobalManifest(hdxManifest, gsManifest, wbManifest, t4pMa
   manifest.summary.total_records += hdxManifest.total_records;
   manifest.summary.total_size_bytes += hdxSize;
   manifest.summary.total_sources++;
-  
+
   // Good Shepherd
   const gsSize = await getDirectorySize(path.join(DATA_DIR, 'goodshepherd'));
   manifest.sources.goodshepherd = {
@@ -568,7 +575,7 @@ async function generateGlobalManifest(hdxManifest, gsManifest, wbManifest, t4pMa
   manifest.summary.total_records += gsManifest.summary.total_records;
   manifest.summary.total_size_bytes += gsSize;
   manifest.summary.total_sources++;
-  
+
   // World Bank
   const wbSize = await getDirectorySize(path.join(DATA_DIR, 'worldbank'));
   manifest.sources.worldbank = {
@@ -584,7 +591,7 @@ async function generateGlobalManifest(hdxManifest, gsManifest, wbManifest, t4pMa
   manifest.summary.total_records += wbManifest.metadata.total_data_points;
   manifest.summary.total_size_bytes += wbSize;
   manifest.summary.total_sources++;
-  
+
   // Tech4Palestine
   const t4pSize = await getDirectorySize(path.join(DATA_DIR, 'tech4palestine'));
   const t4pDatasets = Object.keys(t4pManifest.datasets).length;
@@ -604,30 +611,30 @@ async function generateGlobalManifest(hdxManifest, gsManifest, wbManifest, t4pMa
   manifest.summary.total_records += t4pRecords;
   manifest.summary.total_size_bytes += t4pSize;
   manifest.summary.total_sources++;
-  
+
   manifest.summary.total_size_mb = (manifest.summary.total_size_bytes / (1024 * 1024)).toFixed(2);
-  
+
   // Write global manifest
   await writeJSON(path.join(DATA_DIR, 'manifest.json'), manifest);
   console.log(`  ✓ Global manifest: ${manifest.summary.total_sources} sources, ${manifest.summary.total_datasets} datasets`);
-  
+
   return manifest;
 }
 
 // Main execution
 async function main() {
   console.log('🔨 Generating comprehensive manifests...\n');
-  
+
   try {
     // Generate individual source manifests
     const hdxManifest = await generateHDXManifest();
     const gsManifest = await generateGoodShepherdManifest();
     const wbManifest = await generateWorldBankManifest();
     const t4pManifest = await generateTech4PalestineManifest();
-    
+
     // Generate global manifest
     const globalManifest = await generateGlobalManifest(hdxManifest, gsManifest, wbManifest, t4pManifest);
-    
+
     console.log('\n✅ All manifests generated successfully!');
     console.log(`\nGlobal Summary:`);
     console.log(`  Sources: ${globalManifest.summary.total_sources}`);
