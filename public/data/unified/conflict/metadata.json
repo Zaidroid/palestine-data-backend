@@ -1,14 +1,3 @@
-{
-  "category": "conflict",
-  "total_records": 1560,
-  "last_updated": "2025-11-25T18:04:33.953Z",
-  "sources": [
-    "Tech4Palestine"
-  ],
-  "quality": {
-    "average_score": 1,
-    "completeness": 1,
-    "consistency": 1,
-    "accuracy": 1
-  }
-}
+version https://git-lfs.github.com/spec/v1
+oid sha256:5b2bd9fd6c8f8e8869302e41b30aa727ae6247ed0e8a36f103a8b62c27cc9bd1
+size 247

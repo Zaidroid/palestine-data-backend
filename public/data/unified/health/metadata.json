@@ -1,15 +1,3 @@
-{
-  "category": "health",
-  "total_records": 40174,
-  "last_updated": "2025-11-25T18:04:37.820Z",
-  "sources": [
-    "WHO",
-    "HDX"
-  ],
-  "quality": {
-    "average_score": 1,
-    "completeness": 1,
-    "consistency": 1,
-    "accuracy": 1
-  }
-}
+version https://git-lfs.github.com/spec/v1
+oid sha256:ee354712c3c09576e3fbae7c8e587d2a99852f306daa9342c312e1655f2b7fda
+size 246

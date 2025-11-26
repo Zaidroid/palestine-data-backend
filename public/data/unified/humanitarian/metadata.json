@@ -1,14 +1,3 @@
-{
-  "category": "humanitarian",
-  "total_records": 28,
-  "last_updated": "2025-11-25T18:04:36.769Z",
-  "sources": [
-    "HDX"
-  ],
-  "quality": {
-    "average_score": 1,
-    "completeness": 1,
-    "consistency": 1,
-    "accuracy": 1
-  }
-}
+version https://git-lfs.github.com/spec/v1
+oid sha256:22e9d0088bdd1a3cbdff639862ed6ca868362490b279b728f45b5623e9bd4bd9
+size 238

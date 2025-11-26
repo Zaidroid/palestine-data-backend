@@ -1,8 +1,3 @@
-{
-  "generated_at": "2025-11-24T18:43:26.348Z",
-  "available_analytics": [
-    "conflict-trends",
-    "martyrs-stats",
-    "infrastructure-stats"
-  ]
-}
+version https://git-lfs.github.com/spec/v1
+oid sha256:a72f2d09867ce607a42cc84e10dbeff9e6473b5c139386275878287a6cc61328
+size 170

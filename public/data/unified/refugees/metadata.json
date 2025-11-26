@@ -1,14 +1,3 @@
-{
-  "category": "refugees",
-  "total_records": 1478,
-  "last_updated": "2025-11-25T18:04:36.827Z",
-  "sources": [
-    "HDX"
-  ],
-  "quality": {
-    "average_score": 1,
-    "completeness": 1,
-    "consistency": 1,
-    "accuracy": 1
-  }
-}
+version https://git-lfs.github.com/spec/v1
+oid sha256:1e45b1e66e3a1c55b4a6362a15e06c22b186388a428bbaaa4f8f981b588cd469
+size 236

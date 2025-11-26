@@ -1,28 +1,3 @@
-{
-  "generated_at": "2025-11-25T14:24:21.652Z",
-  "total_entries": 214029,
-  "by_category": {
-    "martyrs": 60199,
-    "conflict": 1816,
-    "news": 72,
-    "infrastructure": 730,
-    "health": 40174,
-    "education": 12082,
-    "water": 95928,
-    "humanitarian": 28,
-    "refugees": 1478,
-    "economic": 1522
-  },
-  "categories": [
-    "martyrs",
-    "conflict",
-    "news",
-    "infrastructure",
-    "health",
-    "education",
-    "water",
-    "humanitarian",
-    "refugees",
-    "economic"
-  ]
-}
+version https://git-lfs.github.com/spec/v1
+oid sha256:9bd048163875c0ed853c8db28445fc3115e19f9836fec3d8fe6ed66c6238aa7b
+size 500

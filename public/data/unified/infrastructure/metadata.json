@@ -1,14 +1,3 @@
-{
-  "category": "infrastructure",
-  "total_records": 631,
-  "last_updated": "2025-11-24T17:12:15.526Z",
-  "sources": [
-    "HDX"
-  ],
-  "quality": {
-    "average_score": 0,
-    "completeness": 0,
-    "consistency": 0,
-    "accuracy": 0
-  }
-}
+version https://git-lfs.github.com/spec/v1
+oid sha256:8e1b9eb8633d5aceeefb301fb4efe7dee480476a57e574404d91da77ee29dac6
+size 241

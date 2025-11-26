@@ -1,36 +1,3 @@
-{
-  "generated_at": "2025-11-25T11:32:53.448Z",
-  "summary": {
-    "total_tests": 24,
-    "passed": 24,
-    "failed": 0,
-    "success_rate": "100.0%",
-    "status": "passed"
-  },
-  "errors": [],
-  "details": {
-    "manifest": true,
-    "json_syntax": {
-      "valid": 770,
-      "total": 770
-    },
-    "file_sizes": {
-      "valid": 770,
-      "total": 770
-    },
-    "time_series": {
-      "valid": 18,
-      "total": 18,
-      "failed_files": []
-    },
-    "dates": {
-      "valid_format": true,
-      "after_baseline": true
-    },
-    "index_files": {
-      "valid": 25,
-      "total": 25,
-      "failed_files": []
-    }
-  }
-}
+version https://git-lfs.github.com/spec/v1
+oid sha256:be2bca00144b452406deda88da5bd4515af1203010cc7da786c7e57eb5a821c2
+size 630
