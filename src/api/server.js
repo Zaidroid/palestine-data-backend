@@ -36,6 +36,8 @@ app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(specs));
 
 // Routes
 app.use('/api/v1', routes);
+app.use('/data', express.static('public/data'));
+
 
 // 404 Handler
 app.use((req, res) => {
@@ -48,11 +50,24 @@ app.use((err, req, res, next) => {
     res.status(500).json({ error: 'Something went wrong!' });
 });
 
+// Start server if this file is run directly
 // Start server
-app.listen(PORT, () => {
-    console.log(`Server running on port ${PORT}`);
-    console.log(`Documentation: http://localhost:${PORT}/api-docs`);
-    console.log(`Health check: http://localhost:${PORT}/api/v1/health`);
-});
+const startServer = () => {
+    app.listen(PORT, () => {
+        console.log(`Server running on port ${PORT}`);
+        console.log(`Documentation: http://localhost:${PORT}/api-docs`);
+        console.log(`Health check: http://localhost:${PORT}/api/v1/health`);
+    });
+};
+
+if (import.meta.url === `file://${process.argv[1].replace(/\\/g, '/')}`) {
+    startServer();
+} else {
+    // Fallback for Windows if the above check fails due to case sensitivity or other path issues
+    // We can check if the file name matches
+    if (process.argv[1].endsWith('server.js')) {
+        startServer();
+    }
+}
 
 export default app;

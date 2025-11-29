@@ -21,6 +21,7 @@ import { fileURLToPath } from 'url';
 import { createRateLimitedFetcher } from './utils/fetch-with-retry.js';
 import AdmZip from 'adm-zip';
 import shapefile from 'shapefile';
+import { schemaUtils } from './utils/standardized-schema.js';
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
@@ -404,6 +405,54 @@ async function processDataset(datasetKey, config) {
             recordCount = 'unknown';
         }
 
+        // Transform to Unified Schema
+        let unifiedEvents = [];
+        if (result.features) {
+            unifiedEvents = result.features.map(feature => {
+                const props = feature.properties || {};
+                const coords = feature.geometry?.coordinates || [];
+                const lat = coords[1] || null;
+                const lon = coords[0] || null;
+
+                // Determine category and type based on dataset key
+                let category = config.category;
+                let type = 'infrastructure_status';
+                let details = '';
+
+                if (datasetKey === 'schools') {
+                    category = 'education';
+                    type = 'facility_status';
+                    details = `School: ${props.NAME_EN || props.Name || 'Unknown'}`;
+                } else if (datasetKey === 'barrier') {
+                    category = 'infrastructure';
+                    type = 'barrier_segment';
+                } else if (datasetKey === 'humanitarian_access') {
+                    category = 'humanitarian';
+                    type = 'access_restriction';
+                    details = `Restriction: ${props.Type || 'Unknown'}`;
+                }
+
+                return schemaUtils.createEvent({
+                    id: `${datasetKey}-${props.ID || props.OBJECTID || Math.random().toString(36).substr(2, 9)}`,
+                    date: new Date().toISOString(), // Static data often lacks date, use current or metadata date
+                    category: category,
+                    event_type: type,
+                    location: {
+                        governorate: props.Governorate || props.GOVERNORAT || 'West Bank',
+                        lat: lat,
+                        lon: lon,
+                        precision: 'exact'
+                    },
+                    metrics: {
+                        count: 1
+                    },
+                    details: details || config.description,
+                    source_link: `HDX: ${config.package}`,
+                    confidence: 'high'
+                });
+            });
+        }
+
         // Save processed data
         const outputFile = path.join(outputDir, `raw-data.json`);
         await writeJSON(outputFile, {
@@ -420,6 +469,18 @@ async function processDataset(datasetKey, config) {
             },
             data: dataToSave,
         });
+
+        // Save Unified Data
+        if (unifiedEvents.length > 0) {
+            await writeJSON(path.join(outputDir, `unified-data.json`), {
+                source: 'HDX-WestBank',
+                category: config.category,
+                transformed_at: new Date().toISOString(),
+                record_count: unifiedEvents.length,
+                data: unifiedEvents
+            });
+            logger.success(`✅ Saved ${unifiedEvents.length} unified events`);
+        }
 
         logger.success(`✅ Processed ${datasetKey}: ${recordCount} records`);
 
@@ -496,7 +557,7 @@ async function main() {
 }
 
 // Run if called directly
-if (import.meta.url === `file://${process.argv[1]}`) {
+if (process.argv[1] === fileURLToPath(import.meta.url)) {
     main();
 }
 

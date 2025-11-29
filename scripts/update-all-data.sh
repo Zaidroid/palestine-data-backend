@@ -61,6 +61,26 @@ else
 fi
 echo ""
 
+# Step 2.5: Process Historical Data
+echo "Step 2.5: Processing historical granular data..."
+echo "-------------------------------------------"
+if npm run process-historical; then
+    print_success "Historical data processing completed"
+else
+    print_warning "Historical data processing completed with errors"
+fi
+echo ""
+
+# Step 2.6: Generate Coverage Report
+echo "Step 2.6: Generating coverage report..."
+echo "-------------------------------------------"
+if npm run generate-coverage-report; then
+    print_success "Coverage report generated"
+else
+    print_error "Coverage report generation failed"
+fi
+echo ""
+
 # Step 3: Generate GeoJSON layers
 echo "Step 3: Generating GeoJSON layers..."
 echo "-------------------------------------------"
@@ -101,6 +121,7 @@ echo "  - public/data/data-collection-summary.json"
 echo "  - public/data/validation-report.json"
 echo "  - public/data/manifest.json"
 echo "  - public/data/unified/unified-manifest.json"
+echo "  - public/data/historical/coverage-report.md"
 echo ""
 echo "Data locations:"
 echo "  - Raw data: public/data/[source]/"

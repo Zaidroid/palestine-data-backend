@@ -19,6 +19,7 @@ import path from 'path';
 import { fileURLToPath } from 'url';
 import { createLogger } from './utils/logger.js';
 import { fetchJSONWithRetry } from './utils/fetch-with-retry.js';
+import { schemaUtils } from './utils/standardized-schema.js';
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
@@ -257,6 +258,50 @@ async function fetchHistoricalData() {
     await writeJSON(path.join(DATA_DIR, 'all-historical-data.json'), allDataFile);
     await logger.success('Saved all-historical-data.json');
 
+    // Transform to Unified Schema
+    const indicatorCategories = {
+        'NY.GDP.MKTP.CD': 'economy', 'NY.GDP.PCAP.CD': 'economy', 'NY.GDP.MKTP.KD.ZG': 'economy', 'FP.CPI.TOTL.ZG': 'economy',
+        'SP.POP.TOTL': 'demographics', 'SP.POP.GROW': 'demographics', 'SP.URB.TOTL.IN.ZS': 'demographics', 'SP.DYN.TFRT.IN': 'demographics', 'SP.DYN.LE00.IN': 'health',
+        'SL.UEM.TOTL.ZS': 'economy', 'SL.TLF.CACT.ZS': 'economy',
+        'SI.POV.GINI': 'economy', 'SI.POV.NAHC': 'economy',
+        'SE.PRM.ENRR': 'education', 'SE.SEC.ENRR': 'education', 'SE.ADT.LITR.ZS': 'education',
+        'SH.DYN.MORT': 'health', 'SH.STA.MMRT': 'health', 'SH.MED.PHYS.ZS': 'health',
+        'EG.ELC.ACCS.ZS': 'infrastructure', 'IT.NET.USER.ZS': 'infrastructure',
+        'SH.H2O.BASW.ZS': 'water', 'SH.STA.BASS.ZS': 'water',
+        'NE.TRD.GNFS.ZS': 'economy', 'BX.TRF.PWKR.CD.DT': 'economy'
+    };
+
+    const unifiedEvents = allData.map(item => {
+        return schemaUtils.createEvent({
+            id: `wb-${item.indicator}-${item.year}`,
+            date: `${item.year}-01-01T00:00:00.000Z`,
+            category: indicatorCategories[item.indicator] || 'uncategorized',
+            event_type: 'indicator_measurement',
+            location: {
+                governorate: 'Palestine', // National level data
+                lat: 31.9522, // Approximate center
+                lon: 35.2332,
+                precision: 'country'
+            },
+            metrics: {
+                value: item.value,
+                count: 1
+            },
+            details: `${item.indicator_name}: ${item.value}`,
+            source_link: 'World Bank',
+            confidence: 'high'
+        });
+    });
+
+    await writeJSON(path.join(DATA_DIR, 'unified-historical-data.json'), {
+        source: 'World Bank',
+        category: 'historical',
+        transformed_at: new Date().toISOString(),
+        record_count: unifiedEvents.length,
+        data: unifiedEvents
+    });
+    await logger.success(`Saved ${unifiedEvents.length} unified historical records`);
+
     // Generate and save baseline comparison report
     const comparisonReport = generateComparisonReport(results);
     await writeJSON(path.join(DATA_DIR, 'baseline-comparison.json'), comparisonReport);
@@ -296,7 +341,7 @@ async function fetchHistoricalData() {
 }
 
 // Run
-if (import.meta.url === `file://${process.argv[1]}`) {
+if (process.argv[1] === fileURLToPath(import.meta.url)) {
     fetchHistoricalData()
         .then(async () => {
             await logger.success('Historical data fetch completed successfully');

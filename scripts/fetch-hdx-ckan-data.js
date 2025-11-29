@@ -17,6 +17,8 @@ import { fetchJSONWithRetry, createRateLimitedFetcher } from './utils/fetch-with
 import { createLogger } from './utils/logger.js';
 import { validateDataset } from './utils/data-validator.js';
 import { downloadAndExtractZip, parseExtractedFile } from './utils/zip-extractor.js';
+import { schemaUtils } from './utils/standardized-schema.js';
+import GeospatialEnricher from './utils/geospatial-enricher.js';
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
@@ -242,34 +244,75 @@ async function fetchDatasetByCategory(category, datasets) {
 
       if (!dataset) {
         // Search for dataset
+        // Search for dataset with fallback strategies
         try {
-          // Strict search for Palestine data
-          const searchUrl = `${HDX_CKAN_BASE}/package_search?q=${encodeURIComponent(datasetConfig.name)}&fq=(locations:pse OR locations:palestine OR groups:pse)&rows=5`;
-          const searchResult = await fetchWithRetry(searchUrl);
+          let searchResult = null;
+          let searchStrategy = 'exact';
 
-          if (searchResult.success && searchResult.result.results.length > 0) {
-            // Double check that the result is actually relevant
-            const candidate = searchResult.result.results[0];
-            const candidateString = JSON.stringify(candidate).toLowerCase();
+          // Strategy 1: Exact name search with location filter
+          const exactSearchUrl = `${HDX_CKAN_BASE}/package_search?q=${encodeURIComponent(datasetConfig.name)}&fq=(locations:pse OR locations:palestine OR groups:pse)&rows=5`;
+          searchResult = await fetchWithRetry(exactSearchUrl);
 
-            // Anti-keywords to avoid "World Bank Indicators for Philippines" matching "Indicators"
-            const antiKeywords = ['philippines', 'turkey', 'ukraine', 'yemen', 'sudan', 'afghanistan', 'somalia', 'myanmar'];
-            const hasAntiKeyword = antiKeywords.some(kw => candidate.title.toLowerCase().includes(kw));
+          // Strategy 2: Keyword search if exact match fails
+          if (!searchResult.success || searchResult.result.results.length === 0) {
+            searchStrategy = 'keywords';
+            // Extract meaningful keywords (remove common words)
+            const keywords = datasetConfig.name.toLowerCase()
+              .replace(/palestine|gaza|west bank|data|dataset|indicators/g, '')
+              .split(/[^a-z0-9]+/)
+              .filter(w => w.length > 3)
+              .join(' ');
 
-            // Title similarity check: Ensure the found dataset title contains words from the requested name
-            // This prevents "Sewage System Status" from matching "Health Indicators" just because they are both in Palestine
-            const requestedWords = datasetConfig.name.toLowerCase().split(/[^a-z0-9]+/);
-            const candidateTitle = candidate.title.toLowerCase();
-            const hasRelevantKeyword = requestedWords.some(word =>
-              word.length > 3 && candidateTitle.includes(word) &&
-              !['data', 'dataset', 'palestine', 'state', 'gaza', 'west', 'bank'].includes(word)
-            );
+            if (keywords) {
+              await categoryLogger.info(`Exact search failed, trying keywords: "${keywords}"`);
+              const keywordSearchUrl = `${HDX_CKAN_BASE}/package_search?q=${encodeURIComponent(keywords)}&fq=(locations:pse OR locations:palestine OR groups:pse)&rows=5`;
+              searchResult = await fetchWithRetry(keywordSearchUrl);
+            }
+          }
 
-            if (!hasAntiKeyword && (hasRelevantKeyword || candidateTitle.includes(datasetConfig.name.toLowerCase()))) {
-              dataset = candidate;
-              await categoryLogger.info(`Found via search: ${dataset.title}`);
+          if (searchResult && searchResult.success && searchResult.result.results.length > 0) {
+            // Find best match among results
+            const candidates = searchResult.result.results;
+            let bestMatch = null;
+            let maxScore = 0;
+
+            for (const candidate of candidates) {
+              const candidateString = JSON.stringify(candidate).toLowerCase();
+              const candidateTitle = candidate.title.toLowerCase();
+
+              // Anti-keywords check
+              const antiKeywords = ['philippines', 'turkey', 'ukraine', 'yemen', 'sudan', 'afghanistan', 'somalia', 'myanmar', 'syria', 'lebanon'];
+              const hasAntiKeyword = antiKeywords.some(kw => candidateTitle.includes(kw));
+              if (hasAntiKeyword) continue;
+
+              // Relevance scoring
+              let score = 0;
+              const requestedWords = datasetConfig.name.toLowerCase().split(/[^a-z0-9]+/);
+
+              requestedWords.forEach(word => {
+                if (word.length > 3 && !['data', 'dataset', 'palestine', 'state', 'gaza', 'west', 'bank'].includes(word)) {
+                  if (candidateTitle.includes(word)) score += 2;
+                  if (candidate.notes && candidate.notes.toLowerCase().includes(word)) score += 1;
+                }
+              });
+
+              // Boost for exact phrase matches
+              if (candidateTitle.includes(datasetConfig.name.toLowerCase())) score += 5;
+
+              if (score > maxScore) {
+                maxScore = score;
+                bestMatch = candidate;
+              }
+            }
+
+            if (bestMatch && maxScore > 0) {
+              dataset = bestMatch;
+              await categoryLogger.info(`Found via ${searchStrategy} search: ${dataset.title} (Score: ${maxScore})`);
             } else {
-              await categoryLogger.warn(`Search result rejected (irrelevant/mismatch): ${candidate.title} (Requested: ${datasetConfig.name})`);
+              await categoryLogger.warn(`All search results rejected as irrelevant for: ${datasetConfig.name}`);
+              failed++;
+              errors.push({ dataset: datasetConfig.name, error: 'No relevant results found' });
+              continue;
             }
           } else {
             await categoryLogger.warn(`Dataset not found: ${datasetConfig.name}, skipping`);
@@ -338,163 +381,115 @@ async function fetchDatasetByCategory(category, datasets) {
         continue;
       }
 
-      // Download first suitable resource
-      const resource = dataResources[0];
-      await categoryLogger.info(`Downloading: ${resource.name} (${resource.format})`);
+      // Download ALL suitable resources
+      let resourceCount = 0;
 
-      let data;
-      try {
-        data = await downloadResource(resource);
-      } catch (downloadError) {
-        await categoryLogger.error(`Failed to download resource ${resource.name}`, downloadError);
-        failed++;
-        errors.push({ dataset: fullDataset.name, resource: resource.name, error: downloadError.message });
-        continue;
-      }
+      for (const resource of dataResources) {
+        await categoryLogger.info(`Downloading resource ${++resourceCount}/${dataResources.length}: ${resource.name} (${resource.format})`);
 
-      if (data) {
+        let data;
         try {
-          // Create dataset-specific directory
-          const datasetDir = path.join(categoryDir, sanitizeFilename(fullDataset.name));
-          await ensureDir(datasetDir);
-
-          // Save metadata
-          await writeJSON(path.join(datasetDir, 'metadata.json'), metadata);
-
-          // Transform data based on category
-          const rawDataContent = data.format === 'csv' ? { csv: data.data } : data;
-
-          // HXL Tag Cleanup: Remove rows that look like HXL tags (starting with #)
-          if (rawDataContent.csv && Array.isArray(rawDataContent.csv)) {
-            rawDataContent.csv = rawDataContent.csv.filter(row => {
-              const values = Object.values(row);
-              // If the first few values start with #, it's likely a tag row being read as data
-              // Or if the keys themselves are tags, we might need re-parsing, but for now let's just filter out tag-only rows
-              const isTagRow = values.some(v => typeof v === 'string' && v.trim().startsWith('#'));
-              return !isTagRow;
-            });
-          }
-
-          let transformed;
-          try {
-            transformed = transformDataByCategory(rawDataContent, category, metadata);
-          } catch (transformError) {
-            await categoryLogger.error(`Failed to transform data for ${fullDataset.name}`, transformError);
-            failed++;
-            errors.push({ dataset: fullDataset.name, error: `Transformation failed: ${transformError.message}` });
-            continue;
-          }
-
-          // Save raw data
-          const dataFile = data.format === 'csv' ? 'data.csv.json' : 'data.json';
-          await writeJSON(path.join(datasetDir, dataFile), {
-            source: 'hdx-ckan',
-            downloaded_at: new Date().toISOString(),
-            resource: {
-              id: resource.id,
-              name: resource.name,
-              format: resource.format,
-              url: resource.url,
-            },
-            data: rawDataContent,
-          });
-
-          // Save transformed data and partition if necessary
-          let partitionInfo = null;
-          let validationResult = null;
-          if (transformed.format === 'json' && transformed.data) {
-            // Validate transformed data
-            try {
-              validationResult = await validateDataset(transformed.data, category);
-
-              // Log validation results
-              if (validationResult.meetsThreshold) {
-                await categoryLogger.success(`Validation passed (score: ${(validationResult.qualityScore * 100).toFixed(1)}%)`);
-              } else {
-                await categoryLogger.warn(`Validation quality below threshold (score: ${(validationResult.qualityScore * 100).toFixed(1)}%)`);
-              }
-
-              // Log errors and warnings summary
-              if (validationResult.errors.length > 0) {
-                await categoryLogger.warn(`Found ${validationResult.errors.length} validation errors`);
-              }
-              if (validationResult.warnings.length > 0) {
-                await categoryLogger.debug(`Found ${validationResult.warnings.length} validation warnings`);
-              }
-            } catch (validationError) {
-              await categoryLogger.warn(`Validation failed for ${fullDataset.name}`, validationError);
-              // Continue anyway - validation failure shouldn't stop the download
-            }
-
-            await writeJSON(path.join(datasetDir, 'transformed.json'), {
-              source: 'hdx-ckan',
-              category,
-              transformed_at: new Date().toISOString(),
-              record_count: transformed.recordCount,
-              validation: validationResult ? {
-                qualityScore: validationResult.qualityScore,
-                completeness: validationResult.completeness,
-                consistency: validationResult.consistency,
-                accuracy: validationResult.accuracy,
-                meetsThreshold: validationResult.meetsThreshold,
-                errorCount: validationResult.errors.length,
-                warningCount: validationResult.warnings.length,
-              } : null,
-              data: transformed.data,
-            });
-            await categoryLogger.success(`Transformed ${transformed.recordCount} records`);
-
-            // Save validation report if available
-            if (validationResult) {
-              await writeJSON(path.join(datasetDir, 'validation.json'), validationResult);
-              await categoryLogger.debug(`Saved validation report`);
-            }
-
-            // Partition data if needed
-            try {
-              partitionInfo = await partitionAndSaveDataset(datasetDir, transformed, fullDataset.name);
-            } catch (partitionError) {
-              await categoryLogger.warn(`Failed to partition data for ${fullDataset.name}`, partitionError);
-              // Continue anyway - partitioning is not critical
-            }
-          }
-
-          downloaded++;
-          downloadedDatasets.push({
-            id: fullDataset.id,
-            name: fullDataset.name,
-            title: fullDataset.title,
-            recordCount: transformed.recordCount || 0,
-            partitioned: partitionInfo?.partitioned || false,
-            partitionCount: partitionInfo?.partitionCount || 0,
-            validation: validationResult ? {
-              qualityScore: validationResult.qualityScore,
-              completeness: validationResult.completeness,
-              meetsThreshold: validationResult.meetsThreshold,
-              errorCount: validationResult.errors.length,
-              warningCount: validationResult.warnings.length,
-            } : null,
-            metadata,
-          });
-
-          await categoryLogger.success(`Downloaded to ${category}/${sanitizeFilename(fullDataset.name)}/`);
-        } catch (saveError) {
-          await categoryLogger.error(`Failed to save dataset ${fullDataset.name}`, saveError);
+          data = await downloadResource(resource);
+        } catch (downloadError) {
+          await categoryLogger.error(`Failed to download resource ${resource.name}`, downloadError);
           failed++;
-          errors.push({ dataset: fullDataset.name, error: `Save failed: ${saveError.message}` });
+          errors.push({ dataset: fullDataset.name, resource: resource.name, error: downloadError.message });
+          continue;
         }
-      } else {
-        await categoryLogger.warn(`No data downloaded for ${fullDataset.name}`);
-        failed++;
-        errors.push({ dataset: fullDataset.name, error: 'No data downloaded' });
-      }
+
+        if (data) {
+          try {
+            // Create dataset-specific directory
+            const datasetDir = path.join(categoryDir, sanitizeFilename(fullDataset.name));
+            await ensureDir(datasetDir);
+
+            // Save metadata
+            await writeJSON(path.join(datasetDir, 'metadata.json'), metadata);
+
+            // Transform data based on category
+            const rawDataContent = data.format === 'csv' ? { csv: data.data } : data;
+
+            // HXL Tag Cleanup
+            if (rawDataContent.csv && Array.isArray(rawDataContent.csv)) {
+              rawDataContent.csv = rawDataContent.csv.filter(row => {
+                const values = Object.values(row);
+                const isTagRow = values.some(v => typeof v === 'string' && v.trim().startsWith('#'));
+                return !isTagRow;
+              });
+            }
+
+            let transformed;
+            try {
+              transformed = transformDataByCategory(rawDataContent, category, metadata);
+            } catch (transformError) {
+              await categoryLogger.error(`Failed to transform data for ${fullDataset.name}`, transformError);
+              failed++;
+              errors.push({ dataset: fullDataset.name, error: `Transformation failed: ${transformError.message}` });
+              continue;
+            }
+
+            // Save raw data with unique name based on resource
+            const safeResourceName = sanitizeFilename(resource.name);
+            const dataFile = `raw-${safeResourceName}.json`;
+
+            await writeJSON(path.join(datasetDir, dataFile), {
+              source: 'hdx-ckan',
+              downloaded_at: new Date().toISOString(),
+              resource: {
+                id: resource.id,
+                name: resource.name,
+                format: resource.format,
+                url: resource.url,
+              },
+              data: rawDataContent,
+            });
+
+            // Save transformed data
+            if (transformed.format === 'json' && transformed.data) {
+              // Validate transformed data against Unified Schema
+              const validationResults = transformed.data.map(record => schemaUtils.validateRecord(record));
+              const validRecords = transformed.data.filter((_, i) => validationResults[i].isValid);
+
+              if (validRecords.length < transformed.data.length) {
+                await categoryLogger.warn(`  ⚠️  ${transformed.data.length - validRecords.length} records failed validation`);
+              }
+
+              await writeJSON(path.join(datasetDir, `unified-${safeResourceName}.json`), {
+                source: 'hdx-ckan',
+                category,
+                transformed_at: new Date().toISOString(),
+                record_count: validRecords.length,
+                data: validRecords,
+              });
+              await categoryLogger.success(`  ✓ Transformed & Saved: ${validRecords.length} records from ${resource.name}`);
+            }
+
+            downloaded++;
+            downloadedDatasets.push({
+              id: fullDataset.id,
+              name: fullDataset.name,
+              resource: resource.name,
+              recordCount: transformed.recordCount || 0,
+              metadata,
+            });
+
+          } catch (saveError) {
+            await categoryLogger.error(`Failed to save dataset ${fullDataset.name}`, saveError);
+            failed++;
+            errors.push({ dataset: fullDataset.name, error: `Save failed: ${saveError.message}` });
+          }
+        } else {
+          await categoryLogger.warn(`No data downloaded for ${fullDataset.name} - ${resource.name}`);
+        }
+      } // End resource loop
 
     } catch (error) {
       await categoryLogger.error(`Unexpected error processing ${datasetConfig.name}`, error);
       failed++;
       errors.push({ dataset: datasetConfig.name, error: error.message, stack: error.stack });
-    }
-  }
+    } // End try/catch for dataset
+
+  } // End dataset loop
 
   await categoryLogger.info(`Summary: ${downloaded} downloaded, ${failed} failed`);
 
@@ -563,8 +558,6 @@ function sanitizeFilename(name) {
 }
 
 // Data Transformation Functions
-
-import GeospatialEnricher from './utils/geospatial-enricher.js';
 
 // Initialize enricher for geospatial checks
 const geoEnricher = new GeospatialEnricher();
@@ -670,35 +663,30 @@ function transformConflictData(rawData, metadata) {
       console.log(`    ℹ️  No records found in conflict data`);
       return { format: 'json', data: [], recordCount: 0 };
     }
-
-    console.log(`    ℹ️  Transforming ${records.length} conflict records`);
-    console.log(`    ℹ️  Sample fields: ${Object.keys(records[0]).slice(0, 5).join(', ')}`);
-
-    // Transform to standardized format - keep original data if transformation fields don't exist
+    // Transform to standardized format using Unified Schema
     const transformed = records.map(record => {
-      const base = {
+      return schemaUtils.createEvent({
+        id: record.event_id_cnty || record.data_id || `acled-${record.event_date}-${Math.random().toString(36).substr(2, 5)}`,
         date: normalizeDate(record.event_date || record.date || record.timestamp || record.year),
-        event_type: record.event_type || record.type || record.event_type_name || 'unknown',
+        category: 'conflict',
+        event_type: record.event_type || record.type || 'unknown',
         location: {
-          name: record.location || record.admin1 || record.region || record.governorate || 'unknown',
-          latitude: parseFloat(record.latitude || record.lat) || null,
-          longitude: parseFloat(record.longitude || record.lon || record.long) || null,
-          admin1: record.admin1 || record.governorate || null,
-          admin2: record.admin2 || record.locality || null,
+          governorate: record.admin1 || record.governorate || 'unknown',
+          district: record.admin2 || record.district || null,
+          city: record.location || record.admin3 || null,
+          lat: parseFloat(record.latitude || record.lat),
+          lon: parseFloat(record.longitude || record.lon),
+          precision: record.geo_precision || 'unknown'
         },
-        fatalities: parseInt(record.fatalities || record.killed || record.deaths || record.casualties || 0),
-        injuries: parseInt(record.injuries || record.injured || record.wounded || 0),
-        actors: {
-          actor1: record.actor1 || record.perpetrator || null,
-          actor2: record.actor2 || record.target || null,
+        metrics: {
+          killed: parseInt(record.fatalities || record.killed || 0),
+          injured: parseInt(record.injuries || record.injured || 0),
+          count: 1
         },
-        description: record.notes || record.description || record.event_description || '',
-        source: record.source || metadata.organization.title,
-        source_url: record.source_url || metadata.source_url,
-      };
-
-      // Keep all original fields as well
-      return { ...record, ...base, _original: record };
+        details: record.notes || record.description || '',
+        source_link: record.source || metadata.organization.title,
+        confidence: 'high'
+      });
     });
 
     return { format: 'json', data: transformed, recordCount: transformed.length };
@@ -724,25 +712,25 @@ function transformEducationData(rawData, metadata) {
     console.log(`    ℹ️  Transforming ${records.length} education records`);
 
     const transformed = records.map(record => {
-      const base = {
-        facility_id: record.id || record.facility_id || null,
-        name: record.name || record.facility_name || record.school_name || 'unknown',
-        type: record.type || record.facility_type || 'school',
+      return schemaUtils.createEvent({
+        id: record.id || record.facility_id || `edu-${Math.random().toString(36).substr(2, 9)}`,
+        date: normalizeDate(record.assessment_date || record.last_updated) || new Date().toISOString(),
+        category: 'education',
+        event_type: 'facility_status',
         location: {
-          name: record.location || record.governorate || record.region || 'unknown',
-          latitude: parseFloat(record.latitude || record.lat) || null,
-          longitude: parseFloat(record.longitude || record.lon) || null,
+          governorate: record.location || record.governorate || record.region || 'unknown',
+          lat: parseFloat(record.latitude || record.lat),
+          lon: parseFloat(record.longitude || record.lon),
+          precision: 'approximate'
         },
-        status: record.status || record.operational_status || 'unknown',
-        damage_level: record.damage || record.damage_level || record.damage_assessment || null,
-        students: parseInt(record.students || record.enrollment || record.capacity || 0),
-        staff: parseInt(record.staff || record.teachers || 0),
-        last_assessed: normalizeDate(record.assessment_date || record.last_updated),
-        source: metadata.organization.title,
-      };
-
-      // Keep all original fields
-      return { ...record, ...base };
+        metrics: {
+          affected: parseInt(record.students || record.enrollment || record.capacity || 0),
+          count: 1
+        },
+        details: `School: ${record.name || record.facility_name}. Status: ${record.status || record.operational_status}. Damage: ${record.damage || record.damage_level}`,
+        source_link: metadata.organization.title,
+        confidence: 'medium'
+      });
     });
 
     return { format: 'json', data: transformed, recordCount: transformed.length };
@@ -763,27 +751,33 @@ function transformWaterData(rawData, metadata) {
       return { format: 'json', data: [], recordCount: 0 };
     }
 
-    const transformed = records.map(record => ({
-      facility_id: record.id || record.facility_id || null,
-      name: record.name || record.facility_name || 'unknown',
-      type: record.type || record.facility_type || 'water',
-      location: {
-        name: record.location || record.governorate || record.area || 'unknown',
-        latitude: parseFloat(record.latitude || record.lat) || null,
-        longitude: parseFloat(record.longitude || record.lon) || null,
-      },
-      status: record.status || record.operational_status || 'unknown',
-      capacity: parseFloat(record.capacity || record.daily_capacity || 0),
-      population_served: parseInt(record.population_served || record.beneficiaries || 0),
-      water_quality: record.water_quality || record.quality_status || null,
-      last_assessed: normalizeDate(record.assessment_date || record.last_updated),
-      source: metadata.organization.title,
-    }));
+    const transformed = records.map(record => {
+      return schemaUtils.createEvent({
+        id: record.id || record.facility_id || `water-${Math.random().toString(36).substr(2, 9)}`,
+        date: normalizeDate(record.assessment_date || record.last_updated) || new Date().toISOString(),
+        category: 'water',
+        event_type: 'facility_status',
+        location: {
+          governorate: record.location || record.governorate || record.area || 'unknown',
+          lat: parseFloat(record.latitude || record.lat),
+          lon: parseFloat(record.longitude || record.lon),
+          precision: 'approximate'
+        },
+        metrics: {
+          affected: parseInt(record.population_served || record.beneficiaries || 0),
+          value: parseFloat(record.capacity || record.daily_capacity || 0),
+          count: 1
+        },
+        details: `Facility: ${record.name || record.facility_name}. Status: ${record.status || record.operational_status}. Quality: ${record.water_quality || record.quality_status}`,
+        source_link: metadata.organization.title,
+        confidence: 'medium'
+      });
+    });
 
     return { format: 'json', data: transformed, recordCount: transformed.length };
 
   } catch (error) {
-    logger.warn(`Water data transformation error: ${error.message}`);
+    console.log(`    ⚠️  Water data transformation error: ${error.message}`); // Fixed logger reference
     return { format: 'raw', data: rawData, recordCount: 0 };
   }
 }
@@ -798,27 +792,33 @@ function transformInfrastructureData(rawData, metadata) {
       return { format: 'json', data: [], recordCount: 0 };
     }
 
-    const transformed = records.map(record => ({
-      structure_id: record.id || record.structure_id || null,
-      name: record.name || record.building_name || 'unknown',
-      type: record.type || record.structure_type || record.building_type || 'building',
-      location: {
-        name: record.location || record.governorate || record.area || 'unknown',
-        latitude: parseFloat(record.latitude || record.lat) || null,
-        longitude: parseFloat(record.longitude || record.lon) || null,
-      },
-      damage_level: record.damage || record.damage_level || record.damage_assessment || 'unknown',
-      damage_date: normalizeDate(record.damage_date || record.incident_date || record.date),
-      estimated_cost: parseFloat(record.cost || record.damage_cost || 0),
-      people_affected: parseInt(record.people_affected || record.affected_population || 0),
-      status: record.status || record.current_status || 'damaged',
-      source: metadata.organization.title,
-    }));
+    const transformed = records.map(record => {
+      return schemaUtils.createEvent({
+        id: record.id || record.structure_id || `infra-${Math.random().toString(36).substr(2, 9)}`,
+        date: normalizeDate(record.damage_date || record.incident_date || record.date) || new Date().toISOString(),
+        category: 'infrastructure',
+        event_type: 'damage_report',
+        location: {
+          governorate: record.location || record.governorate || record.area || 'unknown',
+          lat: parseFloat(record.latitude || record.lat),
+          lon: parseFloat(record.longitude || record.lon),
+          precision: 'approximate'
+        },
+        metrics: {
+          affected: parseInt(record.people_affected || record.affected_population || 0),
+          cost_usd: parseFloat(record.cost || record.damage_cost || 0),
+          count: 1
+        },
+        details: `Structure: ${record.name || record.building_name}. Damage: ${record.damage || record.damage_level}. Status: ${record.status || record.current_status}`,
+        source_link: metadata.organization.title,
+        confidence: 'medium'
+      });
+    });
 
     return { format: 'json', data: transformed, recordCount: transformed.length };
 
   } catch (error) {
-    logger.warn(`Infrastructure data transformation error: ${error.message}`);
+    console.log(`    ⚠️  Infrastructure data transformation error: ${error.message}`); // Fixed logger reference
     return { format: 'raw', data: rawData, recordCount: 0 };
   }
 }
@@ -833,27 +833,32 @@ function transformRefugeeData(rawData, metadata) {
       return { format: 'json', data: [], recordCount: 0 };
     }
 
-    const transformed = records.map(record => ({
-      date: normalizeDate(record.date || record.reporting_date || record.timestamp),
-      location: {
-        name: record.location || record.governorate || record.area || 'unknown',
-        type: record.location_type || 'area',
-        latitude: parseFloat(record.latitude || record.lat) || null,
-        longitude: parseFloat(record.longitude || record.lon) || null,
-      },
-      displaced_population: parseInt(record.idps || record.displaced || record.population || 0),
-      refugees: parseInt(record.refugees || 0),
-      displacement_type: record.displacement_type || record.type || 'internal',
-      origin: record.origin || record.origin_location || null,
-      destination: record.destination || record.current_location || null,
-      reason: record.reason || record.displacement_reason || null,
-      source: metadata.organization.title,
-    }));
+    const transformed = records.map(record => {
+      return schemaUtils.createEvent({
+        id: `ref-${Math.random().toString(36).substr(2, 9)}`,
+        date: normalizeDate(record.date || record.reporting_date || record.timestamp) || new Date().toISOString(),
+        category: 'displacement',
+        event_type: record.displacement_type || record.type || 'displacement_report',
+        location: {
+          governorate: record.location || record.governorate || record.area || 'unknown',
+          lat: parseFloat(record.latitude || record.lat),
+          lon: parseFloat(record.longitude || record.lon),
+          precision: 'approximate'
+        },
+        metrics: {
+          displaced: parseInt(record.idps || record.displaced || record.population || 0),
+          count: parseInt(record.refugees || 0) // Using count for refugees count if distinct
+        },
+        details: `Origin: ${record.origin || 'unknown'} -> Dest: ${record.destination || 'unknown'}. Reason: ${record.reason || 'unknown'}`,
+        source_link: metadata.organization.title,
+        confidence: 'medium'
+      });
+    });
 
     return { format: 'json', data: transformed, recordCount: transformed.length };
 
   } catch (error) {
-    logger.warn(`Refugee data transformation error: ${error.message}`);
+    console.log(`    ⚠️  Refugee data transformation error: ${error.message}`); // Fixed logger reference
     return { format: 'raw', data: rawData, recordCount: 0 };
   }
 }
@@ -868,28 +873,33 @@ function transformHumanitarianData(rawData, metadata) {
       return { format: 'json', data: [], recordCount: 0 };
     }
 
-    const transformed = records.map(record => ({
-      date: normalizeDate(record.date || record.reporting_date || record.assessment_date),
-      location: {
-        name: record.location || record.governorate || record.area || 'unknown',
-        latitude: parseFloat(record.latitude || record.lat) || null,
-        longitude: parseFloat(record.longitude || record.lon) || null,
-      },
-      sector: record.sector || record.cluster || 'multi-sector',
-      people_in_need: parseInt(record.people_in_need || record.pin || record.affected || 0),
-      people_targeted: parseInt(record.people_targeted || record.target || 0),
-      people_reached: parseInt(record.people_reached || record.reached || 0),
-      severity: record.severity || record.severity_level || null,
-      priority: record.priority || record.priority_level || null,
-      funding_required: parseFloat(record.funding_required || record.budget || 0),
-      funding_received: parseFloat(record.funding_received || record.funded || 0),
-      source: metadata.organization.title,
-    }));
+    const transformed = records.map(record => {
+      return schemaUtils.createEvent({
+        id: `hum-${Math.random().toString(36).substr(2, 9)}`,
+        date: normalizeDate(record.date || record.reporting_date || record.assessment_date) || new Date().toISOString(),
+        category: 'humanitarian',
+        event_type: 'needs_assessment',
+        location: {
+          governorate: record.location || record.governorate || record.area || 'unknown',
+          lat: parseFloat(record.latitude || record.lat),
+          lon: parseFloat(record.longitude || record.lon),
+          precision: 'approximate'
+        },
+        metrics: {
+          affected: parseInt(record.people_in_need || record.pin || record.affected || 0),
+          count: parseInt(record.people_reached || record.reached || 0),
+          cost_usd: parseFloat(record.funding_required || record.budget || 0)
+        },
+        details: `Sector: ${record.sector || record.cluster}. Severity: ${record.severity || 'unknown'}. Funding Received: ${record.funding_received || 0}`,
+        source_link: metadata.organization.title,
+        confidence: 'medium'
+      });
+    });
 
     return { format: 'json', data: transformed, recordCount: transformed.length };
 
   } catch (error) {
-    logger.warn(`Humanitarian data transformation error: ${error.message}`);
+    console.log(`    ⚠️  Humanitarian data transformation error: ${error.message}`); // Fixed logger reference
     return { format: 'raw', data: rawData, recordCount: 0 };
   }
 }
@@ -1550,6 +1560,8 @@ async function downloadResource(resource) {
   }
 }
 
+
+
 // Save dataset catalog
 async function saveDatasetCatalog(datasets) {
   console.log('\n💾 Saving dataset catalog...');
@@ -1798,10 +1810,24 @@ async function main() {
     // Download priority datasets by category
     const categoriesData = {};
     const categories = Object.keys(PRIORITY_HDX_DATASETS);
+    const allErrors = [];
 
     for (const category of categories) {
       const result = await fetchDatasetByCategory(category, datasets);
       categoriesData[category] = result;
+      if (result.errors && result.errors.length > 0) {
+        allErrors.push(...result.errors.map(e => ({ ...e, category })));
+      }
+    }
+
+    // Save failure report if there are errors
+    if (allErrors.length > 0) {
+      await logger.warn(`Writing ${allErrors.length} errors to hdx_failures.json`);
+      await writeJSON(path.join(DATA_DIR, 'hdx_failures.json'), {
+        generated_at: new Date().toISOString(),
+        total_errors: allErrors.length,
+        errors: allErrors
+      });
     }
 
     // Calculate totals

@@ -894,7 +894,7 @@ async function main() {
       // UNRWA removed - data sources broken/outdated (see scripts/UNRWA_DISABLED.md)
     ];
 
-    const totalScripts = fetchScripts.length + 2; // +2 for Tech4Palestine and manifest
+    const totalScripts = fetchScripts.length + 4; // +4 for Tech4Palestine, historical processing, coverage report, and manifest
 
     let currentScript = 0;
 
@@ -1008,6 +1008,30 @@ async function main() {
         error: error.message,
       });
     }
+
+    // Process Granular Historical Data
+    currentScript++;
+    displayProgress(currentScript, totalScripts, 'Historical Data Processing');
+
+    const historicalScript = {
+      name: 'HistoricalProcessing',
+      path: path.join(__dirname, 'process-granular-data.js'),
+      description: 'Granular Historical Data Processing',
+    };
+
+    await executeScript(historicalScript.name, historicalScript.path, historicalScript.description);
+
+    // Generate Coverage Report
+    currentScript++;
+    displayProgress(currentScript, totalScripts, 'Coverage Report Generation');
+
+    const coverageScript = {
+      name: 'CoverageReport',
+      path: path.join(__dirname, 'generate-coverage-report.js'),
+      description: 'Coverage Report Generation',
+    };
+
+    await executeScript(coverageScript.name, coverageScript.path, coverageScript.description);
 
     // Calculate final statistics
     await calculateStatistics();

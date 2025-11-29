@@ -1,0 +1,65 @@
+
+> palestine-data-backend@1.0.0 test
+> node --experimental-vm-modules node_modules/jest/bin/jest.js --verbose
+
+  console.log
+    Mocking searchService.js
+
+      at tests/api.test.js:6:13
+
+(node:26404) ExperimentalWarning: VM Modules is an experimental feature and might change at any time
+(Use `node --trace-warnings ...` to show where the warning was created)
+[0mGET /api/v1/health [32m200[0m 6.809 ms - 54[0m
+[0mGET /api/v1/unified/conflict?limit=5 [32m200[0m 15.898 ms - -[0m
+[0mGET /api/v1/unified/unknown-category [33m404[0m 0.817 ms - 30[0m
+  console.log
+    isSearchReady check: undefined
+
+      at searchController (src/api/controllers/searchController.js:8:17)
+
+[0mGET /api/v1/search?q=gaza [31m503[0m 10.055 ms - 68[0m
+  console.log
+    isSearchReady check: undefined
+
+      at searchController (src/api/controllers/searchController.js:8:17)
+
+[0mGET /api/v1/search [33m400[0m 1.565 ms - 45[0m
+FAIL tests/api.test.js
+  API Endpoints
+    GET /api/v1/health
+      √ should return 200 OK (26 ms)
+    GET /api/v1/unified/conflict
+      √ should return 200 or 404 depending on data existence (21 ms)
+      √ should return 404 for unknown category (4 ms)
+    GET /api/v1/search
+      × should return 200 for search query (14 ms)
+      √ should return 400 if query is missing (5 ms)
+
+  ● API Endpoints › GET /api/v1/search › should return 200 for search query
+
+    expect(received).toEqual(expected) // deep equality
+
+    Expected: 200
+    Received: 503
+
+    [0m [90m 46 |[39m         it([32m'should return 200 for search query'[39m[33m,[39m [36masync[39m () [33m=>[39m {
+     [90m 47 |[39m             [36mconst[39m res [33m=[39m [36mawait[39m request(app)[33m.[39m[36mget[39m([32m'/api/v1/search?q=gaza'[39m)[33m;[39m
+    [31m[1m>[22m[39m[90m 48 |[39m             expect(res[33m.[39mstatusCode)[33m.[39mtoEqual([35m200[39m)[33m;[39m
+     [90m    |[39m                                    [31m[1m^[22m[39m
+     [90m 49 |[39m             expect([33mArray[39m[33m.[39misArray(res[33m.[39mbody))[33m.[39mtoBe([36mtrue[39m)[33m;[39m
+     [90m 50 |[39m         })[33m;[39m
+     [90m 51 |[39m[0m
+
+      at Object.<anonymous> (tests/api.test.js:48:36)
+
+PASS tests/transformers.test.js
+  ConflictTransformer
+    √ should transform a standard conflict record (2 ms)
+    √ should handle missing fields gracefully
+
+Test Suites: 1 failed, 1 passed, 2 total
+Tests:       1 failed, 6 passed, 7 total
+Snapshots:   0 total
+Time:        0.859 s, estimated 1 s
+Ran all test suites.
+Force exiting Jest: Have you considered using `--detectOpenHandles` to detect async operations that kept running after all tests finished?

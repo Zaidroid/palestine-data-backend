@@ -16,9 +16,9 @@ export class ConflictTransformer extends BaseTransformer {
    * Transform raw conflict data to unified format
    */
   transform(rawData, metadata) {
-    const records = Array.isArray(rawData) ? rawData : 
-                    (rawData.data ? rawData.data : []);
-    
+    const records = Array.isArray(rawData) ? rawData :
+      (rawData.data ? rawData.data : []);
+
     return records
       .filter(record => record && Object.keys(record).length > 0)
       .map((record, index) => this.transformRecord(record, metadata, index));
@@ -29,9 +29,9 @@ export class ConflictTransformer extends BaseTransformer {
    */
   transformRecord(record, metadata, index) {
     const date = this.normalizeDate(
-      record.event_date || record.date || record.timestamp || record.year
+      record.event_date || record.date || record.timestamp || record.year || record.date_of_death
     );
-    
+
     const eventType = this.extractEventType(record);
     const fatalities = this.extractFatalities(record);
     const injuries = this.extractInjuries(record);
@@ -45,18 +45,18 @@ export class ConflictTransformer extends BaseTransformer {
       id: this.generateId('conflict', { ...record, date }),
       type: 'conflict',
       category: 'conflict',
-      
+
       // Temporal
       date: date || new Date().toISOString().split('T')[0],
       timestamp: record.timestamp || new Date(date).toISOString(),
-      
+
       // Spatial
       location,
-      
+
       // Data
       value: fatalities + injuries, // Total casualties
       unit: 'casualties',
-      
+
       // Conflict-specific
       event_type: eventType,
       fatalities,
@@ -64,7 +64,7 @@ export class ConflictTransformer extends BaseTransformer {
       actors,
       description,
       severity_index: severityIndex,
-      
+
       // Quality
       quality: this.enrichQuality({
         id: this.generateId('conflict', record),
@@ -72,7 +72,7 @@ export class ConflictTransformer extends BaseTransformer {
         location,
         value: fatalities + injuries,
       }).quality,
-      
+
       // Provenance
       sources: [{
         name: metadata.source || metadata.organization?.title || 'Unknown',
@@ -80,7 +80,7 @@ export class ConflictTransformer extends BaseTransformer {
         fetched_at: new Date().toISOString(),
         url: metadata.source_url,
       }],
-      
+
       // Metadata
       created_at: new Date().toISOString(),
       updated_at: new Date().toISOString(),
@@ -92,9 +92,9 @@ export class ConflictTransformer extends BaseTransformer {
    * Extract event type
    */
   extractEventType(record) {
-    const eventType = record.event_type || record.eventType || record.type || 
-                     record.incident_type || record.incidentType || 'unknown';
-    
+    const eventType = record.event_type || record.eventType || record.type ||
+      record.incident_type || record.incidentType || 'unknown';
+
     return this.normalizeEventType(eventType);
   }
 
@@ -109,27 +109,27 @@ export class ConflictTransformer extends BaseTransformer {
       'air strike': 'airstrike',
       'aerial bombardment': 'airstrike',
       'bombing': 'airstrike',
-      
+
       'artillery': 'artillery',
       'shelling': 'artillery',
       'mortar': 'artillery',
-      
+
       'shooting': 'shooting',
       'gunfire': 'shooting',
       'small arms': 'shooting',
-      
+
       'raid': 'raid',
       'incursion': 'raid',
       'military operation': 'raid',
-      
+
       'explosion': 'explosion',
       'blast': 'explosion',
       'ied': 'explosion',
-      
+
       'clash': 'armed clash',
       'armed clash': 'armed clash',
       'firefight': 'armed clash',
-      
+
       'protest': 'protest',
       'demonstration': 'protest',
     };
@@ -142,8 +142,8 @@ export class ConflictTransformer extends BaseTransformer {
    */
   extractFatalities(record) {
     return parseInt(
-      record.fatalities || record.killed || record.deaths || 
-      record.casualties || record.dead || 0
+      record.fatalities || record.killed || record.deaths ||
+      record.casualties || record.dead || record.count || 0
     );
   }
 
@@ -170,8 +170,8 @@ export class ConflictTransformer extends BaseTransformer {
    * Extract description
    */
   extractDescription(record) {
-    return record.notes || record.description || record.event_description || 
-           record.details || '';
+    return record.notes || record.description || record.event_description ||
+      record.details || '';
   }
 
   /**
@@ -179,8 +179,8 @@ export class ConflictTransformer extends BaseTransformer {
    */
   extractLocation(record) {
     const coordinates = this.extractCoordinates(record);
-    const locationName = record.location || record.admin1 || record.region || 
-                        record.governorate || 'unknown';
+    const locationName = record.location || record.admin1 || record.region ||
+      record.governorate || record.residence || 'unknown';
 
     return {
       name: locationName,
@@ -199,16 +199,16 @@ export class ConflictTransformer extends BaseTransformer {
    */
   inferGovernorate(locationName) {
     if (!locationName) return null;
-    
+
     const name = locationName.toLowerCase();
-    
+
     // Gaza governorates
     if (name.includes('gaza') && !name.includes('north')) return 'Gaza';
     if (name.includes('north gaza') || name.includes('northern gaza')) return 'North Gaza';
     if (name.includes('deir al-balah') || name.includes('deir al balah')) return 'Deir al-Balah';
     if (name.includes('khan yunis') || name.includes('khan younis')) return 'Khan Yunis';
     if (name.includes('rafah')) return 'Rafah';
-    
+
     // West Bank governorates
     if (name.includes('jenin')) return 'Jenin';
     if (name.includes('tubas')) return 'Tubas';
@@ -221,7 +221,7 @@ export class ConflictTransformer extends BaseTransformer {
     if (name.includes('jerusalem')) return 'Jerusalem';
     if (name.includes('bethlehem')) return 'Bethlehem';
     if (name.includes('hebron') || name.includes('al-khalil')) return 'Hebron';
-    
+
     return null;
   }
 

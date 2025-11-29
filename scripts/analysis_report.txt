@@ -1,0 +1,35 @@
+=== DATA COVERAGE REPORT ===
+Total Unified Records: 3678
+Overall Timeline: 1960-01-01 to 2025-11-27
+
+--- Category Breakdown ---
+
+Category: DEMOGRAPHICS
+  Records: 165
+  Timeline: 1960-01-01 to 2023-01-01
+  Types: indicator_measurement
+
+Category: HEALTH
+  Records: 126
+  Timeline: 1975-01-01 to 2023-01-01
+  Types: indicator_measurement
+
+Category: ECONOMY
+  Records: 251
+  Timeline: 1990-01-01 to 2023-01-01
+  Types: indicator_measurement
+
+Category: INFRASTRUCTURE
+  Records: 656
+  Timeline: 1990-01-01 to 2025-11-27
+  Types: indicator_measurement, infrastructure_status, barrier_segment
+
+Category: EDUCATION
+  Records: 2434
+  Timeline: 1995-01-01 to 2025-11-27
+  Types: indicator_measurement, facility_status
+
+Category: WATER
+  Records: 46
+  Timeline: 2000-01-01 to 2022-01-01
+  Types: indicator_measurement

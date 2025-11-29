@@ -1,4 +1,4 @@
-/**
+﻿/**
  * Populate Unified Data
  * 
  * This script transforms raw data from all sources into the unified data format.
@@ -35,15 +35,17 @@ import {
     WestBankBarrierTransformer
 } from './utils/westbank-transformer.js';
 import { HistoricalTransformer } from './utils/historical-transformer.js';
+import { GoodShepherdTransformer } from './utils/goodshepherd-transformer.js';
+import { WHOHealthTransformer } from './utils/who-health-transformer.js';
 import { UnifiedPipeline } from './utils/unified-pipeline.js';
 import { validateDataset } from './utils/data-validator.js';
 
 // Simple logger
 const logger = {
-    info: (msg, data) => console.log(`ℹ️  ${msg}`, data || ''),
-    success: (msg, data) => console.log(`✅ ${msg}`, data || ''),
-    warn: (msg, data) => console.warn(`⚠️  ${msg}`, data || ''),
-    error: (msg, data) => console.error(`❌ ${msg}`, data || ''),
+    info: (msg, data) => console.log(`â„¹ï¸  ${msg}`, data || ''),
+    success: (msg, data) => console.log(`âœ… ${msg}`, data || ''),
+    warn: (msg, data) => console.warn(`âš ï¸  ${msg}`, data || ''),
+    error: (msg, data) => console.error(`âŒ ${msg}`, data || ''),
 };
 
 const DATA_DIR = path.join(__dirname, '../public/data');
@@ -916,49 +918,64 @@ async function processNewsData() {
 }
 
 /**
- * Process WHO health data
+ * Process WHO health data from HDX
  */
 async function processWHOData() {
-    logger.info('Processing WHO health data...');
+    logger.info('Processing WHO health data from HDX...');
 
     try {
-        const whoDir = path.join(DATA_DIR, 'who');
-        const allDataPath = path.join(whoDir, 'all-data.json');
+        const whoDatasetDir = path.join(DATA_DIR, 'hdx', 'health', 'who-data-for-pse');
 
-        // Check if file exists
+        // Check if directory exists
         try {
-            await fs.access(allDataPath);
+            await fs.access(whoDatasetDir);
         } catch {
-            logger.warn('WHO data not found, skipping');
+            logger.warn('WHO data directory not found, skipping');
             return;
         }
 
-        logger.info('Reading WHO data...');
-        const fileContent = JSON.parse(await fs.readFile(allDataPath, 'utf-8'));
+        // Read all raw WHO files
+        const files = await fs.readdir(whoDatasetDir);
+        const rawFiles = files.filter(f => f.startsWith('raw-') && f.endsWith('.json'));
 
-        // WHO data structure: { resources: [{ data: [...] }, ...] }
-        let rawData = [];
-        if (fileContent.resources && Array.isArray(fileContent.resources)) {
-            // Combine data from all resources
-            for (const resource of fileContent.resources) {
-                if (resource.data && Array.isArray(resource.data)) {
-                    rawData = rawData.concat(resource.data);
+        if (rawFiles.length === 0) {
+            logger.warn('No WHO raw data files found');
+            return;
+        }
+
+        logger.info(`Found ${rawFiles.length} WHO datasets`);
+
+        // Combine all WHO data
+        let allWHOData = [];
+        for (const file of rawFiles) {
+            try {
+                const filePath = path.join(whoDatasetDir, file);
+                const fileContent = JSON.parse(await fs.readFile(filePath, 'utf-8'));
+
+                // WHO data structure: { data: { csv: [...] } }
+                if (fileContent.data && fileContent.data.csv && Array.isArray(fileContent.data.csv)) {
+                    allWHOData = allWHOData.concat(fileContent.data.csv);
+                    logger.info(`  Loaded ${fileContent.data.csv.length} records from ${file}`);
                 }
+            } catch (error) {
+                logger.warn(`  Could not read ${file}: ${error.message}`);
             }
         }
 
-        if (rawData.length === 0) {
-            logger.warn('No WHO data available');
+        if (allWHOData.length === 0) {
+            logger.warn('No WHO data records found');
             return;
         }
 
-        logger.info(`Found ${rawData.length} WHO health records`);
+        logger.info(`Processing ${allWHOData.length} total WHO health records...`);
 
-        const transformer = new WHOTransformer();
+        const transformer = new WHOHealthTransformer();
         const pipeline = new UnifiedPipeline({ logger });
 
-        // Read existing health data to merge with WHO data
+        // Read existing health data to merge
         const healthDir = path.join(UNIFIED_DIR, 'health');
+        await fs.mkdir(healthDir, { recursive: true });
+
         let existingHealthData = [];
         try {
             const existingPath = path.join(healthDir, 'all-data.json');
@@ -970,7 +987,7 @@ async function processWHOData() {
         }
 
         const results = await pipeline.process(
-            rawData,
+            { data: { csv: allWHOData } }, // Wrap in WHO structure
             {
                 source: 'WHO',
                 organization: 'World Health Organization',
@@ -979,17 +996,17 @@ async function processWHOData() {
             transformer,
             {
                 enrich: true,
-                validate: true,
-                partition: true,
+                validate: false, // Skip validation for now (WHO data has unique schema)
+                partition: allWHOData.length > 10000,
                 outputDir: healthDir,
             }
         );
 
-        if (results.success) {
+        if (results.success && results.enriched) {
             logger.success(`Processed ${results.stats.recordCount} WHO health records`);
 
-            // Merge with existing HDX health data
-            const mergedData = [...existingHealthData, ...(results.enriched || [])];
+            // Merge with existing HDX/GoodShepherd health data
+            const mergedData = [...existingHealthData, ...results.enriched];
             logger.info(`Total merged health records: ${mergedData.length}`);
 
             // Save merged data
@@ -1001,7 +1018,7 @@ async function processWHOData() {
                     metadata: {
                         total_records: mergedData.length,
                         generated_at: new Date().toISOString(),
-                        sources: ['WHO', 'HDX'],
+                        sources: ['WHO', 'HDX', 'GoodShepherd'],
                         category: 'health',
                     },
                 }, null, 2),
@@ -1015,26 +1032,24 @@ async function processWHOData() {
                     category: 'health',
                     total_records: mergedData.length,
                     last_updated: new Date().toISOString(),
-                    sources: ['WHO', 'HDX'],
-                    quality: results.validated ? {
-                        average_score: results.validated.qualityScore,
-                        completeness: results.validated.completeness,
-                        consistency: results.validated.consistency,
-                        accuracy: results.validated.accuracy,
-                    } : null,
+                    sources: ['WHO', 'HDX', 'GoodShepherd'],
                 }, null, 2),
                 'utf-8'
             );
 
-            logger.success(`Merged health data saved: ${mergedData.length} total records`);
+            logger.success(`✅ Merged health data saved: ${mergedData.length} total records`);
         } else {
-            logger.error('WHO data processing failed', results.errors);
+            logger.error('WHO data processing failed');
+            if (results.errors) {
+                console.error(results.errors);
+            }
         }
     } catch (error) {
         logger.error('Error processing WHO data:', error.message);
         console.error(error);
     }
 }
+
 
 /**
  * Process GoodShepherd Healthcare Data
@@ -1758,22 +1773,40 @@ async function processHistoricalData() {
     try {
         const histDir = path.join(DATA_DIR, 'historical');
         const manualPath = path.join(histDir, 'manual_population_1948_1990.json');
+        const eventsPath = path.join(histDir, 'historical-events.json');
 
+        let rawData = [];
+
+        // 1. Process Manual Population Data
         try {
             await fs.access(manualPath);
+            const popData = JSON.parse(await fs.readFile(manualPath, 'utf-8'));
+            if (Array.isArray(popData)) {
+                rawData.push(...popData);
+                logger.info(`Loaded ${popData.length} population records`);
+            }
         } catch {
-            logger.warn('Manual historical data not found, skipping');
-            return;
+            logger.warn('Manual historical population data not found');
         }
 
-        const rawData = JSON.parse(await fs.readFile(manualPath, 'utf-8'));
+        // 2. Process Historical Events Data
+        try {
+            await fs.access(eventsPath);
+            const eventsData = JSON.parse(await fs.readFile(eventsPath, 'utf-8'));
+            if (Array.isArray(eventsData)) {
+                rawData.push(...eventsData);
+                logger.info(`Loaded ${eventsData.length} historical event records`);
+            }
+        } catch {
+            logger.warn('Historical events data not found');
+        }
 
-        if (!Array.isArray(rawData) || rawData.length === 0) {
+        if (rawData.length === 0) {
             logger.warn('No historical data available');
             return;
         }
 
-        logger.info(`Found ${rawData.length} historical records`);
+        logger.info(`Found ${rawData.length} total historical records`);
 
         const transformer = new HistoricalTransformer();
         const pipeline = new UnifiedPipeline({ logger });
@@ -1782,7 +1815,7 @@ async function processHistoricalData() {
         const results = await pipeline.process(
             rawData,
             {
-                source: 'Multiple (UN, PCBS, etc.)',
+                source: 'Multiple (UN, PCBS, Historical Records)',
                 organization: 'Various',
                 category: 'historical',
             },
@@ -1820,7 +1853,7 @@ async function processHistoricalData() {
                     category: 'historical',
                     total_records: results.stats.recordCount,
                     last_updated: new Date().toISOString(),
-                    sources: ['UN', 'PCBS', 'Other'],
+                    sources: ['UN', 'PCBS', 'Historical Records'],
                 }, null, 2),
                 'utf-8'
             );
@@ -1832,10 +1865,163 @@ async function processHistoricalData() {
 }
 
 /**
+ * Process Nakba Data
+ */
+async function processNakbaData() {
+    logger.info('Processing Nakba data...');
+    try {
+        const nakbaDir = path.join(DATA_DIR, 'historical/nakba');
+        const nakbaPath = path.join(nakbaDir, 'nakba-villages.json');
+
+        try {
+            await fs.access(nakbaPath);
+        } catch {
+            logger.warn('Nakba data not found, skipping');
+            return;
+        }
+
+        const rawData = JSON.parse(await fs.readFile(nakbaPath, 'utf-8'));
+
+        if (!Array.isArray(rawData) || rawData.length === 0) {
+            logger.warn('No Nakba data available');
+            return;
+        }
+
+        logger.info(`Found ${rawData.length} Nakba village records`);
+
+        const transformer = new HistoricalTransformer();
+        const pipeline = new UnifiedPipeline({ logger });
+        const histUnifiedDir = path.join(UNIFIED_DIR, 'historical');
+
+        const results = await pipeline.process(
+            rawData,
+            {
+                source: 'Historical Records',
+                organization: 'Various',
+                category: 'historical',
+            },
+            transformer,
+            {
+                enrich: true,
+                validate: true,
+                partition: false,
+                outputDir: histUnifiedDir,
+                filenamePrefix: 'nakba-'
+            }
+        );
+
+        if (results.success) {
+            logger.success(`Processed ${results.stats.recordCount} Nakba records`);
+
+            // Merge with existing historical data
+            const mainFile = path.join(histUnifiedDir, 'all-data.json');
+            let mainData = [];
+            try {
+                const content = JSON.parse(await fs.readFile(mainFile, 'utf-8'));
+                mainData = content.data || [];
+            } catch { }
+
+            const newData = results.enriched || [];
+            const combined = [...mainData, ...newData];
+
+            await fs.writeFile(mainFile, JSON.stringify({
+                data: combined,
+                metadata: {
+                    total_records: combined.length,
+                    last_updated: new Date().toISOString(),
+                    category: 'historical'
+                }
+            }, null, 2));
+        }
+
+    } catch (error) {
+        logger.error('Error processing Nakba data:', error.message);
+    }
+}
+
+/**
+ * Process B'Tselem Data
+ */
+async function processBtselemData() {
+    logger.info('Processing B\'Tselem data...');
+    try {
+        const btselemDir = path.join(DATA_DIR, 'btselem');
+        const dataPath = path.join(btselemDir, 'btselem-aggregates.json');
+
+        try {
+            await fs.access(dataPath);
+        } catch {
+            logger.warn('B\'Tselem data not found, skipping');
+            return;
+        }
+
+        const rawData = JSON.parse(await fs.readFile(dataPath, 'utf-8'));
+
+        if (!Array.isArray(rawData) || rawData.length === 0) {
+            logger.warn('No B\'Tselem data available');
+            return;
+        }
+
+        logger.info(`Found ${rawData.length} B'Tselem aggregate records`);
+
+        // Use ConflictTransformer as these are event summaries
+        const transformer = new ConflictTransformer();
+        const pipeline = new UnifiedPipeline({ logger });
+        const conflictDir = path.join(UNIFIED_DIR, 'conflict');
+
+        const results = await pipeline.process(
+            rawData,
+            {
+                source: 'B\'Tselem',
+                organization: 'B\'Tselem',
+                category: 'conflict',
+            },
+            transformer,
+            {
+                enrich: true,
+                validate: true,
+                partition: false,
+                outputDir: conflictDir,
+                filenamePrefix: 'btselem-'
+            }
+        );
+
+        if (results.success) {
+            logger.success(`Processed ${results.stats.recordCount} B'Tselem records`);
+
+            // Merge with existing conflict data
+            const mainFile = path.join(conflictDir, 'all-data.json');
+            let mainData = [];
+            try {
+                const content = JSON.parse(await fs.readFile(mainFile, 'utf-8'));
+                mainData = content.data || [];
+            } catch { }
+
+            const newData = results.enriched || [];
+            const combined = [...mainData, ...newData];
+
+            await fs.writeFile(mainFile, JSON.stringify({
+                data: combined,
+                metadata: {
+                    total_records: combined.length,
+                    last_updated: new Date().toISOString(),
+                    category: 'conflict'
+                }
+            }, null, 2));
+
+            logger.success(`Merged B'Tselem data into conflict/all-data.json`);
+        }
+
+    } catch (error) {
+        logger.error('Error processing B\'Tselem data:', error.message);
+    }
+}
+
+/**
  * Main execution
  */
 async function main() {
-    console.log('🚀 Starting unified data population...\n');
+    console.log('ðŸš€ Starting unified data population...\n');
 
     try {
         // Ensure unified directory exists
@@ -1854,14 +2040,17 @@ async function main() {
         await processPressData();
         await processMartyrsData();
         await processHDXData();
-        await processWHOData(); // Process WHO health data and merge with HDX health data
+        await processWHOData();
         await processPCBSData();
         await processGoodShepherdHealthcare();
+        await processGoodShepherdData();
         await processNewsData();
-        await processCultureData(); // Process cultural heritage data
-        await processLandData(); // Process land and settlements data
-        await processWestBankData(); // Process West Bank specific data (schools, villages, barrier)
-        await processHistoricalData(); // Process historical data
+        await processCultureData();
+        await processLandData();
+        await processWestBankData();
+        await processHistoricalData();
+        await processNakbaData();
+        await processBtselemData();
 
         // Create empty structures for missing data
         await createEmptyStructures();
@@ -1869,7 +2058,7 @@ async function main() {
         await processInfrastructureData();
 
         // Generate unified manifest
-        logger.info('📋 Generating unified manifest...');
+        logger.info('ðŸ“‹ Generating unified manifest...');
         const { spawn } = await import('child_process');
         const manifestScript = path.join(__dirname, 'generate-unified-manifest.js');
 
@@ -1881,7 +2070,7 @@ async function main() {
             });
         });
 
-        console.log('\n✅ Unified data population complete!');
+        console.log('\nâœ… Unified data population complete!');
         console.log(`\nData location: ${UNIFIED_DIR}`);
         console.log('\nNext steps:');
         console.log('1. Check data: ls public/data/unified/*/all-data.json');
@@ -1896,3 +2085,135 @@ async function main() {
 }
 
 main();
+
+/**
+ * Process Good Shepherd Data
+ */
+async function processGoodShepherdData() {
+    logger.info('Processing Good Shepherd data...');
+    try {
+        const gsDir = path.join(DATA_DIR, 'goodshepherd');
+
+        try {
+            await fs.access(gsDir);
+        } catch {
+            logger.warn('Good Shepherd data directory not found, skipping');
+            return;
+        }
+
+        const categories = ['prisoners', 'healthcare', 'ngo'];
+        let allRecords = [];
+
+        for (const cat of categories) {
+            const catDir = path.join(gsDir, cat);
+            try {
+                await fs.access(catDir);
+                // Recursively find JSON files
+                async function getFiles(dir) {
+                    const dirents = await fs.readdir(dir, { withFileTypes: true });
+                    const files = await Promise.all(dirents.map((dirent) => {
+                        const res = path.join(dir, dirent.name);
+                        return dirent.isDirectory() ? getFiles(res) : res;
+                    }));
+                    return files.flat();
+                }
+
+                const files = await getFiles(catDir);
+                const jsonFiles = files.filter(f => f.endsWith('.json') && !f.endsWith('metadata.json'));
+
+                for (const file of jsonFiles) {
+                    try {
+                        const content = JSON.parse(await fs.readFile(file, 'utf-8'));
+                        const records = Array.isArray(content) ? content : (content.data || [content]);
+
+                        // Add context to records
+                        const enrichedRecords = records.map(r => ({
+                            ...r,
+                            _gs_category: cat, // internal flag for transformer
+                            source_file: path.basename(file)
+                        }));
+
+                        allRecords.push(...enrichedRecords);
+                    } catch (e) {
+                        logger.warn(`Failed to read/parse ${path.basename(file)}`, e.message);
+                    }
+                }
+
+            } catch (e) {
+                // Category might not exist
+            }
+        }
+
+        if (allRecords.length === 0) {
+            logger.warn('No Good Shepherd records found');
+            return;
+        }
+
+        logger.info(`Found ${allRecords.length} Good Shepherd records`);
+
+        const transformer = new GoodShepherdTransformer();
+        const pipeline = new UnifiedPipeline({ logger });
+
+        const batches = {
+            conflict: allRecords.filter(r => r._gs_category === 'prisoners'),
+            health: allRecords.filter(r => r._gs_category === 'healthcare'),
+            humanitarian: allRecords.filter(r => r._gs_category === 'ngo')
+        };
+
+        for (const [targetCategory, records] of Object.entries(batches)) {
+            if (records.length === 0) continue;
+
+            logger.info(`Processing ${records.length} Good Shepherd records for ${targetCategory}`);
+
+            const results = await pipeline.process(
+                records,
+                {
+                    source: 'Good Shepherd',
+                    organization: 'Good Shepherd',
+                    category: targetCategory,
+                },
+                transformer,
+                {
+                    enrich: true,
+                    validate: true,
+                    partition: true,
+                    outputDir: path.join(UNIFIED_DIR, targetCategory),
+                    filenamePrefix: 'goodshepherd-'
+                }
+            );
+
+            if (results.success) {
+                logger.success(`Processed Good Shepherd ${targetCategory} data`);
+
+                try {
+                    const mainFile = path.join(UNIFIED_DIR, targetCategory, 'all-data.json');
+                    let mainData = [];
+                    try {
+                        const content = JSON.parse(await fs.readFile(mainFile, 'utf-8'));
+                        mainData = content.data || [];
+                    } catch { }
+
+                    const newData = results.enriched || [];
+                    const combined = [...mainData, ...newData];
+
+                    await fs.writeFile(mainFile, JSON.stringify({
+                        data: combined,
+                        metadata: {
+                            total_records: combined.length,
+                            last_updated: new Date().toISOString(),
+                            category: targetCategory
+                        }
+                    }, null, 2));
+
+                    logger.success(`Merged Good Shepherd data into ${targetCategory}/all-data.json`);
+
+                } catch (e) {
+                    logger.error(`Failed to merge Good Shepherd data for ${targetCategory}`, e.message);
+                }
+            }
+        }
+
+    } catch (error) {
+        logger.error('Error processing Good Shepherd data:', error.message);
+    }
+}

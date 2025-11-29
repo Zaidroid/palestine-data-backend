@@ -26,7 +26,7 @@ const API_BASE = 'https://goodshepherdcollective.org/api';
 const RATE_LIMIT_DELAY = 1000; // 1 second between requests
 
 // Initialize logger
-const logger = createLogger({ 
+const logger = createLogger({
   context: 'GoodShepherd-Fetcher',
   logLevel: 'INFO',
 });
@@ -47,44 +47,52 @@ const fetchWithFallback = async (endpoint, fallbackPath, returnRaw = false) => {
   // Try API first
   try {
     await logger.info(`Trying API: ${API_BASE}${endpoint}`);
-    
+
     const data = await fetchJSONWithRetry(`${API_BASE}${endpoint}`, {}, {
       maxRetries: 3,
       initialDelay: 1000,
       backoffMultiplier: 2,
     });
-    
+
     await sleep(RATE_LIMIT_DELAY);
-    
+
     // If returnRaw is true, return the raw response (for complex structures)
     if (returnRaw) {
       await logger.success('API success: raw data');
       return { data, source: 'api' };
     }
-    
-    // Ensure data is an array
-    let arrayData = Array.isArray(data) ? data : [];
-    
-    await logger.success(`API success: ${arrayData.length} records`);
-    
-    // If API returns empty, try fallback
+
+    // Handle different response types
+    let arrayData;
+    if (Array.isArray(data)) {
+      arrayData = data;
+      await logger.success(`API success: ${arrayData.length} records`);
+    } else if (data && typeof data === 'object') {
+      // API returned an object (e.g., {chartData: [...]}), return as-is
+      await logger.success('API success: object data');
+      return { data, source: 'api' };
+    } else {
+      arrayData = [];
+    }
+
+    // If API returns empty array, try fallback
     if (arrayData.length === 0 && fallbackPath) {
       await logger.warn('API returned empty, trying fallback...');
       throw new Error('Empty API response');
     }
-    
+
     return { data: arrayData, source: 'api' };
-    
+
   } catch (apiError) {
     await logger.warn(`API issue: ${apiError.message}`);
-    
+
     // Try fallback
     if (fallbackPath) {
       try {
         await logger.info(`Trying fallback: ${fallbackPath}`);
         const fullPath = path.join(__dirname, '..', fallbackPath);
         const data = await readJSON(fullPath);
-        
+
         // Ensure data is an array
         const arrayData = Array.isArray(data) ? data : [];
         await logger.success(`Fallback success: ${arrayData.length} records`);
@@ -93,7 +101,7 @@ const fetchWithFallback = async (endpoint, fallbackPath, returnRaw = false) => {
         await logger.error(`Fallback failed: ${fallbackError.message}`, fallbackError);
       }
     }
-    
+
     // Return empty array instead of throwing
     await logger.warn('Returning empty dataset');
     return { data: returnRaw ? {} : [], source: 'empty' };
@@ -143,31 +151,102 @@ const partitionByQuarter = (data, dateField = 'date') => {
 // Fetch child prisoners data
 async function fetchChildPrisoners() {
   await logger.info('👶 Fetching child prisoners data...');
-  
+
   try {
-    const { data: rawData, source } = await fetchWithFallback(
-      '/child_prisoners.json',
-      'src/data/minors-pre.json'
-    );
-    
-    // Transform to standard format
-    const transformed = rawData
-      .filter(item => {
-        const date = item['Date of event'] || item.date;
-        return date && date >= BASELINE_DATE;
-      })
-      .map(item => ({
-        date: item['Date of event'] || item.date,
-        name: item.Name || item.name || 'Unknown',
-        age: item.Age || item.age || 17,
-        location: item['Place of residence'] || item.location || 'Unknown',
-        status: 'detained',
-        notes: item.Notes || item.notes || '',
-        source: `goodshepherd-${source}`,
-      }))
-      .sort((a, b) => a.date.localeCompare(b.date));
-    
-    await logger.success(`Filtered to ${transformed.length} records (since ${BASELINE_DATE})`);
+    // Direct API call - bypass fetchWithFallback
+    const apiUrl = `${API_BASE}/child_prisoners.json`;
+    await logger.info(`Fetching child prisoners from: ${apiUrl}`);
+
+    let rawData;
+    let source = 'api';
+
+    try {
+      rawData = await fetchJSONWithRetry(apiUrl, {}, {
+        maxRetries: 3,
+        initialDelay: 1000,
+        backoffMultiplier: 2,
+      });
+
+      await sleep(RATE_LIMIT_DELAY);
+      await logger.success('API fetch successful');
+    } catch (apiError) {
+      await logger.warn(`API fetch failed: ${apiError.message}, trying fallback...`);
+
+      // Try fallback file
+      rawData = await readJSON('src/data/minors-pre.json');
+      source = 'fallback';
+      await logger.info('Using fallback file');
+    }
+
+    // Helper to convert month name to number
+    const monthToNum = (monthName) => {
+      const months = {
+        'Jan': '01', 'Feb': '02', 'Mar': '03', 'Apr': '04',
+        'May': '05', 'Jun': '06', 'Jul': '07', 'Aug': '08',
+        'Sep': '09', 'Oct': '10', 'Nov': '11', 'Dec': '12'
+      };
+      return months[monthName] || '01';
+    };
+
+    let transformed = [];
+
+    // Check if data is in aggregated format (from API)
+    if (rawData.childPrisonersData) {
+      await logger.info('Processing aggregated monthly child prisoner statistics...');
+
+      const categories = ['12 to 15 year olds', 'Administrative detention', 'Detention', 'Female'];
+
+      categories.forEach(category => {
+        const categoryData = rawData.childPrisonersData[category];
+        if (!categoryData || !Array.isArray(categoryData)) return;
+
+        categoryData.forEach(yearData => {
+          if (!yearData.months) return;
+
+          Object.entries(yearData.months).forEach(([month, count]) => {
+            // Skip entries with '-' or invalid values
+            if (count === '-' || count === '' || count === null) return;
+
+            const date = `${yearData.year}-${monthToNum(month)}-01`;
+
+            // Filter by baseline date
+            if (date >= BASELINE_DATE) {
+              transformed.push({
+                date: date,
+                category: category,
+                count: parseInt(count) || 0,
+                year: yearData.year,
+                month: month,
+                status: category.includes('detention') ? 'detained' : 'imprisoned',
+                source: `goodshepherd-${source}`,
+              });
+            }
+          });
+        });
+      });
+
+      transformed.sort((a, b) => a.date.localeCompare(b.date));
+
+    } else if (Array.isArray(rawData)) {
+      // Fallback file with individual records
+      transformed = rawData
+        .filter(item => {
+          const date = item['Date of event'] || item.date;
+          return date && date >= BASELINE_DATE;
+        })
+        .map(item => ({
+          date: item['Date of event'] || item.date,
+          name: item.Name || item.name || 'Unknown',
+          age: item.Age || item.age || 17,
+          location: item['Place of residence'] || item.location || 'Unknown',
+          status: 'detained',
+          notes: item.Notes || item.notes || '',
+          source: `goodshepherd-${source}`,
+        }))
+        .sort((a, b) => a.date.localeCompare(b.date));
+    }
+
+    await logger.success(`Processed ${transformed.length} child prisoner records (since ${BASELINE_DATE})`);
     return transformed;
   } catch (error) {
     await logger.error('Failed to fetch child prisoners', error);
@@ -178,13 +257,46 @@ async function fetchChildPrisoners() {
 // Fetch political prisoners data
 async function fetchPoliticalPrisoners() {
   await logger.info('🔒 Fetching political prisoners data...');
-  
+
   try {
-    const { data: rawData, source } = await fetchWithFallback(
-      '/prisoner_data.json',
-      'src/data/spi-pre.json'
-    );
-    
+    // Direct API call - bypass fetchWithFallback
+    const apiUrl = `${API_BASE}/prisoner_data.json`;
+    await logger.info(`Fetching political prisoners from: ${apiUrl}`);
+
+    let rawData;
+    let source = 'api';
+
+    try {
+      rawData = await fetchJSONWithRetry(apiUrl, {}, {
+        maxRetries: 3,
+        initialDelay: 1000,
+        backoffMultiplier: 2,
+      });
+
+      await sleep(RATE_LIMIT_DELAY);
+      await logger.success('API fetch successful');
+
+      // Check if data is array or needs transformation
+      if (!Array.isArray(rawData)) {
+        await logger.warn('API returned non-array data, attempting to extract array...');
+        // Try to find array in response
+        if (rawData.data && Array.isArray(rawData.data)) {
+          rawData = rawData.data;
+        } else if (rawData.prisoners && Array.isArray(rawData.prisoners)) {
+          rawData = rawData.prisoners;
+        } else {
+          throw new Error('Could not find array in API response');
+        }
+      }
+    } catch (apiError) {
+      await logger.warn(`API fetch failed: ${apiError.message}, trying fallback...`);
+
+      // Try fallback file
+      rawData = await readJSON('src/data/spi-pre.json');
+      source = 'fallback';
+      await logger.info('Using fallback file');
+    }
+
     const transformed = rawData
       .filter(item => {
         const date = item['Date of event'] || item.date;
@@ -200,7 +312,7 @@ async function fetchPoliticalPrisoners() {
         source: `goodshepherd-${source}`,
       }))
       .sort((a, b) => a.date.localeCompare(b.date));
-    
+
     await logger.success(`Filtered to ${transformed.length} records (since ${BASELINE_DATE})`);
     return transformed;
   } catch (error) {
@@ -212,23 +324,50 @@ async function fetchPoliticalPrisoners() {
 // Fetch demolitions data with multiple fallback sources
 async function fetchDemolitions() {
   await logger.info('🏚️  Fetching demolitions data...');
-  
+
   try {
     // Try Good Shepherd API first
     let rawData = [];
     let source = 'empty';
-    
+
     try {
-      const result = await fetchWithFallback(
-        '/home_demolitions.json',
-        'src/data/demolitions-pre.json'
-      );
-      rawData = result.data;
-      source = result.source;
-    } catch (goodShepherdError) {
-      await logger.warn('Good Shepherd endpoint unavailable, trying alternative sources...');
+      // Direct API call - bypass fetchWithFallback
+      const apiUrl = `${API_BASE}/home_demolitions.json`;
+      await logger.info(`Fetching demolitions from: ${apiUrl}`);
+
+      const response = await fetchJSONWithRetry(apiUrl, {}, {
+        maxRetries: 3,
+        initialDelay: 1000,
+        backoffMultiplier: 2,
+      });
+
+      await sleep(RATE_LIMIT_DELAY);
+
+      // API returns object with chartData array
+      if (response && response.chartData) {
+        rawData = response.chartData;
+        source = 'api';
+        await logger.success(`Fetched ${response.totalIncidents || rawData.length} total incidents from GoodShepherd API`);
+      } else {
+        await logger.warn('API response missing chartData, trying fallback...');
+        throw new Error('Invalid API response structure');
+      }
+    } catch (apiError) {
+      await logger.warn(`API fetch failed: ${apiError.message}, trying fallback...`);
+
+      // Try fallback file
+      try {
+        const fallbackData = await readJSON('src/data/demolitions-pre.json');
+        if (Array.isArray(fallbackData) && fallbackData.length > 0) {
+          rawData = fallbackData;
+          source = 'fallback';
+          await logger.info(`Using fallback file: ${rawData.length} records`);
+        }
+      } catch (fallbackError) {
+        await logger.warn(`Fallback also failed: ${fallbackError.message}`);
+      }
     }
-    
+
     // If Good Shepherd failed or returned empty, try HDX
     if (rawData.length === 0) {
       await logger.info('Attempting to fetch from HDX alternative source...');
@@ -239,7 +378,7 @@ async function fetchDemolitions() {
         await logger.success(`Fetched ${hdxData.length} records from HDX`);
       }
     }
-    
+
     // If still empty, try B'Tselem
     if (rawData.length === 0) {
       await logger.info('Attempting to fetch from B\'Tselem alternative source...');
@@ -250,7 +389,7 @@ async function fetchDemolitions() {
         await logger.success(`Fetched ${btselemData.length} records from B'Tselem`);
       }
     }
-    
+
     // Transform the data
     const transformed = rawData
       .filter(item => {
@@ -259,15 +398,20 @@ async function fetchDemolitions() {
       })
       .map(item => ({
         date: item['Date of Demolition'] || item.date || item.demolition_date,
-        location: item.Locality || item.location || item.locality || 'Unknown',
-        homes_demolished: item['Housing Units'] || item.homes || item.structures_demolished || 1,
-        people_affected: item['People left Homeless'] || item.people_affected || item.residents_affected || 0,
+        location: item.Locality || item.location || item.locality || 'Multiple locations',
+        // chartData format uses 'structures' and aggregate numbers
+        homes_demolished: item.structures || item['Housing Units'] || item.homes || item.structures_demolished || 1,
+        people_affected: item.displacedPeople || item['People left Homeless'] || item.people_affected || item.residents_affected || 0,
+        men_displaced: item.menDisplaced || 0,
+        women_displaced: item.womenDisplaced || 0,
+        children_displaced: item.childrenDisplaced || 0,
+        incidents_count: item.incidents || 1,
         reason: item.reason || item.demolition_reason || 'Administrative demolition',
         structure_type: item.structure_type || 'residential',
         source: source === 'api' ? 'goodshepherd-api' : source === 'fallback' ? 'goodshepherd-fallback' : source,
       }))
       .sort((a, b) => a.date.localeCompare(b.date));
-    
+
     await logger.success(`Filtered to ${transformed.length} records (since ${BASELINE_DATE})`);
     return transformed;
   } catch (error) {
@@ -281,23 +425,23 @@ async function fetchDemolitionsFromHDX() {
   try {
     // HDX CKAN API endpoint for demolition-related datasets
     const HDX_CKAN_BASE = 'https://data.humdata.org/api/3/action';
-    
+
     // Search for demolition datasets
     const searchUrl = `${HDX_CKAN_BASE}/package_search?q=demolition+palestine&rows=10`;
-    
+
     await logger.info('Searching HDX for demolition datasets...');
     const searchResult = await fetchJSONWithRetry(searchUrl, {}, {
       maxRetries: 2,
       initialDelay: 1000,
     });
-    
+
     if (!searchResult.success || !searchResult.result.results || searchResult.result.results.length === 0) {
       await logger.warn('No demolition datasets found on HDX');
       return [];
     }
-    
+
     await logger.info(`Found ${searchResult.result.results.length} potential datasets on HDX`);
-    
+
     // Try to fetch data from the first relevant dataset
     for (const dataset of searchResult.result.results) {
       if (dataset.resources && dataset.resources.length > 0) {
@@ -306,7 +450,7 @@ async function fetchDemolitionsFromHDX() {
           if (resource.format === 'CSV' || resource.format === 'JSON') {
             try {
               await logger.info(`Trying resource: ${resource.name}`);
-              
+
               if (resource.format === 'JSON') {
                 const data = await fetchJSONWithRetry(resource.url, {}, { maxRetries: 1 });
                 if (Array.isArray(data) && data.length > 0) {
@@ -323,7 +467,7 @@ async function fetchDemolitionsFromHDX() {
         }
       }
     }
-    
+
     return [];
   } catch (error) {
     await logger.warn('HDX alternative source failed', error);
@@ -336,24 +480,24 @@ async function fetchDemolitionsFromBTselem() {
   try {
     // B'Tselem doesn't have a public API, but they publish data that might be available
     // through other aggregators or we can use a static dataset
-    
+
     await logger.info('Checking B\'Tselem data sources...');
-    
+
     // Try to fetch from a known B'Tselem data aggregator or static source
     // Note: This is a placeholder - actual implementation would need the real B'Tselem data source
     const BTSELEM_DATA_SOURCES = [
       'https://statistics.btselem.org/en/demolitions/data.json', // Example URL
       'https://data.btselem.org/demolitions.json', // Example URL
     ];
-    
+
     for (const url of BTSELEM_DATA_SOURCES) {
       try {
         await logger.info(`Trying B'Tselem source: ${url}`);
-        const data = await fetchJSONWithRetry(url, {}, { 
+        const data = await fetchJSONWithRetry(url, {}, {
           maxRetries: 1,
           initialDelay: 1000,
         });
-        
+
         if (Array.isArray(data) && data.length > 0) {
           await logger.success(`Fetched ${data.length} records from B'Tselem`);
           return data;
@@ -362,7 +506,7 @@ async function fetchDemolitionsFromBTselem() {
         await logger.debug(`B'Tselem source unavailable: ${sourceError.message}`);
       }
     }
-    
+
     await logger.warn('No B\'Tselem data sources available');
     return [];
   } catch (error) {
@@ -374,14 +518,14 @@ async function fetchDemolitionsFromBTselem() {
 // Fetch West Bank data
 async function fetchWestBankData() {
   await logger.info('🏔️  Fetching West Bank data...');
-  
+
   try {
     const { data: response, source } = await fetchWithFallback(
-      '/wb_data.json',
+      '/api/wb_data.json',
       null,
       true  // Return raw data
     );
-    
+
     // WB data has structure: { reports: [...] }
     let rawData = [];
     if (response && response.reports && Array.isArray(response.reports)) {
@@ -396,7 +540,7 @@ async function fetchWestBankData() {
         return [];
       });
     }
-    
+
     const transformed = rawData
       .filter(item => {
         const date = item.date || item.report_date || item['Date of event'];
@@ -412,7 +556,7 @@ async function fetchWestBankData() {
         source: `goodshepherd-${source}`,
       }))
       .sort((a, b) => a.date.localeCompare(b.date));
-    
+
     await logger.success(`Filtered to ${transformed.length} records (since ${BASELINE_DATE})`);
     return transformed;
   } catch (error) {
@@ -424,18 +568,18 @@ async function fetchWestBankData() {
 // Fetch healthcare attacks with streaming support for large datasets
 async function fetchHealthcareAttacks() {
   await logger.info('🏥 Fetching healthcare attacks data...');
-  
+
   try {
     // Try to fetch with streaming if dataset is large
     const { data: rawData, source } = await fetchHealthcareAttacksWithStreaming();
-    
+
     // Filter for Palestine (PSE) only
-    const palestineData = rawData.filter(item => 
-      item.isoCode === 'PSE' || 
+    const palestineData = rawData.filter(item =>
+      item.isoCode === 'PSE' ||
       item.isoCode === 'PS' ||
       (item.location && item.location.toLowerCase().includes('palestine'))
     );
-    
+
     const transformed = palestineData
       .filter(item => {
         const date = item.isoDate || item.date || item['Date of event'];
@@ -458,7 +602,7 @@ async function fetchHealthcareAttacks() {
         source: `goodshepherd-${source}`,
       }))
       .sort((a, b) => a.date.localeCompare(b.date));
-    
+
     await logger.success(`Filtered to ${transformed.length} records (since ${BASELINE_DATE})`);
     return transformed;
   } catch (error) {
@@ -470,41 +614,41 @@ async function fetchHealthcareAttacks() {
 // Fetch healthcare attacks with streaming support
 async function fetchHealthcareAttacksWithStreaming() {
   const CHUNK_SIZE = 10000;
-  const endpoint = '/healthcare_attacks.json';
-  
+  const endpoint = '/api/healthcare_attacks.json';
+
   try {
     await logger.info(`Attempting to fetch healthcare attacks with streaming support...`);
-    
+
     // First, try to get the full dataset to check size
     const response = await fetch(`${API_BASE}${endpoint}`);
-    
+
     if (!response.ok) {
       await logger.warn(`API returned ${response.status}, trying fallback...`);
       return { data: [], source: 'empty' };
     }
-    
+
     // Check content length to determine if streaming is needed
     const contentLength = response.headers.get('content-length');
     const estimatedSize = contentLength ? parseInt(contentLength) : 0;
-    
+
     await logger.info(`Response size: ${(estimatedSize / 1024 / 1024).toFixed(2)} MB`);
-    
+
     // If dataset is large (>10MB), use streaming approach
     if (estimatedSize > 10 * 1024 * 1024) {
       await logger.info('Large dataset detected, using streaming approach...');
       return await streamLargeDataset(response, CHUNK_SIZE);
     }
-    
+
     // For smaller datasets, use regular approach
     const data = await response.json();
     const arrayData = Array.isArray(data) ? data : [];
-    
+
     await logger.success(`Fetched ${arrayData.length} records via standard fetch`);
     return { data: arrayData, source: 'api' };
-    
+
   } catch (error) {
     await logger.warn(`Streaming fetch failed: ${error.message}`);
-    
+
     // Fallback to regular fetch
     try {
       const { data, source } = await fetchWithFallback(endpoint, null);
@@ -519,23 +663,23 @@ async function fetchHealthcareAttacksWithStreaming() {
 // Stream large dataset in chunks
 async function streamLargeDataset(response, chunkSize) {
   await logger.info('Processing large dataset in chunks...');
-  
+
   try {
     // Read the response as text first
     const text = await response.text();
     const data = JSON.parse(text);
     const arrayData = Array.isArray(data) ? data : [];
-    
+
     await logger.success(`Loaded ${arrayData.length} records`);
-    
+
     // If dataset is very large, save chunks incrementally
     if (arrayData.length > chunkSize) {
       await logger.info(`Dataset has ${arrayData.length} records, will partition during save`);
       await saveHealthcareChunks(arrayData, chunkSize);
     }
-    
+
     return { data: arrayData, source: 'api-streamed' };
-    
+
   } catch (error) {
     await logger.error('Failed to stream large dataset', error);
     throw error;
@@ -546,20 +690,20 @@ async function streamLargeDataset(response, chunkSize) {
 async function saveHealthcareChunks(data, chunkSize) {
   const chunksDir = path.join(DATA_DIR, 'healthcare', 'chunks');
   await ensureDir(chunksDir);
-  
+
   const totalChunks = Math.ceil(data.length / chunkSize);
   await logger.info(`Saving ${totalChunks} chunks of ${chunkSize} records each...`);
-  
+
   const chunkIndex = [];
-  
+
   for (let i = 0; i < totalChunks; i++) {
     const start = i * chunkSize;
     const end = Math.min(start + chunkSize, data.length);
     const chunk = data.slice(start, end);
-    
+
     const chunkFile = `chunk-${i + 1}.json`;
     const chunkPath = path.join(chunksDir, chunkFile);
-    
+
     await writeJSON(chunkPath, {
       metadata: {
         chunk_number: i + 1,
@@ -570,17 +714,17 @@ async function saveHealthcareChunks(data, chunkSize) {
       },
       data: chunk,
     });
-    
+
     chunkIndex.push({
       chunk_number: i + 1,
       file: chunkFile,
       record_count: chunk.length,
       record_range: { start, end: end - 1 },
     });
-    
+
     await logger.debug(`Saved chunk ${i + 1}/${totalChunks} (${chunk.length} records)`);
   }
-  
+
   // Save chunk index
   await writeJSON(path.join(chunksDir, 'index.json'), {
     total_records: data.length,
@@ -589,34 +733,34 @@ async function saveHealthcareChunks(data, chunkSize) {
     chunks: chunkIndex,
     created_at: new Date().toISOString(),
   });
-  
+
   await logger.success(`Saved ${totalChunks} chunks with index`);
 }
 
 // Fetch NGO data
 async function fetchNGOData() {
   await logger.info('🏢 Fetching NGO data...');
-  
+
   try {
     const { data: response, source } = await fetchWithFallback(
-      '/ngo_data.json',
+      '/api/ngo_data.json',
       null,
       true  // Return raw data
     );
-    
+
     // NGO data has structure: { value: number, data: [...] }
     let rawData = [];
     if (response && response.data && Array.isArray(response.data)) {
       rawData = response.data;
     }
-    
+
     // NGO data doesn't have dates, so we don't filter by baseline
     const transformed = rawData.map(item => {
       // Get latest filing data
-      const latestFiling = item.filings && item.filings.length > 0 
+      const latestFiling = item.filings && item.filings.length > 0
         ? item.filings[item.filings.length - 1]
         : {};
-      
+
       return {
         name: item.name || 'Unknown',
         ein: item.ein || item.EIN || '',
@@ -631,7 +775,7 @@ async function fetchNGOData() {
         source: `goodshepherd-${source}`,
       };
     });
-    
+
     console.log(`  ✓ Loaded ${transformed.length} NGO records`);
     console.log(`  ✓ Total value: $${response.value ? response.value.toLocaleString() : 0}`);
     return transformed;
@@ -644,33 +788,33 @@ async function fetchNGOData() {
 // Save NGO data in structured format
 async function saveNGOData(ngoData) {
   console.log('\n💾 Saving NGO data...');
-  
+
   if (ngoData.length === 0) {
     console.log('  ⚠️  No NGO data to save');
     return { totalOrganizations: 0, totalFunding: 0 };
   }
-  
+
   const ngoPath = path.join(DATA_DIR, 'ngo');
   await ensureDir(ngoPath);
-  
+
   // Validate NGO data
   let validationResult = null;
   try {
     validationResult = await validateDataset(ngoData, 'ngo');
-    
+
     if (validationResult.meetsThreshold) {
       await logger.success(`NGO data validation passed (score: ${(validationResult.qualityScore * 100).toFixed(1)}%)`);
     } else {
       await logger.warn(`NGO data validation quality below threshold (score: ${(validationResult.qualityScore * 100).toFixed(1)}%)`);
     }
-    
+
     if (validationResult.errors.length > 0) {
       await logger.warn(`Found ${validationResult.errors.length} validation errors in NGO data`);
     }
   } catch (validationError) {
     await logger.warn('NGO data validation failed', validationError);
   }
-  
+
   // Save organizations.json
   const organizations = ngoData.map(ngo => ({
     name: ngo.name,
@@ -685,7 +829,7 @@ async function saveNGOData(ngoData) {
     pdf_url: ngo.pdf_url,
     source: ngo.source,
   }));
-  
+
   await writeJSON(path.join(ngoPath, 'organizations.json'), {
     metadata: {
       source: 'goodshepherd',
@@ -696,7 +840,7 @@ async function saveNGOData(ngoData) {
     data: organizations,
   });
   console.log(`  ✓ Saved organizations.json (${organizations.length} organizations)`);
-  
+
   // Calculate funding by year
   const fundingByYear = {};
   ngoData.forEach(ngo => {
@@ -715,9 +859,9 @@ async function saveNGOData(ngoData) {
     fundingByYear[year].total_assets += ngo.total_assets || 0;
     fundingByYear[year].organization_count += 1;
   });
-  
+
   const fundingByYearArray = Object.values(fundingByYear).sort((a, b) => a.year - b.year);
-  
+
   await writeJSON(path.join(ngoPath, 'funding-by-year.json'), {
     metadata: {
       source: 'goodshepherd',
@@ -728,7 +872,7 @@ async function saveNGOData(ngoData) {
     data: fundingByYearArray,
   });
   console.log(`  ✓ Saved funding-by-year.json (${fundingByYearArray.length} years)`);
-  
+
   // Save index
   const totalFunding = ngoData.reduce((sum, ngo) => sum + (ngo.total_revenue || 0), 0);
   await writeJSON(path.join(ngoPath, 'index.json'), {
@@ -750,32 +894,32 @@ async function saveNGOData(ngoData) {
     last_updated: new Date().toISOString(),
   });
   console.log(`  ✓ Saved index.json`);
-  
+
   // Save validation report if available
   if (validationResult) {
     await writeJSON(path.join(ngoPath, 'validation.json'), validationResult);
     console.log(`  ✓ Saved validation.json`);
   }
-  
+
   return { totalOrganizations: organizations.length, totalFunding };
 }
 
 // Save partitioned data
 async function savePartitionedData(datasetPath, data, datasetName, chunksExist = false) {
   console.log(`\n💾 Saving ${datasetName} data...`);
-  
+
   await ensureDir(datasetPath);
-  
+
   if (data.length === 0) {
     console.log('  ⚠️  No data to save');
     return;
   }
-  
+
   // If chunks already exist, add reference in metadata
   if (chunksExist) {
     console.log('  ℹ️  Large dataset chunks already saved');
   }
-  
+
   // Validate data before saving
   let validationResult = null;
   try {
@@ -786,19 +930,19 @@ async function savePartitionedData(datasetPath, data, datasetName, chunksExist =
     } else if (datasetName.includes('demolition')) {
       datasetType = 'demolitions';
     } else if (datasetName.includes('prisoner')) {
-      datasetType = 'casualties'; // Use casualties schema for prisoner data
+      datasetType = 'prisoners'; // Use prisoners schema
     } else if (datasetName.includes('ngo')) {
       datasetType = 'ngo';
     }
-    
+
     validationResult = await validateDataset(data, datasetType);
-    
+
     if (validationResult.meetsThreshold) {
       await logger.success(`Validation passed for ${datasetName} (score: ${(validationResult.qualityScore * 100).toFixed(1)}%)`);
     } else {
       await logger.warn(`Validation quality below threshold for ${datasetName} (score: ${(validationResult.qualityScore * 100).toFixed(1)}%)`);
     }
-    
+
     if (validationResult.errors.length > 0) {
       await logger.warn(`Found ${validationResult.errors.length} validation errors in ${datasetName}`);
     }
@@ -806,19 +950,19 @@ async function savePartitionedData(datasetPath, data, datasetName, chunksExist =
     await logger.warn(`Validation failed for ${datasetName}`, validationError);
     // Continue anyway - validation failure shouldn't stop the save
   }
-  
+
   // Partition by quarter
   const quarters = partitionByQuarter(data);
   const quarterKeys = Object.keys(quarters).sort();
-  
+
   console.log(`  ✓ Partitioned into ${quarterKeys.length} quarters`);
-  
+
   // Save each quarter
   for (const quarter of quarterKeys) {
     const quarterData = quarters[quarter];
     const fileName = `${quarter}.json`;
     const filePath = path.join(datasetPath, fileName);
-    
+
     const fileData = {
       metadata: {
         source: 'goodshepherd',
@@ -829,16 +973,16 @@ async function savePartitionedData(datasetPath, data, datasetName, chunksExist =
       },
       data: quarterData,
     };
-    
+
     await writeJSON(filePath, fileData);
     console.log(`  ✓ Saved ${fileName} (${quarterData.length} records)`);
   }
-  
+
   // Save recent data (last 90 days)
   const ninetyDaysAgo = new Date();
   ninetyDaysAgo.setDate(ninetyDaysAgo.getDate() - 90);
   const recentData = data.filter(record => new Date(record.date) >= ninetyDaysAgo);
-  
+
   if (recentData.length > 0) {
     await writeJSON(path.join(datasetPath, 'recent.json'), {
       metadata: {
@@ -851,7 +995,7 @@ async function savePartitionedData(datasetPath, data, datasetName, chunksExist =
     });
     console.log(`  ✓ Saved recent.json (${recentData.length} records)`);
   }
-  
+
   // Check if chunks exist
   let chunkInfo = null;
   if (chunksExist) {
@@ -864,7 +1008,7 @@ async function savePartitionedData(datasetPath, data, datasetName, chunksExist =
       await logger.warn('Failed to read chunk index', error);
     }
   }
-  
+
   // Save index
   await writeJSON(path.join(datasetPath, 'index.json'), {
     dataset: datasetName,
@@ -897,7 +1041,7 @@ async function savePartitionedData(datasetPath, data, datasetName, chunksExist =
     last_updated: new Date().toISOString(),
   });
   console.log(`  ✓ Saved index.json`);
-  
+
   // Save validation report if available
   if (validationResult) {
     await writeJSON(path.join(datasetPath, 'validation.json'), validationResult);
@@ -911,7 +1055,7 @@ async function main() {
   await logger.info('========================================');
   await logger.info(`Baseline Date: ${BASELINE_DATE}`);
   await logger.info(`Data Directory: ${DATA_DIR}`);
-  
+
   try {
     // Fetch all datasets
     const [
@@ -929,7 +1073,7 @@ async function main() {
       fetchHealthcareAttacks(),
       fetchNGOData(),
     ]);
-    
+
     // Save child prisoners
     if (childPrisoners.length > 0) {
       await savePartitionedData(
@@ -938,7 +1082,7 @@ async function main() {
         'child-prisoners'
       );
     }
-    
+
     // Save political prisoners
     if (politicalPrisoners.length > 0) {
       await savePartitionedData(
@@ -947,7 +1091,7 @@ async function main() {
         'political-prisoners'
       );
     }
-    
+
     // Save demolitions
     if (demolitions.length > 0) {
       await savePartitionedData(
@@ -956,7 +1100,7 @@ async function main() {
         'demolitions'
       );
     }
-    
+
     // Save West Bank data
     if (westBankData.length > 0) {
       await savePartitionedData(
@@ -965,7 +1109,7 @@ async function main() {
         'westbank-incidents'
       );
     }
-    
+
     // Save healthcare attacks
     if (healthcareAttacks.length > 0) {
       // Check if chunks were already saved during streaming
@@ -978,7 +1122,7 @@ async function main() {
       } catch {
         // Chunks don't exist, save normally
       }
-      
+
       await savePartitionedData(
         path.join(DATA_DIR, 'healthcare'),
         healthcareAttacks,
@@ -986,10 +1130,10 @@ async function main() {
         chunksExist
       );
     }
-    
+
     // Save NGO data with structured format
     const ngoStats = await saveNGOData(ngoData);
-    
+
     // Calculate date ranges for each dataset
     const getDateRange = (data) => {
       if (data.length === 0) return null;
@@ -998,14 +1142,14 @@ async function main() {
         end: data[data.length - 1]?.date || new Date().toISOString().split('T')[0],
       };
     };
-    
+
     // Count partitions for each dataset
     const countPartitions = (data) => {
       if (data.length === 0) return 0;
       const quarters = partitionByQuarter(data);
       return Object.keys(quarters).length;
     };
-    
+
     // Save enhanced metadata
     const metadata = {
       source: 'goodshepherd',
@@ -1085,16 +1229,16 @@ async function main() {
       },
       summary: {
         total_datasets: 6,
-        total_records: childPrisoners.length + politicalPrisoners.length + demolitions.length + 
-                       westBankData.length + healthcareAttacks.length + ngoStats.totalOrganizations,
-        total_partitions: countPartitions(childPrisoners) + countPartitions(politicalPrisoners) + 
-                         countPartitions(demolitions) + countPartitions(westBankData) + 
-                         countPartitions(healthcareAttacks),
+        total_records: childPrisoners.length + politicalPrisoners.length + demolitions.length +
+          westBankData.length + healthcareAttacks.length + ngoStats.totalOrganizations,
+        total_partitions: countPartitions(childPrisoners) + countPartitions(politicalPrisoners) +
+          countPartitions(demolitions) + countPartitions(westBankData) +
+          countPartitions(healthcareAttacks),
       },
     };
-    
+
     await writeJSON(path.join(DATA_DIR, 'metadata.json'), metadata);
-    
+
     await logger.success('✅ Good Shepherd data fetch completed successfully!');
     await logger.info('Summary:');
     console.log(`  Child Prisoners: ${childPrisoners.length} records`);
@@ -1103,10 +1247,10 @@ async function main() {
     console.log(`  West Bank Incidents: ${westBankData.length} records (API endpoint unavailable - all reports have empty data arrays)`);
     console.log(`  Healthcare Attacks: ${healthcareAttacks.length} records`);
     console.log(`  NGO Data: ${ngoStats.totalOrganizations} organizations ($${ngoStats.totalFunding.toLocaleString()} total funding)`);
-    
+
     // Log operation summary
     await logger.logSummary();
-    
+
   } catch (error) {
     await logger.error('Fatal error in Good Shepherd fetch script', error);
     await logger.logSummary();

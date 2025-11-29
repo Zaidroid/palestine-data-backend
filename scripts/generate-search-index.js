@@ -201,6 +201,7 @@ async function generateSearchIndex() {
 
     // Save full search index
     const indexPath = path.join(OUTPUT_DIR, 'search-index.json');
+    console.log('Writing index to:', indexPath);
     await writeJSON(indexPath, {
         generated_at: new Date().toISOString(),
         total_entries: stats.total_entries,
@@ -246,16 +247,15 @@ async function generateSearchIndex() {
 }
 
 // Run
-if (import.meta.url === `file://${process.argv[1]}`) {
-    generateSearchIndex()
-        .then(async () => {
-            await logger.success('Search index generation completed successfully');
-            process.exit(0);
-        })
-        .catch(async (error) => {
-            await logger.error('Search index generation failed', error);
-            process.exit(1);
-        });
-}
+// Run
+generateSearchIndex()
+    .then(async () => {
+        await logger.success('Search index generation completed successfully');
+        process.exit(0);
+    })
+    .catch(async (error) => {
+        await logger.error('Search index generation failed', error);
+        process.exit(1);
+    });
 
 export { generateSearchIndex };

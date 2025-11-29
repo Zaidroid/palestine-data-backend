@@ -1,0 +1,90 @@
+
+> palestine-data-backend@1.0.0 test
+> node --experimental-vm-modules node_modules/jest/bin/jest.js --verbose
+
+(node:4516) ExperimentalWarning: VM Modules is an experimental feature and might change at any time
+(Use `node --trace-warnings ...` to show where the warning was created)
+[0mGET /api/v1/health [32m200[0m 6.774 ms - 54[0m
+[0mGET /api/v1/unified/conflict?limit=5 [32m200[0m 12.376 ms - -[0m
+[0mGET /api/v1/unified/unknown-category [33m404[0m 0.853 ms - 30[0m
+[0mGET /api/v1/search?q=gaza [31m503[0m 0.629 ms - 68[0m
+[0mGET /api/v1/search [33m400[0m 0.435 ms - 45[0m
+FAIL tests/api.test.js
+  API Endpoints
+    GET /api/v1/health
+      √ should return 200 OK (24 ms)
+    GET /api/v1/unified/conflict
+      √ should return 200 or 404 depending on data existence (18 ms)
+      √ should return 404 for unknown category (4 ms)
+    GET /api/v1/search
+      × should return 200 for search query (4 ms)
+      √ should return 400 if query is missing (3 ms)
+
+  ● API Endpoints › GET /api/v1/search › should return 200 for search query
+
+    expect(received).toEqual(expected) // deep equality
+
+    Expected: 200
+    Received: 503
+
+    [0m [90m 39 |[39m         it([32m'should return 200 for search query'[39m[33m,[39m [36masync[39m () [33m=>[39m {
+     [90m 40 |[39m             [36mconst[39m res [33m=[39m [36mawait[39m request(app)[33m.[39m[36mget[39m([32m'/api/v1/search?q=gaza'[39m)[33m;[39m
+    [31m[1m>[22m[39m[90m 41 |[39m             expect(res[33m.[39mstatusCode)[33m.[39mtoEqual([35m200[39m)[33m;[39m
+     [90m    |[39m                                    [31m[1m^[22m[39m
+     [90m 42 |[39m             expect([33mArray[39m[33m.[39misArray(res[33m.[39mbody))[33m.[39mtoBe([36mtrue[39m)[33m;[39m
+     [90m 43 |[39m         })[33m;[39m
+     [90m 44 |[39m[0m
+
+      at Object.<anonymous> (tests/api.test.js:41:36)
+
+FAIL tests/transformers.test.js
+  ConflictTransformer
+    × should transform a standard conflict record (2 ms)
+    × should handle missing fields gracefully (3 ms)
+
+  ● ConflictTransformer › should transform a standard conflict record
+
+    expect(received).toHaveProperty(path, value)
+
+    Expected path: "date"
+    Received path: []
+
+    Expected value: "2023-10-07"
+    Received value: []
+
+    [0m [90m 19 |[39m         [36mconst[39m output [33m=[39m transformer[33m.[39mtransform(input)[33m;[39m
+     [90m 20 |[39m
+    [31m[1m>[22m[39m[90m 21 |[39m         expect(output)[33m.[39mtoHaveProperty([32m'date'[39m[33m,[39m [32m'2023-10-07'[39m)[33m;[39m
+     [90m    |[39m                        [31m[1m^[22m[39m
+     [90m 22 |[39m         expect(output)[33m.[39mtoHaveProperty([32m'location'[39m[33m,[39m [32m'Gaza'[39m)[33m;[39m
+     [90m 23 |[39m         expect(output)[33m.[39mtoHaveProperty([32m'category'[39m[33m,[39m [32m'conflict'[39m)[33m;[39m
+     [90m 24 |[39m         expect(output[33m.[39mmetrics)[33m.[39mtoHaveProperty([32m'fatalities'[39m[33m,[39m [35m100[39m)[33m;[39m[0m
+
+      at Object.<anonymous> (tests/transformers.test.js:21:24)
+
+  ● ConflictTransformer › should handle missing fields gracefully
+
+    expect(received).toHaveProperty(path, value)
+
+    Expected path: "date"
+    Received path: []
+
+    Expected value: "2023-10-07"
+    Received value: []
+
+    [0m [90m 33 |[39m         [36mconst[39m output [33m=[39m transformer[33m.[39mtransform(input)[33m;[39m
+     [90m 34 |[39m
+    [31m[1m>[22m[39m[90m 35 |[39m         expect(output)[33m.[39mtoHaveProperty([32m'date'[39m[33m,[39m [32m'2023-10-07'[39m)[33m;[39m
+     [90m    |[39m                        [31m[1m^[22m[39m
+     [90m 36 |[39m         expect(output[33m.[39mmetrics)[33m.[39mtoHaveProperty([32m'fatalities'[39m[33m,[39m [35m0[39m)[33m;[39m
+     [90m 37 |[39m     })[33m;[39m
+     [90m 38 |[39m })[33m;[39m[0m
+
+      at Object.<anonymous> (tests/transformers.test.js:35:24)
+
+Test Suites: 2 failed, 2 total
+Tests:       3 failed, 4 passed, 7 total
+Snapshots:   0 total
+Time:        0.715 s, estimated 1 s
+Ran all test suites.
+Force exiting Jest: Have you considered using `--detectOpenHandles` to detect async operations that kept running after all tests finished?
