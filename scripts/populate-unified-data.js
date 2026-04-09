@@ -1,4 +1,4 @@
-﻿/**
+/**
  * Populate Unified Data
  * 
  * This script transforms raw data from all sources into the unified data format.
@@ -42,10 +42,10 @@ import { validateDataset } from './utils/data-validator.js';
 
 // Simple logger
 const logger = {
-    info: (msg, data) => console.log(`â„¹ï¸  ${msg}`, data || ''),
-    success: (msg, data) => console.log(`âœ… ${msg}`, data || ''),
-    warn: (msg, data) => console.warn(`âš ï¸  ${msg}`, data || ''),
-    error: (msg, data) => console.error(`âŒ ${msg}`, data || ''),
+    info:    (msg, data) => console.log(`[INFO]  ${msg}`, data ?? ''),
+    success: (msg, data) => console.log(`[OK]    ${msg}`, data ?? ''),
+    warn:    (msg, data) => console.warn(`[WARN]  ${msg}`, data ?? ''),
+    error:   (msg, data) => console.error(`[ERROR] ${msg}`, data ?? ''),
 };
 
 const DATA_DIR = path.join(__dirname, '../public/data');
@@ -671,18 +671,22 @@ async function processHDXData() {
                 const datasetPath = path.join(hdxCategoryDir, datasetDir.name);
                 const dataFiles = await fs.readdir(datasetPath);
 
-                // Look for transformed.json, data.json, or all-data.json
-                const dataFile = dataFiles.find(f => f === 'transformed.json' || f === 'data.json' || f === 'all-data.json');
+                // Look for unified-*.json files (saved by hdx fetcher after transformation)
+                // Fall back to raw-*.json if no unified files exist
+                const unifiedFiles = dataFiles.filter(f => f.startsWith('unified-') && f.endsWith('.json'));
+                const rawFiles = dataFiles.filter(f => f.startsWith('raw-') && f.endsWith('.json'));
+                const targetFiles = unifiedFiles.length > 0 ? unifiedFiles : rawFiles;
 
-                if (dataFile) {
-                    const dataPath = path.join(datasetPath, dataFile);
-                    const fileContent = JSON.parse(await fs.readFile(dataPath, 'utf-8'));
-                    const data = fileContent.data || fileContent;
+                for (const dataFile of targetFiles) {
+                    try {
+                        const dataPath = path.join(datasetPath, dataFile);
+                        const fileContent = JSON.parse(await fs.readFile(dataPath, 'utf-8'));
+                        const data = fileContent.data || (Array.isArray(fileContent) ? fileContent : []);
 
-                    if (Array.isArray(data) && data.length > 0) {
-                        allData = allData.concat(data);
-                        logger.info(`  Loaded ${data.length} records from ${datasetDir.name}`);
-                    }
+                        if (Array.isArray(data) && data.length > 0) {
+                            allData = allData.concat(data);
+                        }
+                    } catch { /* skip unparseable files */ }
                 }
             }
 
@@ -809,26 +813,36 @@ async function processPCBSData() {
             byCategory[cat].push(record);
         });
 
-        // Save category files
-        for (const [cat, records] of Object.entries(byCategory)) {
-            const catDir = path.join(UNIFIED_DIR, 'pcbs'); // Just put in pcbs dir for now
-            await fs.mkdir(catDir, { recursive: true });
+        const pcbsUnifiedDir = path.join(UNIFIED_DIR, 'pcbs');
+        await fs.mkdir(pcbsUnifiedDir, { recursive: true });
 
+        // Save category-specific files
+        for (const [cat, records] of Object.entries(byCategory)) {
             await fs.writeFile(
-                path.join(catDir, `${cat.toLowerCase().replace(/\s+/g, '-')}.json`),
-                JSON.stringify({
-                    category: cat,
-                    data: records,
-                    metadata: {
-                        source: 'PCBS',
-                        count: records.length
-                    }
-                }, null, 2),
+                path.join(pcbsUnifiedDir, `${cat.toLowerCase().replace(/\s+/g, '-')}.json`),
+                JSON.stringify({ category: cat, data: records, metadata: { source: 'PCBS', count: records.length } }, null, 2),
                 'utf-8'
             );
         }
 
+        // Also write the unified all-data.json for API consumption
+        await fs.writeFile(
+            path.join(pcbsUnifiedDir, 'all-data.json'),
+            JSON.stringify({
+                data: enriched,
+                metadata: {
+                    category: 'pcbs',
+                    source: 'PCBS',
+                    organization: 'Palestinian Central Bureau of Statistics',
+                    total_records: enriched.length,
+                    generated_at: new Date().toISOString(),
+                },
+            }, null, 2),
+            'utf-8'
+        );
+
         logger.success(`Processed ${enriched.length} PCBS records`);
+        return { count: enriched.length };
 
     } catch (error) {
         logger.error('Error processing PCBS data:', error.message);
@@ -1037,7 +1051,7 @@ async function processWHOData() {
                 'utf-8'
             );
 
-            logger.success(`✅ Merged health data saved: ${mergedData.length} total records`);
+            logger.success(`[OK] Merged health data saved: ${mergedData.length} total records`);
         } else {
             logger.error('WHO data processing failed');
             if (results.errors) {
@@ -2021,66 +2035,105 @@ async function processBtselemData() {
  * Main execution
  */
 async function main() {
-    console.log('ðŸš€ Starting unified data population...\n');
+    console.log('[INFO]  Starting unified data population...\n');
 
-    try {
-        // Ensure unified directory exists
-        await fs.mkdir(UNIFIED_DIR, { recursive: true });
+    // Ensure directories exist
+    await fs.mkdir(UNIFIED_DIR, { recursive: true });
+    const categories = [
+        'economic', 'conflict', 'infrastructure', 'education', 'health',
+        'water', 'humanitarian', 'refugees', 'martyrs', 'news', 'culture',
+        'land', 'westbank', 'historical', 'pcbs', 'prisoners'
+    ];
+    for (const cat of categories) {
+        await fs.mkdir(path.join(UNIFIED_DIR, cat), { recursive: true });
+    }
 
-        // Create category directories
-        const categories = ['economic', 'conflict', 'infrastructure', 'education', 'health', 'water', 'humanitarian', 'refugees', 'martyrs', 'news', 'culture', 'land', 'westbank', 'historical'];
-        for (const category of categories) {
-            await fs.mkdir(path.join(UNIFIED_DIR, category), { recursive: true });
+    // Pipeline task registry -- each entry is { name, fn }
+    const tasks = [
+        { name: 'economic',            fn: processEconomicData },
+        { name: 'conflict',            fn: processConflictData },
+        { name: 'infrastructure_t4p',  fn: processTech4PalestineInfrastructure },
+        { name: 'press',               fn: processPressData },
+        { name: 'martyrs',             fn: processMartyrsData },
+        { name: 'hdx',                 fn: processHDXData },
+        { name: 'who',                 fn: processWHOData },
+        { name: 'pcbs',                fn: processPCBSData },
+        { name: 'goodshepherd_health', fn: processGoodShepherdHealthcare },
+        { name: 'goodshepherd',        fn: processGoodShepherdData },
+        { name: 'news',                fn: processNewsData },
+        { name: 'culture',             fn: processCultureData },
+        { name: 'land',                fn: processLandData },
+        { name: 'westbank',            fn: processWestBankData },
+        { name: 'historical',          fn: processHistoricalData },
+        { name: 'nakba',               fn: processNakbaData },
+        { name: 'btselem',             fn: processBtselemData },
+        { name: 'water',               fn: processWaterData },
+        { name: 'infrastructure',      fn: processInfrastructureData },
+    ];
+
+    // Per-category failure isolation with timing
+    const report = { generated_at: new Date().toISOString(), categories: {} };
+
+    for (const task of tasks) {
+        const t0 = Date.now();
+        try {
+            const result = await task.fn();
+            report.categories[task.name] = {
+                status: 'ok',
+                records: result?.count ?? null,
+                duration_ms: Date.now() - t0,
+            };
+            logger.success(`[${task.name}] done`);
+        } catch (err) {
+            report.categories[task.name] = {
+                status: 'failed',
+                error: err.message,
+                stack: err.stack?.split('\n').slice(0, 3).join(' | '),
+                duration_ms: Date.now() - t0,
+            };
+            logger.error(`[${task.name}] FAILED: ${err.message}`);
         }
+    }
 
-        // Process each data source
-        await processEconomicData();
-        await processConflictData();
-        await processTech4PalestineInfrastructure();
-        await processPressData();
-        await processMartyrsData();
-        await processHDXData();
-        await processWHOData();
-        await processPCBSData();
-        await processGoodShepherdHealthcare();
-        await processGoodShepherdData();
-        await processNewsData();
-        await processCultureData();
-        await processLandData();
-        await processWestBankData();
-        await processHistoricalData();
-        await processNakbaData();
-        await processBtselemData();
+    // Create empty structures for any categories with no data yet
+    await createEmptyStructures();
 
-        // Create empty structures for missing data
-        await createEmptyStructures();
-        await processWaterData();
-        await processInfrastructureData();
-
-        // Generate unified manifest
-        logger.info('ðŸ“‹ Generating unified manifest...');
+    // Generate unified manifest
+    logger.info('Generating unified manifest...');
+    try {
         const { spawn } = await import('child_process');
         const manifestScript = path.join(__dirname, 'generate-unified-manifest.js');
-
         await new Promise((resolve, reject) => {
             const child = spawn('node', [manifestScript], { stdio: 'inherit' });
-            child.on('close', (code) => {
-                if (code === 0) resolve();
-                else reject(new Error(`Manifest generation failed with code ${code}`));
-            });
+            child.on('close', (code) => code === 0 ? resolve() : reject(new Error(`manifest exit ${code}`)));
         });
+        report.manifest = 'ok';
+    } catch (err) {
+        report.manifest = `failed: ${err.message}`;
+        logger.error(`Manifest generation failed: ${err.message}`);
+    }
 
-        console.log('\nâœ… Unified data population complete!');
-        console.log(`\nData location: ${UNIFIED_DIR}`);
-        console.log('\nNext steps:');
-        console.log('1. Check data: ls public/data/unified/*/all-data.json');
-        console.log('2. Validate: npm run validate-data');
-        console.log('3. Use in app: import { useConflictData } from "@/hooks/useUnifiedData"');
+    // Write pipeline report
+    await fs.writeFile(
+        path.join(DATA_DIR, 'pipeline-report.json'),
+        JSON.stringify(report, null, 2),
+        'utf-8'
+    );
 
-    } catch (error) {
-        logger.error('Fatal error:', error.message);
-        console.error(error);
-        process.exit(1);
+    // Print summary
+    const ok = Object.values(report.categories).filter(c => c.status === 'ok').length;
+    const failed = Object.values(report.categories).filter(c => c.status === 'failed').length;
+    console.log(`\n[OK]    Pipeline complete: ${ok} succeeded, ${failed} failed`);
+    console.log(`[INFO]  Report: ${path.join(DATA_DIR, 'pipeline-report.json')}`);
+
+    if (failed > 0) {
+        console.log('\n[WARN]  Failed tasks:');
+        for (const [name, result] of Object.entries(report.categories)) {
+            if (result.status === 'failed') {
+                console.log(`  - ${name}: ${result.error}`);
+            }
+        }
+        // Exit 0 even with partial failures -- partial data is better than nothing
     }
 }
 

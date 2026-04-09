@@ -445,14 +445,11 @@ async function fetchDatasetByCategory(category, datasets) {
             });
 
             // Save transformed data
+            // NOTE: We do NOT validate against the unified schema here.
+            // Strict schema validation happens in populate-unified-data.js.
+            // Here we just save all non-empty transformed records as raw intermediate data.
             if (transformed.format === 'json' && transformed.data) {
-              // Validate transformed data against Unified Schema
-              const validationResults = transformed.data.map(record => schemaUtils.validateRecord(record));
-              const validRecords = transformed.data.filter((_, i) => validationResults[i].isValid);
-
-              if (validRecords.length < transformed.data.length) {
-                await categoryLogger.warn(`  ⚠️  ${transformed.data.length - validRecords.length} records failed validation`);
-              }
+              const validRecords = transformed.data.filter(r => r && typeof r === 'object' && Object.keys(r).length > 0);
 
               await writeJSON(path.join(datasetDir, `unified-${safeResourceName}.json`), {
                 source: 'hdx-ckan',
@@ -923,36 +920,63 @@ function normalizeDate(dateValue) {
 // Transform health facility data
 function transformHealthData(rawData, metadata) {
   try {
-    let records = Array.isArray(rawData) ? rawData : (rawData.data || []);
-    records = records.filter(record => record && Object.keys(record).length > 0 && isRecordPalestineRelevant(record));
+    let records = Array.isArray(rawData) ? rawData : (rawData.data || rawData.csv || []);
+    records = records.filter(record => record && Object.keys(record).length > 0);
 
     if (records.length === 0) {
       return { format: 'json', data: [], recordCount: 0 };
     }
 
-    const transformed = records.map(record => ({
-      facility_id: record.id || record.facility_id || null,
-      name: record.name || record.facility_name || record.hospital_name || 'unknown',
-      type: record.type || record.facility_type || 'health_facility',
-      location: {
-        name: record.location || record.governorate || record.area || 'unknown',
-        latitude: parseFloat(record.latitude || record.lat) || null,
-        longitude: parseFloat(record.longitude || record.lon) || null,
-      },
-      status: record.status || record.operational_status || 'unknown',
-      damage_level: record.damage || record.damage_level || null,
-      bed_capacity: parseInt(record.beds || record.bed_capacity || record.capacity || 0),
-      staff_count: parseInt(record.staff || record.healthcare_workers || 0),
-      services: record.services || record.available_services || [],
-      supplies_status: record.supplies || record.medical_supplies || null,
-      patients_served: parseInt(record.patients || record.daily_patients || 0),
-      casualties: {
-        staff: parseInt(record.staff_casualties || record.healthcare_worker_casualties || 0),
-        patients: parseInt(record.patient_casualties || 0),
-      },
-      last_assessed: normalizeDate(record.assessment_date || record.last_updated),
-      source: metadata.organization.title,
-    }));
+    const firstRecord = records[0];
+
+    // Detect WHO GHO CSV format (fields like gho_(code), year_(display), numeric)
+    const isWHOGHO = 'gho_(code)' in firstRecord || 'gho_(display)' in firstRecord;
+
+    if (isWHOGHO) {
+      const transformed = records
+        .filter(r => r['gho_(code)'] && (r.numeric !== null && r.numeric !== undefined))
+        .map((record, i) => {
+          const year = record['year_(display)']?.split('-')[0] || record.startyear;
+          if (!year) return null;
+          return {
+            id: `who-gho-${record['gho_(code)']}-${year}-${i}`,
+            date: `${year}-01-01`,
+            category: 'health',
+            event_type: 'health_indicator',
+            indicator_code: record['gho_(code)'],
+            indicator_name: record['gho_(display)'],
+            indicator_url: record['gho_(url)'] || null,
+            value: parseFloat(record.numeric) || 0,
+            low: record.low != null ? parseFloat(record.low) : null,
+            high: record.high != null ? parseFloat(record.high) : null,
+            location: { name: 'Palestine', region: 'Palestine' },
+            source: metadata.organization?.title || 'WHO',
+          };
+        })
+        .filter(Boolean);
+      return { format: 'json', data: transformed, recordCount: transformed.length };
+    }
+
+    // Standard health facility format
+    const transformed = records
+      .filter(r => isRecordPalestineRelevant(r))
+      .map(record => ({
+        id: record.id || record.facility_id || null,
+        date: normalizeDate(record.assessment_date || record.last_updated) || new Date().toISOString().slice(0, 10),
+        category: 'health',
+        event_type: 'facility_status',
+        name: record.name || record.facility_name || record.hospital_name || 'unknown',
+        type: record.type || record.facility_type || 'health_facility',
+        location: {
+          name: record.location || record.governorate || record.area || 'unknown',
+          latitude: parseFloat(record.latitude || record.lat) || null,
+          longitude: parseFloat(record.longitude || record.lon) || null,
+        },
+        status: record.status || record.operational_status || 'unknown',
+        damage_level: record.damage || record.damage_level || null,
+        bed_capacity: parseInt(record.beds || record.bed_capacity || record.capacity || 0),
+        source: metadata.organization?.title || 'HDX',
+      }));
 
     return { format: 'json', data: transformed, recordCount: transformed.length };
 
