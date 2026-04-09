@@ -48,64 +48,37 @@ export class WHOTransformer extends BaseTransformer {
         // Extract location
         const locationName = record.SpatialDim || record.location || 'Palestine';
 
-        return {
-            // Identity
+        return this.toCanonical({
             id: this.generateId('health', { ...record, date }),
-            type: 'health',
+            date,
             category: 'health',
-
-            // Temporal
-            date: date,
-            timestamp: new Date(date).toISOString(),
-            period: {
-                type: 'year',
-                value: year.toString(),
-            },
-
-            // Spatial
+            event_type: 'health_indicator',
             location: {
                 name: locationName,
-                coordinates: null,
-                admin_levels: {
-                    level1: 'Palestine',
-                    level2: null,
-                    level3: null,
-                },
+                governorate: null,
                 region: this.classifyRegion(locationName),
-                region_type: null,
+                lat: null,
+                lon: null,
+                precision: 'region',
             },
-
-            // Health-specific data
+            metrics: {
+                value: parseFloat(record.Value || record.value || 0),
+                unit: this.detectUnit(indicatorName),
+                count: 1,
+            },
+            description: indicatorName,
             indicator_code: indicatorCode,
             indicator_name: indicatorName,
-            value: parseFloat(record.Value || record.value || 0),
-            unit: this.detectUnit(indicatorName),
-
-            // Additional WHO fields
             sex: record.Dim1 || null,
             age_group: record.Dim2 || null,
-            data_source_type: record.DataSourceDimType || null,
-
-            // Quality
-            quality: this.enrichQuality({
-                id: this.generateId('health', record),
-                date,
-                location: { name: locationName },
-                value: record.Value || record.value,
-            }).quality,
-
-            // Provenance
             sources: [{
                 name: metadata.source || 'WHO',
                 organization: metadata.organization || 'World Health Organization',
+                url: null,
+                license: 'public-domain',
                 fetched_at: new Date().toISOString(),
             }],
-
-            // Metadata
-            created_at: new Date().toISOString(),
-            updated_at: new Date().toISOString(),
-            version: 1,
-        };
+        });
     }
 
     /**

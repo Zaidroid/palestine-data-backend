@@ -33,59 +33,47 @@ export class ConflictTransformer extends BaseTransformer {
     );
 
     const eventType = this.extractEventType(record);
-    const fatalities = this.extractFatalities(record);
-    const injuries = this.extractInjuries(record);
-    const actors = this.extractActors(record);
+    const killed    = this.extractFatalities(record);
+    const injured   = this.extractInjuries(record);
+    const actors    = this.extractActors(record);
     const description = this.extractDescription(record);
-    const location = this.extractLocation(record);
-    const severityIndex = this.calculateSeverityIndex(fatalities, injuries, eventType);
+    const loc       = this.extractLocation(record);
+    const severityIndex = this.calculateSeverityIndex(killed, injured, eventType);
 
-    return {
-      // Identity
+    return this.toCanonical({
       id: this.generateId('conflict', { ...record, date }),
-      type: 'conflict',
-      category: 'conflict',
-
-      // Temporal
       date: date || new Date().toISOString().split('T')[0],
-      timestamp: record.timestamp || new Date(date).toISOString(),
-
-      // Spatial
-      location,
-
-      // Data
-      value: fatalities + injuries, // Total casualties
-      unit: 'casualties',
-
-      // Conflict-specific
+      category: 'conflict',
       event_type: eventType,
-      fatalities,
-      injuries,
-      actors,
+
+      location: {
+        name: loc.name,
+        governorate: loc.admin_levels?.level1 || null,
+        region: loc.region || null,
+        lat: loc.coordinates?.lat ?? null,
+        lon: loc.coordinates?.lon ?? null,
+        precision: loc.coordinates?.lat ? 'city' : 'region',
+      },
+
+      metrics: {
+        killed,
+        injured,
+        count: killed + injured,
+        unit: 'persons',
+      },
+
       description,
+      actors: [actors.actor1, actors.actor2].filter(Boolean),
       severity_index: severityIndex,
 
-      // Quality
-      quality: this.enrichQuality({
-        id: this.generateId('conflict', record),
-        date,
-        location,
-        value: fatalities + injuries,
-      }).quality,
-
-      // Provenance
       sources: [{
         name: metadata.source || metadata.organization?.title || 'Unknown',
         organization: metadata.organization?.title || metadata.organization || 'Unknown',
+        url: metadata.source_url || null,
+        license: 'varies',
         fetched_at: new Date().toISOString(),
-        url: metadata.source_url,
       }],
-
-      // Metadata
-      created_at: new Date().toISOString(),
-      updated_at: new Date().toISOString(),
-      version: 1,
-    };
+    });
   }
 
   /**

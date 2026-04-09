@@ -72,36 +72,40 @@ export class WHOHealthTransformer extends BaseTransformer {
             // Extract dimension/breakdown info
             const dimension = this.extractDimension(record);
 
-            // Build unified record
-            return {
+            const locationName = record['country_(display)'] || 'Palestine';
+            return this.toCanonical({
                 id: `who-health-${indicator.code}-${year}-${index}`,
+                date,
                 category: 'health',
-                date: date,
-                source: 'WHO',
+                event_type: 'health_indicator',
                 location: {
-                    name: record['country_(display)'] || 'Palestine',
-                    region: record['region_(display)'] || 'Eastern Mediterranean',
-                    country_code: record['country_(code)'] || 'PSE'
+                    name: locationName,
+                    governorate: null,
+                    region: this.classifyRegion(locationName),
+                    lat: null,
+                    lon: null,
+                    precision: 'region',
                 },
-                data: {
-                    indicator: indicator.name,
-                    indicator_code: indicator.code,
-                    indicator_url: indicator.url,
-                    value: value,
-                    low: record.low,
-                    high: record.high,
-                    year: year,
-                    dimension: dimension,
-                    unit: this.inferUnit(indicator.name, value)
+                metrics: {
+                    value,
+                    unit: this.inferUnit(indicator.name, value),
+                    count: 1,
                 },
-                metadata: {
-                    source_type: 'WHO Health Indicators',
-                    data_quality: 'high',
-                    confidence: 0.9,
-                    year_range: record.startyear && record.endyear ?
-                        `${record.startyear}-${record.endyear}` : year.toString()
-                }
-            };
+                description: indicator.name,
+                indicator_code: indicator.code,
+                indicator_name: indicator.name,
+                indicator_url: indicator.url || null,
+                value_low: record.low || null,
+                value_high: record.high || null,
+                dimension,
+                sources: [{
+                    name: 'WHO',
+                    organization: 'World Health Organization',
+                    url: indicator.url || null,
+                    license: 'public-domain',
+                    fetched_at: new Date().toISOString(),
+                }],
+            });
 
         } catch (error) {
             console.warn(`Error transforming WHO record ${index}:`, error.message);

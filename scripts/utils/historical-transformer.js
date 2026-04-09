@@ -1,6 +1,6 @@
 /**
  * Historical Data Transformer
- * 
+ *
  * Transforms manual historical data into the unified format.
  */
 
@@ -8,111 +8,126 @@ import { BaseTransformer } from './base-transformer.js';
 
 export class HistoricalTransformer extends BaseTransformer {
     constructor() {
-        super();
+        super('historical');
     }
 
     /**
      * Transform manual historical data
-     * @param {Array} data - Array of manual data records
-     * @param {Object} metadata - Source metadata
-     * @returns {Array} - Transformed records
      */
     transform(data, metadata) {
         if (!Array.isArray(data)) {
             console.warn('HistoricalTransformer: Data is not an array');
             return [];
         }
+        return data.map(record => this.transformRecord(record, metadata || {}));
+    }
 
-        return data.map(record => {
-            // Handle Nakba Data
-            if (record.event_type === 'depopulation') {
-                return {
-                    date: record.depopulation_date || `${record.year}-05-15`,
-                    year: record.year,
-                    location: {
-                        name: record.name,
-                        district: record.district,
-                        coordinates: record.coord
-                    },
-                    region: this.normalizeRegion(record.district),
-                    category: 'historical',
-                    event_type: 'depopulation',
-
-                    // Metrics
-                    population_affected: record.population_1948,
-
-                    // Metadata
-                    source: 'Historical Records',
-                    original_id: `nakba_${record.name.replace(/\s+/g, '_')}`,
-
-                    description: `Depopulation of ${record.name} (${record.district}) during the Nakba. Population: ${record.population_1948}`,
-                    tags: ['nakba', 'depopulation', 'displacement']
-                };
-            }
-
-            // Handle Historical Events (Wars, Uprisings)
-            if (['war', 'uprising', 'political'].includes(record.event_type)) {
-                return {
-                    date: record.date || `${record.year}-01-01`,
-                    year: record.year,
-                    location: {
-                        name: record.location || 'Palestine'
-                    },
-                    region: this.normalizeRegion(record.location),
-                    category: 'historical',
-                    event_type: record.event_type,
-
-                    // Metrics
-                    fatalities: record.fatalities || 0,
-
-                    // Metadata
-                    source: record.source || 'Historical Records',
-                    original_id: `hist_event_${record.year}_${record.name.replace(/\s+/g, '_')}`,
-
-                    description: record.description || `${record.name} (${record.year})`,
-                    tags: ['historical', record.event_type, 'conflict']
-                };
-            }
-
-            // Handle Manual Population Data (Default)
-            const locationName = record.location || 'Unknown';
-            const transformed = {
-                date: `${record.year}-01-01`, // Default to Jan 1st for annual data
-                year: record.year,
+    transformRecord(record, metadata) {
+        // Depopulation (Nakba) records
+        if (record.event_type === 'depopulation') {
+            const date = record.depopulation_date || `${record.year || 1948}-05-15`;
+            const locationName = record.name || 'Unknown';
+            return this.toCanonical({
+                id: this.generateId('historical', { name: record.name, year: record.year }),
+                date,
+                category: 'historical',
+                event_type: 'depopulation',
                 location: {
-                    name: locationName
+                    name: locationName,
+                    governorate: record.district || null,
+                    region: this._regionFromDistrict(record.district),
+                    lat: record.coord?.lat ?? null,
+                    lon: record.coord?.lon ?? null,
+                    precision: record.coord ? 'exact' : 'region',
                 },
-                region: this.normalizeRegion(locationName),
-                category: 'demographics',
-                event_type: 'population_estimate',
+                metrics: {
+                    displaced: parseInt(record.population_1948 || 0),
+                    count: parseInt(record.population_1948 || 0),
+                    unit: 'persons',
+                },
+                description: `Depopulation of ${locationName} (${record.district || 'unknown district'}) during the Nakba. Population: ${record.population_1948 || 'unknown'}`,
+                sources: [{
+                    name: 'Historical Records',
+                    organization: metadata.organization || 'Historical Records',
+                    url: null,
+                    license: 'public-domain',
+                    fetched_at: new Date().toISOString(),
+                }],
+            });
+        }
 
-                // Metrics
-                population: record.value,
+        // War / Uprising / Political events
+        if (['war', 'uprising', 'political'].includes(record.event_type)) {
+            const date = record.date || `${record.year || 1948}-01-01`;
+            const locationName = record.location || 'Palestine';
+            return this.toCanonical({
+                id: this.generateId('historical', { name: record.name, year: record.year }),
+                date,
+                category: 'historical',
+                event_type: record.event_type,
+                location: {
+                    name: locationName,
+                    governorate: null,
+                    region: this.classifyRegion(locationName),
+                    lat: null,
+                    lon: null,
+                    precision: 'region',
+                },
+                metrics: {
+                    killed: parseInt(record.fatalities || 0),
+                    count: parseInt(record.fatalities || 0),
+                    unit: 'persons',
+                },
+                description: record.description || `${record.name || ''} (${record.year || ''})`,
+                sources: [{
+                    name: record.source || 'Historical Records',
+                    organization: metadata.organization || 'Historical Records',
+                    url: null,
+                    license: 'public-domain',
+                    fetched_at: new Date().toISOString(),
+                }],
+            });
+        }
 
-                // Metadata
-                source: record.source,
-                source_detail: record.source_detail,
-                original_id: `hist_pop_${record.year}_${locationName.replace(/\s+/g, '_')}`,
-
-                // Standard fields
-                description: `Population estimate for ${locationName} in ${record.year}: ${(record.value || 0).toLocaleString()}`,
-                tags: ['population', 'historical', 'demographics']
-            };
-
-            return transformed;
+        // Default: population / demographic estimate
+        const locationName = record.location || 'Palestine';
+        const date = `${record.year || 2000}-01-01`;
+        return this.toCanonical({
+            id: this.generateId('historical', { location: locationName, year: record.year }),
+            date,
+            category: 'demographics',
+            event_type: 'population_estimate',
+            location: {
+                name: locationName,
+                governorate: null,
+                region: this.classifyRegion(locationName),
+                lat: null,
+                lon: null,
+                precision: 'region',
+            },
+            metrics: {
+                value: parseFloat(record.value || 0),
+                unit: 'persons',
+                count: 1,
+            },
+            description: `Population estimate for ${locationName} in ${record.year}: ${(record.value || 0).toLocaleString()}`,
+            sources: [{
+                name: record.source || 'Historical Records',
+                organization: metadata.organization || 'Historical Records',
+                url: null,
+                license: 'public-domain',
+                fetched_at: new Date().toISOString(),
+            }],
         });
     }
 
-    /**
-     * Normalize region name
-     * @param {string} location 
-     * @returns {string}
-     */
-    normalizeRegion(location) {
-        if (!location) return 'unknown';
-        const lower = location.toLowerCase();
-        if (lower.includes('gaza')) return 'gaza';
-        if (lower.includes('west bank')) return 'west_bank';
-        return 'palestine';
+    _regionFromDistrict(district) {
+        if (!district) return 'Palestine';
+        const d = district.toLowerCase();
+        if (d.includes('gaza')) return 'Gaza Strip';
+        if (d.includes('jerusalem')) return 'East Jerusalem';
+        return 'West Bank';
     }
 }
+
+export default HistoricalTransformer;

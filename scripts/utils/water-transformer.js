@@ -35,88 +35,48 @@ export class WaterTransformer extends BaseTransformer {
      * Transform a single water data record
      */
     transformRecord(record, metadata, index) {
-        // Normalize date
-        let date = record.date || record.last_updated || record.reference_period_end;
-        try {
-            const d = new Date(date);
-            if (!isNaN(d.getTime())) {
-                date = d.toISOString();
-            } else {
-                date = new Date().toISOString();
-            }
-        } catch (e) {
-            date = new Date().toISOString();
-        }
-
-        // Extract location info
+        const date = this.normalizeDate(record.date || record.last_updated || record.reference_period_end);
         const locationName = record.location_name || record.admin1_name || 'Palestine';
         const region = this.classifyRegion(locationName);
+        const value = parseFloat(record.value || record.metric_value || 0);
 
-        return {
+        return this.toCanonical({
             id: this.generateId('water', { ...record, date }),
-            type: 'water',
+            date,
             category: 'water',
-            date: date,
-            timestamp: date,
-            period: {
-                type: 'point',
-                value: date,
-            },
+            event_type: 'wash_indicator',
 
-            // Spatial
             location: {
                 name: locationName,
-                admin_levels: {
-                    level1: region,
-                    level2: record.admin2_name || locationName,
-                },
-                region: region,
-                coordinates: record.lat && record.lon ? {
-                    lat: parseFloat(record.lat),
-                    lon: parseFloat(record.lon)
-                } : null,
+                governorate: record.admin2_name || null,
+                region,
+                lat: record.lat ? parseFloat(record.lat) : null,
+                lon: record.lon ? parseFloat(record.lon) : null,
+                precision: record.lat ? 'exact' : 'region',
             },
 
-            // Water-specific data
-            indicator: {
-                code: record.indicator_code || 'UNKNOWN',
-                name: record.indicator_name || 'Unknown Indicator',
-                description: record.indicator_description || '',
+            metrics: {
+                value,
+                unit: record.unit || 'count',
+                count: 1,
             },
-            value: parseFloat(record.value || record.metric_value || 0),
-            unit: record.unit || 'count',
 
-            // Status & Analysis
-            status: this.assessStatus(record),
+            description: record.indicator_name || 'WASH indicator',
+
+            // Water-specific supplemental fields
+            indicator_code: record.indicator_code || 'UNKNOWN',
+            indicator_name: record.indicator_name || 'Unknown Indicator',
+            wash_status: this.assessStatus(record),
             access_level: this.assessAccessLevel(record),
 
-            // Metadata
-            source_dataset: record.dataset_name || metadata.source,
-            provider: record.provider_name || metadata.organization,
-
-            // Quality
-            quality: this.enrichQuality({
-                id: this.generateId('water', record),
-                date,
-                location: { name: locationName },
-                value: record.value,
-            }).quality,
-
-            // Provenance
-            sources: [
-                {
-                    name: metadata.source || 'HDX',
-                    organization: record.provider_name || metadata.organization || 'UN Agencies',
-                    url: metadata.url || record.dataset_hdx_url,
-                    fetched_at: new Date().toISOString(),
-                },
-            ],
-
-            // Metadata
-            created_at: new Date().toISOString(),
-            updated_at: new Date().toISOString(),
-            version: 1,
-        };
+            sources: [{
+                name: metadata.source || 'HDX',
+                organization: record.provider_name || metadata.organization || 'UN Agencies',
+                url: metadata.url || record.dataset_hdx_url || null,
+                license: 'varies',
+                fetched_at: new Date().toISOString(),
+            }],
+        });
     }
 
     /**

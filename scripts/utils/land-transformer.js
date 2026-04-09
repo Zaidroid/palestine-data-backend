@@ -31,69 +31,51 @@ export class LandTransformer extends BaseTransformer {
         const date = record.date || record.last_updated || new Date().toISOString().split('T')[0];
         const recordType = this.determineLandType(record, metadata);
 
-        return {
-            // Identity
+        const locationName = record.location || record.name || 'Palestine';
+        const region = this.classifyRegion(locationName);
+        const demolished = parseInt(record.structures_demolished || record.homes_demolished || 0);
+        const displaced  = parseInt(record.people_displaced || record.persons_displaced || 0);
+
+        return this.toCanonical({
             id: this.generateId('land', { ...record, date }),
-            type: 'land',
+            date,
             category: 'land',
-            land_type: recordType,
+            event_type: recordType,
 
-            // Temporal
-            date: date,
-            timestamp: new Date(date).toISOString(),
-            period: {
-                type: 'point',
-                value: date,
-            },
-
-            // Spatial
             location: {
-                name: record.location || record.name || 'Palestine',
-                admin_levels: {
-                    level1: record.region || this.classifyRegion(record.location || ''),
-                    level2: record.governorate || record.district,
-                    level3: record.locality || record.village,
-                },
-                region: this.classifyRegion(record.location || ''),
-                coordinates: record.coordinates || {
-                    lat: record.latitude,
-                    lon: record.longitude,
-                },
+                name: locationName,
+                governorate: record.governorate || record.district || null,
+                region,
+                lat: parseFloat(record.latitude || record.lat) || null,
+                lon: parseFloat(record.longitude || record.lon) || null,
+                precision: record.latitude ? 'exact' : 'region',
             },
 
-            // Common data fields
-            name: record.name || record.location,
-            status: this.normalizeStatus(record.status, recordType),
+            metrics: {
+                demolished,
+                displaced,
+                count: demolished || 1,
+                unit: recordType === 'demolition' ? 'structures' : 'sites',
+            },
 
-            // Type-specific data
+            description: record.notes || record.details || record.name || '',
+
+            // Type-specific supplemental data
+            land_type: recordType,
+            land_name: record.name || record.location,
+            land_status: this.normalizeStatus(record.status, recordType),
             ...(recordType === 'settlement' && this.enrichSettlementData(record)),
             ...(recordType === 'checkpoint' && this.enrichCheckpointData(record)),
             ...(recordType === 'demolition' && this.enrichDemolitionData(record)),
-            ...(recordType === 'wall' && this.enrichWallData(record)),
-            ...(recordType === 'confiscation' && this.enrichConfiscationData(record)),
 
-            // Quality
-            quality: this.enrichQuality({
-                id: this.generateId('land', record),
-                date,
-                location: { name: record.location || 'Palestine' },
-            }).quality,
-
-            // Provenance
-            sources: [
-                {
-                    name: metadata.source || 'Land Status Database',
-                    organization: metadata.organization || 'OCHA/B\'Tselem/Peace Now',
-                    url: metadata.url || record.source_url,
-                    fetched_at: new Date().toISOString(),
-                },
-            ],
-
-            // Metadata
-            created_at: new Date().toISOString(),
-            updated_at: new Date().toISOString(),
-            version: 1,
-        };
+            sources: [{
+                name: metadata.source || 'Land Status Database',
+                organization: metadata.organization || "OCHA/B'Tselem/Peace Now",
+                url: metadata.url || record.source_url || null,
+                license: 'varies',
+                fetched_at: new Date().toISOString(),
+            }],
+        });
     }
 
     /**

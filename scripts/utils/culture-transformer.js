@@ -29,90 +29,56 @@ export class CultureTransformer extends BaseTransformer {
    */
   transformRecord(record, metadata, index) {
     const date = record.date || record.last_updated || new Date().toISOString().split('T')[0];
-    
-    return {
-      // Identity
+    const locationName = record.location || record.city || 'Palestine';
+    const region = this.classifyRegion(locationName);
+    const siteStatus = this.normalizeStatus(record.status);
+
+    return this.toCanonical({
       id: this.generateId('culture', { ...record, date }),
-      type: 'culture',
+      date,
       category: 'culture',
+      event_type: 'heritage_site',
 
-      // Temporal
-      date: date,
-      timestamp: new Date(date).toISOString(),
-      period: {
-        type: 'point',
-        value: date,
-      },
-
-      // Spatial
       location: {
-        name: record.location || record.city || 'Palestine',
-        admin_levels: {
-          level1: record.region || this.classifyRegion(record.location || ''),
-          level2: record.city || record.location,
-        },
-        region: this.classifyRegion(record.location || record.city || ''),
-        coordinates: record.coordinates || {
-          lat: record.latitude,
-          lon: record.longitude,
-        },
+        name: locationName,
+        governorate: record.governorate || record.district || null,
+        region,
+        lat: record.latitude ? parseFloat(record.latitude) : null,
+        lon: record.longitude ? parseFloat(record.longitude) : null,
+        precision: record.latitude ? 'exact' : 'region',
       },
 
-      // Culture-specific data
-      name: record.name,
+      metrics: {
+        count: 1,
+        unit: 'sites',
+      },
+
+      description: record.description || record.summary || record.name || '',
+
+      // Culture-specific supplemental fields
+      site_name: record.name,
       site_type: this.normalizeSiteType(record.type || record.site_type),
-      status: this.normalizeStatus(record.status),
-      
-      // Historical context
+      site_status: siteStatus,
       historical_period: record.historical_period || record.period || 'Unknown',
-      construction_date: record.construction_date || record.built_date,
-      significance: record.significance || record.importance,
-      
-      // Description
-      description: record.description || record.summary,
-      history_summary: record.history || record.historical_context,
-      
-      // Protection & Status
-      unesco_status: record.unesco_status || record.world_heritage_status,
+      construction_date: record.construction_date || record.built_date || null,
+      significance: record.significance || record.importance || null,
+      unesco_status: record.unesco_status || record.world_heritage_status || null,
       protection_level: record.protection_level || 'Unknown',
-      
-      // Damage assessment (if applicable)
       damage: record.damage ? {
         status: this.normalizeStatus(record.damage.status || record.status),
         severity: record.damage.severity || this.assessDamageSeverity(record.status),
-        date_damaged: record.damage.date || record.damage_date,
-        description: record.damage.description || record.damage_details,
-        before_images: record.damage.before_images || [],
-        after_images: record.damage.after_images || [],
+        date_damaged: record.damage.date || record.damage_date || null,
+        description: record.damage.description || record.damage_details || null,
       } : null,
 
-      // Media
-      images: record.images || record.photos || [],
-      virtual_tour: record.virtual_tour || record.tour_url,
-      
-      // Quality
-      quality: this.enrichQuality({
-        id: this.generateId('culture', record),
-        date,
-        location: { name: record.location || 'Palestine' },
-        name: record.name,
-      }).quality,
-
-      // Provenance
-      sources: [
-        {
-          name: metadata.source || 'Cultural Heritage Database',
-          organization: metadata.organization || 'Palestine Ministry of Tourism',
-          url: metadata.url || record.source_url,
-          fetched_at: new Date().toISOString(),
-        },
-      ],
-
-      // Metadata
-      created_at: new Date().toISOString(),
-      updated_at: new Date().toISOString(),
-      version: 1,
-    };
+      sources: [{
+        name: metadata.source || 'Cultural Heritage Database',
+        organization: metadata.organization || 'Palestine Ministry of Tourism',
+        url: metadata.url || record.source_url || null,
+        license: 'varies',
+        fetched_at: new Date().toISOString(),
+      }],
+    });
   }
 
   /**

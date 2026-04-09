@@ -1,54 +1,73 @@
 /**
  * News Transformer
- * 
+ *
  * Standardizes news articles from various RSS feeds into the unified schema.
  */
 
-export class NewsTransformer {
+import { BaseTransformer } from './base-transformer.js';
+
+export class NewsTransformer extends BaseTransformer {
     constructor() {
-        this.name = 'NewsTransformer';
+        super('news');
     }
 
     /**
      * Transform raw data into unified format
      */
     transform(data, metadata = {}) {
-        if (!Array.isArray(data)) {
-            data = [data];
-        }
+        if (!Array.isArray(data)) data = [data];
+        return data
+            .filter(item => item && item.title)
+            .map(item => this.transformRecord(item, metadata));
+    }
 
-        return data.map(item => {
-            // RSS fetcher already does a lot of cleaning, but we ensure strict schema here
-            return {
-                id: item.guid || this.generateId(item),
-                title: item.title,
-                description: item.description,
-                link: item.link,
-                date: item.pubDate, // ISO string
-                source: item.source,
-                source_category: item.sourceCategory || 'news',
-                category: item.articleCategory || 'general',
-                language: item.language || 'en',
-                reliability: item.reliability || 'unknown',
-                // Standard unified fields
-                event_type: 'news_report',
-                location: this.extractLocation(item) || 'Palestine',
-                timestamp: new Date(item.pubDate).getTime(),
-            };
+    transformRecord(item, metadata) {
+        const date = this.normalizeDate(item.pubDate || item.date) || new Date().toISOString().split('T')[0];
+        const locationName = this.extractLocationName(item);
+        const region = this.classifyRegion(locationName);
+
+        return this.toCanonical({
+            id: item.guid || this.generateId('news', { link: item.link, title: item.title }),
+            date,
+            category: 'news',
+            event_type: 'news_report',
+            location: {
+                name: locationName,
+                governorate: null,
+                region,
+                lat: null,
+                lon: null,
+                precision: 'region',
+            },
+            metrics: { count: 1, unit: 'articles' },
+            description: item.title || '',
+            // News-specific supplemental fields
+            title: item.title,
+            article_description: item.description,
+            link: item.link,
+            source: item.source,
+            source_category: item.sourceCategory || 'news',
+            article_category: item.articleCategory || 'general',
+            language: item.language || 'en',
+            reliability: item.reliability || 'unknown',
+            sources: [{
+                name: item.source || metadata.source || 'RSS Feed',
+                organization: item.source || metadata.organization || 'Media',
+                url: item.link || null,
+                license: 'varies',
+                fetched_at: new Date().toISOString(),
+            }],
         });
     }
 
     /**
-     * Enrich data (optional)
+     * Enrich data
      */
     enrich(data) {
-        return data.map(item => {
-            return {
-                ...item,
-                // Add relative time or other derived fields if needed
-                is_recent: this.isRecent(item.date),
-            };
-        });
+        return data.map(item => ({
+            ...item,
+            is_recent: this.isRecent(item.date),
+        }));
     }
 
     /**
@@ -61,37 +80,17 @@ export class NewsTransformer {
             if (!item.date) errors.push(`Row ${index}: Missing date`);
             if (!item.link) errors.push(`Row ${index}: Missing link`);
         });
-
-        return {
-            valid: errors.length === 0,
-            errors
-        };
-    }
-
-    // Helpers
-
-    generateId(item) {
-        // Simple hash of link or title
-        const str = item.link || item.title;
-        let hash = 0;
-        for (let i = 0; i < str.length; i++) {
-            const char = str.charCodeAt(i);
-            hash = ((hash << 5) - hash) + char;
-            hash = hash & hash;
-        }
-        return `news-${Math.abs(hash)}`;
+        return { valid: errors.length === 0, errors };
     }
 
     isRecent(dateStr) {
         const date = new Date(dateStr);
         const now = new Date();
-        const diff = now - date;
-        return diff < (24 * 60 * 60 * 1000); // 24 hours
+        return (now - date) < (24 * 60 * 60 * 1000);
     }
 
-    extractLocation(item) {
-        // Simple keyword matching for major locations
-        const text = `${item.title} ${item.description}`.toLowerCase();
+    extractLocationName(item) {
+        const text = `${item.title || ''} ${item.description || ''}`.toLowerCase();
         if (text.includes('gaza')) return 'Gaza Strip';
         if (text.includes('west bank')) return 'West Bank';
         if (text.includes('jerusalem')) return 'Jerusalem';
@@ -100,6 +99,8 @@ export class NewsTransformer {
         if (text.includes('hebron')) return 'Hebron';
         if (text.includes('rafah')) return 'Rafah';
         if (text.includes('khan yunis')) return 'Khan Yunis';
-        return null;
+        return 'Palestine';
     }
 }
+
+export default NewsTransformer;

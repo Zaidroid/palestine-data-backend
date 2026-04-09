@@ -57,7 +57,7 @@ export async function getSearchIndex() {
 
 /**
  * Check if a category exists
- * @param {string} category 
+ * @param {string} category
  * @returns {Promise<boolean>}
  */
 export async function categoryExists(category) {
@@ -67,5 +67,29 @@ export async function categoryExists(category) {
         return true;
     } catch {
         return false;
+    }
+}
+
+/**
+ * List all available categories (directories with all-data.json)
+ * @returns {Promise<string[]>}
+ */
+export async function listCategories() {
+    try {
+        const entries = await fs.readdir(UNIFIED_DIR, { withFileTypes: true });
+        const categories = [];
+        for (const entry of entries) {
+            if (entry.isDirectory()) {
+                try {
+                    await fs.access(path.join(UNIFIED_DIR, entry.name, 'all-data.json'));
+                    categories.push(entry.name);
+                } catch {
+                    // skip dirs without all-data.json
+                }
+            }
+        }
+        return categories.sort();
+    } catch {
+        return [];
     }
 }

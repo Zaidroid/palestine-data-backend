@@ -1,114 +1,110 @@
 /**
  * Good Shepherd Data Transformer
- * 
+ *
  * Transforms data from Good Shepherd sources (prisoners, healthcare, etc.)
- * into the Unified Data Format.
+ * into the unified canonical format.
  */
 
-export class GoodShepherdTransformer {
+import { BaseTransformer } from './base-transformer.js';
+
+export class GoodShepherdTransformer extends BaseTransformer {
     constructor() {
-        this.source = 'Good Shepherd';
+        super('conflict');
     }
 
     /**
-     * Transform a record
-     * @param {Object} record Raw record
-     * @param {Object} context Additional context (category, etc.)
+     * Transform an array of records
      */
-    transform(record, context = {}) {
-        const category = context.category || 'conflict';
+    transform(data, context = {}) {
+        if (!Array.isArray(data)) data = [data];
+        return data
+            .filter(record => record && typeof record === 'object')
+            .map(record => this.transformRecord(record, context));
+    }
 
-        // Base structure
-        const unified = {
-            id: record.id || this.generateId(record),
-            source: this.source,
-            category: category,
-            date: this.extractDate(record),
-            location: this.extractLocation(record),
-            event_type: this.extractEventType(record, category),
+    /**
+     * Transform a single record
+     */
+    transformRecord(record, context = {}) {
+        const category = context.category || 'conflict';
+        const date = this._extractDate(record);
+        const locationName = this._extractLocationName(record);
+        const region = this.classifyRegion(locationName);
+        const eventType = record.event_type || `${category}_report`;
+
+        const base = {
+            id: record.id || this.generateId('gs', { ...record, date }),
+            date,
+            category,
+            event_type: eventType,
+            location: {
+                name: locationName,
+                governorate: null,
+                region,
+                lat: null,
+                lon: null,
+                precision: 'region',
+            },
             metrics: {},
-            metadata: {
-                original_source: 'Good Shepherd',
-                ...record
-            }
+            description: record.description || record.notes || '',
+            sources: [{
+                name: 'Good Shepherd',
+                organization: 'Good Shepherd',
+                url: record.source_url || null,
+                license: 'varies',
+                fetched_at: new Date().toISOString(),
+            }],
         };
 
-        // Category specific transformations
+        // Category-specific metric mapping
         if (category === 'conflict' || category === 'prisoners') {
-            this.transformPrisonerData(unified, record);
+            base.metrics = {
+                detained: parseInt(record.total_prisoners || 0),
+                count: parseInt(record.total_prisoners || record.arrests || 0),
+                unit: 'persons',
+            };
+            base.administrative_detainees = parseInt(record.administrative_detainees || 0);
+            base.child_prisoners = parseInt(record.child_prisoners || 0);
+            base.female_prisoners = parseInt(record.female_prisoners || 0);
+            base.arrests = parseInt(record.arrests || 0);
         } else if (category === 'health' || category === 'healthcare') {
-            this.transformHealthData(unified, record);
-        } else if (category === 'ngo') {
-            this.transformNGOData(unified, record);
+            base.metrics = {
+                count: parseInt(record.attacks_on_healthcare || 0),
+                unit: 'incidents',
+            };
+            base.hospitals_functioning = parseInt(record.hospitals_functioning || 0);
+            base.clinics_functioning = parseInt(record.clinics_functioning || 0);
+            base.attacks_on_healthcare = parseInt(record.attacks_on_healthcare || 0);
+        } else if (category === 'ngo' || category === 'humanitarian') {
+            base.metrics = {
+                value: parseFloat(record.funding_amount || 0),
+                unit: 'usd',
+                affected: parseInt(record.beneficiaries || 0),
+            };
         }
 
-        return unified;
+        return this.toCanonical(base);
     }
 
-    transformPrisonerData(unified, record) {
-        unified.category = 'conflict'; // Map prisoners to conflict or create new category? Let's use conflict for now or 'prisoners' if supported
-        unified.event_type = 'detention_report';
-
-        // Map common fields
-        if (record.total_prisoners) unified.metrics.total_prisoners = parseInt(record.total_prisoners);
-        if (record.administrative_detainees) unified.metrics.administrative_detainees = parseInt(record.administrative_detainees);
-        if (record.child_prisoners) unified.metrics.child_prisoners = parseInt(record.child_prisoners);
-        if (record.female_prisoners) unified.metrics.female_prisoners = parseInt(record.female_prisoners);
-
-        // If it's a specific incident
-        if (record.arrests) unified.metrics.arrests = parseInt(record.arrests);
-    }
-
-    transformHealthData(unified, record) {
-        unified.category = 'health';
-        unified.event_type = 'healthcare_status';
-
-        if (record.hospitals_functioning) unified.metrics.hospitals_functioning = parseInt(record.hospitals_functioning);
-        if (record.clinics_functioning) unified.metrics.clinics_functioning = parseInt(record.clinics_functioning);
-        if (record.attacks_on_healthcare) unified.metrics.attacks = parseInt(record.attacks_on_healthcare);
-    }
-
-    transformNGOData(unified, record) {
-        unified.category = 'humanitarian';
-        unified.event_type = 'ngo_activity';
-
-        if (record.funding_amount) unified.metrics.funding = parseFloat(record.funding_amount);
-        if (record.beneficiaries) unified.metrics.beneficiaries = parseInt(record.beneficiaries);
-    }
-
-    extractDate(record) {
-        // Try to find a date field
-        if (record.date) return record.date;
-        if (record.report_date) return record.report_date;
+    _extractDate(record) {
+        if (record.date) return this.normalizeDate(record.date);
+        if (record.report_date) return this.normalizeDate(record.report_date);
         if (record.timestamp) return new Date(record.timestamp).toISOString().split('T')[0];
-
-        // Handle Quarter format (e.g., "2024-Q1")
         if (record.period) {
             const match = record.period.match(/(\d{4})-Q(\d)/);
             if (match) {
-                const year = match[1];
-                const quarter = match[2];
-                // Return end of quarter date approx
-                const month = quarter * 3;
-                return `${year}-${month.toString().padStart(2, '0')}-30`;
+                const month = parseInt(match[2]) * 3;
+                return `${match[1]}-${month.toString().padStart(2, '0')}-30`;
             }
         }
-
-        return new Date().toISOString().split('T')[0]; // Fallback to today
+        return new Date().toISOString().split('T')[0];
     }
 
-    extractLocation(record) {
-        if (record.location) return record.location;
+    _extractLocationName(record) {
+        if (record.location && typeof record.location === 'string') return record.location;
         if (record.region) return record.region;
-        return 'Palestine'; // Default
-    }
-
-    extractEventType(record, category) {
-        if (record.event_type) return record.event_type;
-        return `${category}_report`;
-    }
-
-    generateId(record) {
-        return `gs-${Math.random().toString(36).substr(2, 9)}`;
+        return 'Palestine';
     }
 }
+
+export default GoodShepherdTransformer;

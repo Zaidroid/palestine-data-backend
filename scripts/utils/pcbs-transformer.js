@@ -43,73 +43,48 @@ export class PCBSTransformer extends BaseTransformer {
     // Determine the unified data type based on category
     const unifiedType = this.getUnifiedType(category);
 
-    const baseRecord = {
-      // Identity
-      id: this.generateId('pcbs', { ...record, date }),
-      type: unifiedType,
-      category: category,
+    const regionName = this.formatRegionName(record.region || 'palestine');
+    const normalizedRegion = this.normalizeRegion(record.region || 'palestine');
 
-      // Temporal
-      date: date,
-      timestamp: new Date(date).toISOString(),
-      period: {
-        type: 'year',
-        value: year.toString(),
+    return this.toCanonical({
+      id: this.generateId('pcbs', { ...record, date }),
+      date,
+      category,
+      event_type: 'indicator_measurement',
+
+      location: {
+        name: regionName,
+        governorate: null,
+        region: normalizedRegion,
+        lat: null,
+        lon: null,
+        precision: 'region',
       },
 
-      // Spatial
-      location: this.createPalestineLocation(record),
+      metrics: {
+        value: parseFloat(record.value),
+        unit: this.detectUnit(indicatorName, indicatorCode),
+        count: 1,
+      },
 
-      // Data
-      value: parseFloat(record.value),
-      unit: this.detectUnit(indicatorName, indicatorCode),
+      description: indicatorName,
 
-      // Quality
-      quality: this.enrichQuality({
-        id: this.generateId('pcbs', record),
-        date,
-        location: { name: record.region || 'Palestine' },
-        value: record.value,
-      }).quality,
+      indicator_code: indicatorCode,
+      indicator_name: indicatorName,
+      ...(unifiedType === 'population' && {
+        demographic_category: this.getDemographicCategory(indicatorCode),
+      }),
 
-      // Provenance
       sources: [{
         name: 'Palestinian Central Bureau of Statistics (PCBS)',
         organization: 'PCBS',
         url: record.source_detail === 'PCBS via World Bank API'
           ? 'https://api.worldbank.org/v2'
           : 'https://www.pcbs.gov.ps',
+        license: 'public-domain',
         fetched_at: new Date().toISOString(),
-        reliability_score: 0.95, // PCBS is official source
       }],
-
-      // Metadata
-      created_at: new Date().toISOString(),
-      updated_at: new Date().toISOString(),
-      version: 1,
-    };
-
-    // Add category-specific fields
-    if (unifiedType === 'economic') {
-      return {
-        ...baseRecord,
-        indicator_code: indicatorCode,
-        indicator_name: indicatorName,
-      };
-    } else if (unifiedType === 'population') {
-      return {
-        ...baseRecord,
-        indicator_code: indicatorCode,
-        indicator_name: indicatorName,
-        demographic_category: this.getDemographicCategory(indicatorCode),
-      };
-    }
-
-    return {
-      ...baseRecord,
-      indicator_code: indicatorCode,
-      indicator_name: indicatorName,
-    };
+    });
   }
 
   /**

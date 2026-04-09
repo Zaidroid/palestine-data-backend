@@ -33,57 +33,31 @@ export class EconomicTransformer extends BaseTransformer {
     const year = record.year || new Date(record.date).getFullYear();
     const date = `${year}-01-01`;
 
-    return {
-      // Identity
+    const unit = this.detectUnit(indicatorName);
+    return this.toCanonical({
       id: this.generateId('economic', { ...record, date }),
-      type: 'economic',
+      date,
       category: 'economic',
+      event_type: 'indicator_measurement',
 
-      // Temporal
-      date: date,
-      timestamp: new Date(date).toISOString(),
-      period: {
-        type: 'year',
-        value: year.toString(),
-      },
+      location: { name: record.country || 'Palestine', region: 'Palestine', precision: 'region' },
 
-      // Spatial
-      location: {
-        name: record.country || 'Palestine',
-        admin_levels: {
-          level1: 'Palestine',
-        },
-        region: 'Palestine',
-      },
+      metrics: { value: parseFloat(record.value), unit },
 
-      // Data
-      value: parseFloat(record.value),
-      unit: this.detectUnit(indicatorName),
+      description: indicatorName,
 
-      // Economic-specific
+      // Economic-specific supplemental fields
       indicator_code: indicatorCode,
       indicator_name: indicatorName,
 
-      // Quality
-      quality: this.enrichQuality({
-        id: this.generateId('economic', record),
-        date,
-        location: { name: 'Palestine' },
-        value: record.value,
-      }).quality,
-
-      // Provenance
       sources: [{
         name: metadata.source || 'World Bank',
         organization: metadata.organization || 'World Bank',
+        url: null,
+        license: 'CC-BY-4.0',
         fetched_at: new Date().toISOString(),
       }],
-
-      // Metadata
-      created_at: new Date().toISOString(),
-      updated_at: new Date().toISOString(),
-      version: 1,
-    };
+    });
   }
 
   /**

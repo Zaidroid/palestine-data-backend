@@ -1,253 +1,183 @@
 import { BaseTransformer } from './base-transformer.js';
 
-/**
- * West Bank Schools Transformer
- * Transforms HDX West Bank schools data into unified education format
- */
-export class WestBankSchoolsTransformer extends BaseTransformer {
-    constructor() {
-        super('education');
+// ---------------------------------------------------------------------------
+// Shared GeoJSON coordinate helper
+// ---------------------------------------------------------------------------
+function geomCentroid(feature) {
+    if (!feature?.geometry?.coordinates) return null;
+    const coords = feature.geometry.coordinates;
+    const type = feature.geometry.type;
+
+    if (type === 'Point') return { lat: coords[1], lon: coords[0] };
+
+    if (type === 'LineString' && coords.length > 0) {
+        const mid = coords[Math.floor(coords.length / 2)];
+        return { lat: mid[1], lon: mid[0] };
     }
+
+    if ((type === 'Polygon' || type === 'MultiPolygon') && coords[0]?.length > 0) {
+        const ring = type === 'Polygon' ? coords[0] : coords[0][0];
+        const lat = ring.reduce((s, p) => s + p[1], 0) / ring.length;
+        const lon = ring.reduce((s, p) => s + p[0], 0) / ring.length;
+        return { lat, lon };
+    }
+
+    return null;
+}
+
+function calcCompleteness(props, fields) {
+    return (fields.filter(f => props[f]).length / fields.length) * 100;
+}
+
+// ---------------------------------------------------------------------------
+// West Bank Schools
+// ---------------------------------------------------------------------------
+export class WestBankSchoolsTransformer extends BaseTransformer {
+    constructor() { super('education'); }
 
     transform(rawData, metadata) {
         const features = rawData?.data?.features || rawData?.features || [];
-
         return features.map((feature, index) => this.transformRecord(feature, metadata, index));
     }
 
     transformRecord(feature, metadata, index) {
         const props = feature.properties || {};
+        const name = props.Name || props.name || props.SCHOOL_NAM || 'Unknown School';
+        const governorate = props.Governorat || props.GOVERNORAT || props.governorate || null;
+        const coords = geomCentroid(feature);
 
-        return {
-            id: this.generateId('wb-school', { index, name: props.Name || props.name }),
-            type: 'school',
+        return this.toCanonical({
+            id: this.generateId('wb-school', { index, name }),
+            date: new Date().toISOString().split('T')[0],
             category: 'education',
-            date: new Date().toISOString().split('T')[0], // Current date as snapshot
-
+            event_type: 'school_record',
             location: {
-                name: props.Name || props.name || props.SCHOOL_NAM || 'Unknown School',
+                name,
+                governorate,
                 region: 'West Bank',
-                governorate: props.Governorat || props.GOVERNORAT || props.governorate || null,
-                locality: props.Locality || props.locality || null,
-                coordinates: this.extractCoordinates(feature),
-                admin_levels: {
-                    level1: 'West Bank',
-                    level2: props.Governorat || props.GOVERNORAT || null,
-                    level3: props.Locality || props.locality || null,
-                },
+                lat: coords?.lat ?? null,
+                lon: coords?.lon ?? null,
+                precision: coords ? 'exact' : 'region',
             },
-
-            // School-specific fields
-            school_name: props.Name || props.name || props.SCHOOL_NAM || 'Unknown',
+            metrics: {
+                value: parseInt(props.Students || props.STUDENTS || props.enrollment || 0) || 0,
+                unit: 'students',
+                count: 1,
+            },
+            description: name,
+            school_name: name,
             school_type: props.Type || props.TYPE || props.school_type || 'Unknown',
             education_level: props.Level || props.LEVEL || props.education_level || null,
-            students: parseInt(props.Students || props.STUDENTS || props.enrollment || 0) || null,
-            status: props.Status || props.STATUS || 'Active',
-
-            // Metadata
-            source: metadata?.source || 'HDX',
-            quality: this.enrichQuality({
-                completeness: this.calculateCompleteness(props),
-                has_coordinates: !!this.extractCoordinates(feature),
-            }),
-        };
-    }
-
-    extractCoordinates(feature) {
-        if (!feature.geometry) return null;
-
-        const coords = feature.geometry.coordinates;
-        if (!coords) return null;
-
-        // Handle Point geometry
-        if (feature.geometry.type === 'Point') {
-            return {
-                latitude: coords[1],
-                longitude: coords[0],
-            };
-        }
-
-        // Handle Polygon - use centroid
-        if (feature.geometry.type === 'Polygon' && coords[0]?.length > 0) {
-            const ring = coords[0];
-            const lat = ring.reduce((sum, p) => sum + p[1], 0) / ring.length;
-            const lon = ring.reduce((sum, p) => sum + p[0], 0) / ring.length;
-            return { latitude: lat, longitude: lon };
-        }
-
-        return null;
-    }
-
-    calculateCompleteness(props) {
-        const fields = ['Name', 'name', 'Governorat', 'GOVERNORAT', 'Type', 'TYPE'];
-        const present = fields.filter(f => props[f]).length;
-        return (present / fields.length) * 100;
+            school_status: props.Status || props.STATUS || 'Active',
+            sources: [{
+                name: metadata?.source || 'HDX',
+                organization: metadata?.organization || 'HDX',
+                url: null,
+                license: 'varies',
+                fetched_at: new Date().toISOString(),
+            }],
+        });
     }
 }
 
-/**
- * West Bank Villages/Localities Transformer
- * Transforms village boundary data into infrastructure records
- */
+// ---------------------------------------------------------------------------
+// West Bank Villages / Localities
+// ---------------------------------------------------------------------------
 export class WestBankVillagesTransformer extends BaseTransformer {
-    constructor() {
-        super('infrastructure');
-    }
+    constructor() { super('infrastructure'); }
 
     transform(rawData, metadata) {
         const features = rawData?.data?.features || rawData?.features || [];
-
         return features.map((feature, index) => this.transformRecord(feature, metadata, index));
     }
 
     transformRecord(feature, metadata, index) {
         const props = feature.properties || {};
+        const name = props.Name || props.name || props.LOCALITY || 'Unknown Locality';
+        const governorate = props.Governorat || props.GOVERNORAT || props.governorate || null;
+        const coords = geomCentroid(feature);
 
-        return {
-            id: this.generateId('wb-village', { index, name: props.Name || props.name }),
-            type: 'locality',
-            category: 'infrastructure',
+        return this.toCanonical({
+            id: this.generateId('wb-village', { index, name }),
             date: new Date().toISOString().split('T')[0],
-
+            category: 'infrastructure',
+            event_type: 'locality_record',
             location: {
-                name: props.Name || props.name || props.LOCALITY || 'Unknown Locality',
+                name,
+                governorate,
                 region: 'West Bank',
-                governorate: props.Governorat || props.GOVERNORAT || props.governorate || null,
-                coordinates: this.extractCoordinates(feature),
-                admin_levels: {
-                    level1: 'West Bank',
-                    level2: props.Governorat || props.GOVERNORAT || null,
-                    level3: props.Name || props.name || null,
-                },
+                lat: coords?.lat ?? null,
+                lon: coords?.lon ?? null,
+                precision: coords ? 'exact' : 'region',
             },
-
-            // Locality-specific fields
-            locality_name: props.Name || props.name || props.LOCALITY || 'Unknown',
+            metrics: {
+                value: parseInt(props.Population || props.POP || props.population || 0) || 0,
+                unit: 'persons',
+                count: 1,
+            },
+            description: name,
+            locality_name: name,
             locality_type: props.Type || props.TYPE || props.locality_type || 'Village',
             population: parseInt(props.Population || props.POP || props.population || 0) || null,
             area_km2: parseFloat(props.Area || props.AREA || props.area_km2 || 0) || null,
-
-            // Metadata
-            source: metadata?.source || 'HDX',
-            quality: this.enrichQuality({
-                completeness: this.calculateCompleteness(props),
-                has_coordinates: !!this.extractCoordinates(feature),
-            }),
-        };
-    }
-
-    extractCoordinates(feature) {
-        if (!feature.geometry) return null;
-
-        const coords = feature.geometry.coordinates;
-        if (!coords) return null;
-
-        // For polygons, calculate centroid
-        if (feature.geometry.type === 'Polygon' && coords[0]?.length > 0) {
-            const ring = coords[0];
-            const lat = ring.reduce((sum, p) => sum + p[1], 0) / ring.length;
-            const lon = ring.reduce((sum, p) => sum + p[0], 0) / ring.length;
-            return { latitude: lat, longitude: lon };
-        }
-
-        // For points
-        if (feature.geometry.type === 'Point') {
-            return {
-                latitude: coords[1],
-                longitude: coords[0],
-            };
-        }
-
-        return null;
-    }
-
-    calculateCompleteness(props) {
-        const fields = ['Name', 'name', 'Governorat', 'GOVERNORAT', 'Type', 'TYPE'];
-        const present = fields.filter(f => props[f]).length;
-        return (present / fields.length) * 100;
+            sources: [{
+                name: metadata?.source || 'HDX',
+                organization: metadata?.organization || 'HDX',
+                url: null,
+                license: 'varies',
+                fetched_at: new Date().toISOString(),
+            }],
+        });
     }
 }
 
-/**
- * West Bank Barrier Transformer
- * Transforms separation barrier data into infrastructure records
- */
+// ---------------------------------------------------------------------------
+// West Bank Barrier
+// ---------------------------------------------------------------------------
 export class WestBankBarrierTransformer extends BaseTransformer {
-    constructor() {
-        super('infrastructure');
-    }
+    constructor() { super('infrastructure'); }
 
     transform(rawData, metadata) {
         const features = rawData?.data?.features || rawData?.features || [];
-
         return features.map((feature, index) => this.transformRecord(feature, metadata, index));
     }
 
     transformRecord(feature, metadata, index) {
         const props = feature.properties || {};
+        const name = props.Name || props.name || 'Separation Barrier Segment';
+        const governorate = props.Governorat || props.GOVERNORAT || props.governorate || null;
+        const coords = geomCentroid(feature);
 
-        return {
+        return this.toCanonical({
             id: this.generateId('wb-barrier', { index }),
-            type: 'barrier',
-            category: 'infrastructure',
             date: new Date().toISOString().split('T')[0],
-
+            category: 'infrastructure',
+            event_type: 'barrier_segment',
             location: {
-                name: props.Name || props.name || 'Separation Barrier Segment',
+                name,
+                governorate,
                 region: 'West Bank',
-                governorate: props.Governorat || props.GOVERNORAT || props.governorate || null,
-                coordinates: this.extractCoordinates(feature),
-                admin_levels: {
-                    level1: 'West Bank',
-                    level2: props.Governorat || props.GOVERNORAT || null,
-                    level3: null,
-                },
+                lat: coords?.lat ?? null,
+                lon: coords?.lon ?? null,
+                precision: coords ? 'exact' : 'region',
             },
-
-            // Barrier-specific fields
+            metrics: {
+                value: parseFloat(props.Length || props.LENGTH || props.length_km || 0) || 0,
+                unit: 'km',
+                count: 1,
+            },
+            description: `${props.Type || 'Barrier'} segment${name !== 'Separation Barrier Segment' ? ': ' + name : ''}`,
             barrier_type: props.Type || props.TYPE || props.barrier_type || 'Wall',
-            status: props.Status || props.STATUS || 'Constructed',
+            barrier_status: props.Status || props.STATUS || 'Constructed',
             length_km: parseFloat(props.Length || props.LENGTH || props.length_km || 0) || null,
             construction_year: parseInt(props.Year || props.YEAR || props.construction_year || 0) || null,
-
-            // Metadata
-            source: metadata?.source || 'HDX',
-            quality: this.enrichQuality({
-                completeness: this.calculateCompleteness(props),
-                has_coordinates: !!this.extractCoordinates(feature),
-            }),
-        };
-    }
-
-    extractCoordinates(feature) {
-        if (!feature.geometry) return null;
-
-        const coords = feature.geometry.coordinates;
-        if (!coords) return null;
-
-        // For LineString, use midpoint
-        if (feature.geometry.type === 'LineString' && coords.length > 0) {
-            const midIndex = Math.floor(coords.length / 2);
-            return {
-                latitude: coords[midIndex][1],
-                longitude: coords[midIndex][0],
-            };
-        }
-
-        // For polygons, calculate centroid
-        if (feature.geometry.type === 'Polygon' && coords[0]?.length > 0) {
-            const ring = coords[0];
-            const lat = ring.reduce((sum, p) => sum + p[1], 0) / ring.length;
-            const lon = ring.reduce((sum, p) => sum + p[0], 0) / ring.length;
-            return { latitude: lat, longitude: lon };
-        }
-
-        return null;
-    }
-
-    calculateCompleteness(props) {
-        const fields = ['Type', 'TYPE', 'Status', 'STATUS'];
-        const present = fields.filter(f => props[f]).length;
-        return (present / fields.length) * 100;
+            sources: [{
+                name: metadata?.source || 'HDX',
+                organization: metadata?.organization || 'HDX',
+                url: null,
+                license: 'varies',
+                fetched_at: new Date().toISOString(),
+            }],
+        });
     }
 }

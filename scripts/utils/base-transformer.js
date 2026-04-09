@@ -1,305 +1,222 @@
 /**
  * Base Data Transformer
- * 
+ *
  * Abstract base class for transforming raw data from various sources
- * into the unified data model format.
+ * into the unified data model format (canonical schema v3.0.0).
  */
 
-/**
- * Base transformer class with common transformation logic
- */
+import { createEmptyRecord, SCHEMA_VERSION, CONFLICT_PHASES } from './canonical-schema.js';
+
 export class BaseTransformer {
   constructor(category) {
     this.category = category;
   }
 
   /**
-   * Transform raw data to unified format
-   * Must be implemented by subclasses
+   * Transform raw data to unified format.
+   * Must be implemented by subclasses.
    */
   transform(rawData, metadata) {
     throw new Error('transform() must be implemented by subclass');
   }
 
   /**
-   * Validate transformed data
+   * Merge partial transformer output into the canonical record shape.
+   * Every transformer should end transformRecord() with return this.toCanonical({...})
    */
-  validate(data) {
-    // Basic validation - can be overridden
-    if (!Array.isArray(data)) {
-      return {
-        valid: false,
-        errors: ['Data must be an array'],
-      };
-    }
-
+  toCanonical(partial) {
+    const base = createEmptyRecord();
     return {
-      valid: true,
-      errors: [],
+      ...base,
+      ...partial,
+      schema_version: SCHEMA_VERSION,
+      // Deep-merge nested objects so missing sub-fields get defaults
+      location: { ...base.location, ...(partial.location || {}) },
+      metrics:  { ...base.metrics,  ...(partial.metrics  || {}) },
+      temporal_context: { ...base.temporal_context, ...(partial.temporal_context || {}) },
+      quality:  { ...base.quality,  ...(partial.quality  || {}) },
+      sources:  Array.isArray(partial.sources) ? partial.sources : [],
+      actors:   Array.isArray(partial.actors)  ? partial.actors  : [],
     };
   }
 
   /**
-   * Enrich data with calculated fields
+   * Validate a single record. Override for category-specific rules.
    */
-  enrich(data) {
-    return data.map(record => ({
-      ...record,
-      ...this.enrichTemporal(record),
-      ...this.enrichSpatial(record),
-      ...this.enrichQuality(record),
-    }));
+  validate(data) {
+    if (!Array.isArray(data)) {
+      return { valid: false, errors: ['Data must be an array'] };
+    }
+    return { valid: true, errors: [] };
   }
 
   /**
-   * Add temporal enrichment (baseline comparison, conflict phase, etc.)
+   * Enrich an array of already-transformed records.
    */
+  enrich(data) {
+    return data.map(record => {
+      const temporal = this.enrichTemporal(record);
+      const spatial  = this.enrichSpatial(record);
+      const quality  = this.enrichQuality(record);
+      return {
+        ...record,
+        temporal_context: { ...record.temporal_context, ...temporal.temporal_context },
+        location: { ...record.location, ...spatial.location },
+        quality:  { ...record.quality,  ...quality.quality },
+      };
+    });
+  }
+
+  // ─── Temporal ─────────────────────────────────────────────────────────────
+
   enrichTemporal(record) {
-    const baselineDate = '2023-10-07';
-
     if (!record.date) return {};
-
-    const recordDate = new Date(record.date);
-    const baseline = new Date(baselineDate);
-    const daysSinceBaseline = Math.floor((recordDate - baseline) / (1000 * 60 * 60 * 24));
-
+    const baseline = new Date('2023-10-07');
+    const d = new Date(record.date);
+    const daysSinceBaseline = Math.floor((d - baseline) / 86400000);
     return {
       temporal_context: {
         days_since_baseline: daysSinceBaseline,
-        baseline_period: recordDate < baseline ? 'before_baseline' : 'after_baseline',
+        baseline_date: '2023-10-07',
         conflict_phase: this.determineConflictPhase(record.date),
       },
     };
   }
 
-  /**
-   * Determine conflict phase based on date
-   */
   determineConflictPhase(date) {
-    const recordDate = new Date(date);
-    const baseline = new Date('2023-10-07');
-
-    if (recordDate < baseline) {
-      return 'pre-escalation';
-    } else if (recordDate < new Date('2024-01-01')) {
-      return 'active-conflict';
-    } else {
-      return 'ongoing-conflict';
-    }
+    const d = new Date(date);
+    if (isNaN(d)) return null;
+    const y = d.getUTCFullYear();
+    if (y <= 1949) return 'nakba-1948';
+    if (y <= 1967) return 'naksa-1967';
+    if (y <= 1993) return 'first-intifada';
+    if (y <= 2000) return 'oslo-period';
+    if (y <= 2005) return 'second-intifada';
+    if (d < new Date('2009-01-19')) return 'gaza-2008-2009';
+    if (d < new Date('2012-12-01')) return 'gaza-2012';
+    if (d < new Date('2014-09-01')) return 'gaza-2014';
+    if (d < new Date('2021-06-01')) return 'gaza-2021';
+    if (d < new Date('2023-10-07')) return 'pre-escalation-2023';
+    if (d < new Date('2025-01-20')) return 'gaza-war-2023';
+    return 'ongoing';
   }
 
-  /**
-   * Add spatial enrichment (admin levels, proximity, etc.)
-   */
+  // ─── Spatial ──────────────────────────────────────────────────────────────
+
   enrichSpatial(record) {
     if (!record.location) return {};
-
-    return {
-      location: {
-        ...record.location,
-        region: this.classifyRegion(record.location.name),
-      },
-    };
+    const region = record.location.region || this.classifyRegion(record.location.name);
+    return { location: { ...record.location, region } };
   }
 
-  /**
-   * Classify region (Gaza, West Bank, East Jerusalem)
-   */
   classifyRegion(locationName) {
-    if (!locationName || typeof locationName !== 'string') return 'Unknown';
-
-    // Normalize: trim, remove extra spaces and special characters like pipes
-    const name = locationName.toLowerCase().trim().replace(/\s*\|\s*/g, '').trim();
-
-    if (!name || name === '') return 'Unknown';
-
-    // Gaza Strip Governorates
-    if (name.includes('gaza') || name.includes('rafah') || name.includes('khan yunis') || name.includes('khan younis') || name.includes('deir al-balah') || name.includes('jabalia')) return 'Gaza Strip';
-
-    // West Bank Governorates
-    if (name.includes('west bank') || name.includes('westbank') || name.includes('ramallah') || name.includes('hebron') || name.includes('nablus') || name.includes('jenin') || name.includes('tulkarm') || name.includes('qalqilya') || name.includes('tubas') || name.includes('salfit') || name.includes('bethlehem') || name.includes('jericho')) return 'West Bank';
-
-    // Jerusalem
-    if (name.includes('jerusalem') || name.includes('al-quds')) return 'East Jerusalem';
-
-    if (name.includes('palestine') || name === 'pse') return 'Palestine';
-
-    return 'Unknown';
+    if (!locationName || typeof locationName !== 'string') return 'Palestine';
+    const n = locationName.toLowerCase().trim();
+    if (n.includes('gaza') || n.includes('rafah') || n.includes('khan yun') ||
+        n.includes('deir al-balah') || n.includes('jabalia') || n.includes('beit lahiya') ||
+        n.includes('beit hanoun')) return 'Gaza Strip';
+    if (n.includes('west bank') || n.includes('westbank') || n.includes('ramallah') ||
+        n.includes('hebron') || n.includes('nablus') || n.includes('jenin') ||
+        n.includes('tulkarm') || n.includes('qalqilya') || n.includes('tubas') ||
+        n.includes('salfit') || n.includes('bethlehem') || n.includes('jericho') ||
+        n.includes('al-khalil') || n.includes('ariha')) return 'West Bank';
+    if (n.includes('jerusalem') || n.includes('al-quds') || n.includes('east jerusalem')) return 'East Jerusalem';
+    return 'Palestine';
   }
 
-  /**
-   * Add quality metrics
-   */
+  // ─── Quality ──────────────────────────────────────────────────────────────
+
   enrichQuality(record) {
     const completeness = this.calculateCompleteness(record);
-    const consistency = this.calculateConsistency(record);
-    const accuracy = this.calculateAccuracy(record);
-
+    const consistency  = this.calculateConsistency(record);
+    const accuracy     = this.calculateAccuracy(record);
+    const score = (completeness + consistency + accuracy) / 3;
     return {
       quality: {
-        score: (completeness + consistency + accuracy) / 3,
+        score,
         completeness,
         consistency,
         accuracy,
+        confidence: score >= 0.8 ? 'high' : score >= 0.5 ? 'medium' : 'low',
         verified: false,
-        confidence: 0.8,
       },
     };
   }
 
-  /**
-   * Calculate data completeness (0-1)
-   */
   calculateCompleteness(record) {
-    // Use category-specific required fields
-    const baseFields = ['id', 'date'];
-    const categoryFields = this.getCategoryRequiredFields();
-    const requiredFields = [...baseFields, ...categoryFields];
-
-    let present = 0;
-    for (const field of requiredFields) {
-      if (record[field] !== null && record[field] !== undefined && record[field] !== '') {
-        present++;
-      }
+    const required = ['id', 'date', 'category'];
+    const optional = ['event_type', 'description', 'location.name', 'location.region'];
+    let score = 0;
+    for (const f of required) {
+      if (record[f] != null && record[f] !== '') score += 2;
     }
-
-    return present / requiredFields.length;
+    for (const f of optional) {
+      const val = f.includes('.') ? record[f.split('.')[0]]?.[f.split('.')[1]] : record[f];
+      if (val != null && val !== '') score += 1;
+    }
+    return Math.min(1, score / (required.length * 2 + optional.length));
   }
 
-  /**
-   * Get category-specific required fields
-   */
-  getCategoryRequiredFields() {
-    const categoryFields = {
-      conflict: ['type', 'location'],
-      economic: ['value', 'unit'],
-      education: ['facility_name'],
-      health: ['facility_name'],
-      water: ['facility_name'],
-      humanitarian: ['people_in_need'],
-      infrastructure: ['structure_type'],
-      refugee: ['displaced_population'],
-    };
-
-    return categoryFields[this.category] || ['type', 'value'];
-  }
-
-  /**
-   * Calculate data consistency (0-1)
-   */
   calculateConsistency(record) {
     let score = 1.0;
-
-    // Check date validity
     if (record.date) {
-      const date = new Date(record.date);
-      if (isNaN(date.getTime())) {
-        score -= 0.4;
-      } else if (date > new Date()) {
-        score -= 0.2; // Future dates are suspicious but not invalid
-      }
+      const d = new Date(record.date);
+      if (isNaN(d.getTime())) score -= 0.4;
+      else if (d > new Date()) score -= 0.2;
     }
-
-    // Check location validity
-    if (record.location?.coordinates) {
-      const [lon, lat] = record.location.coordinates;
-      if (lon < -180 || lon > 180 || lat < -90 || lat > 90) {
-        score -= 0.4;
-      }
+    if (record.location?.lat != null) {
+      if (record.location.lat < 29 || record.location.lat > 34) score -= 0.3;
     }
-
-    // Check value ranges for numeric fields
-    if (typeof record.value === 'number') {
-      if (record.value < 0) score -= 0.2;
-      if (record.value > 1000000000) score -= 0.1; // Very large values suspicious
+    if (record.location?.lon != null) {
+      if (record.location.lon < 33 || record.location.lon > 36.5) score -= 0.3;
     }
-
     return Math.max(0, score);
   }
 
-  /**
-   * Calculate data accuracy (0-1)
-   */
   calculateAccuracy(record) {
-    let score = 1.0;
-
-    // Check for data source reliability
-    if (record.sources && Array.isArray(record.sources)) {
-      // Prefer official sources
-      const hasOfficialSource = record.sources.some(source =>
-        source.organization?.toLowerCase().includes('un') ||
-        source.organization?.toLowerCase().includes('who') ||
-        source.organization?.toLowerCase().includes('world bank') ||
-        source.organization?.toLowerCase().includes('ocha')
-      );
-      if (hasOfficialSource) score += 0.1;
+    let score = 0.8;
+    const orgLower = (record.sources?.[0]?.organization || '').toLowerCase();
+    if (['un', 'who', 'world bank', 'ocha', 'pcbs', 'unrwa'].some(o => orgLower.includes(o))) {
+      score = 1.0;
+    } else if (['btselem', 'amnesty', 'hrw', 'tech4palestine'].some(o => orgLower.includes(o))) {
+      score = 0.9;
     }
-
-    // Check for reasonable date ranges (post-2020)
-    if (record.date) {
-      const date = new Date(record.date);
-      if (date < new Date('2020-01-01')) {
-        score -= 0.1; // Older data might be less accurate
-      }
-    }
-
-    return Math.max(0, Math.min(1, score));
+    return score;
   }
 
-  /**
-   * Normalize date to ISO 8601 YYYY-MM-DD format
-   */
+  // ─── Utilities ────────────────────────────────────────────────────────────
+
   normalizeDate(dateValue) {
     if (!dateValue) return null;
-
     try {
-      const date = new Date(dateValue);
-      if (isNaN(date.getTime())) return null;
-      return date.toISOString().split('T')[0];
+      // Handle year-only values (e.g. 2020)
+      if (/^\d{4}$/.test(String(dateValue))) return `${dateValue}-01-01`;
+      const d = new Date(dateValue);
+      if (isNaN(d.getTime())) return null;
+      return d.toISOString().split('T')[0];
     } catch {
       return null;
     }
   }
 
-  /**
-   * Extract coordinates from various formats
-   */
   extractCoordinates(record) {
-    // Try different coordinate field names
-    if (record.latitude && record.longitude) {
-      return [parseFloat(record.longitude), parseFloat(record.latitude)];
-    }
-    if (record.lat && record.lon) {
-      return [parseFloat(record.lon), parseFloat(record.lat)];
-    }
-    if (record.coordinates && Array.isArray(record.coordinates)) {
-      return record.coordinates;
-    }
-
-    return null;
+    const lat = parseFloat(record.latitude || record.lat || record.y);
+    const lon = parseFloat(record.longitude || record.lon || record.x);
+    if (!isNaN(lat) && !isNaN(lon)) return { lat, lon };
+    return { lat: null, lon: null };
   }
 
-  /**
-   * Generate unique ID for a record
-   */
   generateId(prefix, record) {
-    const timestamp = record.date || new Date().toISOString();
-    const location = record.location?.name || 'unknown';
-    const hash = this.simpleHash(`${timestamp}-${location}-${JSON.stringify(record)}`);
-    return `${prefix}-${hash}`;
+    const key = `${record.date || ''}-${record.location?.name || ''}-${JSON.stringify(record).slice(0, 80)}`;
+    return `${prefix}-${this.simpleHash(key)}`;
   }
 
-  /**
-   * Simple hash function for generating IDs
-   */
   simpleHash(str) {
-    let hash = 0;
+    let h = 0;
     for (let i = 0; i < str.length; i++) {
-      const char = str.charCodeAt(i);
-      hash = ((hash << 5) - hash) + char;
-      hash = hash & hash; // Convert to 32-bit integer
+      h = Math.imul(31, h) + str.charCodeAt(i) | 0;
     }
-    return Math.abs(hash).toString(36);
+    return Math.abs(h).toString(36);
   }
 }
 

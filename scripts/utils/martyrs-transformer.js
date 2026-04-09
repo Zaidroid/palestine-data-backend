@@ -39,44 +39,34 @@ export class MartyrsTransformer extends BaseTransformer {
         const age = this.parseAge(record.age);
         const sex = this.normalizeSex(record.sex);
 
-        return {
-            // Identity
-            id: this.generateId('martyr', { ...record, index }), // Include index for uniqueness
-            type: 'martyr',
+        return this.toCanonical({
+            id: this.generateId('martyr', { ...record, index }),
+            date: date || '2023-10-07',
             category: 'martyrs',
+            event_type: 'killed',
 
-            // Personal Info
-            name: name,
+            location: { name: 'Gaza', region: 'Gaza Strip', precision: 'region' },
+
+            metrics: { killed: 1, unit: 'persons' },
+
+            description: [name, sex, age ? `age ${age}` : null].filter(Boolean).join(', '),
+
+            // Martyr-specific supplemental fields (not in canonical but preserved)
+            name,
             name_ar: record.ar_name || record.name || null,
             name_en: record.en_name || null,
-            age: age,
-            sex: sex,
+            age,
+            sex,
             dob: record.dob || null,
 
-            // Temporal
-            date_of_death: date || 'Unknown',
-            date: date || 'Unknown', // Required for partitioning
-
-            // Spatial
-            location: {
-                name: 'Gaza',
-                region: 'Gaza Strip',
-                coordinates: null
-            },
-
-            // Provenance
             sources: [{
                 name: 'Tech4Palestine',
                 organization: 'Tech for Palestine',
+                url: 'https://data.techforpalestine.org',
+                license: 'public-domain',
                 fetched_at: new Date().toISOString(),
-                url: 'https://data.techforpalestine.org'
             }],
-
-            // Metadata
-            created_at: new Date().toISOString(),
-            updated_at: new Date().toISOString(),
-            version: 1,
-        };
+        });
     }
 
     parseAge(age) {

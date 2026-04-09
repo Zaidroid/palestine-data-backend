@@ -2,14 +2,14 @@ name: Update Data
 
 on:
   schedule:
-    - cron: '0 0 * * *' # Run daily at midnight UTC
-  workflow_dispatch: # Allow manual trigger
+    - cron: '0 0 * * *'   # Daily at midnight UTC
+  workflow_dispatch:        # Allow manual trigger
 
 jobs:
-  update-and-optimize:
+  update-and-trigger:
     runs-on: ubuntu-latest
     permissions:
-      contents: write
+      contents: read
 
     steps:
       - name: Checkout code
@@ -24,28 +24,21 @@ jobs:
       - name: Install dependencies
         run: npm ci
 
-      - name: Fetch and Process Data
+      - name: Fetch and process all data
         run: npm run update-data
         env:
-          # Add any necessary API keys here as secrets
-          # HDX_API_KEY: ${{ secrets.HDX_API_KEY }}
           CI: true
 
-      - name: Optimize Data (Clean Raw)
-        run: node scripts/clean-raw-data.js
+      - name: Check data size
+        run: du -sh public/data/ && find public/data -name "*.json" | wc -l
 
-      - name: Optimize Data (Split Large Files)
-        run: node scripts/optimize-unified-data.js
+      - name: Upload data artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: unified-data-${{ github.run_id }}
+          path: public/data/
+          retention-days: 7
 
-      - name: Optimize Search Index (Lite)
-        run: node scripts/optimize-search-index.js
-
-      - name: Check Data Size
-        run: du -sh public/data
-
-      - name: Commit and Push
-        run: |
-          git config --global user.name 'GitHub Action'
-          git config --global user.email 'action@github.com'
-          git add public/data
-          git diff --quiet && git diff --staged --quiet || (git commit -m "chore: update data [skip ci]" && git push)
+      - name: Trigger Netlify rebuild
+        if: ${{ secrets.NETLIFY_BUILD_HOOK != '' }}
+        run: curl -s -X POST "${{ secrets.NETLIFY_BUILD_HOOK }}"
