@@ -1,3 +1,57 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:f781e69d5716198ed79cdfce36d0ba7b4d0de3c2e2ecc031d72b82a9d3cd617f
-size 2680
+{
+  "name": "palestine-data-backend",
+  "version": "2.0.0",
+  "private": true,
+  "description": "Unified open-data API for Palestine — West Bank, Gaza, East Jerusalem (1948–present)",
+  "type": "module",
+  "engines": { "node": ">=22.0.0" },
+  "scripts": {
+    "start": "node src/api/server.js",
+    "start-api": "node src/api/server.js",
+    "dev": "node --watch src/api/server.js",
+    "fetch:all": "node scripts/fetch-all-data.js",
+    "fetch:hdx": "node scripts/fetch-hdx-ckan-data.js",
+    "fetch:who": "node scripts/fetch-who-data.js",
+    "fetch:worldbank": "node scripts/fetch-worldbank-data.js",
+    "fetch:news": "node scripts/fetch-rss-feeds.js",
+    "fetch:historical": "node scripts/fetch-historical-data.js",
+    "fetch:water": "node scripts/fetch-water-data.js",
+    "fetch:infrastructure": "node scripts/fetch-infrastructure-data.js",
+    "fetch:culture": "node scripts/fetch-culture-data.js",
+    "fetch:land": "node scripts/fetch-land-data.js",
+    "fetch:pcbs": "node scripts/fetch-pcbs-data.js",
+    "fetch:goodshepherd": "node scripts/fetch-goodshepherd-data.js",
+    "transform": "node scripts/populate-unified-data.js",
+    "optimize": "node scripts/optimize-unified-data.js && node scripts/optimize-search-index.js",
+    "validate": "node scripts/validate-data.js",
+    "generate:manifest": "node scripts/generate-manifest.js",
+    "generate:search": "node scripts/generate-search-index.js",
+    "generate:analytics": "node scripts/generate-analytics.js",
+    "generate:geojson": "node scripts/generate-geojson-layers.js",
+    "update-data": "bash scripts/update-all-data.sh",
+    "lint": "eslint src scripts --ext .js",
+    "test": "node --experimental-vm-modules node_modules/.bin/jest"
+  },
+  "dependencies": {
+    "adm-zip": "^0.5.16",
+    "apicache": "^1.6.3",
+    "compression": "^1.8.1",
+    "cors": "^2.8.5",
+    "express": "^5.1.0",
+    "express-rate-limit": "^8.2.1",
+    "helmet": "^8.1.0",
+    "minisearch": "^7.2.0",
+    "morgan": "^1.10.1",
+    "papaparse": "^5.5.3",
+    "proj4": "^2.20.2",
+    "serverless-http": "^3.2.0",
+    "shapefile": "^0.6.6",
+    "swagger-jsdoc": "^6.2.8",
+    "swagger-ui-express": "^5.0.1"
+  },
+  "devDependencies": {
+    "eslint": "^9.9.0",
+    "jest": "^29.7.0",
+    "supertest": "^7.0.0"
+  }
+}

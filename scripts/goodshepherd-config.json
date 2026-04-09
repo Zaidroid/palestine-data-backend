@@ -1,3 +1,24 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:19838375691956e174feb17f3de90950ef697d7281c2e037fb5e08f32bfe7ff1
-size 4732
+{
+  "api_base": "https://goodshepherdcollective.org/api",
+  "rate_limit_ms": 1000,
+  "max_retries": 3,
+  "backoff_multiplier": 2,
+  "baseline_date": "2023-10-07",
+  "endpoints": {
+    "prisoners": "/prisoner_data.json",
+    "child_prisoners": "/child_prisoners.json",
+    "demolitions": "/home_demolitions.json",
+    "healthcare_attacks": "/healthcare_attacks.json",
+    "westbank_incidents": "/wb_data.json",
+    "ngo_data": "/ngo_data.json"
+  },
+  "fallback_files": {
+    "child_prisoners": "src/data/minors-pre.json",
+    "prisoners": "src/data/spi-pre.json"
+  },
+  "output_dir": "public/data/goodshepherd",
+  "categories": {
+    "child_prisoners": ["12 to 15 year olds", "Administrative detention", "Detention", "Female"],
+    "detention_types": ["administrative", "criminal", "military_court"]
+  }
+}
