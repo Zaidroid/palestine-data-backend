@@ -16,7 +16,20 @@ const PORT = process.env.PORT || 3000;
 initializeSearch();
 
 // Middleware
-app.use(helmet());
+app.use(helmet({
+    contentSecurityPolicy: {
+        directives: {
+            defaultSrc:    ["'self'"],
+            scriptSrc:     ["'self'", "'unsafe-inline'", "cdn.jsdelivr.net"],
+            scriptSrcElem: ["'self'", "'unsafe-inline'", "cdn.jsdelivr.net"],
+            styleSrc:      ["'self'", "'unsafe-inline'", "cdn.jsdelivr.net"],
+            imgSrc:        ["'self'", "data:", "blob:", "https:"],
+            connectSrc:    ["'self'", "http://localhost:*", "http://127.0.0.1:*"],
+            fontSrc:       ["'self'", "https:", "data:"],
+        },
+    },
+    crossOriginEmbedderPolicy: false,
+}));
 app.use(cors());
 app.use(morgan('dev'));
 app.use(express.json());

@@ -22,7 +22,9 @@ export async function readJsonFile(filePath) {
         const content = await fs.readFile(fullPath, 'utf-8');
         return JSON.parse(content);
     } catch (error) {
-        console.error(`Error reading file ${filePath}:`, error.message);
+        if (error.code !== 'ENOENT') {
+            console.error(`Error reading file ${filePath}:`, error.message);
+        }
         return null;
     }
 }

@@ -8,12 +8,11 @@ let isReady = false;
  * Initialize search index
  */
 export async function initializeSearch() {
-    console.log('Initializing search index...');
     try {
         const searchData = await getSearchIndex();
 
         if (!searchData) {
-            console.error('Failed to load search index');
+            // No search index yet — not an error, just not built
             return;
         }
 
