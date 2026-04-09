@@ -36,7 +36,7 @@ app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(specs));
 
 // Routes
 app.use('/api/v1', routes);
-app.use('/data', express.static('public/data'));
+app.use(express.static('public'));
 
 
 // 404 Handler
