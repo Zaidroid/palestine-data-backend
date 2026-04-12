@@ -1563,20 +1563,38 @@ async function processInfrastructureData() {
         if (results.success) {
             logger.success(`Processed ${results.stats.recordCount} infrastructure records`);
 
-            // Save all-data.json
+            // Load existing infrastructure data (e.g. from T4P flattening step)
+            const infraDir = path.join(UNIFIED_DIR, 'infrastructure');
+            let existingData = [];
+            try {
+                const existing = JSON.parse(await fs.readFile(path.join(infraDir, 'all-data.json'), 'utf-8'));
+                existingData = existing.data || [];
+            } catch { /* no existing data */ }
+
+            // Merge and deduplicate by id
+            const newRecords = results.enriched || [];
+            const existingIds = new Set(existingData.map(r => r.id));
+            const deduped = [
+                ...existingData,
+                ...newRecords.filter(r => !existingIds.has(r.id))
+            ];
+
+            // Save merged all-data.json
             await fs.writeFile(
-                path.join(UNIFIED_DIR, 'infrastructure', 'all-data.json'),
+                path.join(infraDir, 'all-data.json'),
                 JSON.stringify({
-                    data: results.enriched || [],
+                    data: deduped,
                     metadata: {
-                        total_records: results.stats.recordCount,
+                        total_records: deduped.length,
                         generated_at: new Date().toISOString(),
-                        source: 'TechForPalestine',
+                        sources: ['HDX', 'TechForPalestine'],
                         category: 'infrastructure'
                     }
                 }, null, 2),
                 'utf-8'
             );
+
+            logger.success(`Infrastructure merged: ${deduped.length} total records`);
         }
     } catch (error) {
         logger.error('Error processing infrastructure data:', error.message);
@@ -2149,13 +2167,36 @@ async function main() {
     // Per-category failure isolation with timing
     const report = { generated_at: new Date().toISOString(), categories: {} };
 
+    // Helper: read record count from the unified output file for a category
+    async function getOutputCount(categoryName) {
+        // Map task names to unified category directories
+        const nameMap = {
+            'infrastructure_t4p': 'infrastructure',
+            'press': 'conflict',
+            'goodshepherd_health': 'health',
+            'goodshepherd': null, // contributes to multiple categories
+            'static_refugees': 'refugees',
+            'static_prisoners': 'prisoners',
+            'nakba': 'historical',
+            'btselem': 'conflict',
+        };
+        const dirName = nameMap[categoryName] !== undefined ? nameMap[categoryName] : categoryName;
+        if (!dirName) return null;
+        try {
+            const filePath = path.join(UNIFIED_DIR, dirName, 'all-data.json');
+            const content = JSON.parse(await fs.readFile(filePath, 'utf-8'));
+            return (content.data || []).length;
+        } catch { return null; }
+    }
+
     for (const task of tasks) {
         const t0 = Date.now();
         try {
-            const result = await task.fn();
+            await task.fn();
+            const count = await getOutputCount(task.name);
             report.categories[task.name] = {
                 status: 'ok',
-                records: result?.count ?? null,
+                records: count,
                 duration_ms: Date.now() - t0,
             };
             logger.success(`[${task.name}] done`);
