@@ -24,8 +24,8 @@ describe('ConflictTransformer', () => {
         expect(record).toHaveProperty('date', '2023-10-07');
         expect(record.location).toHaveProperty('name', 'Gaza'); // Location is an object
         expect(record).toHaveProperty('category', 'conflict');
-        expect(record).toHaveProperty('fatalities', 100);
-        expect(record).toHaveProperty('injuries', 200);
+        expect(record.metrics).toHaveProperty('killed', 100);
+        expect(record.metrics).toHaveProperty('injured', 200);
     });
 
     it('should handle missing fields gracefully', () => {
@@ -39,6 +39,6 @@ describe('ConflictTransformer', () => {
         const record = output[0];
 
         expect(record).toHaveProperty('date', '2023-10-07');
-        expect(record).toHaveProperty('fatalities', 0);
+        expect(record.metrics).toHaveProperty('killed', 0);
     });
 });

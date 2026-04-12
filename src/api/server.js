@@ -5,9 +5,15 @@ import morgan from 'morgan';
 import compression from 'compression';
 import rateLimit from 'express-rate-limit';
 import swaggerUi from 'swagger-ui-express';
+import path from 'path';
+import { fileURLToPath } from 'url';
 import { specs } from './config/swagger.js';
 import { initializeSearch } from './services/searchService.js';
 import routes from './routes/index.js';
+
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
+const PUBLIC_DIR = path.resolve(__dirname, '../../public');
 
 const app = express();
 const PORT = process.env.PORT || 3000;
@@ -20,12 +26,15 @@ app.use(helmet({
     contentSecurityPolicy: {
         directives: {
             defaultSrc:    ["'self'"],
-            scriptSrc:     ["'self'", "'unsafe-inline'", "cdn.jsdelivr.net"],
-            scriptSrcElem: ["'self'", "'unsafe-inline'", "cdn.jsdelivr.net"],
-            styleSrc:      ["'self'", "'unsafe-inline'", "cdn.jsdelivr.net"],
-            imgSrc:        ["'self'", "data:", "blob:", "https:"],
-            connectSrc:    ["'self'", "http://localhost:*", "http://127.0.0.1:*"],
-            fontSrc:       ["'self'", "https:", "data:"],
+            scriptSrc:     ["'self'", "'unsafe-inline'", "'unsafe-eval'", "cdn.jsdelivr.net", "unpkg.com"],
+            scriptSrcElem: ["'self'", "'unsafe-inline'", "'unsafe-eval'", "cdn.jsdelivr.net", "unpkg.com"],
+            styleSrc:      ["'self'", "'unsafe-inline'", "cdn.jsdelivr.net", "unpkg.com", "fonts.googleapis.com"],
+            styleSrcElem:  ["'self'", "'unsafe-inline'", "cdn.jsdelivr.net", "unpkg.com", "fonts.googleapis.com"],
+            imgSrc:        ["'self'", "data:", "blob:", "https:", "http:"],
+            connectSrc:    ["'self'", "http://localhost:*", "http://127.0.0.1:*", "https://cdn.jsdelivr.net", "https://unpkg.com"],
+            fontSrc:       ["'self'", "https:", "data:", "fonts.gstatic.com"],
+            workerSrc:     ["'self'", "blob:"],
+            childSrc:      ["'self'", "blob:"],
         },
     },
     crossOriginEmbedderPolicy: false,

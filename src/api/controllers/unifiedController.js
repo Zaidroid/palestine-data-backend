@@ -197,10 +197,23 @@ export async function getSummary(req, res) {
         }
 
         // Aggregate metrics and group-bys
+        const _maxByRegion = {};
         for (const item of data) {
             const m = item.metrics || {};
-            summary.metrics_totals.killed += m.killed || 0;
-            summary.metrics_totals.injured += m.injured || 0;
+            const killed = m.killed || item.fatalities || 0;
+            const injured = m.injured || item.injuries || 0;
+
+            // For conflict: fatalities are cumulative (max per region)
+            if (category === 'conflict') {
+                const region = item.location?.region || 'Unknown';
+                if (!_maxByRegion[region]) _maxByRegion[region] = { killed: 0, injured: 0 };
+                _maxByRegion[region].killed = Math.max(_maxByRegion[region].killed, killed);
+                _maxByRegion[region].injured = Math.max(_maxByRegion[region].injured, injured);
+            } else {
+                summary.metrics_totals.killed += killed;
+                summary.metrics_totals.injured += injured;
+            }
+
             summary.metrics_totals.displaced += m.displaced || 0;
             summary.metrics_totals.affected += m.affected || 0;
             summary.metrics_totals.demolished += m.demolished || 0;
@@ -212,6 +225,13 @@ export async function getSummary(req, res) {
 
             const etKey = item.event_type || 'unknown';
             summary.by_event_type[etKey] = (summary.by_event_type[etKey] || 0) + 1;
+        }
+
+        if (category === 'conflict') {
+            for (const r of Object.values(_maxByRegion)) {
+                summary.metrics_totals.killed += r.killed;
+                summary.metrics_totals.injured += r.injured;
+            }
         }
 
         res.json(summary);
@@ -248,27 +268,67 @@ export async function getTimeseries(req, res) {
 
         // Build time buckets
         const buckets = {};
-        for (const item of data) {
-            const d = new Date(item.date);
-            let key;
-            if (interval === 'year') {
-                key = `${d.getUTCFullYear()}`;
-            } else if (interval === 'week') {
-                // ISO week
-                const dayOfYear = Math.floor((d - new Date(d.getUTCFullYear(), 0, 0)) / 86400000);
-                const week = Math.ceil(dayOfYear / 7);
-                key = `${d.getUTCFullYear()}-W${week.toString().padStart(2, '0')}`;
-            } else {
-                // default: month
-                key = `${d.getUTCFullYear()}-${(d.getUTCMonth() + 1).toString().padStart(2, '0')}`;
+        const isCumulative = category === 'conflict' && (metric === 'killed' || metric === 'injured');
+
+        if (isCumulative) {
+            // For cumulative data: find max value per region per time bucket
+            const regionBuckets = {}; // { region: { period: maxVal } }
+            for (const item of data) {
+                const d = new Date(item.date);
+                let key;
+                if (interval === 'year') key = `${d.getUTCFullYear()}`;
+                else if (interval === 'week') {
+                    const dayOfYear = Math.floor((d - new Date(d.getUTCFullYear(), 0, 0)) / 86400000);
+                    key = `${d.getUTCFullYear()}-W${Math.ceil(dayOfYear / 7).toString().padStart(2, '0')}`;
+                } else {
+                    key = `${d.getUTCFullYear()}-${(d.getUTCMonth() + 1).toString().padStart(2, '0')}`;
+                }
+
+                let metricVal = item.metrics?.[metric] ?? 0;
+                if (metricVal === 0 && metric === 'killed') metricVal = item.fatalities ?? 0;
+                if (metricVal === 0 && metric === 'injured') metricVal = item.injuries ?? 0;
+
+                const region = item.location?.region || 'Unknown';
+                if (!regionBuckets[region]) regionBuckets[region] = {};
+                regionBuckets[region][key] = Math.max(regionBuckets[region][key] || 0, metricVal);
+
+                if (!buckets[key]) buckets[key] = { date: key, value: 0, count: 0 };
+                buckets[key].count += 1;
             }
+            // Sum max values across regions for each period, then compute deltas
+            const allKeys = Object.keys(buckets).sort();
+            for (const key of allKeys) {
+                let totalForPeriod = 0;
+                for (const region of Object.keys(regionBuckets)) {
+                    totalForPeriod += regionBuckets[region][key] || 0;
+                }
+                buckets[key].value = totalForPeriod;
+            }
+            // Convert from cumulative to delta
+            for (let i = allKeys.length - 1; i > 0; i--) {
+                buckets[allKeys[i]].value = Math.max(0, buckets[allKeys[i]].value - buckets[allKeys[i - 1]].value);
+            }
+        } else {
+            for (const item of data) {
+                const d = new Date(item.date);
+                let key;
+                if (interval === 'year') key = `${d.getUTCFullYear()}`;
+                else if (interval === 'week') {
+                    const dayOfYear = Math.floor((d - new Date(d.getUTCFullYear(), 0, 0)) / 86400000);
+                    key = `${d.getUTCFullYear()}-W${Math.ceil(dayOfYear / 7).toString().padStart(2, '0')}`;
+                } else {
+                    key = `${d.getUTCFullYear()}-${(d.getUTCMonth() + 1).toString().padStart(2, '0')}`;
+                }
 
-            if (!buckets[key]) buckets[key] = { date: key, value: 0, count: 0 };
+                if (!buckets[key]) buckets[key] = { date: key, value: 0, count: 0 };
 
-            // Accumulate the requested metric
-            const metricVal = item.metrics?.[metric] ?? item[metric] ?? 0;
-            buckets[key].value += typeof metricVal === 'number' ? metricVal : 0;
-            buckets[key].count += 1;
+                let metricVal = item.metrics?.[metric] ?? 0;
+                if (metricVal === 0 && metric === 'killed') metricVal = item.fatalities ?? 0;
+                if (metricVal === 0 && metric === 'injured') metricVal = item.injuries ?? 0;
+                if (metricVal === 0) metricVal = item[metric] ?? 0;
+                buckets[key].value += typeof metricVal === 'number' ? metricVal : 0;
+                buckets[key].count += 1;
+            }
         }
 
         const series = Object.values(buckets).sort((a, b) => a.date.localeCompare(b.date));

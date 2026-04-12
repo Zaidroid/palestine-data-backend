@@ -1,0 +1,63 @@
+{
+  "dataset": "UNRWA Registered Refugees",
+  "source": "UNRWA",
+  "year": 2023,
+  "data": [
+    {
+      "date": "2023-01-01",
+      "location": "Gaza Strip",
+      "camp": "Jabalia",
+      "refugees": 116011,
+      "facilities": { "schools": 16, "health_centers": 1 }
+    },
+    {
+      "date": "2023-01-01",
+      "location": "Gaza Strip",
+      "camp": "Rafah",
+      "refugees": 133326,
+      "facilities": { "schools": 15, "health_centers": 1 }
+    },
+    {
+      "date": "2023-01-01",
+      "location": "Gaza Strip",
+      "camp": "Beach (Shati)",
+      "refugees": 90173,
+      "facilities": { "schools": 15, "health_centers": 1 }
+    },
+    {
+      "date": "2023-01-01",
+      "location": "West Bank",
+      "camp": "Balata",
+      "refugees": 38166,
+      "facilities": { "schools": 4, "health_centers": 1 }
+    },
+    {
+      "date": "2023-01-01",
+      "location": "West Bank",
+      "camp": "Jenin",
+      "refugees": 23628,
+      "facilities": { "schools": 4, "health_centers": 1 }
+    },
+    {
+      "date": "2023-01-01",
+      "location": "Lebanon",
+      "camp": "Ain al-Hilweh",
+      "refugees": 61168,
+      "facilities": { "schools": 8, "health_centers": 2 }
+    },
+    {
+      "date": "2023-01-01",
+      "location": "Jordan",
+      "camp": "Baqa'a",
+      "refugees": 119860,
+      "facilities": { "schools": 16, "health_centers": 2 }
+    },
+    {
+      "date": "2023-01-01",
+      "location": "Syria",
+      "camp": "Yarmouk",
+      "refugees": 160000,
+      "facilities": { "schools": 28, "health_centers": 3 }
+    }
+  ]
+}

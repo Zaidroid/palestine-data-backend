@@ -1,9 +1,33 @@
 services:
   api:
     build: .
+    container_name: palestine-data-api
     ports:
-      - "3000:7860"
+      - "7860:7860"
     environment:
       - PORT=7860
+      - ALERTS_API_URL=http://alerts:8080
     volumes:
       - ./public/data:/app/public/data
+    depends_on:
+      - alerts
+
+  alerts:
+    build: 
+      context: ./services/westbank-alerts
+    container_name: params-alerts-api
+    restart: unless-stopped
+    ports:
+      - "8080:8080"
+    volumes:
+      - ./services/westbank-alerts/data:/data
+      - ./services/westbank-alerts/session:/session
+    env_file: ./services/westbank-alerts/.env
+    environment:
+      - DB_PATH=/data/alerts.db
+      - TELEGRAM_SESSION_DIR=/session
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:8080/health"]
+      interval: 30s
+      timeout: 10s
+      retries: 3

@@ -1,0 +1,41 @@
+{
+  "dataset": "Palestinian Prisoner Statistics",
+  "source": "Addameer / PCBS",
+  "data": [
+    {
+      "date": "2023-10-01",
+      "total_prisoners": 5200,
+      "administrative_detainees": 1200,
+      "child_prisoners": 170,
+      "female_prisoners": 35
+    },
+    {
+      "date": "2023-11-01",
+      "total_prisoners": 7000,
+      "administrative_detainees": 2070,
+      "child_prisoners": 200,
+      "female_prisoners": 72
+    },
+    {
+      "date": "2023-12-01",
+      "total_prisoners": 7800,
+      "administrative_detainees": 2870,
+      "child_prisoners": 250,
+      "female_prisoners": 80
+    },
+    {
+      "date": "2024-01-01",
+      "total_prisoners": 8800,
+      "administrative_detainees": 3290,
+      "child_prisoners": 250,
+      "female_prisoners": 90
+    },
+    {
+      "date": "2024-04-01",
+      "total_prisoners": 9500,
+      "administrative_detainees": 3660,
+      "child_prisoners": 200,
+      "female_prisoners": 80
+    }
+  ]
+}

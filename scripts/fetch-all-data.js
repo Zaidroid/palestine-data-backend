@@ -891,6 +891,42 @@ async function main() {
         description: 'Historical Data Collection',
         required: false,
       },
+      {
+        name: 'BTselem',
+        path: path.join(__dirname, 'fetch-btselem-data.js'),
+        description: "B'Tselem Rights Data Collection",
+        required: false,
+      },
+      {
+        name: 'Nakba',
+        path: path.join(__dirname, 'fetch-nakba-data.js'),
+        description: 'Nakba Historical Documentation',
+        required: false,
+      },
+      {
+        name: 'Westbank',
+        path: path.join(__dirname, 'fetch-westbank-data.js'),
+        description: 'Static Westbank Checkpoints/Settlements Collection',
+        required: false,
+      },
+      {
+        name: 'Prisoners',
+        path: path.join(__dirname, 'fetch-prisoner-statistics.js'),
+        description: 'Prisoner Statistics',
+        required: false,
+      },
+      {
+        name: 'HistoricalConflicts',
+        path: path.join(__dirname, 'fetch-historical-conflicts.js'),
+        description: 'Historical Conflicts Data',
+        required: false,
+      },
+      {
+        name: 'Intifada',
+        path: path.join(__dirname, 'fetch-intifada-data.js'),
+        description: 'Intifada Historical Record',
+        required: false,
+      },
       // UNRWA removed - data sources broken/outdated (see scripts/UNRWA_DISABLED.md)
     ];
 

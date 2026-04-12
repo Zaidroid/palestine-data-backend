@@ -65,8 +65,7 @@ async function processEconomicData() {
         try {
             await fs.access(allIndicatorsPath);
         } catch {
-            logger.warn('World Bank data not found, skipping economic data');
-            return;
+            throw new Error('World Bank data not found, skipping economic data');
         }
 
         const fileContent = JSON.parse(await fs.readFile(allIndicatorsPath, 'utf-8'));
@@ -159,8 +158,7 @@ async function processConflictData() {
         try {
             await fs.access(summaryPath);
         } catch {
-            logger.warn('Tech4Palestine data not found, skipping conflict data');
-            return;
+            throw new Error('Tech4Palestine data not found, skipping conflict data');
         }
 
         const dataArray = [];
@@ -317,8 +315,7 @@ async function processTech4PalestineInfrastructure() {
         try {
             await fs.access(infraDir);
         } catch {
-            logger.warn('Tech4Palestine infrastructure data not found, skipping');
-            return;
+            throw new Error('Tech4Palestine infrastructure data not found, skipping');
         }
 
         const dataArray = [];
@@ -463,7 +460,9 @@ async function processPressData() {
 
         try {
             await fs.access(pressPath);
-        } catch { return; }
+        } catch { 
+            throw new Error('Tech4Palestine press data not found, skipping');
+        }
 
         const content = JSON.parse(await fs.readFile(pressPath, 'utf-8'));
         const rawData = content.data || content;
@@ -474,10 +473,24 @@ async function processPressData() {
 
         // Map to conflict records
         const conflictRecords = rawData.map(record => {
-            // Attempt to extract date from notes or default to Unknown
-            // Note: This is a best-effort extraction
+            // Attempt to extract date from notes
+            let extractedDate = '2023-10-07'; // Fallback
+            let isExact = false;
+            if (record.notes) {
+                // Regex for formats like "Oct 13, 2023", "October 13, 2023", "2023-10-13"
+                const dateMatch = record.notes.match(/\\b(?:Jan(?:uary)?|Feb(?:ruary)?|Mar(?:ch)?|Apr(?:il)?|May|Jun(?:e)?|Jul(?:y)?|Aug(?:ust)?|Sep(?:tember)?|Oct(?:ober)?|Nov(?:ember)?|Dec(?:ember)?)\\s+\\d{1,2}(?:st|nd|rd|th)?,?\\s+\\d{4}\\b/i) || record.notes.match(/\\b\\d{4}-\\d{2}-\\d{2}\\b/);
+                if (dateMatch) {
+                    const parsedDate = new Date(dateMatch[0]);
+                    if (!isNaN(parsedDate.getTime())) {
+                        extractedDate = parsedDate.toISOString().split('T')[0];
+                        isExact = true;
+                    }
+                }
+            }
+            
             return {
-                date: '2023-10-07', // Default start date if unknown, or mark as Unknown
+                date: extractedDate,
+                date_precision: isExact ? 'day' : 'unknown',
                 event_type: 'killing of journalist',
                 fatalities: 1,
                 injuries: 0,
@@ -550,7 +563,9 @@ async function processMartyrsData() {
 
         try {
             await fs.access(killedDir);
-        } catch { return; }
+        } catch { 
+            throw new Error('Tech4Palestine martyrs directory not found, skipping');
+        }
 
         const dataArray = [];
         const indexPath = path.join(killedDir, 'index.json');
@@ -651,8 +666,7 @@ async function processHDXData() {
             try {
                 await fs.access(hdxCategoryDir);
             } catch {
-                logger.warn(`HDX ${category.name} directory not found, skipping`);
-                continue;
+                throw new Error(`HDX ${category.name} directory not found, skipping`);
             }
 
             // Read all subdirectories in the category
@@ -681,7 +695,12 @@ async function processHDXData() {
                     try {
                         const dataPath = path.join(datasetPath, dataFile);
                         const fileContent = JSON.parse(await fs.readFile(dataPath, 'utf-8'));
-                        const data = fileContent.data || (Array.isArray(fileContent) ? fileContent : []);
+                        let data = [];
+                        if (fileContent?.data?.data?.results && Array.isArray(fileContent.data.data.results)) {
+                            data = fileContent.data.data.results; // Fix for hrp-projects-pse nested structure
+                        } else {
+                            data = fileContent.data || (Array.isArray(fileContent) ? fileContent : []);
+                        }
 
                         if (Array.isArray(data) && data.length > 0) {
                             allData = allData.concat(data);
@@ -811,8 +830,7 @@ async function processPCBSData() {
         try {
             await fs.access(allIndicatorsPath);
         } catch {
-            logger.warn('PCBS data not found, skipping');
-            return;
+            throw new Error('PCBS data not found, skipping');
         }
 
         const fileContent = JSON.parse(await fs.readFile(allIndicatorsPath, 'utf-8'));
@@ -897,8 +915,7 @@ async function processNewsData() {
         try {
             await fs.access(allArticlesPath);
         } catch {
-            logger.warn('News data not found, skipping');
-            return;
+            throw new Error('News data not found, skipping');
         }
 
         const fileContent = JSON.parse(await fs.readFile(allArticlesPath, 'utf-8'));
@@ -979,8 +996,7 @@ async function processWHOData() {
         try {
             await fs.access(whoDatasetDir);
         } catch {
-            logger.warn('WHO data directory not found, skipping');
-            return;
+            throw new Error('WHO data directory not found, skipping');
         }
 
         // Read all raw WHO files
@@ -1113,8 +1129,7 @@ async function processGoodShepherdHealthcare() {
         try {
             await fs.access(gsDir);
         } catch {
-            logger.warn('GoodShepherd healthcare data not found, skipping');
-            return;
+            throw new Error('GoodShepherd healthcare data not found, skipping');
         }
 
         // Find all JSON files
@@ -1205,8 +1220,7 @@ async function processCultureData() {
         try {
             await fs.access(heritageFile);
         } catch {
-            logger.warn('Cultural heritage data not found, skipping');
-            return;
+            throw new Error('Cultural heritage data not found, skipping');
         }
 
         const fileContent = JSON.parse(await fs.readFile(heritageFile, 'utf-8'));
@@ -1293,8 +1307,7 @@ async function processLandData() {
         try {
             await fs.access(landDir);
         } catch {
-            logger.warn('Land data not found, skipping');
-            return;
+            throw new Error('Land data not found, skipping');
         }
 
         const allData = [];
@@ -1452,8 +1465,7 @@ async function processWaterData() {
         try {
             await fs.access(washDataPath);
         } catch {
-            logger.warn('Water data not found, skipping');
-            return;
+            throw new Error('Water data not found, skipping');
         }
 
         const fileContent = JSON.parse(await fs.readFile(washDataPath, 'utf-8'));
@@ -1518,8 +1530,7 @@ async function processInfrastructureData() {
         try {
             await fs.access(infraDataPath);
         } catch {
-            logger.warn('Infrastructure data not found, skipping');
-            return;
+            throw new Error('Infrastructure data not found, skipping');
         }
 
         const fileContent = JSON.parse(await fs.readFile(infraDataPath, 'utf-8'));
@@ -1661,6 +1672,10 @@ async function processWestBankData() {
     const westbankDir = path.join(DATA_DIR, 'westbank');
     const pipeline = new UnifiedPipeline({ logger });
 
+    let schoolsResults = null;
+    let villagesResults = null;
+    let barrierResults = null;
+
     try {
         // Process Schools
         const schoolsPath = path.join(westbankDir, 'education/schools/raw-data.json');
@@ -1668,7 +1683,7 @@ async function processWestBankData() {
             const schoolsData = JSON.parse(await fs.readFile(schoolsPath, 'utf-8'));
             const schoolsTransformer = new WestBankSchoolsTransformer();
 
-            const schoolsResults = await pipeline.process(
+            schoolsResults = await pipeline.process(
                 schoolsData,
                 { source: 'HDX', category: 'education', dataset: 'west-bank-schools' },
                 schoolsTransformer,
@@ -1717,7 +1732,7 @@ async function processWestBankData() {
             const villagesData = JSON.parse(await fs.readFile(villagesPath, 'utf-8'));
             const villagesTransformer = new WestBankVillagesTransformer();
 
-            const villagesResults = await pipeline.process(
+            villagesResults = await pipeline.process(
                 villagesData,
                 { source: 'HDX', category: 'infrastructure', dataset: 'west-bank-villages' },
                 villagesTransformer,
@@ -1766,7 +1781,7 @@ async function processWestBankData() {
             const barrierData = JSON.parse(await fs.readFile(barrierPath, 'utf-8'));
             const barrierTransformer = new WestBankBarrierTransformer();
 
-            const barrierResults = await pipeline.process(
+            barrierResults = await pipeline.process(
                 barrierData,
                 { source: 'HDX', category: 'infrastructure', dataset: 'west-bank-barrier' },
                 barrierTransformer,
@@ -1807,6 +1822,31 @@ async function processWestBankData() {
             }
         } catch (error) {
             logger.warn(`Could not process West Bank barrier: ${error.message}`);
+        }
+
+        // --- Save the Unified West Bank Category JSON ---
+        const wbMerged = [
+            ...(schoolsResults?.enriched || []),
+            ...(villagesResults?.enriched || []),
+            ...(barrierResults?.enriched || [])
+        ];
+        if (wbMerged.length > 0) {
+            const outPath = path.join(UNIFIED_DIR, 'westbank', 'all-data.json');
+            await fs.mkdir(path.dirname(outPath), { recursive: true });
+            await fs.writeFile(
+                outPath,
+                JSON.stringify({
+                    data: wbMerged,
+                    metadata: {
+                        total_records: wbMerged.length,
+                        generated_at: new Date().toISOString(),
+                        source: 'HDX/Westbank',
+                        category: 'westbank'
+                    }
+                }, null, 2),
+                'utf-8'
+            );
+            logger.success(`[OK] Saved unified West Bank data collection: ${wbMerged.length} records`);
         }
 
     } catch (error) {
@@ -1925,8 +1965,7 @@ async function processNakbaData() {
         try {
             await fs.access(nakbaPath);
         } catch {
-            logger.warn('Nakba data not found, skipping');
-            return;
+            throw new Error('Nakba data not found, skipping');
         }
 
         const rawData = JSON.parse(await fs.readFile(nakbaPath, 'utf-8'));
@@ -2000,8 +2039,7 @@ async function processBtselemData() {
         try {
             await fs.access(dataPath);
         } catch {
-            logger.warn('B\'Tselem data not found, skipping');
-            return;
+            throw new Error('B\'Tselem data not found, skipping');
         }
 
         const rawData = JSON.parse(await fs.readFile(dataPath, 'utf-8'));
@@ -2095,6 +2133,8 @@ async function main() {
         { name: 'pcbs',                fn: processPCBSData },
         { name: 'goodshepherd_health', fn: processGoodShepherdHealthcare },
         { name: 'goodshepherd',        fn: processGoodShepherdData },
+        { name: 'static_refugees',     fn: processStaticRefugeesData },
+        { name: 'static_prisoners',    fn: processStaticPrisonersData },
         { name: 'news',                fn: processNewsData },
         { name: 'culture',             fn: processCultureData },
         { name: 'land',                fn: processLandData },
@@ -2175,6 +2215,113 @@ async function main() {
 main();
 
 /**
+ * Process Static Refugees Data (Fallback for UNRWA API)
+ */
+async function processStaticRefugeesData() {
+    logger.info('Processing static Refugees data...');
+    try {
+        const filePath = path.join(DATA_DIR, 'static', 'unrwa-refugees.json');
+        const content = JSON.parse(await fs.readFile(filePath, 'utf-8'));
+        const records = content.data || [];
+        
+        if (records.length === 0) return;
+
+        const { RefugeeTransformer } = await import('./utils/hdx-transformers.js');
+        const transformer = new RefugeeTransformer();
+        const pipeline = new UnifiedPipeline({ logger });
+        
+        // Map to format the RefugeeTransformer expects (HDX format uses slightly different keys)
+        const mappedRecords = records.map(r => ({
+            date: r.date,
+            location: r.camp,
+            governorate: r.location,
+            refugees: r.refugees,
+            type: 'camp_population'
+        }));
+
+        const results = await pipeline.process(
+            mappedRecords,
+            { source: 'UNRWA', category: 'refugees' },
+            transformer,
+            { enrich: true, validate: true, partition: true, outputDir: path.join(UNIFIED_DIR, 'refugees') }
+        );
+
+        if (results.success) {
+            const outPath = path.join(UNIFIED_DIR, 'refugees', 'all-data.json');
+            await fs.mkdir(path.dirname(outPath), { recursive: true });
+            await fs.writeFile(
+                outPath,
+                JSON.stringify({
+                    data: results.enriched || [],
+                    metadata: {
+                        total_records: results.stats.recordCount,
+                        generated_at: new Date().toISOString(),
+                        source: 'UNRWA',
+                        category: 'refugees'
+                    }
+                }, null, 2),
+                'utf-8'
+            );
+            logger.success(`Processed and saved ${results.stats.recordCount} static refugee records`);
+        }
+    } catch (e) {
+        logger.warn('Error processing static refugees data:', e.message);
+    }
+}
+
+/**
+ * Process Static Prisoners Data (Fallback for GoodShepherd API)
+ */
+async function processStaticPrisonersData() {
+    logger.info('Processing static Prisoners data...');
+    try {
+        const filePath = path.join(DATA_DIR, 'static', 'prisoners-statistics.json');
+        const content = JSON.parse(await fs.readFile(filePath, 'utf-8'));
+        const records = content.data || [];
+        
+        if (records.length === 0) return;
+
+        const { GoodShepherdTransformer } = await import('./utils/goodshepherd-transformer.js');
+        const transformer = new GoodShepherdTransformer();
+        const pipeline = new UnifiedPipeline({ logger });
+        
+        const mappedRecords = records.map(r => ({
+            ...r,
+            _gs_category: 'prisoners',
+            source_file: 'prisoners-statistics.json'
+        }));
+
+        const results = await pipeline.process(
+            mappedRecords,
+            { source: 'Addameer', category: 'prisoners' },
+            transformer,
+            { enrich: true, validate: true, partition: true, outputDir: path.join(UNIFIED_DIR, 'prisoners') }
+        );
+
+        if (results.success) {
+            const outPath = path.join(UNIFIED_DIR, 'prisoners', 'all-data.json');
+            await fs.mkdir(path.dirname(outPath), { recursive: true });
+            await fs.writeFile(
+                outPath,
+                JSON.stringify({
+                    data: results.enriched || [],
+                    metadata: {
+                        total_records: results.stats.recordCount,
+                        generated_at: new Date().toISOString(),
+                        source: 'Addameer',
+                        category: 'prisoners'
+                    }
+                }, null, 2),
+                'utf-8'
+            );
+            logger.success(`Processed and saved ${results.stats.recordCount} static prisoner records`);
+        }
+    } catch (e) {
+        logger.warn('Error processing static prisoners data:', e.message);
+    }
+}
+
+/**
  * Process Good Shepherd Data
  */
 async function processGoodShepherdData() {
@@ -2185,8 +2332,7 @@ async function processGoodShepherdData() {
         try {
             await fs.access(gsDir);
         } catch {
-            logger.warn('Good Shepherd data directory not found, skipping');
-            return;
+            throw new Error('Good Shepherd data directory not found, skipping');
         }
 
         const categories = ['prisoners', 'healthcare', 'ngo'];

@@ -25,7 +25,7 @@ export class InfrastructureTransformer extends BaseTransformer {
 
         // For this implementation, we'll transform all records to allow for time-series analysis
         return records
-            .filter(record => record && record.report_date)
+            .filter(record => record && (record.report_date || record.date))
             .map((record, index) => this.transformRecord(record, metadata, index));
     }
 
@@ -34,23 +34,18 @@ export class InfrastructureTransformer extends BaseTransformer {
      * (One for each category: Housing, Roads, Public Buildings, etc.)
      */
     transformRecord(record, metadata, index) {
-        const date = record.report_date;
-        const baseId = `infra-${date}`;
+        const date = record.date || record.report_date;
 
-        // We'll create a composite record for the daily summary
-        // In a more granular system, we might split this into separate features
-
-        const housing_destroyed = record.housing_units_destroyed || 0;
-        const housing_damaged   = record.housing_units_damaged   || 0;
+        const value = parseInt(record.value || record.housing_units_destroyed || 0);
 
         return this.toCanonical({
-            id: this.generateId('infrastructure', { date, type: 'daily_summary' }),
+            id: this.generateId('infrastructure', { date, type: record.type || 'daily_summary' }),
             date,
             category: 'infrastructure',
             event_type: 'infrastructure_damage',
 
             location: {
-                name: 'Gaza Strip',
+                name: record.location || 'Gaza Strip',
                 region: 'Gaza Strip',
                 lat: 31.5,
                 lon: 34.466667,
@@ -58,23 +53,18 @@ export class InfrastructureTransformer extends BaseTransformer {
             },
 
             metrics: {
-                demolished: housing_destroyed,
-                affected:   housing_destroyed + housing_damaged,
-                count:      housing_destroyed + housing_damaged,
-                unit: 'housing_units',
+                demolished: record.damage_level === 'destroyed' ? value : 0,
+                affected: value,
+                count: value,
+                unit: record.unit || 'units',
             },
 
-            description: `Daily infrastructure report: ${housing_destroyed} housing units destroyed, ${housing_damaged} damaged`,
+            description: `Infrastructure damage: ${value} ${record.unit || 'units'} of ${record.type || 'infrastructure'} ${record.damage_level || 'damaged'}`,
 
             // Supplemental detail fields
             infrastructure_detail: {
-                housing_destroyed,
-                housing_damaged,
-                government_buildings_destroyed: record.government_buildings_destroyed || 0,
-                schools_destroyed: record.schools_destroyed || 0,
-                schools_damaged:   record.schools_damaged   || 0,
-                mosques_destroyed: record.mosques_destroyed || 0,
-                hospitals_out_of_service: record.hospitals_out_of_service || 0,
+                type: record.type || 'unknown',
+                damage_level: record.damage_level || 'unknown'
             },
 
             sources: [{
