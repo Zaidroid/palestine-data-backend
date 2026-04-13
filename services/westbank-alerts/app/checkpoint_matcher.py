@@ -32,18 +32,22 @@ log = logging.getLogger("checkpoint_matcher")
 
 # Context words that indicate status when checkpoint name is found
 CONTEXT_STATUS = {
-    # Military / police
-    "تفتيش":    "military",
-    "حاجز":     "military",
-    "جيش":      "military",
-    "عسكر":     "military",
-    "شرطه":     "military",
-    "شرطة":     "military",
-    "سيارات":   "military",
-    "تواجد":    "military",
-    "محجوزين":  "military",
-    "مداهمه":   "military",
-    "مداهمة":   "military",
+    # IDF / army presence
+    "جيش":      "idf",
+    "عسكر":     "idf",
+    "تواجد":    "idf",
+    "حاجز":     "idf",
+    "سيارات":   "idf",
+    "محجوزين":  "idf",
+    "مداهمه":   "idf",
+    "مداهمة":   "idf",
+    # Israeli police
+    "شرطه":     "police",
+    "شرطة":     "police",
+    "دوريه":    "police",
+    "دورية":    "police",
+    # Inspection
+    "تفتيش":    "inspection",
     # Clear / open indicators
     "نظيف":     "open",
     "فكو":      "open",
@@ -80,9 +84,10 @@ CONTEXT_STATUS = {
     "بدون":     "open",  # بدون جيش = no military = open
 }
 
-# Emoji to status (for 🛑 which isn't in the main parser)
+# Emoji to status (for extra emojis not in main parser)
 EXTRA_EMOJI_STATUS = {
-    "🛑": "military",
+    "🛑": "closed",   # stop sign — blocking/warning, defaults to closed
+    "🚔": "police",
 }
 
 # Negation patterns
@@ -458,8 +463,8 @@ def match_message(text: str, index: CheckpointIndex = None) -> list[dict]:
                 )
 
                 if status:
-                    dir_str = direction or ""
-                    dedup_key = f"{match['canonical_key']}:{dir_str}"
+                    direction = direction or "both"
+                    dedup_key = f"{match['canonical_key']}:{direction}"
                     if dedup_key not in seen_keys:
                         results.append({
                             "canonical_key": match["canonical_key"],

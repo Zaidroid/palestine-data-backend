@@ -5,12 +5,15 @@ from enum import Enum
 
 
 class CheckpointStatus(str, Enum):
-    open      = "open"
-    closed    = "closed"
-    congested = "congested"
-    slow      = "slow"
-    military  = "military"
-    unknown   = "unknown"
+    open       = "open"
+    closed     = "closed"
+    congested  = "congested"
+    slow       = "slow"
+    idf        = "idf"         # IDF / army presence (جيش، عسكر، حاجز طيار)
+    police     = "police"      # Israeli police presence (شرطة، دورية)
+    inspection = "inspection"  # Active search / ID checks (تفتيش، تفتيش هويات)
+    military   = "military"    # Deprecated — kept for old data compatibility
+    unknown    = "unknown"
 
 
 class CheckpointType(str, Enum):

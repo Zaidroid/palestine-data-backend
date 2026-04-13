@@ -27,7 +27,7 @@ from .checkpoint_parser import (
     STATUS_MAP, FILLER_WORDS, make_canonical_key, parse_message, is_admin_message,
 )
 from .checkpoint_matcher import CheckpointIndex, get_index, _is_clean_name
-from .checkpoint_db import insert_vocab_discovery
+from .checkpoint_db import insert_vocab_discovery, get_learned_vocab, promote_vocab
 from .db_pool import get_checkpoint_db
 
 log = logging.getLogger("learner")
@@ -37,6 +37,28 @@ DIRECTORY_MIN_MENTIONS = 3
 
 # Minimum co-occurrence count before a word is written as a vocab candidate
 VOCAB_MIN_OCCURRENCES = 3
+
+# Auto-promotion thresholds (no admin review needed)
+AUTO_PROMOTE_MIN_COUNT = 10       # word must appear ≥10 times
+AUTO_PROMOTE_MIN_CONFIDENCE = 0.90  # ≥90% of occurrences map to same status
+
+# In-memory cache of learned vocab (loaded on startup, refreshed each cycle)
+LEARNED_STATUS_MAP: dict[str, str] = {}
+
+
+# ── Learned vocab loading ────────────────────────────────────────────────────
+
+async def load_learned_vocab():
+    """Load auto-promoted vocab from DB into runtime LEARNED_STATUS_MAP."""
+    global LEARNED_STATUS_MAP
+    LEARNED_STATUS_MAP = await get_learned_vocab()
+    if LEARNED_STATUS_MAP:
+        log.info(f"Loaded {len(LEARNED_STATUS_MAP)} learned vocab words into runtime")
+
+
+def get_learned_status_map() -> dict[str, str]:
+    """Return the current in-memory learned vocab map."""
+    return LEARNED_STATUS_MAP
 
 
 # ── Index population ──────────────────────────────────────────────────────────
@@ -157,6 +179,7 @@ def extract_vocab_patterns(messages: list[str]) -> dict:
 
     return {
         "candidate_status_words": candidates,
+        "candidate_status_words_raw": {w: dict(sc) for w, sc in word_status_counts.items()},
         "total_lines_scanned": total_lines,
         "total_emoji_lines": emoji_lines,
     }
@@ -333,7 +356,43 @@ async def _run_one_learning_cycle(client, cp_channel: str) -> None:
     if written > 0:
         log.info(f"Periodic learner: wrote {written} vocab candidates to DB")
 
-    # 3. Refresh live index with any new checkpoints from DB
+    # 2b. Auto-promote high-confidence candidates
+    promoted = 0
+    for word, status, count in candidates:
+        if count >= AUTO_PROMOTE_MIN_COUNT:
+            # Recheck confidence from the full counts
+            total = sum(result["candidate_status_words_raw"].get(word, {}).values()) \
+                if "candidate_status_words_raw" in result else count
+            confidence = count / max(total, 1)
+            if confidence >= AUTO_PROMOTE_MIN_CONFIDENCE:
+                try:
+                    await promote_vocab(word, status, confidence, count)
+                    LEARNED_STATUS_MAP[word] = status
+                    promoted += 1
+                except Exception as e:
+                    log.debug(f"Periodic learner: could not promote '{word}': {e}")
+    if promoted > 0:
+        log.info(f"Periodic learner: auto-promoted {promoted} vocab words")
+
+    # 3. Log accuracy metrics
+    async with get_checkpoint_db() as db:
+        cur = await db.execute(
+            "SELECT COUNT(*) FROM checkpoint_updates WHERE timestamp >= ?",
+            ((datetime.utcnow() - timedelta(hours=24)).isoformat(),),
+        )
+        (total_24h,) = await cur.fetchone()
+        cur = await db.execute(
+            "SELECT COUNT(DISTINCT canonical_key) FROM checkpoint_updates WHERE timestamp >= ?",
+            ((datetime.utcnow() - timedelta(hours=24)).isoformat(),),
+        )
+        (unique_cp_24h,) = await cur.fetchone()
+    log.info(
+        f"Periodic learner: accuracy snapshot — "
+        f"{total_24h} updates in 24h, {unique_cp_24h} unique checkpoints, "
+        f"{len(LEARNED_STATUS_MAP)} learned vocab words"
+    )
+
+    # 4. Refresh live index with any new checkpoints from DB
     idx = get_index()
     if idx:
         new_count = await refresh_index_from_db(idx)

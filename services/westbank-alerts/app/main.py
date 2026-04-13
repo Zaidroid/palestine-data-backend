@@ -201,6 +201,10 @@ async def lifespan(app: FastAPI):
     monitor.set_checkpoint_broadcast_fn(_dispatch_checkpoint)
     monitor_task = asyncio.create_task(monitor.start())
 
+    # Load learned vocabulary into runtime
+    from .learner import load_learned_vocab
+    await load_learned_vocab()
+
     # Wait for Telegram auth to complete, then launch background learning tasks
     async def _start_learner():
         await asyncio.sleep(8)

@@ -89,11 +89,23 @@ STATUS_MAP: dict[str, str] = {
     "بطئ":     "slow",
     "بطيئ":    "slow",
 
-    # Military presence
-    "جيش":     "military",
-    "عسكر":    "military",
-    "مداهمه":  "military",
-    "مداهمة":  "military",
+    # IDF / army presence
+    "جيش":     "idf",
+    "عسكر":    "idf",
+    "مداهمه":  "idf",
+    "مداهمة":  "idf",
+    "تواجد":   "idf",
+    "حاجز":    "idf",
+    "سيارات":  "idf",
+
+    # Israeli police presence
+    "شرطه":    "police",
+    "شرطة":    "police",
+    "دوريه":   "police",
+    "دورية":   "police",
+
+    # Inspection / search
+    "تفتيش":   "inspection",
 }
 
 _STATUS_MAP_NORMALISED: set[str] | None = None
@@ -105,16 +117,32 @@ def _get_status_normalised() -> set[str]:
     return _STATUS_MAP_NORMALISED
 
 STATUS_BIGRAMS: dict[str, str] = {
-    "فيه جيش":   "military",
-    "عليه جيش":  "military",
-    "معهم جيش":  "military",
-    "فيه عسكر":  "military",
-    "فيه ضغط":   "congested",
-    "فيه زحمه":  "congested",
-    "فيه زحمة":  "congested",
-    "مش سالك":   "closed",
-    "مش فاتح":   "closed",
-    "غير سالك":  "closed",
+    # IDF presence
+    "فيه جيش":     "idf",
+    "عليه جيش":    "idf",
+    "معهم جيش":    "idf",
+    "فيه عسكر":    "idf",
+    "حاجز طيار":   "idf",
+    "نصب حاجز":    "idf",
+    "عمل حاجز":    "idf",
+    # Police presence
+    "فيه شرطه":    "police",
+    "عليه شرطه":   "police",
+    "سياره شرطه":  "police",
+    "سيارة شرطة":  "police",
+    "دوريه شرطه":  "police",
+    "دورية شرطة":  "police",
+    # Inspection
+    "تفتيش هويات": "inspection",
+    "تفتيش دقيق":  "inspection",
+    # Congested
+    "فيه ضغط":     "congested",
+    "فيه زحمه":    "congested",
+    "فيه زحمة":    "congested",
+    # Closed
+    "مش سالك":     "closed",
+    "مش فاتح":     "closed",
+    "غير سالك":    "closed",
 }
 
 # ── Emoji status map ──────────────────────────────────────────────────────────
@@ -126,9 +154,11 @@ EMOJI_STATUS: dict[str, str] = {
     "🚫": "closed",
     "⛔": "closed",
     "❌": "closed",
+    "🛑": "closed",      # stop sign — context-dependent but defaults to blocked/closed
     "🟠": "congested",
     "🟡": "slow",
-    "🟣": "military",
+    "🟣": "idf",
+    "🚔": "police",
 }
 
 _STATUS_EMOJIS = set(EMOJI_STATUS.keys())
@@ -311,7 +341,9 @@ def _validate_checkpoint_name(name: str) -> bool:
         return False
 
     # Any word is a status word → contaminated name
-    if any(w in status_norm for w in norm_words):
+    # Exception: "حاجز" is both a type prefix and a status word — allow it in names
+    _type_prefix_norms = {_normalise(p) for p, _ in _TYPE_PREFIXES}
+    if any(w in status_norm and w not in _type_prefix_norms for w in norm_words):
         return False
 
     # Single word that's a direction word
@@ -458,6 +490,17 @@ def _find_any_status(words: list[str]) -> tuple[str | None, str | None]:
             for k, v in STATUS_MAP.items():
                 if _normalise(k) == w_norm:
                     return v, w
+    # Check learned vocab (auto-promoted from learner)
+    try:
+        from .learner import get_learned_status_map
+        learned = get_learned_status_map()
+        if learned:
+            for w in reversed(words):
+                w_norm = _normalise(w)
+                if w_norm in learned:
+                    return learned[w_norm], w
+    except ImportError:
+        pass
     return None, None
 
 
@@ -585,7 +628,7 @@ def parse_colon_line(line: str) -> Optional[dict | list[dict]]:
         "canonical_key": canonical,
         "status":        status,
         "status_raw":    status_raw,
-        "direction":     direction,
+        "direction":     direction or "both",
         "raw_line":      original_line,
     }
 
@@ -642,7 +685,7 @@ def parse_line(line: str) -> Optional[dict]:
                 "canonical_key": make_canonical_key(name_raw),
                 "status":        status,
                 "status_raw":    status_raw,
-                "direction":     direction,
+                "direction":     direction or "both",
                 "raw_line":      original_line,
             }
 
@@ -669,7 +712,7 @@ def parse_line(line: str) -> Optional[dict]:
         "canonical_key": make_canonical_key(name_raw),
         "status":        status,
         "status_raw":    status_raw,
-        "direction":     direction,
+        "direction":     direction or "both",
         "raw_line":      original_line,
     }
 
@@ -731,7 +774,7 @@ def parse_emoji_line(line: str) -> Optional[dict]:
         "canonical_key": make_canonical_key(name_raw),
         "status":        status,
         "status_raw":    emoji,
-        "direction":     direction,
+        "direction":     direction or "both",
         "raw_line":      line,
     }
 

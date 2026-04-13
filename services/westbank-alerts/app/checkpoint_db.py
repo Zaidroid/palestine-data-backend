@@ -78,6 +78,18 @@ CREATE TABLE IF NOT EXISTS vocab_discoveries (
 )
 """
 
+CREATE_LEARNED_VOCAB = """
+CREATE TABLE IF NOT EXISTS learned_vocab (
+    word             TEXT PRIMARY KEY,
+    status           TEXT NOT NULL,
+    confidence       REAL NOT NULL DEFAULT 0.0,
+    source_count     INTEGER NOT NULL DEFAULT 0,
+    auto_promoted    INTEGER NOT NULL DEFAULT 1,
+    created_at       TEXT NOT NULL,
+    last_seen        TEXT NOT NULL
+)
+"""
+
 INDEXES = [
     "CREATE INDEX IF NOT EXISTS idx_cp_updates_key       ON checkpoint_updates(canonical_key)",
     "CREATE INDEX IF NOT EXISTS idx_cp_updates_timestamp ON checkpoint_updates(timestamp DESC)",
@@ -92,6 +104,7 @@ async def init_checkpoint_db():
         await db.execute(CREATE_UPDATES)
         await db.execute(CREATE_STATUS)
         await db.execute(CREATE_VOCAB_DISCOVERIES)
+        await db.execute(CREATE_LEARNED_VOCAB)
         for idx in INDEXES:
             await db.execute(idx)
         # Migrations for existing DBs
@@ -127,6 +140,40 @@ async def init_checkpoint_db():
                 FROM checkpoint_status_old
             """)
             await db.execute("DROP TABLE checkpoint_status_old")
+
+        # ── One-time migration: split "military" into idf/police/inspection ──
+        cur = await db.execute(
+            "SELECT COUNT(*) FROM checkpoint_updates WHERE status='military'"
+        )
+        (mil_count,) = await cur.fetchone()
+        if mil_count > 0:
+            log.info(f"Migrating {mil_count} 'military' records → idf/police/inspection...")
+            # Police: شرطه, شرطة
+            await db.execute(
+                "UPDATE checkpoint_updates SET status='police' "
+                "WHERE status='military' AND status_raw IN ('شرطه','شرطة')"
+            )
+            await db.execute(
+                "UPDATE checkpoint_status SET status='police' "
+                "WHERE status='military' AND status_raw IN ('شرطه','شرطة')"
+            )
+            # Inspection: تفتيش
+            await db.execute(
+                "UPDATE checkpoint_updates SET status='inspection' "
+                "WHERE status='military' AND status_raw IN ('تفتيش')"
+            )
+            await db.execute(
+                "UPDATE checkpoint_status SET status='inspection' "
+                "WHERE status='military' AND status_raw IN ('تفتيش')"
+            )
+            # IDF: everything else that was military
+            await db.execute(
+                "UPDATE checkpoint_updates SET status='idf' WHERE status='military'"
+            )
+            await db.execute(
+                "UPDATE checkpoint_status SET status='idf' WHERE status='military'"
+            )
+            log.info("Military status migration complete")
 
         await db.commit()
     log.info(f"Checkpoint DB ready at {CP_DB}")
@@ -804,3 +851,33 @@ async def get_last_update_time() -> Optional[str]:
             "SELECT MAX(last_updated) FROM checkpoint_status"
         )).fetchone()
     return row[0] if row else None
+
+
+# ── Learned vocabulary ───────────────────────────────────────────────────────
+
+async def get_learned_vocab() -> dict[str, str]:
+    """Return all auto-promoted vocab as {word: status} for runtime use."""
+    async with get_checkpoint_db() as db:
+        cur = await db.execute(
+            "SELECT word, status FROM learned_vocab WHERE auto_promoted=1"
+        )
+        rows = await cur.fetchall()
+    return {r[0]: r[1] for r in rows}
+
+
+async def promote_vocab(word: str, status: str, confidence: float, source_count: int):
+    """Auto-promote a discovered vocab word to the learned vocabulary."""
+    now = datetime.utcnow().isoformat()
+    async with get_checkpoint_db() as db:
+        await db.execute(
+            """INSERT INTO learned_vocab (word, status, confidence, source_count, auto_promoted, created_at, last_seen)
+               VALUES (?, ?, ?, ?, 1, ?, ?)
+               ON CONFLICT(word) DO UPDATE SET
+                 status=excluded.status,
+                 confidence=excluded.confidence,
+                 source_count=excluded.source_count,
+                 last_seen=excluded.last_seen""",
+            (word, status, confidence, source_count, now, now),
+        )
+        await db.commit()
+    log.info(f"Vocab promoted: '{word}' → {status} (conf={confidence:.2f}, n={source_count})")
