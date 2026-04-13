@@ -1,0 +1,52 @@
+## Render.com deployment configuration
+## https://render.com/docs/blueprint-spec
+##
+## One-click deploy: connect this repo on render.com and it will read this file.
+## Free plan: web service spins down after 15 min of inactivity (cold start ~30s).
+## Upgrade to "Starter" ($7/mo) for always-on.
+##
+## Required environment variables (set in Render dashboard, not here):
+##   TELEGRAM_API_ID       - from my.telegram.org
+##   TELEGRAM_API_HASH     - from my.telegram.org
+##   TELEGRAM_PHONE        - your phone number (international format)
+##   TELEGRAM_CHANNELS     - comma-separated channel usernames to monitor
+##   CHECKPOINT_CHANNELS   - comma-separated channel usernames for checkpoint updates
+##   API_SECRET_KEY        - random secret for admin endpoints
+##
+## Persistent disk is required for the SQLite database and Telegram session.
+
+services:
+  - type: web
+    name: wb-alerts-api
+    runtime: docker
+    dockerfilePath: ./Dockerfile
+    dockerContext: .
+    plan: free          # change to "starter" for always-on ($7/mo)
+    region: frankfurt   # closest to West Bank; also: oregon, ohio, singapore
+    healthCheckPath: /health
+
+    disk:
+      name: wb-data
+      mountPath: /data
+      sizeGB: 1         # stores SQLite DB; free plan allows 1GB
+
+    envVars:
+      - key: PORT
+        value: 8080
+      - key: DB_PATH
+        value: /data/alerts.db
+      - key: TELEGRAM_SESSION_DIR
+        value: /data/session
+      # Set these secrets in the Render dashboard:
+      - key: TELEGRAM_API_ID
+        sync: false
+      - key: TELEGRAM_API_HASH
+        sync: false
+      - key: TELEGRAM_PHONE
+        sync: false
+      - key: TELEGRAM_CHANNELS
+        sync: false
+      - key: CHECKPOINT_CHANNEL
+        sync: false
+      - key: API_SECRET_KEY
+        sync: false

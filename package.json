@@ -4,7 +4,9 @@
   "private": true,
   "description": "Unified open-data API for Palestine — West Bank, Gaza, East Jerusalem (1948–present)",
   "type": "module",
-  "engines": { "node": ">=22.0.0" },
+  "engines": {
+    "node": ">=22.0.0"
+  },
   "scripts": {
     "start": "node src/api/server.js",
     "start-api": "node src/api/server.js",
@@ -35,6 +37,7 @@
   "dependencies": {
     "adm-zip": "^0.5.16",
     "apicache": "^1.6.3",
+    "cheerio": "^1.2.0",
     "compression": "^1.8.1",
     "cors": "^2.8.5",
     "express": "^5.1.0",

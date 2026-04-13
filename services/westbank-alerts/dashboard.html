@@ -1,0 +1,688 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>West Bank Alerts — Live Dashboard</title>
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" crossorigin="">
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" crossorigin=""></script>
+<style>
+:root {
+  --bg:        #0a0e17;
+  --surface:   #111827;
+  --surface2:  #1a2236;
+  --surface3:  #222d45;
+  --border:    #1e293b;
+  --border2:   #2d3a55;
+  --text:      #e2e8f0;
+  --text2:     #cbd5e1;
+  --muted:     #64748b;
+  --muted2:    #475569;
+  --open:      #22c55e;
+  --closed:    #ef4444;
+  --congested: #f97316;
+  --slow:      #eab308;
+  --military:  #a855f7;
+  --unknown:   #64748b;
+  --critical:  #ef4444;
+  --high:      #f97316;
+  --medium:    #eab308;
+  --low:       #22c55e;
+  --accent:    #3b82f6;
+  --radius:    8px;
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html,body{height:100%;overflow:hidden}
+body{background:var(--bg);color:var(--text);font-family:'Segoe UI',system-ui,-apple-system,sans-serif;font-size:14px;display:flex;flex-direction:column}
+::-webkit-scrollbar{width:5px}::-webkit-scrollbar-track{background:transparent}::-webkit-scrollbar-thumb{background:var(--border2);border-radius:3px}
+button{cursor:pointer;border:none;background:none;color:inherit;font:inherit}
+input{font:inherit;color:inherit}
+
+/* ── Header ── */
+.hdr{background:var(--surface);border-bottom:1px solid var(--border);padding:0 16px;height:52px;display:flex;align-items:center;gap:14px;flex-shrink:0;z-index:100}
+.hdr-brand{display:flex;align-items:center;gap:8px;white-space:nowrap}
+.hdr-brand h1{font-size:15px;font-weight:700;letter-spacing:.02em}
+.hdr-brand h1 span{color:var(--accent);font-weight:800}
+.hdr-pills{display:flex;gap:6px;margin-left:12px}
+.pill{display:flex;align-items:center;gap:5px;background:var(--surface2);border:1px solid var(--border);border-radius:16px;padding:3px 10px;font-size:11px;font-weight:600;white-space:nowrap}
+.pill .d{width:6px;height:6px;border-radius:50%}
+.pill.open .d{background:var(--open)}.pill.closed .d{background:var(--closed);box-shadow:0 0 4px var(--closed)}.pill.military .d{background:var(--military)}
+.hdr-r{margin-left:auto;display:flex;align-items:center;gap:10px}
+.conn{display:flex;align-items:center;gap:5px;font-size:11px;color:var(--muted);background:var(--surface2);border:1px solid var(--border);border-radius:16px;padding:3px 10px}
+.conn .d{width:6px;height:6px;border-radius:50%;background:var(--muted2);transition:.3s}
+.conn .d.live{background:var(--open);box-shadow:0 0 6px var(--open);animation:pulse 2s infinite}
+.conn .d.err{background:var(--closed)}
+@keyframes pulse{0%,100%{opacity:1}50%{opacity:.5}}
+.hdr-time{font-size:10px;color:var(--muted2)}
+
+/* ── Layout ── */
+.layout{display:flex;flex:1;overflow:hidden;min-height:0}
+.col-left{width:340px;min-width:280px;display:flex;flex-direction:column;border-right:1px solid var(--border);flex-shrink:0;overflow:hidden}
+.col-center{flex:1;display:flex;flex-direction:column;overflow:hidden;min-width:0}
+.col-right{width:340px;min-width:280px;display:flex;flex-direction:column;border-left:1px solid var(--border);flex-shrink:0;overflow:hidden}
+
+/* ── Tabs ── */
+.tabs{display:flex;background:var(--surface);border-bottom:1px solid var(--border);flex-shrink:0}
+.tab{flex:1;padding:10px 8px;font-size:12px;font-weight:600;text-align:center;color:var(--muted);border-bottom:2px solid transparent;transition:.2s;position:relative}
+.tab:hover{color:var(--text2);background:var(--surface2)}
+.tab.active{color:var(--accent);border-bottom-color:var(--accent)}
+.tab .badge{position:absolute;top:4px;right:10px;background:var(--closed);color:#fff;font-size:9px;font-weight:700;padding:1px 5px;border-radius:8px;display:none}
+
+/* ── Panels ── */
+.panel{flex:1;overflow-y:auto;display:none;padding:8px}
+.panel.active{display:block}
+.panel-head{display:flex;align-items:center;gap:8px;padding:8px;flex-shrink:0}
+.panel-head input{flex:1;background:var(--surface2);border:1px solid var(--border);border-radius:var(--radius);padding:7px 10px;font-size:12px;outline:none}
+.panel-head input:focus{border-color:var(--accent)}
+.panel-head select{background:var(--surface2);border:1px solid var(--border);border-radius:var(--radius);padding:7px 8px;font-size:12px;outline:none;color:var(--text)}
+
+/* ── Filter buttons ── */
+.filters{display:flex;gap:4px;padding:0 8px 8px;flex-wrap:wrap;flex-shrink:0}
+.fb{font-size:11px;padding:4px 10px;border-radius:14px;background:var(--surface2);border:1px solid var(--border);color:var(--muted);transition:.2s}
+.fb:hover{border-color:var(--border2);color:var(--text)}
+.fb.active{background:var(--accent);border-color:var(--accent);color:#fff}
+
+/* ── Checkpoint card ── */
+.cp-card{background:var(--surface2);border:1px solid var(--border);border-radius:var(--radius);padding:10px 12px;cursor:pointer;transition:all .25s;border-left:3px solid var(--unknown)}
+.cp-card:hover{background:var(--surface3);border-color:var(--border2)}
+.cp-card.open{border-left-color:var(--open)}.cp-card.closed{border-left-color:var(--closed)}.cp-card.congested{border-left-color:var(--congested)}.cp-card.slow{border-left-color:var(--slow)}.cp-card.military{border-left-color:var(--military)}
+.cp-card.flash{animation:cardFlash .8s}
+@keyframes cardFlash{0%{background:rgba(59,130,246,.2)}100%{background:var(--surface2)}}
+.cp-name{font-size:13px;font-weight:600;direction:rtl;text-align:right}
+.cp-name-en{font-size:11px;color:var(--muted);font-weight:400;direction:ltr;text-align:left;margin-top:1px}
+.cp-row{display:flex;align-items:center;justify-content:space-between;margin-top:6px;gap:6px}
+.sbadge{font-size:10px;font-weight:700;padding:2px 8px;border-radius:10px;text-transform:uppercase;letter-spacing:.03em}
+.sbadge.open{background:rgba(34,197,94,.15);color:var(--open)}.sbadge.closed{background:rgba(239,68,68,.15);color:var(--closed)}.sbadge.congested{background:rgba(249,115,22,.15);color:var(--congested)}.sbadge.slow{background:rgba(234,179,8,.15);color:var(--slow)}.sbadge.military{background:rgba(168,85,247,.15);color:var(--military)}.sbadge.unknown{background:rgba(100,116,139,.15);color:var(--unknown)}
+.cp-meta{font-size:10px;color:var(--muted);display:flex;align-items:center;gap:6px}
+.src{font-size:9px;padding:1px 5px;border-radius:6px;font-weight:600;text-transform:uppercase}
+.src.admin{background:rgba(59,130,246,.15);color:var(--accent)}.src.crowd{background:rgba(100,116,139,.15);color:var(--muted)}
+.cp-list{display:flex;flex-direction:column;gap:6px}
+
+/* ── Map ── */
+#map{flex:1;min-height:0;background:var(--bg)}
+.leaflet-control-zoom a{background:var(--surface2)!important;color:var(--text)!important;border-color:var(--border)!important}
+.map-toolbar{display:flex;align-items:center;gap:8px;padding:8px 12px;background:var(--surface);border-bottom:1px solid var(--border);flex-shrink:0}
+.map-toolbar .title{font-size:13px;font-weight:700}
+.map-toolbar .cnt{margin-left:auto;font-size:11px;color:var(--muted)}
+.marker-popup{font-family:inherit;font-size:13px;direction:rtl;min-width:160px}
+.marker-popup .mp-name{font-weight:700;font-size:14px;margin-bottom:2px}
+.marker-popup .mp-en{font-size:11px;color:#666;direction:ltr;margin-bottom:6px}
+.marker-popup .mp-status{font-size:12px;font-weight:600;padding:2px 8px;border-radius:8px;display:inline-block;margin-bottom:4px}
+.marker-popup .mp-meta{font-size:11px;color:#888}
+
+/* ── Alert card ── */
+.alert-card{background:var(--surface2);border:1px solid var(--border);border-radius:var(--radius);padding:10px 12px;border-left:3px solid var(--unknown)}
+.alert-card.critical{border-left-color:var(--critical)}.alert-card.high{border-left-color:var(--high)}.alert-card.medium{border-left-color:var(--medium)}.alert-card.low{border-left-color:var(--low)}
+.al-head{display:flex;align-items:center;gap:6px;margin-bottom:4px}
+.al-sev{font-size:10px;font-weight:700;padding:2px 6px;border-radius:8px;text-transform:uppercase}
+.al-sev.critical{background:rgba(239,68,68,.15);color:var(--critical)}.al-sev.high{background:rgba(249,115,22,.15);color:var(--high)}.al-sev.medium{background:rgba(234,179,8,.15);color:var(--medium)}.al-sev.low{background:rgba(34,197,94,.15);color:var(--low)}
+.al-title{font-size:13px;font-weight:600;flex:1}
+.al-body{font-size:12px;color:var(--text2);line-height:1.4;margin-bottom:6px;direction:rtl;text-align:right}
+.al-foot{display:flex;align-items:center;gap:8px;font-size:10px;color:var(--muted)}
+.al-list{display:flex;flex-direction:column;gap:6px}
+
+/* ── Change log ── */
+.ch-item{padding:8px 10px;background:var(--surface2);border-radius:var(--radius);border:1px solid var(--border)}
+.ch-name{font-size:12px;font-weight:600;direction:rtl;text-align:right}
+.ch-flow{display:flex;align-items:center;gap:4px;margin-top:4px;font-size:11px}
+.ch-arrow{color:var(--muted)}
+.ch-time{margin-left:auto;font-size:10px;color:var(--muted)}
+
+/* ── Stats grid ── */
+.stat-grid{display:grid;grid-template-columns:1fr 1fr;gap:6px;margin-bottom:12px}
+.stat-box{background:var(--surface2);border:1px solid var(--border);border-radius:var(--radius);padding:10px;text-align:center}
+.stat-val{font-size:22px;font-weight:800;line-height:1}
+.stat-lbl{font-size:10px;color:var(--muted);margin-top:2px;text-transform:uppercase;letter-spacing:.04em}
+.stat-section{font-size:12px;font-weight:700;color:var(--muted);text-transform:uppercase;letter-spacing:.06em;margin:12px 0 6px;padding:0 4px}
+.stat-row{display:flex;align-items:center;justify-content:space-between;padding:6px 8px;font-size:12px}
+.stat-row .d{width:6px;height:6px;border-radius:50%;margin-right:6px;display:inline-block}
+
+/* ── Toast ── */
+.toasts{position:fixed;top:60px;right:16px;z-index:999;display:flex;flex-direction:column;gap:6px}
+.toast{display:flex;gap:10px;align-items:flex-start;background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);padding:12px 14px;min-width:260px;max-width:360px;box-shadow:0 8px 30px rgba(0,0,0,.4);animation:slideIn .3s}
+.toast.closed{border-left:3px solid var(--closed)}.toast.military{border-left:3px solid var(--military)}.toast.alert{border-left:3px solid var(--critical)}
+.toast.out{animation:slideOut .3s forwards}
+@keyframes slideIn{from{opacity:0;transform:translateX(40px)}to{opacity:1;transform:none}}
+@keyframes slideOut{to{opacity:0;transform:translateX(40px)}}
+.toast-title{font-size:12px;font-weight:700}.toast-msg{font-size:11px;color:var(--muted);margin-top:2px}
+
+/* ── Empty ── */
+.empty{padding:32px;text-align:center;color:var(--muted);font-size:12px}
+
+/* ── Mobile ── */
+@media(max-width:1024px){
+  .col-left,.col-right{display:none}
+  .layout{flex-direction:column}
+  .hdr-pills{display:none}
+  .mob-nav{display:flex!important}
+}
+.mob-nav{display:none;background:var(--surface);border-top:1px solid var(--border);flex-shrink:0;z-index:100}
+.mob-nav button{flex:1;padding:10px 4px;font-size:11px;font-weight:600;color:var(--muted);text-align:center;border-top:2px solid transparent}
+.mob-nav button.active{color:var(--accent);border-top-color:var(--accent)}
+@media(max-width:1024px){
+  .col-left.mob-show,.col-right.mob-show{display:flex;position:fixed;top:52px;bottom:44px;width:100%;z-index:90;background:var(--bg)}
+}
+</style>
+</head>
+<body>
+<!-- Header -->
+<header class="hdr">
+  <div class="hdr-brand">
+    <h1><span>WB</span> Alerts</h1>
+  </div>
+  <div class="hdr-pills">
+    <div class="pill open"><div class="d"></div><span id="h-open">0</span> Open</div>
+    <div class="pill closed"><div class="d"></div><span id="h-closed">0</span> Closed</div>
+    <div class="pill military"><div class="d"></div><span id="h-mil">0</span> Military</div>
+  </div>
+  <div class="hdr-r">
+    <div class="conn"><div class="d" id="conn-dot"></div><span id="conn-text">Connecting</span></div>
+    <div class="hdr-time" id="hdr-time"></div>
+  </div>
+</header>
+
+<div class="layout">
+  <!-- Left: Checkpoints -->
+  <div class="col-left" id="col-left">
+    <div class="tabs">
+      <button class="tab active" onclick="switchLeft('cp',this)">Checkpoints <span class="badge" id="cp-badge"></span></button>
+      <button class="tab" onclick="switchLeft('changes',this)">Changes <span class="badge" id="ch-badge"></span></button>
+    </div>
+    <div id="left-cp" class="left-panel" style="display:flex;flex-direction:column;flex:1;overflow:hidden">
+      <div class="panel-head">
+        <input type="text" id="cp-search" placeholder="Search checkpoints..." oninput="renderCpList()">
+        <select id="cp-sort" onchange="renderCpList()">
+          <option value="status">By Status</option>
+          <option value="updated">By Updated</option>
+          <option value="name">By Name</option>
+        </select>
+      </div>
+      <div class="filters" id="cp-filters">
+        <button class="fb active" onclick="setCpFilter('all',this)">All</button>
+        <button class="fb" onclick="setCpFilter('open',this)">Open</button>
+        <button class="fb" onclick="setCpFilter('closed',this)">Closed</button>
+        <button class="fb" onclick="setCpFilter('congested',this)">Congested</button>
+        <button class="fb" onclick="setCpFilter('military',this)">Military</button>
+      </div>
+      <div style="padding:0 8px 4px;font-size:11px;color:var(--muted);flex-shrink:0"><span id="cp-count">0</span></div>
+      <div id="cp-list" class="panel active" style="display:block;flex:1;overflow-y:auto;padding:0 8px 8px"></div>
+    </div>
+    <div id="left-changes" class="left-panel" style="display:none;flex:1;overflow-y:auto;padding:8px">
+      <div id="change-list"><div class="empty">Waiting for live updates...</div></div>
+    </div>
+  </div>
+
+  <!-- Center: Map -->
+  <div class="col-center">
+    <div class="map-toolbar">
+      <div class="title">Live Map</div>
+      <div class="cnt" id="map-cnt"></div>
+    </div>
+    <div id="map"></div>
+  </div>
+
+  <!-- Right: Alerts & Stats -->
+  <div class="col-right" id="col-right">
+    <div class="tabs">
+      <button class="tab active" onclick="switchRight('alerts',this)">Alerts <span class="badge" id="al-badge"></span></button>
+      <button class="tab" onclick="switchRight('stats',this)">Stats</button>
+    </div>
+    <div id="right-alerts" class="panel active" style="padding:8px">
+      <div id="alert-list"><div class="empty">No alerts yet</div></div>
+    </div>
+    <div id="right-stats" class="panel" style="padding:8px">
+      <div id="stats-panel"></div>
+    </div>
+  </div>
+</div>
+
+<!-- Mobile nav -->
+<nav class="mob-nav">
+  <button class="active" onclick="mobNav('map',this)">Map</button>
+  <button onclick="mobNav('cp',this)">Checkpoints</button>
+  <button onclick="mobNav('alerts',this)">Alerts</button>
+</nav>
+
+<div class="toasts" id="toasts"></div>
+
+<script>
+const API = window.location.origin;
+const SL = {open:'Open',closed:'Closed',congested:'Congested',slow:'Slow',military:'Military',unknown:'Unknown'};
+const SC = {open:'var(--open)',closed:'var(--closed)',congested:'var(--congested)',slow:'var(--slow)',military:'var(--military)',unknown:'var(--unknown)'};
+const SO = {closed:0,military:1,congested:2,slow:3,unknown:4,open:5};
+const AI = {
+  west_bank_siren:'\u{1F6A8}', regional_attack:'\u{1F30D}',
+  rocket_attack:'\u{1F680}',idf_operation:'\u{1FA96}',airstrike:'\u2708\uFE0F',
+  explosion:'\u{1F4A5}',shooting:'\u{1F52B}',settler_attack:'\u26A0\uFE0F',general:'\u{1F4E2}'
+};
+const AT = {
+  west_bank_siren:'WB ALERT', regional_attack:'Regional',
+  rocket_attack:'Rocket',idf_operation:'IDF Op',airstrike:'Airstrike',
+  explosion:'Explosion',shooting:'Shooting',settler_attack:'Settler',general:'Update'
+};
+
+let checkpoints = {};
+let alerts = [];
+let changes = [];
+let cpFilter = 'all';
+let chCount = 0, alCount = 0;
+let map, markers = {}, markerLayer;
+
+// ── Init ──
+window.addEventListener('load', async () => {
+  initMap();
+  await Promise.all([loadCheckpoints(), loadAlerts(), loadStats()]);
+  _cpLastPoll = Date.now();
+  connectSSE();
+  setInterval(loadStats, 30000);
+  setInterval(refreshTimes, 30000);
+  // Fallback poll every 20s — catches SSE misses and same-status updates
+  setInterval(pollCheckpointUpdates, 20000);
+});
+
+// ── Map ──
+function initMap() {
+  map = L.map('map', { zoomControl: true, attributionControl: false }).setView([32.05, 35.20], 10);
+  L.tileLayer('https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png', {
+    maxZoom: 18,
+    subdomains: 'abcd',
+  }).addTo(map);
+  L.control.attribution({ prefix: false }).addTo(map);
+  markerLayer = L.layerGroup().addTo(map);
+}
+
+function statusColor(s) {
+  const m = {open:'#22c55e',closed:'#ef4444',congested:'#f97316',slow:'#eab308',military:'#a855f7',unknown:'#64748b'};
+  return m[s] || m.unknown;
+}
+
+function makeIcon(status) {
+  const c = statusColor(status);
+  return L.divIcon({
+    className: '',
+    html: `<div style="width:14px;height:14px;border-radius:50%;background:${c};border:2px solid rgba(255,255,255,.8);box-shadow:0 0 6px ${c}"></div>`,
+    iconSize: [14, 14],
+    iconAnchor: [7, 7],
+  });
+}
+
+function refreshMarkers() {
+  markerLayer.clearLayers();
+  markers = {};
+  let count = 0;
+  Object.values(checkpoints).forEach(cp => {
+    if (cp.latitude == null || cp.longitude == null) return;
+    const m = L.marker([cp.latitude, cp.longitude], { icon: makeIcon(cp.status) });
+    m.bindPopup(`
+      <div class="marker-popup">
+        <div class="mp-name">${esc(cp.name_ar || cp.canonical_key)}</div>
+        ${cp.name_en ? `<div class="mp-en">${esc(cp.name_en)}</div>` : ''}
+        <div class="mp-status" style="background:${statusColor(cp.status)}22;color:${statusColor(cp.status)}">${SL[cp.status] || cp.status}</div>
+        <div class="mp-meta">${cp.region || ''} &middot; ${cp.last_source_type || 'unknown'} &middot; ${relTime(cp.last_updated)}</div>
+      </div>
+    `, { maxWidth: 240 });
+    m.addTo(markerLayer);
+    markers[cp.canonical_key] = m;
+    count++;
+  });
+  document.getElementById('map-cnt').textContent = count + ' on map';
+}
+
+// ── SSE ──
+let _cpLastPoll = 0;
+
+function connectSSE() {
+  let cpEs = null, alEs = null;
+
+  function openCpStream() {
+    if (cpEs) { try { cpEs.close(); } catch(_) {} }
+    cpEs = new EventSource(`${API}/checkpoints/stream`);
+    cpEs.onopen = () => setConn('live', 'Live');
+    cpEs.onerror = () => {
+      setConn('err', 'Reconnecting');
+      // On error, trigger a full re-poll so we don't miss events
+      pollCheckpointUpdates();
+      setTimeout(openCpStream, 3000);
+    };
+    cpEs.onmessage = e => {
+      const msg = JSON.parse(e.data);
+      if (msg.event === 'checkpoint_update') handleCpUpdate(msg.updates);
+    };
+  }
+
+  function openAlStream() {
+    if (alEs) { try { alEs.close(); } catch(_) {} }
+    alEs = new EventSource(`${API}/stream`);
+    alEs.onopen = () => {};
+    alEs.onerror = () => setTimeout(openAlStream, 3000);
+    alEs.onmessage = e => {
+      const msg = JSON.parse(e.data);
+      if (msg.event === 'alert') handleNewAlert(msg);
+    };
+  }
+
+  openCpStream();
+  openAlStream();
+}
+
+// Poll for checkpoint updates since last poll — catches SSE misses
+async function pollCheckpointUpdates() {
+  try {
+    const since = _cpLastPoll ? new Date(_cpLastPoll).toISOString() : null;
+    const url = since ? `${API}/checkpoints?since=${encodeURIComponent(since)}` : `${API}/checkpoints`;
+    const r = await fetch(url);
+    const d = await r.json();
+    const now = Date.now();
+    let changed = 0;
+    (d.checkpoints || []).forEach(cp => {
+      const prev = checkpoints[cp.canonical_key];
+      if (!prev || prev.status !== cp.status || prev.last_updated !== cp.last_updated) {
+        checkpoints[cp.canonical_key] = cp;
+        changed++;
+      }
+    });
+    if (changed > 0) { renderCpList(); refreshMarkers(); updatePills(); setUpdated(); }
+    _cpLastPoll = now;
+  } catch(e) {}
+}
+
+// ── Checkpoint data ──
+async function loadCheckpoints() {
+  try {
+    const r = await fetch(`${API}/checkpoints`);
+    const d = await r.json();
+    checkpoints = {};
+    (d.checkpoints || []).forEach(cp => { checkpoints[cp.canonical_key] = cp; });
+    renderCpList();
+    refreshMarkers();
+    updatePills();
+    setUpdated();
+  } catch(e) { setConn('err', 'Error'); }
+}
+
+function handleCpUpdate(updates) {
+  if (!updates) return;
+  updates.forEach(u => {
+    const prev = checkpoints[u.canonical_key];
+    const prevStatus = prev ? prev.status : null;
+
+    if (prev) {
+      prev.status = u.status;
+      prev.status_raw = u.status_raw;
+      prev.last_updated = u.timestamp;
+      prev.last_source_type = u.source_type;
+    } else {
+      checkpoints[u.canonical_key] = {
+        canonical_key: u.canonical_key, name_ar: u.name_raw,
+        status: u.status, confidence: u.source_type === 'admin' ? 'high' : 'low',
+        last_updated: u.timestamp, last_source_type: u.source_type,
+      };
+    }
+
+    // Update marker
+    const cp = checkpoints[u.canonical_key];
+    if (markers[u.canonical_key]) {
+      markers[u.canonical_key].setIcon(makeIcon(u.status));
+    } else if (cp.latitude != null) {
+      const m = L.marker([cp.latitude, cp.longitude], { icon: makeIcon(cp.status) }).addTo(markerLayer);
+      markers[u.canonical_key] = m;
+    }
+
+    // Flash card
+    const card = document.getElementById('cp-' + u.canonical_key);
+    if (card) { card.classList.add('flash'); setTimeout(() => card.classList.remove('flash'), 800); }
+
+    if (prevStatus !== u.status) {
+      addChange(u, prevStatus);
+      if (u.status === 'closed' || u.status === 'military') {
+        showToast(u.status, SL[u.status], u.name_raw || u.canonical_key);
+      }
+    }
+  });
+  renderCpList();
+  updatePills();
+  setUpdated();
+}
+
+// ── Checkpoint list ──
+function setCpFilter(f, btn) {
+  cpFilter = f;
+  document.querySelectorAll('#cp-filters .fb').forEach(b => b.classList.remove('active'));
+  btn.classList.add('active');
+  renderCpList();
+}
+
+function renderCpList() {
+  const q = (document.getElementById('cp-search').value || '').trim().toLowerCase();
+  const sort = document.getElementById('cp-sort').value;
+  let items = Object.values(checkpoints);
+
+  if (cpFilter !== 'all') items = items.filter(c => c.status === cpFilter);
+  if (q) items = items.filter(c =>
+    (c.name_ar||'').includes(q) || (c.name_en||'').toLowerCase().includes(q) || (c.canonical_key||'').includes(q)
+  );
+
+  if (sort === 'status') items.sort((a,b) => (SO[a.status]||9) - (SO[b.status]||9));
+  else if (sort === 'updated') items.sort((a,b) => new Date(b.last_updated||0) - new Date(a.last_updated||0));
+  else items.sort((a,b) => (a.name_ar||'').localeCompare(b.name_ar||'', 'ar'));
+
+  document.getElementById('cp-count').textContent = items.length + ' checkpoints';
+  const el = document.getElementById('cp-list');
+  if (!items.length) { el.innerHTML = '<div class="empty">No checkpoints match</div>'; return; }
+
+  el.innerHTML = '<div class="cp-list">' + items.map(cp => {
+    const en = cp.name_en ? `<div class="cp-name-en">${esc(cp.name_en)}</div>` : '';
+    return `
+    <div class="cp-card ${cp.status}" id="cp-${cp.canonical_key}" onclick="focusCp('${cp.canonical_key}')">
+      <div class="cp-name">${esc(cp.name_ar || cp.canonical_key)}</div>
+      ${en}
+      <div class="cp-row">
+        <span class="sbadge ${cp.status}">${SL[cp.status]||cp.status}</span>
+        <div class="cp-meta">
+          <span class="src ${cp.last_source_type||'crowd'}">${cp.last_source_type||'crowd'}</span>
+          <span>${relTime(cp.last_updated)}</span>
+        </div>
+      </div>
+    </div>`;
+  }).join('') + '</div>';
+}
+
+function focusCp(key) {
+  const cp = checkpoints[key];
+  if (!cp) return;
+  if (cp.latitude != null && cp.longitude != null) {
+    map.flyTo([cp.latitude, cp.longitude], 14, { duration: 0.8 });
+    if (markers[key]) markers[key].openPopup();
+  }
+  // On mobile, switch to map
+  if (window.innerWidth <= 1024) mobNav('map', document.querySelector('.mob-nav button'));
+}
+
+// ── Changes ──
+function addChange(u, prev) {
+  changes.unshift({ ...u, prevStatus: prev, at: new Date() });
+  if (changes.length > 60) changes.pop();
+  chCount++;
+  const b = document.getElementById('ch-badge');
+  b.style.display = 'inline'; b.textContent = chCount > 99 ? '99+' : chCount;
+  renderChanges();
+}
+
+function renderChanges() {
+  const el = document.getElementById('change-list');
+  if (!changes.length) { el.innerHTML = '<div class="empty">Waiting for live updates...</div>'; return; }
+  el.innerHTML = changes.slice(0, 40).map(c => {
+    const from = c.prevStatus ? `<span class="sbadge ${c.prevStatus}" style="font-size:9px;padding:1px 5px">${SL[c.prevStatus]||'?'}</span><span class="ch-arrow">\u2192</span>` : '';
+    return `
+    <div class="ch-item">
+      <div class="ch-name">${esc(c.name_raw || c.canonical_key)}</div>
+      <div class="ch-flow">
+        ${from}<span class="sbadge ${c.status}" style="font-size:9px;padding:1px 5px">${SL[c.status]}</span>
+        <span class="src ${c.source_type||'crowd'}" style="margin-left:4px">${c.source_type||'crowd'}</span>
+        <span class="ch-time">${relTime(c.at)}</span>
+      </div>
+    </div>`;
+  }).join('');
+}
+
+// ── Alerts ──
+async function loadAlerts() {
+  try {
+    const r = await fetch(`${API}/alerts/latest?n=40`);
+    const d = await r.json();
+    alerts = Array.isArray(d) ? d : [];
+    renderAlerts();
+  } catch(e) {}
+}
+
+function handleNewAlert(a) {
+  alerts.unshift(a);
+  if (alerts.length > 60) alerts.pop();
+  alCount++;
+  const b = document.getElementById('al-badge');
+  b.style.display = 'inline'; b.textContent = alCount > 99 ? '99+' : alCount;
+  renderAlerts();
+  if (a.type === 'west_bank_siren' || a.type === 'regional_attack' || a.severity === 'critical' || a.severity === 'high') {
+    const icon = AI[a.type] || '\u{1F4E2}';
+    const label = a.type === 'west_bank_siren' ? 'WB ALERT' : (a.type === 'regional_attack' ? 'Regional Attack' : (a.severity === 'critical' ? 'CRITICAL' : 'HIGH'));
+    showToast('alert', icon + ' ' + label, a.area || a.title || a.type);
+  }
+}
+
+function renderAlerts() {
+  const el = document.getElementById('alert-list');
+  // Only show meaningful alerts (new types + high/critical legacy)
+  const shown = alerts.filter(a =>
+    a.type === 'west_bank_siren' || a.type === 'regional_attack' ||
+    (a.severity === 'critical' || a.severity === 'high')
+  );
+  if (!shown.length) { el.innerHTML = '<div class="empty">No alerts yet</div>'; return; }
+  el.innerHTML = '<div class="al-list">' + shown.slice(0, 40).map(a => {
+    const icon = AI[a.type] || '\u{1F4E2}';
+    const typeLabel = AT[a.type] || a.type;
+    const sevClass = a.severity === 'critical' ? 'critical' : (a.severity === 'high' ? 'high' : 'low');
+    const isWB = a.type === 'west_bank_siren';
+    return `<div class="alert-card ${sevClass}" style="${isWB && a.severity==='critical' ? 'background:rgba(220,38,38,0.12);' : ''}">
+      <div class="al-head">
+        <span style="font-size:1.1em">${icon}</span>
+        <span class="al-sev ${sevClass}">${typeLabel}</span>
+        <span class="al-title">${esc(a.area || '')}</span>
+        <span style="margin-left:auto;font-size:0.75em;opacity:0.6">${relTime(a.timestamp)}</span>
+      </div>
+      <div class="al-body" style="direction:rtl;text-align:right;font-size:0.88em;line-height:1.5;margin-top:4px">${esc((a.body||a.raw_text||'').slice(0,200))}</div>
+    </div>`;
+  }).join('') + '</div>';
+}
+
+// ── Stats ──
+async function loadStats() {
+  try {
+    const [cs, as] = await Promise.all([
+      fetch(`${API}/checkpoints/stats`).then(r => r.json()),
+      fetch(`${API}/stats`).then(r => r.json()),
+    ]);
+    renderStats(cs, as);
+    updatePills();
+  } catch(e) {}
+}
+
+function renderStats(cs, as) {
+  const el = document.getElementById('stats-panel');
+  const bs = cs.by_status || {};
+  el.innerHTML = `
+    <div class="stat-section">Checkpoints</div>
+    <div class="stat-grid">
+      <div class="stat-box"><div class="stat-val">${cs.total_checkpoints||0}</div><div class="stat-lbl">Total</div></div>
+      <div class="stat-box"><div class="stat-val" style="color:var(--accent)">${cs.updates_last_1h||0}</div><div class="stat-lbl">Updates / hr</div></div>
+      <div class="stat-box"><div class="stat-val" style="color:var(--open)">${cs.admin_updates_24h||0}</div><div class="stat-lbl">Admin 24h</div></div>
+      <div class="stat-box"><div class="stat-val">${cs.updates_last_24h||0}</div><div class="stat-lbl">All 24h</div></div>
+    </div>
+    ${['open','closed','congested','slow','military','unknown'].filter(s=>bs[s]).map(s=>`
+    <div class="stat-row"><div><span class="d" style="background:var(--${s})"></span>${SL[s]}</div><div style="color:var(--${s});font-weight:700">${bs[s]}</div></div>`).join('')}
+    <div class="stat-section" style="margin-top:16px">Security Alerts</div>
+    <div class="stat-grid">
+      <div class="stat-box"><div class="stat-val">${as.total_alerts||0}</div><div class="stat-lbl">Total</div></div>
+      <div class="stat-box"><div class="stat-val" style="color:var(--high)">${as.alerts_last_24h||0}</div><div class="stat-lbl">Last 24h</div></div>
+    </div>
+    ${Object.entries(as.by_severity||{}).map(([s,n])=>`
+    <div class="stat-row"><div><span class="d" style="background:var(--${s})"></span>${s}</div><div style="color:var(--${s});font-weight:700">${n}</div></div>`).join('')}
+    <div class="stat-section" style="margin-top:16px">Data Sources</div>
+    <div style="font-size:11px;color:var(--muted);padding:4px 0;line-height:1.6">
+      Checkpoint channel: <strong>${esc(cs.monitored_channel||'N/A')}</strong><br>
+      Auto-refreshes every 5s via SSE
+    </div>
+  `;
+}
+
+// ── Header pills ──
+function updatePills() {
+  const c = {open:0,closed:0,military:0};
+  Object.values(checkpoints).forEach(cp => { if (c[cp.status] !== undefined) c[cp.status]++; });
+  document.getElementById('h-open').textContent = c.open;
+  document.getElementById('h-closed').textContent = c.closed;
+  document.getElementById('h-mil').textContent = c.military;
+}
+
+// ── Tab switching ──
+function switchLeft(name, btn) {
+  document.querySelectorAll('.col-left .tab').forEach(t => t.classList.remove('active'));
+  btn.classList.add('active');
+  document.getElementById('left-cp').style.display = name === 'cp' ? 'flex' : 'none';
+  document.getElementById('left-changes').style.display = name === 'changes' ? 'block' : 'none';
+  if (name === 'changes') { chCount = 0; const b = document.getElementById('ch-badge'); b.textContent = '0'; b.style.display = 'none'; }
+}
+
+function switchRight(name, btn) {
+  document.querySelectorAll('.col-right .tab').forEach(t => t.classList.remove('active'));
+  btn.classList.add('active');
+  document.getElementById('right-alerts').style.display = name === 'alerts' ? 'block' : 'none';
+  document.getElementById('right-stats').style.display = name === 'stats' ? 'block' : 'none';
+  if (name === 'alerts') { alCount = 0; const b = document.getElementById('al-badge'); b.textContent = '0'; b.style.display = 'none'; }
+  if (name === 'stats') loadStats();
+}
+
+// ── Mobile nav ──
+function mobNav(view, btn) {
+  document.querySelectorAll('.mob-nav button').forEach(b => b.classList.remove('active'));
+  btn.classList.add('active');
+  document.getElementById('col-left').classList.remove('mob-show');
+  document.getElementById('col-right').classList.remove('mob-show');
+  if (view === 'cp') document.getElementById('col-left').classList.add('mob-show');
+  else if (view === 'alerts') document.getElementById('col-right').classList.add('mob-show');
+  // map is always visible underneath
+  setTimeout(() => map.invalidateSize(), 100);
+}
+
+// ── Toast ──
+function showToast(type, title, msg) {
+  const el = document.createElement('div');
+  el.className = 'toast ' + type;
+  el.innerHTML = `<div class="toast-title">${esc(title)}</div><div class="toast-msg">${esc(msg)}</div>`;
+  document.getElementById('toasts').appendChild(el);
+  setTimeout(() => { el.classList.add('out'); setTimeout(() => el.remove(), 300); }, 5000);
+}
+
+// ── Helpers ──
+function setConn(s, t) {
+  document.getElementById('conn-dot').className = 'd ' + (s === 'live' ? 'live' : s === 'err' ? 'err' : '');
+  document.getElementById('conn-text').textContent = t;
+}
+function setUpdated() {
+  document.getElementById('hdr-time').textContent = new Date().toLocaleTimeString([], {hour:'2-digit',minute:'2-digit',second:'2-digit'});
+}
+function relTime(ts) {
+  if (!ts) return '';
+  // Server sends UTC without Z suffix — append Z so browser parses as UTC
+  const iso = String(ts).endsWith('Z') ? ts : ts + 'Z';
+  const d = Math.floor((Date.now() - new Date(iso)) / 1000);
+  if (d < 0) return 'just now';
+  if (d < 60) return d + 's ago';
+  if (d < 3600) return Math.floor(d/60) + 'm ago';
+  if (d < 86400) return Math.floor(d/3600) + 'h ago';
+  return new Date(iso).toLocaleDateString();
+}
+function refreshTimes() { renderCpList(); renderChanges(); }
+function esc(s) { return String(s||'').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;'); }
+</script>
+</body>
+</html>

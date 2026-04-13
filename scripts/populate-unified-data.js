@@ -2263,7 +2263,7 @@ async function processStaticRefugeesData() {
     try {
         const filePath = path.join(DATA_DIR, 'static', 'unrwa-refugees.json');
         const content = JSON.parse(await fs.readFile(filePath, 'utf-8'));
-        const records = content.data || [];
+        const records = Array.isArray(content) ? content : (content.data || []);
         
         if (records.length === 0) return;
 
@@ -2271,12 +2271,12 @@ async function processStaticRefugeesData() {
         const transformer = new RefugeeTransformer();
         const pipeline = new UnifiedPipeline({ logger });
         
-        // Map to format the RefugeeTransformer expects (HDX format uses slightly different keys)
+        // Map to format the RefugeeTransformer expects
         const mappedRecords = records.map(r => ({
             date: r.date,
-            location: r.camp,
-            governorate: r.location,
-            refugees: r.refugees,
+            location: r.camp_name || r.camp,
+            governorate: r.governorate || r.location,
+            refugees: r.total_population || r.refugees,
             type: 'camp_population'
         }));
 
@@ -2316,9 +2316,16 @@ async function processStaticRefugeesData() {
 async function processStaticPrisonersData() {
     logger.info('Processing static Prisoners data...');
     try {
-        const filePath = path.join(DATA_DIR, 'static', 'prisoners-statistics.json');
-        const content = JSON.parse(await fs.readFile(filePath, 'utf-8'));
-        const records = content.data || [];
+        const filePath = path.join(DATA_DIR, 'static', 'prisoners-addameer.json');
+        let content;
+        try {
+            content = JSON.parse(await fs.readFile(filePath, 'utf-8'));
+        } catch (e) {
+            // Fallback to old path if addameer not yet fetched
+            const oldPath = path.join(DATA_DIR, 'static', 'prisoners-statistics.json');
+            content = JSON.parse(await fs.readFile(oldPath, 'utf-8'));
+        }
+        const records = Array.isArray(content) ? content : (content.data || []);
         
         if (records.length === 0) return;
 

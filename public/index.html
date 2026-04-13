@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Palestine Data Observatory</title>
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+    <div id="app">
+        <!-- Loading indicator -->
+        <div id="loading">
+            <div class="spinner"></div>
+            <p>Loading Palestine Data Observatory...</p>
+        </div>
+        
+        <!-- Main interface -->
+        <header>
+            <h1>Palestine Data Observatory</h1>
+            <div class="filters">
+                <input type="date" id="startDate" placeholder="Start Date">
+                <input type="date" id="endDate" placeholder="End Date">
+                <select id="regionFilter">
+                    <option value="">All Regions</option>
+                    <option value="Gaza Strip">Gaza Strip</option>
+                    <option value="West Bank">West Bank</option>
+                    <option value="East Jerusalem">East Jerusalem</option>
+                </select>
+                <select id="categoryFilter">
+                    <option value="">All Categories</option>
+                    <option value="conflict">Conflict</option>
+                    <option value="health">Health</option>
+                    <option value="economic">Economic</option>
+                    <option value="education">Education</option>
+                    <option value="infrastructure">Infrastructure</option>
+                    <option value="refugees">Refugees</option>
+                    <option value="humanitarian">Humanitarian</option>
+                    <option value="land">Land</option>
+                    <option value="water">Water</option>
+                    <option value="news">News</option>
+                    <option value="cultural_heritage">Cultural Heritage</option>
+                    <option value="official_statistics">Official Statistics</option>
+                </select>
+                <button id="applyFilters">Apply Filters</button>
+            </div>
+        </header>
+        
+        <main>
+            <section id="timeline">
+                <h2>Timeline</h2>
+                <div id="timeline-container">
+                    <!-- Timeline will be rendered here -->
+                </div>
+            </section>
+            
+            <section id="visualizations">
+                <div id="map-container">
+                    <h2>Geographic Distribution</h2>
+                    <div id="map"></div>
+                </div>
+                
+                <div id="charts-container">
+                    <!-- Charts will be rendered here -->
+                </div>
+            </section>
+            
+            <section id="details">
+                <h2>Record Details</h2>
+                <div id="record-details">
+                    <!-- Selected record details will be shown here -->
+                </div>
+            </section>
+        </main>
+        
+        <footer>
+            <p>Data sourced from UN, WHO, PCBS, and other humanitarian organizations</p>
+        </footer>
+    </div>
+    
+    <script src="js/main.js" type="module"></script>
+</body>
+</html>

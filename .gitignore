@@ -33,3 +33,4 @@ temp/
 # Test artifacts
 coverage/
 .nyc_output/
+frontend/

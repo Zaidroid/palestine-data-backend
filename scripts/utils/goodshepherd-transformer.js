@@ -59,8 +59,8 @@ export class GoodShepherdTransformer extends BaseTransformer {
         // Category-specific metric mapping
         if (category === 'conflict' || category === 'prisoners') {
             base.metrics = {
-                detained: parseInt(record.total_prisoners || 0),
-                count: parseInt(record.total_prisoners || record.arrests || 0),
+                detained: parseInt(record.total_prisoners || record.total_arrests || 0),
+                count: parseInt(record.total_prisoners || record.total_arrests || record.arrests || 0),
                 unit: 'persons',
             };
             base.administrative_detainees = parseInt(record.administrative_detainees || 0);

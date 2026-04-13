@@ -160,6 +160,7 @@ router.get('/internet-status', proxyRequest('/internet-status'));
 router.get('/conditions', proxyRequest('/conditions'));
 router.get('/zones', proxyRequest('/zones'));
 router.get('/stats/alerts', proxyRequest('/stats'));
+router.get('/stats/today', proxyRequest('/stats/today'));
 
 // ── Real-time streams ────────────────────────────────────────────────────────
 router.get('/stream', proxySSE('/stream'));

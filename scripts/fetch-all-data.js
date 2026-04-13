@@ -862,18 +862,6 @@ async function main() {
         required: false,
       },
       {
-        name: 'Infrastructure',
-        path: path.join(__dirname, 'fetch-infrastructure-data.js'),
-        description: 'Infrastructure Damage Data Collection',
-        required: false,
-      },
-      {
-        name: 'Culture',
-        path: path.join(__dirname, 'fetch-culture-data.js'),
-        description: 'Cultural Heritage Data Collection',
-        required: false,
-      },
-      {
         name: 'Land',
         path: path.join(__dirname, 'fetch-land-data.js'),
         description: 'Land & Settlements Data Collection',
@@ -925,6 +913,18 @@ async function main() {
         name: 'Intifada',
         path: path.join(__dirname, 'fetch-intifada-data.js'),
         description: 'Intifada Historical Record',
+        required: false,
+      },
+      {
+        name: 'Prisoners Dashboard',
+        path: path.join(__dirname, 'fetch-prisoners.js'),
+        description: 'Addameer Prisoners Statistics',
+        required: false,
+      },
+      {
+        name: 'Refugees Camps',
+        path: path.join(__dirname, 'fetch-refugees.js'),
+        description: 'UNRWA Refugee Camps Population',
         required: false,
       },
       // UNRWA removed - data sources broken/outdated (see scripts/UNRWA_DISABLED.md)
