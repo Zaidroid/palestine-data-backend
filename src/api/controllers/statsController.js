@@ -116,9 +116,9 @@ export async function getStats(req, res) {
             if (liveRes.ok) {
                 const liveData = await liveRes.json();
                 stats.live_status = {
-                    active_checkpoints: liveData.total_tracked || 0,
-                    currently_closed: liveData.total_closed || 0,
-                    severe_delays: liveData.total_severe || 0
+                    active_checkpoints: liveData.total_active || 0,
+                    currently_closed: liveData.by_status?.closed || 0,
+                    severe_delays: liveData.by_status?.congested || 0
                 };
             }
         } catch (e) {
