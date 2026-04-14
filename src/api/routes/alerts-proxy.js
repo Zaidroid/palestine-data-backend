@@ -135,7 +135,13 @@ router.get('/alerts/active', proxyRequest('/alerts/active', LiveTransformer.tran
 router.get('/alerts/:id', (req, res) => proxyRequest(`/alerts/${req.params.id}`)(req, res));
 router.get('/incidents', proxyRequest('/incidents'));
 router.get('/incidents/summary', proxyRequest('/incidents/summary'));
+router.get('/incidents/live', proxyRequest('/incidents/live'));
+router.get('/incidents/live/:id', (req, res) => proxyRequest(`/incidents/live/${req.params.id}`)(req, res));
 router.get('/sirens', proxyRequest('/sirens'));
+
+// ── Area status endpoints ────────────────────────────────────────────────────
+router.get('/areas/status', proxyRequest('/areas/status'));
+router.get('/areas/status/:region', (req, res) => proxyRequest(`/areas/status/${encodeURIComponent(req.params.region)}`)(req, res));
 
 // ── Checkpoint endpoints ─────────────────────────────────────────────────────
 router.get('/checkpoints', proxyRequest('/checkpoints', LiveTransformer.transformCheckpoints));
@@ -165,5 +171,6 @@ router.get('/stats/today', proxyRequest('/stats/today'));
 // ── Real-time streams ────────────────────────────────────────────────────────
 router.get('/stream', proxySSE('/stream'));
 router.get('/checkpoints/stream', proxySSE('/checkpoints/stream'));
+router.get('/areas/stream', proxySSE('/areas/stream'));
 
 export default router;

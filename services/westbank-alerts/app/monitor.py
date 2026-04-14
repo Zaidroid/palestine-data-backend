@@ -27,6 +27,7 @@ from .database import duplicate_check, content_duplicate_check, get_channels, in
 from .checkpoint_db import (
     duplicate_check_cp, insert_checkpoint_update, upsert_checkpoint_status
 )
+from .incident_grouper import process_alert_into_incident, auto_resolve_stale
 from .models import Alert
 
 log = logging.getLogger("monitor")
@@ -35,6 +36,7 @@ POLL_INTERVAL = 5
 
 _broadcast_alert_fn:      Optional[Callable] = None
 _broadcast_checkpoint_fn: Optional[Callable] = None
+_broadcast_area_fn:       Optional[Callable] = None
 
 client: Optional[TelegramClient] = None
 _admin_ids: Set[int] = set()
@@ -85,6 +87,11 @@ def set_checkpoint_broadcast_fn(fn: Callable):
     _broadcast_checkpoint_fn = fn
 
 
+def set_area_broadcast_fn(fn: Callable):
+    global _broadcast_area_fn
+    _broadcast_area_fn = fn
+
+
 def get_client() -> Optional[TelegramClient]:
     """Expose the authenticated Telegram client for reuse (e.g. history analyzer)."""
     return client
@@ -132,6 +139,14 @@ async def _process_security_message(message, channel_username: str):
         f"[ALERT/{alert.severity.upper()}] {alert.title} "
         f"(source: @{channel_username}, area: {alert.area})"
     )
+
+    # Group into incident
+    try:
+        incident_id = await process_alert_into_incident(alert)
+        log.info(f"  → incident #{incident_id}")
+    except Exception as e:
+        log.warning(f"Incident grouping failed for alert #{alert.id}: {e}")
+
     _record_message(is_alert=True)
     if _broadcast_alert_fn:
         await _broadcast_alert_fn(alert)
@@ -207,6 +222,16 @@ async def _process_checkpoint_message(message, channel_username: str):
 
     if changed_checkpoints and _broadcast_checkpoint_fn:
         await _broadcast_checkpoint_fn(changed_checkpoints)
+
+    # Recompute area-level status when checkpoints change
+    if changed_checkpoints:
+        try:
+            from .area_status import compute_area_status
+            areas = await compute_area_status()
+            if _broadcast_area_fn:
+                await _broadcast_area_fn(areas)
+        except Exception as e:
+            log.warning(f"Area status recomputation failed: {e}")
 
     if updates:
         _record_message(is_cp=True)
@@ -384,6 +409,10 @@ async def start():
                 f"cp_updates={_stats['cp_updates_today']}"
             )
             await prune_alerts_if_needed()
+            try:
+                await auto_resolve_stale()
+            except Exception as e:
+                log.warning(f"Auto-resolve stale incidents failed: {e}")
         await asyncio.sleep(POLL_INTERVAL)
 
 

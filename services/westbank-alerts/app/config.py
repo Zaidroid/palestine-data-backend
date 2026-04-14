@@ -33,6 +33,10 @@ class Settings(BaseSettings):
     # Checkpoint staleness threshold — checkpoints older than this are marked stale
     CHECKPOINT_STALE_HOURS: float = 12.0
 
+    # Incident grouping
+    INCIDENT_MERGE_WINDOW_HOURS: float = 2.0
+    INCIDENT_AUTO_RESOLVE_HOURS: float = 4.0
+
     class Config:
         env_file = ".env"
         env_file_encoding = "utf-8"

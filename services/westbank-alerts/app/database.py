@@ -116,16 +116,13 @@ async def init_db():
         if "title_ar" not in alert_cols:
             await db.execute("ALTER TABLE alerts ADD COLUMN title_ar TEXT")
 
-        # Seed channels from env on first run
-        cur = await db.execute("SELECT COUNT(*) FROM channels")
-        (count,) = await cur.fetchone()
-        if count == 0:
-            now = datetime.utcnow().isoformat()
-            for ch in settings.channel_list:
-                await db.execute(
-                    "INSERT OR IGNORE INTO channels(username, added_at) VALUES(?,?)",
-                    (ch, now)
-                )
+        # Seed channels from env — always INSERT OR IGNORE to pick up newly added channels
+        now = datetime.utcnow().isoformat()
+        for ch in settings.channel_list:
+            await db.execute(
+                "INSERT OR IGNORE INTO channels(username, added_at) VALUES(?,?)",
+                (ch, now)
+            )
         await db.commit()
 
 

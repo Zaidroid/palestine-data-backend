@@ -731,13 +731,46 @@ def _build(
         "raw_text": text,
     }
 
-    # Attach zone center coordinates for map display
+    # 3-tier coordinate resolution: location KB → checkpoint KB → zone center
+    _resolve_coordinates(result, area, zone)
+
+    return result
+
+
+def _resolve_coordinates(result: dict, area: Optional[str], zone: Optional[str]):
+    """Attach lat/lng using best available source."""
+    from .location_knowledge_base import get_location_kb
+
+    # Tier 1: location knowledge base (per-city coordinates)
+    loc_kb = get_location_kb()
+    if loc_kb and area and area != "West Bank":
+        loc_key = loc_kb.find_location(area)
+        if not loc_key:
+            # Try English name lookup
+            loc_key = loc_kb.by_english.get(area.lower())
+        if loc_key:
+            coords = loc_kb.get_coordinates(loc_key)
+            if coords:
+                result["latitude"], result["longitude"] = coords
+                return
+
+    # Tier 2: checkpoint knowledge base (if area matches a checkpoint name)
+    from .checkpoint_knowledge_base import get_knowledge_base
+    cp_kb = get_knowledge_base()
+    if cp_kb and area and area != "West Bank":
+        cp_key = cp_kb.find_checkpoint(area)
+        if cp_key:
+            cp = cp_kb.get_checkpoint(cp_key)
+            if cp and cp.get("latitude") and cp.get("longitude"):
+                result["latitude"] = cp["latitude"]
+                result["longitude"] = cp["longitude"]
+                return
+
+    # Tier 3: zone center fallback
     if zone and zone in WB_ZONES:
         lat, lon = WB_ZONES[zone]["center"]
         result["latitude"] = lat
         result["longitude"] = lon
-
-    return result
 
 
 # ── Public interface ──────────────────────────────────────────────────────────
@@ -837,7 +870,16 @@ def classify_wb_operational(raw_text: str, source: str) -> Optional[dict]:
     if not wb_relevant:
         return None
 
+    # MENA guard: if message mentions MENA countries but no specific WB city,
+    # it's regional news misclassified as WB operational (Iran/Lebanon/Turkey events)
+    if _is_mena_zone(normed) and not _is_wb_zone(normed):
+        return None
+
     if _is_noise(normed, tier="tier2", source=source):
+        return None
+
+    # News attribution filter — applied to Tier 2 as well (not just Tier 1)
+    if not _is_news_channel(source) and _has(normed, NEWS_ATTRIBUTION):
         return None
 
     area = _extract_area(normed) or "West Bank"

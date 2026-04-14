@@ -1,0 +1,992 @@
+[
+  {
+    "canonical_key": "ramallah",
+    "name_ar": "رام الله",
+    "name_en": "Ramallah",
+    "governorate": "ramallah",
+    "zone": "middle",
+    "latitude": 31.9038,
+    "longitude": 35.2034,
+    "aliases": ["رام الله", "رامالله"]
+  },
+  {
+    "canonical_key": "al_bireh",
+    "name_ar": "البيره",
+    "name_en": "Al-Bireh",
+    "governorate": "ramallah",
+    "zone": "middle",
+    "latitude": 31.9108,
+    "longitude": 35.2178,
+    "aliases": ["البيره", "البيرة"]
+  },
+  {
+    "canonical_key": "jerusalem",
+    "name_ar": "القدس",
+    "name_en": "Jerusalem",
+    "governorate": "jerusalem",
+    "zone": "middle",
+    "latitude": 31.7683,
+    "longitude": 35.2137,
+    "aliases": ["القدس", "القدس الشرقيه"]
+  },
+  {
+    "canonical_key": "nablus",
+    "name_ar": "نابلس",
+    "name_en": "Nablus",
+    "governorate": "nablus",
+    "zone": "north",
+    "latitude": 32.2211,
+    "longitude": 35.2544,
+    "aliases": ["نابلس"]
+  },
+  {
+    "canonical_key": "jenin",
+    "name_ar": "جنين",
+    "name_en": "Jenin",
+    "governorate": "jenin",
+    "zone": "north",
+    "latitude": 32.4607,
+    "longitude": 35.3004,
+    "aliases": ["جنين"]
+  },
+  {
+    "canonical_key": "tulkarm",
+    "name_ar": "طولكرم",
+    "name_en": "Tulkarm",
+    "governorate": "tulkarm",
+    "zone": "north",
+    "latitude": 32.3104,
+    "longitude": 35.0286,
+    "aliases": ["طولكرم"]
+  },
+  {
+    "canonical_key": "hebron",
+    "name_ar": "الخليل",
+    "name_en": "Hebron",
+    "governorate": "hebron",
+    "zone": "south",
+    "latitude": 31.5326,
+    "longitude": 35.0998,
+    "aliases": ["الخليل"]
+  },
+  {
+    "canonical_key": "bethlehem",
+    "name_ar": "بيت لحم",
+    "name_en": "Bethlehem",
+    "governorate": "bethlehem",
+    "zone": "south",
+    "latitude": 31.7054,
+    "longitude": 35.2024,
+    "aliases": ["بيت لحم"]
+  },
+  {
+    "canonical_key": "qalqilya",
+    "name_ar": "قلقيليه",
+    "name_en": "Qalqilya",
+    "governorate": "qalqilya",
+    "zone": "north",
+    "latitude": 32.1892,
+    "longitude": 34.9706,
+    "aliases": ["قلقيليه", "قلقيليا"]
+  },
+  {
+    "canonical_key": "jericho",
+    "name_ar": "اريحا",
+    "name_en": "Jericho",
+    "governorate": "jericho",
+    "zone": "middle",
+    "latitude": 31.8611,
+    "longitude": 35.4597,
+    "aliases": ["اريحا"]
+  },
+  {
+    "canonical_key": "tubas",
+    "name_ar": "طوباس",
+    "name_en": "Tubas",
+    "governorate": "tubas",
+    "zone": "north",
+    "latitude": 32.3217,
+    "longitude": 35.3675,
+    "aliases": ["طوباس"]
+  },
+  {
+    "canonical_key": "salfit",
+    "name_ar": "سلفيت",
+    "name_en": "Salfit",
+    "governorate": "salfit",
+    "zone": "north",
+    "latitude": 32.0811,
+    "longitude": 35.1728,
+    "aliases": ["سلفيت"]
+  },
+  {
+    "canonical_key": "huwara",
+    "name_ar": "حواره",
+    "name_en": "Huwara",
+    "governorate": "nablus",
+    "zone": "north",
+    "latitude": 32.1587,
+    "longitude": 35.2538,
+    "aliases": ["حواره", "حوارة"]
+  },
+  {
+    "canonical_key": "beita",
+    "name_ar": "بيتا",
+    "name_en": "Beita",
+    "governorate": "nablus",
+    "zone": "north",
+    "latitude": 32.1833,
+    "longitude": 35.2667,
+    "aliases": ["بيتا"]
+  },
+  {
+    "canonical_key": "balata",
+    "name_ar": "بلاطه",
+    "name_en": "Balata",
+    "governorate": "nablus",
+    "zone": "north",
+    "latitude": 32.2167,
+    "longitude": 35.2833,
+    "aliases": ["بلاطه", "بلاطة"]
+  },
+  {
+    "canonical_key": "burin",
+    "name_ar": "بورين",
+    "name_en": "Burin",
+    "governorate": "nablus",
+    "zone": "north",
+    "latitude": 32.1731,
+    "longitude": 35.2336,
+    "aliases": ["بورين"]
+  },
+  {
+    "canonical_key": "madama",
+    "name_ar": "مادما",
+    "name_en": "Madama",
+    "governorate": "nablus",
+    "zone": "north",
+    "latitude": 32.1564,
+    "longitude": 35.2256,
+    "aliases": ["مادما"]
+  },
+  {
+    "canonical_key": "aqraba",
+    "name_ar": "عقربا",
+    "name_en": "Aqraba",
+    "governorate": "nablus",
+    "zone": "north",
+    "latitude": 32.1778,
+    "longitude": 35.3411,
+    "aliases": ["عقربا"]
+  },
+  {
+    "canonical_key": "qabalan",
+    "name_ar": "قبلان",
+    "name_en": "Qabalan",
+    "governorate": "nablus",
+    "zone": "north",
+    "latitude": 32.1500,
+    "longitude": 35.2833,
+    "aliases": ["قبلان"]
+  },
+  {
+    "canonical_key": "yatma",
+    "name_ar": "يتما",
+    "name_en": "Yatma",
+    "governorate": "nablus",
+    "zone": "north",
+    "latitude": 32.1367,
+    "longitude": 35.2767,
+    "aliases": ["يتما"]
+  },
+  {
+    "canonical_key": "beit_furik",
+    "name_ar": "بيت فوريك",
+    "name_en": "Beit Furik",
+    "governorate": "nablus",
+    "zone": "north",
+    "latitude": 32.2083,
+    "longitude": 35.3167,
+    "aliases": ["بيت فوريك"]
+  },
+  {
+    "canonical_key": "beit_dajan",
+    "name_ar": "بيت دجن",
+    "name_en": "Beit Dajan",
+    "governorate": "nablus",
+    "zone": "north",
+    "latitude": 32.2117,
+    "longitude": 35.3550,
+    "aliases": ["بيت دجن"]
+  },
+  {
+    "canonical_key": "asira_shamaliya",
+    "name_ar": "عصيره الشماليه",
+    "name_en": "Asira al-Shamaliya",
+    "governorate": "nablus",
+    "zone": "north",
+    "latitude": 32.2544,
+    "longitude": 35.2550,
+    "aliases": ["عصيره الشماليه", "عصيرة الشمالية"]
+  },
+  {
+    "canonical_key": "sebastia",
+    "name_ar": "سبسطيه",
+    "name_en": "Sebastia",
+    "governorate": "nablus",
+    "zone": "north",
+    "latitude": 32.2764,
+    "longitude": 35.1956,
+    "aliases": ["سبسطيه", "سبسطية"]
+  },
+  {
+    "canonical_key": "deir_sharaf",
+    "name_ar": "دير شرف",
+    "name_en": "Deir Sharaf",
+    "governorate": "nablus",
+    "zone": "north",
+    "latitude": 32.2483,
+    "longitude": 35.1900,
+    "aliases": ["دير شرف"]
+  },
+  {
+    "canonical_key": "yabad",
+    "name_ar": "يعبد",
+    "name_en": "Ya'bad",
+    "governorate": "jenin",
+    "zone": "north",
+    "latitude": 32.4439,
+    "longitude": 35.1706,
+    "aliases": ["يعبد"]
+  },
+  {
+    "canonical_key": "qabatiya",
+    "name_ar": "قباطيه",
+    "name_en": "Qabatiya",
+    "governorate": "jenin",
+    "zone": "north",
+    "latitude": 32.4008,
+    "longitude": 35.2808,
+    "aliases": ["قباطيه", "قباطية"]
+  },
+  {
+    "canonical_key": "arraba",
+    "name_ar": "عرابه",
+    "name_en": "Arraba",
+    "governorate": "jenin",
+    "zone": "north",
+    "latitude": 32.4622,
+    "longitude": 35.2267,
+    "aliases": ["عرابه", "عرابة"]
+  },
+  {
+    "canonical_key": "burqin",
+    "name_ar": "برقين",
+    "name_en": "Burqin",
+    "governorate": "jenin",
+    "zone": "north",
+    "latitude": 32.4544,
+    "longitude": 35.2633,
+    "aliases": ["برقين"]
+  },
+  {
+    "canonical_key": "tamun",
+    "name_ar": "طمون",
+    "name_en": "Tamun",
+    "governorate": "tubas",
+    "zone": "north",
+    "latitude": 32.3089,
+    "longitude": 35.3794,
+    "aliases": ["طمون"]
+  },
+  {
+    "canonical_key": "az_zababdeh",
+    "name_ar": "الزبابده",
+    "name_en": "Az-Zababdeh",
+    "governorate": "jenin",
+    "zone": "north",
+    "latitude": 32.3833,
+    "longitude": 35.3167,
+    "aliases": ["الزبابده", "الزبابدة"]
+  },
+  {
+    "canonical_key": "silat_al_harithiya",
+    "name_ar": "سيله الحارثيه",
+    "name_en": "Silat al-Harithiya",
+    "governorate": "jenin",
+    "zone": "north",
+    "latitude": 32.4800,
+    "longitude": 35.2500,
+    "aliases": ["سيله الحارثيه", "سيلة الحارثية"]
+  },
+  {
+    "canonical_key": "kafr_dan",
+    "name_ar": "كفر دان",
+    "name_en": "Kafr Dan",
+    "governorate": "jenin",
+    "zone": "north",
+    "latitude": 32.4417,
+    "longitude": 35.2333,
+    "aliases": ["كفر دان"]
+  },
+  {
+    "canonical_key": "maythalun",
+    "name_ar": "ميثلون",
+    "name_en": "Maythalun",
+    "governorate": "jenin",
+    "zone": "north",
+    "latitude": 32.3667,
+    "longitude": 35.3000,
+    "aliases": ["ميثلون"]
+  },
+  {
+    "canonical_key": "nur_shams",
+    "name_ar": "نور شمس",
+    "name_en": "Nur Shams",
+    "governorate": "tulkarm",
+    "zone": "north",
+    "latitude": 32.3167,
+    "longitude": 35.0500,
+    "aliases": ["نور شمس"]
+  },
+  {
+    "canonical_key": "anabta",
+    "name_ar": "عنبتا",
+    "name_en": "Anabta",
+    "governorate": "tulkarm",
+    "zone": "north",
+    "latitude": 32.3000,
+    "longitude": 35.0833,
+    "aliases": ["عنبتا"]
+  },
+  {
+    "canonical_key": "bala",
+    "name_ar": "بلعا",
+    "name_en": "Bal'a",
+    "governorate": "tulkarm",
+    "zone": "north",
+    "latitude": 32.3333,
+    "longitude": 35.0833,
+    "aliases": ["بلعا"]
+  },
+  {
+    "canonical_key": "shweikeh",
+    "name_ar": "شويكه",
+    "name_en": "Shweikeh",
+    "governorate": "tulkarm",
+    "zone": "north",
+    "latitude": 32.3186,
+    "longitude": 35.0108,
+    "aliases": ["شويكه", "شويكة"]
+  },
+  {
+    "canonical_key": "attil",
+    "name_ar": "عتيل",
+    "name_en": "Attil",
+    "governorate": "tulkarm",
+    "zone": "north",
+    "latitude": 32.3500,
+    "longitude": 35.0333,
+    "aliases": ["عتيل"]
+  },
+  {
+    "canonical_key": "qaffin",
+    "name_ar": "قفين",
+    "name_en": "Qaffin",
+    "governorate": "tulkarm",
+    "zone": "north",
+    "latitude": 32.3833,
+    "longitude": 35.0667,
+    "aliases": ["قفين"]
+  },
+  {
+    "canonical_key": "yatta",
+    "name_ar": "يطا",
+    "name_en": "Yatta",
+    "governorate": "hebron",
+    "zone": "south",
+    "latitude": 31.4614,
+    "longitude": 35.0819,
+    "aliases": ["يطا"]
+  },
+  {
+    "canonical_key": "dura",
+    "name_ar": "دورا",
+    "name_en": "Dura",
+    "governorate": "hebron",
+    "zone": "south",
+    "latitude": 31.5014,
+    "longitude": 35.0253,
+    "aliases": ["دورا"]
+  },
+  {
+    "canonical_key": "adh_dhahiriya",
+    "name_ar": "الظاهريه",
+    "name_en": "Adh-Dhahiriya",
+    "governorate": "hebron",
+    "zone": "south",
+    "latitude": 31.4111,
+    "longitude": 34.9711,
+    "aliases": ["الظاهريه", "الظاهرية"]
+  },
+  {
+    "canonical_key": "halhul",
+    "name_ar": "حلحول",
+    "name_en": "Halhul",
+    "governorate": "hebron",
+    "zone": "south",
+    "latitude": 31.5833,
+    "longitude": 35.0944,
+    "aliases": ["حلحول"]
+  },
+  {
+    "canonical_key": "beit_ummar",
+    "name_ar": "بيت امر",
+    "name_en": "Beit Ummar",
+    "governorate": "hebron",
+    "zone": "south",
+    "latitude": 31.6178,
+    "longitude": 35.0961,
+    "aliases": ["بيت امر", "بيت أمر"]
+  },
+  {
+    "canonical_key": "bani_naim",
+    "name_ar": "بني نعيم",
+    "name_en": "Bani Na'im",
+    "governorate": "hebron",
+    "zone": "south",
+    "latitude": 31.5167,
+    "longitude": 35.1500,
+    "aliases": ["بني نعيم"]
+  },
+  {
+    "canonical_key": "tarqumiya",
+    "name_ar": "ترقوميا",
+    "name_en": "Tarqumiya",
+    "governorate": "hebron",
+    "zone": "south",
+    "latitude": 31.5500,
+    "longitude": 35.0000,
+    "aliases": ["ترقوميا"]
+  },
+  {
+    "canonical_key": "surif",
+    "name_ar": "صوريف",
+    "name_en": "Surif",
+    "governorate": "hebron",
+    "zone": "south",
+    "latitude": 31.6450,
+    "longitude": 35.0700,
+    "aliases": ["صوريف"]
+  },
+  {
+    "canonical_key": "as_samu",
+    "name_ar": "السموع",
+    "name_en": "As-Samu'",
+    "governorate": "hebron",
+    "zone": "south",
+    "latitude": 31.4000,
+    "longitude": 35.0833,
+    "aliases": ["السموع"]
+  },
+  {
+    "canonical_key": "ash_shuyukh",
+    "name_ar": "الشيوخ",
+    "name_en": "Ash-Shuyukh",
+    "governorate": "hebron",
+    "zone": "south",
+    "latitude": 31.5472,
+    "longitude": 35.1417,
+    "aliases": ["الشيوخ"]
+  },
+  {
+    "canonical_key": "kharas",
+    "name_ar": "خاراس",
+    "name_en": "Kharas",
+    "governorate": "hebron",
+    "zone": "south",
+    "latitude": 31.5667,
+    "longitude": 35.0333,
+    "aliases": ["خاراس"]
+  },
+  {
+    "canonical_key": "beitunia",
+    "name_ar": "بيتونيا",
+    "name_en": "Beitunia",
+    "governorate": "ramallah",
+    "zone": "middle",
+    "latitude": 31.9017,
+    "longitude": 35.1644,
+    "aliases": ["بيتونيا"]
+  },
+  {
+    "canonical_key": "birzeit",
+    "name_ar": "بير زيت",
+    "name_en": "Birzeit",
+    "governorate": "ramallah",
+    "zone": "middle",
+    "latitude": 31.9667,
+    "longitude": 35.1833,
+    "aliases": ["بير زيت", "بيرزيت"]
+  },
+  {
+    "canonical_key": "silwad",
+    "name_ar": "سلواد",
+    "name_en": "Silwad",
+    "governorate": "ramallah",
+    "zone": "middle",
+    "latitude": 31.9333,
+    "longitude": 35.3000,
+    "aliases": ["سلواد"]
+  },
+  {
+    "canonical_key": "kobar",
+    "name_ar": "كوبر",
+    "name_en": "Kobar",
+    "governorate": "ramallah",
+    "zone": "middle",
+    "latitude": 31.9667,
+    "longitude": 35.1500,
+    "aliases": ["كوبر"]
+  },
+  {
+    "canonical_key": "nilin",
+    "name_ar": "نعلين",
+    "name_en": "Ni'lin",
+    "governorate": "ramallah",
+    "zone": "middle",
+    "latitude": 31.8667,
+    "longitude": 35.0500,
+    "aliases": ["نعلين"]
+  },
+  {
+    "canonical_key": "bilin",
+    "name_ar": "بلعين",
+    "name_en": "Bil'in",
+    "governorate": "ramallah",
+    "zone": "middle",
+    "latitude": 31.8833,
+    "longitude": 35.0667,
+    "aliases": ["بلعين"]
+  },
+  {
+    "canonical_key": "al_mazraa_sharqiya",
+    "name_ar": "المزرعه الشرقيه",
+    "name_en": "Al-Mazra'a ash-Sharqiya",
+    "governorate": "ramallah",
+    "zone": "middle",
+    "latitude": 31.9500,
+    "longitude": 35.3000,
+    "aliases": ["المزرعه الشرقيه", "المزرعة الشرقية"]
+  },
+  {
+    "canonical_key": "an_nabi_salih",
+    "name_ar": "النبي صالح",
+    "name_en": "An-Nabi Salih",
+    "governorate": "ramallah",
+    "zone": "middle",
+    "latitude": 31.9500,
+    "longitude": 35.1667,
+    "aliases": ["النبي صالح"]
+  },
+  {
+    "canonical_key": "turmus_ayya",
+    "name_ar": "ترمسعيا",
+    "name_en": "Turmus Ayya",
+    "governorate": "ramallah",
+    "zone": "middle",
+    "latitude": 31.9833,
+    "longitude": 35.2667,
+    "aliases": ["ترمسعيا"]
+  },
+  {
+    "canonical_key": "aboud",
+    "name_ar": "عابود",
+    "name_en": "Aboud",
+    "governorate": "ramallah",
+    "zone": "middle",
+    "latitude": 31.9500,
+    "longitude": 35.0833,
+    "aliases": ["عابود"]
+  },
+  {
+    "canonical_key": "abu_dis",
+    "name_ar": "ابوديس",
+    "name_en": "Abu Dis",
+    "governorate": "jerusalem",
+    "zone": "middle",
+    "latitude": 31.7583,
+    "longitude": 35.2583,
+    "aliases": ["ابوديس", "أبو ديس"]
+  },
+  {
+    "canonical_key": "beit_sahour",
+    "name_ar": "بيت ساحور",
+    "name_en": "Beit Sahour",
+    "governorate": "bethlehem",
+    "zone": "south",
+    "latitude": 31.7000,
+    "longitude": 35.2167,
+    "aliases": ["بيت ساحور"]
+  },
+  {
+    "canonical_key": "beit_jala",
+    "name_ar": "بيت جالا",
+    "name_en": "Beit Jala",
+    "governorate": "bethlehem",
+    "zone": "south",
+    "latitude": 31.7139,
+    "longitude": 35.1853,
+    "aliases": ["بيت جالا"]
+  },
+  {
+    "canonical_key": "al_khader",
+    "name_ar": "الخضر",
+    "name_en": "Al-Khader",
+    "governorate": "bethlehem",
+    "zone": "south",
+    "latitude": 31.6833,
+    "longitude": 35.1500,
+    "aliases": ["الخضر"]
+  },
+  {
+    "canonical_key": "tuqu",
+    "name_ar": "تقوع",
+    "name_en": "Tuqu'",
+    "governorate": "bethlehem",
+    "zone": "south",
+    "latitude": 31.6667,
+    "longitude": 35.2333,
+    "aliases": ["تقوع"]
+  },
+  {
+    "canonical_key": "beit_fajjar",
+    "name_ar": "بيت فجار",
+    "name_en": "Beit Fajjar",
+    "governorate": "bethlehem",
+    "zone": "south",
+    "latitude": 31.6167,
+    "longitude": 35.1000,
+    "aliases": ["بيت فجار"]
+  },
+  {
+    "canonical_key": "al_walaja",
+    "name_ar": "الولجه",
+    "name_en": "Al-Walaja",
+    "governorate": "bethlehem",
+    "zone": "south",
+    "latitude": 31.7333,
+    "longitude": 35.1500,
+    "aliases": ["الولجه", "الولجة"]
+  },
+  {
+    "canonical_key": "nahalin",
+    "name_ar": "نحالين",
+    "name_en": "Nahalin",
+    "governorate": "bethlehem",
+    "zone": "south",
+    "latitude": 31.6667,
+    "longitude": 35.1167,
+    "aliases": ["نحالين"]
+  },
+  {
+    "canonical_key": "azzun",
+    "name_ar": "عزون",
+    "name_en": "Azzun",
+    "governorate": "qalqilya",
+    "zone": "north",
+    "latitude": 32.1833,
+    "longitude": 35.0167,
+    "aliases": ["عزون"]
+  },
+  {
+    "canonical_key": "jayyous",
+    "name_ar": "جيوس",
+    "name_en": "Jayyous",
+    "governorate": "qalqilya",
+    "zone": "north",
+    "latitude": 32.1833,
+    "longitude": 34.9833,
+    "aliases": ["جيوس"]
+  },
+  {
+    "canonical_key": "kifl_haris",
+    "name_ar": "كفل حارس",
+    "name_en": "Kifl Haris",
+    "governorate": "salfit",
+    "zone": "north",
+    "latitude": 32.1000,
+    "longitude": 35.1500,
+    "aliases": ["كفل حارس"]
+  },
+  {
+    "canonical_key": "bidya",
+    "name_ar": "بديا",
+    "name_en": "Bidya",
+    "governorate": "salfit",
+    "zone": "north",
+    "latitude": 32.0667,
+    "longitude": 35.1333,
+    "aliases": ["بديا"]
+  },
+  {
+    "canonical_key": "deir_istiya",
+    "name_ar": "دير استيا",
+    "name_en": "Deir Istiya",
+    "governorate": "salfit",
+    "zone": "north",
+    "latitude": 32.1000,
+    "longitude": 35.1167,
+    "aliases": ["دير استيا"]
+  },
+  {
+    "canonical_key": "kafr_ad_dik",
+    "name_ar": "كفر الديك",
+    "name_en": "Kafr ad-Dik",
+    "governorate": "salfit",
+    "zone": "north",
+    "latitude": 32.0500,
+    "longitude": 35.1167,
+    "aliases": ["كفر الديك"]
+  },
+  {
+    "canonical_key": "sheikh_jarrah",
+    "name_ar": "الشيخ جراح",
+    "name_en": "Sheikh Jarrah",
+    "governorate": "jerusalem",
+    "zone": "middle",
+    "latitude": 31.7917,
+    "longitude": 35.2306,
+    "aliases": ["الشيخ جراح"]
+  },
+  {
+    "canonical_key": "silwan",
+    "name_ar": "سلوان",
+    "name_en": "Silwan",
+    "governorate": "jerusalem",
+    "zone": "middle",
+    "latitude": 31.7700,
+    "longitude": 35.2350,
+    "aliases": ["سلوان"]
+  },
+  {
+    "canonical_key": "al_issawiya",
+    "name_ar": "العيساويه",
+    "name_en": "Al-Issawiya",
+    "governorate": "jerusalem",
+    "zone": "middle",
+    "latitude": 31.7939,
+    "longitude": 35.2528,
+    "aliases": ["العيساويه", "العيساوية"]
+  },
+  {
+    "canonical_key": "jabal_al_mukaber",
+    "name_ar": "جبل المكبر",
+    "name_en": "Jabal al-Mukaber",
+    "governorate": "jerusalem",
+    "zone": "middle",
+    "latitude": 31.7500,
+    "longitude": 35.2500,
+    "aliases": ["جبل المكبر"]
+  },
+  {
+    "canonical_key": "at_tur",
+    "name_ar": "الطور",
+    "name_en": "At-Tur",
+    "governorate": "jerusalem",
+    "zone": "middle",
+    "latitude": 31.7806,
+    "longitude": 35.2472,
+    "aliases": ["الطور"]
+  },
+  {
+    "canonical_key": "shufat",
+    "name_ar": "شعفاط",
+    "name_en": "Shu'fat",
+    "governorate": "jerusalem",
+    "zone": "middle",
+    "latitude": 31.8111,
+    "longitude": 35.2306,
+    "aliases": ["شعفاط"]
+  },
+  {
+    "canonical_key": "beit_hanina",
+    "name_ar": "بيت حنينا",
+    "name_en": "Beit Hanina",
+    "governorate": "jerusalem",
+    "zone": "middle",
+    "latitude": 31.8250,
+    "longitude": 35.2167,
+    "aliases": ["بيت حنينا"]
+  },
+  {
+    "canonical_key": "al_eizariya",
+    "name_ar": "العيزريه",
+    "name_en": "Al-Eizariya",
+    "governorate": "jerusalem",
+    "zone": "middle",
+    "latitude": 31.7667,
+    "longitude": 35.2667,
+    "aliases": ["العيزريه", "العيزرية"]
+  },
+  {
+    "canonical_key": "ras_al_amud",
+    "name_ar": "راس العمود",
+    "name_en": "Ras al-Amud",
+    "governorate": "jerusalem",
+    "zone": "middle",
+    "latitude": 31.7750,
+    "longitude": 35.2417,
+    "aliases": ["راس العمود"]
+  },
+  {
+    "canonical_key": "jenin_camp",
+    "name_ar": "مخيم جنين",
+    "name_en": "Jenin Camp",
+    "governorate": "jenin",
+    "zone": "north",
+    "latitude": 32.4633,
+    "longitude": 35.2933,
+    "aliases": ["مخيم جنين"]
+  },
+  {
+    "canonical_key": "balata_camp",
+    "name_ar": "مخيم بلاطه",
+    "name_en": "Balata Camp",
+    "governorate": "nablus",
+    "zone": "north",
+    "latitude": 32.2150,
+    "longitude": 35.2800,
+    "aliases": ["مخيم بلاطه", "مخيم نابلس"]
+  },
+  {
+    "canonical_key": "tulkarm_camp",
+    "name_ar": "مخيم طولكرم",
+    "name_en": "Tulkarm Camp",
+    "governorate": "tulkarm",
+    "zone": "north",
+    "latitude": 32.3117,
+    "longitude": 35.0233,
+    "aliases": ["مخيم طولكرم"]
+  },
+  {
+    "canonical_key": "nur_shams_camp",
+    "name_ar": "مخيم نور شمس",
+    "name_en": "Nur Shams Camp",
+    "governorate": "tulkarm",
+    "zone": "north",
+    "latitude": 32.3183,
+    "longitude": 35.0467,
+    "aliases": ["مخيم نور شمس"]
+  },
+  {
+    "canonical_key": "al_faraa_camp",
+    "name_ar": "مخيم الفارعه",
+    "name_en": "Al-Fara'a Camp",
+    "governorate": "tubas",
+    "zone": "north",
+    "latitude": 32.2833,
+    "longitude": 35.3667,
+    "aliases": ["مخيم الفارعه", "مخيم الفارعة"]
+  },
+  {
+    "canonical_key": "al_amari_camp",
+    "name_ar": "مخيم الامعري",
+    "name_en": "Al-Am'ari Camp",
+    "governorate": "ramallah",
+    "zone": "middle",
+    "latitude": 31.8917,
+    "longitude": 35.2200,
+    "aliases": ["مخيم الامعري"]
+  },
+  {
+    "canonical_key": "al_jalazun_camp",
+    "name_ar": "مخيم الجلزون",
+    "name_en": "Al-Jalazun Camp",
+    "governorate": "ramallah",
+    "zone": "middle",
+    "latitude": 31.9467,
+    "longitude": 35.2283,
+    "aliases": ["مخيم الجلزون"]
+  },
+  {
+    "canonical_key": "dheisheh_camp",
+    "name_ar": "مخيم الدهيشه",
+    "name_en": "Dheisheh Camp",
+    "governorate": "bethlehem",
+    "zone": "south",
+    "latitude": 31.6917,
+    "longitude": 35.2067,
+    "aliases": ["مخيم الدهيشه", "مخيم الدهيشة"]
+  },
+  {
+    "canonical_key": "aida_camp",
+    "name_ar": "مخيم عايده",
+    "name_en": "Aida Camp",
+    "governorate": "bethlehem",
+    "zone": "south",
+    "latitude": 31.7117,
+    "longitude": 35.2000,
+    "aliases": ["مخيم عايده", "مخيم عايدة"]
+  },
+  {
+    "canonical_key": "al_arroub_camp",
+    "name_ar": "مخيم العروب",
+    "name_en": "Al-Arroub Camp",
+    "governorate": "hebron",
+    "zone": "south",
+    "latitude": 31.6167,
+    "longitude": 35.1167,
+    "aliases": ["مخيم العروب"]
+  },
+  {
+    "canonical_key": "al_fawwar_camp",
+    "name_ar": "مخيم الفوار",
+    "name_en": "Al-Fawwar Camp",
+    "governorate": "hebron",
+    "zone": "south",
+    "latitude": 31.4833,
+    "longitude": 35.0833,
+    "aliases": ["مخيم الفوار"]
+  },
+  {
+    "canonical_key": "shufat_camp",
+    "name_ar": "مخيم شعفاط",
+    "name_en": "Shu'fat Camp",
+    "governorate": "jerusalem",
+    "zone": "middle",
+    "latitude": 31.8167,
+    "longitude": 35.2333,
+    "aliases": ["مخيم شعفاط"]
+  },
+  {
+    "canonical_key": "qalandia_camp",
+    "name_ar": "مخيم قلنديا",
+    "name_en": "Qalandia Camp",
+    "governorate": "jerusalem",
+    "zone": "middle",
+    "latitude": 31.8583,
+    "longitude": 35.2250,
+    "aliases": ["مخيم قلنديا"]
+  },
+  {
+    "canonical_key": "aqbat_jabr_camp",
+    "name_ar": "مخيم عقبه جبر",
+    "name_en": "Aqbat Jabr Camp",
+    "governorate": "jericho",
+    "zone": "middle",
+    "latitude": 31.8333,
+    "longitude": 35.4500,
+    "aliases": ["مخيم عقبه جبر"]
+  },
+  {
+    "canonical_key": "jordan_valley",
+    "name_ar": "الاغوار",
+    "name_en": "Jordan Valley",
+    "governorate": "jericho",
+    "zone": "middle",
+    "latitude": 32.0000,
+    "longitude": 35.4500,
+    "aliases": ["الاغوار", "غور الاردن"]
+  }
+]

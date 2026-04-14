@@ -53,6 +53,8 @@ from . import weather
 from . import prayer_times
 from . import air_quality
 from . import internet_status
+from . import incident_db
+from . import area_status as area_mod
 from .config import settings
 from .models import Alert, AlertResponse, StatsResponse, WebhookTarget
 from .checkpoint_models import (
@@ -60,6 +62,7 @@ from .checkpoint_models import (
     CheckpointHistoryResponse, UpdateFeedResponse, CheckpointStatsResponse,
 )
 from .checkpoint_knowledge_base import load_knowledge_base
+from .location_knowledge_base import load_location_kb
 
 
 def _utc_iso(dt: datetime) -> str:
@@ -139,6 +142,7 @@ sse_queues:   List[asyncio.Queue] = []
 
 cp_ws_manager  = ConnectionManager()
 cp_sse_queues: List[asyncio.Queue] = []
+area_sse_queues: List[asyncio.Queue] = []
 
 
 async def _dispatch_checkpoint(updates: list):
@@ -183,6 +187,22 @@ async def _dispatch(alert: Alert):
     await webhooks.fire_cached(alert)
 
 
+async def _dispatch_area_status(areas: list):
+    """Fan out area status updates to SSE clients."""
+    if not area_sse_queues:
+        return
+    payload = json.dumps({
+        "event": "area_status",
+        "areas": areas,
+        "total": len(areas),
+    }, ensure_ascii=False, default=str)
+    for q in list(area_sse_queues):
+        try:
+            q.put_nowait(payload)
+        except asyncio.QueueFull:
+            pass
+
+
 # ── Lifespan ──────────────────────────────────────────────────────────────────
 
 @asynccontextmanager
@@ -197,8 +217,19 @@ async def lifespan(app: FastAPI):
     await load_knowledge_base()
     log.info("Checkpoint whitelist loaded successfully")
 
+    # Load location knowledge base (for geocoding alerts)
+    log.info("Loading location knowledge base...")
+    await load_location_kb()
+    log.info("Location knowledge base loaded")
+
+    # Init incident tables + compute initial area status
+    await incident_db.init_incident_tables()
+    await area_mod.compute_area_status()
+    log.info("Incident tables + area status ready")
+
     monitor.set_broadcast_fn(_dispatch)
     monitor.set_checkpoint_broadcast_fn(_dispatch_checkpoint)
+    monitor.set_area_broadcast_fn(_dispatch_area_status)
     monitor_task = asyncio.create_task(monitor.start())
 
     # Load learned vocabulary into runtime
@@ -1304,6 +1335,82 @@ async def seed_checkpoints(_: str = Depends(require_key)):
         "entries": len(entries),
         **result,
     }
+
+
+# ── Areas: live status ──────────────────────────────────────────────────────
+
+@app.get("/areas/status", tags=["areas"])
+async def areas_status():
+    """
+    Live area-level security status computed from checkpoint data.
+    Returns all regions with status (calm/restricted/military_presence/lockdown),
+    checkpoint breakdown, severity score, and coordinates.
+    """
+    cached = area_mod.get_cached_area_status()
+    if not cached:
+        cached = await area_mod.compute_area_status()
+    return {
+        "areas": cached,
+        "total": len(cached),
+        "snapshot_at": _utc_iso(datetime.utcnow()),
+    }
+
+
+@app.get("/areas/status/{region}", tags=["areas"])
+async def area_status_detail(region: str):
+    """Single area detail by region key or English name."""
+    detail = area_mod.get_area_detail(region)
+    if not detail:
+        raise HTTPException(status_code=404, detail=f"Area '{region}' not found")
+    return detail
+
+
+@app.get("/areas/stream", tags=["areas"])
+async def area_sse():
+    """SSE stream for area status changes. Fires when checkpoint data changes."""
+    queue: asyncio.Queue = asyncio.Queue(maxsize=50)
+    area_sse_queues.append(queue)
+
+    async def generator() -> AsyncGenerator[str, None]:
+        yield 'data: {"event":"connected","channel":"areas"}\n\n'
+        try:
+            while True:
+                try:
+                    payload: str = await asyncio.wait_for(queue.get(), timeout=25)
+                    yield f"data: {payload}\n\n"
+                except asyncio.TimeoutError:
+                    yield ": heartbeat\n\n"
+        finally:
+            if queue in area_sse_queues:
+                area_sse_queues.remove(queue)
+
+    return StreamingResponse(
+        generator(),
+        media_type="text/event-stream",
+        headers={"Cache-Control": "no-cache", "X-Accel-Buffering": "no"},
+    )
+
+
+# ── Incidents: live grouped ─────────────────────────────────────────────────
+
+@app.get("/incidents/live", tags=["incidents"])
+async def live_incidents(
+    limit: int = Query(50, ge=1, le=200),
+):
+    """Active grouped incidents (merged from security alerts)."""
+    items = await incident_db.get_active_incidents(limit=limit)
+    return {"incidents": items, "total": len(items)}
+
+
+@app.get("/incidents/live/{incident_id}", tags=["incidents"])
+async def live_incident_detail(incident_id: int):
+    """Single incident with constituent alert IDs."""
+    inc = await incident_db.get_incident(incident_id)
+    if not inc:
+        raise HTTPException(status_code=404, detail=f"Incident #{incident_id} not found")
+    alert_ids = await incident_db.get_incident_alert_ids(incident_id)
+    inc["alert_ids"] = alert_ids
+    return inc
 
 
 # ── {key} route MUST be last — catches anything not matched above ──────────────
