@@ -6,6 +6,28 @@
 
 import { BaseTransformer } from './base-transformer.js';
 
+const TIMELINE_PERIODS = [
+    { id: 'pre_nakba', startsISO: '1900-01-01', endsISO: '1947-11-28' },
+    { id: 'nakba', startsISO: '1947-11-29', endsISO: '1949-07-20' },
+    { id: 'mandate_residue', startsISO: '1949-07-21', endsISO: '1967-06-04' },
+    { id: '1967_war', startsISO: '1967-06-05', endsISO: '1967-06-10' },
+    { id: 'naksa_aftermath', startsISO: '1967-06-11', endsISO: '1987-12-08' },
+    { id: 'first_intifada', startsISO: '1987-12-09', endsISO: '1993-09-12' },
+    { id: 'oslo', startsISO: '1993-09-13', endsISO: '2000-09-27' },
+    { id: 'second_intifada', startsISO: '2000-09-28', endsISO: '2005-02-08' },
+    { id: 'gaza_wars', startsISO: '2005-02-09', endsISO: '2023-10-06' },
+    { id: 'post_2023', startsISO: '2023-10-07', endsISO: '2099-12-31' },
+];
+
+export function timelinePeriodFor(dateISO) {
+    if (!dateISO) return null;
+    const d = String(dateISO).slice(0, 10);
+    for (const p of TIMELINE_PERIODS) {
+        if (d >= p.startsISO && d <= p.endsISO) return p.id;
+    }
+    return null;
+}
+
 export class HistoricalTransformer extends BaseTransformer {
     constructor() {
         super('historical');
@@ -30,6 +52,7 @@ export class HistoricalTransformer extends BaseTransformer {
             return this.toCanonical({
                 id: this.generateId('historical', { name: record.name, year: record.year }),
                 date,
+                timeline_period: timelinePeriodFor(date),
                 category: 'historical',
                 event_type: 'depopulation',
                 location: {
@@ -57,12 +80,13 @@ export class HistoricalTransformer extends BaseTransformer {
         }
 
         // War / Uprising / Political events
-        if (['war', 'uprising', 'political'].includes(record.event_type)) {
+        if (['war', 'uprising', 'political', 'massacre', 'displacement'].includes(record.event_type)) {
             const date = record.date || `${record.year || 1948}-01-01`;
             const locationName = record.location || 'Palestine';
             return this.toCanonical({
-                id: this.generateId('historical', { name: record.name, year: record.year }),
+                id: this.generateId('historical', { name: record.name, year: record.year, date }),
                 date,
+                timeline_period: timelinePeriodFor(date),
                 category: 'historical',
                 event_type: record.event_type,
                 location: {
@@ -75,6 +99,8 @@ export class HistoricalTransformer extends BaseTransformer {
                 },
                 metrics: {
                     killed: parseInt(record.fatalities || 0),
+                    injured: parseInt(record.injured || 0),
+                    displaced: parseInt(record.displaced || 0),
                     count: parseInt(record.fatalities || 0),
                     unit: 'persons',
                 },
@@ -95,6 +121,7 @@ export class HistoricalTransformer extends BaseTransformer {
         return this.toCanonical({
             id: this.generateId('historical', { location: locationName, year: record.year }),
             date,
+            timeline_period: timelinePeriodFor(date),
             category: 'demographics',
             event_type: 'population_estimate',
             location: {

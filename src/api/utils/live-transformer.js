@@ -6,7 +6,31 @@
  */
 
 import { createEmptyRecord, SCHEMA_VERSION } from '../../../scripts/utils/canonical-schema.js';
+import { loadBaselines, lookupContext } from '../../../scripts/utils/baseline-analyzer.js';
 import crypto from 'crypto';
+
+const GAZA_ZONES = new Set([
+  'gaza_north', 'gaza_city', 'middle_gaza', 'khan_younis', 'rafah', 'gaza_strip',
+]);
+
+const GAZA_AREA_PATTERNS = [
+  'gaza', 'rafah', 'khan younis', 'khan yunis', 'jabalia',
+  'beit hanoun', 'beit lahia', 'deir al-balah', 'deir al balah',
+  'nuseirat', 'bureij', 'maghazi', 'shujaiya', 'shati',
+  'rimal', 'tuffah', 'zaytoun', 'tel al-sultan', 'al-mawasi',
+  'north gaza',
+];
+
+function resolveRegion(alertOrCp) {
+  const zone = (alertOrCp.zone || '').toLowerCase();
+  if (GAZA_ZONES.has(zone)) return 'Gaza Strip';
+  if (zone === 'west_bank' || zone.startsWith('north') || zone === 'middle' || zone === 'south') {
+    return 'West Bank';
+  }
+  const area = (alertOrCp.area || alertOrCp.name || '').toLowerCase();
+  if (area && GAZA_AREA_PATTERNS.some(p => area.includes(p))) return 'Gaza Strip';
+  return 'West Bank';
+}
 
 export class LiveTransformer {
   /**
@@ -29,7 +53,7 @@ export class LiveTransformer {
         event_type: 'checkpoint_status',
         location: {
           name: cp.name || cp.key_name || 'Unknown',
-          region: cp.region || 'West Bank',
+          region: cp.region || resolveRegion(cp),
           governorate: cp.district || null,
           lat: cp.latitude || null,
           lon: cp.longitude || null,
@@ -78,7 +102,8 @@ export class LiveTransformer {
         event_type: alert.type || 'general_alert',
         location: {
           name: alert.area || 'Unknown',
-          region: 'West Bank',
+          region: resolveRegion(alert),
+          zone: alert.zone || null,
         },
         description: alert.body || alert.raw_text || alert.title || '',
         metrics: {
@@ -99,6 +124,49 @@ export class LiveTransformer {
       data: canonicalRecords,
       total: canonicalRecords.length,
       schema: SCHEMA_VERSION
+    };
+  }
+
+  /**
+   * Enrich transformed alerts with rolling baseline context.
+   * Each record gets a `historical_context` block with 30d count + 90d weekly avg
+   * + delta classification ("above"/"near"/"below") vs. the baseline for its
+   * (region|area, event_type) key.
+   */
+  static async enrichAlertsWithBaseline(fastAPIResponse) {
+    const transformed = LiveTransformer.transformAlerts(fastAPIResponse);
+    const baselines = await loadBaselines();
+    if (!baselines) return { ...transformed, baseline_available: false };
+
+    const enriched = transformed.data.map(rec => {
+      const ctx = lookupContext(
+        baselines,
+        rec.location?.region,
+        rec.event_type,
+        rec.location?.name
+      );
+      if (!ctx) return rec;
+      return {
+        ...rec,
+        historical_context: {
+          summary: ctx.summary,
+          count_30d: ctx.count_30d,
+          avg_weekly_90d: ctx.avg_weekly_90d,
+          p90_weekly_12m: ctx.p90_weekly_12m,
+          trend_vs_baseline: ctx.avg_weekly_90d > 0
+            ? (ctx.count_30d / (30 / 7) > ctx.avg_weekly_90d * 1.15 ? 'above'
+               : ctx.count_30d / (30 / 7) < ctx.avg_weekly_90d * 0.85 ? 'below'
+               : 'near')
+            : 'insufficient_history',
+        },
+      };
+    });
+
+    return {
+      ...transformed,
+      data: enriched,
+      baseline_available: true,
+      baseline_window_ends: baselines.window_ends,
     };
   }
 }

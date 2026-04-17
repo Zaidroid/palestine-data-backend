@@ -10,6 +10,7 @@ services:
       - ALERTS_API_URL=http://alerts:8080
     volumes:
       - ./public/data:/app/public/data
+      - ./services/westbank-alerts/data:/app/services/westbank-alerts/data
     depends_on:
       - alerts
 

@@ -40,7 +40,15 @@ def _normalize(text: str) -> str:
 # All channels can contribute to both tiers. News channels (WAFA, QudsN) report
 # on both missiles and ground ops. Almustashaar also occasionally reports raids.
 
-_NEWS_CHANNELS = {"wafagency", "qudsn", "wafanews"}
+_NEWS_CHANNELS = {
+    # West Bank / general
+    "wafagency", "qudsn", "wafanews", "ajanews",
+    # Gaza-heavy agencies
+    "palinfoar", "shihabagency", "shehabagency",
+    "almayadeennews", "almayadeennewspal",
+    # Gaza official / health
+    "mohmediagaza",
+}
 
 
 def _channel_allows_tier(source: str, tier: str) -> bool:
@@ -85,14 +93,16 @@ ATTACK_VERBS_EN = [
     "shelling", "projectile", "mortar",
 ]
 
-# ── West Bank zone — comprehensive Palestinian geography ─────────────────────
+# ── Palestinian geography — West Bank + Gaza Strip ───────────────────────────
+# Historically named WB_ZONE for back-compat; now covers all of occupied Palestine.
 # Normalized (alef→ا, taa marbuta→ه). Includes governorate capitals, towns,
-# villages, refugee camps, and areas frequently mentioned in WAFA/QudsN.
+# villages, refugee camps, and areas frequently mentioned in WAFA/QudsN/Shehab.
 
 WB_ZONE = [
     # General
     "الضفه الغربيه", "الضفه", "فلسطين",
     "الاغوار", "غور الاردن",
+    "قطاع غزه", "غزه", "القطاع", "قطاع",
 
     # Governorate capitals
     "رام الله", "ramallah",
@@ -170,6 +180,39 @@ WB_ZONE = [
 
     # Hebrew transliterated zone names used in Arabic siren reports
     "شومرون", "يهودا وشومرون",
+
+    # ── Gaza Strip ────────────────────────────────────────────────────────────
+    # North Gaza governorate
+    "شمال غزه", "شمال قطاع غزه",
+    "بيت حانون", "بيت لاهيا", "جباليا", "مخيم جباليا",
+    "العطاطره", "ام النصر",
+
+    # Gaza City governorate
+    "مدينه غزه", "مدينة غزه",
+    "الرمال", "الشجاعيه", "التفاح", "الزيتون", "الصبره", "الدرج",
+    "الشاطئ", "مخيم الشاطئ", "الشيخ رضوان", "النصر", "تل الهوى",
+    "الكراّمه", "الكراّمة", "الكرامه",
+
+    # Deir al-Balah (middle Gaza) governorate
+    "دير البلح", "مخيم دير البلح",
+    "النصيرات", "مخيم النصيرات",
+    "البريج", "مخيم البريج",
+    "المغازي", "مخيم المغازي",
+    "الزوايده", "وادي السلقا", "المصدر",
+
+    # Khan Younis governorate
+    "خان يونس", "مخيم خان يونس",
+    "بني سهيلا", "عبسان", "عبسان الكبيره", "عبسان الجديده",
+    "القراره", "الفخاري", "خزاعه", "قيزان النجار", "معن",
+
+    # Rafah governorate
+    "رفح", "مخيم رفح",
+    "تل السلطان", "الشابوره", "الشعوت",
+    "المواصي", "البرازيل", "زعرب",
+
+    # Gaza crossings / border areas
+    "معبر رفح", "معبر كرم ابو سالم", "معبر بيت حانون", "معبر ايرز",
+    "محور نتساريم", "محور فيلادلفيا",
 ]
 
 # Normalize all WB_ZONE entries at module load
@@ -226,6 +269,82 @@ WB_ZONES = {
             "السموع", "تقوع", "نحالين", "الخضر", "بيت فجار",
         ],
     },
+
+    # ── Gaza Strip sub-zones (north → south) ──────────────────────────────────
+    "gaza_north": {
+        "center": (31.53, 34.50),  # Beit Hanoun / Jabalia
+        "polygon": [
+            [31.60, 34.45],  # NW (sea side)
+            [31.60, 34.57],  # NE (border)
+            [31.48, 34.57],  # SE
+            [31.48, 34.45],  # SW
+        ],
+        "keywords": [
+            "شمال غزه", "beit hanoun", "beit lahia", "jabalia",
+            "بيت حانون", "بيت لاهيا", "جباليا", "مخيم جباليا",
+            "العطاطره", "ام النصر", "north gaza",
+        ],
+    },
+    "gaza_city": {
+        "center": (31.50, 34.47),  # Gaza City center
+        "polygon": [
+            [31.55, 34.40],  # NW (coast)
+            [31.55, 34.52],  # NE (border)
+            [31.45, 34.52],  # SE
+            [31.45, 34.40],  # SW
+        ],
+        "keywords": [
+            "مدينه غزه", "مدينة غزه", "gaza city", "gaza",
+            "الرمال", "الشجاعيه", "التفاح", "الزيتون", "الصبره", "الدرج",
+            "الشاطئ", "مخيم الشاطئ", "الشيخ رضوان", "تل الهوى",
+            "النصر", "الكرامه", "rimal", "shujaiya", "tuffah", "zaytoun",
+            "shati", "beach camp",
+        ],
+    },
+    "middle_gaza": {
+        "center": (31.42, 34.37),  # Deir al-Balah
+        "polygon": [
+            [31.48, 34.32],  # NW (coast)
+            [31.48, 34.47],  # NE
+            [31.36, 34.47],  # SE
+            [31.36, 34.32],  # SW
+        ],
+        "keywords": [
+            "دير البلح", "النصيرات", "البريج", "المغازي",
+            "deir al-balah", "deir al balah", "nuseirat", "bureij", "maghazi",
+            "الزوايده", "وادي السلقا", "المصدر",
+            "مخيم النصيرات", "مخيم البريج", "مخيم المغازي",
+        ],
+    },
+    "khan_younis": {
+        "center": (31.35, 34.30),  # Khan Younis
+        "polygon": [
+            [31.40, 34.25],  # NW
+            [31.40, 34.40],  # NE
+            [31.28, 34.40],  # SE
+            [31.28, 34.25],  # SW
+        ],
+        "keywords": [
+            "خان يونس", "khan younis", "khan yunis",
+            "بني سهيلا", "عبسان", "القراره", "خزاعه", "الفخاري",
+            "قيزان النجار", "bani suheila", "abasan", "qarara", "khuza'a",
+            "مخيم خان يونس",
+        ],
+    },
+    "rafah": {
+        "center": (31.29, 34.24),  # Rafah
+        "polygon": [
+            [31.34, 34.20],  # NW
+            [31.34, 34.33],  # NE
+            [31.22, 34.33],  # SE (Egypt border)
+            [31.22, 34.20],  # SW
+        ],
+        "keywords": [
+            "رفح", "rafah", "تل السلطان", "الشابوره", "البرازيل",
+            "المواصي", "زعرب", "tel al-sultan", "shaboura", "al-mawasi",
+            "مخيم رفح", "معبر رفح", "محور فيلادلفيا", "philadelphi",
+        ],
+    },
 }
 
 # Normalize all zone keywords
@@ -233,12 +352,24 @@ for _zone_data in WB_ZONES.values():
     _zone_data["keywords"] = [_normalize(k) for k in _zone_data["keywords"]]
 
 
+_GAZA_GENERAL_MARKERS = [_normalize(k) for k in [
+    "قطاع غزه", "غزه", "قطاع", "gaza",
+]]
+
+
+def _is_gaza_text(normed_text: str) -> bool:
+    """Cheap check: does the text mention Gaza generally?"""
+    return any(m in normed_text for m in _GAZA_GENERAL_MARKERS)
+
+
 def _extract_zone(normed_text: str) -> str:
     """
-    Determine which WB sub-zone (north/middle/south) the text refers to.
-    Returns 'north', 'middle', 'south', or 'west_bank' (general/fallback).
+    Determine which sub-zone the text refers to.
+    Returns WB sub-zones (north/middle/south), Gaza sub-zones
+    (gaza_north/gaza_city/middle_gaza/khan_younis/rafah),
+    or a coarse fallback ('west_bank' / 'gaza_strip').
     """
-    scores = {"north": 0, "middle": 0, "south": 0}
+    scores = {z: 0 for z in WB_ZONES}
     for zone_name, zone_data in WB_ZONES.items():
         for kw in zone_data["keywords"]:
             if kw in normed_text:
@@ -256,6 +387,10 @@ def _extract_zone(normed_text: str) -> str:
             for kw in zone_data["keywords"]:
                 if kw in area_lower or area_lower in kw:
                     return zone_name
+
+    # Gaza general fallback — "غزه" mentioned without a specific sub-zone
+    if _is_gaza_text(normed_text):
+        return "gaza_strip"
 
     # Check for general WB mention
     if _is_wb_zone(normed_text):
@@ -555,14 +690,17 @@ def _has_urgent_marker(text: str) -> bool:
 
 def _is_wb_contextual(text: str) -> bool:
     """
-    Broader WB relevance check — for operational events, we don't require
-    an exact zone match. If the message mentions Palestinian-specific context
-    (occupation forces, settlers, Palestinian cities pattern) it's WB-relevant.
+    Broader Palestinian-relevance check — for operational events, we don't
+    require an exact zone match. If the message mentions Palestinian-specific
+    context (occupation forces, settlers, Palestinian cities) it is relevant.
+
+    Name kept as `_is_wb_contextual` for back-compat; now covers WB + Gaza.
     """
     if _is_wb_zone(text):
         return True
 
-    # Palestinian context markers — if these appear, the event is almost certainly WB
+    # Palestinian context markers — if these appear, the event is almost
+    # certainly within occupied Palestine (WB or Gaza).
     palestine_context = [
         "قوات الاحتلال", "جيش الاحتلال", "الاحتلال الاسرائيلي",
         "جنود الاحتلال", "الاحتلال",
@@ -570,6 +708,7 @@ def _is_wb_contextual(text: str) -> bool:
         "الجدار الفاصل", "جدار الفصل",
         "فلسطيني", "فلسطينيين", "مواطن فلسطيني",
         "الضفه",
+        "قطاع غزه", "القطاع", "غزه",
     ]
     palestine_context = [_normalize(p) for p in palestine_context]
     return _has(text, palestine_context)
@@ -652,6 +791,55 @@ _AREA_MAP_RAW = {
     # General areas
     "الضفه": "West Bank", "الاغوار": "Jordan Valley",
     "غور الاردن": "Jordan Valley",
+
+    # ── Gaza Strip ────────────────────────────────────────────────────────────
+    # Gaza governorates / general
+    "قطاع غزه": "Gaza Strip", "غزه": "Gaza",
+    "مدينه غزه": "Gaza City", "مدينة غزه": "Gaza City",
+    "شمال غزه": "North Gaza",
+
+    # North Gaza
+    "بيت حانون": "Beit Hanoun", "بيت لاهيا": "Beit Lahia",
+    "جباليا": "Jabalia", "مخيم جباليا": "Jabalia Camp",
+    "العطاطره": "Al-Atatra", "ام النصر": "Umm an-Nasr",
+
+    # Gaza City neighbourhoods
+    "الرمال": "Al-Rimal", "الشجاعيه": "Shujaiya",
+    "التفاح": "Tuffah", "الزيتون": "Zaytoun",
+    "الصبره": "Sabra", "الدرج": "Daraj",
+    "الشاطئ": "Al-Shati", "مخيم الشاطئ": "Shati Camp",
+    "الشيخ رضوان": "Sheikh Radwan", "تل الهوى": "Tel al-Hawa",
+    "النصر": "An-Nasr", "الكرامه": "Al-Karama",
+
+    # Middle Gaza (Deir al-Balah governorate)
+    "دير البلح": "Deir al-Balah",
+    "النصيرات": "Nuseirat", "مخيم النصيرات": "Nuseirat Camp",
+    "البريج": "Bureij", "مخيم البريج": "Bureij Camp",
+    "المغازي": "Maghazi", "مخيم المغازي": "Maghazi Camp",
+    "الزوايده": "Zawayda", "وادي السلقا": "Wadi as-Salqa",
+    "المصدر": "Al-Musaddar",
+
+    # Khan Younis governorate
+    "خان يونس": "Khan Younis",
+    "بني سهيلا": "Bani Suheila", "عبسان": "Abasan",
+    "عبسان الكبيره": "Abasan al-Kabira",
+    "القراره": "Qarara", "الفخاري": "Al-Fukhari",
+    "خزاعه": "Khuza'a", "قيزان النجار": "Qizan an-Najjar",
+    "معن": "Maen",
+
+    # Rafah governorate
+    "رفح": "Rafah", "مخيم رفح": "Rafah Camp",
+    "تل السلطان": "Tel as-Sultan", "الشابوره": "Shaboura",
+    "البرازيل": "Brazil", "المواصي": "Al-Mawasi",
+    "زعرب": "Zaarab",
+
+    # Gaza crossings / border
+    "معبر رفح": "Rafah Crossing",
+    "معبر كرم ابو سالم": "Kerem Shalom Crossing",
+    "معبر بيت حانون": "Beit Hanoun Crossing",
+    "معبر ايرز": "Erez Crossing",
+    "محور نتساريم": "Netzarim Corridor",
+    "محور فيلادلفيا": "Philadelphi Corridor",
 
     # Regional (for Tier 3)
     "الكويت": "Kuwait", "العراق": "Iraq", "بغداد": "Baghdad",
@@ -882,8 +1070,10 @@ def classify_wb_operational(raw_text: str, source: str) -> Optional[dict]:
     if not _is_news_channel(source) and _has(normed, NEWS_ATTRIBUTION):
         return None
 
-    area = _extract_area(normed) or "West Bank"
-    zone = _extract_zone(normed) or "west_bank"
+    # Gaza-aware fallbacks for Tier 2 ground events
+    _is_gaza = _is_gaza_text(normed)
+    area = _extract_area(normed) or ("Gaza Strip" if _is_gaza else "West Bank")
+    zone = _extract_zone(normed) or ("gaza_strip" if _is_gaza else "west_bank")
     is_urgent = _has_urgent_marker(normed)
 
     # Injury report — highest priority operational event

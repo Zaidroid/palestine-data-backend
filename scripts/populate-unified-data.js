@@ -1879,8 +1879,11 @@ async function processHistoricalData() {
     logger.info('Processing historical data...');
     try {
         const histDir = path.join(DATA_DIR, 'historical');
+        const sourceHistDir = path.join(__dirname, '../data/historical');
         const manualPath = path.join(histDir, 'manual_population_1948_1990.json');
-        const eventsPath = path.join(histDir, 'historical-events.json');
+        // Prefer tracked source file; fall back to legacy public/data location
+        let eventsPath = path.join(sourceHistDir, 'historical-events.json');
+        try { await fs.access(eventsPath); } catch { eventsPath = path.join(histDir, 'historical-events.json'); }
 
         let rawData = [];
 

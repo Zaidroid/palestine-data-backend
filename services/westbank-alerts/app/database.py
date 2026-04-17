@@ -168,8 +168,11 @@ async def insert_alert(alert: Alert) -> Alert:
 _last_prune_count = 0
 
 async def prune_alerts_if_needed():
-    """Prune old alerts periodically — called from monitor heartbeat, not every insert."""
+    """Prune old alerts periodically — called from monitor heartbeat, not every insert.
+    MAX_ALERTS_STORED=0 disables pruning entirely (full history retention)."""
     global _last_prune_count
+    if settings.MAX_ALERTS_STORED <= 0:
+        return
     _last_prune_count += 1
     if _last_prune_count < 100:  # prune every ~100 calls (~8 minutes at 5s poll)
         return

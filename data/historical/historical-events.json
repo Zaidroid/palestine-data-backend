@@ -1,0 +1,280 @@
+[
+  {
+    "event_type": "war",
+    "name": "Six-Day War",
+    "date": "1967-06-05",
+    "year": 1967,
+    "location": "Palestine",
+    "fatalities": 21000,
+    "description": "Six-Day War (June 5–10, 1967). Israel seizes the West Bank, East Jerusalem, Gaza Strip, Sinai Peninsula, and Golan Heights. Combined Arab military dead estimated ~18,000–20,000; civilian Palestinian dead several hundred. Marks the beginning of the occupation of the OPT.",
+    "source": "UNISPAL; Morris, '1948 and After'; IDF archives"
+  },
+  {
+    "event_type": "displacement",
+    "name": "Naksa (June 1967 displacement)",
+    "date": "1967-06-10",
+    "year": 1967,
+    "location": "West Bank and Gaza Strip",
+    "fatalities": 0,
+    "displaced": 320000,
+    "description": "Between 280,000 and 325,000 Palestinians displaced from the West Bank (including East Jerusalem) and Gaza Strip in the wake of the June 1967 war, most to Jordan. ~120,000 were already 1948 refugees displaced a second time. Known in Arabic as al-Naksa ('the setback').",
+    "source": "UNRWA; UN Commissioner-General report 1967; Tom Segev 'Israel's 1967'"
+  },
+  {
+    "event_type": "political",
+    "name": "East Jerusalem annexation",
+    "date": "1967-06-28",
+    "year": 1967,
+    "location": "East Jerusalem",
+    "fatalities": 0,
+    "description": "Israel unilaterally extends its law and administration over East Jerusalem and 28 surrounding West Bank villages, expanding the municipal boundary from 6 km² to ~71 km². Not recognized by the UN or the international community.",
+    "source": "UN Security Council Res. 252 (1968); Israeli Knesset records"
+  },
+  {
+    "event_type": "political",
+    "name": "First Israeli settlement established (Kfar Etzion)",
+    "date": "1967-09-27",
+    "year": 1967,
+    "location": "West Bank",
+    "fatalities": 0,
+    "description": "Kfar Etzion re-established as the first Israeli civilian settlement in the occupied West Bank, inaugurating the settlement enterprise that by 2023 would house ~500,000 settlers in the West Bank plus ~230,000 in East Jerusalem.",
+    "source": "B'Tselem settlement database; Peace Now"
+  },
+  {
+    "event_type": "political",
+    "name": "UN Security Council Resolution 242",
+    "date": "1967-11-22",
+    "year": 1967,
+    "location": "Palestine",
+    "fatalities": 0,
+    "description": "UN SC Res. 242 adopted after Six-Day War. Calls for withdrawal of Israeli forces from 'territories occupied' and affirms 'inadmissibility of the acquisition of territory by war'. Becomes the foundational reference for later peace negotiations.",
+    "source": "UN Security Council; UNISPAL"
+  },
+  {
+    "event_type": "war",
+    "name": "Karameh Battle",
+    "date": "1968-03-21",
+    "year": 1968,
+    "location": "Jordan Valley / Karameh",
+    "fatalities": 150,
+    "description": "Israeli raid on PLO / Fatah base in Karameh, Jordan. Israeli forces lose ~28 soldiers; Palestinian fighters ~100–150 killed but successfully resist; event becomes founding myth of Palestinian armed resistance and catalyst for Fatah's rise within the PLO.",
+    "source": "PASSIA; Yezid Sayigh 'Armed Struggle and the Search for State'"
+  },
+  {
+    "event_type": "political",
+    "name": "Black September (PLO expelled from Jordan)",
+    "date": "1970-09-16",
+    "year": 1970,
+    "location": "Jordan",
+    "fatalities": 3000,
+    "description": "Jordanian army suppresses PLO armed presence in Jordan. Between 2,000 and 5,000 Palestinians killed; PLO leadership and fighters relocate to Lebanon. Reshapes the geography of the Palestinian national movement.",
+    "source": "Yezid Sayigh; Rashid Khalidi 'The Iron Cage'"
+  },
+  {
+    "event_type": "war",
+    "name": "October (Yom Kippur) War",
+    "date": "1973-10-06",
+    "year": 1973,
+    "location": "Sinai / Golan / Israel",
+    "fatalities": 16000,
+    "description": "Egypt and Syria launch surprise attack on Oct 6, 1973. ~2,800 Israeli military dead; Egyptian and Syrian military dead ~8,500–15,000. Though fought outside Palestine proper, reshapes regional balance and enables Camp David (1978).",
+    "source": "UN; IDF archives; Middle East Institute"
+  },
+  {
+    "event_type": "uprising",
+    "name": "Land Day",
+    "date": "1976-03-30",
+    "year": 1976,
+    "location": "Galilee",
+    "fatalities": 6,
+    "description": "General strike and protests by Palestinian citizens of Israel in the Galilee against land expropriation. Six unarmed protesters killed by Israeli police and army. Commemorated annually across Palestine as Yawm al-Ard.",
+    "source": "Adalah; Sabri Jiryis 'The Arabs in Israel'"
+  },
+  {
+    "event_type": "massacre",
+    "name": "Sabra and Shatila massacre",
+    "date": "1982-09-16",
+    "year": 1982,
+    "location": "Beirut (Sabra and Shatila camps)",
+    "fatalities": 2000,
+    "description": "Over 36 hours (Sept 16–18, 1982), Lebanese Phalangist militia — with Israeli military cooperation and illumination — massacre between 1,300 and 3,500 Palestinian and Lebanese civilians in Sabra and Shatila refugee camps. Israeli Kahan Commission finds Defense Minister Ariel Sharon personally responsible.",
+    "source": "Kahan Commission Report 1983; UN General Assembly Res. 37/123 D; Robert Fisk 'Pity the Nation'"
+  },
+  {
+    "event_type": "uprising",
+    "name": "First Intifada begins",
+    "date": "1987-12-09",
+    "year": 1987,
+    "location": "Gaza Strip (Jabalia)",
+    "fatalities": 0,
+    "description": "Mass popular uprising begins in Jabalia refugee camp in Gaza after an Israeli truck kills four Palestinian workers at Erez crossing the day before. Spreads to West Bank within days. Characterized by stone-throwing, general strikes, tax resistance, and community organization.",
+    "source": "B'Tselem; Al-Haq; Said & Hitchens 'Blaming the Victims'"
+  },
+  {
+    "event_type": "uprising",
+    "name": "First Intifada — year 1 (Dec 1987 – Dec 1988)",
+    "date": "1988-12-31",
+    "year": 1988,
+    "location": "West Bank and Gaza Strip",
+    "fatalities": 311,
+    "injured": 20000,
+    "description": "During the first 12 months of the First Intifada, ~311 Palestinians killed by Israeli forces (of whom ~50 children); ~20,000+ injured; ~10,000 detained (many under administrative detention). Israeli fatalities: 12 civilians, 4 security personnel.",
+    "source": "B'Tselem fatalities database; Al-Haq annual report 1988"
+  },
+  {
+    "event_type": "uprising",
+    "name": "First Intifada — year 2 (1989)",
+    "date": "1989-12-31",
+    "year": 1989,
+    "location": "West Bank and Gaza Strip",
+    "fatalities": 285,
+    "injured": 15000,
+    "description": "1989 Palestinian fatalities by Israeli forces: ~285, including ~80 children. Defense Minister Rabin's 'break their bones' policy institutionalizes beatings as crowd-control; ~40,000 Palestinians detained since Dec 1987.",
+    "source": "B'Tselem; Save the Children 1990 report"
+  },
+  {
+    "event_type": "uprising",
+    "name": "First Intifada — year 3 (1990)",
+    "date": "1990-12-31",
+    "year": 1990,
+    "location": "West Bank and Gaza Strip",
+    "fatalities": 145,
+    "injured": 8000,
+    "description": "1990 Palestinian fatalities by Israeli forces: ~145. Includes the Al-Aqsa (Temple Mount / Haram al-Sharif) killings on Oct 8, 1990 when Israeli police killed 17–21 Palestinian worshippers.",
+    "source": "B'Tselem; UN Commission of Inquiry on Haram al-Sharif 1990"
+  },
+  {
+    "event_type": "uprising",
+    "name": "First Intifada — year 4 (1991)",
+    "date": "1991-12-31",
+    "year": 1991,
+    "location": "West Bank and Gaza Strip",
+    "fatalities": 104,
+    "description": "1991 Palestinian fatalities by Israeli forces: ~104. Gulf War leads to prolonged curfews in the OPT (up to 45 consecutive days in some areas) and mass expulsion of Palestinian workers from Kuwait (~350,000).",
+    "source": "B'Tselem; World Bank Gulf War report"
+  },
+  {
+    "event_type": "political",
+    "name": "Madrid Peace Conference",
+    "date": "1991-10-30",
+    "year": 1991,
+    "location": "Madrid",
+    "fatalities": 0,
+    "description": "US- and USSR-sponsored conference opens bilateral and multilateral tracks between Israel and Arab states including a joint Jordanian-Palestinian delegation. First public direct negotiations, though the PLO is formally excluded from the delegation.",
+    "source": "US State Department archive; UNISPAL"
+  },
+  {
+    "event_type": "political",
+    "name": "Deportation of 415 Palestinians to Marj al-Zuhur",
+    "date": "1992-12-17",
+    "year": 1992,
+    "location": "South Lebanon",
+    "fatalities": 0,
+    "displaced": 415,
+    "description": "Israel deports 415 Palestinians (mostly alleged Hamas and Islamic Jihad activists) to Marj al-Zuhur in South Lebanon. UN SC Res. 799 demands their return; most are repatriated by late 1993. Event strengthens Hamas politically.",
+    "source": "UN Security Council Res. 799; Human Rights Watch 1993 report"
+  },
+  {
+    "event_type": "uprising",
+    "name": "First Intifada — cumulative (Dec 1987 – Sept 1993)",
+    "date": "1993-09-12",
+    "year": 1993,
+    "location": "West Bank and Gaza Strip",
+    "fatalities": 1162,
+    "injured": 130000,
+    "description": "Cumulative totals for the First Intifada (Dec 9, 1987 – Sept 13, 1993) per B'Tselem: ~1,162 Palestinians killed by Israeli security forces (including ~241 children); ~100 Israelis killed; 120,000+ injured; over 175,000 arrested; 481 administrative detentions concurrently. ~2,000 Palestinians killed by other Palestinians as alleged collaborators.",
+    "source": "B'Tselem fatalities database cumulative; Al-Haq 'Punishing a Nation'"
+  },
+  {
+    "event_type": "political",
+    "name": "Oslo I Accord (Declaration of Principles)",
+    "date": "1993-09-13",
+    "year": 1993,
+    "location": "Washington DC",
+    "fatalities": 0,
+    "description": "PLO-Israel mutual recognition and Declaration of Principles on Interim Self-Government signed at White House. Establishes framework for Palestinian Authority, phased withdrawal, and five-year interim period. Final-status issues (Jerusalem, refugees, settlements, borders) deferred.",
+    "source": "US State Department; UNISPAL full text"
+  },
+  {
+    "event_type": "massacre",
+    "name": "Ibrahimi Mosque (Hebron) massacre",
+    "date": "1994-02-25",
+    "year": 1994,
+    "location": "Hebron",
+    "fatalities": 29,
+    "injured": 125,
+    "description": "Israeli-American settler Baruch Goldstein opens fire on Palestinian worshippers during Ramadan dawn prayer at the Ibrahimi Mosque (Cave of the Patriarchs), killing 29 and wounding ~125. Subsequent curfew and protests kill further Palestinians. Goldstein killed by survivors.",
+    "source": "Shamgar Commission Report 1994; HRW 1994 report"
+  },
+  {
+    "event_type": "political",
+    "name": "Cairo Agreement (Gaza-Jericho)",
+    "date": "1994-05-04",
+    "year": 1994,
+    "location": "Cairo",
+    "fatalities": 0,
+    "description": "Gaza-Jericho Agreement implements first-phase Oslo withdrawal. Israeli forces withdraw from most of the Gaza Strip (except settlements and Philadelphi corridor) and from Jericho. PA established; Yasser Arafat returns to Gaza on July 1.",
+    "source": "UNISPAL; Quartet archive"
+  },
+  {
+    "event_type": "political",
+    "name": "Oslo II Accord (Taba / Interim Agreement)",
+    "date": "1995-09-28",
+    "year": 1995,
+    "location": "Washington DC",
+    "fatalities": 0,
+    "description": "Interim Agreement on West Bank and Gaza Strip divides the West Bank into Areas A (PA full control, ~3%), B (PA civil, Israeli security, ~24%), and C (Israeli full control, ~72%). Establishes Palestinian Legislative Council elections.",
+    "source": "UNISPAL full text; Annex I–VII"
+  },
+  {
+    "event_type": "political",
+    "name": "Rabin assassination",
+    "date": "1995-11-04",
+    "year": 1995,
+    "location": "Tel Aviv",
+    "fatalities": 1,
+    "description": "Israeli PM Yitzhak Rabin assassinated by Israeli right-wing extremist Yigal Amir after a Tel Aviv peace rally, dealing a major blow to the Oslo process. Shimon Peres becomes acting PM; Likud's Benjamin Netanyahu wins May 1996 election.",
+    "source": "Shamgar Commission Report 1996"
+  },
+  {
+    "event_type": "uprising",
+    "name": "Western Wall tunnel riots",
+    "date": "1996-09-25",
+    "year": 1996,
+    "location": "Jerusalem and West Bank",
+    "fatalities": 88,
+    "injured": 1600,
+    "description": "Netanyahu government opens a new exit to the Hasmonean tunnel near Haram al-Sharif. Three days of clashes across the OPT leave 15 Israeli soldiers and 73+ Palestinians dead; ~1,600 Palestinians injured. Exposes fragility of Oslo security arrangements.",
+    "source": "B'Tselem; UN SC Res. 1073"
+  },
+  {
+    "event_type": "political",
+    "name": "Hebron Protocol",
+    "date": "1997-01-17",
+    "year": 1997,
+    "location": "Hebron",
+    "fatalities": 0,
+    "description": "Protocol divides Hebron into H1 (PA-controlled, ~80%) and H2 (Israeli-controlled, ~20% containing ~400 settlers and ~35,000 Palestinians around the Ibrahimi Mosque). First transfer of territory negotiated by Likud government.",
+    "source": "UNISPAL Hebron Protocol full text"
+  },
+  {
+    "event_type": "political",
+    "name": "Wye River Memorandum",
+    "date": "1998-10-23",
+    "year": 1998,
+    "location": "Maryland, USA",
+    "fatalities": 0,
+    "description": "Netanyahu and Arafat sign agreement for further Israeli redeployments from 13% of West Bank and Palestinian security commitments. Implementation suspended by Netanyahu after initial phase; only partially executed by subsequent Barak government via Sharm el-Sheikh Memorandum (Sept 1999).",
+    "source": "UNISPAL; US National Archives"
+  },
+  {
+    "event_type": "political",
+    "name": "Camp David Summit collapse",
+    "date": "2000-07-25",
+    "year": 2000,
+    "location": "Camp David, Maryland",
+    "fatalities": 0,
+    "description": "Two-week summit between PM Ehud Barak and Chairman Yasser Arafat, mediated by President Clinton, fails to reach final-status agreement on Jerusalem, refugees, and borders. Collapse contributes to outbreak of Second Intifada two months later.",
+    "source": "Hussein Agha & Robert Malley 'Camp David: The Tragedy of Errors'; Clinton Parameters (Dec 2000)"
+  }
+]

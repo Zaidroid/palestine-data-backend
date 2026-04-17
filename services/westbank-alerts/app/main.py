@@ -483,7 +483,7 @@ async def list_incidents(
     category: Optional[str] = Query(None, description="Filter: threats, military, attacks"),
     type:     Optional[str] = Query(None, description="Specific alert type"),
     area:     Optional[str] = Query(None, description="Area name (partial match)"),
-    zone:     Optional[str] = Query(None, description="WB sub-zone: north, middle, south"),
+    zone:     Optional[str] = Query(None, description="Sub-zone: north|middle|south (WB) or gaza_north|gaza_city|middle_gaza|khan_younis|rafah (Gaza)"),
     severity: Optional[str] = Query(None, description="Minimum severity: critical, high, medium, low"),
     hours:    float         = Query(24.0, ge=1, le=168, description="Time window in hours"),
     limit:    int           = Query(100, ge=1, le=500),
@@ -549,8 +549,15 @@ async def incident_summary(
     alerts, total = await db.get_alerts(since=since, limit=500, offset=0)
 
     by_category = {cat: 0 for cat in _INCIDENT_CATEGORIES}
-    by_zone = {"north": 0, "middle": 0, "south": 0, "west_bank": 0}
+    by_zone = {
+        # West Bank sub-zones
+        "north": 0, "middle": 0, "south": 0, "west_bank": 0,
+        # Gaza sub-zones
+        "gaza_north": 0, "gaza_city": 0, "middle_gaza": 0,
+        "khan_younis": 0, "rafah": 0, "gaza_strip": 0,
+    }
     by_severity = {"critical": 0, "high": 0, "medium": 0, "low": 0}
+    by_region = {"west_bank": 0, "gaza_strip": 0}
     by_area: dict = {}
 
     for a in alerts:
@@ -564,6 +571,13 @@ async def incident_summary(
         z = getattr(a, "zone", None) or "west_bank"
         if z in by_zone:
             by_zone[z] += 1
+
+        # Region rollup (WB vs Gaza)
+        gaza_zones = {"gaza_north", "gaza_city", "middle_gaza", "khan_younis", "rafah", "gaza_strip"}
+        if z in gaza_zones:
+            by_region["gaza_strip"] += 1
+        else:
+            by_region["west_bank"] += 1
 
         # Severity
         if a.severity in by_severity:
@@ -581,6 +595,7 @@ async def incident_summary(
         "time_window_hours": hours,
         "by_category": by_category,
         "by_zone": by_zone,
+        "by_region": by_region,
         "by_severity": by_severity,
         "top_areas": [{"area": a, "count": c} for a, c in top_areas],
         "threat_level": (

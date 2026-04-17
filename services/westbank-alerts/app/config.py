@@ -21,10 +21,13 @@ class Settings(BaseSettings):
 
     # Storage
     DB_PATH: str = "/data/alerts.db"
-    MAX_ALERTS_STORED: int = 20000
+    MAX_ALERTS_STORED: int = 0  # 0 = never prune (keep full alert history)
 
     # Checkpoint channels (comma-separated usernames without @)
     CHECKPOINT_CHANNELS: str = ""
+
+    # Gaza daily bulletin channels (MoH casualty reports, etc.)
+    GAZA_BULLETIN_CHANNELS: str = ""
 
     # Webhooks
     WEBHOOK_TIMEOUT: int = 8
@@ -48,6 +51,10 @@ class Settings(BaseSettings):
     @property
     def checkpoint_channel_list(self) -> List[str]:
         return [c.strip().lstrip("@") for c in self.CHECKPOINT_CHANNELS.split(",") if c.strip()]
+
+    @property
+    def gaza_bulletin_channel_list(self) -> List[str]:
+        return [c.strip().lstrip("@") for c in self.GAZA_BULLETIN_CHANNELS.split(",") if c.strip()]
 
     @property
     def session_path(self) -> str:

@@ -255,14 +255,26 @@ async function saveTech4PalestineData(data) {
       return date && date >= BASELINE_DATE;
     });
 
-    // Normalize data - keep API field names for compatibility
+    // Normalize data — preserve full Gaza MoH bulletin breakdown
+    // (children, women, medics, press, civil defence, famine, aid seekers)
     const normalized = filtered.map(record => ({
+      ...record,
       report_date: record.report_date || record.date,
       date: record.report_date || record.date, // Keep both for compatibility
-      ext_killed_cum: record.ext_killed_cum || record.killed || 0,
       killed: record.ext_killed_cum || record.killed || 0,
-      ext_injured_cum: record.ext_injured_cum || record.injured || 0,
       injured: record.ext_injured_cum || record.injured || 0,
+      // Gaza demographic breakdown (cumulative)
+      killed_children_cum: record.ext_killed_children_cum ?? null,
+      killed_women_cum: record.ext_killed_women_cum ?? null,
+      medics_killed_cum: record.ext_med_killed_cum ?? record.med_killed_cum ?? null,
+      press_killed_cum: record.ext_press_killed_cum ?? record.press_killed_cum ?? null,
+      civdef_killed_cum: record.ext_civdef_killed_cum ?? null,
+      massacres_cum: record.ext_massacres_cum ?? null,
+      famine_cum: record.famine_cum ?? null,
+      child_famine_cum: record.child_famine_cum ?? null,
+      aid_seeker_killed_cum: record.aid_seeker_killed_cum ?? null,
+      aid_seeker_injured_cum: record.aid_seeker_injured_cum ?? null,
+      region: 'Gaza Strip',
       source: 'tech4palestine',
     })).sort((a, b) => a.report_date.localeCompare(b.report_date));
 
@@ -330,12 +342,17 @@ async function saveTech4PalestineData(data) {
       return date && date >= BASELINE_DATE;
     });
 
-    // Normalize data
+    // Normalize data — preserve full West Bank daily breakdown
     const normalized = filtered.map(record => ({
+      ...record,
       report_date: record.report_date || record.date,
       date: record.report_date || record.date,
-      killed: record.killed || 0,
-      injured: record.injured || 0,
+      killed: record.killed ?? 0,
+      injured: record.injured ?? 0,
+      killed_children_cum: record.killed_children_cum ?? null,
+      injured_children_cum: record.injured_children_cum ?? null,
+      settler_attacks_cum: record.settler_attacks_cum ?? null,
+      region: 'West Bank',
       source: 'tech4palestine',
     })).sort((a, b) => a.report_date.localeCompare(b.report_date));
 
@@ -925,6 +942,12 @@ async function main() {
         name: 'Refugees Camps',
         path: path.join(__dirname, 'fetch-refugees.js'),
         description: 'UNRWA Refugee Camps Population',
+        required: false,
+      },
+      {
+        name: 'Gaza Daily',
+        path: path.join(__dirname, 'fetch-gaza-daily.js'),
+        description: 'Gaza daily bulletin + demographic breakdown',
         required: false,
       },
       // UNRWA removed - data sources broken/outdated (see scripts/UNRWA_DISABLED.md)

@@ -1,5 +1,6 @@
 import { listCategories, getUnifiedData, readJsonFile } from '../utils/fileService.js';
 import { CATEGORIES } from '../../../scripts/utils/canonical-schema.js';
+import { loadBaselines } from '../../../scripts/utils/baseline-analyzer.js';
 
 /**
  * GET /api/v1/categories
@@ -124,6 +125,35 @@ export async function getStats(req, res) {
         } catch (e) {
             console.warn('Could not fetch live alerts for global stats summary:', e.message);
             stats.live_status = { active_checkpoints: 0, currently_closed: 0, severe_delays: 0, error: 'live service unavailable' };
+        }
+
+        // Baseline snapshot: top region/event_type keys with current 30d vs 90d weekly avg
+        try {
+            const baselines = await loadBaselines();
+            if (baselines?.baselines) {
+                const entries = Object.entries(baselines.baselines)
+                    .filter(([, s]) => s.avg_weekly_90d > 0)
+                    .map(([key, s]) => {
+                        const weeklyRate = s.count_30d / (30 / 7);
+                        const delta = ((weeklyRate - s.avg_weekly_90d) / s.avg_weekly_90d) * 100;
+                        const trend = delta > 15 ? 'above' : delta < -15 ? 'below' : 'near';
+                        return {
+                            key,
+                            count_30d: s.count_30d,
+                            avg_weekly_90d: s.avg_weekly_90d,
+                            trend_vs_baseline: trend,
+                            delta_pct: Math.round(delta),
+                        };
+                    })
+                    .sort((a, b) => b.count_30d - a.count_30d)
+                    .slice(0, 10);
+                stats.baseline_snapshot = {
+                    window_ends: baselines.window_ends,
+                    top_active: entries,
+                };
+            }
+        } catch (e) {
+            console.warn('Could not attach baseline snapshot:', e.message);
         }
 
         res.json(stats);

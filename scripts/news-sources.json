@@ -1,0 +1,148 @@
+{
+  "feeds": [
+    {
+      "id": "aljazeera-en",
+      "name": "Al Jazeera English",
+      "url": "https://www.aljazeera.com/xml/rss/all.xml",
+      "reliability": "high",
+      "language": "en",
+      "category": "news"
+    },
+    {
+      "id": "aljazeera-ar",
+      "name": "Al Jazeera Arabic",
+      "url": "https://www.aljazeera.net/aljazeerarss",
+      "reliability": "high",
+      "language": "ar",
+      "category": "news"
+    },
+    {
+      "id": "middleeasteye",
+      "name": "Middle East Eye",
+      "url": "https://www.middleeasteye.net/rss",
+      "reliability": "high",
+      "language": "en",
+      "category": "news"
+    },
+    {
+      "id": "middle-east-monitor",
+      "name": "Middle East Monitor",
+      "url": "https://www.middleeastmonitor.com/feed/",
+      "reliability": "medium",
+      "language": "en",
+      "category": "news"
+    },
+    {
+      "id": "972mag",
+      "name": "+972 Magazine",
+      "url": "https://972mag.com/feed",
+      "reliability": "high",
+      "language": "en",
+      "category": "news"
+    },
+    {
+      "id": "haaretz",
+      "name": "Haaretz",
+      "url": "https://www.haaretz.com/srv/israel-news-rss",
+      "reliability": "high",
+      "language": "en",
+      "category": "news"
+    },
+    {
+      "id": "electronic-intifada",
+      "name": "The Electronic Intifada",
+      "url": "https://electronicintifada.net/rss.xml",
+      "reliability": "medium",
+      "language": "en",
+      "category": "news"
+    },
+    {
+      "id": "mondoweiss",
+      "name": "Mondoweiss",
+      "url": "https://mondoweiss.net/feed/",
+      "reliability": "medium",
+      "language": "en",
+      "category": "news"
+    },
+    {
+      "id": "palestine-chronicle",
+      "name": "Palestine Chronicle",
+      "url": "https://www.palestinechronicle.com/feed/",
+      "reliability": "medium",
+      "language": "en",
+      "category": "news"
+    },
+    {
+      "id": "reliefweb-palestine",
+      "name": "ReliefWeb - Palestine",
+      "url": "https://reliefweb.int/updates/rss.xml?search=c:181",
+      "reliability": "high",
+      "language": "en",
+      "category": "humanitarian"
+    },
+    {
+      "id": "qudsn",
+      "name": "Quds News Network",
+      "url": "https://www.qudsn.co/rss",
+      "reliability": "medium",
+      "language": "ar",
+      "category": "news"
+    },
+    {
+      "id": "qudsnews-alt",
+      "name": "Quds News (alternate)",
+      "url": "https://quds.news/feed",
+      "reliability": "medium",
+      "language": "ar",
+      "category": "news"
+    },
+    {
+      "id": "thenewarab",
+      "name": "The New Arab",
+      "url": "https://www.newarab.com/rss.xml",
+      "reliability": "high",
+      "language": "en",
+      "category": "news"
+    },
+    {
+      "id": "palinfo-en",
+      "name": "Palestine Information Center",
+      "url": "https://english.palinfo.com/rss",
+      "reliability": "medium",
+      "language": "en",
+      "category": "news"
+    },
+    {
+      "id": "samidoun",
+      "name": "Samidoun",
+      "url": "https://samidoun.net/feed/",
+      "reliability": "medium",
+      "language": "en",
+      "category": "human_rights"
+    },
+    {
+      "id": "bbc-middle-east",
+      "name": "BBC Middle East",
+      "url": "https://feeds.bbci.co.uk/news/world/middle_east/rss.xml",
+      "reliability": "high",
+      "language": "en",
+      "category": "news"
+    },
+    {
+      "id": "guardian-palestine",
+      "name": "Guardian - Palestine",
+      "url": "https://www.theguardian.com/world/palestinian-territories/rss",
+      "reliability": "high",
+      "language": "en",
+      "category": "news"
+    },
+    {
+      "id": "guardian-israel",
+      "name": "Guardian - Israel",
+      "url": "https://www.theguardian.com/world/israel/rss",
+      "reliability": "high",
+      "language": "en",
+      "category": "news"
+    }
+  ]
+}

@@ -132,6 +132,24 @@ function proxySSE(targetPath) {
 router.get('/alerts', proxyRequest('/alerts', LiveTransformer.transformAlerts));
 router.get('/alerts/latest', proxyRequest('/alerts/latest', LiveTransformer.transformAlerts));
 router.get('/alerts/active', proxyRequest('/alerts/active', LiveTransformer.transformAlerts));
+
+// Enriched alerts: raw alerts + rolling baseline context (30d count, 90d weekly avg, trend)
+router.get('/alerts/enriched', async (req, res) => {
+    try {
+        const qs = req.url.includes('?') ? req.url.substring(req.url.indexOf('?')) : '';
+        const upstream = await fetch(`${ALERTS_API}/alerts${qs}`, {
+            signal: AbortSignal.timeout(10000),
+        });
+        if (!upstream.ok) {
+            return res.status(upstream.status).json({ error: 'Upstream alerts fetch failed', status: upstream.status });
+        }
+        const body = await upstream.json();
+        const enriched = await LiveTransformer.enrichAlertsWithBaseline(body);
+        res.json(enriched);
+    } catch (err) {
+        res.status(502).json({ error: 'Enriched alerts unavailable', detail: err.message });
+    }
+});
 router.get('/alerts/:id', (req, res) => proxyRequest(`/alerts/${req.params.id}`)(req, res));
 router.get('/incidents', proxyRequest('/incidents'));
 router.get('/incidents/summary', proxyRequest('/incidents/summary'));
