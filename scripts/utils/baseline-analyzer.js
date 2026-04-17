@@ -80,7 +80,7 @@ async function loadConflict() {
  * (individual raids, settler attacks, injuries, etc.) so they give
  * meaningful baselines for the /live/enriched endpoint.
  */
-async function loadLiveAlerts(alertsApi, pageSize = 500, maxPages = 10) {
+async function loadLiveAlerts(alertsApi, pageSize = 100, maxPages = 20) {
   const out = [];
   try {
     for (let page = 1; page <= maxPages; page++) {
