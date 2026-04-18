@@ -47,7 +47,10 @@ async function main() {
     }
 
     const entries = await fs.readdir(UNIFIED_DIR, { withFileTypes: true });
-    const categories = entries.filter((e) => e.isDirectory()).map((e) => e.name);
+    const categories = entries
+        .filter((e) => e.isDirectory())
+        .map((e) => e.name)
+        .filter((name) => name !== 'snapshots');
 
     const perCategory = {};
     for (const cat of categories) {

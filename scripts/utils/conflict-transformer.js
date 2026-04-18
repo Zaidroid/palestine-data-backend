@@ -69,11 +69,29 @@ export class ConflictTransformer extends BaseTransformer {
       sources: [{
         name: metadata.source || metadata.organization?.title || 'Unknown',
         organization: metadata.organization?.title || metadata.organization || 'Unknown',
-        url: metadata.source_url || null,
-        license: 'varies',
+        url: metadata.source_url || this.canonicalSourceUrl(metadata),
+        license: metadata.license || 'varies',
         fetched_at: new Date().toISOString(),
       }],
     });
+  }
+
+  /**
+   * Resolve a canonical landing URL when the metadata didn't carry one.
+   * Lets a downstream citation point at *something* better than `null`.
+   */
+  canonicalSourceUrl(metadata) {
+    const src = (metadata.source || metadata.organization?.title || '').toLowerCase();
+    if (src.includes('tech4palestine') || src.includes('tech for palestine')) {
+      return 'https://data.techforpalestine.org';
+    }
+    if (src.includes("b'tselem") || src.includes('btselem')) {
+      return 'https://www.btselem.org';
+    }
+    if (src.includes('ocha')) {
+      return 'https://www.ochaopt.org';
+    }
+    return null;
   }
 
   /**
@@ -155,11 +173,43 @@ export class ConflictTransformer extends BaseTransformer {
   }
 
   /**
-   * Extract description
+   * Extract description.
+   *
+   * Tech4Palestine's daily-casualty rows are pure aggregate counts — there is
+   * no upstream prose to copy. For those rows we synthesize a one-line summary
+   * from the structured fields (region + casualty totals + date) so consumers
+   * have something readable. Free-text events (B'Tselem incidents, journalist
+   * killings) keep their original notes/description fields.
    */
   extractDescription(record) {
-    return record.notes || record.description || record.event_description ||
-      record.details || '';
+    const native = record.notes || record.description || record.event_description ||
+      record.details;
+    if (native && String(native).trim()) return String(native).trim();
+
+    const eventType = (record.event_type || '').toLowerCase();
+    const region = record.region || record.location || record.admin1 || 'Palestine';
+    const date = record.date || record.report_date || record.event_date;
+    const killed = parseInt(record.killed || record.fatalities || 0);
+    const injured = parseInt(record.injured || record.injuries || 0);
+
+    if (eventType === 'daily_casualty_report') {
+      const parts = [];
+      if (killed) parts.push(`${killed.toLocaleString()} killed (cumulative)`);
+      if (injured) parts.push(`${injured.toLocaleString()} injured (cumulative)`);
+      const tail = parts.length ? `: ${parts.join(', ')}` : '';
+      return `Daily casualty report (${region})${tail}${date ? ` — ${date}` : ''}.`;
+    }
+    if (eventType === 'summary') {
+      const parts = [];
+      if (killed) parts.push(`${killed.toLocaleString()} killed total`);
+      if (injured) parts.push(`${injured.toLocaleString()} injured total`);
+      const tail = parts.length ? `: ${parts.join(', ')}` : '';
+      return `Conflict summary (${region})${tail}${date ? ` as of ${date}` : ''}.`;
+    }
+    if (eventType === 'aggregate_fatality') {
+      return `Aggregate fatality record (${region})${killed ? `: ${killed.toLocaleString()} killed` : ''}${date ? ` — ${date}` : ''}.`;
+    }
+    return '';
   }
 
   /**

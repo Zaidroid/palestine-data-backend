@@ -37,6 +37,7 @@ import {
 import { HistoricalTransformer } from './utils/historical-transformer.js';
 import { GoodShepherdTransformer } from './utils/goodshepherd-transformer.js';
 import { WHOHealthTransformer } from './utils/who-health-transformer.js';
+import { FundingTransformer } from './utils/funding-transformer.js';
 import { UnifiedPipeline } from './utils/unified-pipeline.js';
 import { validateDataset } from './utils/data-validator.js';
 
@@ -2157,6 +2158,7 @@ async function main() {
         { name: 'goodshepherd_health', fn: processGoodShepherdHealthcare },
         { name: 'goodshepherd',        fn: processGoodShepherdData },
         { name: 'static_refugees',     fn: processStaticRefugeesData },
+        { name: 'funding',             fn: processFundingData },
         { name: 'news',                fn: processNewsData },
         { name: 'culture',             fn: processCultureData },
         { name: 'land',                fn: processLandData },
@@ -2178,6 +2180,7 @@ async function main() {
             'goodshepherd_health': 'health',
             'goodshepherd': null, // contributes to multiple categories
             'static_refugees': 'refugees',
+            'funding': 'funding',
             'btselem': 'conflict',
             'martyrs': 'martyrs_snapshot_2023',
         };
@@ -2230,6 +2233,38 @@ async function main() {
         logger.error(`Manifest generation failed: ${err.message}`);
     }
 
+    // Attach stable IDs + emit per-category lookup indexes. Runs last so it
+    // catches records written by paths that bypass UnifiedPipeline.
+    logger.info('Attaching stable IDs...');
+    try {
+        const { spawn } = await import('child_process');
+        const sidScript = path.join(__dirname, 'attach-stable-ids.js');
+        await new Promise((resolve, reject) => {
+            const child = spawn('node', [sidScript], { stdio: 'inherit' });
+            child.on('close', (code) => code === 0 ? resolve() : reject(new Error(`stable-id exit ${code}`)));
+        });
+        report.stable_ids = 'ok';
+    } catch (err) {
+        report.stable_ids = `failed: ${err.message}`;
+        logger.error(`Stable ID sweep failed: ${err.message}`);
+    }
+
+    // Write dated snapshot of unified data for ?as_of= pinning. Runs after
+    // stable IDs so snapshots include the citable ID indexes.
+    logger.info('Writing unified snapshot...');
+    try {
+        const { spawn } = await import('child_process');
+        const snapScript = path.join(__dirname, 'write-snapshot.js');
+        await new Promise((resolve, reject) => {
+            const child = spawn('node', [snapScript], { stdio: 'inherit' });
+            child.on('close', (code) => code === 0 ? resolve() : reject(new Error(`snapshot exit ${code}`)));
+        });
+        report.snapshot = 'ok';
+    } catch (err) {
+        report.snapshot = `failed: ${err.message}`;
+        logger.error(`Snapshot write failed: ${err.message}`);
+    }
+
     // Write pipeline report
     await fs.writeFile(
         path.join(DATA_DIR, 'pipeline-report.json'),
@@ -2257,33 +2292,77 @@ async function main() {
 main();
 
 /**
- * Process Static Refugees Data (Fallback for UNRWA API)
+ * Process Refugees Data — merges UNRWA camp populations (Wikipedia) with the
+ * UNHCR Operational Data Portal time-series. UNHCR carries the official
+ * year-by-year refugee counts by host country (CC-BY-4.0). UNRWA snapshot
+ * carries camp-level point-in-time populations. Both feed the unified
+ * `refugees` category.
  */
 async function processStaticRefugeesData() {
-    logger.info('Processing static Refugees data...');
+    logger.info('Processing refugees data (UNRWA camps + UNHCR ODP)...');
     try {
-        const filePath = path.join(DATA_DIR, 'static', 'unrwa-refugees.json');
-        const content = JSON.parse(await fs.readFile(filePath, 'utf-8'));
-        const records = Array.isArray(content) ? content : (content.data || []);
-        
-        if (records.length === 0) return;
-
         const { RefugeeTransformer } = await import('./utils/hdx-transformers.js');
         const transformer = new RefugeeTransformer();
         const pipeline = new UnifiedPipeline({ logger });
-        
-        // Map to format the RefugeeTransformer expects
-        const mappedRecords = records.map(r => ({
-            date: r.date,
-            location: r.camp_name || r.camp,
-            governorate: r.governorate || r.location,
-            refugees: r.total_population || r.refugees,
-            type: 'camp_population'
-        }));
+
+        const mappedRecords = [];
+        let unrwaCount = 0;
+        let unhcrCount = 0;
+
+        // --- UNRWA Wikipedia camp snapshot ---
+        try {
+            const unrwaPath = path.join(DATA_DIR, 'static', 'unrwa-refugees.json');
+            const unrwaRaw = JSON.parse(await fs.readFile(unrwaPath, 'utf-8'));
+            const unrwaRows = Array.isArray(unrwaRaw) ? unrwaRaw : (unrwaRaw.data || []);
+            for (const r of unrwaRows) {
+                mappedRecords.push({
+                    date: r.date,
+                    location: r.camp_name || r.camp,
+                    governorate: r.governorate || r.location,
+                    refugees: r.total_population || r.refugees,
+                    type: 'camp_population',
+                    _provenance: { source: 'UNRWA', via: 'Wikipedia camp registry' },
+                });
+                unrwaCount += 1;
+            }
+        } catch (e) {
+            logger.warn('UNRWA camp snapshot unavailable:', e.message);
+        }
+
+        // --- UNHCR Operational Data Portal time-series ---
+        try {
+            const unhcrPath = path.join(DATA_DIR, 'static', 'unhcr-refugees.json');
+            const unhcrRaw = JSON.parse(await fs.readFile(unhcrPath, 'utf-8'));
+            const unhcrRows = Array.isArray(unhcrRaw) ? unhcrRaw : (unhcrRaw.data || []);
+            for (const r of unhcrRows) {
+                mappedRecords.push({
+                    date: r.date,
+                    year: r.year,
+                    location: r.country_of_asylum_name,
+                    country_of_asylum_name: r.country_of_asylum_name,
+                    country_of_asylum_code: r.country_of_asylum_code,
+                    country_of_origin_name: r.country_of_origin_name,
+                    country_of_origin_code: r.country_of_origin_code,
+                    refugees: r.refugees,
+                    asylum_seekers: r.asylum_seekers,
+                    idps: r.idps,
+                    type: 'cross-border_refugees',
+                    _provenance: { source: 'UNHCR ODP', license: 'CC-BY-4.0' },
+                });
+                unhcrCount += 1;
+            }
+        } catch (e) {
+            logger.warn('UNHCR ODP snapshot unavailable (run scripts/sources/unhcr.js):', e.message);
+        }
+
+        if (mappedRecords.length === 0) {
+            logger.warn('No refugee source data on disk; skipping');
+            return;
+        }
 
         const results = await pipeline.process(
             mappedRecords,
-            { source: 'UNRWA', category: 'refugees' },
+            { source: 'UNHCR + UNRWA', category: 'refugees', source_url: 'https://api.unhcr.org/population/v1/population/' },
             transformer,
             { enrich: true, validate: true, partition: true, outputDir: path.join(UNIFIED_DIR, 'refugees') }
         );
@@ -2298,16 +2377,85 @@ async function processStaticRefugeesData() {
                     metadata: {
                         total_records: results.stats.recordCount,
                         generated_at: new Date().toISOString(),
-                        source: 'UNRWA',
+                        sources: [
+                            { name: 'UNHCR Operational Data Portal', records: unhcrCount, license: 'CC-BY-4.0' },
+                            { name: 'UNRWA (via Wikipedia camp registry)', records: unrwaCount, license: 'CC-BY-SA-3.0' },
+                        ],
+                        source: 'UNHCR + UNRWA',
                         category: 'refugees'
                     }
                 }, null, 2),
                 'utf-8'
             );
-            logger.success(`Processed and saved ${results.stats.recordCount} static refugee records`);
+            logger.success(`Processed ${results.stats.recordCount} refugee records (UNHCR ${unhcrCount} + UNRWA ${unrwaCount})`);
         }
     } catch (e) {
-        logger.warn('Error processing static refugees data:', e.message);
+        logger.warn('Error processing refugees data:', e.message);
+    }
+}
+
+/**
+ * Process UN OCHA Financial Tracking Service funding flows.
+ * Each FTS flow is one donor → recipient humanitarian funding event for
+ * Palestine (commitment / pledge / paid). Backed by CC-BY-IGO-3.0 — green
+ * for commercial reuse with attribution. Fed by scripts/sources/unfts.js.
+ */
+async function processFundingData() {
+    logger.info('Processing UN FTS funding data...');
+    try {
+        const filePath = path.join(DATA_DIR, 'static', 'unfts-funding.json');
+        let envelope;
+        try {
+            envelope = JSON.parse(await fs.readFile(filePath, 'utf-8'));
+        } catch (e) {
+            logger.warn('UN FTS snapshot unavailable (run scripts/sources/unfts.js):', e.message);
+            return;
+        }
+
+        const flows = Array.isArray(envelope) ? envelope : (envelope.data || []);
+        if (flows.length === 0) {
+            logger.warn('No FTS flows on disk; skipping');
+            return;
+        }
+
+        const transformer = new FundingTransformer();
+        const pipeline = new UnifiedPipeline({ logger });
+        const results = await pipeline.process(
+            flows,
+            {
+                source: envelope.source || 'UN OCHA FTS',
+                category: 'funding',
+                source_url: envelope.source_url || 'https://fts.unocha.org',
+                license: envelope.license || 'CC-BY-IGO-3.0',
+            },
+            transformer,
+            { enrich: true, validate: true, partition: true, outputDir: path.join(UNIFIED_DIR, 'funding') }
+        );
+
+        if (results.success) {
+            const outPath = path.join(UNIFIED_DIR, 'funding', 'all-data.json');
+            await fs.mkdir(path.dirname(outPath), { recursive: true });
+            await fs.writeFile(
+                outPath,
+                JSON.stringify({
+                    data: results.enriched || [],
+                    metadata: {
+                        total_records: results.stats.recordCount,
+                        generated_at: new Date().toISOString(),
+                        sources: [
+                            { name: 'UN OCHA Financial Tracking Service', records: results.stats.recordCount, license: 'CC-BY-IGO-3.0' },
+                        ],
+                        source: 'UN OCHA Financial Tracking Service',
+                        source_url: envelope.source_url || 'https://fts.unocha.org',
+                        category: 'funding',
+                    },
+                }, null, 2),
+                'utf-8',
+            );
+            logger.success(`Processed ${results.stats.recordCount} FTS funding flows`);
+        }
+    } catch (e) {
+        logger.warn('Error processing UN FTS funding data:', e.message);
     }
 }
 

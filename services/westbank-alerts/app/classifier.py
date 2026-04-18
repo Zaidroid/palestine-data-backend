@@ -83,7 +83,7 @@ ATTACK_VERBS_AR = [
     # Attack
     "تحت النار",
     "دوي انفجار",
-    "غاره جويه", "غاره",
+    "غاره جويه", "غاره", "غارات", "غارات جويه",
     "طائره مسيره", "مسيره",
 ]
 
@@ -356,10 +356,38 @@ _GAZA_GENERAL_MARKERS = [_normalize(k) for k in [
     "قطاع غزه", "غزه", "قطاع", "gaza",
 ]]
 
+# Gaza-specific zone markers — ANY of these means the event is in Gaza, not WB.
+# Used to route Tier 1 attack-verb messages to gaza_strike instead of
+# west_bank_siren (since Gaza keys are also in WB_ZONE for back-compat).
+_GAZA_ONLY_MARKERS = [_normalize(k) for k in [
+    "قطاع غزه", "قطاع غزة", "قطاع",
+    "مدينه غزه", "مدينة غزه", "gaza city", "gaza strip",
+    "شمال غزه",
+    "بيت حانون", "بيت لاهيا", "جباليا", "مخيم جباليا",
+    "العطاطره", "ام النصر",
+    "الرمال", "الشجاعيه", "التفاح", "الزيتون", "الصبره", "الدرج",
+    "الشاطئ", "مخيم الشاطئ", "الشيخ رضوان", "تل الهوى",
+    "دير البلح", "النصيرات", "البريج", "المغازي",
+    "مخيم النصيرات", "مخيم البريج", "مخيم المغازي",
+    "خان يونس", "مخيم خان يونس", "بني سهيلا", "عبسان", "خزاعه",
+    "القراره", "الفخاري", "قيزان النجار",
+    "رفح", "مخيم رفح", "تل السلطان", "الشابوره", "المواصي",
+    "معبر رفح", "معبر كرم ابو سالم", "معبر بيت حانون", "معبر ايرز",
+    "محور نتساريم", "محور فيلادلفيا",
+    "beit hanoun", "beit lahia", "jabalia",
+    "rimal", "shujaiya", "khan younis", "khan yunis",
+    "deir al-balah", "deir al balah", "nuseirat", "rafah",
+]]
+
 
 def _is_gaza_text(normed_text: str) -> bool:
     """Cheap check: does the text mention Gaza generally?"""
     return any(m in normed_text for m in _GAZA_GENERAL_MARKERS)
+
+
+def _is_gaza_zone(normed_text: str) -> bool:
+    """True iff text mentions a Gaza-specific location (not just shared WB keys)."""
+    return any(m in normed_text for m in _GAZA_ONLY_MARKERS)
 
 
 def _extract_zone(normed_text: str) -> str:
@@ -932,7 +960,7 @@ def _compute_confidence(
         base += 0.05
     # Tier 1 (siren) survived the attack-verb + MENA guard, so it's structurally
     # more reliable than tier-2 operational events that have no such gate.
-    if alert_type in (AlertType.west_bank_siren, AlertType.regional_attack):
+    if alert_type in (AlertType.west_bank_siren, AlertType.regional_attack, AlertType.gaza_strike):
         base += 0.05
     confidence = max(0.0, min(1.0, round(base, 3)))
     return confidence, round(rel, 3)
@@ -953,6 +981,7 @@ def _build(
     TYPE_LABEL_EN = {
         AlertType.west_bank_siren:   "West Bank Alert",
         AlertType.regional_attack:   "Regional Attack",
+        AlertType.gaza_strike:       "Gaza Strike",
         AlertType.idf_raid:          "IDF Raid",
         AlertType.settler_attack:    "Settler Attack",
         AlertType.road_closure:      "Road Closure",
@@ -964,6 +993,7 @@ def _build(
     TYPE_LABEL_AR = {
         AlertType.west_bank_siren:   "تنبيه الضفة الغربية",
         AlertType.regional_attack:   "هجوم إقليمي",
+        AlertType.gaza_strike:       "قصف على غزة",
         AlertType.idf_raid:          "اقتحام",
         AlertType.settler_attack:    "اعتداء مستوطنين",
         AlertType.road_closure:      "إغلاق طريق",
@@ -1072,9 +1102,28 @@ def classify(raw_text: str, source: str) -> Optional[dict]:
     if _is_noise(normed, source=source):
         return None
 
-    # Israel attacking outward (bombing Lebanon/Syria) → not an incoming threat
-    if _has(normed, ISRAEL_ATTACKING_OUT):
+    # Israel attacking outward (bombing Lebanon/Syria) → not an incoming threat.
+    # EXCEPTION: Israel attacking Gaza or the West Bank is exactly the event we
+    # want to surface, so don't filter when a Palestinian zone is named.
+    if _has(normed, ISRAEL_ATTACKING_OUT) and not (_is_gaza_zone(normed) or _is_wb_zone(normed)):
         return None
+
+    # Gaza first — Gaza keys are also in WB_ZONE for back-compat, so without
+    # this branch a Gaza airstrike would mis-route to west_bank_siren.
+    if _is_gaza_zone(normed):
+        area = _extract_area(normed) or "Gaza Strip"
+        zone = _extract_zone(normed) or "gaza_strip"
+        # Major Gaza city + active strike → critical; otherwise high
+        severity = (
+            Severity.critical
+            if any(k in normed for k in [
+                _normalize("مدينه غزه"), _normalize("مدينة غزه"),
+                _normalize("خان يونس"), _normalize("رفح"),
+                _normalize("جباليا"), _normalize("بيت حانون"), _normalize("بيت لاهيا"),
+            ])
+            else Severity.high
+        )
+        return _build(AlertType.gaza_strike, severity, clean, source, area, zone=zone)
 
     # West Bank explicitly mentioned → CRITICAL/HIGH
     if _is_wb_zone(normed):

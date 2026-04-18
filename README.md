@@ -42,30 +42,34 @@ Commercial surface (Stripe, billing, API-key tiers) is scaffolded but
 
 ## Data catalog
 
-13 unified categories, ~184 k records. Every response carries freshness
+14 unified categories, ~194 k records. Every response carries freshness
 metadata and a `Warning: 299` header when the category has not updated in 90+
 days.
 
 | Category | Records | Source(s) | License | Status |
 |:--|--:|:--|:--|:--|
-| **Conflict** | 2,101 | Tech4Palestine, OCHA, B'Tselem | Mixed (CC-BY / CC-BY-NC) | live |
 | **Water / WASH** | 72,603 | HDX WASH Cluster (OCHA) | CC-BY | live |
-| **Health** | 38,232 | WHO GHO | CC-BY-NC-SA | live, non-commercial only |
 | **Martyrs (snapshot)** | 60,199 | Tech4Palestine | CC-BY | frozen 2023-10-07 |
+| **Health** | 38,232 | WHO GHO | CC-BY-NC-SA | live, non-commercial only |
+| **Funding** | 9,139 | UN OCHA Financial Tracking Service | CC-BY-IGO-3.0 | live (NEW) |
 | **Education** | 2,990 | HDX | CC-BY | live |
 | **West Bank layers** | 2,962 | HDX (schools, villages, barrier) | CC-BY | live |
+| **Conflict** | 2,101 | Tech4Palestine, OCHA, B'Tselem | Mixed (CC-BY / CC-BY-NC) | live |
 | **Conflict/Historical** | 1,572 | World Bank + PCBS | Public | live |
 | **Infrastructure damage** | 1,333 | Tech4Palestine | CC-BY | live |
+| **Refugees** | 1,230 | UNHCR ODP + UNRWA camps | CC-BY-4.0 / CC-BY-SA | live |
 | **PCBS** | 875 | Palestinian Central Bureau of Statistics | Public | live |
 | **Land** | 691 | OCHA, B'Tselem, Peace Now | Mixed | live |
 | **Culture** | 333 | UNESCO, Wikidata | CC0 / CC-BY | live |
-| **Refugees** | 75 | UNRWA | Public | thin — UNHCR fetcher planned |
 | **News** | 66 | MEE, Al Jazeera, WAFA | Fair-use (non-redistributable) | live |
 
 Prior to the pivot the catalog listed `prisoners`, `historical`, and
 `humanitarian` — all have been removed as stubs (1, 44, and 598 records
-respectively, with broken attributions). They will return only when backed by
-a live upstream (Addameer partnership, UN FTS, etc.).
+respectively, with broken attributions). The original 75-record `refugees`
+stub (Wikipedia camp scrape) is now augmented by 1,155 UNHCR ODP records
+covering 2010 → present. `funding` is a new green-license category backed by
+the UN OCHA Financial Tracking Service: every donor → recipient humanitarian
+flow into Palestine ($18.7 B across 2013 → present).
 
 ---
 
@@ -87,7 +91,7 @@ Telegram channels   →  classifier  →  enricher (zone + coords)  →  dedupe
 ```
 
 ### Alert types
-Tier 1 (airspace threats): `west_bank_siren`, `regional_attack`.
+Tier 1 (airspace / strikes): `west_bank_siren`, `gaza_strike`, `regional_attack`.
 Tier 2 (operational): `idf_raid`, `settler_attack`, `road_closure`,
 `flying_checkpoint`, `injury_report`, `demolition`, `arrest_campaign`.
 
@@ -218,7 +222,7 @@ SENTRY_DSN=                 # optional
 TELEGRAM_API_ID=...
 TELEGRAM_API_HASH=...
 TELEGRAM_PHONE=...
-TELEGRAM_CHANNELS=Almustashaar,WAFAgency,QudsN,ajanews,PalinfoAr,shihabagency,AlMayadeenNews
+TELEGRAM_CHANNELS=Almustashaar,WAFAgency,QudsN,ajanews,PalinfoAr,shihabagency,AlMayadeenNews,MOHMediaGaza
 CHECKPOINT_CHANNELS=ahwalaltreq,abd_jbreel
 DB_PATH=/data/alerts.db
 API_SECRET_KEY=...          # for /admin, /webhooks, PATCH /alerts/{id}

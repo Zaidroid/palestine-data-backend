@@ -10,6 +10,7 @@ import { DataPartitioner } from './data-partitioner.js';
 import { GeospatialEnricher } from './geospatial-enricher.js';
 import { TemporalEnricher } from './temporal-enricher.js';
 import { DataLinker } from './data-linker.js';
+import { attachStableIds } from './stable-id.js';
 
 /**
  * Unified Data Pipeline
@@ -162,6 +163,10 @@ export class UnifiedPipeline {
     if (options.transformer && typeof options.transformer.enrich === 'function') {
       enriched = options.transformer.enrich(enriched);
     }
+
+    // Content-addressed stable IDs — deterministic from the final enriched
+    // content so `/api/v1/record/:category/:stable_id` is a citable permalink.
+    attachStableIds(enriched);
 
     return enriched;
   }

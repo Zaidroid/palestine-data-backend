@@ -118,6 +118,28 @@
       "verify_required": false,
       "aliases": ["ocha", "un ocha", "ocha opt", "un ocha opt"]
     },
+    "unhcr": {
+      "name": "UNHCR Operational Data Portal",
+      "organization": "United Nations High Commissioner for Refugees",
+      "source_url": "https://api.unhcr.org/population/v1/population/",
+      "license_id": "CC-BY-4.0",
+      "attribution_text": "Data: UNHCR Operational Data Portal (unhcr.org), licensed CC-BY-4.0.",
+      "redistribution_allowed": true,
+      "commercial_use": true,
+      "verify_required": false,
+      "aliases": ["unhcr", "unhcr operational data portal", "unhcr odp", "unhcr + unrwa"]
+    },
+    "unfts": {
+      "name": "UN OCHA Financial Tracking Service",
+      "organization": "UN Office for the Coordination of Humanitarian Affairs",
+      "source_url": "https://fts.unocha.org/",
+      "license_id": "CC-BY-IGO-3.0",
+      "attribution_text": "Funding flows: UN OCHA Financial Tracking Service (fts.unocha.org), licensed CC-BY-IGO-3.0.",
+      "redistribution_allowed": true,
+      "commercial_use": true,
+      "verify_required": false,
+      "aliases": ["un ocha fts", "un ocha financial tracking service", "fts", "un fts"]
+    },
     "unesco": {
       "name": "UNESCO World Heritage",
       "organization": "UNESCO",

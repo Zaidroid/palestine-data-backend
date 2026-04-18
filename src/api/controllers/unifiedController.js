@@ -1,5 +1,23 @@
-import { getUnifiedData, getUnifiedMetadata, categoryExists } from '../utils/fileService.js';
+import { getUnifiedData, getUnifiedMetadata, categoryExists, resolveSnapshot } from '../utils/fileService.js';
 import { applyFreshnessGate } from '../utils/freshnessGate.js';
+
+// Resolve ?as_of=YYYY-MM-DD into a snapshot-dir handle + envelope-ready
+// pin descriptor. Returns { snapshotDir?: string, pin?: { requested, resolved } }
+// or null when the query param is absent/invalid. If the param is set but
+// no snapshot covers it, returns { notFound: true } so the controller can 404.
+async function resolvePin(req) {
+    const asOf = req.query?.as_of;
+    if (!asOf) return null;
+    if (!/^\d{4}-\d{2}-\d{2}$/.test(String(asOf))) {
+        return { invalid: true };
+    }
+    const resolved = await resolveSnapshot(asOf);
+    if (!resolved) return { notFound: true, requested: asOf };
+    return {
+        snapshotDir: resolved.dir,
+        pin: { requested: resolved.requested, resolved: resolved.resolved },
+    };
+}
 
 // ---------------------------------------------------------------------------
 // Helpers
@@ -44,11 +62,19 @@ export async function getData(req, res) {
             order = 'desc',
         } = req.query;
 
-        if (!await categoryExists(category)) {
+        const pin = await resolvePin(req);
+        if (pin?.invalid) {
+            return res.status(400).json({ error: 'as_of must be YYYY-MM-DD' });
+        }
+        if (pin?.notFound) {
+            return res.status(404).json({ error: 'No snapshot available on or before requested date', as_of: pin.requested });
+        }
+
+        if (!await categoryExists(category, { snapshotDir: pin?.snapshotDir })) {
             return res.status(404).json({ error: 'Category not found' });
         }
 
-        const result = await getUnifiedData(category);
+        const result = await getUnifiedData(category, { snapshotDir: pin?.snapshotDir });
 
         if (!result || !result.data) {
             return res.status(404).json({ error: 'Data not found' });
@@ -126,6 +152,7 @@ export async function getData(req, res) {
             },
             metadata: result.metadata,
         });
+        if (pin?.pin) envelope.as_of = pin.pin;
         res.json(envelope);
 
     } catch (error) {
@@ -141,18 +168,24 @@ export async function getMetadata(req, res) {
     try {
         const { category } = req.params;
 
-        if (!await categoryExists(category)) {
+        const pin = await resolvePin(req);
+        if (pin?.invalid) return res.status(400).json({ error: 'as_of must be YYYY-MM-DD' });
+        if (pin?.notFound) return res.status(404).json({ error: 'No snapshot available on or before requested date', as_of: pin.requested });
+
+        if (!await categoryExists(category, { snapshotDir: pin?.snapshotDir })) {
             return res.status(404).json({ error: 'Category not found' });
         }
 
-        const metadata = await getUnifiedMetadata(category);
+        const metadata = await getUnifiedMetadata(category, { snapshotDir: pin?.snapshotDir });
 
         if (!metadata) {
             return res.status(404).json({ error: 'Metadata not found' });
         }
 
         const envelope = await applyFreshnessGate(res, category, { metadata });
-        res.json(envelope.metadata);
+        const body = envelope.metadata;
+        if (pin?.pin) body.as_of = pin.pin;
+        res.json(body);
 
     } catch (error) {
         console.error('Error in getMetadata:', error);
@@ -167,11 +200,15 @@ export async function getSummary(req, res) {
     try {
         const { category } = req.params;
 
-        if (!await categoryExists(category)) {
+        const pin = await resolvePin(req);
+        if (pin?.invalid) return res.status(400).json({ error: 'as_of must be YYYY-MM-DD' });
+        if (pin?.notFound) return res.status(404).json({ error: 'No snapshot available on or before requested date', as_of: pin.requested });
+
+        if (!await categoryExists(category, { snapshotDir: pin?.snapshotDir })) {
             return res.status(404).json({ error: 'Category not found' });
         }
 
-        const result = await getUnifiedData(category);
+        const result = await getUnifiedData(category, { snapshotDir: pin?.snapshotDir });
         if (!result?.data) {
             return res.status(404).json({ error: 'Data not found' });
         }
@@ -238,6 +275,7 @@ export async function getSummary(req, res) {
         }
 
         const envelope = await applyFreshnessGate(res, category, summary);
+        if (pin?.pin) envelope.as_of = pin.pin;
         res.json(envelope);
 
     } catch (error) {
@@ -254,11 +292,15 @@ export async function getTimeseries(req, res) {
         const { category } = req.params;
         const { metric = 'killed', interval = 'month', region } = req.query;
 
-        if (!await categoryExists(category)) {
+        const pin = await resolvePin(req);
+        if (pin?.invalid) return res.status(400).json({ error: 'as_of must be YYYY-MM-DD' });
+        if (pin?.notFound) return res.status(404).json({ error: 'No snapshot available on or before requested date', as_of: pin.requested });
+
+        if (!await categoryExists(category, { snapshotDir: pin?.snapshotDir })) {
             return res.status(404).json({ error: 'Category not found' });
         }
 
-        const result = await getUnifiedData(category);
+        const result = await getUnifiedData(category, { snapshotDir: pin?.snapshotDir });
         if (!result?.data) {
             return res.status(404).json({ error: 'Data not found' });
         }
@@ -344,6 +386,7 @@ export async function getTimeseries(req, res) {
             region: region || 'all',
             data: series,
         });
+        if (pin?.pin) envelope.as_of = pin.pin;
         res.json(envelope);
 
     } catch (error) {

@@ -25092,3 +25092,76 @@ Warnings: 0
 Success Rate: 100.0%
 Completed: 2026-04-12T12:25:54.779Z
 ========================================
+[2026-04-13T13:40:35.208Z] [INFO] [Analytics] ========================================
+[2026-04-13T13:40:35.219Z] [INFO] [Analytics] Analytics Generator
+[2026-04-13T13:40:35.220Z] [INFO] [Analytics] ========================================
+[2026-04-13T13:40:35.241Z] [INFO] [Analytics]   ✓ conflict: 2101 records, killed=73367, injured=182653
+[2026-04-13T13:40:35.245Z] [INFO] [Analytics]   ✓ culture: 333 records, killed=0, injured=0
+[2026-04-13T13:40:35.255Z] [INFO] [Analytics]   ✓ economic: 1572 records, killed=0, injured=0
+[2026-04-13T13:40:35.272Z] [INFO] [Analytics]   ✓ education: 2990 records, killed=0, injured=0
+[2026-04-13T13:40:35.612Z] [INFO] [Analytics]   ✓ health: 38232 records, killed=0, injured=0
+[2026-04-13T13:40:35.613Z] [INFO] [Analytics]   ✓ historical: 136 records, killed=0, injured=0
+[2026-04-13T13:40:35.618Z] [INFO] [Analytics]   ✓ humanitarian: 598 records, killed=0, injured=0
+[2026-04-13T13:40:35.627Z] [INFO] [Analytics]   ✓ infrastructure: 1333 records, killed=0, injured=0
+[2026-04-13T13:40:35.631Z] [INFO] [Analytics]   ✓ land: 691 records, killed=0, injured=0
+[2026-04-13T13:40:36.284Z] [INFO] [Analytics]   ✓ martyrs: 60199 records, killed=60199, injured=0
+[2026-04-13T13:40:36.286Z] [INFO] [Analytics]   ✓ news: 66 records, killed=0, injured=0
+[2026-04-13T13:40:36.292Z] [INFO] [Analytics]   ✓ pcbs: 875 records, killed=0, injured=0
+[2026-04-13T13:40:36.293Z] [INFO] [Analytics]   ✓ prisoners: 1 records, killed=0, injured=0
+[2026-04-13T13:40:36.294Z] [INFO] [Analytics]   ✓ refugees: 75 records, killed=0, injured=0
+[2026-04-13T13:40:36.615Z] [INFO] [Analytics]   ✓ water: 72603 records, killed=0, injured=0
+[2026-04-13T13:40:36.629Z] [INFO] [Analytics]   ✓ westbank: 2962 records, killed=0, injured=0
+[2026-04-13T13:40:36.631Z] [INFO] [Analytics] ✓ Dashboard summary: 184767 records, killed=133566, injured=182653
+[2026-04-13T13:40:36.659Z] [INFO] [Analytics] ✓ Saved conflict-trends.json
+[2026-04-13T13:40:37.205Z] [INFO] [Analytics] ✓ Saved martyrs-stats.json
+[2026-04-13T13:40:37.206Z] [INFO] [Analytics] ========================================
+[2026-04-13T13:40:37.206Z] [INFO] [Analytics] Done. 16 categories processed.
+[2026-04-13T13:40:37.207Z] [INFO] [Analytics] ========================================
+[2026-04-13T13:40:37.207Z] [INFO] [Analytics] ✓ Analytics generation completed
+[2026-04-14T19:26:26.485Z] [INFO] [News-Collector] loaded 25 feeds, 99 locations → db /tmp/news-test.db
+[2026-04-14T19:26:26.843Z] [INFO] [News-Collector] Al Jazeera English: 25 items
+[2026-04-14T19:26:28.147Z] [INFO] [News-Collector] Al Jazeera Arabic: 25 items
+[2026-04-14T19:26:29.320Z] [INFO] [News-Collector] Middle East Eye: 20 items
+[2026-04-14T19:26:30.868Z] [INFO] [News-Collector] +972 Magazine: 10 items
+[2026-04-14T19:26:31.998Z] [INFO] [News-Collector] Haaretz: 20 items
+[2026-04-14T19:26:33.336Z] [INFO] [News-Collector] The Electronic Intifada: 20 items
+[2026-04-14T19:26:35.691Z] [INFO] [News-Collector] Mondoweiss: 10 items
+[2026-04-14T19:26:36.905Z] [WARN] [News-Collector] Palestine Chronicle failed: HTTP 429
+[2026-04-14T19:26:38.212Z] [WARN] [News-Collector] WAFA News Agency (English) failed: HTTP 404
+[2026-04-14T19:26:39.679Z] [WARN] [News-Collector] WAFA News Agency (Arabic) failed: HTTP 404
+[2026-04-14T19:26:41.104Z] [WARN] [News-Collector] OCHA oPt failed: HTTP 404
+[2026-04-14T19:26:43.908Z] [WARN] [News-Collector] ReliefWeb - Palestine failed: HTTP 406
+[2026-04-14T19:26:45.085Z] [WARN] [News-Collector] Amnesty International failed: HTTP 404
+[2026-04-14T19:26:46.906Z] [WARN] [News-Collector] Quds News Network failed: HTTP 404
+[2026-04-14T19:26:49.393Z] [INFO] [News-Collector] The New Arab: 112 items
+[2026-04-14T19:26:51.043Z] [WARN] [News-Collector] IMEU failed: HTTP 404
+[2026-04-14T19:26:52.884Z] [WARN] [News-Collector] Al-Monitor Palestine failed: HTTP 404
+[2026-04-14T19:26:53.955Z] [WARN] [News-Collector] Maan News (Arabic) failed: HTTP 404
+[2026-04-14T19:26:56.216Z] [INFO] [News-Collector] Palestine Information Center: 10 items
+[2026-04-14T19:26:58.064Z] [INFO] [News-Collector] Samidoun: 10 items
+[2026-04-14T19:26:59.619Z] [WARN] [News-Collector] OCHA oPt Reports failed: HTTP 404
+[2026-04-14T19:27:01.470Z] [WARN] [News-Collector] Defense for Children Palestine failed: HTTP 404
+[2026-04-14T19:27:02.475Z] [WARN] [News-Collector] PCHR Gaza failed: fetch failed
+[2026-04-14T19:27:03.697Z] [WARN] [News-Collector] Al-Haq failed: HTTP 404
+[2026-04-14T19:27:04.575Z] [WARN] [News-Collector] Addameer failed: fetch failed
+[2026-04-14T19:27:05.378Z] [INFO] [News-Collector] ✓ run #1 done: feeds 10/25, articles seen=262, new=137, errors=15
+[2026-04-14T19:28:40.915Z] [INFO] [News-Collector] loaded 18 feeds, 99 locations → db /tmp/news-test.db
+[2026-04-14T19:28:41.266Z] [INFO] [News-Collector] Al Jazeera English: 25 items
+[2026-04-14T19:28:42.552Z] [INFO] [News-Collector] Al Jazeera Arabic: 25 items
+[2026-04-14T19:28:43.747Z] [INFO] [News-Collector] Middle East Eye: 20 items
+[2026-04-14T19:28:45.702Z] [INFO] [News-Collector] Middle East Monitor: 50 items
+[2026-04-14T19:28:47.065Z] [INFO] [News-Collector] +972 Magazine: 10 items
+[2026-04-14T19:28:48.160Z] [INFO] [News-Collector] Haaretz: 20 items
+[2026-04-14T19:28:49.162Z] [INFO] [News-Collector] The Electronic Intifada: 20 items
+[2026-04-14T19:28:51.418Z] [INFO] [News-Collector] Mondoweiss: 10 items
+[2026-04-14T19:28:52.590Z] [WARN] [News-Collector] Palestine Chronicle failed: HTTP 429
+[2026-04-14T19:28:55.309Z] [INFO] [News-Collector] ReliefWeb - Palestine: 20 items
+[2026-04-14T19:28:56.767Z] [INFO] [News-Collector] Quds News Network: 31 items
+[2026-04-14T19:28:58.560Z] [INFO] [News-Collector] Quds News (alternate): 0 items
+[2026-04-14T19:29:00.345Z] [INFO] [News-Collector] The New Arab: 112 items
+[2026-04-14T19:29:02.530Z] [INFO] [News-Collector] Palestine Information Center: 10 items
+[2026-04-14T19:29:05.171Z] [INFO] [News-Collector] Samidoun: 10 items
+[2026-04-14T19:29:06.314Z] [INFO] [News-Collector] BBC Middle East: 35 items
+[2026-04-14T19:29:07.602Z] [INFO] [News-Collector] Guardian - Palestine: 20 items
+[2026-04-14T19:29:08.851Z] [INFO] [News-Collector] Guardian - Israel: 20 items
+[2026-04-14T19:29:09.661Z] [INFO] [News-Collector] ✓ run #1 done: feeds 17/18, articles seen=438, new=248, errors=1

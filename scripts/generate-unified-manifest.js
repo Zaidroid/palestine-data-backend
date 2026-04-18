@@ -30,7 +30,10 @@ async function generateManifest() {
     try {
         // Get all category directories
         const entries = await fs.readdir(UNIFIED_DIR, { withFileTypes: true });
-        const categories = entries.filter(e => e.isDirectory()).map(e => e.name);
+        const categories = entries
+            .filter(e => e.isDirectory())
+            .map(e => e.name)
+            .filter(name => name !== 'snapshots');
 
         for (const category of categories) {
             const categoryPath = path.join(UNIFIED_DIR, category);

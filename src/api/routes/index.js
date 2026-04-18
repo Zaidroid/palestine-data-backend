@@ -8,6 +8,7 @@ import licensesRoutes from './licenses.js';
 import versionRoutes from './version.js';
 import qualityRoutes from './quality.js';
 import recordRoutes from './record.js';
+import snapshotsRoutes from './snapshots.js';
 import meRoutes from './me.js';
 import billingRoutes from './billing.js';
 import { getCategories, getStats } from '../controllers/statsController.js';
@@ -31,6 +32,7 @@ router.use('/licenses', licensesRoutes);
 router.use('/version', versionRoutes);
 router.use('/quality', qualityRoutes);
 router.use('/record', recordRoutes);
+router.use('/snapshots', snapshotsRoutes);
 
 // Customer surfaces (C3/C4): own-key usage stats + Stripe billing
 router.use('/me', meRoutes);
