@@ -4,6 +4,12 @@ import unifiedRoutes from './unified.js';
 import searchRoutes from './search.js';
 import alertsProxy from './alerts-proxy.js';
 import newsRoutes from './news.js';
+import licensesRoutes from './licenses.js';
+import versionRoutes from './version.js';
+import qualityRoutes from './quality.js';
+import recordRoutes from './record.js';
+import meRoutes from './me.js';
+import billingRoutes from './billing.js';
 import { getCategories, getStats } from '../controllers/statsController.js';
 
 const router = express.Router();
@@ -17,6 +23,18 @@ router.use('/live', alertsProxy);
 
 // News feed (RSS + scheduled fetcher → news.db)
 router.use('/news', newsRoutes);
+
+// Upstream-source license registry (trust-foundation surface for NGO/journalist customers)
+router.use('/licenses', licensesRoutes);
+
+// Trust-foundation surfaces (A2/A3/A4): citable version, quality, per-record permalinks
+router.use('/version', versionRoutes);
+router.use('/quality', qualityRoutes);
+router.use('/record', recordRoutes);
+
+// Customer surfaces (C3/C4): own-key usage stats + Stripe billing
+router.use('/me', meRoutes);
+router.use('/billing', billingRoutes);
 
 router.get('/categories', cache('10 minutes'), getCategories);
 router.get('/stats', cache('10 minutes'), getStats);

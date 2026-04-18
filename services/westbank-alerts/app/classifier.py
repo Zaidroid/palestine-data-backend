@@ -868,6 +868,76 @@ def _sanitize(text: str, max_len: int = 500) -> str:
     return text[:max_len - 3] + "..." if len(text) > max_len else text
 
 
+# ── Confidence scoring (Phase P3.3) ──────────────────────────────────────────
+# Mirrors the seed in database.py CHANNEL_RELIABILITY_SEED. Kept as a sync dict
+# so classify() can stay synchronous on the hot path; the DB copy is the
+# operator-facing surface (read by /channel-reliability) but the classifier
+# always reads from this in-process map.
+_CHANNEL_WEIGHT = {
+    "almustashaar":   1.00,
+    "wafa":           0.90,
+    "wafa_ps":        0.90,
+    "wafagency":      0.90,
+    "wafanews":       0.90,
+    "qudsn":          0.80,
+    "shihab":         0.70,
+    "shehabagency":   0.70,
+    "shihabagency":   0.70,
+    "palinfoar":      0.70,
+    "ajanews":        0.60,
+    "almayadeennews": 0.50,
+    "almayadeennewspal": 0.50,
+    "mohmediagaza":   0.80,
+}
+
+_SEVERITY_BUMP = {
+    Severity.critical: 0.15,
+    Severity.high:     0.10,
+    Severity.medium:   0.00,
+    Severity.low:      -0.10,
+}
+
+
+def _channel_weight(source: Optional[str]) -> float:
+    if not source:
+        return 0.5
+    return _CHANNEL_WEIGHT.get(source.lower().lstrip("@"), 0.5)
+
+
+def _compute_confidence(
+    severity: Severity,
+    source: str,
+    area: Optional[str],
+    zone: Optional[str],
+    text: str,
+    alert_type: AlertType,
+) -> tuple[float, float]:
+    """Return (confidence, source_reliability), both clamped to [0.0, 1.0].
+
+    Confidence blends three signals:
+      1. Channel reliability (the source has a track record)
+      2. Severity (the classifier ranks the impact)
+      3. Locality clarity (a named area inside a known zone is more trustworthy
+         than a generic "West Bank" label, which often masks stale recycling)
+    The MENA guard already runs upstream in the tier-1 classifier — anything
+    that survives that gate gets a small lift here for "passed the noise
+    filter" credit.
+    """
+    rel = _channel_weight(source)
+    base = 0.5 + (rel - 0.5) * 0.6      # 0.20 .. 0.80 from reliability alone
+    base += _SEVERITY_BUMP.get(severity, 0.0)
+    if area and area != "West Bank":
+        base += 0.05
+    if zone:
+        base += 0.05
+    # Tier 1 (siren) survived the attack-verb + MENA guard, so it's structurally
+    # more reliable than tier-2 operational events that have no such gate.
+    if alert_type in (AlertType.west_bank_siren, AlertType.regional_attack):
+        base += 0.05
+    confidence = max(0.0, min(1.0, round(base, 3)))
+    return confidence, round(rel, 3)
+
+
 def _build(
     alert_type: AlertType,
     severity: Severity,
@@ -907,6 +977,10 @@ def _build(
     built_title = title or (f"{label_en} — {area}" if area else label_en)
     built_title_ar = f"{label_ar} — {area}" if area else label_ar
 
+    confidence, source_reliability = _compute_confidence(
+        severity, source, area, zone, text, alert_type
+    )
+
     result = {
         "type":     alert_type,
         "severity": severity,
@@ -917,6 +991,9 @@ def _build(
         "area":     area,
         "zone":     zone,
         "raw_text": text,
+        "confidence":         confidence,
+        "source_reliability": source_reliability,
+        "status":             "active",
     }
 
     # 3-tier coordinate resolution: location KB → checkpoint KB → zone center

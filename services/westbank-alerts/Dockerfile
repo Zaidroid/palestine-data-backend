@@ -16,4 +16,8 @@ COPY seed_checkpoints.py ./seed_checkpoints.py
 # Force rebuild when source files change
 RUN find ./app -name "*.py" -newer /app/app/main.py -exec echo "Files updated" \; || true
 
+# Sentry release tag — pass via --build-arg SENTRY_RELEASE=$(git rev-parse --short HEAD)
+ARG SENTRY_RELEASE=""
+ENV SENTRY_RELEASE=${SENTRY_RELEASE}
+
 CMD ["python", "-m", "uvicorn", "app.main:app", "--host", "0.0.0.0", "--port", "8080"]

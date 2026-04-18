@@ -15,7 +15,11 @@ COPY scripts ./scripts
 COPY public ./public
 
 # Create empty directories if they don't exist (for safety)
-RUN mkdir -p public/data/unified
+RUN mkdir -p public/data/unified data
+
+# Sentry release tag — pass via --build-arg SENTRY_RELEASE=$(git rev-parse --short HEAD)
+ARG SENTRY_RELEASE=""
+ENV SENTRY_RELEASE=${SENTRY_RELEASE}
 
 # Expose port
 EXPOSE 7860

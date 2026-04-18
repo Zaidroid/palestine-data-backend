@@ -46,6 +46,12 @@ def _get_http_client() -> httpx.AsyncClient:
     return _http_client
 
 
+def _csv_lower(value: Optional[str]) -> set:
+    if not value:
+        return set()
+    return {v.strip().lower() for v in value.split(",") if v.strip()}
+
+
 def _alert_matches(alert: Alert, wh) -> bool:
     if wh.alert_types:
         allowed = [t.strip() for t in wh.alert_types.split(",")]
@@ -53,6 +59,25 @@ def _alert_matches(alert: Alert, wh) -> bool:
             return False
     if wh.min_severity:
         if SEV_RANK.get(alert.severity, 0) < SEV_RANK.get(wh.min_severity, 0):
+            return False
+    areas = _csv_lower(getattr(wh, "areas", None))
+    if areas:
+        a = (alert.area or "").lower()
+        if not a or not any(target in a or a in target for target in areas):
+            return False
+    zones = _csv_lower(getattr(wh, "zones", None))
+    if zones:
+        z = (getattr(alert, "zone", None) or "").lower()
+        if not z or z not in zones:
+            return False
+    cmin = getattr(wh, "confidence_min", None)
+    if cmin is not None:
+        c = getattr(alert, "confidence", None)
+        # Legacy alerts (no score) pass only if threshold is at the floor.
+        if c is None:
+            if cmin > 0.5:
+                return False
+        elif c < cmin:
             return False
     return True
 
@@ -111,9 +136,45 @@ async def fire_cached(alert: Alert):
             "body":       alert.body,
             "source":     alert.source,
             "area":       alert.area,
+            "zone":       getattr(alert, "zone", None),
             "timestamp":  _utc_iso(alert.timestamp),
             "created_at": _utc_iso(alert.created_at) if alert.created_at else None,
             "event_subtype": getattr(alert, "event_subtype", None) or None,
+            "confidence": getattr(alert, "confidence", None),
+            "source_reliability": getattr(alert, "source_reliability", None),
+            "status": getattr(alert, "status", None) or "active",
+        }
+    }, ensure_ascii=False).encode("utf-8")
+
+    tasks = [
+        asyncio.create_task(_deliver(wh.url, payload, wh.secret))
+        for wh in _cached_webhooks
+        if _alert_matches(alert, wh)
+    ]
+    if tasks:
+        await asyncio.gather(*tasks, return_exceptions=True)
+
+
+async def fire_correction(alert: Alert):
+    """Push a correction/retraction event to all subscribers that originally
+    matched this alert. Runs alongside the normal fanout so dashboards can
+    update their cached records in place."""
+    await _refresh_cache()
+    if not _cached_webhooks:
+        return
+
+    payload = json.dumps({
+        "event": "correction",
+        "alert": {
+            "id": alert.id,
+            "type": alert.type,
+            "severity": alert.severity,
+            "title": alert.title,
+            "area": alert.area,
+            "zone": getattr(alert, "zone", None),
+            "status": getattr(alert, "status", None) or "active",
+            "correction_note": getattr(alert, "correction_note", None),
+            "timestamp": _utc_iso(alert.timestamp),
         }
     }, ensure_ascii=False).encode("utf-8")
 

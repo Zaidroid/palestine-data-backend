@@ -443,19 +443,120 @@ async def get_checkpoint(canonical_key: str) -> Optional[dict]:
     return _row_to_checkpoint(row) if row else None
 
 
-async def get_checkpoint_history(canonical_key: str, limit: int = 50) -> list:
+async def get_checkpoint_history(
+    canonical_key: str,
+    limit: int = 50,
+    from_dt: Optional[datetime] = None,
+    to_dt: Optional[datetime] = None,
+) -> list:
+    conditions = ["canonical_key = ?"]
+    params: list = [canonical_key]
+    if from_dt:
+        conditions.append("timestamp >= ?")
+        params.append(from_dt.isoformat())
+    if to_dt:
+        conditions.append("timestamp <= ?")
+        params.append(to_dt.isoformat())
+    where = " AND ".join(conditions)
+
     async with get_checkpoint_db() as db:
         cur = await db.execute(
-            "SELECT id, canonical_key, name_raw, status, status_raw, "
-            "source_type, source_channel, source_msg_id, raw_line, raw_message, "
-            "timestamp, created_at, direction "
-            "FROM checkpoint_updates "
-            "WHERE canonical_key = ? "
-            "ORDER BY timestamp DESC LIMIT ?",
-            [canonical_key, limit],
+            f"SELECT id, canonical_key, name_raw, status, status_raw, "
+            f"source_type, source_channel, source_msg_id, raw_line, raw_message, "
+            f"timestamp, created_at, direction "
+            f"FROM checkpoint_updates "
+            f"WHERE {where} "
+            f"ORDER BY timestamp DESC LIMIT ?",
+            params + [limit],
         )
         rows = await cur.fetchall()
     return [_row_to_update(r) for r in rows]
+
+
+async def get_uptime_window(
+    from_dt: datetime,
+    to_dt: datetime,
+    canonical_key: Optional[str] = None,
+) -> list:
+    """Compute % open / closed / restricted per checkpoint over a time window.
+
+    Walks status transitions in chronological order, attributing the duration
+    of each (status, checkpoint) span to the totals. Spans are clamped to the
+    requested window so partial overlaps account correctly. The final span runs
+    to `to_dt` (or now, whichever is earlier)."""
+    conditions = ["timestamp <= ?"]
+    params: list = [to_dt.isoformat()]
+    if canonical_key:
+        conditions.append("canonical_key = ?")
+        params.append(canonical_key)
+    where = " AND ".join(conditions)
+
+    async with get_checkpoint_db() as db:
+        cur = await db.execute(
+            f"SELECT canonical_key, status, timestamp "
+            f"FROM checkpoint_updates "
+            f"WHERE {where} AND status IS NOT NULL "
+            f"ORDER BY canonical_key ASC, timestamp ASC",
+            params,
+        )
+        rows = await cur.fetchall()
+
+    window_end = min(to_dt, datetime.utcnow())
+    if window_end <= from_dt:
+        return []
+
+    by_key: dict[str, list] = {}
+    for key, status, ts in rows:
+        try:
+            t = datetime.fromisoformat(ts)
+        except ValueError:
+            continue
+        by_key.setdefault(key, []).append((t, status))
+
+    results = []
+    window_seconds = (window_end - from_dt).total_seconds()
+    for key, events in by_key.items():
+        # Find baseline status entering the window: last event before from_dt.
+        baseline = None
+        in_window = []
+        for t, status in events:
+            if t < from_dt:
+                baseline = status
+            else:
+                in_window.append((t, status))
+
+        spans: list[tuple[datetime, datetime, str]] = []
+        cursor_t = from_dt
+        cursor_status = baseline
+        for t, status in in_window:
+            t_clamped = min(t, window_end)
+            if cursor_status is not None and t_clamped > cursor_t:
+                spans.append((cursor_t, t_clamped, cursor_status))
+            cursor_t = t_clamped
+            cursor_status = status
+        if cursor_status is not None and window_end > cursor_t:
+            spans.append((cursor_t, window_end, cursor_status))
+
+        totals: dict[str, float] = {}
+        for start, end, status in spans:
+            totals[status] = totals.get(status, 0.0) + (end - start).total_seconds()
+
+        observed = sum(totals.values())
+        pct = {
+            s: round((sec / window_seconds) * 100, 2)
+            for s, sec in totals.items()
+        }
+        results.append({
+            "canonical_key": key,
+            "seconds_by_status": {s: round(sec, 1) for s, sec in totals.items()},
+            "pct_by_status": pct,
+            "observed_seconds": round(observed, 1),
+            "window_seconds": round(window_seconds, 1),
+            "transitions": len(in_window),
+        })
+
+    results.sort(key=lambda r: r.get("pct_by_status", {}).get("closed", 0), reverse=True)
+    return results
 
 
 async def get_updates(

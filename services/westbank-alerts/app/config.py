@@ -1,6 +1,7 @@
 from pydantic_settings import BaseSettings
 from typing import List
 import os
+import sys
 
 
 class Settings(BaseSettings):
@@ -17,7 +18,7 @@ class Settings(BaseSettings):
 
     # API
     API_PORT: int = 8080
-    API_SECRET_KEY: str = "dev-secret-change-me"
+    API_SECRET_KEY: str = ""
 
     # Storage
     DB_PATH: str = "/data/alerts.db"
@@ -63,3 +64,17 @@ class Settings(BaseSettings):
 
 
 settings = Settings()
+
+
+# ── Startup validation ────────────────────────────────────────────────────────
+# API_SECRET_KEY must be a real, sufficiently-long secret set via env or .env.
+# We refuse to boot with the old dev default or an empty value, so a misconfigured
+# deploy fails loudly instead of shipping with a publicly-known admin key.
+_FORBIDDEN_API_KEYS = {"", "dev-secret-change-me", "changeme", "change-me", "secret"}
+if settings.API_SECRET_KEY in _FORBIDDEN_API_KEYS or len(settings.API_SECRET_KEY) < 16:
+    sys.stderr.write(
+        "FATAL: API_SECRET_KEY must be set to a real secret of at least 16 characters.\n"
+        "Edit services/westbank-alerts/.env and set API_SECRET_KEY=<32+ random chars>, "
+        "then run `docker compose up -d --force-recreate alerts`.\n"
+    )
+    sys.exit(1)

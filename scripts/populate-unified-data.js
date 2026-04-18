@@ -589,20 +589,20 @@ async function processMartyrsData() {
 
         const transformer = new MartyrsTransformer();
         const pipeline = new UnifiedPipeline({ logger });
-        const martyrsDir = path.join(UNIFIED_DIR, 'martyrs');
+        const martyrsDir = path.join(UNIFIED_DIR, 'martyrs_snapshot_2023');
 
         const results = await pipeline.process(
             dataArray,
             {
                 source: 'Tech4Palestine',
                 organization: 'Tech for Palestine',
-                category: 'martyrs',
+                category: 'martyrs_snapshot_2023',
             },
             transformer,
             {
                 enrich: true,
                 validate: true,
-                partition: true, // Essential for 60k+ records
+                partition: true,
                 outputDir: martyrsDir,
             }
         );
@@ -610,8 +610,7 @@ async function processMartyrsData() {
         if (results.success) {
             logger.success(`Processed ${results.stats.recordCount} martyr records`);
 
-            // Save all-data.json (might be huge, but consistent with other cats)
-            // For 60k records, ~20MB json. Acceptable for now, but partitions are key.
+            // Frozen snapshot — Tech4Palestine stopped publishing this dataset on 2023-10-07.
             await fs.writeFile(
                 path.join(martyrsDir, 'all-data.json'),
                 JSON.stringify({
@@ -620,7 +619,10 @@ async function processMartyrsData() {
                         total_records: results.stats.recordCount,
                         generated_at: new Date().toISOString(),
                         source: 'Tech4Palestine',
-                        category: 'martyrs',
+                        category: 'martyrs_snapshot_2023',
+                        active: false,
+                        frozen_at: '2023-10-07',
+                        notice: 'Historical baseline only — upstream stopped publishing on 2023-10-07.',
                     },
                 }, null, 2),
                 'utf-8'
@@ -629,9 +631,11 @@ async function processMartyrsData() {
             await fs.writeFile(
                 path.join(martyrsDir, 'metadata.json'),
                 JSON.stringify({
-                    category: 'martyrs',
+                    category: 'martyrs_snapshot_2023',
                     total_records: results.stats.recordCount,
                     last_updated: new Date().toISOString(),
+                    active: false,
+                    frozen_at: '2023-10-07',
                     sources: ['Tech4Palestine'],
                 }, null, 2),
                 'utf-8'
@@ -654,7 +658,6 @@ async function processHDXData() {
         { name: 'education', transformer: new EducationTransformer() },
         { name: 'health', transformer: new HealthTransformer() },
         { name: 'water', transformer: new WaterTransformer() },
-        { name: 'humanitarian', transformer: new HumanitarianTransformer() },
         { name: 'refugees', transformer: new RefugeeTransformer() },
     ];
 
@@ -1609,7 +1612,6 @@ async function createEmptyStructures() {
         'conflict',
         'economic',
         'infrastructure',
-        'humanitarian',
         'health',
         'education',
         'refugees',
@@ -2135,8 +2137,8 @@ async function main() {
     await fs.mkdir(UNIFIED_DIR, { recursive: true });
     const categories = [
         'economic', 'conflict', 'infrastructure', 'education', 'health',
-        'water', 'humanitarian', 'refugees', 'martyrs', 'news', 'culture',
-        'land', 'westbank', 'historical', 'pcbs', 'prisoners'
+        'water', 'refugees', 'martyrs_snapshot_2023', 'news', 'culture',
+        'land', 'westbank', 'pcbs'
     ];
     for (const cat of categories) {
         await fs.mkdir(path.join(UNIFIED_DIR, cat), { recursive: true });
@@ -2155,13 +2157,10 @@ async function main() {
         { name: 'goodshepherd_health', fn: processGoodShepherdHealthcare },
         { name: 'goodshepherd',        fn: processGoodShepherdData },
         { name: 'static_refugees',     fn: processStaticRefugeesData },
-        { name: 'static_prisoners',    fn: processStaticPrisonersData },
         { name: 'news',                fn: processNewsData },
         { name: 'culture',             fn: processCultureData },
         { name: 'land',                fn: processLandData },
         { name: 'westbank',            fn: processWestBankData },
-        { name: 'historical',          fn: processHistoricalData },
-        { name: 'nakba',               fn: processNakbaData },
         { name: 'btselem',             fn: processBtselemData },
         { name: 'water',               fn: processWaterData },
         { name: 'infrastructure',      fn: processInfrastructureData },
@@ -2179,9 +2178,8 @@ async function main() {
             'goodshepherd_health': 'health',
             'goodshepherd': null, // contributes to multiple categories
             'static_refugees': 'refugees',
-            'static_prisoners': 'prisoners',
-            'nakba': 'historical',
             'btselem': 'conflict',
+            'martyrs': 'martyrs_snapshot_2023',
         };
         const dirName = nameMap[categoryName] !== undefined ? nameMap[categoryName] : categoryName;
         if (!dirName) return null;
@@ -2442,7 +2440,6 @@ async function processGoodShepherdData() {
         const batches = {
             conflict: allRecords.filter(r => r._gs_category === 'prisoners'),
             health: allRecords.filter(r => r._gs_category === 'healthcare'),
-            humanitarian: allRecords.filter(r => r._gs_category === 'ngo')
         };
 
         for (const [targetCategory, records] of Object.entries(batches)) {

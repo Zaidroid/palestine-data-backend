@@ -56,6 +56,10 @@ class Alert(BaseModel):
     event_subtype: Optional[str] = None  # e.g. 'arrest', 'search', 'stone_throwing'
     latitude: Optional[float] = None  # Zone center latitude (for map display)
     longitude: Optional[float] = None  # Zone center longitude (for map display)
+    confidence: Optional[float] = None       # 0.0-1.0 — classifier+source-weighted score
+    source_reliability: Optional[float] = None  # 0.0-1.0 — channel-level baseline trust
+    status: Optional[str] = "active"         # active | retracted | corrected
+    correction_note: Optional[str] = None    # Set when status != active
 
     @field_serializer('timestamp', 'created_at')
     def serialize_dt(self, dt: Optional[datetime]) -> Optional[str]:
@@ -81,6 +85,10 @@ class WebhookTarget(BaseModel):
     active: bool = True
     alert_types: Optional[str] = None   # comma-separated or None for all
     min_severity: Optional[str] = None
+    areas: Optional[str] = None              # comma-separated area names (case-insensitive)
+    zones: Optional[str] = None              # comma-separated WB zones: north, middle, south
+    confidence_min: Optional[float] = None   # 0.0-1.0 — skip alerts below this score
+    customer_key_id: Optional[int] = None    # FK to keys.db (future per-tenant enforcement)
     created_at: Optional[datetime] = None
 
 

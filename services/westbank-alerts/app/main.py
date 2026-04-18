@@ -33,15 +33,27 @@ Endpoints:
 import asyncio
 import json
 import logging
+import os
 import time
 from contextlib import asynccontextmanager
 from datetime import datetime, timedelta, timezone
 from typing import AsyncGenerator, List, Optional, Set
 
-from fastapi import Depends, FastAPI, HTTPException, Query, WebSocket, WebSocketDisconnect
+import sentry_sdk
+from fastapi import Depends, FastAPI, HTTPException, Query, Request, WebSocket, WebSocketDisconnect
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.responses import FileResponse, RedirectResponse, StreamingResponse
 from fastapi.security import APIKeyHeader
+
+_sentry_dsn = os.getenv("SENTRY_DSN")
+if _sentry_dsn:
+    sentry_sdk.init(
+        dsn=_sentry_dsn,
+        environment=os.getenv("SENTRY_ENVIRONMENT", "production"),
+        release=os.getenv("SENTRY_RELEASE") or None,
+        traces_sample_rate=float(os.getenv("SENTRY_TRACES_SAMPLE_RATE", "0.0")),
+        send_default_pii=False,
+    )
 
 from . import database as db
 from . import monitor
@@ -72,11 +84,23 @@ def _utc_iso(dt: datetime) -> str:
     return dt.isoformat()
 
 
-logging.basicConfig(
-    level=logging.INFO,
-    format="%(asctime)s [%(levelname)s] %(name)s: %(message)s",
+import structlog
+
+structlog.configure(
+    processors=[
+        structlog.contextvars.merge_contextvars,
+        structlog.processors.add_log_level,
+        structlog.processors.TimeStamper(fmt="iso", utc=True),
+        structlog.processors.StackInfoRenderer(),
+        structlog.processors.format_exc_info,
+        structlog.processors.JSONRenderer(),
+    ],
+    wrapper_class=structlog.stdlib.BoundLogger,
+    logger_factory=structlog.PrintLoggerFactory(),
+    cache_logger_on_first_use=True,
 )
-log = logging.getLogger("api")
+logging.basicConfig(level=logging.INFO, format="%(message)s")
+log = structlog.get_logger("api").bind(service="params-alerts-api")
 
 START_TIME = time.time()
 
@@ -272,6 +296,9 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
+from .middleware.api_key import ApiKeyMiddleware
+app.add_middleware(ApiKeyMiddleware)
+
 api_key_header = APIKeyHeader(name="X-API-Key", auto_error=False)
 
 
@@ -411,38 +438,48 @@ async def zone_polygons():
 
 @app.get("/alerts", response_model=AlertResponse, tags=["alerts"])
 async def list_alerts(
-    type:     Optional[str]      = Query(None),
-    severity: Optional[str]      = Query(None),
-    area:     Optional[str]      = Query(None),
-    since:    Optional[datetime] = Query(None),
-    page:     int                = Query(1, ge=1),
-    per_page: int                = Query(50, ge=1, le=200),
+    type:           Optional[str]      = Query(None),
+    severity:       Optional[str]      = Query(None),
+    area:           Optional[str]      = Query(None),
+    since:          Optional[datetime] = Query(None),
+    until:          Optional[datetime] = Query(None),
+    min_confidence: Optional[float]    = Query(None, ge=0.0, le=1.0),
+    status:         Optional[str]      = Query(None, pattern="^(active|retracted|corrected)$"),
+    page:           int                = Query(1, ge=1),
+    per_page:       int                = Query(50, ge=1, le=200),
 ):
     """
     List alerts. Newest first. All parameters are optional.
 
     For AI agent polling: call every 30-60s and pass `since` to avoid
     re-processing old alerts. Use severity=critical for urgent-only mode.
+    Use `min_confidence` to filter low-confidence classifier outputs.
     """
     offset = (page - 1) * per_page
     alerts, total = await db.get_alerts(
         type=type, severity=severity, area=area,
-        since=since, limit=per_page, offset=offset,
+        since=since, until=until,
+        min_confidence=min_confidence, status=status,
+        limit=per_page, offset=offset,
     )
     return AlertResponse(alerts=alerts, total=total, page=page, per_page=per_page)
 
 
 @app.get("/alerts/latest", response_model=List[Alert], tags=["alerts"])
-async def latest_alerts(n: int = Query(10, ge=1, le=100)):
+async def latest_alerts(
+    n:              int             = Query(10, ge=1, le=100),
+    min_confidence: Optional[float] = Query(None, ge=0.0, le=1.0),
+):
     """Return the N most recent alerts. Default 10."""
-    alerts, _ = await db.get_alerts(limit=n)
+    alerts, _ = await db.get_alerts(limit=n, min_confidence=min_confidence)
     return alerts
 
 
 @app.get("/alerts/active", response_model=AlertResponse, tags=["alerts"])
 async def active_alerts(
-    hours: float = Query(2.0, ge=0.5, le=24.0,
-                         description="Alerts from last N hours (default 2)"),
+    hours:          float           = Query(2.0, ge=0.5, le=24.0,
+                                             description="Alerts from last N hours (default 2)"),
+    min_confidence: Optional[float] = Query(None, ge=0.0, le=1.0),
 ):
     """
     Alerts from the last N hours. Default: 2 hours.
@@ -450,8 +487,77 @@ async def active_alerts(
     that need to display a current status indicator.
     """
     since = datetime.utcnow() - timedelta(hours=hours)
-    alerts, total = await db.get_alerts(since=since, limit=200)
+    alerts, total = await db.get_alerts(since=since, limit=200, min_confidence=min_confidence)
     return AlertResponse(alerts=alerts, total=total, page=1, per_page=200)
+
+
+# Bulk historical export — paid tier (Phase P3.1)
+# Placed before /alerts/{alert_id} so the static path wins over the int catch-all.
+@app.get("/alerts/export", tags=["alerts"])
+async def export_alerts_endpoint(
+    since:          Optional[datetime] = Query(None),
+    until:          Optional[datetime] = Query(None),
+    type:           Optional[str]      = Query(None),
+    severity:       Optional[str]      = Query(None),
+    area:           Optional[str]      = Query(None),
+    min_confidence: Optional[float]    = Query(None, ge=0.0, le=1.0),
+    format:         str                = Query("ndjson", pattern="^(ndjson|csv)$"),
+    _: str = Depends(require_key),
+):
+    """
+    Stream historical alerts as newline-delimited JSON or CSV.
+
+    Streams in 500-row batches so memory stays bounded regardless of the
+    requested window. Designed for ETL into customer warehouses; the order
+    is timestamp ASC so consumers can checkpoint and resume.
+    """
+    if format == "csv":
+        cols = [
+            "id", "timestamp", "type", "severity", "title", "area", "zone",
+            "source", "confidence", "source_reliability", "status", "body",
+        ]
+
+        async def csv_stream():
+            yield (",".join(cols) + "\n").encode("utf-8")
+            async for a in db.export_alerts(
+                since=since, until=until, type=type, severity=severity,
+                area=area, min_confidence=min_confidence,
+            ):
+                vals = [
+                    str(a.id or ""),
+                    _utc_iso(a.timestamp) if a.timestamp else "",
+                    a.type or "",
+                    a.severity or "",
+                    (a.title or "").replace("\n", " ").replace('"', '""'),
+                    (a.area or "").replace('"', '""'),
+                    (getattr(a, "zone", None) or ""),
+                    a.source or "",
+                    f"{a.confidence:.3f}" if a.confidence is not None else "",
+                    f"{a.source_reliability:.3f}" if a.source_reliability is not None else "",
+                    getattr(a, "status", None) or "active",
+                    (a.body or "").replace("\n", " ").replace('"', '""'),
+                ]
+                line = ",".join(f'"{v}"' for v in vals) + "\n"
+                yield line.encode("utf-8")
+
+        return StreamingResponse(
+            csv_stream(),
+            media_type="text/csv",
+            headers={"Content-Disposition": 'attachment; filename="alerts-export.csv"'},
+        )
+
+    async def ndjson_stream():
+        async for a in db.export_alerts(
+            since=since, until=until, type=type, severity=severity,
+            area=area, min_confidence=min_confidence,
+        ):
+            yield (a.model_dump_json() + "\n").encode("utf-8")
+
+    return StreamingResponse(
+        ndjson_stream(),
+        media_type="application/x-ndjson",
+        headers={"Content-Disposition": 'attachment; filename="alerts-export.ndjson"'},
+    )
 
 
 @app.get("/alerts/{alert_id}", response_model=Alert, tags=["alerts"])
@@ -460,6 +566,69 @@ async def get_alert(alert_id: int):
     if not alert:
         raise HTTPException(status_code=404, detail="Alert not found")
     return alert
+
+
+@app.patch("/alerts/{alert_id}", response_model=Alert, tags=["alerts"])
+async def correct_alert(
+    alert_id: int,
+    status: str = Query(..., pattern="^(retracted|corrected|active)$"),
+    correction_note: Optional[str] = Query(None, max_length=500),
+    _: str = Depends(require_key),
+):
+    """
+    Mark an alert as retracted, corrected, or restored.
+
+    Pushes a `{event: "correction", ...}` event to all WebSocket / SSE / webhook
+    subscribers so client caches can update in place without a full re-fetch.
+    """
+    if status != "active" and not correction_note:
+        raise HTTPException(
+            status_code=400,
+            detail="correction_note is required when status is retracted or corrected",
+        )
+    updated = await db.update_alert_status(alert_id, status, correction_note)
+    if not updated:
+        raise HTTPException(status_code=404, detail="Alert not found")
+
+    correction_payload = json.dumps({
+        "event": "correction",
+        "alert": {
+            "id": updated.id,
+            "status": updated.status,
+            "correction_note": updated.correction_note,
+            "type": updated.type,
+            "area": updated.area,
+            "timestamp": _utc_iso(updated.timestamp),
+        },
+    }, ensure_ascii=False)
+
+    # Mirror the dispatch fan-out used by new alerts: WS clients first (lowest
+    # latency), then SSE queues, then webhooks. Each path is best-effort.
+    try:
+        await ws_manager.broadcast_raw(correction_payload)
+    except Exception:
+        log.exception("ws broadcast (correction) failed")
+    for q in list(sse_queues):
+        try:
+            q.put_nowait(correction_payload)
+        except Exception:
+            pass
+    try:
+        await webhooks.fire_correction(updated)
+    except Exception:
+        log.exception("webhook fire_correction failed")
+
+    return updated
+
+
+@app.get("/channel-reliability", tags=["alerts"])
+async def list_channel_reliability():
+    """
+    Per-channel baseline reliability scores (0.0-1.0) used by the classifier
+    to weight new alerts. Higher = historically more accurate. Public so
+    consumers can document their own filtering choices.
+    """
+    return {"channels": await db.get_channel_reliability()}
 
 
 @app.get("/stats", response_model=StatsResponse, tags=["alerts"])
@@ -1426,6 +1595,63 @@ async def live_incident_detail(incident_id: int):
     alert_ids = await incident_db.get_incident_alert_ids(incident_id)
     inc["alert_ids"] = alert_ids
     return inc
+
+
+# ── Checkpoints: time-series ──────────────────────────────────────────────────
+
+# These specific paths must be declared BEFORE the catch-all /checkpoints/{key}
+# route below — FastAPI matches in declaration order.
+
+@app.get("/checkpoints/uptime", tags=["checkpoints"])
+async def checkpoints_uptime(
+    from_: datetime = Query(..., alias="from"),
+    to:    datetime = Query(...),
+    canonical_key: Optional[str] = Query(None),
+):
+    """
+    Uptime % per checkpoint over a time window.
+
+    Returns, for each checkpoint, the share of the requested window spent in
+    each known status (open / closed / restricted). Useful for "how often was
+    checkpoint X closed last month" analyses.
+    """
+    if to <= from_:
+        raise HTTPException(status_code=400, detail="`to` must be after `from`")
+    rows = await cpdb.get_uptime_window(from_, to, canonical_key=canonical_key)
+    return {
+        "from": _utc_iso(from_),
+        "to": _utc_iso(to),
+        "checkpoints": rows,
+        "total": len(rows),
+    }
+
+
+@app.get("/checkpoints/{key}/history", tags=["checkpoints"])
+async def checkpoint_history_range(
+    key: str,
+    from_: Optional[datetime] = Query(None, alias="from"),
+    to:    Optional[datetime] = Query(None),
+    limit: int = Query(500, ge=1, le=5000),
+):
+    """
+    Status transitions for a single checkpoint within a date range.
+
+    `from`/`to` are optional ISO-8601 timestamps. Default returns the most
+    recent `limit` transitions.
+    """
+    cp = await cpdb.get_checkpoint(key)
+    if not cp:
+        raise HTTPException(status_code=404, detail=f"Checkpoint '{key}' not found")
+    history = await cpdb.get_checkpoint_history(
+        key, limit=limit, from_dt=from_, to_dt=to,
+    )
+    return {
+        "canonical_key": key,
+        "from": _utc_iso(from_) if from_ else None,
+        "to": _utc_iso(to) if to else None,
+        "history": [CheckpointUpdate(**u).model_dump() for u in history],
+        "total": len(history),
+    }
 
 
 # ── {key} route MUST be last — catches anything not matched above ──────────────

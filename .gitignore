@@ -34,3 +34,9 @@ temp/
 coverage/
 .nyc_output/
 frontend/
+
+# API-key registry (runtime SQLite) — never commit real keys
+data/keys.db
+data/keys.db-journal
+data/keys.db-shm
+data/keys.db-wal

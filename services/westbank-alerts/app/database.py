@@ -65,6 +65,31 @@ CREATE TABLE IF NOT EXISTS webhooks (
 )
 """
 
+CREATE_CHANNEL_RELIABILITY = """
+CREATE TABLE IF NOT EXISTS channel_reliability (
+    channel      TEXT PRIMARY KEY,
+    weight       REAL NOT NULL,
+    basis        TEXT,
+    last_updated TEXT NOT NULL
+)
+"""
+
+# Baseline reliability weights — tuned from historical false-positive rates.
+# Higher = more trusted. Used to compute per-alert confidence.
+CHANNEL_RELIABILITY_SEED = [
+    ("Almustashaar",    1.00, "Official PA/IDF communiqué aggregator"),
+    ("WAFA",            0.90, "Palestinian national news agency (official)"),
+    ("wafa_ps",         0.90, "WAFA Arabic mirror"),
+    ("QudsN",           0.80, "Quds News Network — high volume, cross-verified"),
+    ("qudsn",           0.80, "Quds News Network — alt handle"),
+    ("Shihab",          0.70, "Shihab Agency — fast but occasional duplication"),
+    ("shehabagency",    0.70, "Shihab agency alt"),
+    ("PalinfoAr",       0.70, "Palinfo Arabic"),
+    ("ajanews",         0.60, "Al Jazeera Arabic news feed"),
+    ("AlMayadeenNews",  0.50, "Al Mayadeen — editorial overlay common"),
+    ("MOHMediaGaza",    0.80, "Gaza Health Ministry — bulletins only"),
+]
+
 CREATE_CHANNELS = """
 CREATE TABLE IF NOT EXISTS channels (
     username  TEXT PRIMARY KEY,
@@ -100,6 +125,7 @@ async def init_db():
         await db.execute(CREATE_WEBHOOKS)
         await db.execute(CREATE_CHANNELS)
         await db.execute(CREATE_SECURITY_VOCAB)
+        await db.execute(CREATE_CHANNEL_RELIABILITY)
         for idx in CREATE_INDEXES:
             await db.execute(idx)
         # Migration: add event_subtype column to existing DBs
@@ -115,6 +141,28 @@ async def init_db():
             await db.execute("ALTER TABLE alerts ADD COLUMN longitude REAL")
         if "title_ar" not in alert_cols:
             await db.execute("ALTER TABLE alerts ADD COLUMN title_ar TEXT")
+        if "confidence" not in alert_cols:
+            await db.execute("ALTER TABLE alerts ADD COLUMN confidence REAL")
+        if "source_reliability" not in alert_cols:
+            await db.execute("ALTER TABLE alerts ADD COLUMN source_reliability REAL")
+        if "status" not in alert_cols:
+            await db.execute("ALTER TABLE alerts ADD COLUMN status TEXT DEFAULT 'active'")
+        if "correction_note" not in alert_cols:
+            await db.execute("ALTER TABLE alerts ADD COLUMN correction_note TEXT")
+        await db.execute("CREATE INDEX IF NOT EXISTS idx_alerts_status ON alerts(status)")
+        await db.execute("CREATE INDEX IF NOT EXISTS idx_alerts_confidence ON alerts(confidence)")
+
+        # Webhook subscriber filters (Phase P3.2)
+        cursor = await db.execute("PRAGMA table_info(webhooks)")
+        wh_cols = {row[1] for row in await cursor.fetchall()}
+        if "areas" not in wh_cols:
+            await db.execute("ALTER TABLE webhooks ADD COLUMN areas TEXT")
+        if "zones" not in wh_cols:
+            await db.execute("ALTER TABLE webhooks ADD COLUMN zones TEXT")
+        if "confidence_min" not in wh_cols:
+            await db.execute("ALTER TABLE webhooks ADD COLUMN confidence_min REAL")
+        if "customer_key_id" not in wh_cols:
+            await db.execute("ALTER TABLE webhooks ADD COLUMN customer_key_id INTEGER")
 
         # Seed channels from env — always INSERT OR IGNORE to pick up newly added channels
         now = datetime.utcnow().isoformat()
@@ -122,6 +170,15 @@ async def init_db():
             await db.execute(
                 "INSERT OR IGNORE INTO channels(username, added_at) VALUES(?,?)",
                 (ch, now)
+            )
+
+        # Seed channel reliability baseline — only fills empty rows; never overwrites
+        # operator-tuned weights.
+        for ch, weight, basis in CHANNEL_RELIABILITY_SEED:
+            await db.execute(
+                "INSERT OR IGNORE INTO channel_reliability(channel, weight, basis, last_updated) "
+                "VALUES(?,?,?,?)",
+                (ch, weight, basis, now),
             )
         await db.commit()
 
@@ -138,6 +195,10 @@ def _row_to_alert(row) -> Alert:
         latitude=row[13] if len(row) > 13 else None,
         longitude=row[14] if len(row) > 14 else None,
         title_ar=row[15] if len(row) > 15 else None,
+        confidence=row[16] if len(row) > 16 else None,
+        source_reliability=row[17] if len(row) > 17 else None,
+        status=(row[18] if len(row) > 18 and row[18] else "active"),
+        correction_note=row[19] if len(row) > 19 else None,
     )
 
 
@@ -148,8 +209,8 @@ async def insert_alert(alert: Alert) -> Alert:
             """INSERT INTO alerts
                (type, severity, title, body, source, source_msg_id, area, zone,
                 raw_text, timestamp, created_at, event_subtype, latitude, longitude,
-                title_ar)
-               VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)""",
+                title_ar, confidence, source_reliability, status, correction_note)
+               VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)""",
             (alert.type, alert.severity, alert.title, alert.body,
              alert.source, alert.source_msg_id, alert.area,
              getattr(alert, "zone", None),
@@ -157,12 +218,34 @@ async def insert_alert(alert: Alert) -> Alert:
              getattr(alert, "event_subtype", None),
              getattr(alert, "latitude", None),
              getattr(alert, "longitude", None),
-             getattr(alert, "title_ar", None))
+             getattr(alert, "title_ar", None),
+             getattr(alert, "confidence", None),
+             getattr(alert, "source_reliability", None),
+             getattr(alert, "status", None) or "active",
+             getattr(alert, "correction_note", None))
         )
         await db.commit()
         alert.id = cur.lastrowid
         alert.created_at = datetime.fromisoformat(now)
     return alert
+
+
+async def update_alert_status(
+    alert_id: int, status: str, correction_note: Optional[str] = None
+) -> Optional[Alert]:
+    """Mark an alert as retracted / corrected. Returns the updated alert, or None
+    if the id was not found. Callers are responsible for broadcasting the change."""
+    async with get_alerts_db() as db:
+        cur = await db.execute(
+            "UPDATE alerts SET status=?, correction_note=? WHERE id=?",
+            (status, correction_note, alert_id),
+        )
+        await db.commit()
+        if cur.rowcount == 0:
+            return None
+        cur = await db.execute("SELECT * FROM alerts WHERE id=?", (alert_id,))
+        row = await cur.fetchone()
+    return _row_to_alert(row) if row else None
 
 
 _last_prune_count = 0
@@ -191,6 +274,9 @@ async def get_alerts(
     severity: Optional[str] = None,
     area: Optional[str] = None,
     since: Optional[datetime] = None,
+    until: Optional[datetime] = None,
+    min_confidence: Optional[float] = None,
+    status: Optional[str] = None,
     limit: int = 50,
     offset: int = 0,
 ) -> tuple:
@@ -199,6 +285,17 @@ async def get_alerts(
     if severity: conditions.append("severity = ?");  params.append(severity)
     if area:     conditions.append("area LIKE ?");   params.append(f"%{area}%")
     if since:    conditions.append("timestamp >= ?"); params.append(since.isoformat())
+    if until:    conditions.append("timestamp <= ?"); params.append(until.isoformat())
+    if min_confidence is not None:
+        # Treat NULL confidence as passing the filter when threshold <= 0.5 (legacy
+        # rows have no score but were classifier-accepted). Above 0.5, require a
+        # numeric score meeting the threshold.
+        if min_confidence <= 0.5:
+            conditions.append("(confidence IS NULL OR confidence >= ?)")
+        else:
+            conditions.append("confidence >= ?")
+        params.append(min_confidence)
+    if status:   conditions.append("status = ?");    params.append(status)
 
     where = ("WHERE " + " AND ".join(conditions)) if conditions else ""
 
@@ -211,6 +308,48 @@ async def get_alerts(
         )
         rows = await cur.fetchall()
     return [_row_to_alert(r) for r in rows], total
+
+
+async def export_alerts(
+    since: Optional[datetime] = None,
+    until: Optional[datetime] = None,
+    type: Optional[str] = None,
+    severity: Optional[str] = None,
+    area: Optional[str] = None,
+    min_confidence: Optional[float] = None,
+    batch_size: int = 500,
+):
+    """Async generator yielding Alert objects in batches for bulk export.
+
+    Keeps memory bounded (one batch at a time) — used by /alerts/export to stream
+    historical alerts without materializing the full dataset in RAM.
+    """
+    conditions, params = [], []
+    if type:     conditions.append("type = ?");      params.append(type)
+    if severity: conditions.append("severity = ?");  params.append(severity)
+    if area:     conditions.append("area LIKE ?");   params.append(f"%{area}%")
+    if since:    conditions.append("timestamp >= ?"); params.append(since.isoformat())
+    if until:    conditions.append("timestamp <= ?"); params.append(until.isoformat())
+    if min_confidence is not None:
+        conditions.append("(confidence IS NULL OR confidence >= ?)")
+        params.append(min_confidence)
+    where = ("WHERE " + " AND ".join(conditions)) if conditions else ""
+
+    offset = 0
+    while True:
+        async with get_alerts_db() as db:
+            cur = await db.execute(
+                f"SELECT * FROM alerts {where} ORDER BY timestamp ASC LIMIT ? OFFSET ?",
+                params + [batch_size, offset],
+            )
+            rows = await cur.fetchall()
+        if not rows:
+            return
+        for r in rows:
+            yield _row_to_alert(r)
+        if len(rows) < batch_size:
+            return
+        offset += batch_size
 
 
 async def get_alert(alert_id: int) -> Optional[Alert]:
@@ -322,6 +461,10 @@ def _row_to_webhook(row) -> WebhookTarget:
         id=row[0], url=row[1], secret=row[2], active=bool(row[3]),
         alert_types=row[4], min_severity=row[5],
         created_at=datetime.fromisoformat(row[6]),
+        areas=row[7] if len(row) > 7 else None,
+        zones=row[8] if len(row) > 8 else None,
+        confidence_min=row[9] if len(row) > 9 else None,
+        customer_key_id=row[10] if len(row) > 10 else None,
     )
 
 
@@ -336,8 +479,12 @@ async def add_webhook(wh: WebhookTarget) -> WebhookTarget:
     now = datetime.utcnow().isoformat()
     async with get_alerts_db() as db:
         cur = await db.execute(
-            "INSERT INTO webhooks(url,secret,active,alert_types,min_severity,created_at) VALUES(?,?,?,?,?,?)",
-            (wh.url, wh.secret, 1, wh.alert_types, wh.min_severity, now)
+            """INSERT INTO webhooks
+               (url, secret, active, alert_types, min_severity, created_at,
+                areas, zones, confidence_min, customer_key_id)
+               VALUES (?,?,?,?,?,?,?,?,?,?)""",
+            (wh.url, wh.secret, 1, wh.alert_types, wh.min_severity, now,
+             wh.areas, wh.zones, wh.confidence_min, wh.customer_key_id)
         )
         await db.commit()
         wh.id = cur.lastrowid
@@ -350,6 +497,32 @@ async def delete_webhook(webhook_id: int) -> bool:
         await db.execute("UPDATE webhooks SET active=0 WHERE id=?", (webhook_id,))
         await db.commit()
     return True
+
+
+# ── Channel reliability (Phase P3.6) ──────────────────────────────────────────
+
+async def get_channel_reliability(channel: Optional[str] = None):
+    """Return the reliability weight for a single channel (or all, if None).
+
+    Lookup is case-insensitive against the handle stored in `channels` — callers
+    pass the raw `source` field of an alert, which is the @ handle without the @.
+    Missing channels default to 0.5 (neutral prior)."""
+    async with get_alerts_db() as db:
+        if channel:
+            cur = await db.execute(
+                "SELECT weight FROM channel_reliability WHERE lower(channel) = lower(?)",
+                (channel,),
+            )
+            row = await cur.fetchone()
+            return float(row[0]) if row else 0.5
+        cur = await db.execute(
+            "SELECT channel, weight, basis, last_updated FROM channel_reliability ORDER BY weight DESC"
+        )
+        rows = await cur.fetchall()
+        return [
+            {"channel": r[0], "weight": float(r[1]), "basis": r[2], "last_updated": r[3]}
+            for r in rows
+        ]
 
 
 # ── Security vocab candidates ─────────────────────────────────────────────────

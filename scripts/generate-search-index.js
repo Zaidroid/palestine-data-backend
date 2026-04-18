@@ -75,7 +75,7 @@ function extractSearchableText(record, category) {
 
     // Category-specific fields
     switch (category) {
-        case 'martyrs':
+        case 'martyrs_snapshot_2023':
             if (record.name_ar) tokens.push(record.name_ar);
             if (record.name_en) tokens.push(record.name_en);
             if (record.age) tokens.push(`age ${record.age}`);
@@ -154,14 +154,13 @@ async function generateSearchIndex() {
     await ensureDir(OUTPUT_DIR);
 
     const categories = [
-        'martyrs',
+        'martyrs_snapshot_2023',
         'conflict',
         'news',
         'infrastructure',
         'health',
         'education',
         'water',
-        'humanitarian',
         'refugees',
         'economic',
     ];

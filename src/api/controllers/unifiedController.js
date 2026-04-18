@@ -1,4 +1,5 @@
 import { getUnifiedData, getUnifiedMetadata, categoryExists } from '../utils/fileService.js';
+import { applyFreshnessGate } from '../utils/freshnessGate.js';
 
 // ---------------------------------------------------------------------------
 // Helpers
@@ -115,7 +116,7 @@ export async function getData(req, res) {
             ? paginatedData.map(item => selectFields(item, fields))
             : paginatedData;
 
-        res.json({
+        const envelope = await applyFreshnessGate(res, category, {
             data: responseData,
             pagination: {
                 total: data.length,
@@ -125,6 +126,7 @@ export async function getData(req, res) {
             },
             metadata: result.metadata,
         });
+        res.json(envelope);
 
     } catch (error) {
         console.error('Error in getData:', error);
@@ -149,7 +151,8 @@ export async function getMetadata(req, res) {
             return res.status(404).json({ error: 'Metadata not found' });
         }
 
-        res.json(metadata);
+        const envelope = await applyFreshnessGate(res, category, { metadata });
+        res.json(envelope.metadata);
 
     } catch (error) {
         console.error('Error in getMetadata:', error);
@@ -234,7 +237,8 @@ export async function getSummary(req, res) {
             }
         }
 
-        res.json(summary);
+        const envelope = await applyFreshnessGate(res, category, summary);
+        res.json(envelope);
 
     } catch (error) {
         console.error('Error in getSummary:', error);
@@ -333,13 +337,14 @@ export async function getTimeseries(req, res) {
 
         const series = Object.values(buckets).sort((a, b) => a.date.localeCompare(b.date));
 
-        res.json({
+        const envelope = await applyFreshnessGate(res, category, {
             category,
             metric,
             interval,
             region: region || 'all',
             data: series,
         });
+        res.json(envelope);
 
     } catch (error) {
         console.error('Error in getTimeseries:', error);

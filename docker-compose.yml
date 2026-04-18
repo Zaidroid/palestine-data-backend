@@ -1,22 +1,50 @@
 services:
   api:
-    build: .
+    build:
+      context: .
+      args:
+        SENTRY_RELEASE: ${SENTRY_RELEASE:-}
     container_name: palestine-data-api
     restart: unless-stopped
     ports:
       - "7860:7860"
     environment:
       - PORT=7860
+      - NODE_ENV=${NODE_ENV:-production}
       - ALERTS_API_URL=http://alerts:8080
+      - KEYS_DB_PATH=/app/data/keys.db
+      - SENTRY_DSN=${SENTRY_DSN:-}
+      - SENTRY_RELEASE=${SENTRY_RELEASE:-}
+      - SENTRY_TRACES_SAMPLE_RATE=${SENTRY_TRACES_SAMPLE_RATE:-0.0}
     volumes:
       - ./public/data:/app/public/data
       - ./services/westbank-alerts/data:/app/services/westbank-alerts/data
+      - ./data:/app/data
     depends_on:
       - alerts
+    healthcheck:
+      test:
+        - CMD
+        - node
+        - -e
+        - "fetch('http://localhost:7860/api/v1/health').then(r => process.exit(r.ok ? 0 : 1)).catch(() => process.exit(1))"
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 20s
+    mem_limit: 512m
+    cpus: 0.75
+    logging:
+      driver: json-file
+      options:
+        max-size: "10m"
+        max-file: "5"
 
   alerts:
-    build: 
+    build:
       context: ./services/westbank-alerts
+      args:
+        SENTRY_RELEASE: ${SENTRY_RELEASE:-}
     container_name: params-alerts-api
     restart: unless-stopped
     ports:
@@ -24,12 +52,25 @@ services:
     volumes:
       - ./services/westbank-alerts/data:/data
       - ./services/westbank-alerts/session:/session
+      - ./data:/app/data:ro
     env_file: ./services/westbank-alerts/.env
     environment:
       - DB_PATH=/data/alerts.db
       - TELEGRAM_SESSION_DIR=/session
+      - KEYS_DB_PATH=/app/data/keys.db
+      - SENTRY_DSN=${SENTRY_DSN:-}
+      - SENTRY_RELEASE=${SENTRY_RELEASE:-}
+      - SENTRY_TRACES_SAMPLE_RATE=${SENTRY_TRACES_SAMPLE_RATE:-0.0}
+      - SENTRY_ENVIRONMENT=${SENTRY_ENVIRONMENT:-production}
     healthcheck:
       test: ["CMD", "curl", "-f", "http://localhost:8080/health"]
       interval: 30s
       timeout: 10s
       retries: 3
+    mem_limit: 256m
+    cpus: 0.5
+    logging:
+      driver: json-file
+      options:
+        max-size: "10m"
+        max-file: "5"

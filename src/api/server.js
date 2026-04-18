@@ -1,14 +1,16 @@
+import { Sentry, sentryEnabled } from './instrument.js';
 import express from 'express';
 import cors from 'cors';
 import helmet from 'helmet';
-import morgan from 'morgan';
 import compression from 'compression';
-import rateLimit from 'express-rate-limit';
 import swaggerUi from 'swagger-ui-express';
 import path from 'path';
 import { fileURLToPath } from 'url';
 import { specs } from './config/swagger.js';
 import { initializeSearch } from './services/searchService.js';
+import { apiKey } from './middleware/apiKey.js';
+import { tieredRateLimit } from './middleware/rateLimit.js';
+import { logger, httpLogger } from './logger.js';
 import routes from './routes/index.js';
 
 const __filename = fileURLToPath(import.meta.url);
@@ -40,18 +42,14 @@ app.use(helmet({
     crossOriginEmbedderPolicy: false,
 }));
 app.use(cors());
-app.use(morgan('dev'));
+app.use(httpLogger);
 app.use(express.json());
 app.use(compression());
 
-// Rate Limiting
-const limiter = rateLimit({
-    windowMs: 15 * 60 * 1000, // 15 minutes
-    max: 100, // limit each IP to 100 requests per windowMs
-    standardHeaders: true,
-    legacyHeaders: false,
-});
-app.use(limiter);
+// API-key resolution must run before tiered rate limiting so the limiter can
+// key by req.customer.keyId (or fall back to req.ip for anonymous traffic).
+app.use(apiKey);
+app.use(tieredRateLimit);
 
 // Documentation
 app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(specs));
@@ -66,19 +64,37 @@ app.use((req, res) => {
     res.status(404).json({ error: 'Endpoint not found' });
 });
 
+// Sentry Express error handler (no-op when DSN unset)
+if (sentryEnabled) {
+    Sentry.setupExpressErrorHandler(app);
+}
+
 // Error Handler
 app.use((err, req, res, next) => {
-    console.error(err.stack);
+    (req.log || logger).error({ err }, 'request_failed');
     res.status(500).json({ error: 'Something went wrong!' });
 });
+
+// Process-level crash handlers — flush Sentry, then exit so the orchestrator restarts us.
+const _crash = async (label, err) => {
+    logger.fatal({ err, label }, 'process_crash');
+    try {
+        if (sentryEnabled) {
+            Sentry.captureException(err);
+            await Sentry.flush(2000);
+        }
+    } finally {
+        process.exit(1);
+    }
+};
+process.on('uncaughtException', (err) => _crash('uncaughtException', err));
+process.on('unhandledRejection', (reason) => _crash('unhandledRejection', reason));
 
 // Start server if this file is run directly
 // Start server
 const startServer = () => {
     app.listen(PORT, () => {
-        console.log(`Server running on port ${PORT}`);
-        console.log(`Documentation: http://localhost:${PORT}/api-docs`);
-        console.log(`Health check: http://localhost:${PORT}/api/v1/health`);
+        logger.info({ port: PORT, docs: `http://localhost:${PORT}/api-docs`, health: `http://localhost:${PORT}/api/v1/health` }, 'server_started');
     });
 };
 
