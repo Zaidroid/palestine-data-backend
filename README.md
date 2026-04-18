@@ -1,268 +1,267 @@
 # Palestine Data Backend
 
-A unified, open-source data aggregation system providing comprehensive historical and real-time data on Palestine. This backend aggregates, normalizes, and serves data from multiple international sources through a single performant API layer.
+Real-time operational intelligence for the West Bank and Gaza, backed by
+official Palestinian statistics and NGO-grade humanitarian context.
 
-## 🚀 System Overview
+The platform has two halves:
 
-The system is designed as a **Hybrid Data Platform**:
+1. **Alerts service** (`services/westbank-alerts/`) — a Python/FastAPI server
+   that monitors Telegram news channels every ~5 seconds, classifies events
+   into 9 structured alert types, enriches them with zone + coordinates, and
+   fans out to WebSocket / SSE / webhook subscribers in under 50 ms. Every
+   alert carries a **confidence score** and **source reliability weight**, and
+   can be **retracted or corrected** post-publication with a push event to all
+   subscribers. This is the product we are building.
 
-1. **Static Data Layer** — Pre-processed, optimized JSON files partitioned by quarter for fast reads.
-2. **Dynamic API Layer** — Express.js API with filtering, pagination, time-series aggregation, and full-text search.
-3. **Real-Time Alerts Layer** — Python/FastAPI service monitoring Telegram channels for live checkpoint and incident data from the West Bank.
-
-It powers the Palestine Data Frontend by providing a single source of truth for data spanning from **1948 to the Present**.
-
----
-
-## 📊 Data Catalog
-
-The system currently hosts **184,000+ unified records** across **16 standardized categories**, sourced from 10+ international organizations.
-
-### Coverage Highlights
-
-- **Temporal Range**: 1948 – Present (daily updates for current events)
-- **Geographic Scope**: West Bank, Gaza Strip, East Jerusalem, Historical Palestine, Diaspora (Jordan, Lebanon, Syria)
-- **Schema**: Canonical Schema v3.0.0 — all records normalized to a unified format with `id`, `date`, `category`, `event_type`, `location`, `metrics`, `sources`
-- **Pipeline**: 21 task pipeline, 0 failures, full fault isolation per category
-
-### Categories & Sources
-
-| # | Category | Records | Key Sources | Date Range |
-|:--|:---------|--------:|:------------|:-----------|
-| 1 | **Conflict** | 2,101 | Tech4Palestine, OCHA, B'Tselem | 2000 – Present |
-| 2 | **Martyrs** | 60,199 | Tech4Palestine (Killed in Gaza) | Oct 2023 |
-| 3 | **Health** | 38,232 | WHO, HDX, Good Shepherd | 1975 – 2030 |
-| 4 | **Water/WASH** | 72,603 | HDX WASH Cluster | Nov 2024 – Present |
-| 5 | **Education** | 2,990 | HDX, West Bank Schools Dataset | Current |
-| 6 | **Infrastructure** | 1,333 | Tech4Palestine (damage reports) | Oct 2023 – Present |
-| 7 | **Economic** | 1,516 | World Bank (92 indicators) | 2010 – 2024 |
-| 8 | **West Bank** | 2,962 | HDX (schools, villages, barrier) | Current |
-| 9 | **PCBS** | 875 | Palestinian Central Bureau of Statistics | 2010 – 2024 |
-| 10 | **Land** | 691 | OCHA, B'Tselem, Peace Now | 2025 – Present |
-| 11 | **Humanitarian** | 598 | HDX (HRP Projects) | 2020 – 2023 |
-| 12 | **Culture** | 333 | UNESCO, Ministry of Tourism | Current |
-| 13 | **News** | ~75 | Middle East Eye, Al Jazeera | Rolling 30 days |
-| 14 | **Historical** | 68 | Historical Archives, Nakba data | 1948 – 1949 |
-| 15 | **Refugees** | 8 | UNRWA (static camp dataset) | 2023 |
-| 16 | **Prisoners** | 5 | Addameer / PCBS (static fallback) | Oct 2023 – Apr 2024 |
+2. **Unified data API** (`src/api/`) — an Express service that serves
+   normalized historical datasets (conflict, water, health, etc.) with
+   honest freshness gating, license-aware responses, and a canonical schema.
+   The API's purpose is credibility: it gives the alerts service a trusted
+   historical baseline to hang off of.
 
 ---
 
-## 🛠 Architecture
+## Strategic positioning
 
+The repo started as "aggregate every Palestine dataset we can find." It has
+since narrowed: **the moat is real-time, not historical**. ACLED, HDX, and
+Tech4Palestine already serve historical event data; none offer a live
+operational feed with confidence scoring, geographic webhook filters, or
+retractions. That is the product.
+
+Historical categories live on — but only where the license is green-light for
+downstream reuse and the upstream is still publishing. Stale stubs have been
+pruned. Frozen datasets (e.g. the Oct-2023 martyrs snapshot) are retained
+under the `_snapshot_YYYY` suffix with an `active: false` metadata flag so
+consumers do not treat them as live.
+
+Commercial surface (Stripe, billing, API-key tiers) is scaffolded but
+**deferred** until the data and alert layers are production-grade.
+
+---
+
+## Data catalog
+
+13 unified categories, ~184 k records. Every response carries freshness
+metadata and a `Warning: 299` header when the category has not updated in 90+
+days.
+
+| Category | Records | Source(s) | License | Status |
+|:--|--:|:--|:--|:--|
+| **Conflict** | 2,101 | Tech4Palestine, OCHA, B'Tselem | Mixed (CC-BY / CC-BY-NC) | live |
+| **Water / WASH** | 72,603 | HDX WASH Cluster (OCHA) | CC-BY | live |
+| **Health** | 38,232 | WHO GHO | CC-BY-NC-SA | live, non-commercial only |
+| **Martyrs (snapshot)** | 60,199 | Tech4Palestine | CC-BY | frozen 2023-10-07 |
+| **Education** | 2,990 | HDX | CC-BY | live |
+| **West Bank layers** | 2,962 | HDX (schools, villages, barrier) | CC-BY | live |
+| **Conflict/Historical** | 1,572 | World Bank + PCBS | Public | live |
+| **Infrastructure damage** | 1,333 | Tech4Palestine | CC-BY | live |
+| **PCBS** | 875 | Palestinian Central Bureau of Statistics | Public | live |
+| **Land** | 691 | OCHA, B'Tselem, Peace Now | Mixed | live |
+| **Culture** | 333 | UNESCO, Wikidata | CC0 / CC-BY | live |
+| **Refugees** | 75 | UNRWA | Public | thin — UNHCR fetcher planned |
+| **News** | 66 | MEE, Al Jazeera, WAFA | Fair-use (non-redistributable) | live |
+
+Prior to the pivot the catalog listed `prisoners`, `historical`, and
+`humanitarian` — all have been removed as stubs (1, 44, and 598 records
+respectively, with broken attributions). They will return only when backed by
+a live upstream (Addameer partnership, UN FTS, etc.).
+
+---
+
+## Alerts service
+
+`services/westbank-alerts/` is the real product. It runs as
+`params-alerts-api` on port `8080`.
+
+### Pipeline
 ```
-palestine-data-backend/
-├── src/api/                    # Express.js API server
-│   ├── routes/
-│   │   ├── unified.js          # /api/v1/unified/:category — paginated data
-│   │   ├── search.js           # /api/v1/search — full-text search
-│   │   ├── alerts-proxy.js     # /api/v1/live/* — proxy to Python alerts
-│   │   └── index.js            # Route registry + /health + /health-deep
-│   ├── controllers/
-│   │   ├── unifiedController.js  # Filter, sort, paginate, time-series
-│   │   └── statsController.js    # Cross-category aggregate statistics
-│   └── utils/
-│       ├── fileService.js        # JSON file reader with caching
-│       └── live-transformer.js   # Real-time alert normalization
-├── scripts/
-│   ├── fetch-all-data.js         # Master fetcher (13 data sources)
-│   ├── populate-unified-data.js  # 21-task ETL pipeline
-│   ├── generate-manifest.js      # Source-level manifest generator
-│   ├── generate-unified-manifest.js  # Unified manifest generator
-│   └── utils/
-│       ├── canonical-schema.js       # Schema v3.0.0 definition
-│       ├── unified-pipeline.js       # Transform → Enrich → Validate → Partition
-│       ├── infrastructure-transformer.js
-│       ├── goodshepherd-transformer.js
-│       ├── hdx-transformers.js
-│       └── base-transformer.js
-├── services/
-│   └── westbank-alerts/          # Python FastAPI + Telethon (Telegram monitoring)
-│       ├── app.py                # FastAPI endpoints
-│       ├── monitor.py            # Telegram channel polling
-│       └── Dockerfile
-├── public/data/
-│   ├── unified/                  # ← NORMALIZED output (16 category dirs)
-│   │   ├── conflict/all-data.json
-│   │   ├── martyrs/all-data.json
-│   │   ├── ...
-│   │   └── unified-manifest.json
-│   ├── hdx/                      # Raw HDX CKAN data (150 files)
-│   ├── tech4palestine/           # Raw T4P data (partitioned by quarter)
-│   ├── worldbank/                # Raw World Bank indicators
-│   ├── goodshepherd/             # Raw Good Shepherd Collective data
-│   └── static/                   # Static fallback datasets
-│       ├── unrwa-refugees.json
-│       └── prisoners-statistics.json
-├── docker-compose.yml            # Unified deployment (API + Alerts)
-└── Dockerfile                    # Node.js API container
+Telegram channels   →  classifier  →  enricher (zone + coords)  →  dedupe
+    (10 channels)        9 alert             location KB                fingerprint
+                         types               + checkpoint KB            + content sim
+                                                                          ↓
+                                    confidence / reliability scoring
+                                                                          ↓
+                                     SQLite   →  fanout
+                                                 (WebSocket / SSE / webhooks)
 ```
 
+### Alert types
+Tier 1 (airspace threats): `west_bank_siren`, `regional_attack`.
+Tier 2 (operational): `idf_raid`, `settler_attack`, `road_closure`,
+`flying_checkpoint`, `injury_report`, `demolition`, `arrest_campaign`.
+
+### Confidence & reliability
+Every alert carries:
+- `source_reliability` (0.0–1.0) — baseline trust for the publishing channel,
+  seeded from historical precision (`Almustashaar` 1.0, `WAFA` 0.9, `QudsN`
+  0.8, `Shihab` 0.7, `PalinfoAr` 0.7, `ajanews` 0.6, `AlMayadeenNews` 0.5).
+  See `GET /channel-reliability`.
+- `confidence` (0.0–1.0) — per-alert score blending source reliability,
+  classified severity, locality clarity, and tier guards. Consumers filter
+  with `?min_confidence=0.8`.
+
+### Corrections
+`PATCH /alerts/{id}` with `status=retracted|corrected&correction_note=...`
+flips an alert and pushes a `{event: "correction", ...}` event to every live
+subscriber. Clients update their caches in place without re-fetching.
+
+### Checkpoint telemetry
+- `GET /checkpoints/{key}/history?from=&to=` — status transitions in a window.
+- `GET /checkpoints/uptime?from=&to=` — % open / closed / restricted per
+  checkpoint over a window. Computes spans by clamping each status interval
+  to the window boundaries.
+
+### Bulk export
+`GET /alerts/export?since=&until=&format=ndjson|csv` streams the full window
+in 500-row batches. CSV includes all scoring columns. Authenticated.
+
+### Webhook subscriber filters
+Beyond `alert_types` and `min_severity`, webhooks now accept:
+- `areas` — comma-separated city/camp names; case-insensitive substring match.
+- `zones` — north / middle / south (WB) or gaza_north / gaza_city /
+  middle_gaza / khan_younis / rafah.
+- `confidence_min` — minimum per-alert confidence.
+
 ---
 
-## 🔌 API Endpoints
+## Unified API (Node / Express 5)
 
-Base URL: `http://<host>:7860/api/v1`
+Base: `http://<host>:7860/api/v1`
 
-### Unified Data
+### Core
 
-| Method | Endpoint | Description |
-|:-------|:---------|:------------|
-| `GET` | `/unified/:category` | Paginated data with filters |
-| `GET` | `/unified/:category/summary` | Aggregated metrics totals |
-| `GET` | `/unified/:category/timeseries` | Time-series with `metric`, `interval`, `region` params |
-| `GET` | `/unified/:category/metadata` | Category metadata |
+| Endpoint | Notes |
+|:--|:--|
+| `GET /unified/:category` | Paginated data with filters (location, region, event_type, date range). |
+| `GET /unified/:category/summary` | Aggregated metrics totals. |
+| `GET /unified/:category/timeseries?metric=&interval=&region=` | Time-series buckets. |
+| `GET /unified/:category/metadata` | Schema + provenance. |
+| `GET /search?q=` | Full-text search (per-category indexes). |
+| `GET /categories` | Live category list + record counts. |
+| `GET /stats` | Cross-category aggregates. |
+| `GET /version` | Build SHA + pipeline generated-at. |
+| `GET /quality` | Per-category freshness + coverage snapshot. |
+| `GET /licenses` | License registry for all sources. |
+| `GET /record/:category/:id` | Single record (stable IDs in progress). |
 
-**Query Parameters** for `/unified/:category`:
-- `page` (default: 1), `limit` (default: 50, max: 500)
-- `location`, `region`, `event_type` — filters
-- `start_date`, `end_date` — date range
-- `min_killed` — minimum casualty threshold
-- `sort_by` (default: `date`), `order` (`asc`/`desc`)
-- `fields` — comma-separated field selection
+### Freshness gate
 
-### Search & Stats
+Every unified response (`getData`, `getMetadata`, `getSummary`, `getTimeseries`)
+is wrapped by `src/api/utils/freshnessGate.js`. When the category's newest
+record is > 90 days old, or the source is explicitly frozen, the response gets:
 
-| Method | Endpoint | Description |
-|:-------|:---------|:------------|
-| `GET` | `/search?q=...` | Full-text search across all categories |
-| `GET` | `/categories` | List available categories |
-| `GET` | `/stats` | Cross-category aggregate statistics with live alerts |
+- `Warning: 299 - "Stale data: latest record YYYY-MM-DD (N days old)"` header
+- `metadata.stale: true`, `metadata.frozen_at`, `metadata.active`,
+  `metadata.freshness_days_since_latest`, `metadata.latest_record_at`
 
-### Real-Time Alerts (Proxy to Python backend)
+The gate reads from `public/data/unified/quality.json`, a pre-computed
+snapshot generated by `scripts/generate-quality-snapshot.js` (one category at
+a time to stay under the container memory limit).
 
-| Method | Endpoint | Description |
-|:-------|:---------|:------------|
-| `GET` | `/live/checkpoints` | Active checkpoint statuses |
-| `GET` | `/live/checkpoints/:id` | Specific checkpoint detail |
-| `GET` | `/live/alerts` | Recent Telegram-sourced alerts |
+### Live alerts proxy
+
+`GET /live/*` endpoints transparently proxy to the alerts service so a single
+consumer-facing origin serves both.
 
 ### Health
 
-| Method | Endpoint | Description |
-|:-------|:---------|:------------|
-| `GET` | `/health` | Basic health check |
-| `GET` | `/health-deep` | Deep health: pipeline freshness + alerts connectivity |
+`GET /health` — basic. `GET /health-deep` — pipeline freshness + alerts
+connectivity.
 
 ---
 
-## 💻 Quick Start
+## Trust foundation
 
-### Prerequisites
-- Node.js 22+
-- Python 3.11+ (for alerts service)
-- Docker & Docker Compose (for deployment)
+- **Licenses** (`src/api/data/licenses.json`, `GET /licenses`) — every source
+  tagged with `commercial_use` boolean, `attribution_text`, SPDX-style ID.
+  Enforced at pipeline time via `scripts/check-license-coverage.js` in CI.
+- **Quality snapshot** (`GET /quality`) — pre-computed so a request does not
+  have to parse the 110 MB of unified data.
+- **Version** (`GET /version`) — build SHA + pipeline generated-at.
+- **Citable records** (wip) — stable `sha256(category + source_id +
+  source_record_key)` IDs and retained daily snapshots under
+  `public/data/unified/snapshots/YYYY-MM-DD/`, query with `?as_of=`.
 
-### Local Development
+---
 
-```bash
-# Install dependencies
-npm install
+## Deployment
 
-# Fetch all raw data from APIs (HDX, WHO, T4P, World Bank, etc.)
-npm run fetch:all
+Two Docker containers under a single compose group:
 
-# Process and unify all data into canonical schema
-npm run transform
-
-# Generate manifests
-node scripts/generate-manifest.js
-node scripts/generate-unified-manifest.js
-
-# Start the API server
-npm start
-```
-
-### Docker Deployment
+| Container | Port | Role |
+|:--|:--|:--|
+| `palestine-data-api` | 7860 | Express API + static data |
+| `params-alerts-api`  | 8080 | FastAPI + Telethon alerts service |
 
 ```bash
-# Build and run both services (Node API + Python Alerts)
+# Local
 docker compose up -d --build
 
-# Services will be available at:
-#   API:    http://localhost:7860
-#   Alerts: http://localhost:8080
-```
-
----
-
-## 🔄 Data Pipeline
-
-The ETL pipeline runs 21 isolated tasks with full fault tolerance — a failure in one category does not block others.
-
-```
-Fetch (13 sources)  →  Transform  →  Enrich  →  Validate  →  Partition  →  Merge
-     ↓                    ↓            ↓           ↓            ↓           ↓
-  HDX CKAN            Canonical    Geospatial   Quality     Quarterly    all-data.json
-  Tech4Palestine      Schema v3    + Temporal    Score       Buckets     + manifest
-  World Bank API
-  WHO GHO
-  Good Shepherd
-  B'Tselem
-  PCBS
-  Middle East Eye
-  UNRWA (static)
-  Addameer (static)
-```
-
-### Pipeline Commands
-
-```bash
-npm run fetch:all     # Pull fresh data from all sources
-npm run transform     # Process and unify all data
-npm run manifest      # Generate source manifests
-```
-
-### Pipeline Report
-
-After each run, a detailed report is saved to `public/data/pipeline-report.json` with per-category status, record counts, and timing.
-
----
-
-## 🌍 Deployment (Production)
-
-The production server runs at `192.168.0.118` with two Docker containers in a unified compose group:
-
-| Container | Image | Port | Role |
-|:----------|:------|:-----|:-----|
-| `palestine-data-api` | Node.js 22 | 7860 | Express API serving unified data |
-| `params-alerts-api` | Python 3.11 | 8080 | FastAPI + Telethon for live Telegram monitoring |
-
-### Updating the Server
-
-```bash
-# Sync code to server
-rsync -avz --exclude 'node_modules' --exclude '.git' \
+# Production server (admin@192.168.0.118)
+rsync -avz --exclude node_modules --exclude .git \
   ./ admin@192.168.0.118:/home/admin/palestine-data-backend/
-
-# Rebuild and restart containers
 ssh admin@192.168.0.118 'cd /home/admin/palestine-data-backend && docker compose up -d --build'
 ```
 
----
+### Environment
 
-## 🔧 Environment Variables
-
-### Node API (`.env`)
+`~/palestine-data-backend/.env`
 ```
 PORT=7860
 ALERTS_API_URL=http://alerts:8080
+SENTRY_DSN=                 # optional
 ```
 
-### Alerts Service (`services/westbank-alerts/.env`)
+`services/westbank-alerts/.env`
 ```
-TELEGRAM_API_ID=<your-api-id>
-TELEGRAM_API_HASH=<your-api-hash>
-TELEGRAM_PHONE=<your-phone>
-TELEGRAM_CHANNELS=Almustashaar,WAFAgency,QudsN
-CHECKPOINT_CHANNELS=ahwalaltreq
-YOUR_CITY_AR=نابلس
-YOUR_CITY_EN=Nablus
+TELEGRAM_API_ID=...
+TELEGRAM_API_HASH=...
+TELEGRAM_PHONE=...
+TELEGRAM_CHANNELS=Almustashaar,WAFAgency,QudsN,ajanews,PalinfoAr,shihabagency,AlMayadeenNews
+CHECKPOINT_CHANNELS=ahwalaltreq,abd_jbreel
 DB_PATH=/data/alerts.db
+API_SECRET_KEY=...          # for /admin, /webhooks, PATCH /alerts/{id}
 ```
 
 ---
 
-## 📄 License
+## Development
 
-Open source — contributions welcome. Data sourced from publicly available international organizations and humanitarian agencies.
+```bash
+# Node API
+npm install
+npm run fetch:all           # pull raw data (HDX, WHO, T4P, World Bank, …)
+npm run transform           # unify into canonical schema v3
+node scripts/generate-quality-snapshot.js
+npm start
+
+# Alerts service
+cd services/westbank-alerts
+python -m venv .venv && .venv/bin/pip install -r requirements.txt
+.venv/bin/uvicorn app.main:app --reload --port 8080
+```
+
+The ETL runs 21 isolated tasks with per-category fault isolation — one
+failing source does not block the others. A report lands at
+`public/data/pipeline-report.json`.
+
+---
+
+## Status
+
+- ✅ Data triage — stubs pruned, martyrs frozen
+- ✅ Freshness gate — headers + metadata across unified API
+- ✅ Alerts SaaS hardening — confidence, corrections, geo webhooks, export, uptime
+- 🚧 Stable record IDs + snapshot pinning
+- 🚧 UNHCR / UN FTS / Wikidata / IDMC fetchers (replace thin stubs)
+- ⏸ Commercial surface (Stripe pricing, billing) — scaffolded, deferred until
+  the data and alert layers are production-grade
+
+---
+
+## License
+
+Source code: open. Dataset licenses vary per source and are declared via
+`GET /licenses`. Non-commercial sources (WHO, some news) are returned only
+on the free tier once the commercial surface is activated.
