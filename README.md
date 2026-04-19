@@ -52,7 +52,7 @@ days.
 | **Martyrs** | 60,200 | Tech4Palestine | CC-BY-4.0 | live (60,199 named + 1 cumulative summary; current MoH total: 72,345 killed Gaza, 1,065 WB) |
 | **Health** | 38,232 | WHO GHO | CC-BY-NC-SA | live, non-commercial only |
 | **Funding** | 9,139 | UN OCHA Financial Tracking Service | CC-BY-IGO-3.0 | live (NEW) |
-| **Education** | 2,990 | HDX | CC-BY | live |
+| **Education** | 2,359 | HDX | CC-BY | live |
 | **West Bank layers** | 2,962 | HDX (schools, villages, barrier) | CC-BY | live |
 | **Conflict** | 2,101 | Tech4Palestine, OCHA, B'Tselem | Mixed (CC-BY / CC-BY-NC) | live |
 | **Conflict/Historical** | 1,572 | World Bank + PCBS | Public | live |
@@ -61,7 +61,7 @@ days.
 | **PCBS** | 875 | Palestinian Central Bureau of Statistics | Public | live |
 | **Land** | 691 | OCHA, B'Tselem, Peace Now | Mixed | live |
 | **Culture** | 333 | UNESCO, Wikidata | CC0 / CC-BY | live |
-| **News** | 66 | MEE, Al Jazeera, WAFA | Fair-use (non-redistributable) | live |
+| **News** | 153 | Al Jazeera, MEE, MEMonitor, BBC ME, ToI, Haaretz, EI, Mondoweiss, ReliefWeb, Amnesty, HRW | Fair-use (non-redistributable) | live |
 
 Prior to the pivot the catalog listed `prisoners`, `historical`, and
 `humanitarian` — all have been removed as stubs (1, 44, and 598 records
