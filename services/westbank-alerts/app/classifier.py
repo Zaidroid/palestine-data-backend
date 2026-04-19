@@ -111,7 +111,7 @@ WB_ZONE = [
 
     # Nablus governorate
     "حواره", "بيتا", "بلاطه", "عصيره الشماليه", "عصيره القبليه",
-    "بورين", "مادما", "عوره", "تل", "عقربا", "قبلان", "يتما",
+    "بورين", "مادما", "عوره", "عقربا", "قبلان", "يتما",
     "جوريش", "عينابوس", "زعتره", "دير شرف", "سبسطيه",
     "بيت فوريك", "بيت دجن", "روجيب", "كفر قليل", "عزموط",
     "سالم", "الساويه", "اللبن الشرقيه", "قريوت",
@@ -650,6 +650,37 @@ URGENT_MARKERS = [
 URGENT_MARKERS = [_normalize(m) for m in URGENT_MARKERS]
 
 
+# ── FP guard lists (audit 2026-04-19, see TaskGet #34) ──────────────────────
+# Active incoming-attack indicators — used to upgrade MENA news from regional
+# noise to a WB siren. Mere "عاجل" (breaking news) was insufficient: every
+# Lebanese casualty report from QudsN starts with عاجل and was firing as siren.
+INCOMING_ATTACK_INDICATORS = [
+    "صاروخ", "صواريخ", "صافرات", "صافره", "صفارات",
+    "قذائف", "قذيفه", "رشقه", "انذار", "انذارات",
+    "تحذير من اطلاق", "تحليق", "مسيره", "مسيرات",
+    "اطلاق نار باتجاه", "هدف معاد", "هدف جوي",
+]
+INCOMING_ATTACK_INDICATORS = [_normalize(t) for t in INCOMING_ATTACK_INDICATORS]
+
+# Photo / video caption prefixes — these are duplicates of already-reported
+# events, not new alerts. Anchor at start of message to avoid false matches.
+CAPTION_PREFIX_PATTERNS = [
+    "جانب من", "من اقتحام", "من مواجهات", "من مظاهرات", "من احتجاجات",
+    "صور من", "صوره من", "صور |", "بالصور", "بالفيديو", "فيديو |",
+    "مشاهد من", "لقطات من", "بالاسماء |",
+]
+CAPTION_PREFIX_PATTERNS = [_normalize(t) for t in CAPTION_PREFIX_PATTERNS]
+
+# Eulogy / biographical recap — past-tense remembrance, not new event.
+EULOGY_PATTERNS = [
+    "ننعى", "نعت ", "تنعى", "ينعى",
+    "من ايقونات", "من رموز",
+    "قضى سنوات في الاعتقال", "قضى سنوات",
+    "الذكرى السنويه", "في ذكرى استشهاد",
+]
+EULOGY_PATTERNS = [_normalize(t) for t in EULOGY_PATTERNS]
+
+
 # ── Helpers ───────────────────────────────────────────────────────────────────
 
 def _has(text: str, keywords: list) -> bool:
@@ -660,12 +691,36 @@ def _has_attack_verb(text: str) -> bool:
     return _has(text, ATTACK_VERBS_AR) or _has(text, [v.lower() for v in ATTACK_VERBS_EN])
 
 
+def _zone_match(text: str, zone_entry: str) -> bool:
+    """Substring match for ≥4-char entries; bounded match for short entries.
+
+    Audit 2026-04-19 (#34): the bare 3-char village name "تل" was matching
+    inside "مقاتلو" (fighters) and routing every Lebanese casualty narrative
+    to west_bank_siren. Short entries (≤3 chars) now require a non-letter
+    boundary on at least one side to behave like a token, not a substring.
+    """
+    if len(zone_entry) >= 4:
+        return zone_entry in text
+    pos = 0
+    n = len(text)
+    e = len(zone_entry)
+    while True:
+        i = text.find(zone_entry, pos)
+        if i < 0:
+            return False
+        left_ok = (i == 0) or not text[i - 1].isalpha()
+        right_ok = (i + e >= n) or not text[i + e].isalpha()
+        if left_ok and right_ok:
+            return True
+        pos = i + 1
+
+
 def _is_wb_zone(text: str) -> bool:
-    return any(z in text for z in WB_ZONE)
+    return any(_zone_match(text, z) for z in WB_ZONE)
 
 
 def _is_mena_zone(text: str) -> bool:
-    return any(z in text for z in MENA_ZONE)
+    return any(_zone_match(text, z) for z in MENA_ZONE)
 
 
 def _is_israel_interior(text: str) -> bool:
@@ -680,6 +735,16 @@ def _is_noise(text: str, tier: str = "tier1", source: str = "") -> bool:
     source: channel username — news channels get relaxed attribution filtering.
     """
     is_news = _is_news_channel(source)
+
+    # Photo/video caption prefix → duplicate of already-reported event.
+    # Only check the leading 30 chars to keep this an anchored match.
+    head = text.lstrip()[:30]
+    if any(head.startswith(p) for p in CAPTION_PREFIX_PATTERNS):
+        return True
+
+    # Eulogy / biographical recap → past tense remembrance, not new event.
+    if _has(text, EULOGY_PATTERNS):
+        return True
 
     # News attribution — only discard for non-news channels.
     # WAFA/QudsN ARE news agencies; their messages naturally contain attribution.
@@ -1140,20 +1205,42 @@ def classify(raw_text: str, source: str) -> Optional[dict]:
     siren_terms = [_normalize(t) for t in ["صافرات", "انذار", "صافره"]]
     has_siren = any(s in normed for s in siren_terms) or "sirens" in normed.lower()
 
+    # Retrospective / past-event narratives describing prior strikes — these are
+    # historical reports, not live sirens. Audit 2026-04-19 (#34) caught Channel-12
+    # reports about damage "بفعل الصواريخ الإيرانية خلال الحرب" mis-firing as siren.
+    retrospective_markers = [_normalize(t) for t in [
+        "بفعل", "خلال الحرب", "خلال المعركه", "خلال العمليه",
+        "في الحرب الاخيره", "اثر الحرب", "عقب الحرب",
+    ]]
+    is_retrospective = _has(normed, retrospective_markers)
+
     if _is_israel_interior(normed) or has_siren:
+        # Co-occurrence guard: Lebanon/Iran/Syria + Israel city without an active
+        # siren marker → regional narrative, not a current incoming alert.
+        if _is_mena_zone(normed) and not has_siren:
+            area = _extract_area(normed)
+            return _build(AlertType.regional_attack, Severity.medium, clean, source, area)
+        if is_retrospective and not has_siren:
+            area = _extract_area(normed)
+            return _build(AlertType.regional_attack, Severity.medium, clean, source, area)
         area = _extract_area(normed) or "West Bank"
         zone = _extract_zone(normed) or "west_bank"
         return _build(AlertType.west_bank_siren, Severity.high, clean, source, area, zone=zone)
 
     # MENA country as source of incoming attack (Iran/Yemen/Lebanon → Israel/WB)
+    # Audit 2026-04-19 (#34): the prior `urgency OR israel_target` gate fired on
+    # every Lebanese casualty report (all of them carry عاجل) and labelled them
+    # west_bank_siren. Now require an explicit Israel/WB target AND an active
+    # incoming-attack indicator (rocket / siren / projectile). Casualty narratives
+    # without a target downgrade to regional_attack.
     if _is_mena_zone(normed):
-        has_urgency = _has_urgent_marker(normed)
         has_israel_target = _has(normed, ISRAEL_AS_TARGET)
-        if has_urgency or has_israel_target:
+        has_incoming = _has(normed, INCOMING_ATTACK_INDICATORS)
+        if has_israel_target and has_incoming:
             area = _extract_area(normed) or "West Bank"
             zone = _extract_zone(normed) or "west_bank"
             return _build(AlertType.west_bank_siren, Severity.high, clean, source, area, zone=zone)
-        # MENA event without clear Israel/WB target → medium severity
+        # MENA event without an active rocket/siren on Israeli targets → Tier 3
         area = _extract_area(normed)
         return _build(AlertType.regional_attack, Severity.medium, clean, source, area)
 
