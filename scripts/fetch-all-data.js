@@ -436,7 +436,10 @@ async function saveTech4PalestineData(data) {
     // Just ensure they have a name
     const filtered = records.filter(record => record.en_name || record.ar_name || record.name);
 
-    // Normalize data
+    // Normalize data. T4P does NOT include per-record date_of_death — we
+    // leave date=null and let the category-level last_updated drive freshness.
+    // Forcing every record to 2023-10-07 (as we did previously) misled the
+    // freshness gate, the timeseries, and any consumer doing date filters.
     const normalized = filtered.map(record => ({
       id: record.id,
       name: record.name || record.en_name,
@@ -445,7 +448,7 @@ async function saveTech4PalestineData(data) {
       age: record.age,
       sex: record.sex,
       dob: record.dob,
-      date: '2023-10-07', // Default to start of conflict as we don't have exact death dates
+      date: null,
       source: 'tech4palestine',
     }));
 

@@ -42,30 +42,44 @@ export class WestBankSchoolsTransformer extends BaseTransformer {
 
     transformRecord(feature, metadata, index) {
         const props = feature.properties || {};
-        const name = props.Name || props.name || props.SCHOOL_NAM || 'Unknown School';
-        const governorate = props.Governorat || props.GOVERNORAT || props.governorate || null;
-        const coords = geomCentroid(feature);
+        // HDX shapefile fields: English_Sc, Arabic_sch, locname (Arabic
+        // locality), districtna (Arabic district), x_dd/y_dd (decimal
+        // degrees). The earlier Name/Governorat/lat fallbacks never fired
+        // — every school was "Unknown School" with null coords.
+        const name = props.English_Sc || props.Name || props.name || props.SCHOOL_NAM ||
+            props.Arabic_sch || 'Unknown School';
+        const governorate = props.districtna || props.Governorat || props.GOVERNORAT ||
+            props.governorate || null;
+        const locality = props.locname || null;
+        const geomCoords = geomCentroid(feature);
+        // Shapefile features cache lat/lon directly in properties (x_dd/y_dd)
+        // when the geometry type is missing from the GeoJSON envelope.
+        const lat = geomCoords?.lat ?? (Number.isFinite(props.y_dd) ? props.y_dd : null);
+        const lon = geomCoords?.lon ?? (Number.isFinite(props.x_dd) ? props.x_dd : null);
 
         return this.toCanonical({
-            id: this.generateId('wb-school', { index, name }),
+            id: this.generateId('wb-school', { schid: props.schid, index, name }),
             date: new Date().toISOString().split('T')[0],
             category: 'education',
             event_type: 'school_record',
             location: {
                 name,
                 governorate,
+                locality,
                 region: 'West Bank',
-                lat: coords?.lat ?? null,
-                lon: coords?.lon ?? null,
-                precision: coords ? 'exact' : 'region',
+                lat,
+                lon,
+                precision: lat != null && lon != null ? 'exact' : 'region',
             },
             metrics: {
                 value: parseInt(props.Students || props.STUDENTS || props.enrollment || 0) || 0,
                 unit: 'students',
                 count: 1,
             },
-            description: name,
+            description: locality ? `${name} (${locality})` : name,
             school_name: name,
+            school_name_ar: props.Arabic_sch || null,
+            school_id: props.schid || null,
             school_type: props.Type || props.TYPE || props.school_type || 'Unknown',
             education_level: props.Level || props.LEVEL || props.education_level || null,
             school_status: props.Status || props.STATUS || 'Active',

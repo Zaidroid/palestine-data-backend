@@ -35,20 +35,17 @@ const DATA_DIR = path.join(__dirname, '../public/data/news');
 const RATE_LIMIT_DELAY = 1000; // 1 second between feeds
 
 // RSS Feed Sources
+// Audited 2026-04-18: dropped 5 dead URLs (Al Jazeera Arabic all.xml 404,
+// 972mag 403, WAFA english.wafa.ps/rss 404, ochaopt.org 404, qudsnen.co 404,
+// Amnesty oPt-specific 404). Replacements: ReliefWeb (OCHA + NGO updates),
+// Middle East Monitor, Times of Israel, BBC ME, HRW global, Amnesty global.
 const RSS_FEEDS = [
     {
-        name: 'Al Jazeera Palestine',
+        name: 'Al Jazeera English',
         url: 'https://www.aljazeera.com/xml/rss/all.xml',
         category: 'news',
         reliability: 'high',
         language: 'en',
-    },
-    {
-        name: 'Al Jazeera Arabic',
-        url: 'https://www.aljazeera.net/xml/rss/all.xml',
-        category: 'news',
-        reliability: 'high',
-        language: 'ar',
     },
     {
         name: 'Middle East Eye',
@@ -58,8 +55,22 @@ const RSS_FEEDS = [
         language: 'en',
     },
     {
-        name: '+972 Magazine',
-        url: 'https://972mag.com/feed',
+        name: 'Middle East Monitor',
+        url: 'https://www.middleeastmonitor.com/feed/',
+        category: 'news',
+        reliability: 'medium',
+        language: 'en',
+    },
+    {
+        name: 'BBC Middle East',
+        url: 'https://feeds.bbci.co.uk/news/world/middle_east/rss.xml',
+        category: 'news',
+        reliability: 'high',
+        language: 'en',
+    },
+    {
+        name: 'Times of Israel',
+        url: 'https://www.timesofisrael.com/feed/',
         category: 'news',
         reliability: 'high',
         language: 'en',
@@ -86,38 +97,27 @@ const RSS_FEEDS = [
         language: 'en',
     },
     {
-        name: 'Palestine Chronicle',
-        url: 'https://www.palestinechronicle.com/feed/',
-        category: 'news',
-        reliability: 'medium',
-        language: 'en',
-    },
-    {
-        name: 'WAFA News Agency',
-        url: 'https://english.wafa.ps/rss',
-        category: 'official',
-        reliability: 'high',
-        language: 'en',
-    },
-    {
-        name: 'OCHA oPt',
-        url: 'https://www.ochaopt.org/rss.xml',
-        category: 'official',
+        // C181 = Palestine country code in ReliefWeb taxonomy. The
+        // /country/pse/rss.xml redirect chain returns 406 with most clients
+        // — the advanced-search permalink is the supported public endpoint.
+        name: 'ReliefWeb (Palestine)',
+        url: 'https://reliefweb.int/updates/rss.xml?advanced-search=%28C181%29',
+        category: 'humanitarian',
         reliability: 'high',
         language: 'en',
     },
     {
         name: 'Amnesty International',
-        url: 'https://www.amnesty.org/en/location/middle-east-and-north-africa/israel-and-occupied-palestinian-territories/feed/',
+        url: 'https://www.amnesty.org/en/latest/news/feed/',
         category: 'human_rights',
         reliability: 'high',
         language: 'en',
     },
     {
-        name: 'Quds News Network',
-        url: 'https://qudsnen.co/feed/',
-        category: 'news',
-        reliability: 'medium',
+        name: 'Human Rights Watch',
+        url: 'https://www.hrw.org/rss.xml',
+        category: 'human_rights',
+        reliability: 'high',
         language: 'en',
     },
 ];
@@ -237,10 +237,14 @@ async function fetchRSSFeed(feed) {
     await logger.info(`Fetching: ${feed.name}`);
 
     try {
+        // Many publishers (Cloudflare-fronted, anti-bot) reject default UAs;
+        // a browser-shaped UA gets through every probe we tested 2026-04-18.
         const response = await fetch(feed.url, {
             headers: {
-                'User-Agent': 'Palestine-Data-Backend/1.0',
+                'User-Agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/121.0.0.0 Safari/537.36',
+                'Accept': 'application/rss+xml, application/atom+xml, application/xml;q=0.9, text/xml;q=0.8, */*;q=0.5',
             },
+            redirect: 'follow',
         });
 
         if (!response.ok) {

@@ -564,13 +564,15 @@ async function processMartyrsData() {
 
         try {
             await fs.access(killedDir);
-        } catch { 
+        } catch {
             throw new Error('Tech4Palestine martyrs directory not found, skipping');
         }
 
+        // Load every named-martyr partition file (legacy "quarter" naming —
+        // the data is no longer partitioned by death date because we no longer
+        // have one). Accept either an index.json roster or just glob the dir.
         const dataArray = [];
         const indexPath = path.join(killedDir, 'index.json');
-
         try {
             const index = JSON.parse(await fs.readFile(indexPath, 'utf-8'));
             if (index.files) {
@@ -582,22 +584,43 @@ async function processMartyrsData() {
                     }
                 }
             }
-        } catch (e) { }
+        } catch {
+            const files = (await fs.readdir(killedDir)).filter((f) => f.endsWith('.json') && f !== 'index.json');
+            for (const f of files) {
+                try {
+                    const content = JSON.parse(await fs.readFile(path.join(killedDir, f), 'utf-8'));
+                    if (content.data && Array.isArray(content.data)) dataArray.push(...content.data);
+                } catch {}
+            }
+        }
 
         if (dataArray.length === 0) return;
 
-        logger.info(`Found ${dataArray.length} martyr records`);
+        // Load T4P summary.json so we can append a cumulative-totals event
+        // alongside the named-martyrs roster. This is the "live count" the
+        // user asks for (Gaza killed > 70k as of late 2026) — the named
+        // database lags because identification takes weeks.
+        let summary = null;
+        try {
+            const summaryPath = path.join(t4pDir, 'summary.json');
+            const summaryFile = JSON.parse(await fs.readFile(summaryPath, 'utf-8'));
+            summary = summaryFile.data || summaryFile;
+        } catch (e) {
+            logger.warn('T4P summary.json not available — cumulative totals event will be skipped');
+        }
+
+        logger.info(`Found ${dataArray.length} named martyr records`);
 
         const transformer = new MartyrsTransformer();
         const pipeline = new UnifiedPipeline({ logger });
-        const martyrsDir = path.join(UNIFIED_DIR, 'martyrs_snapshot_2023');
+        const martyrsDir = path.join(UNIFIED_DIR, 'martyrs');
 
         const results = await pipeline.process(
             dataArray,
             {
                 source: 'Tech4Palestine',
                 organization: 'Tech for Palestine',
-                category: 'martyrs_snapshot_2023',
+                category: 'martyrs',
             },
             transformer,
             {
@@ -609,21 +632,41 @@ async function processMartyrsData() {
         );
 
         if (results.success) {
-            logger.success(`Processed ${results.stats.recordCount} martyr records`);
+            const finalRecords = results.enriched ? [...results.enriched] : [];
 
-            // Frozen snapshot — Tech4Palestine stopped publishing this dataset on 2023-10-07.
+            // Prepend the cumulative-totals event so it sorts to the top of
+            // any reverse-chrono query.
+            if (summary) {
+                const summaryRec = transformer.buildSummaryRecord(summary);
+                if (summaryRec) {
+                    const enriched = transformer.enrich([summaryRec])[0];
+                    finalRecords.unshift(enriched);
+                }
+            }
+
+            const lastUpdated = summary?.gaza?.last_update
+                || summary?.west_bank?.last_update
+                || new Date().toISOString().slice(0, 10);
+
+            logger.success(`Processed ${finalRecords.length} martyr records (named + summary)`);
+
             await fs.writeFile(
                 path.join(martyrsDir, 'all-data.json'),
                 JSON.stringify({
-                    data: results.enriched || [],
+                    data: finalRecords,
                     metadata: {
-                        total_records: results.stats.recordCount,
+                        total_records: finalRecords.length,
                         generated_at: new Date().toISOString(),
+                        last_updated: lastUpdated,
                         source: 'Tech4Palestine',
-                        category: 'martyrs_snapshot_2023',
-                        active: false,
-                        frozen_at: '2023-10-07',
-                        notice: 'Historical baseline only — upstream stopped publishing on 2023-10-07.',
+                        category: 'martyrs',
+                        active: true,
+                        notice: 'Named-martyr identification database (lags real casualties by ' +
+                            'weeks); cumulative_summary event carries the current MoH totals.',
+                        sources: [
+                            { name: 'Tech4Palestine killed-in-gaza database', license: 'CC-BY-4.0', records: dataArray.length },
+                            { name: 'Tech4Palestine summary (cumulative totals)', license: 'CC-BY-4.0', records: summary ? 1 : 0 },
+                        ],
                     },
                 }, null, 2),
                 'utf-8'
@@ -632,11 +675,10 @@ async function processMartyrsData() {
             await fs.writeFile(
                 path.join(martyrsDir, 'metadata.json'),
                 JSON.stringify({
-                    category: 'martyrs_snapshot_2023',
-                    total_records: results.stats.recordCount,
-                    last_updated: new Date().toISOString(),
-                    active: false,
-                    frozen_at: '2023-10-07',
+                    category: 'martyrs',
+                    total_records: finalRecords.length,
+                    last_updated: lastUpdated,
+                    active: true,
                     sources: ['Tech4Palestine'],
                 }, null, 2),
                 'utf-8'
@@ -725,10 +767,32 @@ async function processHDXData() {
             const firstRecord = allData[0] || {};
             const alreadyTransformed = firstRecord.id && firstRecord.category && firstRecord.metrics !== undefined;
 
+            // Drop pre-transformed records that are clearly garbage (the
+            // upstream HDX dataset didn't match the assumed shape, so the
+            // template emitted "Field: undefined" rows). Source-side fix is
+            // in fetch-hdx-ckan-data.js; this gate cleans cached files
+            // before they're re-fetched.
+            const isGhostPretransformed = (r) => {
+                const d = r.details || r.description || '';
+                if (typeof d === 'string' && d.includes('undefined')) return true;
+                const allZero = (r.metrics?.count || 0) === 0 &&
+                    (r.metrics?.value || 0) === 0 &&
+                    (r.metrics?.affected || 0) === 0 &&
+                    (r.metrics?.killed || 0) === 0;
+                const noLocation = !r.location?.name && !r.location?.governorate;
+                return allZero && noLocation && !d;
+            };
+            const filteredData = alreadyTransformed
+                ? allData.filter(r => !isGhostPretransformed(r))
+                : allData;
+            if (alreadyTransformed && filteredData.length < allData.length) {
+                logger.warn(`Dropped ${allData.length - filteredData.length} ghost ${category.name} records (HDX shape mismatch)`);
+            }
+
             let enriched;
             if (alreadyTransformed) {
                 // Canonicalize already-transformed records to v3 shape
-                enriched = allData.map(r => ({
+                enriched = filteredData.map(r => ({
                     id: r.id,
                     date: r.date?.split('T')[0] || null,
                     category: r.category || category.name,
@@ -1316,12 +1380,28 @@ async function processLandData() {
 
         const allData = [];
 
+        // Each loader stamps records with their true upstream source so the
+        // envelope keeps real attribution. Without this every land record
+        // got a generic "Multiple" sources entry which the audit flagged
+        // as unusable.
+        const stampSource = (records, source) => {
+            for (const r of records) {
+                r._source_attribution = source;
+            }
+        };
+
         // Load settlements
         try {
             const settlementsPath = path.join(landDir, 'settlements', 'settlements.json');
             const content = JSON.parse(await fs.readFile(settlementsPath, 'utf-8'));
             const records = content.records || content.data || [];
             records.forEach(r => r.type = 'settlement');
+            stampSource(records, {
+                name: 'Peace Now',
+                organization: 'Peace Now (Settlement Watch)',
+                url: 'https://peacenow.org.il/en/settlements-watch',
+                license: 'CC-BY-NC-4.0',
+            });
             allData.push(...records);
             logger.info(`  Loaded ${records.length} settlement records`);
         } catch (e) {
@@ -1334,6 +1414,12 @@ async function processLandData() {
             const content = JSON.parse(await fs.readFile(checkpointsPath, 'utf-8'));
             const records = content.records || content.data || [];
             records.forEach(r => r.type = 'checkpoint');
+            stampSource(records, {
+                name: 'OCHA oPt',
+                organization: 'UN OCHA',
+                url: 'https://www.ochaopt.org/data/movement-and-access',
+                license: 'CC-BY-IGO-3.0',
+            });
             allData.push(...records);
             logger.info(`  Loaded ${records.length} checkpoint records`);
         } catch (e) {
@@ -1362,6 +1448,12 @@ async function processLandData() {
                             // Ensure date is present (Good Shepherd uses 'date')
                             if (!r.date && r.demolition_date) r.date = r.demolition_date;
                         });
+                        stampSource(records, {
+                            name: 'Good Shepherd Collective',
+                            organization: 'Good Shepherd Collective',
+                            url: 'https://goodshepherdcollective.org',
+                            license: 'CC-BY-NC-SA-4.0',
+                        });
 
                         allData.push(...records);
                         loadedCount += records.length;
@@ -1381,6 +1473,12 @@ async function processLandData() {
             const content = JSON.parse(await fs.readFile(wallPath, 'utf-8'));
             const records = content.records || content.data || [];
             records.forEach(r => r.type = 'wall');
+            stampSource(records, {
+                name: "B'Tselem",
+                organization: "B'Tselem - Israeli Information Center for Human Rights",
+                url: 'https://www.btselem.org/separation_barrier',
+                license: 'CC-BY-NC-4.0',
+            });
             allData.push(...records);
             logger.info(`  Loaded ${records.length} wall segment records`);
         } catch (e) {
@@ -1723,8 +1821,30 @@ async function processWestBankData() {
                     // No existing data, that's fine
                 }
 
+                // Drop carry-over ghost records from prior runs: any
+                // record whose description contains "undefined" or whose
+                // metrics+location are entirely empty is from the broken
+                // HDX education shape mismatch (now fixed at source).
+                const isGhost = (r) => {
+                    const d = r.description || r.details || '';
+                    if (typeof d === 'string' && d.includes('undefined')) return true;
+                    const noLocation = (!r.location?.name || r.location.name === 'unknown') &&
+                        (!r.location?.governorate || r.location.governorate === 'unknown');
+                    const noMetric = !(r.metrics?.value || r.metrics?.affected || r.metrics?.killed);
+                    return noLocation && noMetric && !d;
+                };
+                // Drop the school_record subset too — we're re-emitting it
+                // from the deterministic transformer, so keeping the prior
+                // run's copy doubles the count every pipeline cycle.
+                const cleanExisting = existingData.filter(r =>
+                    !isGhost(r) && r.event_type !== 'school_record'
+                );
+                if (cleanExisting.length < existingData.length) {
+                    logger.warn(`Cleared ${existingData.length - cleanExisting.length} carry-over education records (ghosts + prior schools)`);
+                }
+
                 // Merge with new schools data
-                const mergedData = [...existingData, ...(schoolsResults.enriched || [])];
+                const mergedData = [...cleanExisting, ...(schoolsResults.enriched || [])];
 
                 // Save merged data
                 await fs.writeFile(
@@ -2138,7 +2258,7 @@ async function main() {
     await fs.mkdir(UNIFIED_DIR, { recursive: true });
     const categories = [
         'economic', 'conflict', 'infrastructure', 'education', 'health',
-        'water', 'refugees', 'martyrs_snapshot_2023', 'news', 'culture',
+        'water', 'refugees', 'martyrs', 'news', 'culture',
         'land', 'westbank', 'pcbs'
     ];
     for (const cat of categories) {
@@ -2182,7 +2302,7 @@ async function main() {
             'static_refugees': 'refugees',
             'funding': 'funding',
             'btselem': 'conflict',
-            'martyrs': 'martyrs_snapshot_2023',
+            'martyrs': 'martyrs',
         };
         const dirName = nameMap[categoryName] !== undefined ? nameMap[categoryName] : categoryName;
         if (!dirName) return null;

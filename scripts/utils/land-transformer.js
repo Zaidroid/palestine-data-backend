@@ -68,13 +68,17 @@ export class LandTransformer extends BaseTransformer {
             ...(recordType === 'checkpoint' && this.enrichCheckpointData(record)),
             ...(recordType === 'demolition' && this.enrichDemolitionData(record)),
 
-            sources: [{
-                name: metadata.source || 'Land Status Database',
-                organization: metadata.organization || "OCHA/B'Tselem/Peace Now",
-                url: metadata.url || record.source_url || null,
-                license: 'varies',
-                fetched_at: new Date().toISOString(),
-            }],
+            sources: [
+                record._source_attribution
+                    ? { ...record._source_attribution, fetched_at: new Date().toISOString() }
+                    : {
+                        name: metadata.source || 'Land Status Database',
+                        organization: metadata.organization || "OCHA/B'Tselem/Peace Now",
+                        url: metadata.url || record.source_url || null,
+                        license: 'varies',
+                        fetched_at: new Date().toISOString(),
+                    },
+            ],
         });
     }
 

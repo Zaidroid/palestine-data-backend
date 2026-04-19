@@ -49,7 +49,7 @@ days.
 | Category | Records | Source(s) | License | Status |
 |:--|--:|:--|:--|:--|
 | **Water / WASH** | 72,603 | HDX WASH Cluster (OCHA) | CC-BY | live |
-| **Martyrs (snapshot)** | 60,199 | Tech4Palestine | CC-BY | frozen 2023-10-07 |
+| **Martyrs** | 60,200 | Tech4Palestine | CC-BY-4.0 | live (60,199 named + 1 cumulative summary; current MoH total: 72,345 killed Gaza, 1,065 WB) |
 | **Health** | 38,232 | WHO GHO | CC-BY-NC-SA | live, non-commercial only |
 | **Funding** | 9,139 | UN OCHA Financial Tracking Service | CC-BY-IGO-3.0 | live (NEW) |
 | **Education** | 2,990 | HDX | CC-BY | live |

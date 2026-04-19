@@ -276,6 +276,22 @@ async function fetchDatasetByCategory(category, datasets) {
             let bestMatch = null;
             let maxScore = 0;
 
+            // Category-subject keywords: a candidate must mention at least one
+            // of these (in title/notes/tags) to be a valid match for this
+            // category. This blocks the historical bug where searching for
+            // "Education Infrastructure" returned World Bank macro-indicator
+            // datasets just because of the word "infrastructure".
+            const categoryKeywords = {
+              education: ['school', 'student', 'teacher', 'education', 'classroom', 'learning', 'university', 'enrollment', 'attendance', 'literacy'],
+              health: ['health', 'hospital', 'medical', 'clinic', 'patient', 'disease', 'vaccin', 'doctor', 'nurse', 'pharm'],
+              water: ['water', 'wash', 'sanit', 'sewage', 'aquifer', 'well', 'hygiene'],
+              infrastructure: ['infrastructure', 'damage', 'destruct', 'building', 'road', 'bridge', 'electric', 'telecom'],
+              conflict: ['conflict', 'casualt', 'killed', 'injured', 'attack', 'violence', 'incident', 'displace'],
+              shelter: ['shelter', 'housing', 'home', 'residen', 'displaced', 'idp', 'demolish', 'reconstruct'],
+              refugees: ['refugee', 'displace', 'idp', 'camp', 'asylum'],
+              humanitarian: ['humanitarian', 'aid', 'assistance', 'response', 'needs', 'cluster'],
+            };
+
             for (const candidate of candidates) {
               const candidateString = JSON.stringify(candidate).toLowerCase();
               const candidateTitle = candidate.title.toLowerCase();
@@ -284,6 +300,16 @@ async function fetchDatasetByCategory(category, datasets) {
               const antiKeywords = ['philippines', 'turkey', 'ukraine', 'yemen', 'sudan', 'afghanistan', 'somalia', 'myanmar', 'syria', 'lebanon'];
               const hasAntiKeyword = antiKeywords.some(kw => candidateTitle.includes(kw));
               if (hasAntiKeyword) continue;
+
+              // Subject-relevance check: candidate must mention at least one
+              // category keyword somewhere (title, notes, or tags). Without
+              // this we get cross-category contamination from generic
+              // dataset titles.
+              const subjectKeywords = categoryKeywords[category];
+              if (subjectKeywords) {
+                const hasSubjectKeyword = subjectKeywords.some(kw => candidateString.includes(kw));
+                if (!hasSubjectKeyword) continue;
+              }
 
               // Relevance scoring
               let score = 0;
@@ -706,12 +732,31 @@ function transformEducationData(rawData, metadata) {
       return { format: 'json', data: [], recordCount: 0 };
     }
 
-    console.log(`    ℹ️  Transforming ${records.length} education records`);
+    // Skip rows that don't actually look like school records. HDX returns
+    // wildcard hits (e.g. World Bank macroeconomic indicators) under
+    // `education`; those rows have indicator_name/value, never a facility
+    // name/status/damage. Emitting them produces "School: undefined" rows
+    // that pollute the unified category. Drop them at the source.
+    const isEducationFacility = (r) =>
+      r.name || r.facility_name || r.school_name ||
+      r.status || r.operational_status || r.damage || r.damage_level ||
+      r.students || r.enrollment;
+    const facilityRecords = records.filter(isEducationFacility);
 
-    const transformed = records.map(record => {
+    if (facilityRecords.length === 0) {
+      console.log(`    ⚠️  ${records.length} rows had no education-facility shape; skipped`);
+      return { format: 'json', data: [], recordCount: 0 };
+    }
+
+    console.log(`    ℹ️  Transforming ${facilityRecords.length} education records`);
+
+    const transformed = facilityRecords.map(record => {
+      const facilityName = record.name || record.facility_name || record.school_name;
+      const status = record.status || record.operational_status;
+      const damage = record.damage || record.damage_level;
       return schemaUtils.createEvent({
         id: record.id || record.facility_id || `edu-${Math.random().toString(36).substr(2, 9)}`,
-        date: normalizeDate(record.assessment_date || record.last_updated) || new Date().toISOString(),
+        date: normalizeDate(record.assessment_date || record.last_updated) || null,
         category: 'education',
         event_type: 'facility_status',
         location: {
@@ -724,7 +769,11 @@ function transformEducationData(rawData, metadata) {
           affected: parseInt(record.students || record.enrollment || record.capacity || 0),
           count: 1
         },
-        details: `School: ${record.name || record.facility_name}. Status: ${record.status || record.operational_status}. Damage: ${record.damage || record.damage_level}`,
+        details: [
+          facilityName ? `School: ${facilityName}` : null,
+          status ? `Status: ${status}` : null,
+          damage ? `Damage: ${damage}` : null,
+        ].filter(Boolean).join('. '),
         source_link: metadata.organization.title,
         confidence: 'medium'
       });
@@ -748,10 +797,26 @@ function transformWaterData(rawData, metadata) {
       return { format: 'json', data: [], recordCount: 0 };
     }
 
-    const transformed = records.map(record => {
+    const isWaterFacility = (r) =>
+      r.name || r.facility_name ||
+      r.status || r.operational_status ||
+      r.water_quality || r.quality_status ||
+      r.population_served || r.beneficiaries ||
+      r.capacity || r.daily_capacity;
+    const facilityRecords = records.filter(isWaterFacility);
+
+    if (facilityRecords.length === 0) {
+      console.log(`    ⚠️  ${records.length} rows had no water-facility shape; skipped`);
+      return { format: 'json', data: [], recordCount: 0 };
+    }
+
+    const transformed = facilityRecords.map(record => {
+      const facilityName = record.name || record.facility_name;
+      const status = record.status || record.operational_status;
+      const quality = record.water_quality || record.quality_status;
       return schemaUtils.createEvent({
         id: record.id || record.facility_id || `water-${Math.random().toString(36).substr(2, 9)}`,
-        date: normalizeDate(record.assessment_date || record.last_updated) || new Date().toISOString(),
+        date: normalizeDate(record.assessment_date || record.last_updated) || null,
         category: 'water',
         event_type: 'facility_status',
         location: {
@@ -765,7 +830,11 @@ function transformWaterData(rawData, metadata) {
           value: parseFloat(record.capacity || record.daily_capacity || 0),
           count: 1
         },
-        details: `Facility: ${record.name || record.facility_name}. Status: ${record.status || record.operational_status}. Quality: ${record.water_quality || record.quality_status}`,
+        details: [
+          facilityName ? `Facility: ${facilityName}` : null,
+          status ? `Status: ${status}` : null,
+          quality ? `Quality: ${quality}` : null,
+        ].filter(Boolean).join('. '),
         source_link: metadata.organization.title,
         confidence: 'medium'
       });
@@ -789,10 +858,26 @@ function transformInfrastructureData(rawData, metadata) {
       return { format: 'json', data: [], recordCount: 0 };
     }
 
-    const transformed = records.map(record => {
+    const isInfraRecord = (r) =>
+      r.name || r.building_name || r.structure_name ||
+      r.damage || r.damage_level ||
+      r.status || r.current_status ||
+      r.cost || r.damage_cost ||
+      r.people_affected || r.affected_population;
+    const infraRecords = records.filter(isInfraRecord);
+
+    if (infraRecords.length === 0) {
+      console.log(`    ⚠️  ${records.length} rows had no infrastructure shape; skipped`);
+      return { format: 'json', data: [], recordCount: 0 };
+    }
+
+    const transformed = infraRecords.map(record => {
+      const structName = record.name || record.building_name || record.structure_name;
+      const damage = record.damage || record.damage_level;
+      const status = record.status || record.current_status;
       return schemaUtils.createEvent({
         id: record.id || record.structure_id || `infra-${Math.random().toString(36).substr(2, 9)}`,
-        date: normalizeDate(record.damage_date || record.incident_date || record.date) || new Date().toISOString(),
+        date: normalizeDate(record.damage_date || record.incident_date || record.date) || null,
         category: 'infrastructure',
         event_type: 'damage_report',
         location: {
@@ -806,7 +891,11 @@ function transformInfrastructureData(rawData, metadata) {
           cost_usd: parseFloat(record.cost || record.damage_cost || 0),
           count: 1
         },
-        details: `Structure: ${record.name || record.building_name}. Damage: ${record.damage || record.damage_level}. Status: ${record.status || record.current_status}`,
+        details: [
+          structName ? `Structure: ${structName}` : null,
+          damage ? `Damage: ${damage}` : null,
+          status ? `Status: ${status}` : null,
+        ].filter(Boolean).join('. '),
         source_link: metadata.organization.title,
         confidence: 'medium'
       });
