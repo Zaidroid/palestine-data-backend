@@ -46,7 +46,8 @@ export async function applyFreshnessGate(res, category, envelope) {
         );
     }
     if (f.frozen_at) {
-        res.setHeader('Warning', `299 - "Frozen snapshot — upstream stopped publishing on ${f.frozen_at}"`);
+        // Header values must be ISO-8859-1 — keep punctuation ASCII-only.
+        res.setHeader('Warning', `299 - "Frozen snapshot - upstream stopped publishing on ${f.frozen_at}"`);
     }
 
     envelope.metadata = {

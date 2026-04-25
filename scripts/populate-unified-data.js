@@ -613,14 +613,14 @@ async function processMartyrsData() {
 
         const transformer = new MartyrsTransformer();
         const pipeline = new UnifiedPipeline({ logger });
-        const martyrsDir = path.join(UNIFIED_DIR, 'martyrs');
+        const martyrsDir = path.join(UNIFIED_DIR, 'martyrs_snapshot_2023');
 
         const results = await pipeline.process(
             dataArray,
             {
                 source: 'Tech4Palestine',
                 organization: 'Tech for Palestine',
-                category: 'martyrs',
+                category: 'martyrs_snapshot_2023',
             },
             transformer,
             {
@@ -659,10 +659,12 @@ async function processMartyrsData() {
                         generated_at: new Date().toISOString(),
                         last_updated: lastUpdated,
                         source: 'Tech4Palestine',
-                        category: 'martyrs',
-                        active: true,
-                        notice: 'Named-martyr identification database (lags real casualties by ' +
-                            'weeks); cumulative_summary event carries the current MoH totals.',
+                        category: 'martyrs_snapshot_2023',
+                        active: false,
+                        frozen_at: '2023-10-07',
+                        notice: 'Historical baseline only — Tech4Palestine named-martyr ' +
+                            'identifications lag real casualties by weeks; the cumulative_summary ' +
+                            'record carries current MoH totals.',
                         sources: [
                             { name: 'Tech4Palestine killed-in-gaza database', license: 'CC-BY-4.0', records: dataArray.length },
                             { name: 'Tech4Palestine summary (cumulative totals)', license: 'CC-BY-4.0', records: summary ? 1 : 0 },
@@ -675,10 +677,12 @@ async function processMartyrsData() {
             await fs.writeFile(
                 path.join(martyrsDir, 'metadata.json'),
                 JSON.stringify({
-                    category: 'martyrs',
+                    category: 'martyrs_snapshot_2023',
                     total_records: finalRecords.length,
                     last_updated: lastUpdated,
-                    active: true,
+                    active: false,
+                    frozen_at: '2023-10-07',
+                    notice: 'Historical baseline only — Tech4Palestine named-martyr identifications lag real casualties by weeks; the cumulative_summary record carries current MoH totals.',
                     sources: ['Tech4Palestine'],
                 }, null, 2),
                 'utf-8'
@@ -2258,7 +2262,7 @@ async function main() {
     await fs.mkdir(UNIFIED_DIR, { recursive: true });
     const categories = [
         'economic', 'conflict', 'infrastructure', 'education', 'health',
-        'water', 'refugees', 'martyrs', 'news', 'culture',
+        'water', 'refugees', 'martyrs_snapshot_2023', 'news', 'culture',
         'land', 'westbank', 'pcbs'
     ];
     for (const cat of categories) {
@@ -2302,7 +2306,7 @@ async function main() {
             'static_refugees': 'refugees',
             'funding': 'funding',
             'btselem': 'conflict',
-            'martyrs': 'martyrs',
+            'martyrs': 'martyrs_snapshot_2023',
         };
         const dirName = nameMap[categoryName] !== undefined ? nameMap[categoryName] : categoryName;
         if (!dirName) return null;

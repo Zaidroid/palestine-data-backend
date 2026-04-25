@@ -10,7 +10,7 @@ async function main() {
         await fs.mkdir(UNIFIED_DIR, { recursive: true });
 
         // Create category directories
-        const categories = ['economic', 'conflict', 'infrastructure', 'education', 'health', 'water', 'humanitarian', 'refugees', 'martyrs', 'news', 'culture', 'land', 'westbank', 'historical'];
+        const categories = ['economic', 'conflict', 'infrastructure', 'education', 'health', 'water', 'humanitarian', 'refugees', 'martyrs_snapshot_2023', 'news', 'culture', 'land', 'westbank', 'historical'];
         for (const category of categories) {
             await fs.mkdir(path.join(UNIFIED_DIR, category), { recursive: true });
         }

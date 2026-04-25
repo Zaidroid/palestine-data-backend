@@ -8,7 +8,7 @@
 export const SCHEMA_VERSION = '3.0.0';
 
 export const CATEGORIES = [
-  'conflict', 'martyrs', 'health', 'education', 'economic',
+  'conflict', 'martyrs_snapshot_2023', 'health', 'education', 'economic',
   'humanitarian', 'refugees', 'infrastructure', 'water',
   'culture', 'land', 'historical', 'demographics', 'prisoners', 'pcbs', 'news'
 ];

@@ -348,7 +348,7 @@ async function generateAnalytics() {
         await logger.success('Saved conflict-trends.json');
     }
 
-    const martyrsRecords = await loadCategoryData('martyrs');
+    const martyrsRecords = await loadCategoryData('martyrs_snapshot_2023');
     const martyrsStats = await calculateMartyrsStats(martyrsRecords);
     if (martyrsStats) {
         await writeJSON(path.join(ANALYTICS_DIR, 'martyrs-stats.json'), martyrsStats);

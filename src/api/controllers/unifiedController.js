@@ -1,5 +1,6 @@
 import { getUnifiedData, getUnifiedMetadata, categoryExists, resolveSnapshot } from '../utils/fileService.js';
 import { applyFreshnessGate } from '../utils/freshnessGate.js';
+import { filterRecordsByLicense, collectRequiredAttributions } from '../middleware/licenseFilter.js';
 
 // Resolve ?as_of=YYYY-MM-DD into a snapshot-dir handle + envelope-ready
 // pin descriptor. Returns { snapshotDir?: string, pin?: { requested, resolved } }
@@ -82,6 +83,12 @@ export async function getData(req, res) {
 
         let data = result.data;
 
+        // --- License gate (paid tiers only — anonymous/free see everything) ---
+        const { records: licensedData, hidden: hiddenByLicense } = filterRecordsByLicense(
+            data, req.customer?.tier
+        );
+        data = licensedData;
+
         // --- Filtering ---
         if (location) {
             data = data.filter(item => matchesLocation(item, location));
@@ -151,6 +158,10 @@ export async function getData(req, res) {
                 pages: Math.ceil(data.length / limitNum),
             },
             metadata: result.metadata,
+            meta: {
+                records_hidden_by_license: hiddenByLicense,
+                required_attributions: collectRequiredAttributions(paginatedData),
+            },
         });
         if (pin?.pin) envelope.as_of = pin.pin;
         res.json(envelope);
@@ -213,7 +224,9 @@ export async function getSummary(req, res) {
             return res.status(404).json({ error: 'Data not found' });
         }
 
-        const data = result.data;
+        const { records: data, hidden: hiddenByLicense } = filterRecordsByLicense(
+            result.data, req.customer?.tier
+        );
         const summary = {
             category,
             total_records: data.length,
@@ -274,6 +287,10 @@ export async function getSummary(req, res) {
             }
         }
 
+        summary.meta = {
+            records_hidden_by_license: hiddenByLicense,
+            required_attributions: collectRequiredAttributions(data),
+        };
         const envelope = await applyFreshnessGate(res, category, summary);
         if (pin?.pin) envelope.as_of = pin.pin;
         res.json(envelope);
@@ -305,7 +322,10 @@ export async function getTimeseries(req, res) {
             return res.status(404).json({ error: 'Data not found' });
         }
 
-        let data = result.data.filter(item => item.date);
+        const { records: licensedData, hidden: hiddenByLicense } = filterRecordsByLicense(
+            result.data, req.customer?.tier
+        );
+        let data = licensedData.filter(item => item.date);
 
         if (region) {
             const r = region.toLowerCase();
@@ -385,6 +405,10 @@ export async function getTimeseries(req, res) {
             interval,
             region: region || 'all',
             data: series,
+            meta: {
+                records_hidden_by_license: hiddenByLicense,
+                required_attributions: collectRequiredAttributions(data),
+            },
         });
         if (pin?.pin) envelope.as_of = pin.pin;
         res.json(envelope);
