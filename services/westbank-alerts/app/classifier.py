@@ -746,6 +746,54 @@ PAST_MARKERS = [
 ]
 PAST_MARKERS = [_normalize(t) for t in PAST_MARKERS]
 
+# Strong historical markers — when these appear, the post is narrating a
+# past event (anniversary, years-ago retrospective, last-month framing in
+# the leading clause). Distinct from PAST_MARKERS, which only downgrades
+# confidence; HISTORICAL_HARD_FILTER drops the alert entirely.
+HISTORICAL_HARD_MARKERS = [
+    # Anniversary / commemoration framing
+    "في الذكرى", "الذكرى السنويه", "ذكرى مجزره", "ذكرى استشهاد",
+    "ذكرى الشهيد", "نستذكر", "نتذكر",
+    # Long-past spelled-out gaps
+    "قبل عام", "قبل عامين", "قبل سنه", "قبل سنتين",
+    "قبل ثلاث سنوات", "قبل اربع سنوات", "قبل خمس سنوات",
+    "قبل ست سنوات", "قبل سبع سنوات",
+    "قبل اشهر", "قبل شهور",
+]
+HISTORICAL_HARD_MARKERS = [_normalize(t) for t in HISTORICAL_HARD_MARKERS]
+
+# Soft historical markers — only filter when they appear in the leading
+# clause (first ~60 chars). Mid-text use is usually background context for
+# a live event ("they raided now, they had also raided last month").
+HISTORICAL_SOFT_LEADING_MARKERS = [
+    "في الشهر الماضي", "في الاسبوع الماضي", "في العام الماضي",
+    "العام الماضي شهد", "العام الماضي شنت",
+]
+HISTORICAL_SOFT_LEADING_MARKERS = [_normalize(t) for t in HISTORICAL_SOFT_LEADING_MARKERS]
+
+# Quantified "X years/months/weeks ago" — filter anywhere.
+_HISTORICAL_QUANT_RE = re.compile(r"قبل\s+\d+\s+(سنوات|اعوام|شهور|اشهر)")
+
+# Explicit prior-year framing: "خلال/في + (عام|سنه) + 20XX" with XX<current.
+# Conservative: only match years 2018–2024 to avoid false positives on near-
+# future references.
+_HISTORICAL_YEAR_RE = re.compile(r"(خلال|في)\s+(عام|سنه)\s+(201[89]|202[0-4])")
+
+
+def _is_historical_reference(normed_text: str) -> bool:
+    """True when the post is narrating a past/anniversary event rather
+    than reporting something live. Used by _is_noise to drop the alert."""
+    if _has(normed_text, HISTORICAL_HARD_MARKERS):
+        return True
+    if _HISTORICAL_QUANT_RE.search(normed_text):
+        return True
+    if _HISTORICAL_YEAR_RE.search(normed_text):
+        return True
+    head = normed_text[:80]
+    if _has(head, HISTORICAL_SOFT_LEADING_MARKERS):
+        return True
+    return False
+
 PRESENT_MARKERS = [
     "الان", "الآن", "اللحظه", "حاليا", "جاري", "مستمر",
     "قبل قليل", "منذ قليل", "في هذه اللحظه",
@@ -882,6 +930,10 @@ def _is_noise(text: str, tier: str = "tier1", source: str = "") -> bool:
 
     # Eulogy / biographical recap → past tense remembrance, not new event.
     if _has(text, EULOGY_PATTERNS):
+        return True
+
+    # Historical / anniversary / X-years-ago framing → past, not live.
+    if _is_historical_reference(text):
         return True
 
     # News attribution — only discard for non-news channels.
