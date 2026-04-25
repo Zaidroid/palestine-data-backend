@@ -19,8 +19,20 @@ Run the regression suite (CI-friendly, exits non-zero on any miss):
 Run the eval summary (per-bucket numbers + mismatch listing):
     python3 test_classifier_fp_audit.py --summary
 """
+import asyncio
 import sys
-from app.classifier import classify, classify_wb_operational
+from pathlib import Path
+
+# Bootstrap the gazetteer singleton so geo tests can resolve villages that
+# only live in known_locations.json (Anata, Kafr Qaddum, …) and not in
+# the hardcoded AREA_MAP. In production this happens during app startup;
+# in the test we drive it synchronously here.
+import app.location_knowledge_base as _lkb
+_kb = _lkb.LocationKnowledgeBase()
+asyncio.run(_kb.load_from_file(Path(__file__).parent / "data" / "known_locations.json"))
+_lkb._location_kb = _kb
+
+from app.classifier import classify, classify_wb_operational  # noqa: E402
 
 
 def _classify(text: str, source: str):
@@ -81,9 +93,10 @@ NEWS_METADATA_LEAK = [
 #    inside a city. The most specific place must win over the city.
 #    Tuple: (text, source, expected_event_type, expected_area).
 GEO_PRECISION = [
-    # Anata is in East Jerusalem; village should win over city
+    # Anata is in East Jerusalem; village should win over city.
+    # Gazetteer transliterates ع as a leading apostrophe → "'Anata".
     ("قوات الاحتلال تقتحم بلدة عناتا شمال شرق القدس وتعتقل شابين.",
-     "qudsn", "idf_raid", "Anata"),
+     "qudsn", "idf_raid", "'Anata"),
     # Kafr Qaddum is west of Qalqilya — village should win
     ("اشتباكات بين شبان وقوات الاحتلال في قرية كفر قدوم غرب قلقيلية.",
      "qudsn", "idf_raid", "Kafr Qaddum"),

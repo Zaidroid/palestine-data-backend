@@ -1143,8 +1143,83 @@ AREA_MAP = {_normalize(k): v for k, v in _AREA_MAP_RAW.items()}
 _AREA_KEYS_SORTED = sorted(AREA_MAP.keys(), key=len, reverse=True)
 
 
+# Marker-prefixed location extraction. When a post says "بلدة X" /
+# "قرية X" / "مخيم X" / "حي X", X is the actual location — even if a
+# containing city is also mentioned in the same sentence (e.g. "بلدة
+# عناتا شمال شرق القدس" → Anata, not Jerusalem). The plain longest-key
+# scan misses this because: (a) some villages aren't in AREA_MAP at all,
+# and (b) when both village and city ARE in the map at the same key
+# length, the city often wins by iteration order.
+# The marker must start at a word boundary — `حي` (neighborhood) is only
+# 2 chars and would otherwise substring-match inside words like "تحي" or
+# "تحية". Negative lookbehind for Arabic letters enforces the boundary.
+_MARKER_PLACE_RE = re.compile(
+    r"(?<![ء-ي])(بلده|قريه|مخيم|حي)\s+(\S+(?:\s+\S+){0,2})"
+)
+
+# Trailing words to strip after over-capturing 1–3 tokens after the marker
+# ("بلده كفر قدوم غرب قلقيليه" → keep "كفر قدوم", drop "غرب", then drop
+# "قلقيليه" by progressively trying shorter prefixes against the lookup).
+_TRAILING_NOISE_TOKENS = {
+    "شمال", "جنوب", "شرق", "غرب",
+    "شمالي", "جنوبي", "شرقي", "غربي",
+    "شمالا", "جنوبا", "شرقا", "غربا",
+    "قرب", "بمحاذاه", "بجوار", "في", "من", "على",
+    "بمحافظه", "محافظه", "وسط", "اعلى", "اسفل",
+}
+
+
+def _extract_marker_prefixed_place(normed_text: str) -> Optional[str]:
+    """If text uses a 'بلدة X' / 'قرية X' / 'مخيم X' / 'حي X' marker,
+    resolve X to its English label via AREA_MAP first, then the gazetteer.
+    Returns None if no marker, or X can't be resolved."""
+    m = _MARKER_PLACE_RE.search(normed_text)
+    if not m:
+        return None
+    marker = m.group(1)
+    raw = m.group(2).strip()
+    raw = re.sub(r"[.,،؛:!]+$", "", raw)
+    words = raw.split()
+    while len(words) > 1 and words[-1] in _TRAILING_NOISE_TOKENS:
+        words.pop()
+
+    # Try progressively shorter prefixes against AREA_MAP. Try the full
+    # "marker X" form first so camp/neighborhood-specific entries win
+    # ("مخيم بلاطه" → "Balata Camp" rather than "بلاطه" → "Balata"),
+    # then fall back to bare X.
+    for n in range(len(words), 0, -1):
+        candidate = " ".join(words[:n])
+        with_marker = f"{marker} {candidate}"
+        if with_marker in AREA_MAP:
+            return AREA_MAP[with_marker]
+        if candidate in AREA_MAP:
+            return AREA_MAP[candidate]
+
+    # Gazetteer fallback for villages outside AREA_MAP
+    from .location_knowledge_base import get_location_kb
+    kb = get_location_kb()
+    if kb:
+        for n in range(len(words), 0, -1):
+            candidate = " ".join(words[:n])
+            key = kb.find_location(candidate)
+            if key:
+                loc = kb.get_location(key)
+                name_en = loc.get("name_en") if loc else None
+                if name_en:
+                    return name_en
+    return None
+
+
 def _extract_area(text: str) -> Optional[str]:
-    """Return the most specific area match (longest key wins)."""
+    """Return the most specific area match.
+
+    1. Marker-prefixed first ('بلدة X' / 'قرية X' / 'مخيم X' / 'حي X')
+       — handles villages inside cities and villages outside AREA_MAP.
+    2. Otherwise the longest AREA_MAP key wins (legacy behaviour).
+    """
+    marker_place = _extract_marker_prefixed_place(text)
+    if marker_place:
+        return marker_place
     for ar in _AREA_KEYS_SORTED:
         if ar in text:
             return AREA_MAP[ar]
