@@ -93,10 +93,11 @@ def transform(record: dict) -> dict | None:
 
     date = record.get("date")
     if not date:
-        # Tech4Palestine roster doesn't always carry the date of death;
-        # the dataset is "killed in Gaza, ongoing 2023-10-07 onward".
-        # Use baseline as a coarse fallback, mark precision="unknown".
-        date = (record.get("temporal_context") or {}).get("baseline_date")
+        # Tech4Palestine roster mostly lacks per-victim date of death.
+        # Leave NULL rather than using a fake baseline — otherwise named
+        # records pollute date-grouped queries and double-count alongside
+        # the daily Gaza MoH aggregates that cover the same period.
+        date = None
         date_precision = "unknown"
     else:
         date_precision = "day"
