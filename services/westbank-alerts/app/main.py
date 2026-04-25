@@ -235,6 +235,8 @@ async def lifespan(app: FastAPI):
     await db_pool.init_pool(settings.DB_PATH, cp_db_path)
     await db.init_db()
     await cpdb.init_checkpoint_db()
+    from . import databank
+    await databank.init_databank()
 
     # Load checkpoint whitelist (NEW: whitelist-first parsing system)
     log.info("Loading checkpoint whitelist...")

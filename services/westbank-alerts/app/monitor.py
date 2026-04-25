@@ -140,6 +140,13 @@ async def _process_security_message(message, channel_username: str):
         f"(source: @{channel_username}, area: {alert.area})"
     )
 
+    # Long-term databank: extract people/structures/actor-actions from alert.
+    try:
+        from .entity_extractor import extract_entities
+        await extract_entities(alert)
+    except Exception as e:
+        log.warning(f"Entity extraction failed for alert #{alert.id}: {e}")
+
     # Group into incident
     try:
         incident_id = await process_alert_into_incident(alert)
