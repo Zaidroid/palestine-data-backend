@@ -59,6 +59,7 @@ run "pcbs"            node scripts/fetch-pcbs-data.js
 run "worldbank"       node scripts/fetch-worldbank-data.js
 run "who"             node scripts/fetch-who-data.js
 run "hdx"             node scripts/fetch-hdx-ckan-data.js
+run "hdx-discover"    node scripts/discover-hdx-sources.js
 run "goodshepherd"    node scripts/fetch-goodshepherd-data.js
 run "historical"      node scripts/fetch-historical-data.js
 

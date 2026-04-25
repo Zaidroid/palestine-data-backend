@@ -1,0 +1,5 @@
+{
+  "_": "Operator-maintained dismissal list for the A4 HDX auto-discovery (scripts/discover-hdx-sources.js). Add a slug here to suppress it from public/data/discovered-sources-pending.json on the next run. Use the dataset's HDX slug exactly (lowercase + hyphens).",
+  "ignored": [],
+  "updated_at": "2026-04-25"
+}
