@@ -3,6 +3,7 @@ import apicache from 'apicache';
 import unifiedRoutes from './unified.js';
 import searchRoutes from './search.js';
 import alertsProxy from './alerts-proxy.js';
+import databankProxy from './databank-proxy.js';
 import newsRoutes from './news.js';
 import licensesRoutes from './licenses.js';
 import versionRoutes from './version.js';
@@ -21,6 +22,10 @@ router.use('/search', searchRoutes);
 
 // Westbank-alerts proxy (checkpoints, alerts, weather, market, etc.)
 router.use('/live', alertsProxy);
+
+// Long-term entity databank: people_killed, people_injured, people_detained,
+// structures_damaged, actor_actions. Backed by alerts service tables.
+router.use('/databank', databankProxy);
 
 // News feed (RSS + scheduled fetcher → news.db)
 router.use('/news', newsRoutes);

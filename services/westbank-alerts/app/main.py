@@ -56,6 +56,7 @@ if _sentry_dsn:
     )
 
 from . import database as db
+from . import databank as dbk
 from . import monitor
 from . import webhooks
 from . import checkpoint_db as cpdb
@@ -810,6 +811,97 @@ async def stats_today():
         "total_injuries_today": total_injuries,
         "settler_attacks_today": settler_attacks,
         "military_raids_today": military_raids
+    }
+
+
+# ── Long-term databank ────────────────────────────────────────────────────────
+
+# Generic GET handler for the five entity tables. Filter keys are validated
+# against the per-table whitelist in databank._TABLE_FILTERS.
+_DATABANK_TABLES = (
+    "people_killed", "people_injured", "people_detained",
+    "structures_damaged", "actor_actions",
+)
+
+
+@app.get("/databank", tags=["databank"])
+async def databank_index():
+    """List databank tables and their current row counts. Useful for
+    discovery: any consumer can see what's available + how rich it is."""
+    counts = await dbk.databank_counts()
+    return {
+        "tables": [
+            {
+                "name": t,
+                "count": counts.get(t, 0),
+                "filters": list(dbk._TABLE_FILTERS[t].keys()),
+                "endpoints": {
+                    "rows":    f"/databank/{t}",
+                    "summary": f"/databank/{t}/summary",
+                    "geojson": f"/databank/{t}?format=geojson",
+                },
+            }
+            for t in _DATABANK_TABLES
+        ],
+        "as_of": datetime.utcnow().isoformat(),
+    }
+
+
+@app.get("/databank/{table}", tags=["databank"])
+async def databank_query(
+    table: str,
+    request: Request,
+    page:     int  = Query(1,  ge=1),
+    per_page: int  = Query(100, ge=1, le=500),
+    format:   str  = Query("json", pattern="^(json|geojson)$"),
+):
+    """Query a databank table. All filter keys are validated against the
+    per-table whitelist; unknown keys are silently ignored. Returns
+    `data` + `pagination` (default), or a GeoJSON FeatureCollection when
+    `format=geojson` (rows without lat/lng are dropped from the feature set)."""
+    if table not in _DATABANK_TABLES:
+        raise HTTPException(status_code=404, detail=f"unknown table: {table}")
+    # Anything in the query string that isn't reserved gets passed as a filter.
+    reserved = {"page", "per_page", "format"}
+    filters = {k: v for k, v in request.query_params.items() if k not in reserved}
+    rows, total = await dbk.query_table(
+        table, filters,
+        limit=per_page, offset=(page - 1) * per_page,
+    )
+    if format == "geojson":
+        fc = dbk.rows_to_geojson(rows)
+        fc["meta"] = {"total": total, "page": page, "per_page": per_page, "filters": filters}
+        return fc
+    return {
+        "data": rows,
+        "pagination": {"total": total, "page": page, "per_page": per_page,
+                        "pages": (total + per_page - 1) // per_page},
+        "meta": {"table": table, "filters": filters},
+    }
+
+
+@app.get("/databank/{table}/summary", tags=["databank"])
+async def databank_summary(
+    table: str,
+    request: Request,
+    interval: str = Query("month", pattern="^(day|month|year)$"),
+    group_by: Optional[str] = Query(None,
+        description="Optional secondary grouping column "
+                    "(e.g. place_region, gender, cause, actor_type)"),
+):
+    """Time-series + optional secondary grouping for dashboard rollups.
+    Same filter keys as the main query endpoint."""
+    if table not in _DATABANK_TABLES:
+        raise HTTPException(status_code=404, detail=f"unknown table: {table}")
+    reserved = {"interval", "group_by"}
+    filters = {k: v for k, v in request.query_params.items() if k not in reserved}
+    try:
+        series = await dbk.summary_table(table, filters, interval=interval, group_by=group_by)
+    except ValueError as e:
+        raise HTTPException(status_code=400, detail=str(e))
+    return {
+        "data": series,
+        "meta": {"table": table, "interval": interval, "group_by": group_by, "filters": filters},
     }
 
 

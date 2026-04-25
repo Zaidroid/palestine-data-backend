@@ -330,3 +330,163 @@ async def databank_counts() -> dict:
             row = await cur.fetchone()
             out[tbl] = row[0] if row else 0
         return out
+
+
+# ── Generic query helper for the public /databank/* endpoints ────────────────
+
+# Whitelist of (table, column-set) — protects the dynamic WHERE builder from
+# user-supplied filter keys.
+_TABLE_FILTERS = {
+    "people_killed": {
+        "from":         ("date >= ?", "date"),
+        "to":           ("date <= ?", "date"),
+        "place":        ("place_name LIKE ?", "like"),
+        "region":       ("place_region = ?", "exact"),
+        "age_min":      ("age >= ?", "int"),
+        "age_max":      ("age <= ?", "int"),
+        "gender":       ("gender = ?", "exact"),
+        "cause":        ("cause = ?", "exact"),
+        "source":       ("source_dataset = ?", "exact"),
+    },
+    "people_injured": {
+        "from":   ("date >= ?", "date"),
+        "to":     ("date <= ?", "date"),
+        "place":  ("place_name LIKE ?", "like"),
+        "region": ("place_region = ?", "exact"),
+        "source": ("source_dataset = ?", "exact"),
+    },
+    "people_detained": {
+        "from":   ("date_arrested >= ?", "date"),
+        "to":     ("date_arrested <= ?", "date"),
+        "place":  ("place_name LIKE ?", "like"),
+        "region": ("place_region = ?", "exact"),
+        "status": ("status = ?", "exact"),
+        "gender": ("gender = ?", "exact"),
+        "source": ("source_dataset = ?", "exact"),
+    },
+    "structures_damaged": {
+        "from":   ("date >= ?", "date"),
+        "to":     ("date <= ?", "date"),
+        "type":   ("type = ?", "exact"),
+        "place":  ("place_name LIKE ?", "like"),
+        "region": ("place_region = ?", "exact"),
+        "source": ("source_dataset = ?", "exact"),
+    },
+    "actor_actions": {
+        "from":     ("date >= ?", "date"),
+        "to":       ("date <= ?", "date"),
+        "actor":    ("actor_type = ?", "exact"),
+        "type":     ("action_type = ?", "exact"),
+        "place":    ("place_name LIKE ?", "like"),
+        "region":   ("place_region = ?", "exact"),
+        "source":   ("source_dataset = ?", "exact"),
+    },
+}
+
+_TABLE_DATE_COLUMN = {
+    "people_killed":      "date",
+    "people_injured":     "date",
+    "people_detained":    "date_arrested",
+    "structures_damaged": "date",
+    "actor_actions":      "date",
+}
+
+
+def _build_where(table: str, filters: dict) -> tuple[str, list]:
+    """Translate a {filter_key: value} dict into a parameterized WHERE clause.
+    Unknown keys are silently dropped (no SQL injection vector)."""
+    clauses, params = [], []
+    spec = _TABLE_FILTERS.get(table, {})
+    for k, v in filters.items():
+        if v is None or v == "" or k not in spec:
+            continue
+        clause, kind = spec[k]
+        if kind == "like":
+            params.append(f"%{v}%")
+        else:
+            params.append(v)
+        clauses.append(clause)
+    return ("WHERE " + " AND ".join(clauses)) if clauses else "", params
+
+
+async def query_table(
+    table: str,
+    filters: dict,
+    limit: int = 100,
+    offset: int = 0,
+    order_desc: bool = True,
+) -> tuple[list[dict], int]:
+    """Filtered + paginated read of a databank table. Returns (rows, total)."""
+    if table not in _TABLE_FILTERS:
+        raise ValueError(f"unknown databank table: {table}")
+    where, params = _build_where(table, filters)
+    date_col = _TABLE_DATE_COLUMN[table]
+    direction = "DESC" if order_desc else "ASC"
+    async with get_alerts_db() as db:
+        cur = await db.execute(f"SELECT COUNT(*) FROM {table} {where}", params)
+        total = (await cur.fetchone())[0]
+        cur = await db.execute(
+            f"SELECT * FROM {table} {where} ORDER BY {date_col} {direction} LIMIT ? OFFSET ?",
+            params + [limit, offset],
+        )
+        rows = await cur.fetchall()
+        col_names = [d[0] for d in cur.description]
+    return [dict(zip(col_names, r)) for r in rows], total
+
+
+async def summary_table(
+    table: str,
+    filters: dict,
+    interval: str = "month",   # day | month | year
+    group_by: Optional[str] = None,  # place_region | gender | cause | actor_type | type
+) -> list[dict]:
+    """Time-series + optional secondary grouping for dashboard rollups."""
+    if table not in _TABLE_FILTERS:
+        raise ValueError(f"unknown databank table: {table}")
+    if interval not in ("day", "month", "year"):
+        raise ValueError(f"interval must be day | month | year, got {interval!r}")
+    where, params = _build_where(table, filters)
+    date_col = _TABLE_DATE_COLUMN[table]
+    # SQLite date truncation
+    bucket_expr = {
+        "day":   f"substr({date_col}, 1, 10)",
+        "month": f"substr({date_col}, 1, 7)",
+        "year":  f"substr({date_col}, 1, 4)",
+    }[interval]
+    select_cols = [f"{bucket_expr} AS bucket", "COUNT(*) AS count"]
+    group_cols = [bucket_expr]
+    if group_by:
+        # Whitelist by intersecting with table columns at query time
+        async with get_alerts_db() as db:
+            cur = await db.execute(f"PRAGMA table_info({table})")
+            valid = {row[1] for row in await cur.fetchall()}
+        if group_by not in valid:
+            raise ValueError(f"group_by={group_by!r} not a column of {table}")
+        select_cols.insert(1, group_by)
+        group_cols.append(group_by)
+
+    sql = (
+        f"SELECT {', '.join(select_cols)} FROM {table} {where} "
+        f"GROUP BY {', '.join(group_cols)} ORDER BY bucket DESC"
+    )
+    async with get_alerts_db() as db:
+        cur = await db.execute(sql, params)
+        rows = await cur.fetchall()
+        col_names = [d[0] for d in cur.description]
+    return [dict(zip(col_names, r)) for r in rows]
+
+
+def rows_to_geojson(rows: list[dict]) -> dict:
+    """Project rows to a FeatureCollection. Rows without lat/lng are skipped."""
+    features = []
+    for r in rows:
+        lat, lng = r.get("lat"), r.get("lng")
+        if lat is None or lng is None:
+            continue
+        props = {k: v for k, v in r.items() if k not in ("lat", "lng")}
+        features.append({
+            "type": "Feature",
+            "geometry": {"type": "Point", "coordinates": [lng, lat]},
+            "properties": props,
+        })
+    return {"type": "FeatureCollection", "features": features}
