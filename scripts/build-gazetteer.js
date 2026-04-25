@@ -82,7 +82,7 @@ function parseGeonames(tsvText) {
         if (altNames) altNames.split(',').forEach((a) => a && aliases.add(a.trim()));
         out.push({
             canonical_key: snakeKey(asciiName || name),
-            name_ar: nameAr,
+            name_ar: nameAr || '',
             name_en: asciiName || name,
             governorate: admin1 ? admin1.toLowerCase() : null,
             zone: zoneOf(lat, lng),

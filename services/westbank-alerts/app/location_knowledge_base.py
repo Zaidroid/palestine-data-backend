@@ -49,11 +49,15 @@ class LocationKnowledgeBase:
             locations = data if isinstance(data, list) else data.get("locations", [])
 
             for loc in locations:
-                key = loc.get("canonical_key", "").strip()
-                name_ar = loc.get("name_ar", "").strip()
-                name_en = loc.get("name_en", "").strip()
+                key = (loc.get("canonical_key") or "").strip()
+                name_ar = (loc.get("name_ar") or "").strip()
+                name_en = (loc.get("name_en") or "").strip()
 
-                if not key or not name_ar:
+                if not key:
+                    continue
+                if not name_ar and not name_en:
+                    # GeoNames entries may be Latin-only; allow them in
+                    # by_english + by_key but skip the Arabic-name index.
                     continue
 
                 self.by_key[key] = loc
