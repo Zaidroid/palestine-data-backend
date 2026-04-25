@@ -157,6 +157,14 @@ async def init_db():
             await db.execute("ALTER TABLE alerts ADD COLUMN count INTEGER")
         if "temporal_certainty" not in alert_cols:
             await db.execute("ALTER TABLE alerts ADD COLUMN temporal_certainty TEXT")
+        # B2: multi-source ingestion. Existing rows are all Telegram-sourced.
+        if "source_type" not in alert_cols:
+            await db.execute(
+                "ALTER TABLE alerts ADD COLUMN source_type TEXT DEFAULT 'telegram'"
+            )
+            await db.execute(
+                "UPDATE alerts SET source_type='telegram' WHERE source_type IS NULL"
+            )
         await db.execute("CREATE INDEX IF NOT EXISTS idx_alerts_status ON alerts(status)")
         await db.execute("CREATE INDEX IF NOT EXISTS idx_alerts_confidence ON alerts(confidence)")
         # Spatial indexes for bbox / radius queries (T2.11 + T2.12)
@@ -226,8 +234,9 @@ async def insert_alert(alert: Alert) -> Alert:
                (type, severity, title, body, source, source_msg_id, area, zone,
                 raw_text, timestamp, created_at, event_subtype, latitude, longitude,
                 title_ar, confidence, source_reliability, status, correction_note,
-                geo_precision, geo_source_phrase, count, temporal_certainty)
-               VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)""",
+                geo_precision, geo_source_phrase, count, temporal_certainty,
+                source_type)
+               VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)""",
             (alert.type, alert.severity, alert.title, alert.body,
              alert.source, alert.source_msg_id, alert.area,
              getattr(alert, "zone", None),
@@ -243,7 +252,8 @@ async def insert_alert(alert: Alert) -> Alert:
              getattr(alert, "geo_precision", None),
              getattr(alert, "geo_source_phrase", None),
              getattr(alert, "count", None),
-             getattr(alert, "temporal_certainty", None))
+             getattr(alert, "temporal_certainty", None),
+             getattr(alert, "source_type", None) or "telegram")
         )
         await db.commit()
         alert.id = cur.lastrowid

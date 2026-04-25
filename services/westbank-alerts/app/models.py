@@ -55,8 +55,9 @@ class Alert(BaseModel):
     title: str
     title_ar: Optional[str] = None      # Arabic title for RTL display
     body: str
-    source: str                       # Telegram channel username
-    source_msg_id: Optional[int] = None
+    source: str                       # Channel/feed identifier (e.g. "qudsn", "aljazeera_ar")
+    source_type: Optional[str] = "telegram"  # "telegram" | "rss" — for B2 multi-source ingestion
+    source_msg_id: Optional[int] = None      # Telegram msg id, or stable hash of RSS guid/link
     area: Optional[str] = None        # Extracted city/camp name
     zone: Optional[str] = None        # WB sub-zone: north, middle, south
     raw_text: str

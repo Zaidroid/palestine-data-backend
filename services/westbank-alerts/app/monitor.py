@@ -100,45 +100,66 @@ def get_client() -> Optional[TelegramClient]:
 # ── Security alert pipeline ───────────────────────────────────────────────────
 
 async def _process_security_message(message, channel_username: str):
+    """Telegram-specific wrapper. Pulls the text + msg id off the
+    telethon Message and hands off to the source-agnostic pipeline."""
     raw = (message.message or "").strip()
     if len(raw) < 10:
         return
+    ts = (message.date.replace(tzinfo=None) if message.date else datetime.utcnow())
+    await _process_text(
+        raw_text=raw,
+        source=channel_username,
+        external_id=message.id,
+        timestamp=ts,
+        source_type="telegram",
+    )
 
-    if await duplicate_check(channel_username, message.id):
+
+async def _process_text(
+    raw_text: str,
+    source: str,
+    external_id: int,
+    timestamp,
+    source_type: str = "telegram",
+):
+    """Source-agnostic ingestion pipeline. Used by both the Telegram
+    poller and B2 RSS poller. `external_id` is an integer dedup key —
+    Telegram message id, or stable hash of an RSS guid/link."""
+    if await duplicate_check(source, external_id):
         return
 
     # Content-based dedup: catch repeated messages with slight variations
-    if await content_duplicate_check(raw):
-        log.debug(f"CONTENT_DUP @{channel_username}: {raw[:80]}")
+    if await content_duplicate_check(raw_text):
+        log.debug(f"CONTENT_DUP [{source_type}/{source}]: {raw_text[:80]}")
         return
 
     classified = None
 
     # Tier 1: missile/siren/regional attacks
-    if is_security_relevant(raw):
-        classified = classify(raw, channel_username)
+    if is_security_relevant(raw_text):
+        classified = classify(raw_text, source)
 
     # Tier 2: WB operational events (raids, settler attacks, road closures, etc.)
     if classified is None:
-        classified = classify_wb_operational(raw, channel_username)
+        classified = classify_wb_operational(raw_text, source)
 
     if classified is None:
-        log.debug(f"DISCARD @{channel_username}: {raw[:80]}")
+        log.debug(f"DISCARD [{source_type}/{source}]: {raw_text[:80]}")
         return
 
     alert = Alert(
         **classified,
-        source_msg_id=message.id,
-        timestamp=(
-            message.date.replace(tzinfo=None)
-            if message.date else datetime.utcnow()
-        ),
+        source_msg_id=external_id,
+        source_type=source_type,
+        timestamp=timestamp,
     )
     alert = await insert_alert(alert)
     log.info(
-        f"[ALERT/{alert.severity.upper()}] {alert.title} "
-        f"(source: @{channel_username}, area: {alert.area})"
+        f"[ALERT/{alert.severity.upper()}/{source_type}] {alert.title} "
+        f"(source: {source}, area: {alert.area})"
     )
+    # Bind for downstream sections that still reference channel_username
+    channel_username = source
 
     # B1 — cross-channel corroboration: if other distinct channels reported
     # the same (type, area) in the last 30 min, boost confidence on the new
@@ -410,6 +431,14 @@ async def start():
         f"Polling {len(channel_map)} channel(s) every {POLL_INTERVAL}s: "
         f"{list(channel_map.keys())}"
     )
+
+    # B2 — RSS adapter. Runs alongside Telegram polling using the same
+    # _process_text pipeline (classifier, corroboration, queue, extract).
+    try:
+        from .sources import rss as rss_source
+        asyncio.create_task(rss_source.run())
+    except Exception as e:
+        log.warning(f"RSS poller failed to start: {e}")
 
     _cycle_count = 0
     _consecutive_errors = 0
