@@ -120,6 +120,37 @@ const RSS_FEEDS = [
         reliability: 'high',
         language: 'en',
     },
+    // Palestinian + Arab perspective (added 2026-04-25 — see Phase B.1).
+    // WAFA, Ma'an, Quds News are CDN-blocked; ReliefWeb v2 needs a registered
+    // appname. These four work and add a strong regional/Palestinian voice.
+    {
+        name: 'Al Araby English',
+        url: 'https://www.alaraby.co.uk/rss',
+        category: 'news',
+        reliability: 'high',
+        language: 'en',
+    },
+    {
+        name: 'Anadolu Agency (Middle East)',
+        url: 'https://www.aa.com.tr/en/rss/default?cat=middle-east',
+        category: 'news',
+        reliability: 'high',
+        language: 'en',
+    },
+    {
+        name: 'IMEMC News',
+        url: 'https://www.imemc.org/feed',
+        category: 'news',
+        reliability: 'medium',
+        language: 'en',
+    },
+    {
+        name: 'Palestinian Information Center',
+        url: 'https://english.palinfo.com/feed/',
+        category: 'news',
+        reliability: 'medium',
+        language: 'en',
+    },
 ];
 
 const sleep = (ms) => new Promise(resolve => setTimeout(resolve, ms));

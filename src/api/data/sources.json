@@ -285,8 +285,8 @@
       "fetcher_name": "culture"
     },
     "rss_news_feeds": {
-      "name": "International News RSS Feeds",
-      "organization": "Various (Al Jazeera, BBC, Reuters, Haaretz, Guardian, Mondoweiss, Electronic Intifada, Middle East Eye, Amnesty)",
+      "name": "International + Palestinian News RSS Feeds",
+      "organization": "Various (Al Jazeera, BBC, Reuters, Haaretz, Mondoweiss, Electronic Intifada, Middle East Eye, Amnesty, HRW, Anadolu, IMEMC, PalInfo, Al Araby)",
       "source_url": "various",
       "license_id": "copyright-fair-use",
       "commercial_use": false,
@@ -444,21 +444,6 @@
       "source": "OCHA Demolitions Dashboard",
       "category": "land",
       "reason": "Daily ohcaopt.org incident feed"
-    },
-    {
-      "source": "WAFA",
-      "category": "news",
-      "reason": "Palestinian official news agency"
-    },
-    {
-      "source": "Ma'an News",
-      "category": "news",
-      "reason": "Palestinian outlet"
-    },
-    {
-      "source": "Quds News Network",
-      "category": "news",
-      "reason": "Palestinian outlet"
     },
     {
       "source": "UNRWA RSS",
