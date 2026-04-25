@@ -937,6 +937,24 @@ async def admin_review_verdict(
     return {"alert_id": alert_id, "verdict": verdict, "reviewed_at": now}
 
 
+# ── A3 — Volume anomaly detection ────────────────────────────────────────────
+
+@app.get("/admin/anomalies", tags=["admin"])
+async def admin_anomalies(
+    hours: int = Query(24, ge=1, le=168),
+    refresh: bool = Query(True, description="Run the check before returning recent anomalies"),
+    _: str = Depends(require_key),
+):
+    """Volume anomaly detector. By default runs the check first, then returns
+    all anomalies detected in the last `hours` window. Set refresh=false to
+    just read the persisted table without recomputing."""
+    from . import anomaly
+    if refresh:
+        await anomaly.check_volume_anomalies()
+    rows = await anomaly.list_recent_anomalies(hours=hours)
+    return {"count": len(rows), "anomalies": rows, "window_hours": hours}
+
+
 @app.get("/channel-reliability", tags=["alerts"])
 async def list_channel_reliability():
     """

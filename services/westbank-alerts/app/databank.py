@@ -176,6 +176,27 @@ CREATE TABLE IF NOT EXISTS alert_review_queue (
 )
 """
 
+# A3 — volume anomaly detection. Each row is one detected spike:
+# count of alerts of (event_type, source) in the last hour exceeded
+# (baseline_mean + 3*baseline_std) vs the trailing 24h hourly baseline.
+# Idempotent on (event_type, source, bucket_hour) so re-running the check
+# inside the same hour doesn't duplicate.
+CREATE_ANOMALIES = """
+CREATE TABLE IF NOT EXISTS anomalies (
+    id                  INTEGER PRIMARY KEY AUTOINCREMENT,
+    event_type          TEXT NOT NULL,
+    source              TEXT,
+    bucket_hour         TEXT NOT NULL,
+    count_1h            INTEGER NOT NULL,
+    baseline_mean       REAL NOT NULL,
+    baseline_std        REAL NOT NULL,
+    sigma               REAL NOT NULL,
+    sample_alert_ids    TEXT,
+    detected_at         TEXT NOT NULL,
+    UNIQUE(event_type, source, bucket_hour)
+)
+"""
+
 CREATE_DATABANK_INDEXES = [
     "CREATE INDEX IF NOT EXISTS idx_killed_date    ON people_killed(date DESC)",
     "CREATE INDEX IF NOT EXISTS idx_killed_region  ON people_killed(place_region)",
@@ -210,6 +231,10 @@ async def init_databank():
         await db.execute(CREATE_ALERT_REVIEW_QUEUE)
         await db.execute(
             "CREATE INDEX IF NOT EXISTS idx_review_pending ON alert_review_queue(reviewed_at) WHERE reviewed_at IS NULL"
+        )
+        await db.execute(CREATE_ANOMALIES)
+        await db.execute(
+            "CREATE INDEX IF NOT EXISTS idx_anomalies_detected ON anomalies(detected_at DESC)"
         )
         # Migration: add `count` column to existing people_killed tables
         cur = await db.execute("PRAGMA table_info(people_killed)")
