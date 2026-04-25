@@ -18,7 +18,10 @@ const ALERTS_API = process.env.ALERTS_API_URL || 'http://alerts:8080';
 // support for `router.get('*')` so we use middleware form instead.
 router.use((req, res, next) => {
     if (req.method !== 'GET') return next();
-    const upstreamPath = '/databank' + req.path;
+    // Normalize: strip trailing slash so /databank/ and /databank/people_killed/
+    // both reach the FastAPI routes (which don't use trailing slashes).
+    const sub = req.path === '/' ? '' : req.path.replace(/\/+$/, '');
+    const upstreamPath = '/databank' + sub;
     const qs = req.url.includes('?') ? req.url.substring(req.url.indexOf('?')) : '';
     const url = new URL(upstreamPath + qs, ALERTS_API);
 
