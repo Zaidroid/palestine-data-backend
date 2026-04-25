@@ -129,8 +129,18 @@ _location_kb: Optional[LocationKnowledgeBase] = None
 async def load_location_kb() -> LocationKnowledgeBase:
     global _location_kb
     kb = LocationKnowledgeBase()
-    path = Path(__file__).resolve().parent.parent / "data" / "known_locations.json"
-    await kb.load_from_file(path)
+    # Try /app/data (image-baked) first; fall back to /data (volume-mounted
+    # alerts service data). The docker-compose mount of repo-root /data
+    # over /app/data was shadowing the COPY'd known_locations.json, so the
+    # mounted alerts-service data is the real source of truth in production.
+    candidates = [
+        Path(__file__).resolve().parent.parent / "data" / "known_locations.json",
+        Path("/data/known_locations.json"),
+    ]
+    for path in candidates:
+        if path.exists():
+            await kb.load_from_file(path)
+            break
     _location_kb = kb
     return kb
 

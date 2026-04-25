@@ -194,8 +194,16 @@ async def load_knowledge_base() -> CheckpointKnowledgeBase:
     """
     global _knowledge_base
     kb = CheckpointKnowledgeBase()
-    path = Path(__file__).resolve().parent.parent / "data" / "known_checkpoints.json"
-    await kb.load_from_file(path)
+    # Same shadowing issue as load_location_kb: prefer the image-baked path,
+    # fall back to /data (volume-mounted alerts service data).
+    candidates = [
+        Path(__file__).resolve().parent.parent / "data" / "known_checkpoints.json",
+        Path("/data/known_checkpoints.json"),
+    ]
+    for path in candidates:
+        if path.exists():
+            await kb.load_from_file(path)
+            break
     _knowledge_base = kb
     return kb
 
