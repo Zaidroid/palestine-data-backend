@@ -140,6 +140,33 @@ async def _process_security_message(message, channel_username: str):
         f"(source: @{channel_username}, area: {alert.area})"
     )
 
+    # B1 — cross-channel corroboration: if other distinct channels reported
+    # the same (type, area) in the last 30 min, boost confidence on the new
+    # alert AND on the existing corroborators (symmetric).
+    try:
+        from .database import recent_similar_alerts, bump_corroboration, get_alerts_db
+        prior = await recent_similar_alerts(
+            alert.type, alert.area,
+            since_minutes=30, exclude_source=channel_username,
+        )
+        # Distinct channels among priors (skip self)
+        distinct_sources = {p.source for p in prior if p.id != alert.id}
+        n = len(distinct_sources)
+        if n > 0:
+            boost = min(0.30, 0.10 * n)
+            new_conf = min(1.0, (alert.confidence or 0.5) + boost)
+            async with get_alerts_db() as db:
+                await db.execute(
+                    "UPDATE alerts SET confidence = ? WHERE id = ?",
+                    (new_conf, alert.id),
+                )
+                await db.commit()
+            await bump_corroboration([p.id for p in prior], new_conf)
+            log.info(f"  corroborated by {n} channel(s): confidence {alert.confidence:.2f}→{new_conf:.2f}")
+            alert.confidence = new_conf
+    except Exception as e:
+        log.warning(f"Corroboration check failed for alert #{alert.id}: {e}")
+
     # Long-term databank: extract people/structures/actor-actions from alert.
     try:
         from .entity_extractor import extract_entities

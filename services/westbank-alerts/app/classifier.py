@@ -1086,6 +1086,7 @@ def _compute_confidence(
     text: str,
     alert_type: AlertType,
     temporal_certainty: Optional[str] = None,
+    corroborator_count: int = 0,
 ) -> tuple[float, float]:
     """Return (confidence, source_reliability), both clamped to [0.0, 1.0].
 
@@ -1113,6 +1114,10 @@ def _compute_confidence(
         base -= 0.20
     elif temporal_certainty == "now":
         base += 0.05
+    # B1 — cross-channel corroboration: +0.10 per distinct prior source
+    # reporting the same (type, area) in the last 30 minutes, capped at +0.30.
+    if corroborator_count > 0:
+        base += min(0.30, 0.10 * corroborator_count)
     confidence = max(0.0, min(1.0, round(base, 3)))
     return confidence, round(rel, 3)
 

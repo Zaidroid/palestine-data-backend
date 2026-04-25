@@ -389,6 +389,56 @@ async def duplicate_check(source: str, source_msg_id: int) -> bool:
         return await cur.fetchone() is not None
 
 
+async def recent_similar_alerts(
+    event_type: str,
+    area: Optional[str],
+    since_minutes: int = 30,
+    exclude_source: Optional[str] = None,
+) -> list[Alert]:
+    """B1 — find prior alerts of the same (type, area) within `since_minutes`.
+
+    Used by the classifier to compute cross-channel corroboration: if N
+    distinct sources reported the same event in the same window, boost
+    confidence on every member of the group.
+
+    Pass `exclude_source` to skip alerts from the same channel as the
+    incoming one (so we count distinct channels, not repeats).
+    """
+    if not event_type or not area:
+        return []
+    since = (datetime.utcnow() - timedelta(minutes=since_minutes)).isoformat()
+    where = ["type = ?", "area = ?", "timestamp >= ?", "status = 'active'"]
+    params: list = [event_type, area, since]
+    if exclude_source:
+        where.append("source != ?")
+        params.append(exclude_source)
+    async with get_alerts_db() as db:
+        cur = await db.execute(
+            f"SELECT * FROM alerts WHERE {' AND '.join(where)} ORDER BY timestamp DESC LIMIT 20",
+            params,
+        )
+        rows = await cur.fetchall()
+    return [_row_to_alert(r) for r in rows]
+
+
+async def bump_corroboration(
+    alert_ids: list[int], new_confidence_floor: float
+) -> None:
+    """When a new alert corroborates older alerts in the same window,
+    bump their confidence (MAX) so the boost is symmetric. Caller passes
+    the recomputed confidence floor; existing higher values are kept."""
+    if not alert_ids:
+        return
+    placeholders = ",".join(["?"] * len(alert_ids))
+    async with get_alerts_db() as db:
+        await db.execute(
+            f"UPDATE alerts SET confidence = MAX(confidence, ?) "
+            f"WHERE id IN ({placeholders})",
+            [new_confidence_floor, *alert_ids],
+        )
+        await db.commit()
+
+
 async def content_duplicate_check(raw_text: str, window_minutes: int = 30) -> bool:
     """Check if a similar alert was already inserted within the time window.
 
