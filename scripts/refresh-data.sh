@@ -13,20 +13,31 @@
 
 cd "$(dirname "$0")/.." || exit 1
 LOG=public/data/refresh-$(date -u +%Y-%m-%d).log
+EVENTS_NDJSON=public/data/refresh-events.ndjson
+STATUS_JSON=public/data/refresh-status.json
 mkdir -p public/data
 
 started_at=$(date -u +%s)
 echo "=== refresh-data started $(date -u -Iseconds) ===" | tee "$LOG"
 
+# Each fetcher run appends one JSON event line to refresh-events.ndjson
+# (kept rolling — last ~30 days). After all steps, summarize-refresh-status.js
+# rolls them into a per-fetcher latest + recent-history file consumed by
+# /api/v1/sources for live health surfacing. Phase C — self-aware data.
 run() {
     local label="$1"; shift
     local t0=$(date -u +%s)
     if "$@" >>"$LOG" 2>&1; then
-        echo "  OK ${label} ($(( $(date -u +%s) - t0 ))s)" | tee -a "$LOG"
+        local rc=0
+        local outcome="OK"
     else
         local rc=$?
-        echo "  FAIL ${label} (rc=${rc}, $(( $(date -u +%s) - t0 ))s)" | tee -a "$LOG"
+        local outcome="FAIL"
     fi
+    local dur=$(( $(date -u +%s) - t0 ))
+    echo "  ${outcome} ${label} (${dur}s)" | tee -a "$LOG"
+    printf '{"label":"%s","outcome":"%s","duration_s":%d,"rc":%d,"at":"%s"}\n' \
+        "$label" "$outcome" "$dur" "$rc" "$(date -u -Iseconds)" >> "$EVENTS_NDJSON"
 }
 
 # Step 1: Fetch fresh data from each source
@@ -73,6 +84,10 @@ run "write-snapshot" node scripts/write-snapshot.js
 # Step 6: Restart api container so apicache picks up fresh data
 echo "[step 6] restart api" | tee -a "$LOG"
 run "docker-restart-api" docker compose restart api
+
+# Consolidate per-fetcher status from the rolling event log into
+# refresh-status.json (latest outcome + rolling success rate per fetcher).
+node scripts/summarize-refresh-status.js >>"$LOG" 2>&1 || true
 
 elapsed=$(( $(date -u +%s) - started_at ))
 echo "=== refresh-data done in ${elapsed}s ===" | tee -a "$LOG"

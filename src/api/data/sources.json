@@ -2,7 +2,6 @@
   "$schema_version": "1.0.0",
   "generated_at": "2026-04-25",
   "notes": "Authoritative registry of every upstream source feeding the Palestine Data Backend. Each entry declares update cadence, time coverage, license, and which unified categories or databank tables it populates. Read by /api/v1/sources; consumed by the refresh pipeline to surface per-source health.",
-
   "sources": {
     "tech4palestine_summary": {
       "name": "Tech4Palestine v3 Summary",
@@ -11,16 +10,22 @@
       "license_id": "CC-BY-4.0",
       "commercial_use": true,
       "attribution_text": "Data: Tech4Palestine (data.techforpalestine.org), licensed CC-BY-4.0.",
-      "feeds_categories": ["conflict"],
+      "feeds_categories": [
+        "conflict"
+      ],
       "feeds_databank": [],
-      "feeds_endpoints": ["/api/v1/databank/totals", "/api/v1/gaza/summary"],
+      "feeds_endpoints": [
+        "/api/v1/databank/totals",
+        "/api/v1/gaza/summary"
+      ],
       "update_cadence": "daily",
       "coverage_start": "2023-10-07",
       "coverage_end": "ongoing",
       "typical_lag_days": 1,
       "fetcher_script": "scripts/fetch-gaza-daily.js",
       "notes": "Cumulative casualty totals (Gaza + West Bank). Primary source for /databank/totals headline numbers.",
-      "primary": true
+      "primary": true,
+      "fetcher_name": "gaza-daily"
     },
     "tech4palestine_daily": {
       "name": "Tech4Palestine Daily Bulletins",
@@ -29,15 +34,21 @@
       "license_id": "CC-BY-4.0",
       "commercial_use": true,
       "attribution_text": "Gaza Ministry of Health daily bulletins, mirrored by Tech4Palestine (CC-BY-4.0).",
-      "feeds_categories": ["health"],
-      "feeds_databank": ["people_killed", "people_injured"],
+      "feeds_categories": [
+        "health"
+      ],
+      "feeds_databank": [
+        "people_killed",
+        "people_injured"
+      ],
       "update_cadence": "daily",
       "coverage_start": "2023-10-07",
       "coverage_end": "ongoing",
       "typical_lag_days": 1,
       "fetcher_script": "scripts/fetch-gaza-daily.js",
       "notes": "923+ days of per-day delta + cumulative figures (killed, injured, children, women, medics, press, civil_defence, famine, aid_seekers).",
-      "primary": true
+      "primary": true,
+      "fetcher_name": "gaza-daily"
     },
     "tech4palestine_martyrs": {
       "name": "Tech4Palestine Killed-in-Gaza Roster",
@@ -46,8 +57,12 @@
       "license_id": "CC-BY-4.0",
       "commercial_use": true,
       "attribution_text": "Data: Tech4Palestine (data.techforpalestine.org), licensed CC-BY-4.0.",
-      "feeds_categories": ["martyrs_snapshot_2023"],
-      "feeds_databank": ["people_killed"],
+      "feeds_categories": [
+        "martyrs_snapshot_2023"
+      ],
+      "feeds_databank": [
+        "people_killed"
+      ],
       "update_cadence": "weekly",
       "coverage_start": "2023-10-07",
       "coverage_end": "frozen 2023-10-07 baseline",
@@ -63,16 +78,18 @@
       "license_id": "CC-BY-4.0",
       "commercial_use": true,
       "attribution_text": "Data: Tech4Palestine / Gaza Government Media Office (CC-BY-4.0).",
-      "feeds_categories": ["infrastructure"],
+      "feeds_categories": [
+        "infrastructure"
+      ],
       "feeds_databank": [],
       "update_cadence": "daily",
       "coverage_start": "2023-10-07",
       "coverage_end": "ongoing",
       "typical_lag_days": 2,
       "fetcher_script": "scripts/fetch-infrastructure-data.js",
-      "primary": true
+      "primary": true,
+      "fetcher_name": "infrastructure"
     },
-
     "world_bank": {
       "name": "World Bank Open Data",
       "organization": "The World Bank Group",
@@ -81,7 +98,10 @@
       "license_id": "CC-BY-4.0",
       "commercial_use": true,
       "attribution_text": "Data: The World Bank (data.worldbank.org), licensed CC-BY-4.0.",
-      "feeds_categories": ["economic", "pcbs"],
+      "feeds_categories": [
+        "economic",
+        "pcbs"
+      ],
       "feeds_databank": [],
       "update_cadence": "annual",
       "coverage_start": "2010",
@@ -89,7 +109,8 @@
       "typical_lag_days": 365,
       "fetcher_script": "scripts/fetch-worldbank-data.js + scripts/fetch-pcbs-data.js",
       "notes": "411+ Palestine indicators. Latest released vintage typically lags 12-24 months. PCBS-republished indicators routed through this same API.",
-      "primary": true
+      "primary": true,
+      "fetcher_name": "worldbank"
     },
     "imf_datamapper": {
       "name": "IMF DataMapper (WEO)",
@@ -99,7 +120,9 @@
       "license_id": "CC-BY-4.0",
       "commercial_use": true,
       "attribution_text": "Data: IMF DataMapper / World Economic Outlook (imf.org), licensed CC-BY-4.0.",
-      "feeds_categories": ["economic"],
+      "feeds_categories": [
+        "economic"
+      ],
       "feeds_databank": [],
       "update_cadence": "biannual",
       "coverage_start": "1993",
@@ -107,9 +130,9 @@
       "typical_lag_days": 90,
       "fetcher_script": "scripts/sources/imf.js",
       "notes": "WEO published April + October each year. 18 indicators with WBG (Palestine) coverage: real GDP growth, inflation (latest 2025), population, current account, government debt, unemployment.",
-      "primary": false
+      "primary": false,
+      "fetcher_name": "imf-economic"
     },
-
     "addameer": {
       "name": "Addameer Prisoner Statistics",
       "organization": "Addameer Prisoner Support and Human Rights Association",
@@ -117,8 +140,12 @@
       "license_id": "verify-required",
       "commercial_use": "unknown",
       "attribution_text": "Data: Addameer Prisoner Support and Human Rights Association (addameer.ps).",
-      "feeds_categories": ["prisoners"],
-      "feeds_databank": ["people_detained"],
+      "feeds_categories": [
+        "prisoners"
+      ],
+      "feeds_databank": [
+        "people_detained"
+      ],
       "update_cadence": "monthly",
       "coverage_start": "2022-11",
       "coverage_end": "ongoing",
@@ -126,9 +153,9 @@
       "fetcher_script": "scripts/fetch-prisoners.js",
       "notes": "Monthly aggregate counts (total / administrative / child / female prisoners). Web-scraped from highchart data attributes.",
       "primary": true,
-      "verify_required": true
+      "verify_required": true,
+      "fetcher_name": "prisoners"
     },
-
     "unhcr_odp": {
       "name": "UNHCR Operational Data Portal",
       "organization": "United Nations High Commissioner for Refugees",
@@ -137,7 +164,9 @@
       "license_id": "CC-BY-4.0",
       "commercial_use": true,
       "attribution_text": "Data: UNHCR Operational Data Portal (unhcr.org), licensed CC-BY-4.0.",
-      "feeds_categories": ["refugees"],
+      "feeds_categories": [
+        "refugees"
+      ],
       "feeds_databank": [],
       "update_cadence": "annual",
       "coverage_start": "2010",
@@ -145,9 +174,9 @@
       "typical_lag_days": 365,
       "fetcher_script": "scripts/sources/unhcr.js",
       "notes": "Palestinian refugee populations by country of asylum, year by year. ~1,200 records.",
-      "primary": true
+      "primary": true,
+      "fetcher_name": "unhcr-refugees"
     },
-
     "un_ocha_fts": {
       "name": "UN OCHA Financial Tracking Service",
       "organization": "UN Office for the Coordination of Humanitarian Affairs",
@@ -156,7 +185,9 @@
       "license_id": "CC-BY-IGO-3.0",
       "commercial_use": true,
       "attribution_text": "Funding flows: UN OCHA Financial Tracking Service (fts.unocha.org), licensed CC-BY-IGO-3.0.",
-      "feeds_categories": ["funding"],
+      "feeds_categories": [
+        "funding"
+      ],
       "feeds_databank": [],
       "update_cadence": "daily",
       "coverage_start": "2013-05",
@@ -164,9 +195,9 @@
       "typical_lag_days": 7,
       "fetcher_script": "scripts/sources/unfts.js",
       "notes": "9,000+ humanitarian funding flows: appeals, donors, clusters, recipients.",
-      "primary": true
+      "primary": true,
+      "fetcher_name": "unfts-funding"
     },
-
     "who_hdx": {
       "name": "WHO Health Indicators (via HDX)",
       "organization": "World Health Organization",
@@ -174,17 +205,19 @@
       "license_id": "CC-BY-NC-SA-3.0-IGO",
       "commercial_use": false,
       "attribution_text": "Data: WHO Global Health Observatory, licensed CC-BY-NC-SA 3.0 IGO.",
-      "feeds_categories": ["health"],
+      "feeds_categories": [
+        "health"
+      ],
       "feeds_databank": [],
       "update_cadence": "annual",
       "coverage_start": "1975",
       "coverage_end": "current_year",
       "typical_lag_days": 365,
       "fetcher_script": "scripts/fetch-who-data.js",
-      "notes": "WHO indicators republished via HDX. 38k+ historical records (life expectancy, vaccination, mortality). Non-commercial license — paid-tier consumers should query without WHO source filter.",
-      "primary": true
+      "notes": "WHO indicators republished via HDX. 38k+ historical records (life expectancy, vaccination, mortality). Non-commercial license \u2014 paid-tier consumers should query without WHO source filter.",
+      "primary": true,
+      "fetcher_name": "who"
     },
-
     "ocha_opt_hdx": {
       "name": "UN OCHA oPt (via HDX)",
       "organization": "UN Office for the Coordination of Humanitarian Affairs (occupied Palestinian territory)",
@@ -192,7 +225,13 @@
       "license_id": "CC-BY-IGO-3.0",
       "commercial_use": true,
       "attribution_text": "Data: UN OCHA oPt (ochaopt.org), licensed CC-BY 3.0 IGO.",
-      "feeds_categories": ["water", "education", "infrastructure", "westbank", "refugees"],
+      "feeds_categories": [
+        "water",
+        "education",
+        "infrastructure",
+        "westbank",
+        "refugees"
+      ],
       "feeds_databank": [],
       "update_cadence": "weekly",
       "coverage_start": "2010",
@@ -200,9 +239,9 @@
       "typical_lag_days": 7,
       "fetcher_script": "scripts/fetch-hdx-ckan-data.js",
       "notes": "OCHA-oPt humanitarian datasets pulled from HDX CKAN. WASH, education access, infrastructure damage, locality records.",
-      "primary": true
+      "primary": true,
+      "fetcher_name": "hdx"
     },
-
     "peace_now": {
       "name": "Peace Now Settlement Watch",
       "organization": "Peace Now (via HDX)",
@@ -210,18 +249,20 @@
       "license_id": "verify-required",
       "commercial_use": "unknown",
       "attribution_text": "Data: Peace Now Settlement Watch.",
-      "feeds_categories": ["land"],
+      "feeds_categories": [
+        "land"
+      ],
       "feeds_databank": [],
       "update_cadence": "monthly",
       "coverage_start": "2010",
       "coverage_end": "ongoing",
       "typical_lag_days": 30,
       "fetcher_script": "scripts/fetch-land-data.js",
-      "notes": "West Bank settlements registry — boundaries, populations, expansion approvals.",
+      "notes": "West Bank settlements registry \u2014 boundaries, populations, expansion approvals.",
       "primary": true,
-      "verify_required": true
+      "verify_required": true,
+      "fetcher_name": "land"
     },
-
     "wikidata_culture": {
       "name": "Wikidata SPARQL (Heritage Sites)",
       "organization": "Wikimedia Foundation",
@@ -230,7 +271,9 @@
       "license_id": "CC0",
       "commercial_use": true,
       "attribution_text": "Data: Wikidata (wikidata.org), CC0 / public domain.",
-      "feeds_categories": ["culture"],
+      "feeds_categories": [
+        "culture"
+      ],
       "feeds_databank": [],
       "update_cadence": "weekly",
       "coverage_start": "ongoing",
@@ -238,9 +281,9 @@
       "typical_lag_days": 7,
       "fetcher_script": "scripts/fetch-culture-data.js",
       "notes": "Cultural heritage sites in Palestine via SPARQL. Snapshot of currently-known sites; not a time series of incidents.",
-      "primary": true
+      "primary": true,
+      "fetcher_name": "culture"
     },
-
     "rss_news_feeds": {
       "name": "International News RSS Feeds",
       "organization": "Various (Al Jazeera, BBC, Reuters, Haaretz, Guardian, Mondoweiss, Electronic Intifada, Middle East Eye, Amnesty)",
@@ -248,7 +291,9 @@
       "license_id": "copyright-fair-use",
       "commercial_use": false,
       "attribution_text": "Headlines from respective publishers; all rights reserved by source.",
-      "feeds_categories": ["news"],
+      "feeds_categories": [
+        "news"
+      ],
       "feeds_databank": [],
       "update_cadence": "hourly",
       "coverage_start": "ongoing (rolling window)",
@@ -256,9 +301,9 @@
       "typical_lag_days": 0,
       "fetcher_script": "scripts/fetch-rss-feeds.js",
       "notes": "Headlines + source URL + summary only. No full-article redistribution.",
-      "primary": true
+      "primary": true,
+      "fetcher_name": "rss-news"
     },
-
     "idmc": {
       "name": "IDMC Internal Displacement Updates",
       "organization": "Internal Displacement Monitoring Centre",
@@ -267,7 +312,9 @@
       "license_id": "CC-BY-IGO",
       "commercial_use": true,
       "attribution_text": "Displacement events: Internal Displacement Monitoring Centre (idmc.ch), CC-BY-IGO.",
-      "feeds_categories": ["refugees"],
+      "feeds_categories": [
+        "refugees"
+      ],
       "feeds_databank": [],
       "update_cadence": "daily",
       "coverage_start": "2008",
@@ -275,7 +322,8 @@
       "typical_lag_days": 1,
       "fetcher_script": "scripts/sources/idmc.js",
       "notes": "Per-event internal displacement (storms, floods, conflict-violence) with geocoding + figure + source attribution. Complements UNHCR (cross-border) with internal events.",
-      "primary": true
+      "primary": true,
+      "fetcher_name": "idmc-displacement"
     },
     "ucdp_ged": {
       "name": "UCDP Georeferenced Event Dataset",
@@ -285,7 +333,9 @@
       "license_id": "CC-BY-IGO",
       "commercial_use": true,
       "attribution_text": "Conflict events: Uppsala Conflict Data Program (ucdp.uu.se), CC-BY-IGO.",
-      "feeds_categories": ["conflict"],
+      "feeds_categories": [
+        "conflict"
+      ],
       "feeds_databank": [],
       "update_cadence": "annual",
       "coverage_start": "1989",
@@ -293,7 +343,8 @@
       "typical_lag_days": 180,
       "fetcher_script": "scripts/sources/ucdp-conflict.js",
       "notes": "7,800+ Palestine-related conflict events with lat/lng, casualty counts, source attribution. Academic gold-standard. Backfills /unified/conflict pre-2000 (Tech4Palestine starts Sep 2000).",
-      "primary": true
+      "primary": true,
+      "fetcher_name": "ucdp-conflict"
     },
     "good_shepherd": {
       "name": "Good Shepherd Collective Healthcare Data",
@@ -302,7 +353,10 @@
       "license_id": "verify-required",
       "commercial_use": "unknown",
       "attribution_text": "Data: Good Shepherd Collective.",
-      "feeds_categories": ["health", "infrastructure"],
+      "feeds_categories": [
+        "health",
+        "infrastructure"
+      ],
       "feeds_databank": [],
       "update_cadence": "irregular",
       "coverage_start": "2020",
@@ -311,44 +365,145 @@
       "fetcher_script": "scripts/fetch-goodshepherd-data.js",
       "notes": "Healthcare facility incidents + facility censuses. Currently stale; verify source before relying.",
       "primary": false,
-      "verify_required": true
+      "verify_required": true,
+      "fetcher_name": "goodshepherd"
     }
   },
-
   "category_index": {
-    "conflict": ["tech4palestine_summary", "ucdp_ged"],
-    "culture": ["wikidata_culture"],
-    "economic": ["world_bank", "imf_datamapper"],
-    "education": ["ocha_opt_hdx"],
-    "funding": ["un_ocha_fts"],
-    "health": ["who_hdx", "tech4palestine_daily", "good_shepherd"],
-    "infrastructure": ["tech4palestine_infrastructure", "ocha_opt_hdx", "good_shepherd"],
-    "land": ["peace_now"],
-    "martyrs_snapshot_2023": ["tech4palestine_martyrs"],
-    "news": ["rss_news_feeds"],
-    "pcbs": ["world_bank"],
-    "prisoners": ["addameer"],
-    "refugees": ["unhcr_odp", "idmc", "ocha_opt_hdx"],
-    "water": ["ocha_opt_hdx"],
-    "westbank": ["ocha_opt_hdx"]
+    "conflict": [
+      "tech4palestine_summary",
+      "ucdp_ged"
+    ],
+    "culture": [
+      "wikidata_culture"
+    ],
+    "economic": [
+      "world_bank",
+      "imf_datamapper"
+    ],
+    "education": [
+      "ocha_opt_hdx"
+    ],
+    "funding": [
+      "un_ocha_fts"
+    ],
+    "health": [
+      "who_hdx",
+      "tech4palestine_daily",
+      "good_shepherd"
+    ],
+    "infrastructure": [
+      "tech4palestine_infrastructure",
+      "ocha_opt_hdx",
+      "good_shepherd"
+    ],
+    "land": [
+      "peace_now"
+    ],
+    "martyrs_snapshot_2023": [
+      "tech4palestine_martyrs"
+    ],
+    "news": [
+      "rss_news_feeds"
+    ],
+    "pcbs": [
+      "world_bank"
+    ],
+    "prisoners": [
+      "addameer"
+    ],
+    "refugees": [
+      "unhcr_odp",
+      "idmc",
+      "ocha_opt_hdx"
+    ],
+    "water": [
+      "ocha_opt_hdx"
+    ],
+    "westbank": [
+      "ocha_opt_hdx"
+    ]
   },
-
   "planned_additions": [
-    { "source": "ACLED", "category": "conflict", "reason": "Cross-verification — UCDP-GED already covers 1989+" },
-    { "source": "Palestine Monetary Authority", "category": "economic", "reason": "Quarterly macro, freshest available" },
-    { "source": "B'Tselem demolitions", "category": "land", "reason": "Daily HR signal; only Peace Now currently" },
-    { "source": "OCHA Demolitions Dashboard", "category": "land", "reason": "Daily ohcaopt.org incident feed" },
-    { "source": "WAFA", "category": "news", "reason": "Palestinian official news agency" },
-    { "source": "Ma'an News", "category": "news", "reason": "Palestinian outlet" },
-    { "source": "Quds News Network", "category": "news", "reason": "Palestinian outlet" },
-    { "source": "UNRWA RSS", "category": "health", "reason": "Weekly Gaza/WB field bulletins" },
-    { "source": "WHO Health Cluster Bulletin", "category": "health", "reason": "Weekly health-system situational" },
-    { "source": "DCIP", "category": "prisoners", "reason": "Child detention statistics" },
-    { "source": "HaMoked", "category": "prisoners", "reason": "Administrative detention case database" },
-    { "source": "UNESCO Palestine Atlas", "category": "culture", "reason": "Curated heritage list complementing Wikidata" },
-    { "source": "Riwaq Heritage Registry", "category": "culture", "reason": "WB heritage buildings registry" },
-    { "source": "UNISPAL", "category": "historical", "reason": "Restore historical category with UN Palestine archives" },
-    { "source": "Yale Avalon Project", "category": "historical", "reason": "Treaty texts back to 1947" },
-    { "source": "PASSIA", "category": "historical", "reason": "Annual Palestine yearbook stats" }
+    {
+      "source": "ACLED",
+      "category": "conflict",
+      "reason": "Cross-verification \u2014 UCDP-GED already covers 1989+"
+    },
+    {
+      "source": "Palestine Monetary Authority",
+      "category": "economic",
+      "reason": "Quarterly macro, freshest available"
+    },
+    {
+      "source": "B'Tselem demolitions",
+      "category": "land",
+      "reason": "Daily HR signal; only Peace Now currently"
+    },
+    {
+      "source": "OCHA Demolitions Dashboard",
+      "category": "land",
+      "reason": "Daily ohcaopt.org incident feed"
+    },
+    {
+      "source": "WAFA",
+      "category": "news",
+      "reason": "Palestinian official news agency"
+    },
+    {
+      "source": "Ma'an News",
+      "category": "news",
+      "reason": "Palestinian outlet"
+    },
+    {
+      "source": "Quds News Network",
+      "category": "news",
+      "reason": "Palestinian outlet"
+    },
+    {
+      "source": "UNRWA RSS",
+      "category": "health",
+      "reason": "Weekly Gaza/WB field bulletins"
+    },
+    {
+      "source": "WHO Health Cluster Bulletin",
+      "category": "health",
+      "reason": "Weekly health-system situational"
+    },
+    {
+      "source": "DCIP",
+      "category": "prisoners",
+      "reason": "Child detention statistics"
+    },
+    {
+      "source": "HaMoked",
+      "category": "prisoners",
+      "reason": "Administrative detention case database"
+    },
+    {
+      "source": "UNESCO Palestine Atlas",
+      "category": "culture",
+      "reason": "Curated heritage list complementing Wikidata"
+    },
+    {
+      "source": "Riwaq Heritage Registry",
+      "category": "culture",
+      "reason": "WB heritage buildings registry"
+    },
+    {
+      "source": "UNISPAL",
+      "category": "historical",
+      "reason": "Restore historical category with UN Palestine archives"
+    },
+    {
+      "source": "Yale Avalon Project",
+      "category": "historical",
+      "reason": "Treaty texts back to 1947"
+    },
+    {
+      "source": "PASSIA",
+      "category": "historical",
+      "reason": "Annual Palestine yearbook stats"
+    }
   ]
 }
