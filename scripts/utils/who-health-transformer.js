@@ -55,6 +55,12 @@ export class WHOHealthTransformer extends BaseTransformer {
             const year = this.extractYear(record);
             if (!year) return null;
 
+            // Drop WHO "projection" rows dated past today — these are baseline
+            // forecasts (e.g. tobacco-control 2030 targets), not measurements,
+            // and they poison /quality with false freshness.
+            const currentYear = new Date().getUTCFullYear();
+            if (year > currentYear) return null;
+
             // Create date from year
             const date = `${year}-01-01`;
 

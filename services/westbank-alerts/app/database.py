@@ -153,6 +153,10 @@ async def init_db():
             await db.execute("ALTER TABLE alerts ADD COLUMN geo_precision TEXT")
         if "geo_source_phrase" not in alert_cols:
             await db.execute("ALTER TABLE alerts ADD COLUMN geo_source_phrase TEXT")
+        if "count" not in alert_cols:
+            await db.execute("ALTER TABLE alerts ADD COLUMN count INTEGER")
+        if "temporal_certainty" not in alert_cols:
+            await db.execute("ALTER TABLE alerts ADD COLUMN temporal_certainty TEXT")
         await db.execute("CREATE INDEX IF NOT EXISTS idx_alerts_status ON alerts(status)")
         await db.execute("CREATE INDEX IF NOT EXISTS idx_alerts_confidence ON alerts(confidence)")
         # Spatial indexes for bbox / radius queries (T2.11 + T2.12)
@@ -209,6 +213,8 @@ def _row_to_alert(row) -> Alert:
         correction_note=row[19] if len(row) > 19 else None,
         geo_precision=row[20] if len(row) > 20 else None,
         geo_source_phrase=row[21] if len(row) > 21 else None,
+        count=row[22] if len(row) > 22 else None,
+        temporal_certainty=row[23] if len(row) > 23 else None,
     )
 
 
@@ -220,8 +226,8 @@ async def insert_alert(alert: Alert) -> Alert:
                (type, severity, title, body, source, source_msg_id, area, zone,
                 raw_text, timestamp, created_at, event_subtype, latitude, longitude,
                 title_ar, confidence, source_reliability, status, correction_note,
-                geo_precision, geo_source_phrase)
-               VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)""",
+                geo_precision, geo_source_phrase, count, temporal_certainty)
+               VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)""",
             (alert.type, alert.severity, alert.title, alert.body,
              alert.source, alert.source_msg_id, alert.area,
              getattr(alert, "zone", None),
@@ -235,7 +241,9 @@ async def insert_alert(alert: Alert) -> Alert:
              getattr(alert, "status", None) or "active",
              getattr(alert, "correction_note", None),
              getattr(alert, "geo_precision", None),
-             getattr(alert, "geo_source_phrase", None))
+             getattr(alert, "geo_source_phrase", None),
+             getattr(alert, "count", None),
+             getattr(alert, "temporal_certainty", None))
         )
         await db.commit()
         alert.id = cur.lastrowid

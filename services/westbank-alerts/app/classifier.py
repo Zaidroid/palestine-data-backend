@@ -680,6 +680,87 @@ EULOGY_PATTERNS = [
 ]
 EULOGY_PATTERNS = [_normalize(t) for t in EULOGY_PATTERNS]
 
+# Temporal attribution markers — distinguish "happening now" from historical
+# mentions. Past markers downweight confidence so news-recap noise doesn't
+# fire as real-time alerts. (T2.1)
+PAST_MARKERS = [
+    "البارحه", "امس", "قبل ايام", "قبل ساعات", "الاسبوع الماضي",
+    "الشهر الماضي", "العام الماضي", "في السابق", "سابقا",
+]
+PAST_MARKERS = [_normalize(t) for t in PAST_MARKERS]
+
+PRESENT_MARKERS = [
+    "الان", "الآن", "اللحظه", "حاليا", "جاري", "مستمر",
+    "قبل قليل", "منذ قليل", "في هذه اللحظه",
+]
+PRESENT_MARKERS = [_normalize(t) for t in PRESENT_MARKERS]
+
+# Numeric-count extraction regex. Matches Arabic verbs followed by an Arabic
+# or Latin number — captures "اعتقل 5", "أصيب ١٢", "استشهد 3" etc. The
+# pattern uses a lookahead for the verb root + optional inflection, then
+# greedily consumes the next number within ~6 words.
+_ARABIC_DIGITS = "٠١٢٣٤٥٦٧٨٩"
+_LATIN_DIGITS = "0123456789"
+_ARABIC_TO_LATIN = str.maketrans(_ARABIC_DIGITS, _LATIN_DIGITS)
+
+COUNT_VERB_PATTERNS = [
+    r"اعتقل[تيوه]?\s+(?:قوات الاحتلال\s+)?(?:نحو\s+|حوالي\s+|ما يقارب\s+)?(\d+)",
+    r"اعتقال\s+(?:نحو\s+|حوالي\s+|ما يقارب\s+)?(\d+)",
+    r"استشهد[تي]?\s+(?:نحو\s+|حوالي\s+)?(\d+)",
+    r"استشهاد\s+(?:نحو\s+)?(\d+)",
+    r"اصي[بت]\s+(?:نحو\s+|حوالي\s+|ما يقارب\s+)?(\d+)",
+    r"اصابه\s+(?:نحو\s+)?(\d+)",
+    r"عدد\s+(?:من\s+)?(?:الاسرى|الجرحى|الشهداء|المعتقلين|المصابين)\s*[:،]?\s*(\d+)",
+    r"(\d+)\s+(?:شهيدا|شهداء|مصابا|مصابين|جريحا|جرحى|معتقلا|معتقلين|اسيرا|اسرى)",
+]
+COUNT_VERB_PATTERNS = [re.compile(p) for p in COUNT_VERB_PATTERNS]
+
+
+def _extract_count(text: str) -> Optional[int]:
+    """Pull the largest credible casualty/arrest count from message text.
+
+    Multiple verbs may match (e.g. "أصيب 3 واعتقل 5"); we return the max
+    so the alert reflects the bigger impact. Returns None when no number is
+    extractable so callers can default to 1 or leave unset.
+    """
+    normalized = _normalize(text).translate(_ARABIC_TO_LATIN)
+    counts = []
+    for pat in COUNT_VERB_PATTERNS:
+        for m in pat.finditer(normalized):
+            try:
+                n = int(m.group(1))
+                # Plausibility cap: a single Telegram alert about >500 victims
+                # is almost certainly a cumulative figure, not an event count.
+                if 1 <= n <= 500:
+                    counts.append(n)
+            except (ValueError, IndexError):
+                continue
+    return max(counts) if counts else None
+
+
+def _extract_temporal_certainty(normalized_text: str) -> Optional[str]:
+    """Return "past" if past markers dominate, "now" if present markers
+    dominate, otherwise None (unspecified)."""
+    has_past = _has(normalized_text, PAST_MARKERS)
+    has_present = _has(normalized_text, PRESENT_MARKERS)
+    if has_past and not has_present:
+        return "past"
+    if has_present and not has_past:
+        return "now"
+    return None
+
+
+def _signal_density(text: str) -> float:
+    """0.0–1.0 score = matched-attack-verb count / sqrt(word count). Caps
+    at 1.0. Higher density (lots of attack verbs in a short message) =
+    more signal. Sparse mentions (one verb in a long news recap) = less."""
+    words = len(text.split()) or 1
+    matches = sum(1 for v in ATTACK_VERBS_AR if v in text)
+    if matches == 0:
+        return 0.0
+    import math
+    return min(1.0, matches / math.sqrt(words))
+
 
 # ── Helpers ───────────────────────────────────────────────────────────────────
 
@@ -1004,17 +1085,19 @@ def _compute_confidence(
     zone: Optional[str],
     text: str,
     alert_type: AlertType,
+    temporal_certainty: Optional[str] = None,
 ) -> tuple[float, float]:
     """Return (confidence, source_reliability), both clamped to [0.0, 1.0].
 
-    Confidence blends three signals:
-      1. Channel reliability (the source has a track record)
-      2. Severity (the classifier ranks the impact)
-      3. Locality clarity (a named area inside a known zone is more trustworthy
-         than a generic "West Bank" label, which often masks stale recycling)
-    The MENA guard already runs upstream in the tier-1 classifier — anything
-    that survives that gate gets a small lift here for "passed the noise
-    filter" credit.
+    Confidence blends:
+      1. Channel reliability (track-record-weighted source trust)
+      2. Severity (classifier-ranked impact)
+      3. Locality clarity (named area in a known zone > generic "West Bank")
+      4. Tier-1 noise-filter credit (siren classifier passed MENA guard)
+      5. Signal density (matched attack-verbs per √word-count) — one verb
+         in a 100-word news recap weighs less than three in a 20-word alert
+      6. Temporal markers — "البارحة" / "أمس" downweights ~0.20 because
+         past-tense recaps are often news roundups, not real-time events
     """
     rel = _channel_weight(source)
     base = 0.5 + (rel - 0.5) * 0.6      # 0.20 .. 0.80 from reliability alone
@@ -1023,9 +1106,12 @@ def _compute_confidence(
         base += 0.05
     if zone:
         base += 0.05
-    # Tier 1 (siren) survived the attack-verb + MENA guard, so it's structurally
-    # more reliable than tier-2 operational events that have no such gate.
     if alert_type in (AlertType.west_bank_siren, AlertType.regional_attack, AlertType.gaza_strike):
+        base += 0.05
+    base += _signal_density(_normalize(text)) * 0.10
+    if temporal_certainty == "past":
+        base -= 0.20
+    elif temporal_certainty == "now":
         base += 0.05
     confidence = max(0.0, min(1.0, round(base, 3)))
     return confidence, round(rel, 3)
@@ -1072,8 +1158,12 @@ def _build(
     built_title = title or (f"{label_en} — {area}" if area else label_en)
     built_title_ar = f"{label_ar} — {area}" if area else label_ar
 
+    normed_full = _normalize(text)
+    temporal_certainty = _extract_temporal_certainty(normed_full)
+    extracted_count = _extract_count(text)
+
     confidence, source_reliability = _compute_confidence(
-        severity, source, area, zone, text, alert_type
+        severity, source, area, zone, text, alert_type, temporal_certainty
     )
 
     result = {
@@ -1088,6 +1178,8 @@ def _build(
         "raw_text": text,
         "confidence":         confidence,
         "source_reliability": source_reliability,
+        "count":              extracted_count,
+        "temporal_certainty": temporal_certainty,
         "status":             "active",
     }
 
