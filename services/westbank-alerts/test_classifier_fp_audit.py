@@ -1,18 +1,23 @@
 """
-Classifier false-positive regression suite.
+Classifier accuracy harness.
 
-Built from the live audit on 2026-04-19 (Task #34): 200 fresh alerts pulled
-from the production API revealed a 26% FP rate concentrated in three patterns:
+Originally built from the live audit on 2026-04-19 (Task #34). Expanded
+2026-04-25 with three more fixture buckets covering issues the operator
+hit in production:
 
-  1. Lebanon/Syria/Iran casualty narratives mis-tagged as `west_bank_siren`
-     (root cause: bare `تل` in WB_ZONE substring-matched `تل ابيب` / `مقاتلو`,
-     plus Tier 1 MENA branch fired on any `عاجل` marker)
-  2. Photo/video caption posts ("جانب من اقتحام …") duplicating prior alerts
-  3. Eulogy and biographical recap posts ("ننعى …", "من أيقونات …")
+  4. NEWS_METADATA_LEAK — daily roundups, headline summaries, and posts
+     where action verbs sit inside news/photo metadata rather than
+     describing a live event. Today these slip past CAPTION_PREFIX.
+  5. GEO_PRECISION — village/camp/neighborhood inside a city; the most
+     specific named place must win over the containing city.
+  6. HISTORICAL_REFERENCE — anniversaries, retrospectives, last-year/
+     last-month posts. The verb is real but the event is not live.
 
-These fixtures lock the fix in place. Run with:
-
+Run the regression suite (CI-friendly, exits non-zero on any miss):
     python3 test_classifier_fp_audit.py
+
+Run the eval summary (per-bucket numbers + mismatch listing):
+    python3 test_classifier_fp_audit.py --summary
 """
 import sys
 from app.classifier import classify, classify_wb_operational
@@ -52,52 +57,214 @@ EULOGIES = [
     ("سرايا القدس: ننعى كوكبة من قادة الاختصاصات العسكرية", "qudsn"),
 ]
 
-# 4. True positives — must continue to classify (not None) with expected type.
+# 4. NEW — News-metadata leakage. Daily roundups, photo galleries without
+#    the standard caption prefix, headline summaries citing a newspaper.
+#    Must be filtered (None) — the verb is in metadata, not a live event.
+NEWS_METADATA_LEAK = [
+    # Daily roundup — multiple events in one post, listing-style
+    ("أبرز ما جرى اليوم في الضفة الغربية: اقتحامات ومواجهات واعتقالات في "
+     "عدة بلدات.", "qudsn"),
+    ("ملخص اليوم: 12 مداهمة و34 معتقلاً ومواجهات في الضفة وغزة", "qudsn"),
+    # Newspaper citation about a past raid — historical, not live
+    ("صحيفة هآرتس: الجيش الإسرائيلي اقتحم بلدة كفر قدوم خلال الأسبوع الماضي "
+     "وأصاب عدداً من المواطنين.", "qudsn"),
+    # Photo gallery without "بالصور |" prefix — uses "صور" inline
+    ("صور من اقتحام قوات الاحتلال لمخيم جنين فجر اليوم", "qudsn"),
+    # Tag / hashtag-only post promoting an article
+    ("تقرير | قراءة في تصاعد عمليات اقتحام الضفة الغربية #الضفة_الغربية "
+     "#اقتحامات", "qudsn"),
+    # Editorial / analysis post
+    ("تحليل: ماذا يعني تصاعد اقتحامات الجيش لبلدات شمال الضفة؟", "qudsn"),
+]
+
+# 5. NEW — Geo precision. The post names a village/camp/neighborhood
+#    inside a city. The most specific place must win over the city.
+#    Tuple: (text, source, expected_event_type, expected_area).
+GEO_PRECISION = [
+    # Anata is in East Jerusalem; village should win over city
+    ("قوات الاحتلال تقتحم بلدة عناتا شمال شرق القدس وتعتقل شابين.",
+     "qudsn", "idf_raid", "Anata"),
+    # Kafr Qaddum is west of Qalqilya — village should win
+    ("اشتباكات بين شبان وقوات الاحتلال في قرية كفر قدوم غرب قلقيلية.",
+     "qudsn", "idf_raid", "Kafr Qaddum"),
+    # Balata refugee camp east of Nablus — canonical label "Balata Camp"
+    ("اقتحام مخيم بلاطة شرق نابلس واعتقال 4 شبان.",
+     "almustashaar", "idf_raid", "Balata Camp"),
+    # Beit Dajan east of Nablus
+    ("مستوطنون يخرّبون 50 شجرة زيتون في قرية بيت دجن شرق نابلس.",
+     "qudsn", "settler_attack", "Beit Dajan"),
+    # Huwara south of Nablus — well-known flashpoint, must resolve to Huwara
+    ("جيش الاحتلال يهدم منزلاً في بلدة حوارة جنوب نابلس.",
+     "qudsn", "demolition", "Huwara"),
+    # Already-correct case — verify city when no village named
+    ("اقتحام مدينة نابلس واعتقال شابين من شارع فيصل.",
+     "qudsn", "idf_raid", "Nablus"),
+]
+
+# 6. NEW — Historical / anniversary references. Verb is real but the
+#    event isn't live. Must be filtered (None) or, if returned, must
+#    not be classified as a live raid/attack.
+HISTORICAL_REFERENCE = [
+    # Anniversary post
+    ("في الذكرى السنوية لاستشهاد الشاب أحمد، نستذكر اقتحام جيش الاحتلال "
+     "للبلدة قبل عام.", "qudsn"),
+    # Last month
+    ("في الشهر الماضي اقتحمت قوات الاحتلال بلدة كفر قدوم وأصابت عدداً "
+     "من المواطنين.", "qudsn"),
+    # Last year
+    ("قبل عام، شنّ الجيش الإسرائيلي عملية واسعة في مخيم جنين.", "qudsn"),
+    # Year-explicit historical
+    ("خلال عام 2023 شهدت الضفة الغربية تصاعداً ملحوظاً في عمليات "
+     "الاقتحام والاعتقال.", "qudsn"),
+    # Memorial / commemoration
+    ("في ذكرى مجزرة جنين، نستذكر شهداء الاقتحام الذي وقع قبل ثلاث سنوات.",
+     "qudsn"),
+]
+
+# True positives — must continue to classify (not None) with expected type.
+# Optional 4th element = expected `area`. None means we don't assert area.
 TRUE_POSITIVES = [
-    ("قوة من جيش الاحتلال تقتحم بلدة كوبر شمال رام الله.", "qudsn", "idf_raid"),
+    ("قوة من جيش الاحتلال تقتحم بلدة كوبر شمال رام الله.",
+     "qudsn", "idf_raid", None),
     ("مصادر محلية: قوات الاحتلال تعتقل الشقيقين خلال اقتحام شارع سفيان وسط "
-     "مدينة نابلس.", "qudsn", "idf_raid"),
+     "مدينة نابلس.", "qudsn", "idf_raid", "Nablus"),
     ("عاجل| إصابة فلسطيني بجروح خطيرة برصاص جيش الاحتلال بمخيم حلاوة في "
-     "جباليا البلد شمالي غزة.", "qudsn", "injury_report"),
+     "جباليا البلد شمالي غزة.", "qudsn", "injury_report", None),
     ("جيش الاحتلال يهدم منزل المواطن أحمد العاروري في قرية كوبر",
-     "qudsn", "demolition"),
+     "qudsn", "demolition", None),
 ]
 
 
-def main() -> int:
-    failures = []
+def _type_name(t):
+    return str(t).split(".")[-1]
 
-    for text, source in LEBANON_NOT_SIREN:
+
+def _run_all():
+    """Run every fixture; return a list of buckets with per-row outcome."""
+    buckets = []
+
+    # FP buckets — pass = classifier returned None (or, for LEBANON, returned
+    # something other than west_bank_siren).
+    def _fp_bucket(name, rows, also_fail_when):
+        outcomes = []
+        for entry in rows:
+            text, source = entry[0], entry[1]
+            r = _classify(text, source)
+            failed = also_fail_when(r)
+            outcomes.append({
+                "ok": not failed,
+                "text": text,
+                "source": source,
+                "got": _type_name(r["type"]) if r else "None",
+                "got_area": (r.get("area") if r else None),
+                "expected": "None",
+                "expected_area": None,
+            })
+        buckets.append({"name": name, "kind": "fp", "outcomes": outcomes})
+
+    _fp_bucket("LEBANON_NOT_SIREN", LEBANON_NOT_SIREN,
+               lambda r: r is not None and "west_bank_siren" in str(r["type"]))
+    _fp_bucket("PHOTO_CAPTIONS", PHOTO_CAPTIONS, lambda r: r is not None)
+    _fp_bucket("EULOGIES", EULOGIES, lambda r: r is not None)
+    _fp_bucket("NEWS_METADATA_LEAK", NEWS_METADATA_LEAK, lambda r: r is not None)
+    _fp_bucket("HISTORICAL_REFERENCE", HISTORICAL_REFERENCE,
+               lambda r: r is not None)
+
+    # GEO_PRECISION — pass = correct event_type AND correct area.
+    geo_outcomes = []
+    for text, source, expected_type, expected_area in GEO_PRECISION:
         r = _classify(text, source)
-        if r is not None and "west_bank_siren" in str(r["type"]):
-            failures.append(("LEBANON_NOT_SIREN", text[:60], str(r["type"])))
+        type_ok = r is not None and _type_name(r["type"]) == expected_type
+        area_ok = r is not None and r.get("area") == expected_area
+        geo_outcomes.append({
+            "ok": type_ok and area_ok,
+            "text": text,
+            "source": source,
+            "got": _type_name(r["type"]) if r else "None",
+            "got_area": (r.get("area") if r else None),
+            "expected": expected_type,
+            "expected_area": expected_area,
+        })
+    buckets.append({"name": "GEO_PRECISION", "kind": "geo",
+                    "outcomes": geo_outcomes})
 
-    for text, source in PHOTO_CAPTIONS:
+    # TRUE_POSITIVES — must classify, must match type, and area if asserted.
+    tp_outcomes = []
+    for entry in TRUE_POSITIVES:
+        text, source, expected_type = entry[0], entry[1], entry[2]
+        expected_area = entry[3] if len(entry) > 3 else None
         r = _classify(text, source)
-        if r is not None:
-            failures.append(("PHOTO_CAPTION", text[:60], str(r["type"])))
+        type_ok = r is not None and _type_name(r["type"]) == expected_type
+        area_ok = (expected_area is None) or (r is not None
+                                              and r.get("area") == expected_area)
+        tp_outcomes.append({
+            "ok": type_ok and area_ok,
+            "text": text,
+            "source": source,
+            "got": _type_name(r["type"]) if r else "None",
+            "got_area": (r.get("area") if r else None),
+            "expected": expected_type,
+            "expected_area": expected_area,
+        })
+    buckets.append({"name": "TRUE_POSITIVES", "kind": "tp",
+                    "outcomes": tp_outcomes})
 
-    for text, source in EULOGIES:
-        r = _classify(text, source)
-        if r is not None:
-            failures.append(("EULOGY", text[:60], str(r["type"])))
+    return buckets
 
-    for text, source, expected in TRUE_POSITIVES:
-        r = _classify(text, source)
-        if r is None:
-            failures.append(("TRUE_POSITIVE_LOST", text[:60], "None"))
-        elif str(r["type"]).split(".")[-1] != expected:
-            failures.append(("TRUE_POSITIVE_MISCLASSIFIED",
-                             text[:60], f"{r['type']} (wanted {expected})"))
 
-    total = (len(LEBANON_NOT_SIREN) + len(PHOTO_CAPTIONS)
-             + len(EULOGIES) + len(TRUE_POSITIVES))
+def _print_summary(buckets):
+    """Per-bucket stats + a flat list of failures with diff."""
+    print("\n=== Classifier eval summary ===\n")
+    total_n = total_ok = 0
+    for b in buckets:
+        n = len(b["outcomes"])
+        ok = sum(1 for o in b["outcomes"] if o["ok"])
+        rate = (ok / n * 100) if n else 0
+        total_n += n
+        total_ok += ok
+        marker = "OK " if ok == n else "MISS"
+        print(f"  [{marker}] {b['name']:24s} {ok:>2}/{n:<2}  ({rate:5.1f}%)")
+    overall = (total_ok / total_n * 100) if total_n else 0
+    print(f"\n  TOTAL: {total_ok}/{total_n} ({overall:.1f}%)\n")
+
+    # Failure listing
+    misses = [(b["name"], o) for b in buckets for o in b["outcomes"] if not o["ok"]]
+    if misses:
+        print("=== Misses ===\n")
+        for name, o in misses:
+            exp = o["expected"]
+            if o["expected_area"]:
+                exp = f"{exp} @ {o['expected_area']}"
+            got = o["got"]
+            if o["got_area"]:
+                got = f"{got} @ {o['got_area']}"
+            text = o["text"][:90].replace("\n", " ")
+            print(f"  [{name}] expected={exp} got={got}")
+            print(f"      {text}")
+
+
+def main(argv) -> int:
+    summary_mode = "--summary" in argv
+
+    buckets = _run_all()
+
+    if summary_mode:
+        _print_summary(buckets)
+
+    failures = [(b["name"], o) for b in buckets for o in b["outcomes"] if not o["ok"]]
+
+    total = sum(len(b["outcomes"]) for b in buckets)
     passed = total - len(failures)
-    print(f"Classifier FP audit: {passed}/{total} passed")
-    for kind, text, got in failures:
-        print(f"  FAIL [{kind}] got={got}: {text}")
+    if not summary_mode:
+        print(f"Classifier FP audit: {passed}/{total} passed")
+        for name, o in failures:
+            text = o["text"][:60].replace("\n", " ")
+            got = o["got"]
+            if o["got_area"]:
+                got = f"{got} @ {o['got_area']}"
+            print(f"  FAIL [{name}] got={got}: {text}")
     return 1 if failures else 0
 
 
 if __name__ == "__main__":
-    sys.exit(main())
+    sys.exit(main(sys.argv[1:]))
