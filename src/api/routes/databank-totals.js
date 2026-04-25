@@ -34,16 +34,26 @@ async function readJsonSafe(p) {
 // Exported as a plain handler so the parent router can mount it directly
 // at GET /databank/totals (sub-routers + Express 5 mount semantics caused
 // the proxy to swallow the path).
+//
+// IMPORTANT: do NOT JSON.parse martyrs_snapshot_2023/all-data.json here —
+// it's 213MB and OOMs the 512MB container. Read only small files: gaza
+// summary, unified manifest, prisoners. WB cumulative is pulled from the
+// pinned casualties-summary.json (written by scripts/fetch-gaza-daily.js
+// in a future iteration).
 export default async function databankTotals(req, res) {
-    const gazaSummary = await readJsonSafe(path.join(PUBLIC_DATA, 'gaza/summary.json'));
-    const martyrsAll = await readJsonSafe(path.join(PUBLIC_DATA, 'unified/martyrs_snapshot_2023/all-data.json'));
-    const prisonersFile = await readJsonSafe(path.join(PUBLIC_DATA, 'static/prisoners-addameer.json'));
+    const [gazaSummary, manifest, casualtiesSummary, prisonersFile] = await Promise.all([
+        readJsonSafe(path.join(PUBLIC_DATA, 'gaza/summary.json')),
+        readJsonSafe(path.join(PUBLIC_DATA, 'unified/unified-manifest.json')),
+        readJsonSafe(path.join(PUBLIC_DATA, 'gaza/casualties-summary.json')),
+        readJsonSafe(path.join(PUBLIC_DATA, 'static/prisoners-addameer.json')),
+    ]);
 
     const gazaCumulative = gazaSummary?.cumulative ?? null;
-    const martyrSummary = martyrsAll?.data?.find?.((r) => r.event_type === 'cumulative_summary') ?? null;
-    const wbCumulative = martyrSummary?.cumulative?.west_bank ?? null;
-    const namedRosterSize = martyrSummary?.cumulative?.identified_in_gaza_database
-        ?? (martyrsAll?.data?.filter?.((r) => r.event_type === 'identified_killed').length ?? null);
+    // Named-roster size comes from the manifest (small file, no parse hazard).
+    const namedRosterSize = manifest?.categories?.martyrs_snapshot_2023?.count ?? null;
+    // WB cumulative comes from the lightweight casualties-summary.json
+    // written by scripts/fetch-gaza-daily.js. Shape: nested killed/injured.
+    const wbBlock = casualtiesSummary?.west_bank ?? null;
 
     // Latest Addameer monthly snapshot per metric
     const prisonersLatest = (prisonersFile || []).reduce((acc, r) => {
@@ -79,15 +89,15 @@ export default async function databankTotals(req, res) {
             source: 'Gaza Ministry of Health daily bulletins, mirrored by Tech4Palestine (CC-BY-4.0)',
             source_url: 'https://data.techforpalestine.org/api/v3/summary.json',
         } : null,
-        west_bank: wbCumulative ? {
-            cumulative_killed: wbCumulative.killed,
-            children_killed: wbCumulative.children,
-            cumulative_injured: wbCumulative.injured,
-            injured_children: wbCumulative.injured_children,
-            settler_attacks: wbCumulative.settler_attacks,
-            as_of: martyrSummary.date,
+        west_bank: wbBlock ? {
+            cumulative_killed: wbBlock.killed?.total ?? null,
+            children_killed: wbBlock.killed?.children ?? null,
+            cumulative_injured: wbBlock.injured?.total ?? null,
+            settler_attacks: wbBlock.settler_attacks ?? null,
+            reports_received: wbBlock.reports ?? null,
+            as_of: wbBlock.last_update ?? casualtiesSummary?.as_of ?? null,
             source: 'Tech4Palestine West Bank cumulative summary (CC-BY-4.0)',
-            source_url: 'https://data.techforpalestine.org/api/v3/summary.json',
+            source_url: casualtiesSummary?.source_url ?? 'https://data.techforpalestine.org/api/v3/summary.json',
         } : null,
         prisoners: Object.keys(prisonersLatest).length ? {
             total:          prisonersLatest.total?.count ?? null,

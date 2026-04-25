@@ -149,6 +149,22 @@ async function main() {
   await fs.writeFile(path.join(OUT_DIR, 'summary.json'), JSON.stringify(summaryOut, null, 2));
   console.log(`✓ Wrote gaza/summary.json`);
   console.log(`  Latest (${latest?.date}): total killed=${latest?.cumulative.killed}, children=${latest?.cumulative.children_killed}, women=${latest?.cumulative.women_killed}`);
+
+  // Combined Gaza + West Bank cumulative summary — small, lightweight
+  // companion file consumed by /api/v1/databank/totals so it doesn't
+  // have to parse the 213MB martyrs roster to reach the WB numbers.
+  const casualtiesSummary = {
+    generated_at: new Date().toISOString(),
+    as_of: latest?.date ?? null,
+    source: 'Tech4Palestine v3 summary (upstream: Gaza MoH + WB monitoring)',
+    source_url: T4P_SUMMARY,
+    license: 'CC-BY-4.0',
+    gaza: summary.gaza ?? null,
+    west_bank: summary.west_bank ?? null,
+    known_violations: summary.known_violations ?? null,
+  };
+  await fs.writeFile(path.join(OUT_DIR, 'casualties-summary.json'), JSON.stringify(casualtiesSummary, null, 2));
+  console.log(`✓ Wrote gaza/casualties-summary.json (Gaza + WB cumulative)`);
 }
 
 main().catch(err => {
