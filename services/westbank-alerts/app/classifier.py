@@ -1168,6 +1168,16 @@ _TRAILING_NOISE_TOKENS = {
     "بمحافظه", "محافظه", "وسط", "اعلى", "اسفل",
 }
 
+# Major-city blacklist for the gazetteer fallback. The marker-prefixed
+# extractor exists to subvert the city-wins outcome; if KB substring scan
+# returns one of these, retry with a shorter candidate so the village wins.
+_MAJOR_CITY_NAMES_LC = {
+    "hebron", "jerusalem", "ramallah", "nablus", "jenin", "tulkarm",
+    "bethlehem", "qalqilya", "jericho", "tubas", "salfit", "al-bireh",
+    "gaza", "gaza city", "khan yunis", "khan younis", "rafah",
+    "deir al-balah", "deir al balah", "north gaza",
+}
+
 
 def _extract_marker_prefixed_place(normed_text: str) -> Optional[str]:
     """If text uses a 'بلدة X' / 'قرية X' / 'مخيم X' / 'حي X' marker,
@@ -1177,11 +1187,17 @@ def _extract_marker_prefixed_place(normed_text: str) -> Optional[str]:
     if not m:
         return None
     marker = m.group(1)
-    raw = m.group(2).strip()
-    raw = re.sub(r"[.,،؛:!]+$", "", raw)
-    words = raw.split()
+    raw = m.group(2)
+    # Pull only Arabic-letter sequences from the captured slice. Inline
+    # punctuation (commas, periods) would otherwise survive into the
+    # candidate string and break exact AREA_MAP matches like "مخيم العروب،"
+    # AND, worse, leak containing-city tokens (الخليل / نابلس) into
+    # find_location's substring scan, returning the city instead.
+    words = re.findall(r"[ء-ي]+", raw)
     while len(words) > 1 and words[-1] in _TRAILING_NOISE_TOKENS:
         words.pop()
+    if not words:
+        return None
 
     # Try progressively shorter prefixes against AREA_MAP. Try the full
     # "marker X" form first so camp/neighborhood-specific entries win
@@ -1195,18 +1211,26 @@ def _extract_marker_prefixed_place(normed_text: str) -> Optional[str]:
         if candidate in AREA_MAP:
             return AREA_MAP[candidate]
 
-    # Gazetteer fallback for villages outside AREA_MAP
+    # Gazetteer fallback for villages outside AREA_MAP. Iterate longest
+    # prefix first so multi-token names ("كفر قدوم") win, but skip any
+    # resolution that lands on a major city — the marker logic exists
+    # precisely to subvert that.
     from .location_knowledge_base import get_location_kb
     kb = get_location_kb()
     if kb:
         for n in range(len(words), 0, -1):
             candidate = " ".join(words[:n])
+            if len(candidate) < 3:
+                continue
             key = kb.find_location(candidate)
-            if key:
-                loc = kb.get_location(key)
-                name_en = loc.get("name_en") if loc else None
-                if name_en:
-                    return name_en
+            if not key:
+                continue
+            loc = kb.get_location(key)
+            name_en = (loc or {}).get("name_en") or ""
+            if name_en.lower() in _MAJOR_CITY_NAMES_LC:
+                continue
+            if name_en:
+                return name_en
     return None
 
 
