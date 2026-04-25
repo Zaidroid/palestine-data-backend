@@ -76,6 +76,8 @@ echo "[step 4] databank backfills" | tee -a "$LOG"
 run "databank-martyrs"   python3 scripts/backfill-people-killed-from-martyrs.py
 run "databank-gaza"      python3 scripts/backfill-databank-from-gaza-daily.py
 run "databank-prisoners" python3 scripts/backfill-databank-from-prisoners.py
+run "databank-ucdp-actions" python3 scripts/backfill-databank-from-ucdp.py
+run "databank-structures"   python3 scripts/backfill-databank-from-infrastructure.py
 
 # Step 5: Pinned daily snapshot for ?as_of= queries
 echo "[step 5] daily snapshot" | tee -a "$LOG"

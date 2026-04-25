@@ -97,6 +97,20 @@ class WebhookTarget(BaseModel):
     created_at: Optional[datetime] = None
 
 
+class RouteCheckRequest(BaseModel):
+    """Body for POST /route/check.
+
+    waypoints: ordered list of [lat, lng] pairs along the planned route.
+    buffer_km: corridor radius around each waypoint (default 2km).
+    since_hours: only consider alerts from the last N hours (default 6).
+    """
+    waypoints: List[List[float]]
+    buffer_km: Optional[float] = 2.0
+    since_hours: Optional[int] = 6
+    min_confidence: Optional[float] = 0.4
+    include_checkpoints: Optional[bool] = True
+
+
 class StatsResponse(BaseModel):
     total_alerts: int
     alerts_last_24h: int

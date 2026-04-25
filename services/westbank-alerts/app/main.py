@@ -37,7 +37,7 @@ import os
 import time
 from contextlib import asynccontextmanager
 from datetime import datetime, timedelta, timezone
-from typing import AsyncGenerator, List, Optional, Set
+from typing import AsyncGenerator, Dict, List, Optional, Set
 
 import sentry_sdk
 from fastapi import Depends, FastAPI, HTTPException, Query, Request, WebSocket, WebSocketDisconnect
@@ -69,7 +69,7 @@ from . import internet_status
 from . import incident_db
 from . import area_status as area_mod
 from .config import settings
-from .models import Alert, AlertResponse, StatsResponse, WebhookTarget
+from .models import Alert, AlertResponse, StatsResponse, WebhookTarget, RouteCheckRequest
 from .checkpoint_models import (
     Checkpoint, CheckpointUpdate, CheckpointListResponse,
     CheckpointHistoryResponse, UpdateFeedResponse, CheckpointStatsResponse,
@@ -561,6 +561,250 @@ async def export_alerts_endpoint(
         media_type="application/x-ndjson",
         headers={"Content-Disposition": 'attachment; filename="alerts-export.ndjson"'},
     )
+
+
+# ── Spatial / map / route endpoints ──────────────────────────────────────────
+# X.1 + X.2: power the live map, navigation, and timeline-map frontends.
+# Core query primitives (bbox + radius) reuse _haversine_km from checkpoint_db.
+
+from .checkpoint_db import _haversine_km, get_checkpoints_nearby
+from . import area_status as area_mod
+
+
+@app.get("/alerts/map", tags=["alerts"])
+async def alerts_map(
+    bbox:           Optional[str]      = Query(None, description="minLat,minLng,maxLat,maxLng"),
+    since:          Optional[datetime] = Query(None),
+    types:          Optional[str]      = Query(None, description="Comma-separated alert types"),
+    min_confidence: Optional[float]    = Query(None, ge=0.0, le=1.0),
+    limit:          int                = Query(500, ge=1, le=2000),
+):
+    """Spatial alert query for live-map clients. Returns a GeoJSON
+    FeatureCollection ready for Leaflet/Mapbox. Alerts without lat/lng
+    are dropped from the feature set (use /alerts for unfiltered)."""
+    bbox_tuple = None
+    if bbox:
+        try:
+            parts = [float(x) for x in bbox.split(",")]
+            if len(parts) != 4:
+                raise ValueError("bbox must be minLat,minLng,maxLat,maxLng")
+            bbox_tuple = tuple(parts)
+        except (ValueError, TypeError):
+            raise HTTPException(status_code=400, detail="invalid bbox")
+
+    type_list = [t.strip() for t in types.split(",")] if types else None
+
+    # Pull a wider window then filter spatially in Python — alert volume
+    # is small enough (~50/day) that this is fine without a real spatial
+    # index. If volume grows >10k alerts/day, switch to R*Tree.
+    fetched, _total = await db.get_alerts(
+        type=None, severity=None, area=None,
+        since=since, until=None,
+        min_confidence=min_confidence, status="active",
+        limit=2000, offset=0,
+    )
+    features = []
+    for a in fetched:
+        if a.latitude is None or a.longitude is None:
+            continue
+        if bbox_tuple and not (
+            bbox_tuple[0] <= a.latitude  <= bbox_tuple[2]
+            and bbox_tuple[1] <= a.longitude <= bbox_tuple[3]
+        ):
+            continue
+        if type_list and a.type not in type_list:
+            continue
+        features.append({
+            "type": "Feature",
+            "geometry": {"type": "Point", "coordinates": [a.longitude, a.latitude]},
+            "properties": {
+                "id": a.id,
+                "alert_type": a.type,
+                "severity": a.severity,
+                "title": a.title,
+                "title_ar": a.title_ar,
+                "area": a.area,
+                "zone": a.zone,
+                "geo_precision": a.geo_precision,
+                "timestamp": a.timestamp.isoformat() if a.timestamp else None,
+                "confidence": a.confidence,
+                "source": a.source,
+                "count": a.count,
+                "status": a.status,
+            },
+        })
+        if len(features) >= limit:
+            break
+
+    return {
+        "type": "FeatureCollection",
+        "features": features,
+        "meta": {
+            "total_features": len(features),
+            "bbox": list(bbox_tuple) if bbox_tuple else None,
+            "since": since.isoformat() if since else None,
+            "types_filter": type_list,
+            "min_confidence": min_confidence,
+        },
+    }
+
+
+@app.get("/alerts/regions/summary", tags=["alerts"])
+async def alerts_regions_summary(
+    since: Optional[datetime] = Query(None, description="Default = last 24h"),
+):
+    """Per-region alert counts + dominant event type. Used by the live map
+    at low zoom levels (choropleth shading instead of dense pin markers)."""
+    if since is None:
+        since = datetime.utcnow() - timedelta(days=1)
+    fetched, _total = await db.get_alerts(
+        type=None, severity=None, area=None,
+        since=since, until=None,
+        min_confidence=None, status="active",
+        limit=2000, offset=0,
+    )
+    by_region: Dict[str, dict] = {}
+    for a in fetched:
+        # Map zone -> human-readable region
+        region = a.zone or "unknown"
+        if region in ("gaza_strip",): region = "Gaza Strip"
+        elif region in ("north", "middle", "south", "west_bank"): region = "West Bank"
+        slot = by_region.setdefault(region, {"count": 0, "by_type": {}, "by_severity": {}})
+        slot["count"] += 1
+        slot["by_type"][a.type] = slot["by_type"].get(a.type, 0) + 1
+        slot["by_severity"][a.severity] = slot["by_severity"].get(a.severity, 0) + 1
+
+    # Compute dominant type per region for choropleth coloring
+    for region, slot in by_region.items():
+        slot["dominant_type"] = max(slot["by_type"].items(), key=lambda x: x[1])[0] if slot["by_type"] else None
+
+    return {
+        "since": since.isoformat(),
+        "regions": by_region,
+        "meta": {"total_alerts": sum(r["count"] for r in by_region.values())},
+    }
+
+
+@app.post("/route/check", tags=["routes"])
+async def route_check(req: RouteCheckRequest):
+    """Route-safety check for the navigator frontend. Given a sequence of
+    waypoints + a corridor buffer, returns:
+      - alerts active inside the corridor
+      - checkpoints near the route + their current status
+      - per-region area_status along the route
+      - an overall advisory: AVOID | CAUTION | OK
+
+    Public endpoint — no auth (per access policy: anonymous reads).
+    Long-lived monitoring (WS /route/watch) lands separately.
+    """
+    if not req.waypoints or len(req.waypoints) < 1:
+        raise HTTPException(status_code=400, detail="waypoints required (≥1)")
+    for pt in req.waypoints:
+        if not isinstance(pt, list) or len(pt) != 2:
+            raise HTTPException(status_code=400, detail="each waypoint must be [lat, lng]")
+
+    buffer_km = req.buffer_km or 2.0
+    since = datetime.utcnow() - timedelta(hours=req.since_hours or 6)
+
+    # 1. Alerts in corridor — pull recent alerts then filter by min-distance to any waypoint
+    fetched, _ = await db.get_alerts(
+        type=None, severity=None, area=None,
+        since=since, until=None,
+        min_confidence=req.min_confidence, status="active",
+        limit=1000, offset=0,
+    )
+    in_corridor = []
+    for a in fetched:
+        if a.latitude is None or a.longitude is None:
+            continue
+        min_dist = min(
+            _haversine_km(a.latitude, a.longitude, lat, lng)
+            for lat, lng in req.waypoints
+        )
+        if min_dist <= buffer_km:
+            in_corridor.append({
+                "id": a.id,
+                "alert_type": a.type,
+                "severity": a.severity,
+                "title": a.title,
+                "title_ar": a.title_ar,
+                "area": a.area,
+                "lat": a.latitude,
+                "lng": a.longitude,
+                "distance_from_route_km": round(min_dist, 2),
+                "timestamp": a.timestamp.isoformat() if a.timestamp else None,
+                "confidence": a.confidence,
+            })
+
+    # 2. Checkpoints near the route
+    nearby_cps = []
+    if req.include_checkpoints:
+        seen_keys = set()
+        for lat, lng in req.waypoints:
+            cps = await get_checkpoints_nearby(lat, lng, radius_km=buffer_km, limit=20)
+            for cp in cps:
+                key = cp.get("canonical_key")
+                if key in seen_keys:
+                    continue
+                seen_keys.add(key)
+                nearby_cps.append({
+                    "key": key,
+                    "name_en": cp.get("name_en"),
+                    "name_ar": cp.get("name_ar"),
+                    "region": cp.get("region"),
+                    "current_status": cp.get("status"),
+                    "lat": cp.get("latitude"),
+                    "lng": cp.get("longitude"),
+                    "distance_from_route_km": round(cp.get("distance_km", 0), 2),
+                })
+
+    # 3. Area status along the route (collect distinct regions touched)
+    try:
+        cached = area_mod.get_cached_area_status() or []
+    except Exception:
+        cached = []
+    by_region_status = {}
+    for a in cached:
+        by_region_status[(a.get("region") or "").lower()] = a
+    regions_touched = set()
+    for a in in_corridor:
+        if a.get("area"): regions_touched.add(a["area"])
+    for cp in nearby_cps:
+        if cp.get("region"): regions_touched.add(cp["region"])
+    areas_along_route = []
+    for region in regions_touched:
+        status = by_region_status.get(region.lower()) or {}
+        if status:
+            areas_along_route.append({
+                "region": region,
+                "status": status.get("status"),
+                "severity": status.get("severity"),
+            })
+
+    # 4. Compute advisory
+    high_severity_recent = [a for a in in_corridor
+                            if a["severity"] == "high"
+                            and (datetime.utcnow() - datetime.fromisoformat(a["timestamp"].replace('Z',''))).total_seconds() < 3600
+                           ] if any(a.get("timestamp") for a in in_corridor) else []
+    closed_cps = [cp for cp in nearby_cps if (cp.get("current_status") or "").lower() in ("closed", "blocked")]
+    if high_severity_recent or closed_cps:
+        advisory = "AVOID"
+    elif in_corridor or any((cp.get("current_status") or "").lower() in ("restricted", "limited") for cp in nearby_cps):
+        advisory = "CAUTION"
+    else:
+        advisory = "OK"
+
+    return {
+        "waypoints": req.waypoints,
+        "buffer_km": buffer_km,
+        "window_hours": req.since_hours or 6,
+        "advisory": advisory,
+        "alerts_count": len(in_corridor),
+        "alerts": in_corridor,
+        "checkpoints": nearby_cps,
+        "areas_along_route": areas_along_route,
+        "computed_at": datetime.utcnow().isoformat(),
+    }
 
 
 @app.get("/alerts/{alert_id}", response_model=Alert, tags=["alerts"])

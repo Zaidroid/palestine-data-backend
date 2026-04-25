@@ -8,6 +8,7 @@ import databankTotals from './databank-totals.js';
 import newsRoutes from './news.js';
 import licensesRoutes from './licenses.js';
 import sourcesRoutes from './sources.js';
+import eventsTimelineRoute from './events-timeline.js';
 import versionRoutes from './version.js';
 import qualityRoutes from './quality.js';
 import recordRoutes from './record.js';
@@ -41,6 +42,10 @@ router.use('/licenses', licensesRoutes);
 // Authoritative source registry: every upstream + its cadence, coverage,
 // categories fed, live freshness. Foundation for self-aware data.
 router.use('/sources', sourcesRoutes);
+
+// Cross-category time-ordered event feed. Powers dashboard timeline +
+// interactive timeline map. Reads /unified/* category files directly.
+router.use('/events/timeline', eventsTimelineRoute);
 
 // Trust-foundation surfaces (A2/A3/A4): citable version, quality, per-record permalinks
 router.use('/version', versionRoutes);
