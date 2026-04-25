@@ -42,6 +42,7 @@ CREATE TABLE IF NOT EXISTS people_killed (
     lat             REAL,
     lng             REAL,
     cause           TEXT,                -- bullet | airstrike | raid | settler_attack | demolition | missile | other
+    count           INTEGER DEFAULT 1,   -- 1 for named; aggregate (e.g. "138 killed on 2023-10-08") for daily-bulletin rows
     source_alert_id INTEGER,             -- FK to alerts.id (NULL for backfill)
     source_dataset  TEXT NOT NULL,       -- tech4palestine | gaza_moh | btselem | classifier | ...
     source_url      TEXT,
@@ -179,6 +180,11 @@ async def init_databank():
         await db.execute(CREATE_PEOPLE_DETAINED)
         await db.execute(CREATE_STRUCTURES_DAMAGED)
         await db.execute(CREATE_ACTOR_ACTIONS)
+        # Migration: add `count` column to existing people_killed tables
+        cur = await db.execute("PRAGMA table_info(people_killed)")
+        cols = {row[1] for row in await cur.fetchall()}
+        if "count" not in cols:
+            await db.execute("ALTER TABLE people_killed ADD COLUMN count INTEGER DEFAULT 1")
         for idx in CREATE_DATABANK_INDEXES:
             await db.execute(idx)
         await db.commit()
@@ -205,7 +211,7 @@ async def upsert_person_killed(record: dict) -> int:
     cols = [
         "stable_id", "name_ar", "name_en", "age", "gender",
         "date", "date_precision", "place_name", "place_region",
-        "lat", "lng", "cause", "source_alert_id", "source_dataset",
+        "lat", "lng", "cause", "count", "source_alert_id", "source_dataset",
         "source_url", "attribution_text", "confidence", "notes",
         "created_at", "updated_at",
     ]
@@ -216,6 +222,7 @@ async def upsert_person_killed(record: dict) -> int:
         f"INSERT INTO people_killed ({','.join(cols)}) VALUES ({placeholders}) "
         f"ON CONFLICT(stable_id) DO UPDATE SET {update_clause}"
     )
+    record.setdefault("count", 1)
     values = [record.get(c) for c in cols]
     async with get_alerts_db() as db:
         cur = await db.execute(sql, values)
