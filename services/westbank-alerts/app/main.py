@@ -741,7 +741,7 @@ async def route_check(req: RouteCheckRequest):
     if req.include_checkpoints:
         seen_keys = set()
         for lat, lng in req.waypoints:
-            cps = await get_checkpoints_nearby(lat, lng, radius_km=buffer_km, limit=20)
+            cps = await get_checkpoints_nearby(lat, lng, radius_km=buffer_km)
             for cp in cps:
                 key = cp.get("canonical_key")
                 if key in seen_keys:
