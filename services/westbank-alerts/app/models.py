@@ -6,9 +6,10 @@ from enum import Enum
 
 class AlertType(str, Enum):
     # Tier 1: Active missile/siren threats
-    west_bank_siren = "west_bank_siren"   # Missile sirens / impacts affecting West Bank
-    regional_attack = "regional_attack"   # Attacks on MENA countries or Israel proper
-    gaza_strike     = "gaza_strike"       # Israeli airstrike / shelling on Gaza Strip
+    west_bank_siren       = "west_bank_siren"   # Missile sirens / impacts affecting West Bank
+    northern_israel_siren = "northern_israel_siren"  # Galilee / northern-border settlement sirens (Hezbollah-front)
+    regional_attack       = "regional_attack"   # Attacks on MENA countries or Israel proper
+    gaza_strike           = "gaza_strike"       # Israeli airstrike / shelling on Gaza Strip
     # Tier 2: WB operational events
     idf_raid           = "idf_raid"           # IDF forces entering towns / raids
     settler_attack     = "settler_attack"     # Settler violence events

@@ -480,6 +480,29 @@ ISRAEL_INTERIOR = [
 ]
 ISRAEL_INTERIOR = [_normalize(z) for z in ISRAEL_INTERIOR]
 
+# Northern Israel (Galilee + border settlements) — Hezbollah-front siren
+# events. Distinct from generic west_bank_siren so the live tracker can
+# tell "actually a WB threat" from "shared-airspace siren up north".
+NORTHERN_ISRAEL_LOCATIONS = [
+    # Galilee variants
+    "الجليل الاعلى", "الجليل الغربي", "اصبع الجليل",
+    "شمال الجليل", "الجليل الشرقي",
+    # Northern-front framing
+    "شمال فلسطين المحتله", "شمالي فلسطين المحتله",
+    "المستوطنات الشماليه", "خط المواجهه الشماليه",
+    # Specific border-area towns / settlements (Hezbollah-front)
+    "حانيتا", "شلومي", "ياعره", "راس الناقوره",
+    "مرجليوت", "مسجاف عام", "المالكيه",
+    "كريات شمونه", "متولا", "المطله",
+    "نهاريا", "كرميئيل",
+    "بنت جبيل",  # Lebanese border town (cross-mention common)
+]
+NORTHERN_ISRAEL_LOCATIONS = [_normalize(z) for z in NORTHERN_ISRAEL_LOCATIONS]
+
+
+def _is_northern_israel(text: str) -> bool:
+    return _has(text, NORTHERN_ISRAEL_LOCATIONS)
+
 
 # ── Noise signals — discard if these dominate the message ────────────────────
 
@@ -1556,9 +1579,10 @@ def _build(
     body = next((s.strip() for s in sentences if len(s.strip()) > 10), text[:250])
 
     TYPE_LABEL_EN = {
-        AlertType.west_bank_siren:   "West Bank Alert",
-        AlertType.regional_attack:   "Regional Attack",
-        AlertType.gaza_strike:       "Gaza Strike",
+        AlertType.west_bank_siren:       "West Bank Alert",
+        AlertType.northern_israel_siren: "Northern Israel Siren",
+        AlertType.regional_attack:       "Regional Attack",
+        AlertType.gaza_strike:           "Gaza Strike",
         AlertType.idf_raid:          "IDF Raid",
         AlertType.settler_attack:    "Settler Attack",
         AlertType.road_closure:      "Road Closure",
@@ -1574,9 +1598,10 @@ def _build(
         AlertType.child_detention:   "Child Detention",
     }
     TYPE_LABEL_AR = {
-        AlertType.west_bank_siren:   "تنبيه الضفة الغربية",
-        AlertType.regional_attack:   "هجوم إقليمي",
-        AlertType.gaza_strike:       "قصف على غزة",
+        AlertType.west_bank_siren:       "تنبيه الضفة الغربية",
+        AlertType.northern_israel_siren: "إنذار شمال فلسطين المحتلة",
+        AlertType.regional_attack:       "هجوم إقليمي",
+        AlertType.gaza_strike:           "قصف على غزة",
         AlertType.idf_raid:          "اقتحام",
         AlertType.settler_attack:    "اعتداء مستوطنين",
         AlertType.road_closure:      "إغلاق طريق",
@@ -1812,6 +1837,15 @@ def classify(raw_text: str, source: str) -> Optional[dict]:
             else Severity.high
         )
         return _build(AlertType.gaza_strike, severity, clean, source, area, zone=zone)
+
+    # Northern Israel (Galilee / border settlements) → its own type. Must
+    # be checked BEFORE the WB-zone branch because the framing "شمال
+    # فلسطين المحتلة" matches "فلسطين" in WB_ZONE and would otherwise
+    # mis-route to west_bank_siren.
+    if _is_northern_israel(normed):
+        area = _extract_area(normed) or "Northern Israel"
+        return _build(AlertType.northern_israel_siren, Severity.high,
+                      clean, source, area)
 
     # West Bank explicitly mentioned → CRITICAL/HIGH
     if _is_wb_zone(normed):

@@ -272,6 +272,26 @@ HUMANITARIAN_APPEAL = [
      "آلياتنا", "qudsn"),
 ]
 
+# 18. NEW — Northern Israel sirens. Galilee / border-settlement sirens
+#     (Hezbollah-front). Currently get classified west_bank_siren because
+#     of shared-airspace assumption; should be their own type so the live
+#     tracker can distinguish "actually-WB" sirens.
+NORTHERN_ISRAEL_TPS = [
+    ("عاجل | الجبهة الداخلية الإسرائيلية: إطلاق صفارات الإنذار في المالكية "
+     "بالجليل الأعلى بعد رصد تسلل مسيرة", "ajanews", "northern_israel_siren"),
+    ("عاجل | صافرات الإنذار تدوي في مستوطنة المالكية؛ للتحذير من عبور مسيرة.",
+     "qudsn", "northern_israel_siren"),
+    ("عاجل | الجبهة الداخلية الإسرائيلية: إطلاق صفارات الإنذار في الجليل "
+     "الغربي بعد رصد تسلل مسيرة", "ajanews", "northern_israel_siren"),
+    ("صافرات الإنذار تدوي في حانيتا، شلومي، ياعره، ورأس الناقورة ومستوطنات "
+     "أخرى في شمال فلسطين المحتلة؛ للتحذير من عبور طائرات مسيرة.",
+     "qudsn", "northern_israel_siren"),
+    ("صافرات الإنذار دوت في اصبع الجليل بعد إطلاق صواريخ من لبنان",
+     "almustashaar", "northern_israel_siren"),
+    ("صافرات الإنذار تدوي في مستوطنات مرجليوت ومسجاف عام؛ للتحذير من إطلاق "
+     "حزب الله لصواريخ.", "qudsn", "northern_israel_siren"),
+]
+
 # True positives — must continue to classify (not None) with expected type.
 # Optional 4th element = expected `area`. None means we don't assert area.
 TRUE_POSITIVES = [
@@ -333,6 +353,21 @@ def _run_all():
     _fp_bucket("HUMAN_INTEREST", HUMAN_INTEREST, lambda r: r is not None)
     _fp_bucket("HUMANITARIAN_APPEAL", HUMANITARIAN_APPEAL,
                lambda r: r is not None)
+
+    # NORTHERN_ISRAEL_TPS — must classify as the new type, not west_bank_siren.
+    nis_outcomes = []
+    for text, source, expected_type in NORTHERN_ISRAEL_TPS:
+        r = _classify(text, source)
+        type_ok = r is not None and _type_name(r["type"]) == expected_type
+        nis_outcomes.append({
+            "ok": type_ok,
+            "text": text, "source": source,
+            "got": _type_name(r["type"]) if r else "None",
+            "got_area": (r.get("area") if r else None),
+            "expected": expected_type, "expected_area": None,
+        })
+    buckets.append({"name": "NORTHERN_ISRAEL_TPS", "kind": "tp",
+                    "outcomes": nis_outcomes})
 
     # GEO_PRECISION — pass = correct event_type AND correct area.
     geo_outcomes = []
