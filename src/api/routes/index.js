@@ -4,6 +4,7 @@ import unifiedRoutes from './unified.js';
 import searchRoutes from './search.js';
 import alertsProxy from './alerts-proxy.js';
 import databankProxy from './databank-proxy.js';
+import databankTotals from './databank-totals.js';
 import newsRoutes from './news.js';
 import licensesRoutes from './licenses.js';
 import versionRoutes from './version.js';
@@ -25,6 +26,9 @@ router.use('/live', alertsProxy);
 
 // Long-term entity databank: people_killed, people_injured, people_detained,
 // structures_damaged, actor_actions. Backed by alerts service tables.
+// /databank/totals is served Node-side because it reads public/data/gaza
+// summary files; everything else proxies to the alerts service.
+router.use('/databank/totals', databankTotals);
 router.use('/databank', databankProxy);
 
 // News feed (RSS + scheduled fetcher → news.db)

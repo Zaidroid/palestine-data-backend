@@ -827,9 +827,23 @@ _DATABANK_TABLES = (
 @app.get("/databank", tags=["databank"])
 async def databank_index():
     """List databank tables and their current row counts. Useful for
-    discovery: any consumer can see what's available + how rich it is."""
+    discovery: any consumer can see what's available + how rich it is.
+
+    NOTE: row counts here are NOT the same as cumulative casualty/detention
+    totals. people_killed has 60k named individuals + 800+ daily-aggregate
+    rows from Gaza MoH bulletins; the official cumulative killed figure is
+    higher than the row count because each daily aggregate row carries a
+    `count` field (use `/databank/people_killed/summary` to read sum_count).
+    For headline numbers see /api/v1/databank/totals on the gateway.
+    """
     counts = await dbk.databank_counts()
     return {
+        "notice": (
+            "Row counts ≠ cumulative totals. people_killed has 60k named individuals "
+            "(Tech4Palestine roster) PLUS 800+ daily aggregate rows from Gaza MoH "
+            "(each row carries a `count` field). Use /databank/{table}/summary for "
+            "sum_count, /api/v1/databank/totals for official headline figures."
+        ),
         "tables": [
             {
                 "name": t,
