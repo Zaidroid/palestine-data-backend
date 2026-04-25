@@ -210,6 +210,45 @@ EMOJI_PREFIXED_CAPTIONS = [
     ("📷📷📷 جانب من اقتحام بلدة عناتا شمال القدس", "qudsn"),
 ]
 
+# 13. NEW — Funeral / burial / posthumous profile. The deceased name +
+#     past-tense burial verb. Distinct from a fresh strike report:
+#     "يشيعون / يودعون / تشييع / وصول جثمان / الذي ارتقى". Must be
+#     filtered.
+FUNERAL_BURIAL = [
+    ("مواطنون يودّعون جثامين 8 شهداء، ارتقوا مساء أمس، إثر استهداف إسرائيلي "
+     "لمركبة في منطقة مواصي خان يونس جنوب قطاع غزة", "wafagency"),
+    ("غزة - مواطنون يشيّعون جثامين أم وطفليها من عائلة الطناني، استُشهدوا "
+     "إثر قصف مدفعي استهدف منزلهم قرب مستشفى كمال عدوان", "wafagency"),
+    ("وصول جثمان الشهيد بهجت أبو العيش الى مستشفى الشفاء من مخيم جباليا "
+     "إثر إصابته بطلق ناري في الرأس", "qudsn"),
+    ("الشهيد عماد مقداد الذي ارتقى بقصف الاحتلال لنقطة شحن هواتف وتفعيل "
+     "محافِظ بجانب مدرسة الدحيان في حي الشيخ رضوان بمدينة غزة.", "qudsn"),
+    ("الشهيد علاء صالح أحمد الذي ارتقى متأثرا بجراح أصيب بها جراء الاستهداف "
+     "من قبل الاحتلال في مشروع بيت لاهيا", "qudsn"),
+    ("بالروح بالدم نفديكِ يا فلسطين.. هتافٌ يعلو فوق جراح الوداع لأمٍّ "
+     "وأطفالها، ارتقوا في مجزرةٍ ارتكبها الاحتلال", "qudsn"),
+    ("جنازة مهيبة في رفح لتشييع جثامين 5 شهداء سقطوا أمس", "qudsn"),
+]
+
+# 14. NEW — Past-perfect news recap. "وكان قد / كانت قد + verb past"
+#     introduces a recap of a prior event. Not the live event itself.
+PAST_PERFECT_RECAP = [
+    ("وكانت وزارة الصحة اللبنانية قد أعلنت أن غارات الاحتلال الإسرائيلي على "
+     "جنوب لبنان يوم أمس أدت إلى استشهاد 6 مواطنين", "wafagency"),
+    ("وكان جيش الاحتلال قد شن غارة على بلدة الجميجمة الأسبوع الماضي", "qudsn"),
+    ("وكانت سلطات الاحتلال قد أصدرت أوامر هدم لعدد من المنازل في القدس "
+     "خلال الشهر الماضي", "qudsn"),
+]
+
+# 15. NEW — Period summary stats. "خلال 48 ساعة / خلال أسبوع / خلال
+#     شهر" + count → aggregate summary, not a single event.
+PERIOD_SUMMARY = [
+    ("وزارة الصحة في غزة: 17 شهيداً خلال 48 ساعة في غزة", "almustashaar"),
+    ("الصحة الفلسطينية: 4 شهداء خلال 24 ساعة في الضفة الغربية", "qudsn"),
+    ("نادي الأسير: 120 معتقلاً خلال أسبوع واحد من اقتحامات الضفة الغربية",
+     "qudsn"),
+]
+
 # True positives — must continue to classify (not None) with expected type.
 # Optional 4th element = expected `area`. None means we don't assert area.
 TRUE_POSITIVES = [
@@ -265,6 +304,9 @@ def _run_all():
     _fp_bucket("FAMILY_APPEALS", FAMILY_APPEALS, lambda r: r is not None)
     _fp_bucket("EMOJI_PREFIXED_CAPTIONS", EMOJI_PREFIXED_CAPTIONS,
                lambda r: r is not None)
+    _fp_bucket("FUNERAL_BURIAL", FUNERAL_BURIAL, lambda r: r is not None)
+    _fp_bucket("PAST_PERFECT_RECAP", PAST_PERFECT_RECAP, lambda r: r is not None)
+    _fp_bucket("PERIOD_SUMMARY", PERIOD_SUMMARY, lambda r: r is not None)
 
     # GEO_PRECISION — pass = correct event_type AND correct area.
     geo_outcomes = []

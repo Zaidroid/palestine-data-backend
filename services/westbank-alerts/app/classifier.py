@@ -799,6 +799,46 @@ FAMILY_APPEAL_VERBS = [
 ]
 FAMILY_APPEAL_VERBS = [_normalize(t) for t in FAMILY_APPEAL_VERBS]
 
+# Funeral / burial / posthumous profile. The deceased is named alongside
+# a past-tense burial verb. Distinct from a fresh strike report — those
+# carry "قصف" / "استهداف" / "إصابة" without the burial framing.
+FUNERAL_BURIAL_PATTERNS = [
+    "يشيعون جثمان", "يشيعون جثامين",
+    "تشييع جثمان", "تشييع جثامين",
+    "يودعون جثمان", "يودعون جثامين",
+    "يودعون جثامين الشهداء", "يودعون جثامين شهداء",
+    "وصول جثمان", "وصول جثامين",
+    "في تشييع",
+    "الذي ارتقى", "التي ارتقت", "الذين ارتقوا",
+    "ارتقى متاثرا بجراح", "ارتقت متاثره بجراح",
+    "بالروح بالدم نفديك",
+    "جنازه مهيبه", "موكب جنازه",
+    "هتاف يعلو فوق جراح الوداع",
+]
+FUNERAL_BURIAL_PATTERNS = [_normalize(t) for t in FUNERAL_BURIAL_PATTERNS]
+
+# Past-perfect recap: "وكان قد + verb past" / "وكانت قد …" introduces a
+# recap clause about a prior event, often nested inside today's news.
+# Filter when this leads the post — mid-text use is just background.
+PAST_PERFECT_RECAP_LEADING = [
+    "وكان قد", "وكانت قد",
+    "وكان جيش", "وكانت قوات", "وكانت سلطات", "وكانت وزاره",
+    "كانت قد",
+]
+PAST_PERFECT_RECAP_LEADING = [_normalize(t) for t in PAST_PERFECT_RECAP_LEADING]
+
+# Period summary: "خلال (\d+|واحد) (period word)" — aggregate over a
+# time window, not a single event. Two alternations:
+#   1. digit + period word ("خلال 48 ساعة")
+#   2. period word + "واحد/واحدة" ("خلال أسبوع واحد")
+_PERIOD_SUMMARY_RE = re.compile(
+    r"خلال\s+(?:"
+    r"\d+\s+(?:ساعه|ساعات|يوم|ايام|اسبوع|اسابيع|شهر|اشهر|سنه|اعوام)"
+    r"|"
+    r"(?:ساعه|يوم|اسبوع|شهر|سنه)\s+واحد[هة]?"
+    r")"
+)
+
 # Temporal attribution markers — distinguish "happening now" from historical
 # mentions. Past markers downweight confidence so news-recap noise doesn't
 # fire as real-time alerts. (T2.1)
@@ -1020,6 +1060,18 @@ def _is_noise(text: str, tier: str = "tier1", source: str = "") -> bool:
     # Family appeal about an existing detention — no new arrest event.
     if (_has(head_120, FAMILY_APPEAL_LEADING)
             and _has(text, FAMILY_APPEAL_VERBS)):
+        return True
+
+    # Funeral / body-arrival / posthumous profile of someone already dead.
+    if _has(text, FUNERAL_BURIAL_PATTERNS):
+        return True
+
+    # Past-perfect recap leading the post (وكان قد / وكانت قد …).
+    if _has(text[:80], PAST_PERFECT_RECAP_LEADING):
+        return True
+
+    # Period summary: "خلال 48 ساعة" / "خلال أسبوع" — aggregate, not event.
+    if _PERIOD_SUMMARY_RE.search(text):
         return True
 
     # News attribution — only discard for non-news channels.
