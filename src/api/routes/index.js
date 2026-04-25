@@ -13,6 +13,7 @@ import incidentsRoute from './incidents.js';
 import geoAdminRoute from './geo-admin.js';
 import facilitiesRoute from './facilities.js';
 import humanitarianRoute from './humanitarian.js';
+import displacementRoute from './displacement.js';
 import versionRoutes from './version.js';
 import qualityRoutes from './quality.js';
 import recordRoutes from './record.js';
@@ -66,6 +67,9 @@ router.use('/facilities', facilitiesRoute);
 
 // Humanitarian severity layers (currently IPC food insecurity polygons).
 router.use('/humanitarian', humanitarianRoute);
+
+// Displacement time series — UNHCR POC stocks + IDMC IDP new-displacements.
+router.use('/displacement', displacementRoute);
 
 // Trust-foundation surfaces (A2/A3/A4): citable version, quality, per-record permalinks
 router.use('/version', versionRoutes);
