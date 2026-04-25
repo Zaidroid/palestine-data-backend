@@ -17,6 +17,13 @@ class AlertType(str, Enum):
     injury_report      = "injury_report"      # Confirmed casualties / injuries
     demolition         = "demolition"         # Home/structure demolitions
     arrest_campaign    = "arrest_campaign"    # Mass arrest operations
+    # Tier 2 (B5) — civilian-life impact events
+    school_closure      = "school_closure"      # Schools closed, education suspended
+    hospital_strike     = "hospital_strike"     # Hospital / medical facility targeted
+    evacuation_order    = "evacuation_order"    # Forced evacuation / displacement order
+    utility_cutoff      = "utility_cutoff"      # Water / electricity / fuel cut
+    journalist_targeted = "journalist_targeted" # Press killed, injured, detained, equipment damaged
+    child_detention     = "child_detention"     # Specific child arrest events
     # Legacy types (kept for old DB records)
     rocket_attack  = "rocket_attack"
     idf_operation  = "idf_operation"

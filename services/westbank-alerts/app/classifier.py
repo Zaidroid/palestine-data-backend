@@ -640,6 +640,57 @@ ARREST_CAMPAIGN_TERMS = [
 ARREST_CAMPAIGN_TERMS = [_normalize(t) for t in ARREST_CAMPAIGN_TERMS]
 
 
+# ── B5 — civilian-life impact event keyword sets ────────────────────────────
+
+HOSPITAL_STRIKE_TERMS = [
+    "استهداف المستشفى", "استهداف مستشفى", "قصف المستشفى", "قصف مستشفى",
+    "استهداف مركز صحي", "قصف مركز صحي", "استهداف مجمع طبي",
+    "اقتحام مستشفى", "محاصره مستشفى",
+]
+HOSPITAL_STRIKE_TERMS = [_normalize(t) for t in HOSPITAL_STRIKE_TERMS]
+
+# Journalist-targeted is a 2-pass match: subject+verb. Each list alone is
+# noisy; the AND in classifier requires both.
+JOURNALIST_TARGETED_TERMS = [
+    "صحفي", "صحفيه", "صحفيون", "صحفيين", "مراسل", "مراسله", "مراسلين",
+    "مصور صحفي", "مصوره صحفيه", "طاقم صحفي",
+]
+JOURNALIST_TARGETED_TERMS = [_normalize(t) for t in JOURNALIST_TARGETED_TERMS]
+
+JOURNALIST_HARM_VERBS = [
+    "استشهد", "استشهاد", "اصيب", "اصابه", "اعتقل", "اعتقال",
+    "استهداف", "قصف", "اطلاق نار",
+]
+JOURNALIST_HARM_VERBS = [_normalize(t) for t in JOURNALIST_HARM_VERBS]
+
+EVACUATION_ORDER_TERMS = [
+    "امر اخلاء", "اوامر اخلاء", "اخلاء فوري",
+    "تطلب اخلاء", "اوامر بالاخلاء", "اخلاء المنطقه",
+    "اخلاء عاجل", "تهجير قسري",
+]
+EVACUATION_ORDER_TERMS = [_normalize(t) for t in EVACUATION_ORDER_TERMS]
+
+UTILITY_CUTOFF_TERMS = [
+    "قطع الكهرباء", "قطع المياه", "قطع التيار الكهربائي",
+    "انقطاع الكهرباء", "انقطاع المياه", "ازمه المياه",
+    "نفاد الوقود", "ازمه الوقود",
+]
+UTILITY_CUTOFF_TERMS = [_normalize(t) for t in UTILITY_CUTOFF_TERMS]
+
+CHILD_DETENTION_TERMS = [
+    "اعتقال طفل", "اعتقال اطفال", "اعتقل طفلا", "اعتقلت طفله",
+    "اعتقال قاصر", "اعتقال قاصرين", "احتجاز اطفال",
+]
+CHILD_DETENTION_TERMS = [_normalize(t) for t in CHILD_DETENTION_TERMS]
+
+SCHOOL_CLOSURE_TERMS = [
+    "اغلاق المدرسه", "اغلاق المدارس", "تعليق الدراسه",
+    "تعليق التعليم", "وقف الدراسه", "اغلاق الجامعه",
+    "تعليق الدوام المدرسي",
+]
+SCHOOL_CLOSURE_TERMS = [_normalize(t) for t in SCHOOL_CLOSURE_TERMS]
+
+
 # ── Breaking news markers (QudsN style) ─────────────────────────────────────
 
 URGENT_MARKERS = [
@@ -1145,6 +1196,12 @@ def _build(
         AlertType.injury_report:     "Injury Report",
         AlertType.demolition:        "Demolition",
         AlertType.arrest_campaign:   "Arrest Campaign",
+        AlertType.school_closure:    "School Closure",
+        AlertType.hospital_strike:   "Hospital Strike",
+        AlertType.evacuation_order:  "Evacuation Order",
+        AlertType.utility_cutoff:    "Utility Cutoff",
+        AlertType.journalist_targeted: "Journalist Targeted",
+        AlertType.child_detention:   "Child Detention",
     }
     TYPE_LABEL_AR = {
         AlertType.west_bank_siren:   "تنبيه الضفة الغربية",
@@ -1157,6 +1214,12 @@ def _build(
         AlertType.injury_report:     "إصابة",
         AlertType.demolition:        "هدم",
         AlertType.arrest_campaign:   "حملة اعتقالات",
+        AlertType.school_closure:    "إغلاق مدرسة",
+        AlertType.hospital_strike:   "استهداف مستشفى",
+        AlertType.evacuation_order:  "أمر إخلاء",
+        AlertType.utility_cutoff:    "قطع خدمات",
+        AlertType.journalist_targeted: "استهداف صحفي",
+        AlertType.child_detention:   "اعتقال طفل",
     }
     label_en = TYPE_LABEL_EN.get(alert_type, "Alert")
     label_ar = TYPE_LABEL_AR.get(alert_type, "تنبيه")
@@ -1575,5 +1638,24 @@ def classify_wb_operational(raw_text: str, source: str) -> Optional[dict]:
     if _has(normed, ROAD_CLOSURE_TERMS):
         severity = Severity.low
         return _build(AlertType.road_closure, severity, clean, source, area, zone=zone)
+
+    # ── B5 — civilian-life impact events ─────────────────────────────────
+    if _has(normed, HOSPITAL_STRIKE_TERMS):
+        return _build(AlertType.hospital_strike, Severity.high, clean, source, area, zone=zone)
+
+    if _has(normed, JOURNALIST_TARGETED_TERMS) and _has(normed, JOURNALIST_HARM_VERBS):
+        return _build(AlertType.journalist_targeted, Severity.high, clean, source, area, zone=zone)
+
+    if _has(normed, EVACUATION_ORDER_TERMS):
+        return _build(AlertType.evacuation_order, Severity.high, clean, source, area, zone=zone)
+
+    if _has(normed, CHILD_DETENTION_TERMS):
+        return _build(AlertType.child_detention, Severity.medium, clean, source, area, zone=zone)
+
+    if _has(normed, UTILITY_CUTOFF_TERMS):
+        return _build(AlertType.utility_cutoff, Severity.medium, clean, source, area, zone=zone)
+
+    if _has(normed, SCHOOL_CLOSURE_TERMS):
+        return _build(AlertType.school_closure, Severity.low, clean, source, area, zone=zone)
 
     return None
