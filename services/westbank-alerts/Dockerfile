@@ -11,6 +11,7 @@ COPY app/ ./app/
 COPY dashboard.html ./dashboard.html
 COPY data/known_checkpoints.json ./data/known_checkpoints.json
 COPY data/checkpoint_directory.json ./data/checkpoint_directory.json
+COPY data/known_locations.json ./data/known_locations.json
 COPY seed_checkpoints.py ./seed_checkpoints.py
 
 # Force rebuild when source files change
