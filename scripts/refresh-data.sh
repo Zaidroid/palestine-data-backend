@@ -50,6 +50,7 @@ run "imf-economic"    node scripts/sources/imf.js
 run "ucdp-conflict"   node scripts/sources/ucdp-conflict.js
 run "idmc-displacement" node scripts/sources/idmc.js
 run "insecurity-insight" node scripts/sources/insecurity-insight.js
+run "cod-ab-pse"      node scripts/sources/cod-ab.js
 run "build-gazetteer" node scripts/build-gazetteer.js
 run "infrastructure"  node scripts/fetch-infrastructure-data.js
 run "rss-news"        node scripts/fetch-rss-feeds.js
