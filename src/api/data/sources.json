@@ -140,6 +140,30 @@
       "primary": true,
       "fetcher_name": "ipc-food"
     },
+    "acled_pse": {
+      "name": "ACLED — Palestine Conflict Events (HRP aggregated)",
+      "organization": "Armed Conflict Location & Event Data Project (ACLED)",
+      "source_url": "https://data.humdata.org/dataset/palestine-acled-conflict-data",
+      "license_id": "Other",
+      "commercial_use": true,
+      "attribution_text": "ACLED — Armed Conflict Location & Event Data Project, via HDX. Use must comply with ACLED Terms of Use.",
+      "feeds_categories": ["conflict"],
+      "feeds_databank": [],
+      "feeds_endpoints": [
+        "/api/v1/conflict",
+        "/api/v1/conflict/political-violence",
+        "/api/v1/conflict/civilian-targeting",
+        "/api/v1/conflict/demonstrations"
+      ],
+      "update_cadence": "weekly",
+      "coverage_start": "2016-01-01",
+      "coverage_end": "ongoing",
+      "typical_lag_days": 7,
+      "fetcher_script": "scripts/sources/acled-pse.js",
+      "notes": "Monthly aggregates of ACLED-reported events by Admin2. 3 thematic files: political violence, civilian targeting, demonstrations. ~5,950 aggregate rows total. Distinct from event-level UCDP-GED already in /unified/conflict.",
+      "primary": true,
+      "fetcher_name": "acled-pse"
+    },
     "awsd_pse": {
       "name": "Aid Worker Security Database (AWSD) — Palestine",
       "organization": "Humanitarian Outcomes",
