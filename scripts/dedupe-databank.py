@@ -69,6 +69,50 @@ def parse_attributions(blob):
     return arr if isinstance(arr, list) else []
 
 
+def _merge_collision_group(conn, table_name, ekey, group):
+    """Pick keeper, merge attributions, DELETE losers, set keeper's
+    entity_key. Returns count of rows deleted.
+
+    Order matters: losers must be deleted BEFORE setting keeper.entity_key,
+    otherwise the UNIQUE INDEX fires."""
+    def completeness(r):
+        score = sum(1 for f in ("name_en", "name_ar", "age", "source_url") if r.get(f))
+        ts = (datetime.fromisoformat(r["created_at"]).timestamp()
+              if r.get("created_at") else 0)
+        return (score, -ts)
+    group_sorted = sorted(group, key=completeness, reverse=True)
+    keeper, losers = group_sorted[0], group_sorted[1:]
+
+    merged = parse_attributions(keeper["attributions"])
+    seen = {a.get("source_dataset") for a in merged if isinstance(a, dict)}
+    for r in [keeper, *losers]:
+        if r["source_dataset"] and r["source_dataset"] not in seen:
+            merged.append({
+                "source_dataset": r["source_dataset"],
+                "source_url": r.get("source_url"),
+                "source_alert_id": r.get("source_alert_id"),
+                "fetched_at": r.get("created_at"),
+            })
+            seen.add(r["source_dataset"])
+        for a in parse_attributions(r.get("attributions")):
+            src = a.get("source_dataset") if isinstance(a, dict) else None
+            if src and src not in seen:
+                merged.append(a)
+                seen.add(src)
+
+    if losers:
+        placeholders = ",".join(["?"] * len(losers))
+        conn.execute(
+            f"DELETE FROM {table_name} WHERE id IN ({placeholders})",
+            [r["id"] for r in losers],
+        )
+    conn.execute(
+        f"UPDATE {table_name} SET attributions = ?, entity_key = ? WHERE id = ?",
+        (json.dumps(merged), ekey, keeper["id"]),
+    )
+    return len(losers)
+
+
 def dedupe_table(conn, table_name, name_en_col, name_ar_col, age_col, date_col):
     print(f"\n[{table_name}] starting dedup", file=sys.stderr)
     # Pull every row's id + identity-relevant fields + existing attributions.
@@ -101,12 +145,16 @@ def dedupe_table(conn, table_name, name_en_col, name_ar_col, age_col, date_col):
     print(f"[{table_name}] {len(duplicates)} entity groups with duplicates",
           file=sys.stderr)
 
-    # Pass 1: backfill entity_key + seed attributions on every named row.
-    # Single-source rows get a 1-entry attributions[]; collision rows get
-    # their merged set in pass 2.
+    # Single-pass: for each entity group, atomically merge + delete losers
+    # + set entity_key on keeper. Doing it in one pass avoids hitting the
+    # UNIQUE constraint mid-loop (which would happen if we backfilled
+    # entity_key before deleting the duplicates).
     backfill = 0
+    deleted_total = 0
     for ekey, group in by_ekey.items():
-        for r in group:
+        if len(group) == 1:
+            # Non-collision row: just set entity_key + seed attributions if empty.
+            r = group[0]
             current = parse_attributions(r.get("attributions"))
             if not current and r.get("source_dataset"):
                 seeded = json.dumps([{
@@ -125,63 +173,16 @@ def dedupe_table(conn, table_name, name_en_col, name_ar_col, age_col, date_col):
                     (ekey, r["id"]),
                 )
             backfill += 1
-    print(f"[{table_name}] entity_key backfilled on {backfill} rows", file=sys.stderr)
+            continue
 
-    # Pass 2: for each duplicate group, keep one canonical row + delete the rest
-    deleted_total = 0
-    for ekey, group in duplicates.items():
-        # Keep the row with the most complete fields, earliest created_at as tiebreak.
-        def completeness(r):
-            score = 0
-            for f in ("name_en", "name_ar", "age", "source_url"):
-                if r.get(f):
-                    score += 1
-            return (score, -1 * (datetime.fromisoformat(r["created_at"]).timestamp()
-                                if r.get("created_at") else 0))
-        group_sorted = sorted(group, key=completeness, reverse=True)
-        keeper = group_sorted[0]
-        losers = group_sorted[1:]
+        # Collision group: keep one, merge attributions, delete losers,
+        # then set keeper's entity_key (delete-first ordering avoids
+        # the UNIQUE constraint).
+        deleted_total += _merge_collision_group(conn, table_name, ekey, group)
+        backfill += 1
 
-        # Merge attributions: existing keeper's + each loser's primary attribution
-        merged = parse_attributions(keeper["attributions"])
-        seen_sources = {a.get("source_dataset") for a in merged if isinstance(a, dict)}
-        if keeper["source_dataset"] not in seen_sources:
-            merged.append({
-                "source_dataset": keeper["source_dataset"],
-                "source_url": keeper["source_url"],
-                "source_alert_id": keeper["source_alert_id"],
-                "fetched_at": keeper["created_at"],
-            })
-            seen_sources.add(keeper["source_dataset"])
-
-        for loser in losers:
-            for a in parse_attributions(loser["attributions"]):
-                src = a.get("source_dataset") if isinstance(a, dict) else None
-                if src and src not in seen_sources:
-                    merged.append(a)
-                    seen_sources.add(src)
-            if loser["source_dataset"] not in seen_sources:
-                merged.append({
-                    "source_dataset": loser["source_dataset"],
-                    "source_url": loser["source_url"],
-                    "source_alert_id": loser["source_alert_id"],
-                    "fetched_at": loser["created_at"],
-                })
-                seen_sources.add(loser["source_dataset"])
-
-        conn.execute(
-            f"UPDATE {table_name} SET attributions = ? WHERE id = ?",
-            (json.dumps(merged), keeper["id"]),
-        )
-        loser_ids = tuple(r["id"] for r in losers)
-        if loser_ids:
-            placeholders = ",".join(["?"] * len(loser_ids))
-            conn.execute(
-                f"DELETE FROM {table_name} WHERE id IN ({placeholders})",
-                loser_ids,
-            )
-            deleted_total += len(loser_ids)
-
+    print(f"[{table_name}] entity_key set on {backfill} unique entities; "
+          f"deleted {deleted_total} duplicate rows", file=sys.stderr)
     conn.commit()
     final = conn.execute(f"SELECT COUNT(*) FROM {table_name}").fetchone()[0]
     print(f"[{table_name}] DONE — deleted {deleted_total} duplicate rows; "
