@@ -874,6 +874,69 @@ async def correct_alert(
     return updated
 
 
+# ── B6 — Active-learning review queue ────────────────────────────────────────
+
+@app.get("/admin/review", tags=["admin"])
+async def admin_review_queue(
+    limit: int = Query(20, ge=1, le=100),
+    _: str = Depends(require_key),
+):
+    """List borderline-confidence alerts (0.40–0.60) queued for admin review.
+    POST a verdict via /admin/review/{id} to either confirm or retract."""
+    async with db_pool.get_alerts_db() as conn:
+        cur = await conn.execute(
+            """SELECT q.alert_id, q.queued_at,
+                      a.type, a.area, a.confidence, a.title, a.timestamp, a.source
+               FROM alert_review_queue q
+               JOIN alerts a ON a.id = q.alert_id
+               WHERE q.reviewed_at IS NULL
+               ORDER BY q.queued_at DESC
+               LIMIT ?""",
+            (limit,),
+        )
+        rows = await cur.fetchall()
+    return {
+        "count": len(rows),
+        "queue": [
+            {
+                "alert_id": r[0], "queued_at": r[1],
+                "type": r[2], "area": r[3], "confidence": r[4],
+                "title": r[5], "timestamp": r[6], "source": r[7],
+            }
+            for r in rows
+        ],
+    }
+
+
+@app.post("/admin/review/{alert_id}", tags=["admin"])
+async def admin_review_verdict(
+    alert_id: int,
+    verdict: str = Query(..., pattern="^(true_positive|false_positive|unsure)$"),
+    note: Optional[str] = Query(None, max_length=500),
+    _: str = Depends(require_key),
+):
+    """Record a verdict on a queued alert. false_positive verdicts also
+    PATCH the alert to status=retracted, which feeds the A2 learner the
+    next time it runs."""
+    now = datetime.utcnow().isoformat()
+    async with db_pool.get_alerts_db() as conn:
+        cur = await conn.execute(
+            "UPDATE alert_review_queue SET reviewed_at = ?, verdict = ?, note = ? "
+            "WHERE alert_id = ? AND reviewed_at IS NULL",
+            (now, verdict, note, alert_id),
+        )
+        await conn.commit()
+        if cur.rowcount == 0:
+            raise HTTPException(status_code=404, detail="alert not in pending queue")
+
+    # FP verdict → also retract the alert so the A2 learner sees it
+    if verdict == "false_positive":
+        await db.update_alert_status(alert_id, "retracted",
+                                     note or "admin_review verdict: false_positive")
+
+    return {"alert_id": alert_id, "verdict": verdict, "reviewed_at": now}
+
+
 @app.get("/channel-reliability", tags=["alerts"])
 async def list_channel_reliability():
     """

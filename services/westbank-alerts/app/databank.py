@@ -162,6 +162,20 @@ CREATE TABLE IF NOT EXISTS keyword_weight_overrides (
 )
 """
 
+# B6 — active-learning queue. Borderline-confidence alerts are queued
+# for admin review; verdict (true_positive | false_positive | unsure)
+# feeds back into the A2 retraction → keyword_weight_overrides loop.
+CREATE_ALERT_REVIEW_QUEUE = """
+CREATE TABLE IF NOT EXISTS alert_review_queue (
+    id           INTEGER PRIMARY KEY AUTOINCREMENT,
+    alert_id     INTEGER NOT NULL UNIQUE,
+    queued_at    TEXT NOT NULL,
+    reviewed_at  TEXT,
+    verdict      TEXT,
+    note         TEXT
+)
+"""
+
 CREATE_DATABANK_INDEXES = [
     "CREATE INDEX IF NOT EXISTS idx_killed_date    ON people_killed(date DESC)",
     "CREATE INDEX IF NOT EXISTS idx_killed_region  ON people_killed(place_region)",
@@ -193,6 +207,10 @@ async def init_databank():
         await db.execute(CREATE_STRUCTURES_DAMAGED)
         await db.execute(CREATE_ACTOR_ACTIONS)
         await db.execute(CREATE_KEYWORD_WEIGHT_OVERRIDES)
+        await db.execute(CREATE_ALERT_REVIEW_QUEUE)
+        await db.execute(
+            "CREATE INDEX IF NOT EXISTS idx_review_pending ON alert_review_queue(reviewed_at) WHERE reviewed_at IS NULL"
+        )
         # Migration: add `count` column to existing people_killed tables
         cur = await db.execute("PRAGMA table_info(people_killed)")
         cols = {row[1] for row in await cur.fetchall()}

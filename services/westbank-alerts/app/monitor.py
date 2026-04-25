@@ -167,6 +167,21 @@ async def _process_security_message(message, channel_username: str):
     except Exception as e:
         log.warning(f"Corroboration check failed for alert #{alert.id}: {e}")
 
+    # B6 — active-learning queue: alerts in the borderline 0.40-0.60
+    # confidence band get queued for admin review. Verdict feeds A2.
+    try:
+        if alert.confidence is not None and 0.40 <= alert.confidence < 0.60:
+            from .database import get_alerts_db
+            from datetime import datetime as _dt
+            async with get_alerts_db() as db:
+                await db.execute(
+                    "INSERT OR IGNORE INTO alert_review_queue (alert_id, queued_at) VALUES (?, ?)",
+                    (alert.id, _dt.utcnow().isoformat()),
+                )
+                await db.commit()
+    except Exception as e:
+        log.warning(f"Review-queue enqueue failed for alert #{alert.id}: {e}")
+
     # Long-term databank: extract people/structures/actor-actions from alert.
     try:
         from .entity_extractor import extract_entities
