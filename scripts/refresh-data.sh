@@ -36,6 +36,7 @@ run "prisoners"       node scripts/fetch-prisoners.js
 run "unhcr-refugees"  node scripts/sources/unhcr.js
 run "unfts-funding"   node scripts/sources/unfts.js
 run "imf-economic"    node scripts/sources/imf.js
+run "ucdp-conflict"   node scripts/sources/ucdp-conflict.js
 run "infrastructure"  node scripts/fetch-infrastructure-data.js
 run "rss-news"        node scripts/fetch-rss-feeds.js
 run "culture"         node scripts/fetch-culture-data.js

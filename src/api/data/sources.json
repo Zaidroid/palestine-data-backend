@@ -259,6 +259,24 @@
       "primary": true
     },
 
+    "ucdp_ged": {
+      "name": "UCDP Georeferenced Event Dataset",
+      "organization": "Uppsala Conflict Data Program",
+      "source_url": "https://ucdp.uu.se/",
+      "hdx_url": "https://data.humdata.org/dataset/ucdp-data-for-israel",
+      "license_id": "CC-BY-IGO",
+      "commercial_use": true,
+      "attribution_text": "Conflict events: Uppsala Conflict Data Program (ucdp.uu.se), CC-BY-IGO.",
+      "feeds_categories": ["conflict"],
+      "feeds_databank": [],
+      "update_cadence": "annual",
+      "coverage_start": "1989",
+      "coverage_end": "2024",
+      "typical_lag_days": 180,
+      "fetcher_script": "scripts/sources/ucdp-conflict.js",
+      "notes": "7,800+ Palestine-related conflict events with lat/lng, casualty counts, source attribution. Academic gold-standard. Backfills /unified/conflict pre-2000 (Tech4Palestine starts Sep 2000).",
+      "primary": true
+    },
     "good_shepherd": {
       "name": "Good Shepherd Collective Healthcare Data",
       "organization": "Good Shepherd Collective",
@@ -280,7 +298,7 @@
   },
 
   "category_index": {
-    "conflict": ["tech4palestine_summary"],
+    "conflict": ["tech4palestine_summary", "ucdp_ged"],
     "culture": ["wikidata_culture"],
     "economic": ["world_bank", "imf_datamapper"],
     "education": ["ocha_opt_hdx"],
@@ -298,7 +316,7 @@
   },
 
   "planned_additions": [
-    { "source": "ACLED", "category": "conflict", "reason": "Pre-2000 backfill (1997+) + cross-verification" },
+    { "source": "ACLED", "category": "conflict", "reason": "Cross-verification — UCDP-GED already covers 1989+" },
     { "source": "Palestine Monetary Authority", "category": "economic", "reason": "Quarterly macro, freshest available" },
     { "source": "B'Tselem demolitions", "category": "land", "reason": "Daily HR signal; only Peace Now currently" },
     { "source": "OCHA Demolitions Dashboard", "category": "land", "reason": "Daily ohcaopt.org incident feed" },
