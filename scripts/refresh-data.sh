@@ -49,6 +49,7 @@ run "unfts-funding"   node scripts/sources/unfts.js
 run "imf-economic"    node scripts/sources/imf.js
 run "ucdp-conflict"   node scripts/sources/ucdp-conflict.js
 run "idmc-displacement" node scripts/sources/idmc.js
+run "insecurity-insight" node scripts/sources/insecurity-insight.js
 run "build-gazetteer" node scripts/build-gazetteer.js
 run "infrastructure"  node scripts/fetch-infrastructure-data.js
 run "rss-news"        node scripts/fetch-rss-feeds.js
@@ -80,6 +81,7 @@ run "databank-gaza"      python3 scripts/backfill-databank-from-gaza-daily.py
 run "databank-prisoners" python3 scripts/backfill-databank-from-prisoners.py
 run "databank-ucdp-actions" python3 scripts/backfill-databank-from-ucdp.py
 run "databank-structures"   python3 scripts/backfill-databank-from-infrastructure.py
+run "databank-incidents"    python3 scripts/backfill-incidents-from-insecurity-insight.py
 run "learn-corrections"     python3 scripts/learn-from-corrections.py
 
 # Step 5: Pinned daily snapshot for ?as_of= queries

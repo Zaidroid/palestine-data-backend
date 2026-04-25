@@ -9,6 +9,7 @@ import newsRoutes from './news.js';
 import licensesRoutes from './licenses.js';
 import sourcesRoutes from './sources.js';
 import eventsTimelineRoute from './events-timeline.js';
+import incidentsRoute from './incidents.js';
 import versionRoutes from './version.js';
 import qualityRoutes from './quality.js';
 import recordRoutes from './record.js';
@@ -46,6 +47,11 @@ router.use('/sources', sourcesRoutes);
 // Cross-category time-ordered event feed. Powers dashboard timeline +
 // interactive timeline map. Reads /unified/* category files directly.
 router.use('/events/timeline', eventsTimelineRoute);
+
+// Insecurity Insight incident-level data (1997-2026, ~19k incidents
+// across healthcare, aid_worker, education, food/water systems,
+// explosive_weapons, protection, sexual_violence). Public reads.
+router.use('/incidents', incidentsRoute);
 
 // Trust-foundation surfaces (A2/A3/A4): citable version, quality, per-record permalinks
 router.use('/version', versionRoutes);

@@ -197,6 +197,38 @@ CREATE TABLE IF NOT EXISTS anomalies (
 )
 """
 
+# Insecurity Insight — incident-level data on attacks against healthcare,
+# aid workers, education, food/water systems, plus protection-in-danger
+# and conflict-related sexual violence (1997-present, ~19k PSE rows).
+# Backfilled by scripts/backfill-incidents-from-insecurity-insight.py.
+CREATE_INCIDENTS = """
+CREATE TABLE IF NOT EXISTS humanitarian_incidents (
+    incident_id            TEXT PRIMARY KEY,
+    date                   TEXT NOT NULL,
+    category               TEXT NOT NULL,
+    country_iso            TEXT,
+    admin1                 TEXT,
+    latitude               REAL,
+    longitude              REAL,
+    geo_precision          TEXT,
+    location_type          TEXT,
+    perpetrator_type       TEXT,
+    perpetrator_name       TEXT,
+    weapon                 TEXT,
+    event_description      TEXT,
+    organisation_affected  TEXT,
+    victims_killed         INTEGER,
+    victims_injured        INTEGER,
+    victims_kidnapped      INTEGER,
+    victims_arrested       INTEGER,
+    victims_threatened     INTEGER,
+    victims_assaulted      INTEGER,
+    source_dataset         TEXT,
+    source_url             TEXT,
+    details_json           TEXT
+)
+"""
+
 CREATE_DATABANK_INDEXES = [
     "CREATE INDEX IF NOT EXISTS idx_killed_date    ON people_killed(date DESC)",
     "CREATE INDEX IF NOT EXISTS idx_killed_region  ON people_killed(place_region)",
@@ -216,6 +248,11 @@ CREATE_DATABANK_INDEXES = [
     "CREATE INDEX IF NOT EXISTS idx_actions_date    ON actor_actions(date DESC)",
     "CREATE INDEX IF NOT EXISTS idx_actions_actor   ON actor_actions(actor_type)",
     "CREATE INDEX IF NOT EXISTS idx_actions_type    ON actor_actions(action_type)",
+
+    "CREATE INDEX IF NOT EXISTS idx_huminc_date     ON humanitarian_incidents(date DESC)",
+    "CREATE INDEX IF NOT EXISTS idx_huminc_category ON humanitarian_incidents(category)",
+    "CREATE INDEX IF NOT EXISTS idx_huminc_admin1   ON humanitarian_incidents(admin1)",
+    "CREATE INDEX IF NOT EXISTS idx_huminc_perp     ON humanitarian_incidents(perpetrator_name)",
 ]
 
 
@@ -236,6 +273,7 @@ async def init_databank():
         await db.execute(
             "CREATE INDEX IF NOT EXISTS idx_anomalies_detected ON anomalies(detected_at DESC)"
         )
+        await db.execute(CREATE_INCIDENTS)
         # Migration: add `count` column to existing people_killed tables
         cur = await db.execute("PRAGMA table_info(people_killed)")
         cols = {row[1] for row in await cur.fetchall()}
