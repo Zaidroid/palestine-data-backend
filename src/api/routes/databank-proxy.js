@@ -13,9 +13,11 @@ import { URL } from 'url';
 const router = express.Router();
 const ALERTS_API = process.env.ALERTS_API_URL || 'http://alerts:8080';
 
-// Catch-all GET handler. `req.path` is what came after /api/v1/databank,
-// e.g. "/people_killed" or "/people_killed/summary".
-router.get('*', (req, res) => {
+// Catch-all GET middleware. `req.path` is what came after /api/v1/databank,
+// e.g. "/people_killed" or "/people_killed/summary". Express 5 dropped
+// support for `router.get('*')` so we use middleware form instead.
+router.use((req, res, next) => {
+    if (req.method !== 'GET') return next();
     const upstreamPath = '/databank' + req.path;
     const qs = req.url.includes('?') ? req.url.substring(req.url.indexOf('?')) : '';
     const url = new URL(upstreamPath + qs, ALERTS_API);
