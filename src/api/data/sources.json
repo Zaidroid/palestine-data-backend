@@ -140,6 +140,27 @@
       "primary": true,
       "fetcher_name": "ipc-food"
     },
+    "awsd_pse": {
+      "name": "Aid Worker Security Database (AWSD) — Palestine",
+      "organization": "Humanitarian Outcomes",
+      "source_url": "https://data.humdata.org/dataset/aid-worker-security-database-pse",
+      "license_id": "CC-BY-4.0",
+      "commercial_use": true,
+      "attribution_text": "Aid Worker Security Database (AWSD) via HDX (CC-BY-4.0).",
+      "feeds_categories": ["conflict", "humanitarian"],
+      "feeds_databank": [],
+      "feeds_endpoints": [
+        "/api/v1/incidents/aid-worker?source=awsd"
+      ],
+      "update_cadence": "annual",
+      "coverage_start": "1997-01-01",
+      "coverage_end": "ongoing",
+      "typical_lag_days": 30,
+      "fetcher_script": "scripts/sources/awsd-pse.js",
+      "notes": "Cross-validation source for /incidents/aid-worker (default = Insecurity Insight). AWSD applies an annual verification process and is the canonical reference for aid-worker security incidents (1997-present). 630+ rows for PSE.",
+      "primary": false,
+      "fetcher_name": "awsd-pse"
+    },
     "hdx_hapi_pse": {
       "name": "HDX HAPI — Humanitarian API for State of Palestine",
       "organization": "HDX HAPI",
