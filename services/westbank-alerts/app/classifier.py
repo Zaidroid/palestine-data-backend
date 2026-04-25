@@ -839,6 +839,27 @@ _PERIOD_SUMMARY_RE = re.compile(
     r")"
 )
 
+# Human-interest emotional posts — a video about someone reacting to
+# a Palestinian event. The event is real but old; the post is the
+# reaction. Filter on framing markers.
+HUMAN_INTEREST_MARKERS = [
+    "في مقطع فيديو مؤثر", "في فيديو مؤثر",
+    "بهذه البراءه", "بهذا الالم", "بهذا الحزن",
+    "تروي معاناتها", "يروي معاناته",
+    "وهو يغالب دموعه", "وهي تغالب دموعها",
+    "تاثرا بمشاهد", "تاثراً بمشاهد",
+]
+HUMAN_INTEREST_MARKERS = [_normalize(t) for t in HUMAN_INTEREST_MARKERS]
+
+# Humanitarian capacity appeal — local officials reporting equipment
+# shortages or fuel/aid scarcity. Not a kinetic event.
+HUMANITARIAN_APPEAL_MARKERS = [
+    "نعاني نقصا حادا", "نعاني من نقص",
+    "نقص حاد في الوقود", "نقص حاد في الميا",
+    "نقص حاد في الغذاء", "نقص حاد في الدواء",
+]
+HUMANITARIAN_APPEAL_MARKERS = [_normalize(t) for t in HUMANITARIAN_APPEAL_MARKERS]
+
 # Temporal attribution markers — distinguish "happening now" from historical
 # mentions. Past markers downweight confidence so news-recap noise doesn't
 # fire as real-time alerts. (T2.1)
@@ -1072,6 +1093,16 @@ def _is_noise(text: str, tier: str = "tier1", source: str = "") -> bool:
 
     # Period summary: "خلال 48 ساعة" / "خلال أسبوع" — aggregate, not event.
     if _PERIOD_SUMMARY_RE.search(text):
+        return True
+
+    # Human-interest emotional reaction post — the event is old; the
+    # post is someone reacting to it.
+    if _has(text, HUMAN_INTEREST_MARKERS):
+        return True
+
+    # Humanitarian capacity appeal — equipment/supplies shortage,
+    # not a kinetic event.
+    if _has(text, HUMANITARIAN_APPEAL_MARKERS):
         return True
 
     # News attribution — only discard for non-news channels.

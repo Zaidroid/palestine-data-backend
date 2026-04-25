@@ -249,6 +249,29 @@ PERIOD_SUMMARY = [
      "qudsn"),
 ]
 
+# 16. NEW — Human-interest emotional posts. Actor crying about
+#     Palestinian arrest, child describing reactions to a missile.
+#     Real event referenced is OLD; the post is about someone's emotion.
+HUMAN_INTEREST = [
+    ("في مقطع فيديو مؤثر؛ ظهر الممثل الأسترالي \"هاري كوك\" وهو يغالب دموعه "
+     "تأثراً بمشاهد اعتقال قوات الاحتلال لطفل فلسطيني في الضفة الغربية",
+     "qudsn"),
+    ("\"لو انطبش عليه حجر بيفقع\".. بهذه البراءة الممزوجة بالدهشة، وصف طفل "
+     "من غزة ذهوله عند رؤية صاروخ للاحتلال لم ينفجر بين منازل الأهالي.",
+     "qudsn"),
+    ("في فيديو مؤثر، تروي طفلة فلسطينية معاناتها مع النزوح المتكرر",
+     "qudsn"),
+]
+
+# 17. NEW — Humanitarian capacity appeals. Local officials saying they
+#     don't have the equipment/staff to respond. Not a kinetic event.
+HUMANITARIAN_APPEAL = [
+    ("عاجل | المتحدث باسم بلدية غزة للجزيرة: نعاني نقصا حادا في آليات "
+     "وإمكانيات التعامل مع المباني الآيلة للسقوط", "ajanews"),
+    ("الدفاع المدني في غزة: نعاني من نقص حاد في الوقود اللازم لتشغيل "
+     "آلياتنا", "qudsn"),
+]
+
 # True positives — must continue to classify (not None) with expected type.
 # Optional 4th element = expected `area`. None means we don't assert area.
 TRUE_POSITIVES = [
@@ -307,6 +330,9 @@ def _run_all():
     _fp_bucket("FUNERAL_BURIAL", FUNERAL_BURIAL, lambda r: r is not None)
     _fp_bucket("PAST_PERFECT_RECAP", PAST_PERFECT_RECAP, lambda r: r is not None)
     _fp_bucket("PERIOD_SUMMARY", PERIOD_SUMMARY, lambda r: r is not None)
+    _fp_bucket("HUMAN_INTEREST", HUMAN_INTEREST, lambda r: r is not None)
+    _fp_bucket("HUMANITARIAN_APPEAL", HUMANITARIAN_APPEAL,
+               lambda r: r is not None)
 
     # GEO_PRECISION — pass = correct event_type AND correct area.
     geo_outcomes = []
