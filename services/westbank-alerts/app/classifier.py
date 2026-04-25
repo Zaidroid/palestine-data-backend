@@ -1542,6 +1542,23 @@ def classify_wb_operational(raw_text: str, source: str) -> Optional[dict]:
     zone = _extract_zone(normed) or ("gaza_strip" if _is_gaza else "west_bank")
     is_urgent = _has_urgent_marker(normed)
 
+    # ── B5 — civilian-life specific checks (run BEFORE generic injury/raid/arrest)
+    # Hospital strike beats raid (raid into a hospital is more specifically "hospital_strike")
+    if _has(normed, HOSPITAL_STRIKE_TERMS):
+        return _build(AlertType.hospital_strike, Severity.high, clean, source, area, zone=zone)
+
+    # Journalist targeted beats generic injury (subject + harm verb both required)
+    if _has(normed, JOURNALIST_TARGETED_TERMS) and _has(normed, JOURNALIST_HARM_VERBS):
+        return _build(AlertType.journalist_targeted, Severity.high, clean, source, area, zone=zone)
+
+    # Child detention beats generic arrest (when the subject is explicitly a child)
+    if _has(normed, CHILD_DETENTION_TERMS):
+        return _build(AlertType.child_detention, Severity.medium, clean, source, area, zone=zone)
+
+    # Evacuation order doesn't conflict but high severity
+    if _has(normed, EVACUATION_ORDER_TERMS):
+        return _build(AlertType.evacuation_order, Severity.high, clean, source, area, zone=zone)
+
     # Injury report — highest priority operational event
     if _has(normed, INJURY_TERMS):
         # Martyrdom = high, injuries = medium
@@ -1639,19 +1656,7 @@ def classify_wb_operational(raw_text: str, source: str) -> Optional[dict]:
         severity = Severity.low
         return _build(AlertType.road_closure, severity, clean, source, area, zone=zone)
 
-    # ── B5 — civilian-life impact events ─────────────────────────────────
-    if _has(normed, HOSPITAL_STRIKE_TERMS):
-        return _build(AlertType.hospital_strike, Severity.high, clean, source, area, zone=zone)
-
-    if _has(normed, JOURNALIST_TARGETED_TERMS) and _has(normed, JOURNALIST_HARM_VERBS):
-        return _build(AlertType.journalist_targeted, Severity.high, clean, source, area, zone=zone)
-
-    if _has(normed, EVACUATION_ORDER_TERMS):
-        return _build(AlertType.evacuation_order, Severity.high, clean, source, area, zone=zone)
-
-    if _has(normed, CHILD_DETENTION_TERMS):
-        return _build(AlertType.child_detention, Severity.medium, clean, source, area, zone=zone)
-
+    # B5 — utility/school checks here (low/medium impact, no conflict with priors)
     if _has(normed, UTILITY_CUTOFF_TERMS):
         return _build(AlertType.utility_cutoff, Severity.medium, clean, source, area, zone=zone)
 
