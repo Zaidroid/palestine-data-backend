@@ -59,84 +59,89 @@ async function processEconomicData() {
     logger.info('Processing economic data...');
 
     try {
-        // World Bank data is in public/data/worldbank
-        const allIndicatorsPath = path.join(DATA_DIR, 'worldbank', 'all-indicators.json');
+        // Load whichever sources are available. World Bank is primary
+        // (most indicators); IMF DataMapper supplements with fresher
+        // vintages (WEO is twice-yearly, often 6-12 months ahead of WB).
+        const sources = [
+            { label: 'World Bank', org: 'World Bank',
+              path: path.join(DATA_DIR, 'worldbank', 'all-indicators.json') },
+            { label: 'IMF',        org: 'International Monetary Fund',
+              path: path.join(DATA_DIR, 'imf', 'all-indicators.json') },
+        ];
 
-        // Check if file exists
-        try {
-            await fs.access(allIndicatorsPath);
-        } catch {
-            throw new Error('World Bank data not found, skipping economic data');
+        const sourceLabels = [];
+        const merged = [];
+        for (const s of sources) {
+            try {
+                await fs.access(s.path);
+            } catch {
+                continue;
+            }
+            const fileContent = JSON.parse(await fs.readFile(s.path, 'utf-8'));
+            const rows = (fileContent.data || fileContent || []).filter(
+                (r) => r && r.value !== null && r.value !== undefined
+            );
+            if (rows.length === 0) continue;
+            sourceLabels.push(s.label);
+
+            const transformer = new EconomicTransformer();
+            const pipeline = new UnifiedPipeline({ logger });
+            const results = await pipeline.process(
+                rows,
+                { source: s.label, organization: s.org, category: 'economic' },
+                transformer,
+                { enrich: true, validate: true, partition: false,
+                  outputDir: path.join(UNIFIED_DIR, 'economic') }
+            );
+            if (results.success && results.enriched) {
+                merged.push(...results.enriched);
+                logger.success(`  ${s.label}: ${results.enriched.length} records`);
+            }
         }
 
-        const fileContent = JSON.parse(await fs.readFile(allIndicatorsPath, 'utf-8'));
-
-        // Extract data array from the file structure
-        const rawData = fileContent.data || fileContent;
-
-        if (!rawData || !Array.isArray(rawData) || rawData.length === 0) {
-            logger.warn('No World Bank data available');
+        if (merged.length === 0) {
+            logger.warn('No economic data available from any source');
             return;
         }
 
-        const transformer = new EconomicTransformer();
-        const pipeline = new UnifiedPipeline({ logger });
-
-        const results = await pipeline.process(
-            rawData,
-            {
-                source: 'World Bank',
-                organization: 'World Bank',
-                category: 'economic',
-            },
-            transformer,
-            {
-                enrich: true,
-                validate: true,
-                partition: true,
-                outputDir: path.join(UNIFIED_DIR, 'economic'),
-            }
-        );
-
-        if (results.success) {
-            logger.success(`Processed ${results.stats.recordCount} economic indicators`);
-
-            // Save all-data.json
-            const outputPath = path.join(UNIFIED_DIR, 'economic', 'all-data.json');
-            await fs.writeFile(
-                outputPath,
-                JSON.stringify({
-                    data: results.enriched || [],
-                    metadata: {
-                        total_records: results.stats.recordCount,
-                        generated_at: new Date().toISOString(),
-                        source: 'World Bank',
-                        category: 'economic',
-                    },
-                }, null, 2),
-                'utf-8'
-            );
-
-            // Save metadata.json
-            await fs.writeFile(
-                path.join(UNIFIED_DIR, 'economic', 'metadata.json'),
-                JSON.stringify({
-                    category: 'economic',
-                    total_records: results.stats.recordCount,
-                    last_updated: new Date().toISOString(),
-                    sources: ['World Bank'],
-                    quality: results.validated ? {
-                        average_score: results.validated.qualityScore,
-                        completeness: results.validated.completeness,
-                        consistency: results.validated.consistency,
-                        accuracy: results.validated.accuracy,
-                    } : null,
-                }, null, 2),
-                'utf-8'
-            );
-        } else {
-            logger.error('Economic data processing failed', results.errors);
+        // De-duplicate by (indicator_code, year): later sources win, so
+        // when IMF and WB both publish a year, IMF wins (fresher vintage).
+        const byKey = new Map();
+        for (const r of merged) {
+            const key = `${r.indicator_code}|${r.date?.slice(0, 4)}`;
+            byKey.set(key, r);
         }
+        const final = Array.from(byKey.values());
+
+        const outputPath = path.join(UNIFIED_DIR, 'economic', 'all-data.json');
+        await fs.mkdir(path.dirname(outputPath), { recursive: true });
+        await fs.writeFile(
+            outputPath,
+            JSON.stringify({
+                data: final,
+                metadata: {
+                    total_records: final.length,
+                    generated_at: new Date().toISOString(),
+                    sources: sourceLabels,
+                    category: 'economic',
+                    notice: sourceLabels.includes('IMF')
+                        ? 'World Bank + IMF DataMapper (WEO). On (indicator, year) overlap, IMF takes precedence (fresher vintage).'
+                        : 'World Bank only (IMF data not available).',
+                },
+            }, null, 2),
+            'utf-8',
+        );
+        await fs.writeFile(
+            path.join(UNIFIED_DIR, 'economic', 'metadata.json'),
+            JSON.stringify({
+                category: 'economic',
+                total_records: final.length,
+                last_updated: new Date().toISOString(),
+                sources: sourceLabels,
+            }, null, 2),
+            'utf-8',
+        );
+        logger.success(`Economic merged: ${final.length} unique (indicator,year) records from ${sourceLabels.join(' + ')}`);
     } catch (error) {
         logger.error('Error processing economic data:', error.message);
     }
