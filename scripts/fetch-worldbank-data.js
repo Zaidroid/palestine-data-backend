@@ -389,8 +389,11 @@ async function fetchIndicator(indicatorCode, indicatorName) {
   await logger.info(`📊 Fetching: ${indicatorName}...`);
   
   try {
-    // Fetch data from 2010 onwards
-    const url = `${WB_API_BASE}/country/${COUNTRY_CODE}/indicator/${indicatorCode}?format=json&date=2010:2024&per_page=100`;
+    // Fetch data from 2010 through current year. Hardcoding the upper bound
+    // froze /unified/economic at 2024 — World Bank releases new vintages
+    // throughout the year and we want to pick them up the day they ship.
+    const currentYear = new Date().getUTCFullYear();
+    const url = `${WB_API_BASE}/country/${COUNTRY_CODE}/indicator/${indicatorCode}?format=json&date=2010:${currentYear}&per_page=200`;
     const response = await fetchWithRetry(url);
     
     // World Bank API returns [metadata, data]

@@ -1189,6 +1189,126 @@ async function processWHOData() {
 
 
 /**
+ * Process Gaza MoH daily health-impact bulletins.
+ *
+ * Promotes per-day medics_killed / press_killed / civil_defence_killed /
+ * famine_deaths / aid_seekers_killed / aid_seekers_injured into
+ * /unified/health as dated event records. This unfreezes the health
+ * category — WHO indicators only update annually, but Gaza MoH publishes
+ * daily, and these are real health-system-impact metrics.
+ *
+ * Source: public/data/gaza/daily.json (refreshed by fetch-gaza-daily.js).
+ */
+async function processGazaHealthImpact() {
+    logger.info('Processing Gaza MoH daily health-impact data...');
+    try {
+        const dailyPath = path.join(DATA_DIR, 'gaza', 'daily.json');
+        const raw = JSON.parse(await fs.readFile(dailyPath, 'utf-8'));
+        const days = Array.isArray(raw) ? raw : (raw.data || []);
+        if (days.length === 0) {
+            logger.warn('No Gaza daily bulletins found');
+            return;
+        }
+
+        // Health-system impact fields. cumulative_summary fields (e.g.
+        // famine_deaths) sometimes only appear cumulatively — emit one
+        // record per (date, metric) where the daily_delta is a positive
+        // integer. Historical days where the metric is null get skipped.
+        const HEALTH_METRICS = [
+            ['medics_killed',         'Medical personnel killed'],
+            ['press_killed',          'Journalists killed'],
+            ['civil_defence_killed',  'Civil defence personnel killed'],
+            ['famine_deaths',         'Famine-related deaths'],
+            ['child_famine_deaths',   'Famine-related deaths (children)'],
+            ['aid_seekers_killed',    'Aid seekers killed'],
+            ['aid_seekers_injured',   'Aid seekers injured'],
+        ];
+
+        const records = [];
+        for (const day of days) {
+            const date = day.date;
+            const delta = day.daily_delta || {};
+            const cumulative = day.cumulative || {};
+            for (const [metric, label] of HEALTH_METRICS) {
+                const val = delta[metric];
+                if (!Number.isInteger(val) || val <= 0) continue;
+                records.push({
+                    id: `gaza-moh-health-${metric}-${date}`,
+                    date,
+                    category: 'health',
+                    event_type: 'health_impact',
+                    schema_version: '3.0.0',
+                    location: {
+                        name: 'Gaza Strip',
+                        region: 'Gaza Strip',
+                        governorate: null,
+                        lat: 31.5,
+                        lon: 34.45,
+                        precision: 'region',
+                    },
+                    metrics: {
+                        killed: metric.endsWith('_killed') ? val : 0,
+                        injured: metric.endsWith('_injured') ? val : 0,
+                        count: val,
+                        value: val,
+                        unit: 'persons',
+                    },
+                    description: `${label}: ${val} on ${date}.`,
+                    health_metric: metric,
+                    cumulative_at_date: cumulative[metric] ?? null,
+                    actors: [],
+                    severity_index: 0,
+                    quality: { score: 0.9, completeness: 1, consistency: 1, accuracy: 0.9, confidence: 'high', verified: false },
+                    sources: [{
+                        name: 'Gaza Ministry of Health',
+                        organization: 'Gaza MoH (mirrored by Tech4Palestine)',
+                        url: 'https://data.techforpalestine.org/api/v2/casualties_daily.json',
+                        license: 'CC-BY-4.0',
+                        fetched_at: new Date().toISOString(),
+                    }],
+                });
+            }
+        }
+
+        if (records.length === 0) {
+            logger.warn('No health-impact deltas extractable from Gaza daily');
+            return;
+        }
+
+        // Merge with existing health all-data.json (idempotent on id).
+        const healthDir = path.join(UNIFIED_DIR, 'health');
+        await fs.mkdir(healthDir, { recursive: true });
+        const allDataPath = path.join(healthDir, 'all-data.json');
+        let existing = { data: [], metadata: {} };
+        try {
+            existing = JSON.parse(await fs.readFile(allDataPath, 'utf-8'));
+        } catch {}
+        const existingById = new Map((existing.data || []).map((r) => [r.id, r]));
+        for (const r of records) existingById.set(r.id, r);
+        const merged = Array.from(existingById.values());
+
+        await fs.writeFile(
+            allDataPath,
+            JSON.stringify({
+                data: merged,
+                metadata: {
+                    ...(existing.metadata || {}),
+                    total_records: merged.length,
+                    generated_at: new Date().toISOString(),
+                    source: (existing.metadata?.source || 'WHO, HDX') + ', Gaza MoH',
+                    category: 'health',
+                },
+            }, null, 2),
+            'utf-8',
+        );
+        logger.success(`Merged ${records.length} Gaza MoH health-impact records (total now ${merged.length})`);
+    } catch (e) {
+        logger.error('Error processing Gaza MoH health-impact data:', e.message);
+    }
+}
+
+
+/**
  * Process GoodShepherd Healthcare Data
  */
 async function processGoodShepherdHealthcare() {
@@ -2280,6 +2400,7 @@ async function main() {
         { name: 'who',                 fn: processWHOData },
         { name: 'pcbs',                fn: processPCBSData },
         { name: 'goodshepherd_health', fn: processGoodShepherdHealthcare },
+        { name: 'gaza_health_impact',  fn: processGazaHealthImpact },
         { name: 'goodshepherd',        fn: processGoodShepherdData },
         { name: 'static_refugees',     fn: processStaticRefugeesData },
         { name: 'prisoners',           fn: processPrisonersData },
