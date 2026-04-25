@@ -1194,6 +1194,71 @@ def _build(
     return result
 
 
+# B4 — fuzzy directional / proximity resolution.
+# 1km in WB latitudes ≈ 0.009° lat, ≈ 0.011° lng (cos(32°)).
+_KM_PER_DEG_LAT = 1 / 110.574
+_KM_PER_DEG_LNG = 1 / 96.487
+
+_DIRECTION_OFFSETS_KM = {
+    "north":      (3, 0),
+    "south":      (-3, 0),
+    "east":       (0, 3),
+    "west":       (0, -3),
+    "northeast":  (2, 2),
+    "northwest":  (2, -2),
+    "southeast":  (-2, 2),
+    "southwest":  (-2, -2),
+    "near":       (0, 0),
+}
+
+# Modifier patterns; capture group = candidate place name string.
+# Arabic prefixes appear in many inflected forms (شمال / شمالي / شمالى) —
+# the [يى]? optional suffix covers the common adjective forms.
+_FUZZY_PATTERNS = [
+    (re.compile(r"north(?:east|west)?\s+of\s+([A-Za-z][\w\s'-]{2,30})", re.I), "north"),
+    (re.compile(r"south(?:east|west)?\s+of\s+([A-Za-z][\w\s'-]{2,30})", re.I), "south"),
+    (re.compile(r"\beast\s+of\s+([A-Za-z][\w\s'-]{2,30})", re.I), "east"),
+    (re.compile(r"\bwest\s+of\s+([A-Za-z][\w\s'-]{2,30})", re.I), "west"),
+    (re.compile(r"\bnear\s+([A-Za-z][\w\s'-]{2,30})", re.I), "near"),
+    (re.compile(r"شمال[يى]?\s+([؀-ۿ][؀-ۿ\s]{1,30})"), "north"),
+    (re.compile(r"جنوب[يى]?\s+([؀-ۿ][؀-ۿ\s]{1,30})"), "south"),
+    (re.compile(r"شرق[يى]?\s+([؀-ۿ][؀-ۿ\s]{1,30})"), "east"),
+    (re.compile(r"غرب[يى]?\s+([؀-ۿ][؀-ۿ\s]{1,30})"), "west"),
+    (re.compile(r"بالقرب\s+من\s+([؀-ۿ][؀-ۿ\s]{1,30})"), "near"),
+    (re.compile(r"قرب\s+([؀-ۿ][؀-ۿ\s]{1,30})"), "near"),
+]
+
+
+def _extract_fuzzy_location(text: str, loc_kb) -> Optional[tuple]:
+    """Return (lat, lng, source_phrase) for a "near X" / "south of X" style
+    mention, or None. Tries 3-, 2-, then 1-word truncations of the captured
+    phrase against the location KB (place names rarely exceed 3 tokens)."""
+    if not text or not loc_kb:
+        return None
+    for pat, direction in _FUZZY_PATTERNS:
+        m = pat.search(text)
+        if not m:
+            continue
+        candidate_raw = m.group(1).strip().split('\n')[0].split('.')[0]
+        words = candidate_raw.split()
+        for w in (3, 2, 1):
+            if w > len(words):
+                continue
+            candidate = " ".join(words[:w])
+            loc_key = loc_kb.find_location(candidate) or loc_kb.by_english.get(candidate.lower())
+            if not loc_key:
+                continue
+            coords = loc_kb.get_coordinates(loc_key)
+            if not coords:
+                continue
+            lat, lng = coords
+            dlat_km, dlng_km = _DIRECTION_OFFSETS_KM[direction]
+            lat += dlat_km * _KM_PER_DEG_LAT
+            lng += dlng_km * _KM_PER_DEG_LNG
+            return (lat, lng, m.group(0).strip()[:80])
+    return None
+
+
 def _resolve_coordinates(result: dict, area: Optional[str], zone: Optional[str]):
     """
     Attach lat/lng + precision tier so map clients can decide pin vs polygon.
@@ -1201,6 +1266,7 @@ def _resolve_coordinates(result: dict, area: Optional[str], zone: Optional[str])
     Precision values (most → least specific):
       - "checkpoint" : exact checkpoint coords (10-100m accuracy)
       - "town"       : town/city center from location KB (city-block accuracy)
+      - "fuzzy"      : "near X" / "south of X" → known place + 0-3km offset
       - "zone"       : WB sub-zone center (north/middle/south, ~30km)
       - "region"     : West Bank or Gaza-wide fallback (no useful point)
     `geo_source_phrase` records which input text resolved the coords — used
@@ -1235,6 +1301,13 @@ def _resolve_coordinates(result: dict, area: Optional[str], zone: Optional[str])
                 result["geo_precision"] = "checkpoint"
                 result["geo_source_phrase"] = area
                 return
+
+    # Tier 2.5: fuzzy directional/proximity ("south of Nablus" / "بالقرب من رام الله")
+    fuzzy = _extract_fuzzy_location(result.get("raw_text", ""), loc_kb)
+    if fuzzy:
+        result["latitude"], result["longitude"], result["geo_source_phrase"] = fuzzy
+        result["geo_precision"] = "fuzzy"
+        return
 
     # Tier 3: zone center fallback
     if zone and zone in WB_ZONES:
