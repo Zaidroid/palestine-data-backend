@@ -1135,6 +1135,41 @@ def _channel_weight(source: Optional[str]) -> float:
     return _CHANNEL_WEIGHT.get(source.lower().lstrip("@"), 0.5)
 
 
+# A2 — keyword_weight_overrides cache.
+# Keyed by (channel.lower(), event_type_value). Reloaded by refresh_overrides().
+_OVERRIDES: dict[tuple[str, str], float] = {}
+
+
+def _override_for(source: Optional[str], event_type: AlertType) -> float:
+    """Return the learned weight_delta for this (channel, type), or 0."""
+    if not source:
+        return 0.0
+    key = (source.lower().lstrip("@"), event_type.value if hasattr(event_type, "value") else str(event_type))
+    return _OVERRIDES.get(key, 0.0)
+
+
+def refresh_overrides_from_db_sync(db_path: str) -> int:
+    """Reload _OVERRIDES from keyword_weight_overrides. Sync because the
+    classifier module is loaded outside the app's async event loop on cold
+    start. Returns the count of rows loaded."""
+    import sqlite3
+    try:
+        conn = sqlite3.connect(db_path, timeout=5)
+        try:
+            cur = conn.execute(
+                "SELECT channel, event_type, weight_delta FROM keyword_weight_overrides"
+            )
+            rows = cur.fetchall()
+        finally:
+            conn.close()
+    except sqlite3.OperationalError:
+        return 0
+    _OVERRIDES.clear()
+    for ch, et, delta in rows:
+        _OVERRIDES[(ch.lower(), et)] = float(delta)
+    return len(_OVERRIDES)
+
+
 def _compute_confidence(
     severity: Severity,
     source: str,
@@ -1175,6 +1210,10 @@ def _compute_confidence(
     # reporting the same (type, area) in the last 30 minutes, capped at +0.30.
     if corroborator_count > 0:
         base += min(0.30, 0.10 * corroborator_count)
+    # A2 — apply learned correction-feedback override (negative when admins
+    # have retracted ≥7 alerts of this (channel, type) combo). Clamped to
+    # -0.30 to avoid one-off bad days zeroing a source out.
+    base += max(-0.30, _override_for(source, alert_type))
     confidence = max(0.0, min(1.0, round(base, 3)))
     return confidence, round(rel, 3)
 

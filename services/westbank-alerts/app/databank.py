@@ -150,6 +150,18 @@ CREATE TABLE IF NOT EXISTS actor_actions (
 )
 """
 
+CREATE_KEYWORD_WEIGHT_OVERRIDES = """
+CREATE TABLE IF NOT EXISTS keyword_weight_overrides (
+    id            INTEGER PRIMARY KEY AUTOINCREMENT,
+    channel       TEXT NOT NULL,
+    event_type    TEXT NOT NULL,
+    weight_delta  REAL NOT NULL,
+    basis         TEXT,
+    updated_at    TEXT NOT NULL,
+    UNIQUE(channel, event_type)
+)
+"""
+
 CREATE_DATABANK_INDEXES = [
     "CREATE INDEX IF NOT EXISTS idx_killed_date    ON people_killed(date DESC)",
     "CREATE INDEX IF NOT EXISTS idx_killed_region  ON people_killed(place_region)",
@@ -180,6 +192,7 @@ async def init_databank():
         await db.execute(CREATE_PEOPLE_DETAINED)
         await db.execute(CREATE_STRUCTURES_DAMAGED)
         await db.execute(CREATE_ACTOR_ACTIONS)
+        await db.execute(CREATE_KEYWORD_WEIGHT_OVERRIDES)
         # Migration: add `count` column to existing people_killed tables
         cur = await db.execute("PRAGMA table_info(people_killed)")
         cols = {row[1] for row in await cur.fetchall()}

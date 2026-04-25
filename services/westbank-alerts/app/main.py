@@ -239,6 +239,12 @@ async def lifespan(app: FastAPI):
     from . import databank
     await databank.init_databank()
 
+    # A2 — load learned classifier overrides (correction feedback loop).
+    # Reloaded by the daily cron via in-place file refresh + container restart.
+    from .classifier import refresh_overrides_from_db_sync
+    n = refresh_overrides_from_db_sync(settings.DB_PATH)
+    log.info(f"Classifier overrides loaded: {n} entries")
+
     # Load checkpoint whitelist (NEW: whitelist-first parsing system)
     log.info("Loading checkpoint whitelist...")
     await load_knowledge_base()
