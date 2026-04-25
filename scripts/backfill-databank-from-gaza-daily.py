@@ -109,7 +109,9 @@ def main():
     days = raw.get("data", raw) if isinstance(raw, dict) else raw
     print(f"Loaded {len(days)} daily bulletins", file=sys.stderr)
 
-    conn = sqlite3.connect(str(args.db))
+    conn = sqlite3.connect(str(args.db), timeout=30)
+    conn.execute("PRAGMA busy_timeout = 30000")
+    conn.execute("PRAGMA journal_mode = WAL")
     ensure_tables(conn)
 
     now = datetime.utcnow().isoformat()

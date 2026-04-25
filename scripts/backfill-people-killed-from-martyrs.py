@@ -166,7 +166,12 @@ def main():
 
     if not args.db.parent.exists():
         args.db.parent.mkdir(parents=True, exist_ok=True)
-    conn = sqlite3.connect(str(args.db))
+    conn = sqlite3.connect(str(args.db), timeout=30)
+    # The alerts service writes alerts.db continuously. Wait up to 30s for
+    # write locks to clear instead of failing instantly with "database is
+    # locked" on contention.
+    conn.execute("PRAGMA busy_timeout = 30000")
+    conn.execute("PRAGMA journal_mode = WAL")
     ensure_table(conn)
 
     transformed = []

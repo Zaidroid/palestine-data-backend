@@ -140,7 +140,9 @@ def main():
     records = raw if isinstance(raw, list) else raw.get("data", [])
     print(f"Loaded {len(records)} Addameer rows", file=sys.stderr)
 
-    conn = sqlite3.connect(str(args.db))
+    conn = sqlite3.connect(str(args.db), timeout=30)
+    conn.execute("PRAGMA busy_timeout = 30000")
+    conn.execute("PRAGMA journal_mode = WAL")
     ensure_table(conn)
 
     rows = []
