@@ -140,6 +140,18 @@
       "verify_required": false,
       "aliases": ["un ocha fts", "un ocha financial tracking service", "fts", "un fts"]
     },
+    "addameer": {
+      "name": "Addameer Prisoner Support and Human Rights Association",
+      "organization": "Addameer",
+      "source_url": "https://www.addameer.ps/statistics",
+      "license_id": "verify-required",
+      "attribution_text": "Data: Addameer Prisoner Support and Human Rights Association (addameer.ps).",
+      "redistribution_allowed": "unknown",
+      "commercial_use": "unknown",
+      "verify_required": true,
+      "notes": "Aggregate monthly prisoner statistics scraped from public dashboard. Verify terms before commercial redistribution.",
+      "aliases": ["addameer", "addameer prisoner support and human rights association", "addameer ps"]
+    },
     "unesco": {
       "name": "UNESCO World Heritage",
       "organization": "UNESCO",
