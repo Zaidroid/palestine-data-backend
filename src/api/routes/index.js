@@ -41,6 +41,68 @@ router.use('/billing', billingRoutes);
 router.get('/categories', cache('10 minutes'), getCategories);
 router.get('/stats', cache('10 minutes'), getStats);
 
+router.get('/', (req, res) => {
+    const base = `${req.protocol}://${req.get('host')}/api/v1`;
+    const docsBase = `${req.protocol}://${req.get('host')}`;
+    res.json({
+        name: 'Palestine Data API',
+        description: 'Unified historical datasets + live operational alerts for Palestine.',
+        version: '1.0',
+        repository: 'https://github.com/zaidsalem/palestine-data-backend',
+        interactive_docs: `${docsBase}/api-docs/`,
+        endpoints: {
+            discovery: {
+                [`GET ${base}/`]: 'this index',
+                [`GET ${docsBase}/api-docs/`]: 'interactive Swagger UI',
+                [`GET ${base}/health`]: 'liveness',
+                [`GET ${base}/health-deep`]: 'pipeline + alerts connectivity',
+                [`GET ${base}/version`]: 'build SHA + pipeline generated-at',
+                [`GET ${base}/categories`]: 'live category list with record counts',
+                [`GET ${base}/stats`]: 'cross-category aggregates',
+                [`GET ${base}/quality`]: 'per-category freshness + coverage',
+                [`GET ${base}/licenses`]: 'license registry for all sources',
+            },
+            unified_data: {
+                [`GET ${base}/unified/:category`]: 'paginated records (filters: location, region, event_type, date range)',
+                [`GET ${base}/unified/:category/summary`]: 'aggregated metrics',
+                [`GET ${base}/unified/:category/timeseries`]: 'time-series buckets (?metric=&interval=&region=)',
+                [`GET ${base}/unified/:category/metadata`]: 'schema + provenance',
+                [`GET ${base}/search?q=`]: 'full-text search across categories',
+                [`GET ${base}/record/:category/:id`]: 'single record by stable id',
+                [`GET ${base}/snapshots`]: 'list pinned daily snapshots (?as_of=YYYY-MM-DD)',
+            },
+            gaza: {
+                [`GET ${base}/gaza/daily`]: 'daily casualty bulletin with demographic breakdown',
+                [`GET ${base}/gaza/summary`]: 'cumulative Gaza summary',
+            },
+            news: {
+                [`GET ${base}/news`]: 'aggregated news headlines (fair-use)',
+            },
+            live_alerts_proxy: {
+                [`GET ${base}/live/alerts/latest`]: 'most recent alerts',
+                [`GET ${base}/live/alerts`]: 'paginated alerts (?since=&min_confidence=&areas=)',
+                [`GET ${base}/live/alerts/export`]: 'bulk ndjson/csv export (auth)',
+                [`GET ${base}/live/checkpoints`]: 'current checkpoint statuses',
+                [`GET ${base}/live/checkpoints/:key/history`]: 'status transitions in window',
+                [`GET ${base}/live/checkpoints/uptime`]: '% open/closed/restricted per checkpoint',
+                [`WS  ${base.replace('https', 'wss').replace('http', 'ws')}/live/ws`]: 'real-time alert WebSocket',
+                [`GET ${base}/live/stream`]: 'real-time alert SSE',
+                'note': 'Direct alerts service: https://wb-alerts.zaidlab.xyz',
+            },
+            categories_available: [
+                'water', 'martyrs_snapshot_2023', 'health', 'funding', 'education',
+                'westbank', 'conflict', 'economic', 'infrastructure', 'refugees',
+                'pcbs', 'land', 'culture', 'news',
+            ],
+        },
+        notes: [
+            'All responses include freshness metadata. Stale categories (>90 days) carry a "Warning: 299" header.',
+            'License is per-source — see /licenses. Some sources are non-commercial (WHO, certain news, B\'Tselem).',
+            'No auth required for discovery, health, or read endpoints. Rate-limited per IP.',
+        ],
+    });
+});
+
 import fs from 'fs/promises';
 import path from 'path';
 import { fileURLToPath } from 'url';

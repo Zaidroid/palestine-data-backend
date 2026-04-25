@@ -20,6 +20,8 @@ const PUBLIC_DIR = path.resolve(__dirname, '../../public');
 const app = express();
 const PORT = process.env.PORT || 3000;
 
+app.set('trust proxy', true);
+
 // Initialize Search Index
 initializeSearch();
 
