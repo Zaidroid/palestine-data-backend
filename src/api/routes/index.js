@@ -12,6 +12,7 @@ import eventsTimelineRoute from './events-timeline.js';
 import incidentsRoute from './incidents.js';
 import geoAdminRoute from './geo-admin.js';
 import facilitiesRoute from './facilities.js';
+import humanitarianRoute from './humanitarian.js';
 import versionRoutes from './version.js';
 import qualityRoutes from './quality.js';
 import recordRoutes from './record.js';
@@ -62,6 +63,9 @@ router.use('/geo/admin', geoAdminRoute);
 // OSM/HOT facility points (health, education, populated places). Powers
 // hospital/school enrichment on alerts + route-safety nearest-facility.
 router.use('/facilities', facilitiesRoute);
+
+// Humanitarian severity layers (currently IPC food insecurity polygons).
+router.use('/humanitarian', humanitarianRoute);
 
 // Trust-foundation surfaces (A2/A3/A4): citable version, quality, per-record permalinks
 router.use('/version', versionRoutes);
