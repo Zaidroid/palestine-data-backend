@@ -28,25 +28,48 @@ const DATA_DIR = path.resolve(__dirname, '../../../public/data/osm');
 
 const router = express.Router();
 
-const LAYER_FILES = {
-    'health':           'health-facilities.geojson',
-    'education':        'education-facilities.geojson',
-    'populated-places': 'populated-places.geojson',
+// Layer → default file. Some layers accept a ?source= query for cross-
+// validation; layout is { default: <file>, sources: { osm, … } }.
+const LAYER_DEFS = {
+    'health': {
+        default: 'health-facilities.geojson',  // OSM
+        sources: {
+            'osm':              'health-facilities.geojson',
+            'globalhealthsites':'health-facilities-globalhealthsites.geojson',
+        },
+    },
+    'education': {
+        default: 'education-facilities.geojson',
+        sources: { 'osm': 'education-facilities.geojson' },
+    },
+    'populated-places': {
+        default: 'populated-places.geojson',
+        sources: { 'osm': 'populated-places.geojson' },
+    },
 };
+
+const LAYER_FILES = Object.fromEntries(
+    Object.entries(LAYER_DEFS).map(([k, v]) => [k, v.default])
+);
 
 const cache = new Map();
 let manifestCache = null;
 
-async function loadLayer(layer) {
-    const file = LAYER_FILES[layer];
+async function loadLayer(layer, source) {
+    const def = LAYER_DEFS[layer];
+    if (!def) return null;
+    const file = source && def.sources?.[source]
+        ? def.sources[source]
+        : def.default;
     if (!file) return null;
     const target = path.join(DATA_DIR, file);
     let stat;
     try { stat = await fs.stat(target); } catch { return null; }
-    const cached = cache.get(layer);
+    const cacheKey = `${layer}|${file}`;
+    const cached = cache.get(cacheKey);
     if (cached && cached.mtimeMs === stat.mtimeMs) return cached.data;
     const data = JSON.parse(await fs.readFile(target, 'utf8'));
-    cache.set(layer, { mtimeMs: stat.mtimeMs, data });
+    cache.set(cacheKey, { mtimeMs: stat.mtimeMs, data });
     return data;
 }
 
@@ -100,12 +123,24 @@ router.get('/', async (_req, res) => {
 
 router.get('/:layer', async (req, res) => {
     const layer = String(req.params.layer || '').toLowerCase();
-    const data = await loadLayer(layer);
-    if (!data) {
+    const source = req.query.source ? String(req.query.source).toLowerCase() : null;
+    const def = LAYER_DEFS[layer];
+    if (!def) {
         return res.status(404).json({
             error: 'unknown_layer',
-            available: Object.keys(LAYER_FILES),
+            available: Object.keys(LAYER_DEFS),
         });
+    }
+    if (source && !def.sources[source]) {
+        return res.status(400).json({
+            error: 'unknown_source',
+            layer,
+            available_sources: Object.keys(def.sources),
+        });
+    }
+    const data = await loadLayer(layer, source);
+    if (!data) {
+        return res.status(404).json({ error: 'data_unavailable' });
     }
 
     let bbox = null;
@@ -124,17 +159,23 @@ router.get('/:layer', async (req, res) => {
     const total = filtered.length;
     const slice = filtered.slice(offset, offset + limit);
 
+    const usedSource = source || 'osm';
+    const attribution = usedSource === 'globalhealthsites'
+        ? 'Global Healthsites Mapping Project via HDX (ODbL).'
+        : 'OpenStreetMap contributors (ODbL) via HOT.';
     res.json({
         type: 'FeatureCollection',
         features: slice,
         meta: {
             layer,
+            source: usedSource,
             total,
             offset,
             limit,
             bbox,
             type_filter: typeQ || null,
-            attribution: 'OpenStreetMap contributors (ODbL) via HOT.',
+            available_sources: Object.keys(def.sources),
+            attribution,
         },
     });
 });
