@@ -170,6 +170,15 @@ async def init_db():
             await db.execute(
                 "UPDATE alerts SET source_type='telegram' WHERE source_type IS NULL"
             )
+        # OCHA admin stamps via point-in-polygon (cod-ab-pse polygons).
+        # Filled by app/admin_lookup.py on every new alert; existing rows
+        # backfilled by scripts/backfill-admin-stamps.py.
+        if "admin1" not in alert_cols:
+            await db.execute("ALTER TABLE alerts ADD COLUMN admin1 TEXT")
+        if "admin2" not in alert_cols:
+            await db.execute("ALTER TABLE alerts ADD COLUMN admin2 TEXT")
+        await db.execute("CREATE INDEX IF NOT EXISTS idx_alerts_admin1 ON alerts(admin1)")
+        await db.execute("CREATE INDEX IF NOT EXISTS idx_alerts_admin2 ON alerts(admin2)")
         await db.execute("CREATE INDEX IF NOT EXISTS idx_alerts_status ON alerts(status)")
         await db.execute("CREATE INDEX IF NOT EXISTS idx_alerts_confidence ON alerts(confidence)")
         # Spatial indexes for bbox / radius queries (T2.11 + T2.12)
@@ -240,8 +249,8 @@ async def insert_alert(alert: Alert) -> Alert:
                 raw_text, timestamp, created_at, event_subtype, latitude, longitude,
                 title_ar, confidence, source_reliability, status, correction_note,
                 geo_precision, geo_source_phrase, count, temporal_certainty,
-                source_type)
-               VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)""",
+                source_type, admin1, admin2)
+               VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)""",
             (alert.type, alert.severity, alert.title, alert.body,
              alert.source, alert.source_msg_id, alert.area,
              getattr(alert, "zone", None),
@@ -258,7 +267,9 @@ async def insert_alert(alert: Alert) -> Alert:
              getattr(alert, "geo_source_phrase", None),
              getattr(alert, "count", None),
              getattr(alert, "temporal_certainty", None),
-             getattr(alert, "source_type", None) or "telegram")
+             getattr(alert, "source_type", None) or "telegram",
+             getattr(alert, "admin1", None),
+             getattr(alert, "admin2", None))
         )
         await db.commit()
         alert.id = cur.lastrowid

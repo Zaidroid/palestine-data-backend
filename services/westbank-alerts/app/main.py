@@ -255,6 +255,11 @@ async def lifespan(app: FastAPI):
     await load_location_kb()
     log.info("Location knowledge base loaded")
 
+    # OCHA admin polygons for point-in-polygon admin1/admin2 stamping
+    # on every new alert. (PR-2 cod-ab-pse data, image-baked.)
+    from . import admin_lookup
+    admin_lookup.init()
+
     # Init incident tables + compute initial area status
     await incident_db.init_incident_tables()
     await area_mod.compute_area_status()

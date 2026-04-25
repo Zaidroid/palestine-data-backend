@@ -68,6 +68,8 @@ class Alert(BaseModel):
     longitude: Optional[float] = None
     geo_precision: Optional[str] = None      # "checkpoint" | "town" | "zone" | "region"
     geo_source_phrase: Optional[str] = None  # Text that resolved the coords (for debugging + learner)
+    admin1: Optional[str] = None             # OCHA admin1 (West Bank | Gaza Strip), via point-in-polygon
+    admin2: Optional[str] = None             # OCHA admin2 (governorate), via point-in-polygon
     count: Optional[int] = None              # Extracted casualty/arrest count (e.g. "اعتقل 5" → 5)
     temporal_certainty: Optional[str] = None # "now" | "today" | "past" — past markers downweight confidence
     confidence: Optional[float] = None       # 0.0-1.0 — classifier+source-weighted score

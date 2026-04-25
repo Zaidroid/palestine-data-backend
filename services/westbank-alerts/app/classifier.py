@@ -1677,6 +1677,19 @@ def _build(
     # 3-tier coordinate resolution: location KB → checkpoint KB → zone center
     _resolve_coordinates(result, area, zone)
 
+    # OCHA admin stamps via point-in-polygon (cod-ab-pse). Lazy-loaded
+    # singleton — no-op if polygons aren't installed.
+    try:
+        from . import admin_lookup
+        admin1, admin2 = admin_lookup.point_to_admin(
+            result.get("latitude"), result.get("longitude")
+        )
+        result["admin1"] = admin1
+        result["admin2"] = admin2
+    except Exception:
+        result["admin1"] = None
+        result["admin2"] = None
+
     return result
 
 
