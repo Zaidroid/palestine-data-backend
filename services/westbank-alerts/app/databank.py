@@ -185,8 +185,27 @@ async def init_databank():
         cols = {row[1] for row in await cur.fetchall()}
         if "count" not in cols:
             await db.execute("ALTER TABLE people_killed ADD COLUMN count INTEGER DEFAULT 1")
+        # A1 — entity resolution: identity-based dedupe across sources.
+        if "entity_key" not in cols:
+            await db.execute("ALTER TABLE people_killed ADD COLUMN entity_key TEXT")
+        if "attributions" not in cols:
+            await db.execute("ALTER TABLE people_killed ADD COLUMN attributions TEXT DEFAULT '[]'")
+        cur = await db.execute("PRAGMA table_info(people_detained)")
+        det_cols = {row[1] for row in await cur.fetchall()}
+        if "entity_key" not in det_cols:
+            await db.execute("ALTER TABLE people_detained ADD COLUMN entity_key TEXT")
+        if "attributions" not in det_cols:
+            await db.execute("ALTER TABLE people_detained ADD COLUMN attributions TEXT DEFAULT '[]'")
         for idx in CREATE_DATABANK_INDEXES:
             await db.execute(idx)
+        # Unique on entity_key only when set (named individuals); aggregate
+        # rows leave it NULL and fall back to stable_id for dedup.
+        await db.execute(
+            "CREATE UNIQUE INDEX IF NOT EXISTS idx_killed_entity ON people_killed(entity_key) WHERE entity_key IS NOT NULL"
+        )
+        await db.execute(
+            "CREATE UNIQUE INDEX IF NOT EXISTS idx_detained_entity ON people_detained(entity_key) WHERE entity_key IS NOT NULL"
+        )
         await db.commit()
     log.info("databank tables initialized")
 
@@ -201,30 +220,120 @@ def stable_id(*parts: Any) -> str:
     return hashlib.sha256(raw.encode("utf-8")).hexdigest()[:32]
 
 
+import re
+import unicodedata
+
+_DIACRITICS_RE = re.compile(r"[ؐ-ًؚ-ٰٟۖ-ۜ۟-۪ۤۧۨ-ۭ]")
+
+
+def _normalize_name(s: Optional[str]) -> str:
+    """Lowercase + strip Latin/Arabic diacritics + collapse whitespace.
+    Used for entity_key so transliteration-stable variants of the same name
+    collide."""
+    if not s:
+        return ""
+    s = s.strip().lower()
+    # Strip Arabic diacritics
+    s = _DIACRITICS_RE.sub("", s)
+    # Strip Latin diacritics (NFKD then drop combining marks)
+    s = unicodedata.normalize("NFKD", s)
+    s = "".join(c for c in s if not unicodedata.combining(c))
+    return " ".join(s.split())
+
+
+def entity_key(name_en: Optional[str], name_ar: Optional[str], age: Optional[int], date: Optional[str]) -> Optional[str]:
+    """Identity hash for dedupe across sources. Returns None when there's
+    no name to anchor on (aggregate rows fall back to stable_id)."""
+    name = _normalize_name(name_en) or _normalize_name(name_ar)
+    if not name:
+        return None
+    year = (date or "")[:4] if date else ""
+    raw = f"{name}|{age if age is not None else ''}|{year}"
+    return hashlib.sha256(raw.encode("utf-8")).hexdigest()[:32]
+
+
+def merge_attributions(existing_json: Optional[str], new_attribution: dict) -> str:
+    """Append new_attribution to the JSON array if its source_dataset isn't
+    already present. Returns the updated JSON string."""
+    import json as _json
+    try:
+        arr = _json.loads(existing_json) if existing_json else []
+    except (ValueError, TypeError):
+        arr = []
+    if not isinstance(arr, list):
+        arr = []
+    src = new_attribution.get("source_dataset")
+    if src and any((isinstance(a, dict) and a.get("source_dataset") == src) for a in arr):
+        return _json.dumps(arr)
+    arr.append(new_attribution)
+    return _json.dumps(arr)
+
+
 # ── Insert helpers (UPSERT semantics on stable_id) ────────────────────────────
 
 async def upsert_person_killed(record: dict) -> int:
-    """Insert or update a people_killed row. Returns the row id."""
+    """Insert-or-merge a people_killed row.
+
+    Named individuals (name present) dedupe by entity_key — multi-source
+    reports collapse into one row with `attributions[]` accumulating each
+    source. Aggregate rows (no name) fall back to stable_id dedup.
+    """
     now = datetime.utcnow().isoformat()
     record.setdefault("created_at", now)
     record["updated_at"] = now
-    cols = [
-        "stable_id", "name_ar", "name_en", "age", "gender",
-        "date", "date_precision", "place_name", "place_region",
-        "lat", "lng", "cause", "count", "source_alert_id", "source_dataset",
-        "source_url", "attribution_text", "confidence", "notes",
-        "created_at", "updated_at",
-    ]
-    placeholders = ",".join(["?"] * len(cols))
-    update_cols = [c for c in cols if c not in ("stable_id", "created_at")]
-    update_clause = ",".join(f"{c}=excluded.{c}" for c in update_cols)
-    sql = (
-        f"INSERT INTO people_killed ({','.join(cols)}) VALUES ({placeholders}) "
-        f"ON CONFLICT(stable_id) DO UPDATE SET {update_clause}"
-    )
     record.setdefault("count", 1)
-    values = [record.get(c) for c in cols]
+
+    ekey = entity_key(record.get("name_en"), record.get("name_ar"),
+                      record.get("age"), record.get("date"))
+    record["entity_key"] = ekey
+
+    new_attribution = {
+        "source_dataset": record.get("source_dataset"),
+        "source_url": record.get("source_url"),
+        "source_alert_id": record.get("source_alert_id"),
+        "fetched_at": now,
+    }
+
     async with get_alerts_db() as db:
+        # If we have an entity_key, look for an existing row to merge into.
+        if ekey:
+            cur = await db.execute(
+                "SELECT id, attributions FROM people_killed WHERE entity_key = ? LIMIT 1",
+                (ekey,),
+            )
+            existing = await cur.fetchone()
+            if existing:
+                existing_id, existing_attrs = existing
+                merged = merge_attributions(existing_attrs, new_attribution)
+                # Update only fields that strengthen the row; never overwrite
+                # name with NULL or downgrade confidence.
+                await db.execute(
+                    "UPDATE people_killed SET attributions = ?, updated_at = ?, "
+                    "confidence = MAX(confidence, ?) "
+                    "WHERE id = ?",
+                    (merged, now, record.get("confidence", 0.7), existing_id),
+                )
+                await db.commit()
+                return existing_id
+
+        # No entity_key (aggregate row) OR no existing match — INSERT via
+        # the legacy stable_id UPSERT path.
+        record["attributions"] = merge_attributions(None, new_attribution)
+        cols = [
+            "stable_id", "entity_key", "name_ar", "name_en", "age", "gender",
+            "date", "date_precision", "place_name", "place_region",
+            "lat", "lng", "cause", "count", "source_alert_id", "source_dataset",
+            "source_url", "attribution_text", "attributions", "confidence", "notes",
+            "created_at", "updated_at",
+        ]
+        placeholders = ",".join(["?"] * len(cols))
+        update_cols = [c for c in cols if c not in ("stable_id", "created_at")]
+        update_clause = ",".join(f"{c}=excluded.{c}" for c in update_cols)
+        sql = (
+            f"INSERT INTO people_killed ({','.join(cols)}) VALUES ({placeholders}) "
+            f"ON CONFLICT(stable_id) DO UPDATE SET {update_clause}"
+        )
+        values = [record.get(c) for c in cols]
         cur = await db.execute(sql, values)
         await db.commit()
         return cur.lastrowid
@@ -254,25 +363,60 @@ async def upsert_person_injured(record: dict) -> int:
 
 
 async def upsert_person_detained(record: dict) -> int:
+    """Insert-or-merge a people_detained row. Same dedup semantics as
+    upsert_person_killed: named individuals collide on entity_key,
+    aggregate rows fall back to stable_id."""
     now = datetime.utcnow().isoformat()
     record.setdefault("created_at", now)
     record["updated_at"] = now
-    cols = [
-        "stable_id", "name_ar", "name_en", "age", "gender",
-        "date_arrested", "date_released", "place_name", "place_region",
-        "lat", "lng", "status", "detention_facility", "sentence_months",
-        "count", "source_alert_id", "source_dataset", "source_url",
-        "attribution_text", "confidence", "notes", "created_at", "updated_at",
-    ]
-    placeholders = ",".join(["?"] * len(cols))
-    update_cols = [c for c in cols if c not in ("stable_id", "created_at")]
-    update_clause = ",".join(f"{c}=excluded.{c}" for c in update_cols)
-    sql = (
-        f"INSERT INTO people_detained ({','.join(cols)}) VALUES ({placeholders}) "
-        f"ON CONFLICT(stable_id) DO UPDATE SET {update_clause}"
-    )
-    values = [record.get(c) for c in cols]
+
+    ekey = entity_key(record.get("name_en"), record.get("name_ar"),
+                      record.get("age"), record.get("date_arrested"))
+    record["entity_key"] = ekey
+
+    new_attribution = {
+        "source_dataset": record.get("source_dataset"),
+        "source_url": record.get("source_url"),
+        "source_alert_id": record.get("source_alert_id"),
+        "fetched_at": now,
+    }
+
     async with get_alerts_db() as db:
+        if ekey:
+            cur = await db.execute(
+                "SELECT id, attributions FROM people_detained WHERE entity_key = ? LIMIT 1",
+                (ekey,),
+            )
+            existing = await cur.fetchone()
+            if existing:
+                existing_id, existing_attrs = existing
+                merged = merge_attributions(existing_attrs, new_attribution)
+                await db.execute(
+                    "UPDATE people_detained SET attributions = ?, updated_at = ?, "
+                    "confidence = MAX(confidence, ?) "
+                    "WHERE id = ?",
+                    (merged, now, record.get("confidence", 0.7), existing_id),
+                )
+                await db.commit()
+                return existing_id
+
+        record["attributions"] = merge_attributions(None, new_attribution)
+        cols = [
+            "stable_id", "entity_key", "name_ar", "name_en", "age", "gender",
+            "date_arrested", "date_released", "place_name", "place_region",
+            "lat", "lng", "status", "detention_facility", "sentence_months",
+            "count", "source_alert_id", "source_dataset", "source_url",
+            "attribution_text", "attributions", "confidence", "notes",
+            "created_at", "updated_at",
+        ]
+        placeholders = ",".join(["?"] * len(cols))
+        update_cols = [c for c in cols if c not in ("stable_id", "created_at")]
+        update_clause = ",".join(f"{c}=excluded.{c}" for c in update_cols)
+        sql = (
+            f"INSERT INTO people_detained ({','.join(cols)}) VALUES ({placeholders}) "
+            f"ON CONFLICT(stable_id) DO UPDATE SET {update_clause}"
+        )
+        values = [record.get(c) for c in cols]
         cur = await db.execute(sql, values)
         await db.commit()
         return cur.lastrowid

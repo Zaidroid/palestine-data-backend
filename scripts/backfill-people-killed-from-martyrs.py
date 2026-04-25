@@ -35,6 +35,31 @@ def stable_id(*parts) -> str:
     return hashlib.sha256(raw.encode("utf-8")).hexdigest()[:32]
 
 
+import re as _re_mod
+import unicodedata as _ud
+
+_DIACRITICS_RE = _re_mod.compile(r"[ؐ-ًؚ-ٰٟۖ-ۜ۟-۪ۤۧۨ-ۭ]")
+
+
+def _normalize_name(s):
+    if not s:
+        return ""
+    s = s.strip().lower()
+    s = _DIACRITICS_RE.sub("", s)
+    s = _ud.normalize("NFKD", s)
+    s = "".join(c for c in s if not _ud.combining(c))
+    return " ".join(s.split())
+
+
+def entity_key(name_en, name_ar, age, date):
+    name = _normalize_name(name_en) or _normalize_name(name_ar)
+    if not name:
+        return None
+    year = (date or "")[:4] if date else ""
+    raw = f"{name}|{age if age is not None else ''}|{year}"
+    return hashlib.sha256(raw.encode("utf-8")).hexdigest()[:32]
+
+
 def ensure_table(conn):
     conn.execute("""
         CREATE TABLE IF NOT EXISTS people_killed (
@@ -178,18 +203,34 @@ def main():
     for r in records:
         row = transform(r)
         if row:
+            row["entity_key"] = entity_key(row.get("name_en"), row.get("name_ar"),
+                                           row.get("age"), row.get("date"))
             transformed.append(row)
         if args.limit and len(transformed) >= args.limit:
             break
     print(f"Transformed {len(transformed)} candidate rows", file=sys.stderr)
 
+    # A1: skip rows whose entity is already in the table. Dedupe-databank.py
+    # has merged attributions for existing entities; re-running this script
+    # should only add net-new T4P entries, not duplicate existing identities.
+    existing_keys = set()
+    has_entity_col = "entity_key" in {r[1] for r in conn.execute("PRAGMA table_info(people_killed)").fetchall()}
+    if has_entity_col:
+        cur = conn.execute("SELECT entity_key FROM people_killed WHERE entity_key IS NOT NULL")
+        existing_keys = {row[0] for row in cur.fetchall()}
+        print(f"Found {len(existing_keys)} existing entity_keys; skipping those in input", file=sys.stderr)
+    to_insert = [r for r in transformed if not r.get("entity_key") or r["entity_key"] not in existing_keys]
+    print(f"  → {len(to_insert)} net-new rows to insert", file=sys.stderr)
+
     cols = [
-        "stable_id", "name_ar", "name_en", "age", "gender",
+        "stable_id", "entity_key", "name_ar", "name_en", "age", "gender",
         "date", "date_precision", "place_name", "place_region",
         "lat", "lng", "cause", "source_alert_id", "source_dataset",
         "source_url", "attribution_text", "confidence", "notes",
         "created_at", "updated_at",
     ]
+    if not has_entity_col:
+        cols = [c for c in cols if c != "entity_key"]
     placeholders = ",".join(["?"] * len(cols))
     update_clause = ",".join(
         f"{c}=excluded.{c}" for c in cols if c not in ("stable_id", "created_at")
@@ -200,11 +241,11 @@ def main():
     )
 
     BATCH = 1000
-    for i in range(0, len(transformed), BATCH):
-        chunk = transformed[i:i + BATCH]
-        conn.executemany(sql, [[r[c] for c in cols] for r in chunk])
+    for i in range(0, len(to_insert), BATCH):
+        chunk = to_insert[i:i + BATCH]
+        conn.executemany(sql, [[r.get(c) for c in cols] for r in chunk])
         conn.commit()
-        print(f"  upserted {min(i + BATCH, len(transformed))}/{len(transformed)}", file=sys.stderr)
+        print(f"  upserted {min(i + BATCH, len(to_insert))}/{len(to_insert)}", file=sys.stderr)
 
     cur = conn.execute("SELECT COUNT(*) FROM people_killed WHERE source_dataset='tech4palestine'")
     total = cur.fetchone()[0]
