@@ -272,6 +272,16 @@ HUMANITARIAN_APPEAL = [
      "آلياتنا", "qudsn"),
 ]
 
+# Geo-precision regression: dateline-prefixed foreign-country posts.
+# "إيطاليا.." → 3-char village "يطا" must NOT substring-match inside
+# "ايطاليا" after normalization. Same class as "تل" inside "مقاتلو"
+# (LEBANON_NOT_SIREN regression). Asserts the post does NOT classify as
+# any West-Bank-area event with area=Yatta.
+GEO_BOUNDARY_REGRESSION = [
+    ("إيطاليا.. أسطول الصمود العالمي مستعد للانطلاق وكسر الحصار عن غزة",
+     "anadolu_ar"),
+]
+
 # 18. NEW — Northern Israel sirens. Galilee / border-settlement sirens
 #     (Hezbollah-front). Currently get classified west_bank_siren because
 #     of shared-airspace assumption; should be their own type so the live
@@ -353,6 +363,10 @@ def _run_all():
     _fp_bucket("HUMAN_INTEREST", HUMAN_INTEREST, lambda r: r is not None)
     _fp_bucket("HUMANITARIAN_APPEAL", HUMANITARIAN_APPEAL,
                lambda r: r is not None)
+    # GEO_BOUNDARY_REGRESSION: must NOT classify with area=Yatta. We
+    # accept either None (filtered) or a non-Yatta area.
+    _fp_bucket("GEO_BOUNDARY_REGRESSION", GEO_BOUNDARY_REGRESSION,
+               lambda r: r is not None and r.get("area") == "Yatta")
 
     # NORTHERN_ISRAEL_TPS — must classify as the new type, not west_bank_siren.
     nis_outcomes = []

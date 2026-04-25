@@ -24,14 +24,26 @@ from .. import monitor
 
 log = logging.getLogger(__name__)
 
-# Initial feed list — kept tight on purpose. Add more after this batch
-# proves out in prod (cf. plan B2 verify clause: alerts table has rows
-# with source_type='rss' within 1h of restart).
+# RSS feed list — Arabic-only (the classifier's keyword/regex stack is
+# Arabic-tuned, English content yields almost no extraction). Telegram-
+# polled sources (qudsn, ajanews, palinfoar, wafagency) are intentionally
+# NOT duplicated as RSS — same content arrives faster via Telegram.
 #
-# (source_id, feed_url) — source_id becomes the alert's `source` field
+# (source_id, feed_url) — source_id becomes the alert's `source` field,
 # so reliability lookup + corroboration work the same as Telegram.
 RSS_FEEDS = [
-    ("aljazeera_ar", "https://www.aljazeera.net/aljazeerarss"),
+    # Al Jazeera Arabic — broad MENA coverage, high reliability
+    ("aljazeera_ar",   "https://www.aljazeera.net/aljazeerarss"),
+    # Anadolu Agency Arabic — Turkish state media, frequent PS coverage
+    ("anadolu_ar",     "https://www.aa.com.tr/ar/rss/default?cat=guncel"),
+    # RT Arabic — Russian state media; framing-heavy but high volume
+    ("rt_arabic",      "https://arabic.rt.com/rss/"),
+    # Sky News Arabia — UAE-based, fast breaking-news feed
+    ("skynews_ar",     "https://www.skynewsarabia.com/web/rss"),
+    # Dropped (Cloudflare/WAF returns 403 even with browser UA):
+    #   alarabiya_ar  — https://www.alarabiya.net/feed/rss2/ar
+    #   almayadeen_ar — https://www.almayadeen.net/rss/all
+    # If we ever need them, route through a residential proxy or scraper.
 ]
 
 POLL_INTERVAL_SECONDS = 300   # 5 minutes — RSS doesn't need second-level
@@ -55,11 +67,17 @@ def _entry_timestamp(entry) -> datetime:
 
 
 async def _fetch_feed(url: str) -> Optional[str]:
+    # Browser-like UA — Al Arabiya / Sky News Arabia / others' WAFs reject
+    # generic bot User-Agents with 403.
+    headers = {
+        "User-Agent": ("Mozilla/5.0 (Macintosh; Intel Mac OS X 14_0) "
+                       "AppleWebKit/537.36 (KHTML, like Gecko) "
+                       "Chrome/126.0 Safari/537.36"),
+        "Accept": "application/rss+xml, application/xml, text/xml, */*",
+    }
     try:
         async with httpx.AsyncClient(timeout=15.0, follow_redirects=True) as c:
-            r = await c.get(url, headers={
-                "User-Agent": "params-alerts-rss/1.0 (+palestine-data-backend)"
-            })
+            r = await c.get(url, headers=headers)
             r.raise_for_status()
             return r.text
     except Exception as e:

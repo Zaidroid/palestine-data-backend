@@ -88,6 +88,11 @@ CHANNEL_RELIABILITY_SEED = [
     ("ajanews",         0.60, "Al Jazeera Arabic news feed"),
     ("AlMayadeenNews",  0.50, "Al Mayadeen — editorial overlay common"),
     ("MOHMediaGaza",    0.80, "Gaza Health Ministry — bulletins only"),
+    # B2 RSS sources
+    ("aljazeera_ar",  0.65, "Al Jazeera Arabic RSS"),
+    ("anadolu_ar",    0.55, "Anadolu Agency Arabic RSS"),
+    ("rt_arabic",     0.45, "RT Arabic RSS — framing bias"),
+    ("skynews_ar",    0.55, "Sky News Arabia RSS — fast breaking news"),
 ]
 
 CREATE_CHANNELS = """

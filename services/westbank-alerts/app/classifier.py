@@ -1427,18 +1427,40 @@ def _extract_marker_prefixed_place(normed_text: str) -> Optional[str]:
     return None
 
 
+def _area_key_match(text: str, key: str) -> bool:
+    """Substring match with word-boundary for short keys. The 3-char
+    Yatta ("يطا") would otherwise substring-match inside "إيطاليا"
+    (Italy) — same class of bug as "تل" inside "مقاتلو" that the WB-
+    zone matcher already guards against."""
+    if len(key) >= 5:
+        return key in text
+    pos = 0
+    n = len(text)
+    e = len(key)
+    while True:
+        i = text.find(key, pos)
+        if i < 0:
+            return False
+        left_ok = (i == 0) or not text[i - 1].isalpha()
+        right_ok = (i + e >= n) or not text[i + e].isalpha()
+        if left_ok and right_ok:
+            return True
+        pos = i + 1
+
+
 def _extract_area(text: str) -> Optional[str]:
     """Return the most specific area match.
 
     1. Marker-prefixed first ('بلدة X' / 'قرية X' / 'مخيم X' / 'حي X')
        — handles villages inside cities and villages outside AREA_MAP.
-    2. Otherwise the longest AREA_MAP key wins (legacy behaviour).
+    2. Otherwise the longest AREA_MAP key wins (legacy behaviour),
+       with word-boundary check for short keys.
     """
     marker_place = _extract_marker_prefixed_place(text)
     if marker_place:
         return marker_place
     for ar in _AREA_KEYS_SORTED:
-        if ar in text:
+        if _area_key_match(text, ar):
             return AREA_MAP[ar]
     return None
 
@@ -1468,6 +1490,11 @@ _CHANNEL_WEIGHT = {
     "almayadeennews": 0.50,
     "almayadeennewspal": 0.50,
     "mohmediagaza":   0.80,
+    # B2 RSS sources — calibrated by editorial track record + framing bias
+    "aljazeera_ar":   0.65,
+    "anadolu_ar":     0.55,
+    "rt_arabic":      0.45,   # framing-heavy state media
+    "skynews_ar":     0.55,   # UAE-based, fast breaking news
 }
 
 _SEVERITY_BUMP = {
