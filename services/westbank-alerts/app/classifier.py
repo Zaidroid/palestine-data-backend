@@ -942,6 +942,11 @@ def _is_noise(text: str, tier: str = "tier1", source: str = "") -> bool:
     if is_news:
         report_prefixes = [_normalize(t) for t in [
             "تقرير:", "تقرير |", "تحليل:", "ملخص:", "مراجعه:",
+            # Daily roundup framings — these list many events in one post,
+            # not a single live event, so they shouldn't fire as alerts.
+            "ملخص اليوم", "ملخص اخبار", "ملخص الاحداث",
+            "حصاد اليوم", "حصيله اليوم", "اهم الاحداث",
+            "ابرز الاحداث", "ابرز ما جرى", "ابرز ما حدث",
             "ما حدث", "ما جرى", "احداث امس", "اخبار امس",
         ]]
         if _has(text, report_prefixes):
