@@ -7,6 +7,7 @@ import databankProxy from './databank-proxy.js';
 import databankTotals from './databank-totals.js';
 import newsRoutes from './news.js';
 import licensesRoutes from './licenses.js';
+import sourcesRoutes from './sources.js';
 import versionRoutes from './version.js';
 import qualityRoutes from './quality.js';
 import recordRoutes from './record.js';
@@ -36,6 +37,10 @@ router.use('/news', newsRoutes);
 
 // Upstream-source license registry (trust-foundation surface for NGO/journalist customers)
 router.use('/licenses', licensesRoutes);
+
+// Authoritative source registry: every upstream + its cadence, coverage,
+// categories fed, live freshness. Foundation for self-aware data.
+router.use('/sources', sourcesRoutes);
 
 // Trust-foundation surfaces (A2/A3/A4): citable version, quality, per-record permalinks
 router.use('/version', versionRoutes);
