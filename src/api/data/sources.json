@@ -3,6 +3,51 @@
   "generated_at": "2026-04-25",
   "notes": "Authoritative registry of every upstream source feeding the Palestine Data Backend. Each entry declares update cadence, time coverage, license, and which unified categories or databank tables it populates. Read by /api/v1/sources; consumed by the refresh pipeline to surface per-source health.",
   "sources": {
+    "fao_diem_pse": {
+      "name": "FAO DIEM Household Surveys (PSE-filtered)",
+      "organization": "Food and Agriculture Organization (FAO) of the United Nations",
+      "source_url": "https://data.humdata.org/dataset/fao-diem-monitoring-system-household-surveys-aggregated-data",
+      "license_id": "Other",
+      "commercial_use": true,
+      "attribution_text": "FAO via HDX.",
+      "feeds_categories": ["humanitarian", "food", "agriculture"],
+      "feeds_databank": [],
+      "feeds_endpoints": [
+        "/api/v1/indicators",
+        "/api/v1/indicators/fao-diem/:theme"
+      ],
+      "update_cadence": "daily",
+      "coverage_start": "2020-01-01",
+      "coverage_end": "ongoing",
+      "typical_lag_days": 1,
+      "fetcher_script": "scripts/sources/fao-diem-pse.js",
+      "notes": "DIEM aggregated household surveys filtered to PSE rows; 4 themes (food security, income shocks, livestock, crop production); ~80 PSE rows total but updated daily upstream.",
+      "primary": true,
+      "fetcher_name": "fao-diem-pse"
+    },
+    "world_bank_wbg": {
+      "name": "World Bank — Combined Indicators for West Bank and Gaza",
+      "organization": "World Bank Group",
+      "source_url": "https://data.humdata.org/dataset/world-bank-combined-indicators-for-west-bank-and-gaza",
+      "license_id": "CC-BY-4.0",
+      "commercial_use": true,
+      "attribution_text": "World Bank via HDX (CC-BY-4.0).",
+      "feeds_categories": ["economy", "demographics", "health", "education"],
+      "feeds_databank": [],
+      "feeds_endpoints": [
+        "/api/v1/indicators",
+        "/api/v1/indicators/world-bank",
+        "/api/v1/indicators/world-bank/:code"
+      ],
+      "update_cadence": "monthly",
+      "coverage_start": "1960-01-01",
+      "coverage_end": "ongoing",
+      "typical_lag_days": 30,
+      "fetcher_script": "scripts/sources/world-bank-wbg.js",
+      "notes": "2,501 distinct indicators × time series for West Bank and Gaza. Pivoted to per-indicator time series so /:code serves any single indicator quickly.",
+      "primary": true,
+      "fetcher_name": "world-bank-wbg"
+    },
     "unhcr_pop_pse": {
       "name": "UNHCR — Population Data for State of Palestine (POC stocks, demographics, asylum)",
       "organization": "UNHCR — The UN Refugee Agency",

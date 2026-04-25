@@ -14,6 +14,7 @@ import geoAdminRoute from './geo-admin.js';
 import facilitiesRoute from './facilities.js';
 import humanitarianRoute from './humanitarian.js';
 import displacementRoute from './displacement.js';
+import indicatorsRoute from './indicators.js';
 import versionRoutes from './version.js';
 import qualityRoutes from './quality.js';
 import recordRoutes from './record.js';
@@ -70,6 +71,9 @@ router.use('/humanitarian', humanitarianRoute);
 
 // Displacement time series — UNHCR POC stocks + IDMC IDP new-displacements.
 router.use('/displacement', displacementRoute);
+
+// Long-term indicators — World Bank socioeconomic + FAO DIEM household surveys.
+router.use('/indicators', indicatorsRoute);
 
 // Trust-foundation surfaces (A2/A3/A4): citable version, quality, per-record permalinks
 router.use('/version', versionRoutes);
