@@ -15,7 +15,6 @@
  * and public/data/unified/martyrs_snapshot_2023/all-data.json.
  */
 
-import express from 'express';
 import fs from 'fs/promises';
 import path from 'path';
 import { fileURLToPath } from 'url';
@@ -23,8 +22,6 @@ import { fileURLToPath } from 'url';
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 const PUBLIC_DATA = path.resolve(__dirname, '../../../public/data');
-
-const router = express.Router();
 
 async function readJsonSafe(p) {
     try {
@@ -34,7 +31,10 @@ async function readJsonSafe(p) {
     }
 }
 
-router.get('/', async (req, res) => {
+// Exported as a plain handler so the parent router can mount it directly
+// at GET /databank/totals (sub-routers + Express 5 mount semantics caused
+// the proxy to swallow the path).
+export default async function databankTotals(req, res) {
     const gazaSummary = await readJsonSafe(path.join(PUBLIC_DATA, 'gaza/summary.json'));
     const martyrsAll = await readJsonSafe(path.join(PUBLIC_DATA, 'unified/martyrs_snapshot_2023/all-data.json'));
     const prisonersFile = await readJsonSafe(path.join(PUBLIC_DATA, 'static/prisoners-addameer.json'));
@@ -100,6 +100,4 @@ router.get('/', async (req, res) => {
         } : null,
         last_refreshed: new Date().toISOString(),
     });
-});
-
-export default router;
+}

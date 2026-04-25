@@ -28,7 +28,7 @@ router.use('/live', alertsProxy);
 // structures_damaged, actor_actions. Backed by alerts service tables.
 // /databank/totals is served Node-side because it reads public/data/gaza
 // summary files; everything else proxies to the alerts service.
-router.use('/databank/totals', databankTotals);
+router.get('/databank/totals', databankTotals);
 router.use('/databank', databankProxy);
 
 // News feed (RSS + scheduled fetcher → news.db)
