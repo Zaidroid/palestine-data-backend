@@ -1098,7 +1098,17 @@ def _build(
 
 
 def _resolve_coordinates(result: dict, area: Optional[str], zone: Optional[str]):
-    """Attach lat/lng using best available source."""
+    """
+    Attach lat/lng + precision tier so map clients can decide pin vs polygon.
+
+    Precision values (most → least specific):
+      - "checkpoint" : exact checkpoint coords (10-100m accuracy)
+      - "town"       : town/city center from location KB (city-block accuracy)
+      - "zone"       : WB sub-zone center (north/middle/south, ~30km)
+      - "region"     : West Bank or Gaza-wide fallback (no useful point)
+    `geo_source_phrase` records which input text resolved the coords — used
+    for debugging false geocodes and for the future learner feedback loop.
+    """
     from .location_knowledge_base import get_location_kb
 
     # Tier 1: location knowledge base (per-city coordinates)
@@ -1106,12 +1116,13 @@ def _resolve_coordinates(result: dict, area: Optional[str], zone: Optional[str])
     if loc_kb and area and area != "West Bank":
         loc_key = loc_kb.find_location(area)
         if not loc_key:
-            # Try English name lookup
             loc_key = loc_kb.by_english.get(area.lower())
         if loc_key:
             coords = loc_kb.get_coordinates(loc_key)
             if coords:
                 result["latitude"], result["longitude"] = coords
+                result["geo_precision"] = "town"
+                result["geo_source_phrase"] = area
                 return
 
     # Tier 2: checkpoint knowledge base (if area matches a checkpoint name)
@@ -1124,6 +1135,8 @@ def _resolve_coordinates(result: dict, area: Optional[str], zone: Optional[str])
             if cp and cp.get("latitude") and cp.get("longitude"):
                 result["latitude"] = cp["latitude"]
                 result["longitude"] = cp["longitude"]
+                result["geo_precision"] = "checkpoint"
+                result["geo_source_phrase"] = area
                 return
 
     # Tier 3: zone center fallback
@@ -1131,6 +1144,13 @@ def _resolve_coordinates(result: dict, area: Optional[str], zone: Optional[str])
         lat, lon = WB_ZONES[zone]["center"]
         result["latitude"] = lat
         result["longitude"] = lon
+        result["geo_precision"] = "zone"
+        result["geo_source_phrase"] = zone
+        return
+
+    # Tier 4: region-wide (no useful point — map clients should use polygon)
+    result["geo_precision"] = "region"
+    result["geo_source_phrase"] = area or "West Bank"
 
 
 # ── Public interface ──────────────────────────────────────────────────────────

@@ -149,8 +149,16 @@ async def init_db():
             await db.execute("ALTER TABLE alerts ADD COLUMN status TEXT DEFAULT 'active'")
         if "correction_note" not in alert_cols:
             await db.execute("ALTER TABLE alerts ADD COLUMN correction_note TEXT")
+        if "geo_precision" not in alert_cols:
+            await db.execute("ALTER TABLE alerts ADD COLUMN geo_precision TEXT")
+        if "geo_source_phrase" not in alert_cols:
+            await db.execute("ALTER TABLE alerts ADD COLUMN geo_source_phrase TEXT")
         await db.execute("CREATE INDEX IF NOT EXISTS idx_alerts_status ON alerts(status)")
         await db.execute("CREATE INDEX IF NOT EXISTS idx_alerts_confidence ON alerts(confidence)")
+        # Spatial indexes for bbox / radius queries (T2.11 + T2.12)
+        await db.execute("CREATE INDEX IF NOT EXISTS idx_alerts_lat ON alerts(latitude)")
+        await db.execute("CREATE INDEX IF NOT EXISTS idx_alerts_lng ON alerts(longitude)")
+        await db.execute("CREATE INDEX IF NOT EXISTS idx_alerts_geo_precision ON alerts(geo_precision)")
 
         # Webhook subscriber filters (Phase P3.2)
         cursor = await db.execute("PRAGMA table_info(webhooks)")
@@ -199,6 +207,8 @@ def _row_to_alert(row) -> Alert:
         source_reliability=row[17] if len(row) > 17 else None,
         status=(row[18] if len(row) > 18 and row[18] else "active"),
         correction_note=row[19] if len(row) > 19 else None,
+        geo_precision=row[20] if len(row) > 20 else None,
+        geo_source_phrase=row[21] if len(row) > 21 else None,
     )
 
 
@@ -209,8 +219,9 @@ async def insert_alert(alert: Alert) -> Alert:
             """INSERT INTO alerts
                (type, severity, title, body, source, source_msg_id, area, zone,
                 raw_text, timestamp, created_at, event_subtype, latitude, longitude,
-                title_ar, confidence, source_reliability, status, correction_note)
-               VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)""",
+                title_ar, confidence, source_reliability, status, correction_note,
+                geo_precision, geo_source_phrase)
+               VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)""",
             (alert.type, alert.severity, alert.title, alert.body,
              alert.source, alert.source_msg_id, alert.area,
              getattr(alert, "zone", None),
@@ -222,7 +233,9 @@ async def insert_alert(alert: Alert) -> Alert:
              getattr(alert, "confidence", None),
              getattr(alert, "source_reliability", None),
              getattr(alert, "status", None) or "active",
-             getattr(alert, "correction_note", None))
+             getattr(alert, "correction_note", None),
+             getattr(alert, "geo_precision", None),
+             getattr(alert, "geo_source_phrase", None))
         )
         await db.commit()
         alert.id = cur.lastrowid

@@ -55,8 +55,10 @@ class Alert(BaseModel):
     timestamp: datetime               # Original Telegram message time (UTC)
     created_at: Optional[datetime] = None
     event_subtype: Optional[str] = None  # e.g. 'arrest', 'search', 'stone_throwing'
-    latitude: Optional[float] = None  # Zone center latitude (for map display)
-    longitude: Optional[float] = None  # Zone center longitude (for map display)
+    latitude: Optional[float] = None  # Resolved latitude (point/town/zone/region per geo_precision)
+    longitude: Optional[float] = None
+    geo_precision: Optional[str] = None      # "checkpoint" | "town" | "zone" | "region"
+    geo_source_phrase: Optional[str] = None  # Text that resolved the coords (for debugging + learner)
     confidence: Optional[float] = None       # 0.0-1.0 — classifier+source-weighted score
     source_reliability: Optional[float] = None  # 0.0-1.0 — channel-level baseline trust
     status: Optional[str] = "active"         # active | retracted | corrected
