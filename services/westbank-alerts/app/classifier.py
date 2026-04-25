@@ -642,12 +642,18 @@ ARREST_CAMPAIGN_TERMS = [_normalize(t) for t in ARREST_CAMPAIGN_TERMS]
 
 # ── B5 — civilian-life impact event keyword sets ────────────────────────────
 
-HOSPITAL_STRIKE_TERMS = [
-    "استهداف المستشفى", "استهداف مستشفى", "قصف المستشفى", "قصف مستشفى",
-    "استهداف مركز صحي", "قصف مركز صحي", "استهداف مجمع طبي",
-    "اقتحام مستشفى", "محاصره مستشفى",
+# Hospital strike: AND of (medical noun) + (raid/strike verb).
+# Substring keywords miss "اقتحام جيش الاحتلال لمستشفى" because the noun
+# and verb are split by intervening words.
+HOSPITAL_NOUNS = [
+    "مستشفى", "مستوصف", "مركز صحي", "مجمع طبي", "عياده طبيه",
 ]
-HOSPITAL_STRIKE_TERMS = [_normalize(t) for t in HOSPITAL_STRIKE_TERMS]
+HOSPITAL_NOUNS = [_normalize(t) for t in HOSPITAL_NOUNS]
+
+HOSPITAL_HARM_VERBS = [
+    "قصف", "استهداف", "اقتحام", "اقتحم", "محاصره", "ضرب",
+]
+HOSPITAL_HARM_VERBS = [_normalize(t) for t in HOSPITAL_HARM_VERBS]
 
 # Journalist-targeted is a 2-pass match: subject+verb. Each list alone is
 # noisy; the AND in classifier requires both.
@@ -1544,7 +1550,7 @@ def classify_wb_operational(raw_text: str, source: str) -> Optional[dict]:
 
     # ── B5 — civilian-life specific checks (run BEFORE generic injury/raid/arrest)
     # Hospital strike beats raid (raid into a hospital is more specifically "hospital_strike")
-    if _has(normed, HOSPITAL_STRIKE_TERMS):
+    if _has(normed, HOSPITAL_NOUNS) and _has(normed, HOSPITAL_HARM_VERBS):
         return _build(AlertType.hospital_strike, Severity.high, clean, source, area, zone=zone)
 
     # Journalist targeted beats generic injury (subject + harm verb both required)
