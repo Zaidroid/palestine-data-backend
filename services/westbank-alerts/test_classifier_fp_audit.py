@@ -134,6 +134,82 @@ HISTORICAL_REFERENCE = [
      "qudsn"),
 ]
 
+# 7. NEW — Solidarity protests / demonstrations ABROAD (Stockholm,
+#    Morocco, etc.) about Palestine. The verbs of solidarity ("تضامناً
+#    مع", "تظاهرة في") + a non-Palestinian city → not a live event in
+#    Palestine. Must be filtered (None).
+SOLIDARITY_ABROAD = [
+    ("تظاهرة في ستوكهولم؛ تضامنًا مع قطاع غزّة ومطالبة بالضغط على الاحتلال "
+     "لرفع الحصار وإدخال المساعدات الإنسانية إلى غزة", "qudsn"),
+    ("تظاهرات شعبية في المغرب تضامنًا مع قطاع غزة، تنديدًا بخروقات الاحتلال "
+     "والمطالبة برفع الحصار عن غزة", "qudsn"),
+    ("مسيرة حاشدة في لندن للمطالبة بوقف العدوان على غزة", "qudsn"),
+    ("اعتصام في باريس تضامنًا مع الشعب الفلسطيني وتنديدًا بالحرب على غزة",
+     "qudsn"),
+]
+
+# 8. NEW — Diplomatic visits / political talks. Foreign-minister moves,
+#    embassy meetings, talks/negotiations. The actors are diplomats, not
+#    armed forces; the action is verbal/travel, not kinetic.
+DIPLOMATIC_NEWS = [
+    ("وكالة الأنباء الإيرانية: عراقجي سيعاود زيارة إسلام آباد بعد انتهاء "
+     "زيارته إلى مسقط", "ajanews"),
+    ("المتحدث باسم الخارجية الإيرانية: الوزير عراقجي في مسقط اليوم للمرة "
+     "الأولى منذ بدء العدوان الإسرائيلي الأمريكي", "ajanews"),
+    ("الخارجية الإيرانية: عراقجي يصل مسقط على رأس وفد دبلوماسي لبحث "
+     "التطورات الإقليمية وتبادل وجهات النظر", "ajanews"),
+    ("بعد مغادرته باكستان وصل وزير الخارجية الإيراني عباس عراقجي إلى مسقط، "
+     "عمان، المحطة الثانية من جولته الدبلوماسية", "almustashaar"),
+    ("في جهاز الأمن الإسرائيلي يُقدّرون: الانفجار في المحادثات بين الولايات "
+     "المتحدة وإيران سيزيد من احتمال العودة إلى القتال", "almustashaar"),
+]
+
+# 9. NEW — Political commentary / archive analysis. Settler statements
+#    about a conflict, journalist reflections on prior speeches. Verb is
+#    "تعليقًا على" / "تصريحات" / "أرشيف"; no live event.
+POLITICAL_COMMENTARY = [
+    ("تعليقًا على عمليات حزب الله وتجدد صافرات الإنذار قرب لبنان.. رئيس "
+     "منتدى مستوطنات خط المواجهة الشمالية، \"موشيه دفيدوفيتش\": \"هذا ليس "
+     "وقف إطلاق نار، ربما هي نار بلا توقف\".", "qudsn"),
+    ("مراسل إذاعة جيش الاحتلال: يُظهر أرشيف التصريحات لرئيس الحكومة ووزير "
+     "الحرب ورئيس الأركان تناقضًا بين الواقع والتصريحات.", "qudsn"),
+    ("في تصريح صحفي: رئيس المجلس الاستيطاني يطالب بتشديد العمليات في "
+     "الشمال", "qudsn"),
+]
+
+# 10. NEW — Non-war health statistics. WHO / health-ministry counts of
+#     disease cases (rodent-borne, parasitic, chronic) — the count is
+#     real but the cause isn't war. Must NOT classify as injury_report.
+NON_WAR_HEALTH = [
+    ("الصحة العالمية: تسجيل أكثر من 17 ألف إصابة في قطاع غزة بسبب القوارض",
+     "wafagency"),
+    ("17 ألف إصابة في غزة بسبب القوارض والطفيليات", "qudsn"),
+    ("ارتفاع حالات الإصابة بالأمراض الجلدية في خانيونس بسبب نقص المياه",
+     "qudsn"),
+]
+
+# 11. NEW — Family appeals / advocacy about EXISTING detentions. Family
+#     warns of detention extension or torture; not a new arrest event.
+FAMILY_APPEALS = [
+    ("عائلة الطبيب حسام أبو صفية تحذر من مساعي سلطات الاحتلال لتمديد "
+     "احتجازه مرة أخرى وذلك بعد مرور أكثر من عام على اعتقاله التعسفي",
+     "qudsn"),
+    ("عائلة الأسير تطالب بتدخل المؤسسات الحقوقية للإفراج عن نجلها المعتقل "
+     "منذ سنوات", "qudsn"),
+    ("والدة الأسير تناشد المؤسسات الدولية إنقاذ ابنها من التعذيب الممنهج",
+     "qudsn"),
+]
+
+# 12. NEW — Emoji-prefixed photo/video captions. Today's caption check
+#     does text.lstrip()[:30].startswith(...) which fails when an emoji
+#     sits before "بالفيديو |" / "بالصور |".
+EMOJI_PREFIXED_CAPTIONS = [
+    ("⭕بالفيديو | مشاهد من عملية استهداف المقاومة الإسلامية مستوطنة شتولا "
+     "شمالي فلسطين المحتلّة بصليةٍ صاروخيّة.", "qudsn"),
+    ("🔴بالصور | اقتحام مخيم الجلزون شمال رام الله", "qudsn"),
+    ("📷📷📷 جانب من اقتحام بلدة عناتا شمال القدس", "qudsn"),
+]
+
 # True positives — must continue to classify (not None) with expected type.
 # Optional 4th element = expected `area`. None means we don't assert area.
 TRUE_POSITIVES = [
@@ -181,6 +257,13 @@ def _run_all():
     _fp_bucket("EULOGIES", EULOGIES, lambda r: r is not None)
     _fp_bucket("NEWS_METADATA_LEAK", NEWS_METADATA_LEAK, lambda r: r is not None)
     _fp_bucket("HISTORICAL_REFERENCE", HISTORICAL_REFERENCE,
+               lambda r: r is not None)
+    _fp_bucket("SOLIDARITY_ABROAD", SOLIDARITY_ABROAD, lambda r: r is not None)
+    _fp_bucket("DIPLOMATIC_NEWS", DIPLOMATIC_NEWS, lambda r: r is not None)
+    _fp_bucket("POLITICAL_COMMENTARY", POLITICAL_COMMENTARY, lambda r: r is not None)
+    _fp_bucket("NON_WAR_HEALTH", NON_WAR_HEALTH, lambda r: r is not None)
+    _fp_bucket("FAMILY_APPEALS", FAMILY_APPEALS, lambda r: r is not None)
+    _fp_bucket("EMOJI_PREFIXED_CAPTIONS", EMOJI_PREFIXED_CAPTIONS,
                lambda r: r is not None)
 
     # GEO_PRECISION — pass = correct event_type AND correct area.

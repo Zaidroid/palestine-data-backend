@@ -737,6 +737,68 @@ EULOGY_PATTERNS = [
 ]
 EULOGY_PATTERNS = [_normalize(t) for t in EULOGY_PATTERNS]
 
+# Solidarity demonstrations / protests ABROAD about Palestine. The verb
+# is "تظاهرة"/"اعتصام"/"مسيرة" + foreign-city; not a live event in PS.
+SOLIDARITY_LEADING_MARKERS = [
+    "تظاهره في", "تظاهرات في", "تظاهرات شعبيه",
+    "اعتصام في", "اعتصام امام",
+    "مسيره حاشده في", "مسيره في",
+    "وقفه تضامنيه", "وقفه احتجاجيه",
+]
+SOLIDARITY_LEADING_MARKERS = [_normalize(t) for t in SOLIDARITY_LEADING_MARKERS]
+SOLIDARITY_CONTEXT = [
+    "تضامنا", "تضامناً", "تنديدا", "تنديداً",
+    "للمطالبه بوقف", "للمطالبه برفع",
+]
+SOLIDARITY_CONTEXT = [_normalize(t) for t in SOLIDARITY_CONTEXT]
+
+# Diplomatic news — foreign-minister visits, talks, embassy news. Verbs
+# are travel/meeting; not kinetic. Markers chosen to be specific enough
+# that a real military "وفد" or "اجتماع" doesn't get filtered.
+DIPLOMATIC_MARKERS = [
+    "وزير الخارجيه", "الخارجيه الايرانيه", "الخارجيه الامريكيه",
+    "الخارجيه السعوديه", "الخارجيه التركيه", "الخارجيه المصريه",
+    "وفد دبلوماسي", "محادثات بين", "مباحثات",
+    "جوله دبلوماسيه", "زياره دبلوماسيه",
+    # Specific officials — extend as more diplomatic FPs appear
+    "عراقجي", "بلينكن",
+]
+DIPLOMATIC_MARKERS = [_normalize(t) for t in DIPLOMATIC_MARKERS]
+
+# Political commentary — analyst/settler/journalist statements about a
+# situation. Verb is "تعليق"/"تصريح"/"أرشيف"; the post wraps a quote,
+# the wrapper is not a live event.
+COMMENTARY_MARKERS = [
+    "تعليقا على", "تعليقاً على", "في تعليق على", "في تعليقه على",
+    "في تصريح صحفي", "في حديث صحفي", "في حديثه ل",
+    "ارشيف التصريحات", "ارشيف تصريحات",
+]
+COMMENTARY_MARKERS = [_normalize(t) for t in COMMENTARY_MARKERS]
+
+# Non-war health statistics — disease/condition counts that aren't combat
+# trauma. Distinct from injury_report which is for kinetic injuries.
+NON_WAR_HEALTH_MARKERS = [
+    "بسبب القوارض", "بسبب الطفيليات", "بسبب الامراض",
+    "بسبب نقص الميا", "بسبب نقص الغذاء", "بسبب البرد",
+    "الامراض الجلديه", "الامراض المعديه", "الامراض المزمنه",
+    "سوء التغذيه",
+]
+NON_WAR_HEALTH_MARKERS = [_normalize(t) for t in NON_WAR_HEALTH_MARKERS]
+
+# Family appeals about EXISTING detentions. Family warns/pleads/calls
+# for intervention; the detention itself is old, no new event.
+FAMILY_APPEAL_LEADING = [
+    "عائله",
+    "والده الاسير", "والد الاسير", "زوجه الاسير",
+    "ذوو الاسير", "ذوي الاسير",
+]
+FAMILY_APPEAL_LEADING = [_normalize(t) for t in FAMILY_APPEAL_LEADING]
+FAMILY_APPEAL_VERBS = [
+    "تحذر من", "تطالب", "تناشد", "تطالبون",
+    "ينادون", "تناشدون", "تنادي", "يناشد",
+]
+FAMILY_APPEAL_VERBS = [_normalize(t) for t in FAMILY_APPEAL_VERBS]
+
 # Temporal attribution markers — distinguish "happening now" from historical
 # mentions. Past markers downweight confidence so news-recap noise doesn't
 # fire as real-time alerts. (T2.1)
@@ -923,8 +985,10 @@ def _is_noise(text: str, tier: str = "tier1", source: str = "") -> bool:
     is_news = _is_news_channel(source)
 
     # Photo/video caption prefix → duplicate of already-reported event.
-    # Only check the leading 30 chars to keep this an anchored match.
-    head = text.lstrip()[:30]
+    # Strip leading emojis, symbols, and whitespace so an emoji-prefixed
+    # caption ("⭕بالفيديو | …") still trips the check; only Arabic and
+    # Latin letters remain at the front before we anchor-match.
+    head = re.sub(r"^[^a-zA-Zء-ي]+", "", text)[:30]
     if any(head.startswith(p) for p in CAPTION_PREFIX_PATTERNS):
         return True
 
@@ -934,6 +998,28 @@ def _is_noise(text: str, tier: str = "tier1", source: str = "") -> bool:
 
     # Historical / anniversary / X-years-ago framing → past, not live.
     if _is_historical_reference(text):
+        return True
+
+    # Solidarity protest abroad → not a live event in Palestine.
+    head_120 = text[:120]
+    if _has(head_120, SOLIDARITY_LEADING_MARKERS) and _has(text, SOLIDARITY_CONTEXT):
+        return True
+
+    # Diplomatic news → travel/meeting verb, not kinetic.
+    if _has(text, DIPLOMATIC_MARKERS):
+        return True
+
+    # Political commentary wrapper ("تعليقاً على X قال Y") → quote, not event.
+    if _has(text, COMMENTARY_MARKERS):
+        return True
+
+    # Non-war health statistics → disease/condition counts, not trauma.
+    if _has(text, NON_WAR_HEALTH_MARKERS):
+        return True
+
+    # Family appeal about an existing detention — no new arrest event.
+    if (_has(head_120, FAMILY_APPEAL_LEADING)
+            and _has(text, FAMILY_APPEAL_VERBS)):
         return True
 
     # News attribution — only discard for non-news channels.
