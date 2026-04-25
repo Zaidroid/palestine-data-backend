@@ -259,6 +259,24 @@
       "primary": true
     },
 
+    "idmc": {
+      "name": "IDMC Internal Displacement Updates",
+      "organization": "Internal Displacement Monitoring Centre",
+      "source_url": "https://www.internal-displacement.org/countries/palestine",
+      "hdx_url": "https://data.humdata.org/dataset/idmc-event-data-for-pse",
+      "license_id": "CC-BY-IGO",
+      "commercial_use": true,
+      "attribution_text": "Displacement events: Internal Displacement Monitoring Centre (idmc.ch), CC-BY-IGO.",
+      "feeds_categories": ["refugees"],
+      "feeds_databank": [],
+      "update_cadence": "daily",
+      "coverage_start": "2008",
+      "coverage_end": "ongoing",
+      "typical_lag_days": 1,
+      "fetcher_script": "scripts/sources/idmc.js",
+      "notes": "Per-event internal displacement (storms, floods, conflict-violence) with geocoding + figure + source attribution. Complements UNHCR (cross-border) with internal events.",
+      "primary": true
+    },
     "ucdp_ged": {
       "name": "UCDP Georeferenced Event Dataset",
       "organization": "Uppsala Conflict Data Program",
@@ -310,7 +328,7 @@
     "news": ["rss_news_feeds"],
     "pcbs": ["world_bank"],
     "prisoners": ["addameer"],
-    "refugees": ["unhcr_odp", "ocha_opt_hdx"],
+    "refugees": ["unhcr_odp", "idmc", "ocha_opt_hdx"],
     "water": ["ocha_opt_hdx"],
     "westbank": ["ocha_opt_hdx"]
   },
@@ -327,7 +345,6 @@
     { "source": "WHO Health Cluster Bulletin", "category": "health", "reason": "Weekly health-system situational" },
     { "source": "DCIP", "category": "prisoners", "reason": "Child detention statistics" },
     { "source": "HaMoked", "category": "prisoners", "reason": "Administrative detention case database" },
-    { "source": "IDMC", "category": "refugees", "reason": "Internal displacement (UNHCR is cross-border only)" },
     { "source": "UNESCO Palestine Atlas", "category": "culture", "reason": "Curated heritage list complementing Wikidata" },
     { "source": "Riwaq Heritage Registry", "category": "culture", "reason": "WB heritage buildings registry" },
     { "source": "UNISPAL", "category": "historical", "reason": "Restore historical category with UN Palestine archives" },

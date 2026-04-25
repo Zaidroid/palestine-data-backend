@@ -389,11 +389,12 @@ async function fetchIndicator(indicatorCode, indicatorName) {
   await logger.info(`📊 Fetching: ${indicatorName}...`);
   
   try {
-    // Fetch data from 2010 through current year. Hardcoding the upper bound
-    // froze /unified/economic at 2024 — World Bank releases new vintages
-    // throughout the year and we want to pick them up the day they ship.
+    // Fetch the full historical range — World Bank Palestine indicators
+    // start as early as 1960 for some series (life expectancy, mortality,
+    // demographics). 2010 was a historical-depth limitation, not a real
+    // requirement. per_page=400 covers the longest series in one request.
     const currentYear = new Date().getUTCFullYear();
-    const url = `${WB_API_BASE}/country/${COUNTRY_CODE}/indicator/${indicatorCode}?format=json&date=2010:${currentYear}&per_page=200`;
+    const url = `${WB_API_BASE}/country/${COUNTRY_CODE}/indicator/${indicatorCode}?format=json&date=1960:${currentYear}&per_page=400`;
     const response = await fetchWithRetry(url);
     
     // World Bank API returns [metadata, data]

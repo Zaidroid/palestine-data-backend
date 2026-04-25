@@ -207,10 +207,10 @@ async function fetchIndicator(indicatorCode, indicatorName) {
   await logger.info(`📊 Fetching: ${indicatorName}...`);
   
   try {
-    // Fetch data from 2010 through current year. Hardcoding 2024 froze
-    // /unified/pcbs even when PCBS-via-WB published later vintages.
+    // Fetch full historical range. PCBS-republished WB indicators have data
+    // back to 1960 for some series (population, life expectancy).
     const currentYear = new Date().getUTCFullYear();
-    const url = `${WB_API_BASE}/country/${COUNTRY_CODE}/indicator/${indicatorCode}?format=json&date=2010:${currentYear}&per_page=200`;
+    const url = `${WB_API_BASE}/country/${COUNTRY_CODE}/indicator/${indicatorCode}?format=json&date=1960:${currentYear}&per_page=400`;
     const response = await fetchWithRetry(url);
     
     // World Bank API returns [metadata, data]

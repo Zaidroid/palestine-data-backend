@@ -264,6 +264,99 @@ async function processUCDPConflict() {
 
 
 /**
+ * Process IDMC (Internal Displacement Monitoring Centre) Palestine.
+ *
+ * Promotes per-event displacement records (with geocoding, figure,
+ * source attribution) into /unified/refugees. Complements UNHCR which
+ * tracks cross-border refugee stocks; IDMC tracks internal displacement
+ * events (storms, floods, hostility-driven displacement) at the event
+ * level with daily updates.
+ */
+async function processIDMC() {
+    logger.info('Processing IDMC displacement data...');
+    try {
+        const idmcPath = path.join(DATA_DIR, 'idmc', 'displacements-pse.json');
+        const raw = JSON.parse(await fs.readFile(idmcPath, 'utf-8'));
+        const events = raw.data || [];
+        if (events.length === 0) {
+            logger.warn('IDMC data file is empty');
+            return;
+        }
+
+        const records = events.map((e) => ({
+            id: e.id,
+            date: e.date,
+            category: 'refugees',
+            event_type: 'displacement_event',
+            schema_version: '3.0.0',
+            location: {
+                name: e.location_name || 'Palestine',
+                governorate: null,
+                region: e.region || 'Palestine',
+                lat: e.latitude,
+                lon: e.longitude,
+                precision: e.location_accuracy === 'Point' ? 'point' : 'region',
+            },
+            metrics: {
+                killed: 0,
+                injured: 0,
+                displaced: e.figure || 0,
+                affected: e.figure || 0,
+                count: e.figure || 0,
+                value: e.figure || 0,
+                unit: 'persons',
+            },
+            description: e.description || e.event_name || `${e.type} displacement event`,
+            displacement_category: e.category,        // Conflict | Disaster
+            displacement_type: e.type,                // Storm, Flood, Conflict-violence
+            displacement_subtype: e.subtype,
+            event_name: e.event_name,
+            actors: [],
+            severity_index: Math.min(10, Math.ceil((e.figure || 0) / 1000)),
+            quality: { score: 0.9, completeness: 1, consistency: 1, accuracy: 0.9, confidence: 'high', verified: true },
+            sources: [{
+                name: 'IDMC',
+                organization: 'Internal Displacement Monitoring Centre (via HDX)',
+                url: e.source_url || raw.source_url,
+                license: raw.license || 'CC-BY-IGO',
+                fetched_at: raw.generated_at,
+            }],
+        }));
+
+        const refugeesDir = path.join(UNIFIED_DIR, 'refugees');
+        await fs.mkdir(refugeesDir, { recursive: true });
+        const dataPath = path.join(refugeesDir, 'all-data.json');
+        let existing = { data: [], metadata: {} };
+        try {
+            existing = JSON.parse(await fs.readFile(dataPath, 'utf-8'));
+        } catch {}
+        const byId = new Map((existing.data || []).map((r) => [r.id, r]));
+        for (const r of records) byId.set(r.id, r);
+        const merged = Array.from(byId.values());
+
+        await fs.writeFile(
+            dataPath,
+            JSON.stringify({
+                data: merged,
+                metadata: {
+                    ...(existing.metadata || {}),
+                    total_records: merged.length,
+                    generated_at: new Date().toISOString(),
+                    sources: [...new Set([...(existing.metadata?.sources || []), 'IDMC'])],
+                    category: 'refugees',
+                    notice: 'UNHCR (cross-border refugee stocks, annual) + IDMC (internal displacement events, daily). UNHCR records carry stable_id starting "unhcr-"; IDMC records carry "idmc-".',
+                },
+            }, null, 2),
+            'utf-8',
+        );
+        logger.success(`IDMC merged: +${records.length} displacement events into refugees (total ${merged.length})`);
+    } catch (e) {
+        logger.error('Error processing IDMC data:', e.message);
+    }
+}
+
+
+/**
  * Process Tech4Palestine conflict data
  */
 async function processConflictData() {
@@ -2522,6 +2615,7 @@ async function main() {
         { name: 'gaza_health_impact',  fn: processGazaHealthImpact },
         { name: 'goodshepherd',        fn: processGoodShepherdData },
         { name: 'static_refugees',     fn: processStaticRefugeesData },
+        { name: 'idmc_displacement',   fn: processIDMC },
         { name: 'prisoners',           fn: processPrisonersData },
         { name: 'funding',             fn: processFundingData },
         { name: 'news',                fn: processNewsData },
