@@ -59,6 +59,7 @@ run "fao-diem-pse"    node scripts/sources/fao-diem-pse.js
 run "world-bank-wbg"  node scripts/sources/world-bank-wbg.js
 run "ocha-hpc"        node scripts/sources/ocha-hpc.js
 run "global-healthsites" node scripts/sources/global-healthsites-pse.js
+run "hdx-hapi-pse"    node scripts/sources/hdx-hapi-pse.js
 run "build-gazetteer" node scripts/build-gazetteer.js
 run "infrastructure"  node scripts/fetch-infrastructure-data.js
 run "rss-news"        node scripts/fetch-rss-feeds.js

@@ -16,6 +16,7 @@ import humanitarianRoute from './humanitarian.js';
 import displacementRoute from './displacement.js';
 import indicatorsRoute from './indicators.js';
 import responseRoute from './response.js';
+import hapiRoute from './hapi.js';
 import versionRoutes from './version.js';
 import qualityRoutes from './quality.js';
 import recordRoutes from './record.js';
@@ -78,6 +79,9 @@ router.use('/indicators', indicatorsRoute);
 
 // OCHA Humanitarian Programme Cycle — Response Plan projects + Needs assessments.
 router.use('/response', responseRoute);
+
+// HDX HAPI — meta humanitarian API (10 thematic datasets in one schema)
+router.use('/hapi', hapiRoute);
 
 // Trust-foundation surfaces (A2/A3/A4): citable version, quality, per-record permalinks
 router.use('/version', versionRoutes);
