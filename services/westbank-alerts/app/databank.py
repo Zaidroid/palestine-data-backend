@@ -447,27 +447,40 @@ async def summary_table(
     interval: str = "month",   # day | month | year
     group_by: Optional[str] = None,  # place_region | gender | cause | actor_type | type
 ) -> list[dict]:
-    """Time-series + optional secondary grouping for dashboard rollups."""
+    """Time-series + optional secondary grouping for dashboard rollups.
+
+    Always returns `count` (number of rows in the bucket). For tables whose
+    rows can carry an aggregate `count` column (people_killed, people_injured,
+    people_detained), also returns `sum_count` (the true total). Consumers
+    choose which one they want.
+    """
     if table not in _TABLE_FILTERS:
         raise ValueError(f"unknown databank table: {table}")
     if interval not in ("day", "month", "year"):
         raise ValueError(f"interval must be day | month | year, got {interval!r}")
     where, params = _build_where(table, filters)
     date_col = _TABLE_DATE_COLUMN[table]
-    # SQLite date truncation
     bucket_expr = {
         "day":   f"substr({date_col}, 1, 10)",
         "month": f"substr({date_col}, 1, 7)",
         "year":  f"substr({date_col}, 1, 4)",
     }[interval]
+
+    # Pull the table column set once (used for both group_by validation and
+    # to decide whether to expose sum_count).
+    async with get_alerts_db() as db:
+        cur = await db.execute(f"PRAGMA table_info({table})")
+        valid_cols = {row[1] for row in await cur.fetchall()}
+
     select_cols = [f"{bucket_expr} AS bucket", "COUNT(*) AS count"]
+    if "count" in valid_cols:
+        # SUM(count) makes sense when individual rows can themselves be aggregates
+        # (e.g. "138 killed in Gaza on 2023-10-08" is one row, count=138).
+        select_cols.append("SUM(count) AS sum_count")
     group_cols = [bucket_expr]
+
     if group_by:
-        # Whitelist by intersecting with table columns at query time
-        async with get_alerts_db() as db:
-            cur = await db.execute(f"PRAGMA table_info({table})")
-            valid = {row[1] for row in await cur.fetchall()}
-        if group_by not in valid:
+        if group_by not in valid_cols:
             raise ValueError(f"group_by={group_by!r} not a column of {table}")
         select_cols.insert(1, group_by)
         group_cols.append(group_by)
