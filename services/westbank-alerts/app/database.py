@@ -177,6 +177,11 @@ async def init_db():
             await db.execute("ALTER TABLE alerts ADD COLUMN admin1 TEXT")
         if "admin2" not in alert_cols:
             await db.execute("ALTER TABLE alerts ADD COLUMN admin2 TEXT")
+        # Per-alert audit trail of how much confidence came from historical
+        # corroboration (Insecurity Insight + ACLED). 0 = no boost; >0 means
+        # base-rate evidence supported this alert. Surfaced via /quality/corroboration.
+        if "historical_boost" not in alert_cols:
+            await db.execute("ALTER TABLE alerts ADD COLUMN historical_boost REAL DEFAULT 0")
         await db.execute("CREATE INDEX IF NOT EXISTS idx_alerts_admin1 ON alerts(admin1)")
         await db.execute("CREATE INDEX IF NOT EXISTS idx_alerts_admin2 ON alerts(admin2)")
         await db.execute("CREATE INDEX IF NOT EXISTS idx_alerts_status ON alerts(status)")

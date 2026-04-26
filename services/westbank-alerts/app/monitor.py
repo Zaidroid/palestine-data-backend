@@ -220,8 +220,10 @@ async def _process_text(
                 if new_conf > (alert.confidence or 0.5):
                     async with get_alerts_db() as db:
                         await db.execute(
-                            "UPDATE alerts SET confidence = ? WHERE id = ?",
-                            (new_conf, alert.id),
+                            "UPDATE alerts SET confidence = ?, "
+                            "historical_boost = COALESCE(historical_boost, 0) + ? "
+                            "WHERE id = ?",
+                            (new_conf, hboost, alert.id),
                         )
                         await db.commit()
                     log.info(
