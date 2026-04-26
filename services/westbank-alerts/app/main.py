@@ -970,6 +970,89 @@ async def list_channel_reliability():
     return {"channels": await db.get_channel_reliability()}
 
 
+@app.get("/quality/corroboration", tags=["quality"])
+async def quality_corroboration(days: int = Query(7, ge=1, le=90)):
+    """
+    Per-type breakdown of how often the historical-corroboration boost
+    fired over the last N days. Two contributors stack into
+    alerts.historical_boost: Insecurity Insight humanitarian_incidents
+    (admin1 × category, +0.05/+0.10) and ACLED elevated-volume (admin2,
+    +0.05). Surfaces whether the base-rate evidence is doing meaningful
+    work or just adding the same boost to every alert in a region.
+    """
+    since = (datetime.utcnow() - timedelta(days=days)).isoformat()
+    async with db_pool.get_alerts_db() as conn:
+        cur = await conn.execute(
+            "SELECT type, admin1, "
+            "       COUNT(*) AS total, "
+            "       SUM(CASE WHEN COALESCE(historical_boost, 0) > 0 THEN 1 ELSE 0 END) AS boosted, "
+            "       AVG(CASE WHEN COALESCE(historical_boost, 0) > 0 THEN historical_boost END) AS mean_boost_when_fired, "
+            "       AVG(confidence) AS mean_confidence "
+            "FROM alerts "
+            "WHERE timestamp >= ? AND status = 'active' "
+            "GROUP BY type, admin1 "
+            "ORDER BY type, admin1",
+            (since,),
+        )
+        rows = await cur.fetchall()
+
+    by_type: dict = {}
+    overall_total = 0
+    overall_boosted = 0
+    for r in rows:
+        typ, admin1, total, boosted, mean_b, mean_c = r
+        overall_total += total
+        overall_boosted += boosted or 0
+        slot = by_type.setdefault(typ, {
+            "total": 0, "boosted": 0, "mean_boost_when_fired": None,
+            "mean_confidence": None, "by_admin1": [],
+        })
+        slot["total"] += total
+        slot["boosted"] += boosted or 0
+        slot["by_admin1"].append({
+            "admin1": admin1,
+            "total": total,
+            "boosted": boosted or 0,
+            "boost_rate": round((boosted or 0) / total, 3) if total else 0,
+            "mean_boost_when_fired": round(mean_b, 3) if mean_b else None,
+            "mean_confidence": round(mean_c, 3) if mean_c else None,
+        })
+
+    # Roll up per-type rates after all admin1 rows are aggregated.
+    for slot in by_type.values():
+        slot["boost_rate"] = round(slot["boosted"] / slot["total"], 3) if slot["total"] else 0
+        # Mean of means weighted by boosted count is a fine cheap approximation;
+        # individual per-admin1 means are also exposed for drill-in.
+        weights = [r["boosted"] for r in slot["by_admin1"] if r["mean_boost_when_fired"] is not None]
+        if weights:
+            wsum = sum(weights)
+            slot["mean_boost_when_fired"] = round(
+                sum((r["mean_boost_when_fired"] or 0) * r["boosted"]
+                    for r in slot["by_admin1"] if r["mean_boost_when_fired"] is not None) / wsum,
+                3,
+            ) if wsum else None
+        confs = [(r["mean_confidence"], r["total"]) for r in slot["by_admin1"] if r["mean_confidence"] is not None]
+        if confs:
+            tw = sum(t for _, t in confs)
+            slot["mean_confidence"] = round(sum(m * t for m, t in confs) / tw, 3) if tw else None
+
+    return {
+        "window_days": days,
+        "since": since,
+        "overall": {
+            "total_alerts": overall_total,
+            "boosted": overall_boosted,
+            "boost_rate": round(overall_boosted / overall_total, 3) if overall_total else 0,
+        },
+        "by_type": by_type,
+        "notes": (
+            "boosted = alerts where historical_boost > 0. Two contributors "
+            "stack: Insecurity Insight (admin1 × category) and ACLED "
+            "(admin2 elevated). Per-type max is +0.15 (sum of per-contributor caps)."
+        ),
+    }
+
+
 @app.get("/stats", response_model=StatsResponse, tags=["alerts"])
 async def stats():
     s = await db.get_stats()
