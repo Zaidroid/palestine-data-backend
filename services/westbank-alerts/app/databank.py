@@ -734,6 +734,35 @@ async def summary_table(
     return [dict(zip(col_names, r)) for r in rows]
 
 
+async def find_historical_corroboration(
+    categories: list[str],
+    admin1: str,
+    since_days: int = 90,
+) -> dict:
+    """Look up Insecurity Insight incidents in the same admin1 + category set
+    within the last `since_days`. Returns {count, latest_date}.
+
+    Used by monitor.py to base-rate-prior the live tracker: if a hospital_strike
+    alert fires in Gaza Strip, having 475 historical healthcare incidents in
+    that admin1 is real corroboration that the region has a pattern of such
+    attacks. Pure base-rate evidence — weaker than B1 cross-channel corroboration
+    (real-time), so callers cap the confidence boost lower.
+    """
+    if not categories or not admin1:
+        return {"count": 0, "latest_date": None}
+    from datetime import timedelta as _td
+    cutoff = (datetime.utcnow().date() - _td(days=since_days)).isoformat()
+    placeholders = ",".join(["?"] * len(categories))
+    sql = (
+        f"SELECT COUNT(*), MAX(date) FROM humanitarian_incidents "
+        f"WHERE category IN ({placeholders}) AND admin1 = ? AND date >= ?"
+    )
+    async with get_alerts_db() as db:
+        cur = await db.execute(sql, [*categories, admin1, cutoff])
+        row = await cur.fetchone()
+    return {"count": row[0] if row else 0, "latest_date": row[1] if row else None}
+
+
 def rows_to_geojson(rows: list[dict]) -> dict:
     """Project rows to a FeatureCollection. Rows without lat/lng are skipped."""
     features = []

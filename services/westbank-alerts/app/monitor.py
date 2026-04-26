@@ -34,6 +34,19 @@ log = logging.getLogger("monitor")
 
 POLL_INTERVAL = 5
 
+# Live AlertType → Insecurity Insight humanitarian_incidents.category set.
+# Only high-signal civilian-life types are mapped; broad WB ops (idf_raid,
+# arrest_campaign) would always have hits and add no signal.
+_HISTORICAL_CATEGORY_MAP: dict = {
+    "hospital_strike":     ["healthcare"],
+    "school_closure":      ["education"],
+    "journalist_targeted": ["protection"],
+    "evacuation_order":    ["protection"],
+    "child_detention":     ["protection"],
+    "utility_cutoff":      ["food_systems", "water_systems"],
+    "gaza_strike":         ["explosive_weapons"],
+}
+
 _broadcast_alert_fn:      Optional[Callable] = None
 _broadcast_checkpoint_fn: Optional[Callable] = None
 _broadcast_area_fn:       Optional[Callable] = None
@@ -187,6 +200,38 @@ async def _process_text(
             alert.confidence = new_conf
     except Exception as e:
         log.warning(f"Corroboration check failed for alert #{alert.id}: {e}")
+
+    # Historical corroboration: cross-validate against humanitarian_incidents
+    # (Insecurity Insight, ~19k Palestine rows back to 1997). If this admin1
+    # has documented historical incidents in the same category, bump confidence
+    # as a base-rate prior. Capped at +0.10 — weaker than B1 real-time
+    # corroboration since it's "this region has a pattern" not "another channel
+    # confirmed this event."
+    try:
+        cats = _HISTORICAL_CATEGORY_MAP.get(str(alert.type))
+        if cats and alert.admin1:
+            from .databank import find_historical_corroboration
+            from .database import get_alerts_db
+            hist = await find_historical_corroboration(cats, alert.admin1, since_days=90)
+            n_hist = hist.get("count", 0)
+            if n_hist > 0:
+                hboost = 0.10 if n_hist >= 5 else 0.05
+                new_conf = min(1.0, (alert.confidence or 0.5) + hboost)
+                if new_conf > (alert.confidence or 0.5):
+                    async with get_alerts_db() as db:
+                        await db.execute(
+                            "UPDATE alerts SET confidence = ? WHERE id = ?",
+                            (new_conf, alert.id),
+                        )
+                        await db.commit()
+                    log.info(
+                        f"  historical: {n_hist} prior {'/'.join(cats)} incident(s) "
+                        f"in {alert.admin1} (latest {hist.get('latest_date')}) "
+                        f"→ confidence {alert.confidence:.2f}→{new_conf:.2f}"
+                    )
+                    alert.confidence = new_conf
+    except Exception as e:
+        log.warning(f"Historical corroboration check failed for alert #{alert.id}: {e}")
 
     # B6 — active-learning queue: alerts in the borderline 0.40-0.60
     # confidence band get queued for admin review. Verdict feeds A2.
