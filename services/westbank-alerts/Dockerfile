@@ -14,6 +14,7 @@ COPY data/checkpoint_directory.json ./data/checkpoint_directory.json
 COPY data/known_locations.json ./data/known_locations.json
 COPY data/admin/admin1.geojson ./data/admin/admin1.geojson
 COPY data/admin/admin2.geojson ./data/admin/admin2.geojson
+COPY data/conflict/ ./data/conflict/
 COPY seed_checkpoints.py ./seed_checkpoints.py
 
 # Force rebuild when source files change

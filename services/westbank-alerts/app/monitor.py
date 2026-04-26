@@ -235,6 +235,37 @@ async def _process_text(
     except Exception as e:
         log.warning(f"Historical corroboration check failed for alert #{alert.id}: {e}")
 
+    # ACLED elevated-volume corroboration: independent base-rate signal at
+    # admin2 granularity. If the alert's admin2 has a recent ACLED month
+    # >1.5x its trailing 5-month mean (and >=5 events), bump confidence
+    # +0.05. Stacks additively with Insecurity Insight historical above —
+    # combined max contribution to historical_boost is +0.15.
+    try:
+        if alert.admin2 and str(alert.type) in {"gaza_strike", "idf_raid", "settler_attack", "injury_report"}:
+            from .conflict_baseline import is_admin2_elevated
+            from .database import get_alerts_db
+            elev = is_admin2_elevated(alert.admin2, str(alert.type))
+            if elev.get("elevated"):
+                aboost = 0.05
+                new_conf = min(1.0, (alert.confidence or 0.5) + aboost)
+                if new_conf > (alert.confidence or 0.5):
+                    async with get_alerts_db() as db:
+                        await db.execute(
+                            "UPDATE alerts SET confidence = ?, "
+                            "historical_boost = COALESCE(historical_boost, 0) + ? "
+                            "WHERE id = ?",
+                            (new_conf, aboost, alert.id),
+                        )
+                        await db.commit()
+                    log.info(
+                        f"  acled: {alert.admin2} elevated for {elev.get('event_key')} "
+                        f"({elev.get('recent_events')} vs baseline {elev.get('baseline_mean')}) "
+                        f"→ confidence {alert.confidence:.2f}→{new_conf:.2f}"
+                    )
+                    alert.confidence = new_conf
+    except Exception as e:
+        log.warning(f"ACLED elevated-volume check failed for alert #{alert.id}: {e}")
+
     # B6 — active-learning queue: alerts in the borderline 0.40-0.60
     # confidence band get queued for admin review. Verdict feeds A2.
     try:
