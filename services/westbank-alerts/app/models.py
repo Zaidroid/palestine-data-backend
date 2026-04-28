@@ -107,6 +107,7 @@ class WebhookTarget(BaseModel):
     zones: Optional[str] = None              # comma-separated WB zones: north, middle, south
     confidence_min: Optional[float] = None   # 0.0-1.0 — skip alerts below this score
     customer_key_id: Optional[int] = None    # FK to keys.db (future per-tenant enforcement)
+    template: Optional[str] = "raw"          # F6 — "raw" | "slack" | "discord" payload format
     created_at: Optional[datetime] = None
 
 

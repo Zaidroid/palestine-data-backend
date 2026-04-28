@@ -30,6 +30,83 @@ def _utc_iso(dt: datetime) -> str:
 
 SEV_RANK = {"critical": 4, "high": 3, "medium": 2, "low": 1}
 
+# F6 — Slack/Discord color codes per severity.
+_SLACK_COLOR = {"critical": "#ef4444", "high": "#f97316", "medium": "#f5b454", "low": "#9aa0aa"}
+_DISCORD_COLOR = {"critical": 0xef4444, "high": 0xf97316, "medium": 0xf5b454, "low": 0x9aa0aa}
+_SEV_EMOJI = {"critical": "🚨", "high": "⚠️", "medium": "ℹ️", "low": "·"}
+
+
+def _alert_summary_line(alert: Alert) -> str:
+    parts = [_SEV_EMOJI.get(alert.severity, "·")]
+    parts.append(f"*{alert.type.replace('_', ' ').title()}*")
+    if alert.area:
+        parts.append(f"— {alert.area}")
+    if getattr(alert, "admin1", None):
+        parts.append(f"({alert.admin1})")
+    return " ".join(parts)
+
+
+def _slack_payload(alert: Alert, event: str = "new_alert") -> bytes:
+    """Slack incoming-webhook payload. Renders as a colored attachment with
+    title + fields. Set webhooks.template='slack' and use a Slack
+    incoming-webhook URL."""
+    summary = _alert_summary_line(alert)
+    if event == "correction":
+        summary = f"📝 *Correction:* {alert.type} — {alert.area or '?'} → {getattr(alert, 'status', '?')}"
+    fields = [
+        {"title": "Severity", "value": alert.severity or "?", "short": True},
+        {"title": "Source", "value": alert.source or "?", "short": True},
+        {"title": "Confidence", "value": f"{getattr(alert, 'confidence', 0) or 0:.2f}", "short": True},
+        {"title": "Trust", "value": f"{getattr(alert, 'trust_score', 0) or 0:.2f}", "short": True},
+    ]
+    payload = {
+        "text": summary,
+        "attachments": [{
+            "color": _SLACK_COLOR.get(alert.severity, "#9aa0aa"),
+            "title": alert.title or alert.type,
+            "text": (alert.body or "")[:500],
+            "fields": fields,
+            "footer": f"id={alert.id} · {_utc_iso(alert.timestamp) if alert.timestamp else '?'}",
+        }],
+    }
+    return json.dumps(payload, ensure_ascii=False).encode("utf-8")
+
+
+def _discord_payload(alert: Alert, event: str = "new_alert") -> bytes:
+    """Discord incoming-webhook payload (embed-rich)."""
+    title = alert.title or alert.type
+    if event == "correction":
+        title = f"📝 Correction: {alert.type}"
+    embed = {
+        "title": title[:256],
+        "description": (alert.body or "")[:2000],
+        "color": _DISCORD_COLOR.get(alert.severity, 0x9aa0aa),
+        "fields": [
+            {"name": "Type", "value": alert.type or "?", "inline": True},
+            {"name": "Severity", "value": alert.severity or "?", "inline": True},
+            {"name": "Area", "value": alert.area or "?", "inline": True},
+            {"name": "Source", "value": alert.source or "?", "inline": True},
+            {"name": "Confidence", "value": f"{getattr(alert, 'confidence', 0) or 0:.2f}", "inline": True},
+            {"name": "Trust", "value": f"{getattr(alert, 'trust_score', 0) or 0:.2f}", "inline": True},
+        ],
+        "footer": {"text": f"alert #{alert.id}"},
+        "timestamp": _utc_iso(alert.timestamp) if alert.timestamp else None,
+    }
+    return json.dumps({
+        "content": _alert_summary_line(alert),
+        "embeds": [embed],
+    }, ensure_ascii=False).encode("utf-8")
+
+
+def _format_for_template(template: str, raw_payload: bytes, alert: Alert, event: str) -> bytes:
+    """Translate the canonical raw payload to a platform-specific format."""
+    t = (template or "raw").lower()
+    if t == "slack":
+        return _slack_payload(alert, event)
+    if t == "discord":
+        return _discord_payload(alert, event)
+    return raw_payload  # "raw" or unknown — preserve canonical payload
+
 # ── Webhook cache ────────────────────────────────────────────────────────────
 _cached_webhooks: list = []
 _cache_ts: float = 0
@@ -146,11 +223,14 @@ async def fire_cached(alert: Alert):
         }
     }, ensure_ascii=False).encode("utf-8")
 
-    tasks = [
-        asyncio.create_task(_deliver(wh.url, payload, wh.secret))
-        for wh in _cached_webhooks
-        if _alert_matches(alert, wh)
-    ]
+    tasks = []
+    for wh in _cached_webhooks:
+        if not _alert_matches(alert, wh):
+            continue
+        # F6 — re-format payload per webhook target's template choice.
+        # Slack/Discord get reshaped; "raw" (default) sends the canonical payload.
+        body = _format_for_template(getattr(wh, "template", None), payload, alert, "new_alert")
+        tasks.append(asyncio.create_task(_deliver(wh.url, body, wh.secret)))
     if tasks:
         await asyncio.gather(*tasks, return_exceptions=True)
 
@@ -178,11 +258,12 @@ async def fire_correction(alert: Alert):
         }
     }, ensure_ascii=False).encode("utf-8")
 
-    tasks = [
-        asyncio.create_task(_deliver(wh.url, payload, wh.secret))
-        for wh in _cached_webhooks
-        if _alert_matches(alert, wh)
-    ]
+    tasks = []
+    for wh in _cached_webhooks:
+        if not _alert_matches(alert, wh):
+            continue
+        body = _format_for_template(getattr(wh, "template", None), payload, alert, "correction")
+        tasks.append(asyncio.create_task(_deliver(wh.url, body, wh.secret)))
     if tasks:
         await asyncio.gather(*tasks, return_exceptions=True)
 

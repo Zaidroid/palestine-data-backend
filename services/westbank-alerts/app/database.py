@@ -209,6 +209,11 @@ async def init_db():
             await db.execute("ALTER TABLE webhooks ADD COLUMN confidence_min REAL")
         if "customer_key_id" not in wh_cols:
             await db.execute("ALTER TABLE webhooks ADD COLUMN customer_key_id INTEGER")
+        # F6 — payload template ("raw" | "slack" | "discord"). Default raw
+        # preserves backwards-compatible behavior; Slack/Discord reformat
+        # the payload to match each platform's incoming-webhook API.
+        if "template" not in wh_cols:
+            await db.execute("ALTER TABLE webhooks ADD COLUMN template TEXT DEFAULT 'raw'")
 
         # Seed channels from env — always INSERT OR IGNORE to pick up newly added channels
         now = datetime.utcnow().isoformat()
@@ -599,6 +604,7 @@ def _row_to_webhook(row) -> WebhookTarget:
         zones=row[8] if len(row) > 8 else None,
         confidence_min=row[9] if len(row) > 9 else None,
         customer_key_id=row[10] if len(row) > 10 else None,
+        template=row[11] if len(row) > 11 else "raw",
     )
 
 
@@ -615,10 +621,11 @@ async def add_webhook(wh: WebhookTarget) -> WebhookTarget:
         cur = await db.execute(
             """INSERT INTO webhooks
                (url, secret, active, alert_types, min_severity, created_at,
-                areas, zones, confidence_min, customer_key_id)
-               VALUES (?,?,?,?,?,?,?,?,?,?)""",
+                areas, zones, confidence_min, customer_key_id, template)
+               VALUES (?,?,?,?,?,?,?,?,?,?,?)""",
             (wh.url, wh.secret, 1, wh.alert_types, wh.min_severity, now,
-             wh.areas, wh.zones, wh.confidence_min, wh.customer_key_id)
+             wh.areas, wh.zones, wh.confidence_min, wh.customer_key_id,
+             (wh.template or "raw"))
         )
         await db.commit()
         wh.id = cur.lastrowid
