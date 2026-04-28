@@ -884,6 +884,61 @@ HUMANITARIAN_APPEAL_MARKERS = [
 ]
 HUMANITARIAN_APPEAL_MARKERS = [_normalize(t) for t in HUMANITARIAN_APPEAL_MARKERS]
 
+# Spokesperson / leader speech wrappers. Text that is a quoted statement
+# from a named regional leader (Iranian IRGC commander, Hezbollah
+# secretary-general, US officials via NYT/WSJ etc.) — the post wraps a
+# political quote, not a live event. Matches in HEAD only (first 120
+# chars) so we don't filter live coverage that mentions the name in
+# passing later in the body.
+SPOKESPERSON_LEADING_MARKERS = [
+    # Iranian leadership
+    "قاآني", "اسماعيل قاآني", "قائد قوه القدس",
+    "الحرس الثوري الايراني",
+    # Hezbollah leadership
+    "نصرالله", "السيد نصر الله", "نعيم قاسم",
+    # Foreign-press analysis bylines
+    "نيويورك تايمز عن مصادر", "نيويورك تايمز نقلا",
+    "وول ستريت جورنال", "واشنطن بوست",
+    "رويترز عن مصادر", "بلومبرغ عن مصادر",
+    "ال بي بي سي عن",
+]
+SPOKESPERSON_LEADING_MARKERS = [_normalize(t) for t in SPOKESPERSON_LEADING_MARKERS]
+
+# Activism / flotilla / interview-with-activist / commentary-on-video.
+# These are media events — coverage of a campaign, an interview, or a
+# reaction post. Not security incidents. Hard-filter when present
+# anywhere in the text.
+ACTIVISM_COMMENTARY_MARKERS = [
+    # Flotilla coverage
+    "اسطول الصمود", "اسطول الحريه",
+    # Interview format
+    "مقابله مع الناشط", "مقابله مع الناشطه", "مقابله مع المحلل",
+    "في مقابله مع",
+    # Reaction-to-post format ("after a settler posted X.. interview..")
+    "بعد نشر مستوطن", "بعد نشر فيديو",
+    # Activist commentary verbs
+    "يتحدث عن الخربه", "تتحدث عن الخربه",
+    "يتحدث عن الواقع", "تتحدث عن الواقع",
+    "يتحدث عن مخطط", "يتحدث عن المخطط",
+]
+ACTIVISM_COMMENTARY_MARKERS = [_normalize(t) for t in ACTIVISM_COMMENTARY_MARKERS]
+
+# Aftermath / living-condition descriptions. Present-tense framing of
+# someone's post-injury / post-displacement state. The wounded/displaced
+# event itself happened earlier — the post is a follow-up profile, not
+# a new event report. Caught by HUMAN_INTEREST_MARKERS for video framing,
+# but plain prose follow-ups slipped through.
+AFTERMATH_LIVING_MARKERS = [
+    "يقاسي ظروفا انسانيه", "تقاسي ظروفا انسانيه",
+    "في ظروف انسانيه صعبه",
+    "يعيش مع اطفاله في", "تعيش مع اطفالها في",
+    "داخل خيمته في", "داخل خيمتها في",
+    "بعد فقدانه البصر", "بعد فقدانها البصر",
+    "بعد بتر قدمه", "بعد بتر ساقه", "بعد بتر يده",
+    "بعد نزوحه من", "بعد نزوحها من", "بعد نزوحهم من",
+]
+AFTERMATH_LIVING_MARKERS = [_normalize(t) for t in AFTERMATH_LIVING_MARKERS]
+
 # Temporal attribution markers — distinguish "happening now" from historical
 # mentions. Past markers downweight confidence so news-recap noise doesn't
 # fire as real-time alerts. (T2.1)
@@ -1127,6 +1182,22 @@ def _is_noise(text: str, tier: str = "tier1", source: str = "") -> bool:
     # Humanitarian capacity appeal — equipment/supplies shortage,
     # not a kinetic event.
     if _has(text, HUMANITARIAN_APPEAL_MARKERS):
+        return True
+
+    # Spokesperson / leader speech wrapper — head contains a named
+    # regional figure or foreign-press analysis byline. Not a live event.
+    if _has(text[:120], SPOKESPERSON_LEADING_MARKERS):
+        return True
+
+    # Activism / flotilla / interview / commentary-on-post — media
+    # coverage of campaigns, not security incidents.
+    if _has(text, ACTIVISM_COMMENTARY_MARKERS):
+        return True
+
+    # Aftermath / living-condition follow-up about an existing wounded
+    # or displaced person. The event happened earlier; the post is a
+    # profile of their current state.
+    if _has(text, AFTERMATH_LIVING_MARKERS):
         return True
 
     # News attribution — only discard for non-news channels.

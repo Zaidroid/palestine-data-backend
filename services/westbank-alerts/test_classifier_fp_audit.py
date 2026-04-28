@@ -272,6 +272,49 @@ HUMANITARIAN_APPEAL = [
      "آلياتنا", "qudsn"),
 ]
 
+# 18. NEW (2026-04-28 audit) — Spokesperson / leader speech wrapper.
+#     Text leads with a named regional figure (Iranian IRGC commander,
+#     Hezbollah secretary-general) or a foreign-press analysis byline.
+#     The post wraps a political quote, not a live event.
+SPOKESPERSON_LEADING = [
+    # Iranian Quds Force commander quote about Hezbollah — was wrongly
+    # classified as demolition due to "تدمير" (destruction) in metaphorical
+    # "destroying resistance capabilities" context.
+    ("قائد قوة القدس في الحرس الثوري العميد إسماعيل قاآني: أثبت حزب الله أن "
+     "ادّعاءات الكيان الصهيوني بشأن تدمير قدرات المقاومة ليست سوى أكاذيب، "
+     "والكيان أخفق دائماً طوال السنوات الماضية في إنهاء أي حرب لصالحه.",
+     "qudsn"),
+    # NYT analysis about Iran sanctions — was wrongly classified as idf_raid.
+    ("عاجل | نيويورك تايمز عن مصادر: مسؤولون آخرون بإدارة ترمب يرون أن "
+     "استمرار الحصار شهرين آخرين سيضر قطاع الطاقة الإيراني", "ajanews"),
+]
+
+# 19. NEW (2026-04-28 audit) — Activism / flotilla / interview format.
+#     Coverage of campaigns or interviews, not security incidents.
+ACTIVISM_COMMENTARY = [
+    # Sumud Flotilla heading to Gaza — was wrongly classified as idf_raid.
+    ("أسطول الصمود يستكمل رحلته باتجاه غزة لكسر الحصار", "aljazeera_ar"),
+    # Interview with activist about settler video — was wrongly classified
+    # as settler_attack.
+    ("بعد نشر مستوطن فيديو له داخل خربة يانون وهي فارغة تماما.. مقابلة مع "
+     "الناشط بشار قريوتي يتحدث عن الخربة وضرورة إعمارها..", "qudsn"),
+]
+
+# 20. NEW (2026-04-28 audit) — Aftermath / living-condition follow-up.
+#     Present-tense profile of someone's POST-injury / POST-displacement
+#     state. The wounded/displaced event happened earlier; the post is a
+#     human-interest follow-up. Plain prose escaped HUMAN_INTEREST_MARKERS
+#     which only caught video framings.
+AFTERMATH_LIVING = [
+    # Mahmoud al-Zarba follow-up profile — wrongly classified as
+    # gaza_strike (confidence 1.0!) AND injury_report from two sources.
+    ("الجريح \"محمود الزربة\" يقاسي ظروفًا إنسانية صعبة داخل خيمته في دير "
+     "البلح، بعد فقدانه البصر وبتر قدمه خلال الحرب على قطاع غزة.", "qudsn"),
+    ("غزة - المواطن محمود الزربا فقد بصره وبُترت ساقه اليمنى إثر إصابته في "
+     "قصف الاحتلال، يعيش مع أطفاله في ظروف إنسانية صعبة داخل خيمة في دير "
+     "البلح بعد نزوحهم من شمال قطاع غزة وفا", "wafagency"),
+]
+
 # Geo-precision regression: dateline-prefixed foreign-country posts.
 # "إيطاليا.." → 3-char village "يطا" must NOT substring-match inside
 # "ايطاليا" after normalization. Same class as "تل" inside "مقاتلو"
@@ -362,6 +405,12 @@ def _run_all():
     _fp_bucket("PERIOD_SUMMARY", PERIOD_SUMMARY, lambda r: r is not None)
     _fp_bucket("HUMAN_INTEREST", HUMAN_INTEREST, lambda r: r is not None)
     _fp_bucket("HUMANITARIAN_APPEAL", HUMANITARIAN_APPEAL,
+               lambda r: r is not None)
+    _fp_bucket("SPOKESPERSON_LEADING", SPOKESPERSON_LEADING,
+               lambda r: r is not None)
+    _fp_bucket("ACTIVISM_COMMENTARY", ACTIVISM_COMMENTARY,
+               lambda r: r is not None)
+    _fp_bucket("AFTERMATH_LIVING", AFTERMATH_LIVING,
                lambda r: r is not None)
     # GEO_BOUNDARY_REGRESSION: must NOT classify with area=Yatta. We
     # accept either None (filtered) or a non-Yatta area.
