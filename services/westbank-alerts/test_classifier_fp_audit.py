@@ -27,10 +27,24 @@ from pathlib import Path
 # only live in known_locations.json (Anata, Kafr Qaddum, …) and not in
 # the hardcoded AREA_MAP. In production this happens during app startup;
 # in the test we drive it synchronously here.
+#
+# When imported by /quality/eval inside the live FastAPI service, the KB
+# singleton is already loaded by the app's startup hook — and we're inside
+# a running event loop, so asyncio.run() would fail. Skip the sync
+# bootstrap whenever we detect either condition.
 import app.location_knowledge_base as _lkb
-_kb = _lkb.LocationKnowledgeBase()
-asyncio.run(_kb.load_from_file(Path(__file__).parent / "data" / "known_locations.json"))
-_lkb._location_kb = _kb
+def _maybe_bootstrap_kb():
+    if getattr(_lkb, "_location_kb", None) is not None:
+        return  # already loaded by FastAPI startup
+    try:
+        asyncio.get_running_loop()
+        return  # inside a running loop — skip sync bootstrap
+    except RuntimeError:
+        pass
+    _kb = _lkb.LocationKnowledgeBase()
+    asyncio.run(_kb.load_from_file(Path(__file__).parent / "data" / "known_locations.json"))
+    _lkb._location_kb = _kb
+_maybe_bootstrap_kb()
 
 from app.classifier import classify, classify_wb_operational  # noqa: E402
 

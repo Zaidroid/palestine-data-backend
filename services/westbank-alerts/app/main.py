@@ -1030,6 +1030,86 @@ async def list_channel_reliability():
     return {"channels": await db.get_channel_reliability()}
 
 
+_eval_cache: dict = {"at": 0, "result": None}
+
+@app.get("/quality/eval", tags=["quality"])
+async def quality_eval(force: bool = Query(False, description="Bypass 5-min cache")):
+    """F9 — public eval harness. Runs the same fixture suite the operator
+    uses in CI (services/westbank-alerts/test_classifier_fp_audit.py) and
+    returns per-bucket pass/fail counts + the list of any misses. The
+    fixtures cover ~24 known FP families so consumers can audit the
+    classifier's FP rate against documented edge cases.
+
+    Cached for 5 minutes — pass ?force=true to bypass."""
+    now = time.time()
+    if not force and _eval_cache["result"] and (now - _eval_cache["at"]) < 300:
+        cached = dict(_eval_cache["result"])
+        cached["cache_age_seconds"] = round(now - _eval_cache["at"], 1)
+        return cached
+
+    # The harness lives at /app/eval_harness.py (COPY'd from the repo's
+    # test_classifier_fp_audit.py). Importable but its top-level bootstraps
+    # the location KB synchronously — fine here since we're already running
+    # inside the same Python.
+    try:
+        import importlib
+        import sys
+        if "eval_harness" in sys.modules:
+            harness = importlib.reload(sys.modules["eval_harness"])
+        else:
+            sys.path.insert(0, "/app")
+            harness = importlib.import_module("eval_harness")
+        buckets = harness._run_all()
+    except Exception as e:
+        raise HTTPException(status_code=503, detail=f"eval harness failed: {e}")
+
+    summary = []
+    misses = []
+    total_passed = total = 0
+    for b in buckets:
+        n_pass = sum(1 for o in b["outcomes"] if o.get("ok"))
+        n_total = len(b["outcomes"])
+        total_passed += n_pass
+        total += n_total
+        summary.append({
+            "name": b["name"],
+            "kind": b.get("kind", "?"),
+            "passed": n_pass,
+            "total": n_total,
+            "pass_rate": round(n_pass / n_total, 3) if n_total else None,
+        })
+        for o in b["outcomes"]:
+            if not o.get("ok"):
+                misses.append({
+                    "bucket": b["name"],
+                    "expected": o.get("expected"),
+                    "got": o.get("got"),
+                    "expected_area": o.get("expected_area"),
+                    "got_area": o.get("got_area"),
+                    "source": o.get("source"),
+                    "text": (o.get("text") or "")[:160],
+                })
+
+    result = {
+        "ran_at": datetime.utcnow().isoformat(),
+        "overall": {
+            "total": total, "passed": total_passed,
+            "pass_rate": round(total_passed / total, 4) if total else None,
+        },
+        "buckets": summary,
+        "misses": misses,
+        "notes": (
+            "Same fixtures as services/westbank-alerts/test_classifier_fp_audit.py. "
+            "Pass = classifier handled the fixture as designed (FP buckets must "
+            "filter; TP bucket must classify with expected type). Misses listed "
+            "with first 160 chars of fixture text."
+        ),
+    }
+    _eval_cache["at"] = now
+    _eval_cache["result"] = result
+    return result
+
+
 @app.get("/quality/corroboration", tags=["quality"])
 async def quality_corroboration(days: int = Query(7, ge=1, le=90)):
     """

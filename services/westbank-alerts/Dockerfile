@@ -11,6 +11,9 @@ COPY app/ ./app/
 COPY dashboard.html ./dashboard.html
 COPY tracker.html ./tracker.html
 COPY map.html ./map.html
+# Eval harness — same fixtures the operator runs in CI, exposed live
+# via /quality/eval so the public can audit classifier FP rate.
+COPY test_classifier_fp_audit.py ./eval_harness.py
 COPY data/known_checkpoints.json ./data/known_checkpoints.json
 COPY data/checkpoint_directory.json ./data/checkpoint_directory.json
 COPY data/known_locations.json ./data/known_locations.json
