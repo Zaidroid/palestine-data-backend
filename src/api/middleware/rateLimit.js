@@ -31,7 +31,13 @@ function setHeaders(res, result, limit, headerPrefix) {
     res.setHeader(`X-RateLimit-${headerPrefix}-Reset`, Math.ceil(result.msBeforeNext / 1000));
 }
 
+// Liveness probes must never be rate-limited — Docker HEALTHCHECK polls
+// /api/v1/health every 30s and was exhausting the anonymous daily quota,
+// flipping the container to "unhealthy" while the API was actually fine.
+const RATE_LIMIT_EXEMPT_PATHS = new Set(['/api/v1/health']);
+
 export function tieredRateLimit(req, res, next) {
+    if (RATE_LIMIT_EXEMPT_PATHS.has(req.path)) return next();
     const tier = req.customer?.tier || 'anonymous';
     const key = consumerKey(req);
 
