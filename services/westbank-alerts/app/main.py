@@ -288,6 +288,10 @@ async def lifespan(app: FastAPI):
 
     asyncio.create_task(_start_learner())
 
+    # A2 + B6 + A3 closed-loop self-improvement worker. Hourly cycle.
+    from . import learner_overrides
+    asyncio.create_task(learner_overrides.run_periodic())
+
     yield
     monitor_task.cancel()
     await monitor.stop()
