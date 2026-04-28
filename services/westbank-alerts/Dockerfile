@@ -9,6 +9,7 @@ RUN pip install --no-cache-dir -r requirements.txt
 
 COPY app/ ./app/
 COPY dashboard.html ./dashboard.html
+COPY tracker.html ./tracker.html
 COPY data/known_checkpoints.json ./data/known_checkpoints.json
 COPY data/checkpoint_directory.json ./data/checkpoint_directory.json
 COPY data/known_locations.json ./data/known_locations.json

@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Palestine Live Tracker — Production Dashboard</title>
+<style>
+  :root { --bg:#0e0f12; --panel:#1a1c22; --line:#2a2e38; --text:#e4e7ec; --dim:#9aa0aa; --ok:#3ddc97; --warn:#f5b454; --bad:#ef4444; --link:#8aa8ff; }
+  * { box-sizing:border-box; }
+  body { background:var(--bg); color:var(--text); font:14px -apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif; margin:0; padding:18px 22px; }
+  h1 { font-size:18px; margin:0 0 4px; font-weight:600; }
+  .sub { color:var(--dim); font-size:12px; margin-bottom:14px; }
+  .grid { display:grid; gap:14px; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); }
+  .panel { background:var(--panel); border:1px solid var(--line); border-radius:8px; padding:14px 16px; }
+  .panel h2 { font-size:13px; text-transform:uppercase; letter-spacing:.5px; color:var(--dim); margin:0 0 10px; font-weight:600; }
+  table { width:100%; border-collapse:collapse; font-size:13px; }
+  td, th { padding:5px 8px; text-align:left; border-bottom:1px solid var(--line); }
+  th { color:var(--dim); font-weight:500; }
+  td.num, th.num { text-align:right; font-variant-numeric: tabular-nums; }
+  .pill { display:inline-block; padding:2px 7px; border-radius:10px; font-size:11px; }
+  .pill.ok { background:rgba(61,220,151,.15); color:var(--ok); }
+  .pill.warn { background:rgba(245,180,84,.15); color:var(--warn); }
+  .pill.bad { background:rgba(239,68,68,.15); color:var(--bad); }
+  .stat { display:flex; justify-content:space-between; padding:5px 0; border-bottom:1px solid var(--line); }
+  .stat:last-child { border-bottom:0; }
+  .stat .v { font-variant-numeric: tabular-nums; font-weight:600; }
+  a { color:var(--link); text-decoration:none; }
+  a:hover { text-decoration:underline; }
+  .err { color:var(--bad); font-size:12px; }
+  .ts { color:var(--dim); font-size:11px; margin-top:10px; }
+  .footer { color:var(--dim); font-size:11px; margin-top:18px; text-align:center; }
+  .footer a { margin: 0 6px; }
+</style>
+</head>
+<body>
+  <h1>Palestine Live Tracker</h1>
+  <div class="sub" id="sub">Loading…</div>
+
+  <div class="grid">
+    <div class="panel">
+      <h2>Last 24h Ingest</h2>
+      <div id="ingest"><span class="err">loading…</span></div>
+    </div>
+
+    <div class="panel">
+      <h2>By Type (24h)</h2>
+      <div id="byType"><span class="err">loading…</span></div>
+    </div>
+
+    <div class="panel">
+      <h2>By Source (24h)</h2>
+      <div id="bySource"><span class="err">loading…</span></div>
+    </div>
+
+    <div class="panel">
+      <h2>Geo Coverage (24h)</h2>
+      <div id="byGeo"><span class="err">loading…</span></div>
+    </div>
+
+    <div class="panel">
+      <h2>Historical Corroboration (24h)</h2>
+      <div id="corrob"><span class="err">loading…</span></div>
+    </div>
+
+    <div class="panel">
+      <h2>Self-Improvement Loops</h2>
+      <div id="loops"><span class="err">loading…</span></div>
+    </div>
+
+    <div class="panel" style="grid-column: 1 / -1;">
+      <h2>Recent Alerts</h2>
+      <div id="recent"><span class="err">loading…</span></div>
+    </div>
+  </div>
+
+  <div class="footer">
+    <a href="/docs">API docs</a> ·
+    <a href="/dashboard">Telegram dashboard</a> ·
+    <a href="/admin/review">Review queue (auth)</a> ·
+    <a href="/admin/anomalies">Anomalies (auth)</a> ·
+    <a href="/quality/corroboration?days=1">/quality/corroboration JSON</a>
+  </div>
+
+<script>
+const fmtPct = n => (n*100).toFixed(1) + '%';
+const esc = s => (s == null ? '' : String(s).replace(/[&<>]/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;'}[c])));
+
+async function jget(url) {
+  const r = await fetch(url);
+  if (!r.ok) throw new Error(r.status + ' ' + r.statusText);
+  return r.json();
+}
+
+function renderStats(el, rows) {
+  el.innerHTML = rows.map(([k,v,cls]) =>
+    `<div class="stat"><span>${esc(k)}</span><span class="v ${cls||''}">${esc(v)}</span></div>`
+  ).join('');
+}
+
+function renderTable(el, headers, rows) {
+  if (!rows.length) { el.innerHTML = '<span class="err">no data</span>'; return; }
+  el.innerHTML = `<table><thead><tr>${headers.map(h => `<th class="${h.right?'num':''}">${esc(h.label)}</th>`).join('')}</tr></thead><tbody>${
+    rows.map(r => `<tr>${r.map((c,i) => `<td class="${headers[i].right?'num':''}">${esc(c)}</td>`).join('')}</tr>`).join('')
+  }</tbody></table>`;
+}
+
+async function loadAll() {
+  document.getElementById('sub').textContent = 'Loading at ' + new Date().toISOString();
+
+  // Pull data in parallel from 4 endpoints
+  const [stats, alerts24h, corrob, anomalies] = await Promise.allSettled([
+    jget('/stats'),
+    jget('/alerts?per_page=500'),
+    jget('/quality/corroboration?days=1'),
+    jget('/admin/anomalies').catch(() => ({anomalies:[]})),  // requires auth
+  ]);
+
+  // === Last 24h Ingest ===
+  if (stats.status === 'fulfilled') {
+    const s = stats.value;
+    renderStats(document.getElementById('ingest'), [
+      ['Total alerts', (s.total_alerts || 0).toLocaleString()],
+      ['Last 24h', (s.alerts_last_24h || 0).toLocaleString()],
+      ['Last hour', (s.alerts_last_hour || 0).toLocaleString()],
+      ['Active channels', (s.monitored_channels || []).length],
+      ['Uptime', Math.floor((s.uptime_seconds || 0) / 3600) + 'h'],
+    ]);
+  } else {
+    document.getElementById('ingest').innerHTML = '<span class="err">/stats: '+esc(stats.reason)+'</span>';
+  }
+
+  // === By Type / Source / Geo (24h) ===
+  if (alerts24h.status === 'fulfilled') {
+    const since = Date.now() - 24*60*60*1000;
+    const recent = (alerts24h.value.alerts || []).filter(a => new Date(a.timestamp).getTime() >= since);
+    const counter = (arr, k) => arr.reduce((m,a)=>{const v=a[k]||'(unknown)';m[v]=(m[v]||0)+1;return m;},{});
+    const sortDesc = m => Object.entries(m).sort((a,b)=>b[1]-a[1]);
+
+    const byType = sortDesc(counter(recent, 'type'));
+    renderTable(document.getElementById('byType'),
+      [{label:'type'},{label:'count',right:true},{label:'avg conf',right:true}],
+      byType.map(([t,n]) => {
+        const subset = recent.filter(a=>a.type===t);
+        const avgC = subset.reduce((s,a)=>s+(a.confidence||0),0) / subset.length;
+        return [t, n, avgC.toFixed(2)];
+      }).slice(0,12));
+
+    const bySource = sortDesc(counter(recent, 'source')).slice(0,10);
+    renderTable(document.getElementById('bySource'),
+      [{label:'source'},{label:'count',right:true},{label:'type',right:false}],
+      bySource.map(([s,n]) => {
+        const subset = recent.filter(a=>a.source===s);
+        const stype = subset[0] ? (subset[0].source_type || 'telegram') : '';
+        return [s, n, stype];
+      }));
+
+    const byGeo = counter(recent, 'geo_precision');
+    const geoTotal = recent.length;
+    renderStats(document.getElementById('byGeo'), [
+      ['town (point)', (byGeo.town||0) + ' (' + fmtPct((byGeo.town||0)/geoTotal) + ')'],
+      ['fuzzy (3km buf)', (byGeo.fuzzy||0)],
+      ['region (centroid)', (byGeo.region||0)],
+      ['zone', (byGeo.zone||0)],
+      ['no geo', (byGeo['(unknown)']||0)],
+    ]);
+  } else {
+    ['byType','bySource','byGeo'].forEach(id =>
+      document.getElementById(id).innerHTML = '<span class="err">/alerts: '+esc(alerts24h.reason)+'</span>');
+  }
+
+  // === Historical corroboration ===
+  if (corrob.status === 'fulfilled') {
+    const c = corrob.value;
+    const o = c.overall || {};
+    const types = c.by_type || {};
+    const tableRows = Object.entries(types)
+      .filter(([_,v]) => v.boosted > 0)
+      .sort((a,b) => b[1].boosted - a[1].boosted)
+      .map(([t,v]) => [t, v.total, v.boosted, fmtPct(v.boost_rate||0), v.mean_boost_when_fired||'-']);
+    let html = `<div class="stat"><span>total alerts</span><span class="v">${o.total_alerts||0}</span></div>`
+              +`<div class="stat"><span>boosted</span><span class="v ${o.boosted>0?'pill ok':''}">${o.boosted||0}</span></div>`
+              +`<div class="stat"><span>boost rate</span><span class="v">${fmtPct(o.boost_rate||0)}</span></div>`;
+    if (tableRows.length) {
+      html += '<div style="margin-top:10px;font-size:11px;color:var(--dim);">Per-type fires:</div>';
+      const tbl = document.createElement('div');
+      renderTable(tbl,
+        [{label:'type'},{label:'total',right:true},{label:'boosted',right:true},{label:'rate',right:true},{label:'mean',right:true}],
+        tableRows);
+      html += tbl.innerHTML;
+    }
+    document.getElementById('corrob').innerHTML = html;
+  } else {
+    document.getElementById('corrob').innerHTML = '<span class="err">/quality: '+esc(corrob.reason)+'</span>';
+  }
+
+  // === Self-improvement loops ===
+  // Light-touch indicators — no DB introspection from browser, just hint at status
+  const loopRows = [
+    ['B1 cross-channel corroboration', '<span class="pill ok">closed</span>'],
+    ['Insecurity Insight historical', '<span class="pill ok">closed</span>'],
+    ['ACLED elevated-volume', '<span class="pill ok">closed</span>'],
+    ['A2 retraction → keyword overrides', '<span class="pill ok">closed (hourly)</span>'],
+    ['B6 review queue auto-resolve', '<span class="pill ok">closed (hourly)</span>'],
+    ['A3 volume anomaly detection', '<span class="pill ok">scheduled (hourly)</span>'],
+    ['Channel reliability', '<span class="pill warn">static seed</span>'],
+  ];
+  document.getElementById('loops').innerHTML = loopRows.map(([k,v]) =>
+    `<div class="stat"><span>${esc(k)}</span><span class="v">${v}</span></div>`).join('');
+
+  // === Recent alerts ===
+  if (alerts24h.status === 'fulfilled') {
+    const recent = (alerts24h.value.alerts || []).slice(0, 15);
+    renderTable(document.getElementById('recent'),
+      [
+        {label:'when'},{label:'type'},{label:'severity'},{label:'area'},
+        {label:'admin1'},{label:'admin2'},{label:'conf',right:true},{label:'source'},
+      ],
+      recent.map(a => [
+        new Date(a.timestamp).toISOString().substr(11,8) + 'Z',
+        a.type, a.severity, a.area || '-',
+        a.admin1 || '-', a.admin2 || '-',
+        (a.confidence != null ? a.confidence.toFixed(2) : '-'),
+        a.source,
+      ]));
+  }
+
+  document.getElementById('sub').textContent = 'Updated ' + new Date().toLocaleTimeString() + ' · auto-refresh 60s · ' +
+    'Mission: real-time Palestine event tracker — multi-source corroboration + base-rate priors';
+}
+
+loadAll().catch(e => { document.getElementById('sub').innerHTML = '<span class="err">Fatal: '+esc(e.message)+'</span>'; });
+setInterval(() => loadAll().catch(()=>{}), 60000);
+</script>
+</body>
+</html>
