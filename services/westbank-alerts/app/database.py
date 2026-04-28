@@ -252,6 +252,7 @@ def _row_to_alert(row) -> Alert:
         source_type=row[24] if len(row) > 24 else None,
         admin1=row[25] if len(row) > 25 else None,
         admin2=row[26] if len(row) > 26 else None,
+        historical_boost=row[27] if len(row) > 27 else None,
         trust_score=row[28] if len(row) > 28 else None,
     )
 

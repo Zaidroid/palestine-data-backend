@@ -783,6 +783,8 @@ async def route_check(req: RouteCheckRequest):
                 "distance_from_route_km": round(min_dist, 2),
                 "timestamp": a.timestamp.isoformat() if a.timestamp else None,
                 "confidence": a.confidence,
+                "trust_score": getattr(a, "trust_score", None),
+                "historical_boost": getattr(a, "historical_boost", 0) or 0,
             })
 
     # 2. Checkpoints near the route
@@ -836,9 +838,22 @@ async def route_check(req: RouteCheckRequest):
                             and (datetime.utcnow() - datetime.fromisoformat(a["timestamp"].replace('Z',''))).total_seconds() < 3600
                            ] if any(a.get("timestamp") for a in in_corridor) else []
     closed_cps = [cp for cp in nearby_cps if (cp.get("current_status") or "").lower() in ("closed", "blocked")]
+
+    # F8 — historical_boost density along the corridor. Sum the per-alert
+    # historical_boost values to gauge how much base-rate evidence supports
+    # the alerts in this route. High density (>= 0.30) means multiple
+    # historically-corroborated events in the corridor — upgrade OK→CAUTION
+    # so consumers see "this route has a documented pattern" not just
+    # "no alerts right now."
+    corridor_hist_sum = round(
+        sum((a.get("historical_boost") or 0) for a in in_corridor), 3
+    )
+
     if high_severity_recent or closed_cps:
         advisory = "AVOID"
     elif in_corridor or any((cp.get("current_status") or "").lower() in ("restricted", "limited") for cp in nearby_cps):
+        advisory = "CAUTION"
+    elif corridor_hist_sum >= 0.30:
         advisory = "CAUTION"
     else:
         advisory = "OK"
@@ -852,6 +867,7 @@ async def route_check(req: RouteCheckRequest):
         "alerts": in_corridor,
         "checkpoints": nearby_cps,
         "areas_along_route": areas_along_route,
+        "corridor_historical_boost_sum": corridor_hist_sum,
         "computed_at": datetime.utcnow().isoformat(),
     }
 
