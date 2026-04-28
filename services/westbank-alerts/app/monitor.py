@@ -189,10 +189,12 @@ async def _process_text(
         if n > 0:
             boost = min(0.30, 0.10 * n)
             new_conf = min(1.0, (alert.confidence or 0.5) + boost)
+            from .database import compute_trust_score
+            new_trust = compute_trust_score(new_conf, alert.source_reliability)
             async with get_alerts_db() as db:
                 await db.execute(
-                    "UPDATE alerts SET confidence = ? WHERE id = ?",
-                    (new_conf, alert.id),
+                    "UPDATE alerts SET confidence = ?, trust_score = ? WHERE id = ?",
+                    (new_conf, new_trust, alert.id),
                 )
                 await db.commit()
             await bump_corroboration([p.id for p in prior], new_conf)
@@ -218,12 +220,15 @@ async def _process_text(
                 hboost = 0.10 if n_hist >= 5 else 0.05
                 new_conf = min(1.0, (alert.confidence or 0.5) + hboost)
                 if new_conf > (alert.confidence or 0.5):
+                    from .database import compute_trust_score
+                    new_trust = compute_trust_score(new_conf, alert.source_reliability)
                     async with get_alerts_db() as db:
                         await db.execute(
                             "UPDATE alerts SET confidence = ?, "
-                            "historical_boost = COALESCE(historical_boost, 0) + ? "
+                            "historical_boost = COALESCE(historical_boost, 0) + ?, "
+                            "trust_score = ? "
                             "WHERE id = ?",
-                            (new_conf, hboost, alert.id),
+                            (new_conf, hboost, new_trust, alert.id),
                         )
                         await db.commit()
                     log.info(
@@ -249,12 +254,15 @@ async def _process_text(
                 aboost = 0.05
                 new_conf = min(1.0, (alert.confidence or 0.5) + aboost)
                 if new_conf > (alert.confidence or 0.5):
+                    from .database import compute_trust_score
+                    new_trust = compute_trust_score(new_conf, alert.source_reliability)
                     async with get_alerts_db() as db:
                         await db.execute(
                             "UPDATE alerts SET confidence = ?, "
-                            "historical_boost = COALESCE(historical_boost, 0) + ? "
+                            "historical_boost = COALESCE(historical_boost, 0) + ?, "
+                            "trust_score = ? "
                             "WHERE id = ?",
-                            (new_conf, aboost, alert.id),
+                            (new_conf, aboost, new_trust, alert.id),
                         )
                         await db.commit()
                     log.info(

@@ -182,6 +182,13 @@ async def init_db():
         # base-rate evidence supported this alert. Surfaced via /quality/corroboration.
         if "historical_boost" not in alert_cols:
             await db.execute("ALTER TABLE alerts ADD COLUMN historical_boost REAL DEFAULT 0")
+        # F2 — composite trust_score = confidence * source_reliability.
+        # Single sortable number that consumers can filter on instead of
+        # juggling confidence + source_reliability + historical_boost.
+        # Recomputed whenever confidence changes (B1, historical, ACLED bumps).
+        if "trust_score" not in alert_cols:
+            await db.execute("ALTER TABLE alerts ADD COLUMN trust_score REAL")
+            await db.execute("CREATE INDEX IF NOT EXISTS idx_alerts_trust ON alerts(trust_score)")
         await db.execute("CREATE INDEX IF NOT EXISTS idx_alerts_admin1 ON alerts(admin1)")
         await db.execute("CREATE INDEX IF NOT EXISTS idx_alerts_admin2 ON alerts(admin2)")
         await db.execute("CREATE INDEX IF NOT EXISTS idx_alerts_status ON alerts(status)")
@@ -242,11 +249,29 @@ def _row_to_alert(row) -> Alert:
         geo_source_phrase=row[21] if len(row) > 21 else None,
         count=row[22] if len(row) > 22 else None,
         temporal_certainty=row[23] if len(row) > 23 else None,
+        source_type=row[24] if len(row) > 24 else None,
+        admin1=row[25] if len(row) > 25 else None,
+        admin2=row[26] if len(row) > 26 else None,
+        trust_score=row[28] if len(row) > 28 else None,
     )
+
+
+def compute_trust_score(confidence: Optional[float], source_reliability: Optional[float]) -> float:
+    """F2 — composite trust score (0.0-1.0). Pure multiplication of the two
+    component signals. Defaults: confidence=0.5, source_reliability=0.7
+    (the default seed weight). Both already account for upstream boosts
+    (B1 corroboration + historical_boost are folded into confidence)."""
+    c = confidence if confidence is not None else 0.5
+    s = source_reliability if source_reliability is not None else 0.7
+    return round(min(1.0, max(0.0, c * s)), 3)
 
 
 async def insert_alert(alert: Alert) -> Alert:
     now = datetime.utcnow().isoformat()
+    trust = compute_trust_score(
+        getattr(alert, "confidence", None),
+        getattr(alert, "source_reliability", None),
+    )
     async with get_alerts_db() as db:
         cur = await db.execute(
             """INSERT INTO alerts
@@ -254,8 +279,8 @@ async def insert_alert(alert: Alert) -> Alert:
                 raw_text, timestamp, created_at, event_subtype, latitude, longitude,
                 title_ar, confidence, source_reliability, status, correction_note,
                 geo_precision, geo_source_phrase, count, temporal_certainty,
-                source_type, admin1, admin2)
-               VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)""",
+                source_type, admin1, admin2, trust_score)
+               VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)""",
             (alert.type, alert.severity, alert.title, alert.body,
              alert.source, alert.source_msg_id, alert.area,
              getattr(alert, "zone", None),
@@ -274,11 +299,13 @@ async def insert_alert(alert: Alert) -> Alert:
              getattr(alert, "temporal_certainty", None),
              getattr(alert, "source_type", None) or "telegram",
              getattr(alert, "admin1", None),
-             getattr(alert, "admin2", None))
+             getattr(alert, "admin2", None),
+             trust)
         )
         await db.commit()
         alert.id = cur.lastrowid
         alert.created_at = datetime.fromisoformat(now)
+        setattr(alert, "trust_score", trust)
     return alert
 
 
@@ -457,15 +484,19 @@ async def bump_corroboration(
 ) -> None:
     """When a new alert corroborates older alerts in the same window,
     bump their confidence (MAX) so the boost is symmetric. Caller passes
-    the recomputed confidence floor; existing higher values are kept."""
+    the recomputed confidence floor; existing higher values are kept.
+    Also recomputes trust_score = confidence * source_reliability."""
     if not alert_ids:
         return
     placeholders = ",".join(["?"] * len(alert_ids))
     async with get_alerts_db() as db:
         await db.execute(
-            f"UPDATE alerts SET confidence = MAX(confidence, ?) "
+            f"UPDATE alerts "
+            f"SET confidence = MAX(confidence, ?), "
+            f"    trust_score = MIN(1.0, MAX(0.0, "
+            f"        MAX(confidence, ?) * COALESCE(source_reliability, 0.7))) "
             f"WHERE id IN ({placeholders})",
-            [new_confidence_floor, *alert_ids],
+            [new_confidence_floor, new_confidence_floor, *alert_ids],
         )
         await db.commit()
 

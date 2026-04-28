@@ -74,6 +74,7 @@ class Alert(BaseModel):
     temporal_certainty: Optional[str] = None # "now" | "today" | "past" — past markers downweight confidence
     confidence: Optional[float] = None       # 0.0-1.0 — classifier+source-weighted score
     source_reliability: Optional[float] = None  # 0.0-1.0 — channel-level baseline trust
+    trust_score: Optional[float] = None       # F2 — composite = confidence * source_reliability
     status: Optional[str] = "active"         # active | retracted | corrected
     correction_note: Optional[str] = None    # Set when status != active
 
