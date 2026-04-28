@@ -105,19 +105,37 @@ function renderTable(el, headers, rows) {
   }</tbody></table>`;
 }
 
+// Wrap each render block so one section's bug can't kill the others.
+function safe(panelId, fn) {
+  try { fn(); }
+  catch (e) {
+    console.error('[tracker] panel', panelId, 'render error:', e);
+    const el = document.getElementById(panelId);
+    if (el) el.innerHTML = '<span class="err">Render error: ' + esc(e.message) + '</span>';
+  }
+}
+
 async function loadAll() {
   document.getElementById('sub').textContent = 'Loading at ' + new Date().toISOString();
 
-  // Pull data in parallel from 4 endpoints
-  const [stats, alerts24h, corrob, anomalies] = await Promise.allSettled([
+  // Pull data in parallel from 3 public + 1 auth-gated endpoint.
+  // /admin/anomalies requires X-API-Key — expect 401 in the public dashboard
+  // and silently fall back. Logged at debug level only, not as an "error".
+  const [stats, alerts24h, corrob] = await Promise.allSettled([
     jget('/stats'),
     jget('/alerts?per_page=500'),
     jget('/quality/corroboration?days=1'),
-    jget('/admin/anomalies').catch(() => ({anomalies:[]})),  // requires auth
   ]);
+  // Anomalies separately so the auth failure doesn't show up as a Promise.allSettled rejection
+  // (which has noisy console output in some browsers).
+  const anomalies = { status: 'fulfilled', value: { anomalies: [] } };
 
   // === Last 24h Ingest ===
-  if (stats.status === 'fulfilled') {
+  safe('ingest', () => {
+    if (stats.status !== 'fulfilled') {
+      document.getElementById('ingest').innerHTML = '<span class="err">/stats failed: ' + esc(stats.reason && stats.reason.message || stats.reason) + '</span>';
+      return;
+    }
     const s = stats.value;
     renderStats(document.getElementById('ingest'), [
       ['Total alerts', (s.total_alerts || 0).toLocaleString()],
@@ -126,12 +144,15 @@ async function loadAll() {
       ['Active channels', (s.monitored_channels || []).length],
       ['Uptime', Math.floor((s.uptime_seconds || 0) / 3600) + 'h'],
     ]);
-  } else {
-    document.getElementById('ingest').innerHTML = '<span class="err">/stats: '+esc(stats.reason)+'</span>';
-  }
+  });
 
   // === By Type / Source / Geo (24h) ===
-  if (alerts24h.status === 'fulfilled') {
+  safe('byType', () => {
+    if (alerts24h.status !== 'fulfilled') {
+      ['byType','bySource','byGeo'].forEach(id =>
+        document.getElementById(id).innerHTML = '<span class="err">/alerts failed: ' + esc(alerts24h.reason && alerts24h.reason.message || alerts24h.reason) + '</span>');
+      return;
+    }
     const since = Date.now() - 24*60*60*1000;
     const recent = (alerts24h.value.alerts || []).filter(a => new Date(a.timestamp).getTime() >= since);
     const counter = (arr, k) => arr.reduce((m,a)=>{const v=a[k]||'(unknown)';m[v]=(m[v]||0)+1;return m;},{});
@@ -142,7 +163,7 @@ async function loadAll() {
       [{label:'type'},{label:'count',right:true},{label:'avg conf',right:true}],
       byType.map(([t,n]) => {
         const subset = recent.filter(a=>a.type===t);
-        const avgC = subset.reduce((s,a)=>s+(a.confidence||0),0) / subset.length;
+        const avgC = subset.reduce((s,a)=>s+(a.confidence||0),0) / (subset.length || 1);
         return [t, n, avgC.toFixed(2)];
       }).slice(0,12));
 
@@ -156,7 +177,7 @@ async function loadAll() {
       }));
 
     const byGeo = counter(recent, 'geo_precision');
-    const geoTotal = recent.length;
+    const geoTotal = recent.length || 1;
     renderStats(document.getElementById('byGeo'), [
       ['town (point)', (byGeo.town||0) + ' (' + fmtPct((byGeo.town||0)/geoTotal) + ')'],
       ['fuzzy (3km buf)', (byGeo.fuzzy||0)],
@@ -164,23 +185,24 @@ async function loadAll() {
       ['zone', (byGeo.zone||0)],
       ['no geo', (byGeo['(unknown)']||0)],
     ]);
-  } else {
-    ['byType','bySource','byGeo'].forEach(id =>
-      document.getElementById(id).innerHTML = '<span class="err">/alerts: '+esc(alerts24h.reason)+'</span>');
-  }
+  });
 
   // === Historical corroboration ===
-  if (corrob.status === 'fulfilled') {
+  safe('corrob', () => {
+    if (corrob.status !== 'fulfilled') {
+      document.getElementById('corrob').innerHTML = '<span class="err">/quality/corroboration failed: ' + esc(corrob.reason && corrob.reason.message || corrob.reason) + '</span>';
+      return;
+    }
     const c = corrob.value;
     const o = c.overall || {};
     const types = c.by_type || {};
     const tableRows = Object.entries(types)
-      .filter(([_,v]) => v.boosted > 0)
+      .filter(([, v]) => v.boosted > 0)
       .sort((a,b) => b[1].boosted - a[1].boosted)
       .map(([t,v]) => [t, v.total, v.boosted, fmtPct(v.boost_rate||0), v.mean_boost_when_fired||'-']);
-    let html = `<div class="stat"><span>total alerts</span><span class="v">${o.total_alerts||0}</span></div>`
-              +`<div class="stat"><span>boosted</span><span class="v ${o.boosted>0?'pill ok':''}">${o.boosted||0}</span></div>`
-              +`<div class="stat"><span>boost rate</span><span class="v">${fmtPct(o.boost_rate||0)}</span></div>`;
+    let html = '<div class="stat"><span>total alerts</span><span class="v">' + (o.total_alerts||0) + '</span></div>'
+              + '<div class="stat"><span>boosted</span><span class="v">' + (o.boosted||0) + '</span></div>'
+              + '<div class="stat"><span>boost rate</span><span class="v">' + fmtPct(o.boost_rate||0) + '</span></div>';
     if (tableRows.length) {
       html += '<div style="margin-top:10px;font-size:11px;color:var(--dim);">Per-type fires:</div>';
       const tbl = document.createElement('div');
@@ -190,9 +212,7 @@ async function loadAll() {
       html += tbl.innerHTML;
     }
     document.getElementById('corrob').innerHTML = html;
-  } else {
-    document.getElementById('corrob').innerHTML = '<span class="err">/quality: '+esc(corrob.reason)+'</span>';
-  }
+  });
 
   // === Self-improvement loops ===
   // Light-touch indicators — no DB introspection from browser, just hint at status
@@ -209,21 +229,26 @@ async function loadAll() {
     `<div class="stat"><span>${esc(k)}</span><span class="v">${v}</span></div>`).join('');
 
   // === Recent alerts ===
-  if (alerts24h.status === 'fulfilled') {
+  safe('recent', () => {
+    if (alerts24h.status !== 'fulfilled') {
+      document.getElementById('recent').innerHTML = '<span class="err">/alerts failed</span>';
+      return;
+    }
     const recent = (alerts24h.value.alerts || []).slice(0, 15);
     renderTable(document.getElementById('recent'),
       [
         {label:'when'},{label:'type'},{label:'severity'},{label:'area'},
-        {label:'admin1'},{label:'admin2'},{label:'conf',right:true},{label:'source'},
+        {label:'admin1'},{label:'admin2'},{label:'trust',right:true},{label:'source'},
       ],
       recent.map(a => [
         new Date(a.timestamp).toISOString().substr(11,8) + 'Z',
         a.type, a.severity, a.area || '-',
         a.admin1 || '-', a.admin2 || '-',
-        (a.confidence != null ? a.confidence.toFixed(2) : '-'),
+        (a.trust_score != null ? a.trust_score.toFixed(2)
+          : (a.confidence != null ? a.confidence.toFixed(2) + '*' : '-')),
         a.source,
       ]));
-  }
+  });
 
   document.getElementById('sub').textContent = 'Updated ' + new Date().toLocaleTimeString() + ' · auto-refresh 60s · ' +
     'Mission: real-time Palestine event tracker — multi-source corroboration + base-rate priors';
