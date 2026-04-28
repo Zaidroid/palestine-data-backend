@@ -52,6 +52,12 @@ async def init_incident_tables():
     async with get_alerts_db() as db:
         await db.execute(CREATE_INCIDENTS)
         await db.execute(CREATE_INCIDENT_ALERTS)
+        # F7 — auto-generated rule-based narrative summary. Regenerated
+        # whenever a new alert merges into the incident.
+        cur = await db.execute("PRAGMA table_info(incidents)")
+        cols = {row[1] for row in await cur.fetchall()}
+        if "narrative" not in cols:
+            await db.execute("ALTER TABLE incidents ADD COLUMN narrative TEXT")
         for idx in INCIDENT_INDEXES:
             await db.execute(idx)
         await db.commit()
@@ -75,7 +81,96 @@ def _row_to_incident(row) -> dict:
         "started_at": row[12],
         "last_updated": row[13],
         "resolved_at": row[14],
+        "narrative": row[15] if len(row) > 15 else None,
     }
+
+
+# F7 — Rule-based narrative summarizer.
+
+_TYPE_LABEL = {
+    "gaza_strike": "Gaza strike", "idf_raid": "IDF raid",
+    "settler_attack": "Settler attack", "injury_report": "Injury report",
+    "regional_attack": "Regional attack", "west_bank_siren": "West Bank siren",
+    "northern_israel_siren": "Northern Israel siren", "demolition": "Demolition",
+    "arrest_campaign": "Arrest campaign", "road_closure": "Road closure",
+    "flying_checkpoint": "Flying checkpoint", "school_closure": "School closure",
+    "hospital_strike": "Hospital strike", "evacuation_order": "Evacuation order",
+    "utility_cutoff": "Utility cut-off", "journalist_targeted": "Journalist targeted",
+    "child_detention": "Child detention",
+}
+
+
+async def _generate_narrative(incident_id: int) -> Optional[str]:
+    """Build a rule-based prose summary from the alerts in this incident.
+    No LLM. Aggregates: alert count, source diversity, time span,
+    casualty totals, leading title from earliest alert."""
+    async with get_alerts_db() as db:
+        cur = await db.execute(
+            "SELECT incident_type, area, area_ar FROM incidents WHERE id=?",
+            (incident_id,),
+        )
+        head = await cur.fetchone()
+        if not head:
+            return None
+        incident_type, area, area_ar = head
+
+        cur = await db.execute(
+            """SELECT a.title, a.source, a.timestamp, a.confidence,
+                      a.count, a.severity
+               FROM incident_alerts ia
+               JOIN alerts a ON a.id = ia.alert_id
+               WHERE ia.incident_id = ? AND a.status = 'active'
+               ORDER BY a.timestamp ASC""",
+            (incident_id,),
+        )
+        alerts = await cur.fetchall()
+
+    if not alerts:
+        return None
+
+    label = _TYPE_LABEL.get(incident_type, incident_type.replace("_", " ").title())
+    earliest = alerts[0]
+    latest = alerts[-1]
+    distinct_sources = sorted({a[1] for a in alerts if a[1]})
+    casualty_sum = sum(int(a[4]) for a in alerts if a[4] and isinstance(a[4], int))
+    duration_min = 0
+    try:
+        duration_min = int(
+            (datetime.fromisoformat(latest[2]) - datetime.fromisoformat(earliest[2]))
+            .total_seconds() / 60
+        )
+    except Exception:
+        pass
+    duration_str = (
+        f"{duration_min // 60}h {duration_min % 60}m" if duration_min >= 60
+        else f"{duration_min}m"
+    ) if duration_min else "single update"
+
+    n = len(alerts)
+    parts = [f"**{label}** — {area or 'unknown area'}."]
+    parts.append(f"{n} alert{'s' if n != 1 else ''} from {len(distinct_sources)} source{'s' if len(distinct_sources) != 1 else ''} over {duration_str}.")
+    if casualty_sum > 0:
+        parts.append(f"Reported casualty count so far: {casualty_sum}.")
+    parts.append(f"Earliest report ({earliest[2][:16].replace('T',' ')}Z): \"{(earliest[0] or '')[:120]}\"")
+    if n > 1:
+        parts.append(f"Latest report ({latest[2][:16].replace('T',' ')}Z): \"{(latest[0] or '')[:120]}\"")
+    if distinct_sources:
+        parts.append(f"Sources: {', '.join(distinct_sources[:8])}.")
+    return " ".join(parts)
+
+
+async def regenerate_narrative(incident_id: int) -> Optional[str]:
+    """Recompute and persist incident.narrative. Idempotent."""
+    narrative = await _generate_narrative(incident_id)
+    if narrative is None:
+        return None
+    async with get_alerts_db() as db:
+        await db.execute(
+            "UPDATE incidents SET narrative=? WHERE id=?",
+            (narrative, incident_id),
+        )
+        await db.commit()
+    return narrative
 
 
 async def create_incident(

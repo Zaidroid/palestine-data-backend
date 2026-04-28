@@ -14,6 +14,7 @@ from .incident_db import (
     create_incident,
     merge_into_incident,
     resolve_stale_incidents,
+    regenerate_narrative,
 )
 
 log = logging.getLogger("incident_grouper")
@@ -39,6 +40,12 @@ async def process_alert_into_incident(alert) -> int:
 
     if existing:
         await merge_into_incident(existing["id"], alert.id, severity)
+        # F7 — refresh narrative on every merge so consumers see an
+        # always-up-to-date summary of the incident state.
+        try:
+            await regenerate_narrative(existing["id"])
+        except Exception as e:
+            log.warning(f"narrative regen failed for incident #{existing['id']}: {e}")
         return existing["id"]
 
     area_ar = getattr(alert, "title_ar", None)
@@ -56,6 +63,10 @@ async def process_alert_into_incident(alert) -> int:
         severity=severity,
         alert_id=alert.id,
     )
+    try:
+        await regenerate_narrative(incident_id)
+    except Exception as e:
+        log.warning(f"narrative regen failed for incident #{incident_id}: {e}")
     return incident_id
 
 
