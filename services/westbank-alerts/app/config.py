@@ -41,6 +41,14 @@ class Settings(BaseSettings):
     INCIDENT_MERGE_WINDOW_HOURS: float = 2.0
     INCIDENT_AUTO_RESOLVE_HOURS: float = 4.0
 
+    # F10 — Tesseract Arabic OCR for media-only Telegram posts. Off by
+    # default — operator should benchmark before enabling. When true,
+    # _process_security_message downloads the message media, OCRs it,
+    # and feeds the extracted text through the classifier.
+    OCR_ENABLED: bool = False
+    OCR_TIMEOUT_SECONDS: float = 10.0
+    OCR_MAX_PIXELS: int = 4_000_000  # Skip very large images (latency cap)
+
     class Config:
         env_file = ".env"
         env_file_encoding = "utf-8"

@@ -114,10 +114,31 @@ def get_client() -> Optional[TelegramClient]:
 
 async def _process_security_message(message, channel_username: str):
     """Telegram-specific wrapper. Pulls the text + msg id off the
-    telethon Message and hands off to the source-agnostic pipeline."""
+    telethon Message and hands off to the source-agnostic pipeline.
+
+    F10 — when the message is media-only (no usable caption text) but has
+    an attached photo, OCR the image with Tesseract Arabic and feed the
+    extracted text through the classifier. Gated by settings.OCR_ENABLED
+    (default off — operator opts in after benchmarking)."""
     raw = (message.message or "").strip()
     if len(raw) < 10:
-        return
+        # Try OCR fallback for media-only posts before discarding.
+        from .config import settings as _s
+        if not _s.OCR_ENABLED or not getattr(message, "media", None):
+            return
+        try:
+            image_bytes = await message.download_media(file=bytes)
+            if not image_bytes:
+                return
+            from .ocr import ocr_image_bytes
+            ocr_text = await ocr_image_bytes(image_bytes)
+            if len(ocr_text) < 10:
+                return
+            log.info(f"[OCR] @{channel_username} msg={message.id}: {len(ocr_text)} chars extracted")
+            raw = ocr_text
+        except Exception as e:
+            log.debug(f"OCR fallback failed for @{channel_username} msg={message.id}: {e}")
+            return
     ts = (message.date.replace(tzinfo=None) if message.date else datetime.utcnow())
     await _process_text(
         raw_text=raw,

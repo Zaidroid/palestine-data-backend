@@ -11,3 +11,5 @@ beautifulsoup4==4.12.3
 sentry-sdk[fastapi]==2.18.0
 structlog==24.4.0
 feedparser==6.0.11
+pytesseract==0.3.10
+Pillow==10.4.0
