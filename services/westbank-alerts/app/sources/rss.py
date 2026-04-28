@@ -38,11 +38,12 @@ RSS_FEEDS = [
     ("anadolu_ar",     "https://www.aa.com.tr/ar/rss/default?cat=guncel"),
     # RT Arabic — Russian state media; framing-heavy but high volume
     ("rt_arabic",      "https://arabic.rt.com/rss/"),
-    # Sky News Arabia — UAE-based, fast breaking-news feed
-    ("skynews_ar",     "https://www.skynewsarabia.com/web/rss"),
-    # Dropped (Cloudflare/WAF returns 403 even with browser UA):
-    #   alarabiya_ar  — https://www.alarabiya.net/feed/rss2/ar
-    #   almayadeen_ar — https://www.almayadeen.net/rss/all
+    # Dropped (Cloudflare/WAF):
+    #   skynews_ar    — Cloudflare bot-validator 302→perfdrive.com on every poll;
+    #                   eventually returns 200 but burns 1-2s of latency per cycle
+    #                   for ~3% of the daily RSS yield. Not worth it.
+    #   alarabiya_ar  — https://www.alarabiya.net/feed/rss2/ar (403 with browser UA)
+    #   almayadeen_ar — https://www.almayadeen.net/rss/all (403 with browser UA)
     # If we ever need them, route through a residential proxy or scraper.
 ]
 
