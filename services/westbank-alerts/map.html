@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Palestine Live Tracker — Map</title>
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="" />
+<style>
+  html, body { margin:0; padding:0; height:100%; background:#0e0f12; color:#e4e7ec; font:13px -apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif; }
+  #map { position:absolute; top:42px; left:0; right:0; bottom:0; }
+  #header { position:absolute; top:0; left:0; right:0; height:42px; background:#1a1c22; border-bottom:1px solid #2a2e38; padding:8px 14px; display:flex; align-items:center; justify-content:space-between; z-index:1000; }
+  #header h1 { margin:0; font-size:14px; font-weight:600; }
+  .legend { position:absolute; bottom:14px; right:14px; background:rgba(26,28,34,0.95); border:1px solid #2a2e38; border-radius:6px; padding:10px 12px; font-size:12px; z-index:1000; min-width:180px; }
+  .legend .row { display:flex; align-items:center; margin:3px 0; }
+  .legend .swatch { width:14px; height:14px; border-radius:50%; margin-right:8px; border:1px solid rgba(255,255,255,.4); }
+  #status { font-size:12px; color:#9aa0aa; }
+  #status .ok { color:#3ddc97; }
+  #status .err { color:#ef4444; }
+  .leaflet-popup-content-wrapper { background:#1a1c22; color:#e4e7ec; border-radius:6px; }
+  .leaflet-popup-tip { background:#1a1c22; }
+  .leaflet-popup-content { margin:10px 12px; font:12px -apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif; }
+  .leaflet-popup-content b { color:#8aa8ff; }
+  .leaflet-control-attribution { background:rgba(26,28,34,0.85) !important; color:#9aa0aa !important; }
+  .leaflet-control-attribution a { color:#8aa8ff !important; }
+</style>
+</head>
+<body>
+  <div id="header">
+    <h1>Palestine Live Tracker — Map</h1>
+    <div id="status">connecting…</div>
+  </div>
+  <div id="map"></div>
+  <div class="legend">
+    <div style="font-weight:600;margin-bottom:6px;">Trust score</div>
+    <div class="row"><div class="swatch" style="background:#3ddc97"></div>≥ 0.85 (high)</div>
+    <div class="row"><div class="swatch" style="background:#f5b454"></div>0.55 – 0.85 (medium)</div>
+    <div class="row"><div class="swatch" style="background:#ef4444"></div>&lt; 0.55 (low)</div>
+    <div style="margin-top:8px;font-size:11px;color:#9aa0aa;">Last 24h · live updates via WebSocket</div>
+  </div>
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
+<script>
+const STATUS = document.getElementById('status');
+const TYPE_LABELS = { gaza_strike:'Gaza strike', idf_raid:'IDF raid', settler_attack:'Settler attack',
+  injury_report:'Injuries', regional_attack:'Regional attack', west_bank_siren:'WB siren',
+  northern_israel_siren:'N.Israel siren', demolition:'Demolition', arrest_campaign:'Arrests',
+  road_closure:'Road closure', flying_checkpoint:'Flying checkpoint', school_closure:'School closure',
+  hospital_strike:'Hospital strike', evacuation_order:'Evacuation', utility_cutoff:'Utility cut',
+  journalist_targeted:'Journalist', child_detention:'Child detention' };
+
+function trustColor(t) {
+  if (t == null) return '#9aa0aa';
+  if (t >= 0.85) return '#3ddc97';
+  if (t >= 0.55) return '#f5b454';
+  return '#ef4444';
+}
+function trustRadius(t) {
+  if (t == null) return 6;
+  return 5 + Math.round(t * 8);  // 5..13
+}
+
+// Center on Palestine: roughly between Gaza and northern WB
+const map = L.map('map', { zoomControl: true }).setView([31.95, 35.0], 8);
+L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+  attribution: '© OpenStreetMap contributors',
+  maxZoom: 18,
+}).addTo(map);
+
+// Polygon overlays — admin1 thicker line, admin2 thinner
+async function loadPolygons(level, style) {
+  try {
+    const r = await fetch('/geo/admin/' + level);
+    if (!r.ok) return;
+    const gj = await r.json();
+    L.geoJSON(gj, {
+      style,
+      onEachFeature: (f, layer) => {
+        const name = f.properties?.admin1Name_en || f.properties?.admin2Name_en || f.properties?.ADM1_EN || f.properties?.ADM2_EN || '';
+        if (name) layer.bindTooltip(name, { sticky: true, opacity: 0.85 });
+      },
+    }).addTo(map);
+  } catch (e) { /* polygons missing is non-fatal */ }
+}
+loadPolygons('admin1', { color: '#8aa8ff', weight: 1.5, fill: false });
+loadPolygons('admin2', { color: '#5a6277', weight: 0.6, fill: false, dashArray: '2,3' });
+
+// Markers
+const markersById = new Map();
+function popupHTML(p) {
+  const ts = p.timestamp ? new Date(p.timestamp).toISOString().substr(0,19).replace('T',' ') + ' UTC' : '?';
+  const label = TYPE_LABELS[p.alert_type] || p.alert_type;
+  return `<div>
+    <b>${label}</b> <span style="color:#9aa0aa;font-size:11px;">#${p.id}</span><br>
+    <span style="color:#9aa0aa;">${ts}</span><br>
+    ${p.area || '?'} (${p.admin2 || p.admin1 || '?'}) — <b>${p.severity}</b><br>
+    <span style="font-size:11px;">trust ${(p.trust_score == null ? '?' : p.trust_score.toFixed(2))} · conf ${(p.confidence == null ? '?' : p.confidence.toFixed(2))} · ${p.geo_precision || ''}</span><br>
+    <span style="font-size:11px;color:#9aa0aa;">source: ${p.source}</span>
+  </div>`;
+}
+function addOrUpdateMarker(p, lng, lat) {
+  if (lat == null || lng == null) return;
+  if (markersById.has(p.id)) {
+    markersById.get(p.id).setStyle({ fillColor: trustColor(p.trust_score), radius: trustRadius(p.trust_score) });
+    return;
+  }
+  const m = L.circleMarker([lat, lng], {
+    radius: trustRadius(p.trust_score),
+    fillColor: trustColor(p.trust_score),
+    color: 'rgba(0,0,0,0.5)',
+    weight: 1,
+    fillOpacity: 0.85,
+  }).addTo(map);
+  m.bindPopup(popupHTML(p));
+  markersById.set(p.id, m);
+}
+
+// Initial load — last 24h GeoJSON
+async function loadInitial() {
+  try {
+    const since = new Date(Date.now() - 24*60*60*1000).toISOString();
+    const r = await fetch('/alerts/map?since=' + encodeURIComponent(since) + '&limit=2000');
+    if (!r.ok) throw new Error('HTTP ' + r.status);
+    const fc = await r.json();
+    for (const f of fc.features || []) {
+      addOrUpdateMarker(f.properties, f.geometry.coordinates[0], f.geometry.coordinates[1]);
+    }
+    STATUS.innerHTML = `<span class="ok">●</span> ${markersById.size} alerts · live`;
+  } catch (e) {
+    STATUS.innerHTML = '<span class="err">●</span> initial load failed: ' + e.message;
+  }
+}
+
+// WebSocket — receive new alerts in real time
+function connectWS() {
+  const proto = location.protocol === 'https:' ? 'wss:' : 'ws:';
+  const ws = new WebSocket(`${proto}//${location.host}/ws`);
+  ws.onopen = () => { STATUS.innerHTML = `<span class="ok">●</span> ${markersById.size} alerts · connected`; };
+  ws.onclose = () => {
+    STATUS.innerHTML = `<span class="err">●</span> disconnected · reconnecting…`;
+    setTimeout(connectWS, 3000);
+  };
+  ws.onerror = () => { /* onclose will reconnect */ };
+  ws.onmessage = (e) => {
+    try {
+      const msg = JSON.parse(e.data);
+      // Either a raw Alert object OR a {event:'correction', alert:{}} envelope
+      const a = msg.event ? msg.alert : msg;
+      if (!a || a.latitude == null || a.longitude == null) return;
+      const props = {
+        id: a.id, alert_type: a.type, severity: a.severity, title: a.title,
+        title_ar: a.title_ar, area: a.area, admin1: a.admin1, admin2: a.admin2,
+        zone: a.zone, geo_precision: a.geo_precision, timestamp: a.timestamp,
+        confidence: a.confidence, trust_score: a.trust_score, source: a.source,
+        count: a.count, status: a.status,
+      };
+      addOrUpdateMarker(props, a.longitude, a.latitude);
+      STATUS.innerHTML = `<span class="ok">●</span> ${markersById.size} alerts · live`;
+    } catch (err) { /* ignore parse errors */ }
+  };
+}
+
+loadInitial().then(connectWS);
+</script>
+</body>
+</html>

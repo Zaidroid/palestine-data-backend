@@ -351,6 +351,37 @@ async def tracker():
     return FileResponse(html_path, media_type="text/html")
 
 
+@app.get("/map", tags=["info"], response_class=FileResponse)
+async def live_map():
+    """F1 — live WebSocket map. Leaflet renders alert points colored by
+    trust_score, with admin polygon overlays + real-time updates over
+    /ws so consumers see new alerts pop in without refresh."""
+    import pathlib
+    html_path = pathlib.Path(__file__).resolve().parent.parent / "map.html"
+    if not html_path.exists():
+        raise HTTPException(status_code=404, detail="map.html not found")
+    return FileResponse(html_path, media_type="text/html")
+
+
+@app.get("/geo/admin/{level}", tags=["info"])
+async def geo_admin(level: str):
+    """OCHA admin polygon GeoJSON baked into the image. Same source as
+    the Node API's /api/v1/geo/admin — exposed here so the live /map
+    can fetch polygons same-origin without CORS."""
+    if level not in ("admin1", "admin2"):
+        raise HTTPException(status_code=400, detail="level must be admin1 or admin2")
+    import pathlib
+    candidates = [
+        pathlib.Path("/app/data/admin") / f"{level}.geojson",
+        pathlib.Path("/data/admin") / f"{level}.geojson",
+        pathlib.Path(__file__).resolve().parent.parent / "data" / "admin" / f"{level}.geojson",
+    ]
+    for path in candidates:
+        if path.exists():
+            return FileResponse(path, media_type="application/geo+json")
+    raise HTTPException(status_code=404, detail=f"{level}.geojson not found in any candidate path")
+
+
 @app.get("/api", tags=["info"])
 async def api_info():
     return {
@@ -643,6 +674,9 @@ async def alerts_map(
                 "geo_precision": a.geo_precision,
                 "timestamp": a.timestamp.isoformat() if a.timestamp else None,
                 "confidence": a.confidence,
+                "trust_score": getattr(a, "trust_score", None),
+                "admin1": getattr(a, "admin1", None),
+                "admin2": getattr(a, "admin2", None),
                 "source": a.source,
                 "count": a.count,
                 "status": a.status,
