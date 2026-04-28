@@ -968,8 +968,14 @@ async def admin_anomalies(
 async def list_channel_reliability():
     """
     Per-channel baseline reliability scores (0.0-1.0) used by the classifier
-    to weight new alerts. Higher = historically more accurate. Public so
-    consumers can document their own filtering choices.
+    to weight new alerts. Higher = historically more accurate.
+
+    Each channel also includes an `observed` block with the last 30 days
+    of behavior — total alerts emitted, count retracted, B6 auto-confirms,
+    and the resulting fp_rate. Pairs with the A2 self-learning loop:
+    when a channel's fp_rate climbs, the keyword_weight_overrides
+    aggregator (services/westbank-alerts/app/learner_overrides.py)
+    automatically downweights it on the next cycle.
     """
     return {"channels": await db.get_channel_reliability()}
 

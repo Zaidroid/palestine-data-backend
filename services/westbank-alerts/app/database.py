@@ -639,7 +639,13 @@ async def get_channel_reliability(channel: Optional[str] = None):
 
     Lookup is case-insensitive against the handle stored in `channels` — callers
     pass the raw `source` field of an alert, which is the @ handle without the @.
-    Missing channels default to 0.5 (neutral prior)."""
+    Missing channels default to 0.5 (neutral prior).
+
+    The list form (channel=None) augments each entry with a 30-day
+    observed FP-rate snapshot: total alerts emitted, count retracted,
+    auto_tp from the B6 review queue, and the resulting fp_rate. This
+    makes the seed weight auditable — consumers can see whether the
+    static reliability number is supported by recent behavior."""
     async with get_alerts_db() as db:
         if channel:
             cur = await db.execute(
@@ -652,10 +658,47 @@ async def get_channel_reliability(channel: Optional[str] = None):
             "SELECT channel, weight, basis, last_updated FROM channel_reliability ORDER BY weight DESC"
         )
         rows = await cur.fetchall()
-        return [
-            {"channel": r[0], "weight": float(r[1]), "basis": r[2], "last_updated": r[3]}
-            for r in rows
-        ]
+
+        # Observed FP rate per channel over the last 30 days.
+        cur = await db.execute(
+            """SELECT lower(source) AS ch,
+                      COUNT(*) AS total,
+                      SUM(CASE WHEN status = 'retracted' THEN 1 ELSE 0 END) AS retracted
+               FROM alerts
+               WHERE timestamp >= datetime('now','-30 days')
+                 AND source IS NOT NULL
+               GROUP BY lower(source)"""
+        )
+        obs = {r[0]: {"total_30d": r[1], "retracted_30d": r[2] or 0} for r in await cur.fetchall()}
+
+        # B6 auto-resolutions (verdict='auto_tp') count as implicit
+        # confirmations from silence — surface them too.
+        cur = await db.execute(
+            """SELECT lower(a.source) AS ch, COUNT(*) AS auto_tp
+               FROM alert_review_queue q
+               JOIN alerts a ON a.id = q.alert_id
+               WHERE q.verdict = 'auto_tp'
+                 AND q.reviewed_at >= datetime('now','-30 days')
+               GROUP BY lower(a.source)"""
+        )
+        for ch, n in await cur.fetchall():
+            obs.setdefault(ch, {"total_30d": 0, "retracted_30d": 0})["auto_tp_30d"] = n
+
+    out = []
+    for r in rows:
+        ch_lower = (r[0] or "").lower()
+        observed = obs.get(ch_lower, {"total_30d": 0, "retracted_30d": 0, "auto_tp_30d": 0})
+        observed.setdefault("auto_tp_30d", 0)
+        total = observed["total_30d"]
+        observed["fp_rate_30d"] = (
+            round(observed["retracted_30d"] / total, 4) if total else None
+        )
+        out.append({
+            "channel": r[0], "weight": float(r[1]),
+            "basis": r[2], "last_updated": r[3],
+            "observed": observed,
+        })
+    return out
 
 
 # ── Security vocab candidates ─────────────────────────────────────────────────
