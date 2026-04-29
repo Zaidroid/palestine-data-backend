@@ -77,6 +77,11 @@
       <div id="incidents"><span class="err">loading…</span></div>
     </div>
 
+    <div class="panel" style="grid-column: span 2;">
+      <h2>Recent Retractions (self-correction)</h2>
+      <div id="retractions"><span class="err">loading…</span></div>
+    </div>
+
     <div class="panel" style="grid-column: 1 / -1;">
       <h2>Recent Alerts</h2>
       <div id="recent"><span class="err">loading…</span></div>
@@ -131,7 +136,7 @@ async function loadAll() {
   // Pull data in parallel — alerts pipeline + checkpoints pipeline (the
   // primary source for live route-safety updates, which feed a separate DB
   // and weren't visible in the dashboard until /checkpoints/sources was added).
-  const [stats, alerts24h, corrob, cpSources, cpStats, cpClosed, incidents, anomalies24h] = await Promise.allSettled([
+  const [stats, alerts24h, corrob, cpSources, cpStats, cpClosed, incidents, anomalies24h, retractions] = await Promise.allSettled([
     jget('/stats'),
     jget('/alerts?per_page=200'),  // 200 = endpoint cap
     jget('/quality/corroboration?days=1'),
@@ -140,6 +145,7 @@ async function loadAll() {
     jget('/checkpoints/closed'),
     jget('/incidents/live?limit=50'),
     jget('/quality/anomalies?hours=24'),
+    jget('/quality/retractions?days=7&limit=15'),
   ]);
   // /admin/anomalies requires X-API-Key — fall back silently in the public dashboard.
   const anomalies = { status: 'fulfilled', value: { anomalies: [] } };
@@ -341,6 +347,31 @@ async function loadAll() {
       </div>`;
     }).join('');
     document.getElementById('incidents').innerHTML = html;
+  });
+
+  // === Recent retractions (self-correction transparency) ===
+  safe('retractions', () => {
+    if (retractions.status !== 'fulfilled') {
+      document.getElementById('retractions').innerHTML = '<span class="err">/quality/retractions failed</span>';
+      return;
+    }
+    const r = retractions.value;
+    let html = `<div class="stat"><span>retractions (7d)</span><span class="v">${r.total_in_window||0}</span></div>`;
+    for (const br of (r.by_reason || [])) {
+      html += `<div class="stat"><span style="font-size:11px;color:var(--dim);">↳ ${esc(br.reason)}</span><span class="v">${br.count}</span></div>`;
+    }
+    if ((r.retractions || []).length) {
+      const tbl = document.createElement('div');
+      renderTable(tbl,
+        [{label:'when'},{label:'type'},{label:'source'},{label:'reason'}],
+        r.retractions.slice(0, 8).map(x => [
+          (x.timestamp || '').substr(0,10),
+          x.type, x.source || '-',
+          (x.reason || '').slice(0, 32),
+        ]));
+      html += '<div style="margin-top:8px;font-size:11px;color:var(--dim);">Recent items:</div>' + tbl.innerHTML;
+    }
+    document.getElementById('retractions').innerHTML = html;
   });
 
   document.getElementById('sub').textContent = 'Updated ' + new Date().toLocaleTimeString() + ' · auto-refresh 60s · ' +

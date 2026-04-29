@@ -1014,6 +1014,62 @@ async def admin_anomalies(
     return {"count": len(rows), "anomalies": rows, "window_hours": hours}
 
 
+@app.get("/quality/retractions", tags=["quality"])
+async def public_retractions(
+    days: int = Query(7, ge=1, le=90),
+    limit: int = Query(50, ge=1, le=200),
+):
+    """Public list of recently-retracted alerts. Surfaces self-correction
+    activity (admin verdicts via /admin/review/{id}, manual PATCH
+    /alerts/{id}, and the retroactive_fp_filter sweep). Filters by alert
+    timestamp (when the event was originally reported, not when
+    retracted) since alerts.db doesn't track retraction time directly."""
+    since = (datetime.utcnow() - timedelta(days=days)).isoformat()
+    async with db_pool.get_alerts_db() as conn:
+        cur = await conn.execute(
+            """SELECT id, type, source, area, timestamp, correction_note
+               FROM alerts
+               WHERE status = 'retracted' AND timestamp >= ?
+               ORDER BY timestamp DESC
+               LIMIT ?""",
+            (since, limit),
+        )
+        rows = await cur.fetchall()
+        # Aggregate count by reason (correction_note prefix) for the summary.
+        cur2 = await conn.execute(
+            """SELECT
+                 CASE
+                   WHEN correction_note LIKE 'retroactive_fp_filter%' THEN 'retroactive_fp_filter'
+                   WHEN correction_note LIKE 'backfill_classifier%'   THEN 'backfill_reclassifier'
+                   WHEN correction_note LIKE 'admin_review%'          THEN 'admin_review_verdict'
+                   WHEN correction_note IS NULL                       THEN '(none)'
+                   ELSE 'other'
+                 END AS reason,
+                 COUNT(*) AS n
+               FROM alerts
+               WHERE status = 'retracted' AND timestamp >= ?
+               GROUP BY reason
+               ORDER BY n DESC""",
+            (since,),
+        )
+        reason_rows = await cur2.fetchall()
+    total_in_window = sum(r[1] for r in reason_rows)
+    return {
+        "window_days": days,
+        "total_in_window": total_in_window,  # aggregate over whole window
+        "returned": len(rows),               # number of rows in `retractions[]` (limit-bounded)
+        "by_reason": [{"reason": r[0], "count": r[1]} for r in reason_rows],
+        "retractions": [
+            {
+                "id": r[0], "type": r[1], "source": r[2],
+                "area": r[3], "timestamp": r[4],
+                "reason": r[5],
+            }
+            for r in rows
+        ],
+    }
+
+
 @app.get("/quality/anomalies", tags=["quality"])
 async def public_anomalies(hours: int = Query(24, ge=1, le=168)):
     """Public read-only view of A3 volume-anomaly detections in the last
