@@ -118,16 +118,17 @@ function safe(panelId, fn) {
 async function loadAll() {
   document.getElementById('sub').textContent = 'Loading at ' + new Date().toISOString();
 
-  // Pull data in parallel from 3 public + 1 auth-gated endpoint.
-  // /admin/anomalies requires X-API-Key — expect 401 in the public dashboard
-  // and silently fall back. Logged at debug level only, not as an "error".
-  const [stats, alerts24h, corrob] = await Promise.allSettled([
+  // Pull data in parallel — alerts pipeline + checkpoints pipeline (the
+  // primary source for live route-safety updates, which feed a separate DB
+  // and weren't visible in the dashboard until /checkpoints/sources was added).
+  const [stats, alerts24h, corrob, cpSources, cpStats] = await Promise.allSettled([
     jget('/stats'),
     jget('/alerts?per_page=200'),  // 200 = endpoint cap
     jget('/quality/corroboration?days=1'),
+    jget('/checkpoints/sources?hours=24'),
+    jget('/checkpoints/stats'),
   ]);
-  // Anomalies separately so the auth failure doesn't show up as a Promise.allSettled rejection
-  // (which has noisy console output in some browsers).
+  // /admin/anomalies requires X-API-Key — fall back silently in the public dashboard.
   const anomalies = { status: 'fulfilled', value: { anomalies: [] } };
 
   // === Last 24h Ingest ===
@@ -137,10 +138,14 @@ async function loadAll() {
       return;
     }
     const s = stats.value;
+    const cpUpdates24h = (cpSources.status === 'fulfilled' ? cpSources.value.total_updates : null);
+    const cpTotal = (cpStats.status === 'fulfilled' ? (cpStats.value.total || cpStats.value.total_checkpoints) : null);
     renderStats(document.getElementById('ingest'), [
-      ['Total alerts', (s.total_alerts || 0).toLocaleString()],
-      ['Last 24h', (s.alerts_last_24h || 0).toLocaleString()],
-      ['Last hour', (s.alerts_last_hour || 0).toLocaleString()],
+      ['Alerts (total)', (s.total_alerts || 0).toLocaleString()],
+      ['Alerts (24h)', (s.alerts_last_24h || 0).toLocaleString()],
+      ['Alerts (1h)', (s.alerts_last_hour || 0).toLocaleString()],
+      ['Checkpoint updates (24h)', cpUpdates24h != null ? cpUpdates24h.toLocaleString() : '-'],
+      ['Checkpoints tracked', cpTotal != null ? cpTotal.toLocaleString() : '-'],
       ['Active channels', (s.monitored_channels || []).length],
       ['Uptime', Math.floor((s.uptime_seconds || 0) / 3600) + 'h'],
     ]);
@@ -167,14 +172,31 @@ async function loadAll() {
         return [t, n, avgC.toFixed(2)];
       }).slice(0,12));
 
-    const bySource = sortDesc(counter(recent, 'source')).slice(0,10);
+    // Combine alerts pipeline + checkpoints pipeline into a single source view.
+    // Alerts have one source per row; checkpoints come pre-aggregated from
+    // /checkpoints/sources with their own update + distinct-checkpoints counts.
+    const sourceRows = sortDesc(counter(recent, 'source')).map(([s,n]) => {
+      const subset = recent.filter(a=>a.source===s);
+      const stype = subset[0] ? (subset[0].source_type || 'telegram') : '';
+      return { source: s, pipeline: 'alerts', count: n, stype, distinct_cps: '-' };
+    });
+    if (cpSources.status === 'fulfilled') {
+      for (const cp of (cpSources.value.sources || [])) {
+        sourceRows.push({
+          source: cp.source_channel,
+          pipeline: 'checkpoint',
+          count: cp.updates,
+          stype: cp.source_type,  // "admin" | "crowd"
+          distinct_cps: cp.distinct_checkpoints,
+        });
+      }
+    }
+    sourceRows.sort((a,b) => b.count - a.count);
     renderTable(document.getElementById('bySource'),
-      [{label:'source'},{label:'count',right:true},{label:'type',right:false}],
-      bySource.map(([s,n]) => {
-        const subset = recent.filter(a=>a.source===s);
-        const stype = subset[0] ? (subset[0].source_type || 'telegram') : '';
-        return [s, n, stype];
-      }));
+      [{label:'source'},{label:'pipeline'},{label:'count',right:true},
+       {label:'type'},{label:'CPs',right:true}],
+      sourceRows.slice(0,15).map(r =>
+        [r.source, r.pipeline, r.count, r.stype, r.distinct_cps]));
 
     const byGeo = counter(recent, 'geo_precision');
     const geoTotal = recent.length || 1;

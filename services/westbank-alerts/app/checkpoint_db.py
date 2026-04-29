@@ -593,6 +593,38 @@ async def get_updates(
     return [_row_to_update(r) for r in rows], total
 
 
+async def get_sources_summary(hours: int = 24) -> list[dict]:
+    """Per-source-channel checkpoint update activity over the last N hours.
+    Returns one row per (source_channel, source_type) with update counts +
+    distinct checkpoints touched. Powers the tracker dashboard's source
+    panel which previously only saw the alerts pipeline (not checkpoints,
+    which are the primary source of route-safety data)."""
+    since = (datetime.utcnow() - timedelta(hours=hours)).isoformat()
+    async with get_checkpoint_db() as db:
+        cur = await db.execute(
+            """SELECT source_channel, source_type,
+                      COUNT(*) AS updates,
+                      COUNT(DISTINCT canonical_key) AS distinct_checkpoints,
+                      MAX(timestamp) AS last_at
+               FROM checkpoint_updates
+               WHERE timestamp >= ?
+               GROUP BY source_channel, source_type
+               ORDER BY updates DESC""",
+            (since,),
+        )
+        rows = await cur.fetchall()
+    return [
+        {
+            "source_channel": r[0],
+            "source_type": r[1],            # "admin" | "crowd"
+            "updates": r[2],
+            "distinct_checkpoints": r[3],
+            "last_at": r[4],
+        }
+        for r in rows
+    ]
+
+
 async def get_all_canonical_keys() -> set[str]:
     async with get_checkpoint_db() as db:
         cur = await db.execute("SELECT canonical_key FROM checkpoints")

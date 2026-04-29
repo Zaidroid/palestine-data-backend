@@ -1964,6 +1964,20 @@ async def checkpoint_stats():
     )
 
 
+@app.get("/checkpoints/sources", tags=["checkpoints"])
+async def checkpoint_sources(hours: int = Query(24, ge=1, le=168)):
+    """Per-source-channel checkpoint update activity over the last N hours.
+    Returns one row per (source_channel, source_type) with update counts +
+    distinct checkpoints touched. Distinct from /channel-reliability which
+    is for the alerts pipeline; checkpoints are a separate stream."""
+    rows = await cpdb.get_sources_summary(hours=hours)
+    return {
+        "window_hours": hours,
+        "total_updates": sum(r["updates"] for r in rows),
+        "sources": rows,
+    }
+
+
 @app.get("/checkpoints/updates/feed", response_model=UpdateFeedResponse, tags=["checkpoints"])
 async def updates_feed(
     source: Optional[str] = Query(None, description="admin | crowd"),
