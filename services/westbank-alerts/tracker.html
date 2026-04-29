@@ -123,7 +123,7 @@ async function loadAll() {
   // and silently fall back. Logged at debug level only, not as an "error".
   const [stats, alerts24h, corrob] = await Promise.allSettled([
     jget('/stats'),
-    jget('/alerts?per_page=500'),
+    jget('/alerts?per_page=200'),  // 200 = endpoint cap
     jget('/quality/corroboration?days=1'),
   ]);
   // Anomalies separately so the auth failure doesn't show up as a Promise.allSettled rejection
