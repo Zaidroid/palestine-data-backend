@@ -951,24 +951,43 @@ OFF_TOPIC_REGIONAL_ANCHORS = [
     "فلسطين", "غزه", "الضفه", "القدس", "الخليل", "نابلس", "رام الله",
     "بيت لحم", "طولكرم", "جنين", "قلقيليه", "اريحا", "طوباس", "سلفيت",
     "خان يونس", "رفح", "جباليا", "دير البلح", "بيت حانون", "بيت لاهيا",
-    "النصيرات", "البريج", "المغازي", "الشجاعيه",
-    # Israel proper / regional
-    "اسرائيل", "تل ابيب", "حيفا", "عسقلان", "اشدود",
+    "النصيرات", "البريج", "المغازي", "الشجاعيه", "الشاطئ",
+    # Israel proper + Israeli regions (Galilee, Gush Dan, Negev, settlements)
+    "اسرائيل", "تل ابيب", "حيفا", "عسقلان", "اشدود", "بئر السبع",
+    "الجليل", "النقب", "غوش دان", "سديروت", "نتيف هسيارا", "كريات شمونه",
     # Lebanon (Hezbollah front)
     "لبنان", "بيروت", "صور", "صيدا", "بنت جبيل", "النبطيه", "بعلبك",
+    "البقاع", "جنوب لبنان",
     # Iran (regional escalation)
-    "ايران", "طهران",
+    "ايران", "طهران", "اصفهان",
     # Yemen / Iraq / Syria (broader Hamas-front)
-    "اليمن", "صنعاء", "الحوثي",
+    "اليمن", "صنعاء", "الحوثي", "الحوثيين",
     "سوريا", "دمشق", "العراق", "بغداد",
+    # MENA neighbours that get hit / fired from in this conflict window
+    # (Iranian / Houthi missiles, Houthi-Bahrain reverberations, etc.)
+    "الاردن", "عمان",
+    "الكويت", "البحرين", "المنامه", "قطر", "الدوحه",
+    "الامارات", "ابوظبي", "دبي",
+    "السعوديه", "الرياض", "جده",
+    "مصر", "القاهره", "العريش", "رفح المصريه",
+    "تركيا", "اسطنبول",
+    # Golan (contested)
+    "الجولان", "هضبه الجولان",
     # Actor names
     "الاحتلال", "الكيان الصهيوني", "حزب الله", "حماس", "المقاومه",
-    "جيش الاحتلال", "قوات الاحتلال", "نتنياهو",
+    "جيش الاحتلال", "قوات الاحتلال", "نتنياهو", "بن غفير", "سموتريتش",
+    "الحرس الثوري", "فيلق القدس",
     # Security-context vocabulary that is itself inherently regional —
     # "settler/settlement" and "siren" only appear in this context here.
     "مستوطن", "مستوطنه", "مستوطنين", "مستوطنون",
+    "مستعمر", "مستعمرين", "مستعمرون",  # alternate spelling for settlers
     "صافرات الانذار", "صفارات الانذار", "صافرات انذار",
-    "الجبهه الداخليه",
+    "الجبهه الداخليه", "اف 35", "ميركافا", "اف-35",
+    # Casualty / event nouns common in regional incident reporting.
+    # When combined with the implicit context of our Telegram channels
+    # (which post almost exclusively about Mideast events), these are
+    # safe positive anchors.
+    "شهداء", "شهيد", "استشهاد", "ارتقي شهيدا",
 ]
 OFF_TOPIC_REGIONAL_ANCHORS = [_normalize(t) for t in OFF_TOPIC_REGIONAL_ANCHORS]
 
