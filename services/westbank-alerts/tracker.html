@@ -73,6 +73,11 @@
     </div>
 
     <div class="panel" style="grid-column: 1 / -1;">
+      <h2>Active Incidents (auto-narrated)</h2>
+      <div id="incidents"><span class="err">loading…</span></div>
+    </div>
+
+    <div class="panel" style="grid-column: 1 / -1;">
       <h2>Recent Alerts</h2>
       <div id="recent"><span class="err">loading…</span></div>
     </div>
@@ -126,13 +131,14 @@ async function loadAll() {
   // Pull data in parallel — alerts pipeline + checkpoints pipeline (the
   // primary source for live route-safety updates, which feed a separate DB
   // and weren't visible in the dashboard until /checkpoints/sources was added).
-  const [stats, alerts24h, corrob, cpSources, cpStats, cpClosed] = await Promise.allSettled([
+  const [stats, alerts24h, corrob, cpSources, cpStats, cpClosed, incidents] = await Promise.allSettled([
     jget('/stats'),
     jget('/alerts?per_page=200'),  // 200 = endpoint cap
     jget('/quality/corroboration?days=1'),
     jget('/checkpoints/sources?hours=24'),
     jget('/checkpoints/stats'),
     jget('/checkpoints/closed'),
+    jget('/incidents/live?limit=50'),
   ]);
   // /admin/anomalies requires X-API-Key — fall back silently in the public dashboard.
   const anomalies = { status: 'fulfilled', value: { anomalies: [] } };
@@ -198,9 +204,12 @@ async function loadAll() {
       }
     }
     sourceRows.sort((a,b) => b.count - a.count);
+    // "checkpoints touched" = distinct checkpoints this source updated
+    // in the window (a source posting about the same checkpoint 10 times
+    // counts as 1 here, vs `count` which counts every update).
     renderTable(document.getElementById('bySource'),
       [{label:'source'},{label:'pipeline'},{label:'count',right:true},
-       {label:'type'},{label:'CPs',right:true}],
+       {label:'type'},{label:'checkpoints touched',right:true}],
       sourceRows.slice(0,15).map(r =>
         [r.source, r.pipeline, r.count, r.stype, r.distinct_cps]));
 
@@ -297,6 +306,34 @@ async function loadAll() {
           : (a.confidence != null ? a.confidence.toFixed(2) + '*' : '-')),
         a.source,
       ]));
+  });
+
+  // === Active incidents (narratives) ===
+  safe('incidents', () => {
+    if (incidents.status !== 'fulfilled') {
+      document.getElementById('incidents').innerHTML = '<span class="err">/incidents/live failed</span>';
+      return;
+    }
+    let inc = (incidents.value.incidents || [])
+      .filter(i => i.status === 'active' && (i.narrative || '').length > 20)
+      .sort((a,b) => (b.alert_count || 0) - (a.alert_count || 0));
+    if (!inc.length) {
+      document.getElementById('incidents').innerHTML = '<span class="err">no active multi-alert incidents right now</span>';
+      return;
+    }
+    const sevColor = { critical:'#ef4444', high:'#f97316', medium:'#f5b454', low:'#9aa0aa' };
+    const html = inc.slice(0, 8).map(i => {
+      const c = sevColor[i.severity] || '#9aa0aa';
+      const updatedTs = i.last_updated ? new Date(i.last_updated).toISOString().substr(11,5) + 'Z' : '?';
+      return `<div style="border-left:3px solid ${c}; padding:6px 10px; margin:8px 0; background:rgba(255,255,255,0.02); border-radius:4px;">
+        <div style="display:flex; justify-content:space-between; font-size:11px; color:var(--dim); margin-bottom:4px;">
+          <span>incident #${i.id} · ${esc(i.severity)} · ${i.alert_count} alert${i.alert_count!==1?'s':''}</span>
+          <span>updated ${updatedTs}</span>
+        </div>
+        <div style="font-size:13px; line-height:1.5;">${esc(i.narrative)}</div>
+      </div>`;
+    }).join('');
+    document.getElementById('incidents').innerHTML = html;
   });
 
   document.getElementById('sub').textContent = 'Updated ' + new Date().toLocaleTimeString() + ' · auto-refresh 60s · ' +
