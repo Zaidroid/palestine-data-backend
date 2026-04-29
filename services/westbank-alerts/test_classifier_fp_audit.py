@@ -329,6 +329,49 @@ AFTERMATH_LIVING = [
      "البلح بعد نزوحهم من شمال قطاع غزة وفا", "wafagency"),
 ]
 
+# 21. NEW (2026-04-29 audit) — Off-topic news leak. Global-news RSS feeds
+#     (RT Arabic etc.) occasionally publish content with no Palestine /
+#     Israel / Lebanon connection that triggers injury_report keywords.
+OFF_TOPIC_LEAK = [
+    # Salmonella in US poultry — was injury_report @ West Bank!
+    ("إصابات بالسالمونيلا في 13 ولاية أمريكية مرتبطة بالدواجن المنزلية", "rt_arabic"),
+    # Hypothetical earthquake in Japan
+    ("زلزال بقوة 6 درجات يضرب جنوب اليابان دون إصابات تذكر", "rt_arabic"),
+]
+
+# 22. NEW (2026-04-29 audit) — Diplomatic news extension. Named foreign-
+#     leader quotes about Iran nuclear deal, China envoy speech, etc.
+DIPLOMATIC_EXTENSION = [
+    # EU Commission president on Iran negotiations
+    ("عاجل | رئيسة المفوضية الأوروبية: أي اتفاق سلام يجب أن يعالج البرنامج "
+     "النووي الإيراني والصواريخ الباليستية", "ajanews"),
+    # China envoy on aid access
+    ("عاجل | مندوب الصين: على إسرائيل الوفاء بالتزاماتها وإزالة العوائق "
+     "التي تحول دون وصول المساعدات لغزة", "ajanews"),
+]
+
+# 23. NEW (2026-04-29 audit) — NGO / press-release wrappers. Red Crescent
+#     statements about humanitarian work; not injury events.
+PRESS_RELEASE = [
+    ("وأوضحت جمعية الهلال الأحمر، أن سيارات الإسعاف التابعة لها تولّت نقل "
+     "المسافرين، وتأمين وصولهم بسلام، في إطار الاستجابة الإنسانية المستمرة", "wafagency"),
+]
+
+# 24. NEW (2026-04-29 audit) — Political resignation / elections. Council
+#     member withdrawing wasn't an idf_raid event.
+POLITICAL_RESIGNATION = [
+    ("أحد الفائزين في انتخابات بلدية دير سامت عاطف العواودة: أُعلن انسحابي "
+     "من عضوية المجلس البلدي في دير سامت. أؤكد أن قراري يأتي بعد تعرضي "
+     "لتهديدات مباشرة من الاحتلال", "qudsn"),
+]
+
+# 25. NEW (2026-04-29 audit) — Israeli civilian/military official quote.
+#     Kiryat Shmona mayor on Hezbollah threat misclassified as demolition.
+ISRAELI_OFFICIAL_QUOTE = [
+    ("عاجل | رئيس بلدية كريات شمونة: استمرار إضراب قطاع التعليم ونشعر أننا "
+     "في ميدان حرب لعدم إزالة خطر #حزب_الله", "ajanews"),
+]
+
 # Geo-precision regression: dateline-prefixed foreign-country posts.
 # "إيطاليا.." → 3-char village "يطا" must NOT substring-match inside
 # "ايطاليا" after normalization. Same class as "تل" inside "مقاتلو"
@@ -425,6 +468,16 @@ def _run_all():
     _fp_bucket("ACTIVISM_COMMENTARY", ACTIVISM_COMMENTARY,
                lambda r: r is not None)
     _fp_bucket("AFTERMATH_LIVING", AFTERMATH_LIVING,
+               lambda r: r is not None)
+    _fp_bucket("OFF_TOPIC_LEAK", OFF_TOPIC_LEAK,
+               lambda r: r is not None)
+    _fp_bucket("DIPLOMATIC_EXTENSION", DIPLOMATIC_EXTENSION,
+               lambda r: r is not None)
+    _fp_bucket("PRESS_RELEASE", PRESS_RELEASE,
+               lambda r: r is not None)
+    _fp_bucket("POLITICAL_RESIGNATION", POLITICAL_RESIGNATION,
+               lambda r: r is not None)
+    _fp_bucket("ISRAELI_OFFICIAL_QUOTE", ISRAELI_OFFICIAL_QUOTE,
                lambda r: r is not None)
     # GEO_BOUNDARY_REGRESSION: must NOT classify with area=Yatta. We
     # accept either None (filtered) or a non-Yatta area.

@@ -939,6 +939,123 @@ AFTERMATH_LIVING_MARKERS = [
 ]
 AFTERMATH_LIVING_MARKERS = [_normalize(t) for t in AFTERMATH_LIVING_MARKERS]
 
+# Off-topic news guard. RSS feeds (RT Arabic, Anadolu, Sky News) publish
+# global news; some alerts leak about events with no Palestine/Israel/
+# Lebanon/Iran connection (e.g. "Salmonella in 13 US states linked to
+# backyard poultry" classified as injury_report). Require the text to
+# mention at least one regional anchor before treating it as security-
+# relevant. This is a coarse pre-filter — fine geo resolution still
+# happens later in _resolve_coordinates.
+OFF_TOPIC_REGIONAL_ANCHORS = [
+    # Palestine
+    "فلسطين", "غزه", "الضفه", "القدس", "الخليل", "نابلس", "رام الله",
+    "بيت لحم", "طولكرم", "جنين", "قلقيليه", "اريحا", "طوباس", "سلفيت",
+    "خان يونس", "رفح", "جباليا", "دير البلح", "بيت حانون", "بيت لاهيا",
+    "النصيرات", "البريج", "المغازي", "الشجاعيه",
+    # Israel proper / regional
+    "اسرائيل", "تل ابيب", "حيفا", "عسقلان", "اشدود",
+    # Lebanon (Hezbollah front)
+    "لبنان", "بيروت", "صور", "صيدا", "بنت جبيل", "النبطيه", "بعلبك",
+    # Iran (regional escalation)
+    "ايران", "طهران",
+    # Yemen / Iraq / Syria (broader Hamas-front)
+    "اليمن", "صنعاء", "الحوثي",
+    "سوريا", "دمشق", "العراق", "بغداد",
+    # Actor names
+    "الاحتلال", "الكيان الصهيوني", "حزب الله", "حماس", "المقاومه",
+    "جيش الاحتلال", "قوات الاحتلال", "نتنياهو",
+    # Security-context vocabulary that is itself inherently regional —
+    # "settler/settlement" and "siren" only appear in this context here.
+    "مستوطن", "مستوطنه", "مستوطنين", "مستوطنون",
+    "صافرات الانذار", "صفارات الانذار", "صافرات انذار",
+    "الجبهه الداخليه",
+]
+OFF_TOPIC_REGIONAL_ANCHORS = [_normalize(t) for t in OFF_TOPIC_REGIONAL_ANCHORS]
+
+
+def _is_off_topic(normed_text: str) -> bool:
+    """True when the text mentions no regional anchor — drop the alert."""
+    return not any(a in normed_text for a in OFF_TOPIC_REGIONAL_ANCHORS)
+
+
+# Diplomatic news extension. Existing DIPLOMATIC_MARKERS catches
+# travel/meeting verbs; these add named foreign-leader quote patterns
+# that escape the wider net.
+DIPLOMATIC_EXTENSION_MARKERS = [
+    # EU / Western leadership quotes
+    "رئيسه المفوضيه الاوروبيه",
+    "المفوضيه الاوروبيه",
+    "وزير خارجيه",
+    "وزير الخارجيه",
+    # UN officials
+    "الامين العام للامم المتحده",
+    "غوتيريش",
+    # China envoy / diplomat speech
+    "مندوب الصين",
+    "مندوب روسيا",
+    "السفير الاوروبي",
+]
+DIPLOMATIC_EXTENSION_MARKERS = [_normalize(t) for t in DIPLOMATIC_EXTENSION_MARKERS]
+
+
+# NGO / press-release wrappers. The post quotes an organization's
+# explanation or status update; not a kinetic event.
+PRESS_RELEASE_MARKERS = [
+    "اوضحت جمعيه الهلال الاحمر",
+    "اوضح الهلال الاحمر",
+    "بيان للهلال الاحمر",
+    "اوضح المتحدث باسم",
+    "بيان للمتحدث",
+    "في اطار الاستجابه الانسانيه",
+    "في اطار الاستجابه",
+    "اعلنت الانروا",
+    "اعلنت اونروا",
+    "صرحت الانروا",
+    "بيان للانروا",
+    "اوضحت منظمه",
+]
+PRESS_RELEASE_MARKERS = [_normalize(t) for t in PRESS_RELEASE_MARKERS]
+
+
+# Political / municipal news — elections, council resignations,
+# party statements. Not kinetic events.
+POLITICAL_RESIGNATION_MARKERS = [
+    "الفائزين في انتخابات",
+    "الفائزين في الانتخابات",
+    "نتائج انتخابات",
+    "نتائج الانتخابات",
+    "اعلن انسحابي",
+    "اعلن استقالتي",
+    "اعلنت انسحابي", "اعلنت استقالتي",
+    "اعلن انسحابه من",
+    "بيان حركه",
+    "بيان فصيل",
+    "كلمه رئيس",
+]
+POLITICAL_RESIGNATION_MARKERS = [_normalize(t) for t in POLITICAL_RESIGNATION_MARKERS]
+
+
+# Israeli civilian / municipal speaker quotes. Mayors, ministers, IDF
+# generals making political statements wrap quoted speech that's not a
+# live event. Extends SPOKESPERSON_LEADING (which is mostly Iranian +
+# Hezbollah leadership).
+ISRAELI_OFFICIAL_QUOTE_MARKERS = [
+    "رئيس بلديه كريات شمونه",
+    "رئيس بلديه ميتولا",
+    "رئيس بلديه نهاريا",
+    "رئيس بلديه صفد",
+    "رئيس بلديه حيفا",
+    "رئيس بلديه تل ابيب",
+    "وزير الامن الاسرائيلي:",
+    "وزير الدفاع الاسرائيلي:",
+    "وزير الجيش الاسرائيلي:",
+    "وزير الخارجيه الاسرائيلي:",
+    "رئيس الاركان الاسرائيلي:",
+    "وزير الماليه سموتريتش",
+    "بن غفير:",
+]
+ISRAELI_OFFICIAL_QUOTE_MARKERS = [_normalize(t) for t in ISRAELI_OFFICIAL_QUOTE_MARKERS]
+
 # Temporal attribution markers — distinguish "happening now" from historical
 # mentions. Past markers downweight confidence so news-recap noise doesn't
 # fire as real-time alerts. (T2.1)
@@ -1198,6 +1315,34 @@ def _is_noise(text: str, tier: str = "tier1", source: str = "") -> bool:
     # or displaced person. The event happened earlier; the post is a
     # profile of their current state.
     if _has(text, AFTERMATH_LIVING_MARKERS):
+        return True
+
+    # Off-topic guard — text mentions no regional anchor (Palestine /
+    # Israel / Lebanon / Iran / actors). RSS feeds occasionally publish
+    # global news that triggers casualty/injury keywords ("Salmonella in
+    # 13 US states", etc.).
+    if _is_off_topic(text):
+        return True
+
+    # Diplomatic news extension — named foreign-leader quote patterns
+    # that escape the broader DIPLOMATIC_MARKERS net.
+    if _has(text, DIPLOMATIC_EXTENSION_MARKERS):
+        return True
+
+    # NGO / press-release wrappers — Red Crescent statements, UNRWA
+    # announcements, organizational explanations. Not kinetic events.
+    if _has(text, PRESS_RELEASE_MARKERS):
+        return True
+
+    # Political / municipal — elections, council resignations, party
+    # statements. Not kinetic events.
+    if _has(text, POLITICAL_RESIGNATION_MARKERS):
+        return True
+
+    # Israeli civilian/military official speaking — mayor of Kiryat
+    # Shmona on Hezbollah, defense minister speech, etc. Quoted political
+    # speech wrapped as if a live event.
+    if _has(text[:200], ISRAELI_OFFICIAL_QUOTE_MARKERS):
         return True
 
     # News attribution — only discard for non-news channels.
