@@ -22,6 +22,12 @@ SIGMA_THRESHOLD = 3.0
 MIN_BASELINE_HOURS = 6     # Need ≥6 hours of data to trust the std
 MIN_SPIKE_COUNT = 3        # Don't flag spikes of 1 or 2; noise
 
+# Hours to evaluate per cycle. The current (in-progress) bucket is included
+# even when partial — but the previous (just-completed) bucket is the most
+# useful since the detector runs hourly and this catches end-of-hour bursts
+# that the cycle-prior run missed because the bucket was not yet populated.
+_BUCKETS_TO_EVAL = ("previous", "current")
+
 
 async def check_volume_anomalies(now: Optional[datetime] = None) -> list[dict]:
     """Detect volume spikes vs trailing 24h baseline. Persists each
@@ -30,7 +36,8 @@ async def check_volume_anomalies(now: Optional[datetime] = None) -> list[dict]:
     UNIQUE index)."""
     if now is None:
         now = datetime.utcnow()
-    bucket_hour = now.strftime("%Y-%m-%dT%H")
+    current_bucket = now.strftime("%Y-%m-%dT%H")
+    previous_bucket = (now - timedelta(hours=1)).strftime("%Y-%m-%dT%H")
     last_hour_start = now - timedelta(hours=1)
     baseline_start = now - timedelta(hours=25)
     baseline_end = now - timedelta(hours=1)
@@ -64,12 +71,13 @@ async def check_volume_anomalies(now: Optional[datetime] = None) -> list[dict]:
             last_hour_alert_ids.setdefault(key, []).append(alert_id)
 
     # For each (type, source): compute baseline mean+std from 24 prior hours,
-    # check the current hour against threshold.
+    # check BOTH the previous (just-completed) bucket AND the current
+    # (in-progress) bucket against the threshold. Previously this only
+    # checked the current bucket, which routinely missed end-of-hour bursts
+    # that completed before the next hourly cycle ran (the cycle would see
+    # the bucket as "now empty" since time had moved on).
     for key, per_hour in counts_by_key_hour.items():
         etype, source = key
-        last_hour_count = per_hour.get(bucket_hour, 0)
-        if last_hour_count < MIN_SPIKE_COUNT:
-            continue
         # Baseline = the 24 prior hours (not including the current bucket)
         baseline_counts = [
             per_hour.get((baseline_start + timedelta(hours=h)).strftime("%Y-%m-%dT%H"), 0)
@@ -85,41 +93,49 @@ async def check_volume_anomalies(now: Optional[datetime] = None) -> list[dict]:
         # If std is exactly 0 the source has been perfectly steady — any
         # spike at all is anomalous. Use mean as a soft floor.
         threshold = mean + SIGMA_THRESHOLD * max(std, 0.5)
-        if last_hour_count <= threshold:
-            continue
-        sigma = (last_hour_count - mean) / max(std, 0.5)
-        sample_ids = last_hour_alert_ids.get(key, [])[:10]
 
-        async with get_alerts_db() as db:
-            await db.execute(
-                """INSERT INTO anomalies
-                   (event_type, source, bucket_hour, count_1h, baseline_mean,
-                    baseline_std, sigma, sample_alert_ids, detected_at)
-                   VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)
-                   ON CONFLICT(event_type, source, bucket_hour) DO UPDATE SET
-                       count_1h         = excluded.count_1h,
-                       baseline_mean    = excluded.baseline_mean,
-                       baseline_std     = excluded.baseline_std,
-                       sigma            = excluded.sigma,
-                       sample_alert_ids = excluded.sample_alert_ids,
-                       detected_at      = excluded.detected_at""",
-                (etype, source, bucket_hour, last_hour_count,
-                 round(mean, 2), round(std, 2), round(sigma, 2),
-                 ",".join(str(i) for i in sample_ids),
-                 now.isoformat()),
-            )
-            await db.commit()
+        for bucket_to_check in (previous_bucket, current_bucket):
+            count_in_bucket = per_hour.get(bucket_to_check, 0)
+            if count_in_bucket < MIN_SPIKE_COUNT:
+                continue
+            if count_in_bucket <= threshold:
+                continue
+            sigma = (count_in_bucket - mean) / max(std, 0.5)
+            # Sample IDs only available for the current-bucket check (the
+            # last_hour_alert_ids dict was built from `t >= last_hour_start`).
+            sample_ids = (last_hour_alert_ids.get(key, [])[:10]
+                          if bucket_to_check == current_bucket else [])
 
-        detected.append({
-            "event_type": etype,
-            "source": source,
-            "bucket_hour": bucket_hour,
-            "count_1h": last_hour_count,
-            "baseline_mean": round(mean, 2),
-            "baseline_std": round(std, 2),
-            "sigma": round(sigma, 2),
-            "sample_alert_ids": sample_ids,
-        })
+            async with get_alerts_db() as db:
+                await db.execute(
+                    """INSERT INTO anomalies
+                       (event_type, source, bucket_hour, count_1h, baseline_mean,
+                        baseline_std, sigma, sample_alert_ids, detected_at)
+                       VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)
+                       ON CONFLICT(event_type, source, bucket_hour) DO UPDATE SET
+                           count_1h         = excluded.count_1h,
+                           baseline_mean    = excluded.baseline_mean,
+                           baseline_std     = excluded.baseline_std,
+                           sigma            = excluded.sigma,
+                           sample_alert_ids = excluded.sample_alert_ids,
+                           detected_at      = excluded.detected_at""",
+                    (etype, source, bucket_to_check, count_in_bucket,
+                     round(mean, 2), round(std, 2), round(sigma, 2),
+                     ",".join(str(i) for i in sample_ids),
+                     now.isoformat()),
+                )
+                await db.commit()
+
+            detected.append({
+                "event_type": etype,
+                "source": source,
+                "bucket_hour": bucket_to_check,
+                "count_1h": count_in_bucket,
+                "baseline_mean": round(mean, 2),
+                "baseline_std": round(std, 2),
+                "sigma": round(sigma, 2),
+                "sample_alert_ids": sample_ids,
+            })
 
     return detected
 
