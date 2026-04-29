@@ -389,7 +389,10 @@ async def api_info():
         "version": "1.0.0",
         "data_source": "Telegram channels (Telethon)",
         "note": "oref.org.il blocked from Palestinian IPs — Telegram only",
+        "integration_guide": "https://api.zaidlab.xyz/integrate.html",
         "endpoints": {
+            "tracker":      "GET /tracker",
+            "live_map":     "GET /map",
             "dashboard":    "GET /dashboard",
             "alerts":       "GET /alerts",
             "latest":       "GET /alerts/latest",

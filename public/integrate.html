@@ -1,0 +1,352 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Palestine Data — API integration guide</title>
+<meta name="description" content="Public REST + WebSocket APIs for Palestinian event data: live security alerts, historical incidents, checkpoint statuses, humanitarian indicators, conflict data.">
+<style>
+  :root { --bg:#0e0f12; --panel:#1a1c22; --line:#2a2e38; --text:#e4e7ec; --dim:#9aa0aa; --ok:#3ddc97; --warn:#f5b454; --bad:#ef4444; --link:#8aa8ff; --code:#0a0b0e; }
+  * { box-sizing:border-box; }
+  body { background:var(--bg); color:var(--text); font:14px/1.55 -apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif; margin:0; padding:0; }
+  header { background:linear-gradient(180deg, #1a1c22, #0e0f12); border-bottom:1px solid var(--line); padding:32px 24px 24px; }
+  .wrap { max-width:1100px; margin:0 auto; padding:0 24px; }
+  h1 { font-size:26px; margin:0 0 8px; font-weight:700; letter-spacing:-0.02em; }
+  h1 .sub { color:var(--dim); font-weight:400; font-size:14px; display:block; margin-top:6px; letter-spacing:0; }
+  h2 { font-size:18px; margin:36px 0 12px; padding-bottom:6px; border-bottom:1px solid var(--line); font-weight:600; }
+  h3 { font-size:14px; margin:18px 0 8px; color:var(--text); font-weight:600; text-transform:uppercase; letter-spacing:0.5px; }
+  section { padding:24px; }
+  a { color:var(--link); text-decoration:none; }
+  a:hover { text-decoration:underline; }
+  code, pre { font-family:"SF Mono","Menlo","Monaco","Consolas",monospace; font-size:12.5px; }
+  code { background:var(--code); padding:2px 6px; border-radius:3px; color:#cfd3da; }
+  pre { background:var(--code); padding:14px 16px; border-radius:6px; overflow:auto; border:1px solid var(--line); margin:6px 0 14px; }
+  pre code { padding:0; background:transparent; color:#cfd3da; }
+  .pill { display:inline-block; padding:2px 8px; border-radius:10px; font-size:11px; font-weight:600; background:var(--panel); border:1px solid var(--line); }
+  .pill.get { color:var(--ok); border-color:rgba(61,220,151,0.4); }
+  .pill.post { color:var(--warn); border-color:rgba(245,180,84,0.4); }
+  .pill.ws { color:var(--link); border-color:rgba(138,168,255,0.4); }
+  .pill.auth { color:var(--bad); border-color:rgba(239,68,68,0.4); }
+  .ep { display:flex; align-items:center; gap:10px; margin:8px 0; padding:8px 10px; background:var(--panel); border:1px solid var(--line); border-radius:6px; flex-wrap:wrap; }
+  .ep .path { font-family:monospace; font-size:13px; color:#fff; }
+  .ep .desc { color:var(--dim); font-size:12.5px; flex:1 1 100%; padding-top:2px; }
+  .grid2 { display:grid; gap:20px; grid-template-columns:repeat(auto-fit,minmax(330px,1fr)); }
+  .card { background:var(--panel); border:1px solid var(--line); border-radius:8px; padding:18px 20px; }
+  .card h3 { margin-top:0; }
+  table { width:100%; border-collapse:collapse; margin:6px 0 14px; font-size:13px; }
+  th, td { text-align:left; padding:6px 10px; border-bottom:1px solid var(--line); }
+  th { color:var(--dim); font-weight:500; font-size:12px; }
+  .toc { display:flex; flex-wrap:wrap; gap:8px; margin:14px 0 0; }
+  .toc a { background:var(--panel); border:1px solid var(--line); padding:5px 10px; border-radius:14px; font-size:12px; }
+  footer { color:var(--dim); font-size:12px; padding:30px 24px; text-align:center; border-top:1px solid var(--line); margin-top:40px; }
+  .hosts { display:flex; gap:14px; flex-wrap:wrap; margin:14px 0; }
+  .host { background:var(--panel); border:1px solid var(--line); border-radius:6px; padding:10px 14px; }
+  .host .label { font-size:11px; color:var(--dim); text-transform:uppercase; letter-spacing:0.5px; }
+  .host .url { font-family:monospace; font-size:13px; color:var(--link); }
+  .note { background:rgba(61,220,151,0.06); border-left:3px solid var(--ok); padding:10px 14px; border-radius:4px; margin:10px 0; font-size:13px; }
+  .warn { background:rgba(245,180,84,0.06); border-left:3px solid var(--warn); padding:10px 14px; border-radius:4px; margin:10px 0; font-size:13px; }
+</style>
+</head>
+<body>
+<header>
+  <div class="wrap">
+    <h1>Palestine Data API
+      <span class="sub">Public REST + WebSocket APIs for Palestinian event data — live security alerts, historical incidents, checkpoints, humanitarian indicators, conflict events.</span>
+    </h1>
+
+    <div class="hosts">
+      <div class="host">
+        <div class="label">Datasets API</div>
+        <div class="url">https://api.zaidlab.xyz/api/v1/</div>
+      </div>
+      <div class="host">
+        <div class="label">Live tracker (alerts + checkpoints)</div>
+        <div class="url">https://wb-alerts.zaidlab.xyz/</div>
+      </div>
+    </div>
+
+    <div class="toc">
+      <a href="#quickstart">Quick start</a>
+      <a href="#auth">Auth &amp; rate limits</a>
+      <a href="#alerts">Live alerts</a>
+      <a href="#checkpoints">Checkpoints</a>
+      <a href="#unified">Unified datasets</a>
+      <a href="#quality">Quality / observability</a>
+      <a href="#dashboards">Live dashboards</a>
+      <a href="#ws">WebSocket / SSE</a>
+      <a href="#snippets">Client snippets</a>
+      <a href="https://api.zaidlab.xyz/api-docs/">Swagger UI ↗</a>
+      <a href="https://wb-alerts.zaidlab.xyz/docs">FastAPI docs ↗</a>
+    </div>
+  </div>
+</header>
+
+<section class="wrap">
+
+<h2 id="quickstart">Quick start</h2>
+<p>Two services, both public, both <code>CORS: *</code>. No auth needed for read endpoints.</p>
+<pre><code># 1. Latest live alerts (last hour)
+curl https://wb-alerts.zaidlab.xyz/alerts/latest?limit=10
+
+# 2. Cumulative Gaza casualties (Tech4Palestine + Gaza MoH)
+curl https://api.zaidlab.xyz/api/v1/gaza/summary
+
+# 3. ACLED conflict events for an admin2 region
+curl 'https://api.zaidlab.xyz/api/v1/conflict/political-violence?admin2=Hebron&since=2026-01'
+
+# 4. All currently-closed checkpoints
+curl https://wb-alerts.zaidlab.xyz/checkpoints/closed</code></pre>
+
+<h2 id="auth">Auth &amp; rate limits</h2>
+<table>
+  <tr><th>Tier</th><th>Daily quota</th><th>Per-minute</th><th>Auth</th></tr>
+  <tr><td>anonymous (default)</td><td>10,000 req/day</td><td>60 req/min</td><td>none</td></tr>
+  <tr><td>authenticated (bring your key)</td><td>configurable</td><td>configurable</td><td><code>X-API-Key</code> header</td></tr>
+</table>
+<div class="note">All read endpoints work anonymously. <code>/admin/*</code> endpoints (review queue, anomaly recompute) require <code>X-API-Key</code>. Health endpoints (<code>/health</code>) are exempt from rate limits.</div>
+
+<h2 id="alerts">Live alerts</h2>
+<p>Real-time security alerts ingested from Telegram (7 channels) + RSS (3 feeds), classified into 18 event types. Every alert includes <code>trust_score</code> (composite confidence × source reliability), <code>historical_boost</code> (Insecurity Insight + ACLED corroboration), and OCHA <code>admin1</code>/<code>admin2</code> stamps.</p>
+
+<h3>Endpoints</h3>
+<div class="ep"><span class="pill get">GET</span><span class="path">https://wb-alerts.zaidlab.xyz/alerts</span>
+  <span class="desc">Paginated alert list. Query: <code>?per_page</code> (≤200), <code>?type</code>, <code>?severity</code>, <code>?area</code>, <code>?since</code>, <code>?status</code>, <code>?min_confidence</code>.</span></div>
+<div class="ep"><span class="pill get">GET</span><span class="path">https://wb-alerts.zaidlab.xyz/alerts/latest?limit=N</span>
+  <span class="desc">Most recent N alerts (newest first).</span></div>
+<div class="ep"><span class="pill get">GET</span><span class="path">https://wb-alerts.zaidlab.xyz/alerts/active</span>
+  <span class="desc">Alerts with status='active' (excludes retracted/corrected).</span></div>
+<div class="ep"><span class="pill get">GET</span><span class="path">https://wb-alerts.zaidlab.xyz/alerts/{id}</span>
+  <span class="desc">Single alert by ID.</span></div>
+<div class="ep"><span class="pill get">GET</span><span class="path">https://wb-alerts.zaidlab.xyz/alerts/map?bbox=minLat,minLng,maxLat,maxLng</span>
+  <span class="desc">GeoJSON FeatureCollection — alerts as points, ready for Leaflet/Mapbox.</span></div>
+<div class="ep"><span class="pill get">GET</span><span class="path">https://wb-alerts.zaidlab.xyz/alerts/regions/summary</span>
+  <span class="desc">Per-region alert counts + dominant event type (for choropleth maps).</span></div>
+<div class="ep"><span class="pill get">GET</span><span class="path">https://wb-alerts.zaidlab.xyz/incidents</span>
+  <span class="desc">Categorized incident feed (threats / military / attacks).</span></div>
+<div class="ep"><span class="pill get">GET</span><span class="path">https://wb-alerts.zaidlab.xyz/incidents/live</span>
+  <span class="desc">Active multi-alert incidents with auto-generated narrative summaries.</span></div>
+<div class="ep"><span class="pill post">POST</span><span class="path">https://wb-alerts.zaidlab.xyz/route/check</span>
+  <span class="desc">Route-safety check. Body: <code>{waypoints: [[lat,lng]…], buffer_km, since_hours}</code>. Returns AVOID/CAUTION/OK + alerts/checkpoints in corridor.</span></div>
+<div class="ep"><span class="pill get">GET</span><span class="path">https://wb-alerts.zaidlab.xyz/channel-reliability</span>
+  <span class="desc">Per-channel baseline reliability + observed 30-day FP rate.</span></div>
+
+<h3>Alert object</h3>
+<pre><code>{
+  "id": 2096,
+  "type": "gaza_strike",          // 18 types — see /api below
+  "severity": "high",              // critical | high | medium | low
+  "title": "Gaza Strike — Gaza City",
+  "title_ar": "...",
+  "body": "...",
+  "raw_text": "...",
+  "source": "qudsn",               // channel handle
+  "source_type": "telegram",       // telegram | rss
+  "area": "Gaza City",
+  "admin1": "Gaza Strip",          // OCHA admin1 (cod-ab-pse polygon)
+  "admin2": "Gaza",                // OCHA admin2 (governorate)
+  "zone": "gaza_city",
+  "latitude": 31.5018, "longitude": 34.4669,
+  "geo_precision": "town",         // town | fuzzy | region | zone
+  "timestamp": "2026-04-29T09:34:09+00:00",
+  "confidence": 0.95,              // post-corroboration 0..1
+  "source_reliability": 0.9,       // channel weight 0..1
+  "historical_boost": 0.10,        // sum of Insecurity Insight + ACLED
+  "trust_score": 0.857,            // confidence * source_reliability
+  "status": "active"               // active | retracted | corrected
+}</code></pre>
+
+<h2 id="checkpoints">Checkpoints (West Bank)</h2>
+<p>781 curated + crowd-reported checkpoints. Updates flow from <code>@ahwalaltreq</code> Telegram channel (admin + crowd) at ~960 updates/day. Whitelist-gated to drop status-text garbage.</p>
+
+<div class="ep"><span class="pill get">GET</span><span class="path">https://wb-alerts.zaidlab.xyz/checkpoints</span>
+  <span class="desc">All checkpoints with current status, confidence, last update.</span></div>
+<div class="ep"><span class="pill get">GET</span><span class="path">https://wb-alerts.zaidlab.xyz/checkpoints/closed</span>
+  <span class="desc">Currently closed only.</span></div>
+<div class="ep"><span class="pill get">GET</span><span class="path">https://wb-alerts.zaidlab.xyz/checkpoints/geojson</span>
+  <span class="desc">GeoJSON FeatureCollection for map overlays.</span></div>
+<div class="ep"><span class="pill get">GET</span><span class="path">https://wb-alerts.zaidlab.xyz/checkpoints/nearby?lat=&amp;lng=&amp;radius_km=5</span>
+  <span class="desc">Spatial search.</span></div>
+<div class="ep"><span class="pill get">GET</span><span class="path">https://wb-alerts.zaidlab.xyz/checkpoints/sources?hours=24</span>
+  <span class="desc">Per-channel checkpoint update activity (admin vs crowd, distinct CPs touched).</span></div>
+<div class="ep"><span class="pill get">GET</span><span class="path">https://wb-alerts.zaidlab.xyz/checkpoints/stats</span>
+  <span class="desc">Counts by status, confidence, update frequency.</span></div>
+<div class="ep"><span class="pill get">GET</span><span class="path">https://wb-alerts.zaidlab.xyz/checkpoints/{key}/history</span>
+  <span class="desc">Status transitions for a single checkpoint.</span></div>
+<div class="ep"><span class="pill get">GET</span><span class="path">https://wb-alerts.zaidlab.xyz/checkpoints/uptime</span>
+  <span class="desc">% open / closed / restricted per checkpoint over a window.</span></div>
+
+<h2 id="unified">Unified historical datasets</h2>
+<p>14 categories, ~205,000 records. Each category has paginated rows, summary aggregates, time-series, schema metadata, and a stable per-record permalink.</p>
+
+<table>
+<tr><th>Category</th><th>Records</th><th>Source</th></tr>
+<tr><td><code>conflict</code></td><td>~28,000</td><td>UCDP-GED</td></tr>
+<tr><td><code>infrastructure</code></td><td>~80,000</td><td>OSM + WHO + IDA</td></tr>
+<tr><td><code>health</code></td><td>~38,000</td><td>WHO + HDX + GoodShepherd</td></tr>
+<tr><td><code>education</code></td><td>~16,000</td><td>OCHA + UNICEF + HDX</td></tr>
+<tr><td><code>refugees</code></td><td>~31,000</td><td>UNHCR ODP</td></tr>
+<tr><td><code>funding</code></td><td>~5,000</td><td>UN FTS</td></tr>
+<tr><td><code>economic</code></td><td>~3,000</td><td>IMF + World Bank</td></tr>
+<tr><td><code>land</code></td><td>~3,000</td><td>OCHA demolitions + GoodShepherd</td></tr>
+<tr><td><code>water</code></td><td>~2,500</td><td>WHO WASH + EWASH</td></tr>
+<tr><td><code>news</code></td><td>~10,000</td><td>RSS aggregator (fair-use)</td></tr>
+<tr><td><code>pcbs</code></td><td>varies</td><td>Palestinian Central Bureau of Statistics</td></tr>
+<tr><td><code>culture</code></td><td>~700</td><td>UNESCO + heritage feeds</td></tr>
+<tr><td><code>westbank</code></td><td>~5,000</td><td>OCHA settlements + violence</td></tr>
+<tr><td><code>martyrs_snapshot_2023</code></td><td>~60,000</td><td>Tech4Palestine roster (frozen)</td></tr>
+</table>
+
+<div class="ep"><span class="pill get">GET</span><span class="path">https://api.zaidlab.xyz/api/v1/unified/{category}</span>
+  <span class="desc">Paginated rows. Query: <code>?location</code>, <code>?region</code>, <code>?event_type</code>, <code>?from</code>, <code>?to</code>, <code>?page</code>, <code>?per_page</code>.</span></div>
+<div class="ep"><span class="pill get">GET</span><span class="path">https://api.zaidlab.xyz/api/v1/unified/{category}/summary</span>
+  <span class="desc">Aggregate metrics — totals, breakdowns by region/year/severity.</span></div>
+<div class="ep"><span class="pill get">GET</span><span class="path">https://api.zaidlab.xyz/api/v1/unified/{category}/timeseries?metric=&amp;interval=day|week|month</span>
+  <span class="desc">Bucketed time series ready for charts.</span></div>
+<div class="ep"><span class="pill get">GET</span><span class="path">https://api.zaidlab.xyz/api/v1/unified/{category}/metadata</span>
+  <span class="desc">Schema, fields, provenance, freshness.</span></div>
+<div class="ep"><span class="pill get">GET</span><span class="path">https://api.zaidlab.xyz/api/v1/search?q=...</span>
+  <span class="desc">Full-text search across categories.</span></div>
+<div class="ep"><span class="pill get">GET</span><span class="path">https://api.zaidlab.xyz/api/v1/record/{category}/{id}</span>
+  <span class="desc">Single record by stable permalink id.</span></div>
+<div class="ep"><span class="pill get">GET</span><span class="path">https://api.zaidlab.xyz/api/v1/snapshots?as_of=YYYY-MM-DD</span>
+  <span class="desc">Pinned daily snapshots — reproducible point-in-time queries.</span></div>
+
+<h3>Specialized data surfaces</h3>
+<div class="ep"><span class="pill get">GET</span><span class="path">https://api.zaidlab.xyz/api/v1/gaza/daily?since=YYYY-MM-DD</span>
+  <span class="desc">Daily Gaza casualty bulletin with demographic breakdown.</span></div>
+<div class="ep"><span class="pill get">GET</span><span class="path">https://api.zaidlab.xyz/api/v1/gaza/summary</span>
+  <span class="desc">Cumulative Gaza summary (Tech4Palestine + MoH).</span></div>
+<div class="ep"><span class="pill get">GET</span><span class="path">https://api.zaidlab.xyz/api/v1/conflict/{type}</span>
+  <span class="desc">ACLED Palestine conflict events. Types: <code>political-violence | civilian-targeting | demonstrations</code>. Filters: <code>admin1</code>, <code>admin2</code>, <code>since=YYYY-MM</code>, <code>until=YYYY-MM</code>.</span></div>
+<div class="ep"><span class="pill get">GET</span><span class="path">https://api.zaidlab.xyz/api/v1/incidents/{category}</span>
+  <span class="desc">Insecurity Insight ~19k humanitarian incidents (healthcare/aid_worker/education/protection/food_water/explosive_weapons/sexual_violence). 1997-present.</span></div>
+<div class="ep"><span class="pill get">GET</span><span class="path">https://api.zaidlab.xyz/api/v1/displacement/{idmc|unhcr}</span>
+  <span class="desc">UNHCR POC stocks + IDMC IDP new-displacements time series.</span></div>
+<div class="ep"><span class="pill get">GET</span><span class="path">https://api.zaidlab.xyz/api/v1/indicators/{worldbank|fao}</span>
+  <span class="desc">World Bank socioeconomic + FAO DIEM household survey indicators.</span></div>
+<div class="ep"><span class="pill get">GET</span><span class="path">https://api.zaidlab.xyz/api/v1/response/{type}</span>
+  <span class="desc">OCHA Humanitarian Response Plan stack — projects + needs.</span></div>
+<div class="ep"><span class="pill get">GET</span><span class="path">https://api.zaidlab.xyz/api/v1/hapi/{dataset}</span>
+  <span class="desc">HDX HAPI — meta humanitarian API: 10 thematic datasets in one schema.</span></div>
+<div class="ep"><span class="pill get">GET</span><span class="path">https://api.zaidlab.xyz/api/v1/facilities/{health|education}</span>
+  <span class="desc">OSM + Global Healthsites facility points (cross-validated).</span></div>
+<div class="ep"><span class="pill get">GET</span><span class="path">https://api.zaidlab.xyz/api/v1/humanitarian/ipc</span>
+  <span class="desc">IPC food insecurity polygons + summary.</span></div>
+<div class="ep"><span class="pill get">GET</span><span class="path">https://api.zaidlab.xyz/api/v1/geo/admin/{admin1|admin2}</span>
+  <span class="desc">OCHA admin boundary GeoJSON (cod-ab-pse).</span></div>
+<div class="ep"><span class="pill get">GET</span><span class="path">https://api.zaidlab.xyz/api/v1/news</span>
+  <span class="desc">Aggregated news headlines (fair-use).</span></div>
+<div class="ep"><span class="pill get">GET</span><span class="path">https://api.zaidlab.xyz/api/v1/sources</span>
+  <span class="desc">Authoritative source registry — every upstream feed + freshness + cadence.</span></div>
+<div class="ep"><span class="pill get">GET</span><span class="path">https://api.zaidlab.xyz/api/v1/licenses</span>
+  <span class="desc">License registry per source — required attribution text.</span></div>
+
+<h2 id="quality">Quality / observability</h2>
+<p>Self-aware data — every classifier and corroboration loop is observable.</p>
+
+<div class="ep"><span class="pill get">GET</span><span class="path">https://api.zaidlab.xyz/api/v1/quality</span>
+  <span class="desc">Per-category freshness + coverage snapshot.</span></div>
+<div class="ep"><span class="pill get">GET</span><span class="path">https://wb-alerts.zaidlab.xyz/quality/corroboration?days=N</span>
+  <span class="desc">Per-type breakdown of historical-corroboration boost firings.</span></div>
+<div class="ep"><span class="pill get">GET</span><span class="path">https://wb-alerts.zaidlab.xyz/quality/anomalies?hours=N</span>
+  <span class="desc">A3 volume-anomaly detections (3σ vs trailing 24h baseline).</span></div>
+<div class="ep"><span class="pill get">GET</span><span class="path">https://wb-alerts.zaidlab.xyz/quality/retractions?days=N</span>
+  <span class="desc">Recent retractions + breakdown by reason (FP filter, admin verdict, retroactive sweep).</span></div>
+<div class="ep"><span class="pill get">GET</span><span class="path">https://wb-alerts.zaidlab.xyz/quality/eval</span>
+  <span class="desc">Public eval harness — runs ~92 FP/TP fixtures and reports pass/fail per bucket.</span></div>
+
+<h2 id="dashboards">Live dashboards (HTML)</h2>
+<div class="grid2">
+  <div class="card">
+    <h3>Live tracker</h3>
+    <p><a href="https://wb-alerts.zaidlab.xyz/tracker">https://wb-alerts.zaidlab.xyz/tracker</a></p>
+    <p>9 panels: ingest stats, by-type, by-source (alerts + checkpoints), geo coverage, historical corroboration, self-improvement loops with live anomaly count, currently-closed checkpoints, active multi-alert incidents with auto-narratives, recent retractions.</p>
+  </div>
+  <div class="card">
+    <h3>Live map</h3>
+    <p><a href="https://wb-alerts.zaidlab.xyz/map">https://wb-alerts.zaidlab.xyz/map</a></p>
+    <p>Leaflet — alert markers colored by trust_score, OCHA admin polygon overlays, 186 checkpoint rings colored by status, real-time WebSocket updates.</p>
+  </div>
+</div>
+
+<h2 id="ws">WebSocket / SSE</h2>
+<div class="ep"><span class="pill ws">WS</span><span class="path">wss://wb-alerts.zaidlab.xyz/ws</span>
+  <span class="desc">Real-time alert stream. Server pushes the full Alert JSON on each new alert + correction events <code>{event: "correction", alert: {...}}</code>.</span></div>
+<div class="ep"><span class="pill get">GET</span><span class="path">https://wb-alerts.zaidlab.xyz/stream</span>
+  <span class="desc">Server-Sent Events alternative (browser-friendly).</span></div>
+<div class="ep"><span class="pill ws">WS</span><span class="path">wss://wb-alerts.zaidlab.xyz/checkpoints/stream</span>
+  <span class="desc">Real-time checkpoint status changes.</span></div>
+
+<h2 id="snippets">Client snippets</h2>
+
+<h3>JavaScript / TypeScript</h3>
+<pre><code>// Fetch latest alerts
+const res = await fetch('https://wb-alerts.zaidlab.xyz/alerts/latest?limit=20');
+const alerts = await res.json();
+
+// Live map subscription
+const ws = new WebSocket('wss://wb-alerts.zaidlab.xyz/ws');
+ws.onmessage = (e) => {
+  const msg = JSON.parse(e.data);
+  const alert = msg.event === 'correction' ? msg.alert : msg;
+  // alert.latitude, alert.longitude, alert.trust_score, alert.severity
+  render(alert);
+};
+
+// Route safety
+const safety = await fetch('https://wb-alerts.zaidlab.xyz/route/check', {
+  method: 'POST',
+  headers: {'Content-Type': 'application/json'},
+  body: JSON.stringify({
+    waypoints: [[31.7683, 35.2137], [31.5326, 35.0998]],  // Jerusalem → Bethlehem
+    buffer_km: 3, since_hours: 6,
+  }),
+}).then(r => r.json());
+console.log(safety.advisory);  // "OK" | "CAUTION" | "AVOID"</code></pre>
+
+<h3>Python</h3>
+<pre><code>import requests, websocket, json
+
+# Cumulative Gaza summary
+r = requests.get('https://api.zaidlab.xyz/api/v1/gaza/summary').json()
+
+# All ACLED political-violence events for Hebron 2026
+events = requests.get(
+    'https://api.zaidlab.xyz/api/v1/conflict/political-violence',
+    params={'admin2': 'Hebron', 'since': '2026-01', 'limit': 1000}
+).json()
+
+# Real-time alert stream
+def on_message(ws, message):
+    msg = json.loads(message)
+    alert = msg['alert'] if msg.get('event') == 'correction' else msg
+    print(alert['type'], alert['area'], alert['confidence'])
+
+ws = websocket.WebSocketApp('wss://wb-alerts.zaidlab.xyz/ws', on_message=on_message)
+ws.run_forever()</code></pre>
+
+<h3>R / pandas</h3>
+<pre><code># R
+library(httr); library(jsonlite)
+df <- fromJSON('https://api.zaidlab.xyz/api/v1/unified/conflict?per_page=1000')$data
+
+# pandas
+import pandas as pd
+df = pd.read_json('https://api.zaidlab.xyz/api/v1/unified/conflict?per_page=1000')</code></pre>
+
+<h2>Attribution &amp; license</h2>
+<div class="warn">License is <strong>per-source</strong> — see <a href="https://api.zaidlab.xyz/api/v1/licenses">/api/v1/licenses</a>. Some sources (WHO, B'Tselem, certain news) are non-commercial. Each response includes provenance metadata.</div>
+
+<h2>Repositories</h2>
+<ul>
+  <li><a href="https://github.com/Zaidroid/palestine-data-backend">github.com/Zaidroid/palestine-data-backend</a> (this codebase)</li>
+</ul>
+
+</section>
+<footer>
+  <div class="wrap">
+    Open data + open source · Hosted at zaidlab.xyz · CORS allows all origins · Issues + PRs welcome on GitHub
+  </div>
+</footer>
+</body>
+</html>

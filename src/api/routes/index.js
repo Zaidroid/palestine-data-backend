@@ -100,6 +100,13 @@ router.use('/billing', billingRoutes);
 router.get('/categories', cache('10 minutes'), getCategories);
 router.get('/stats', cache('10 minutes'), getStats);
 
+// Human-friendly redirect for the integration guide. The HTML lives under
+// public/integrate.html (served by express.static); this route keeps the URL
+// memorable.
+router.get('/integrate', (req, res) => {
+    res.redirect(302, `${req.protocol}://${req.get('host')}/integrate.html`);
+});
+
 router.get('/', (req, res) => {
     const base = `${req.protocol}://${req.get('host')}/api/v1`;
     const docsBase = `${req.protocol}://${req.get('host')}`;
@@ -107,7 +114,8 @@ router.get('/', (req, res) => {
         name: 'Palestine Data API',
         description: 'Unified historical datasets + live operational alerts for Palestine.',
         version: '1.0',
-        repository: 'https://github.com/zaidsalem/palestine-data-backend',
+        repository: 'https://github.com/Zaidroid/palestine-data-backend',
+        integration_guide: `${docsBase}/integrate.html`,
         interactive_docs: `${docsBase}/api-docs/`,
         endpoints: {
             discovery: {
