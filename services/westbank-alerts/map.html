@@ -31,11 +31,15 @@
   </div>
   <div id="map"></div>
   <div class="legend">
-    <div style="font-weight:600;margin-bottom:6px;">Trust score</div>
+    <div style="font-weight:600;margin-bottom:6px;">Alerts (trust score)</div>
     <div class="row"><div class="swatch" style="background:#3ddc97"></div>≥ 0.85 (high)</div>
     <div class="row"><div class="swatch" style="background:#f5b454"></div>0.55 – 0.85 (medium)</div>
     <div class="row"><div class="swatch" style="background:#ef4444"></div>&lt; 0.55 (low)</div>
-    <div style="margin-top:8px;font-size:11px;color:#9aa0aa;">Last 24h · live updates via WebSocket</div>
+    <div style="font-weight:600;margin-top:8px;margin-bottom:4px;">Checkpoints</div>
+    <div class="row"><div class="swatch" style="background:#1f2937;border:2px solid #ef4444"></div>closed</div>
+    <div class="row"><div class="swatch" style="background:#1f2937;border:2px solid #f5b454"></div>restricted / police</div>
+    <div class="row"><div class="swatch" style="background:#1f2937;border:2px solid #3ddc97"></div>open</div>
+    <div style="margin-top:8px;font-size:11px;color:#9aa0aa;">Alerts: 24h · WS live · Checkpoints: 60s refresh</div>
   </div>
 <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
 <script>
@@ -158,7 +162,47 @@ function connectWS() {
   };
 }
 
+// Checkpoint overlay — render every checkpoint as a hollow ring colored by status.
+// Refreshed every 60s alongside the WS alert stream.
+const cpLayer = L.layerGroup().addTo(map);
+const CP_COLOR = {
+  closed: '#ef4444', blocked: '#ef4444', long_wait: '#ef4444',
+  restricted: '#f5b454', police: '#f5b454', limited: '#f5b454', search: '#f5b454', flying: '#f5b454',
+  open: '#3ddc97', clear: '#3ddc97', smooth: '#3ddc97',
+};
+async function loadCheckpoints() {
+  try {
+    const r = await fetch('/checkpoints/geojson');
+    if (!r.ok) return;
+    const fc = await r.json();
+    cpLayer.clearLayers();
+    for (const f of fc.features || []) {
+      const c = f.geometry?.coordinates;
+      if (!c || c.length < 2) continue;
+      const p = f.properties || {};
+      const color = CP_COLOR[(p.status || '').toLowerCase()] || '#9aa0aa';
+      const m = L.circleMarker([c[1], c[0]], {
+        radius: 7,
+        fillColor: '#1f2937',
+        color: color,
+        weight: 2,
+        fillOpacity: 0.9,
+      });
+      m.bindPopup(`<div>
+        <b>${esc(p.name_en || p.name_ar || p.canonical_key)}</b><br>
+        <span style="color:#9aa0aa;font-size:11px;">${esc(p.region || '?')}</span><br>
+        Status: <b style="color:${color}">${esc(p.status || '?')}</b><br>
+        <span style="font-size:11px;color:#9aa0aa;">updated: ${p.last_updated ? new Date(p.last_updated).toISOString().substr(0,16).replace('T',' ') + 'Z' : '?'} · ${esc(p.last_source_type || '?')}</span>
+      </div>`);
+      cpLayer.addLayer(m);
+    }
+  } catch (e) { /* silent */ }
+}
+function esc(s) { return s == null ? '' : String(s).replace(/[&<>]/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;'}[c])); }
+
 loadInitial().then(connectWS);
+loadCheckpoints();
+setInterval(loadCheckpoints, 60000);
 </script>
 </body>
 </html>

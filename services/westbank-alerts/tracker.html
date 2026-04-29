@@ -67,6 +67,11 @@
       <div id="loops"><span class="err">loading…</span></div>
     </div>
 
+    <div class="panel" style="grid-column: span 2;">
+      <h2>Closed Checkpoints (live)</h2>
+      <div id="closedCps"><span class="err">loading…</span></div>
+    </div>
+
     <div class="panel" style="grid-column: 1 / -1;">
       <h2>Recent Alerts</h2>
       <div id="recent"><span class="err">loading…</span></div>
@@ -121,12 +126,13 @@ async function loadAll() {
   // Pull data in parallel — alerts pipeline + checkpoints pipeline (the
   // primary source for live route-safety updates, which feed a separate DB
   // and weren't visible in the dashboard until /checkpoints/sources was added).
-  const [stats, alerts24h, corrob, cpSources, cpStats] = await Promise.allSettled([
+  const [stats, alerts24h, corrob, cpSources, cpStats, cpClosed] = await Promise.allSettled([
     jget('/stats'),
     jget('/alerts?per_page=200'),  // 200 = endpoint cap
     jget('/quality/corroboration?days=1'),
     jget('/checkpoints/sources?hours=24'),
     jget('/checkpoints/stats'),
+    jget('/checkpoints/closed'),
   ]);
   // /admin/anomalies requires X-API-Key — fall back silently in the public dashboard.
   const anomalies = { status: 'fulfilled', value: { anomalies: [] } };
@@ -249,6 +255,27 @@ async function loadAll() {
   ];
   document.getElementById('loops').innerHTML = loopRows.map(([k,v]) =>
     `<div class="stat"><span>${esc(k)}</span><span class="v">${v}</span></div>`).join('');
+
+  // === Closed checkpoints (current operational view) ===
+  safe('closedCps', () => {
+    if (cpClosed.status !== 'fulfilled') {
+      document.getElementById('closedCps').innerHTML = '<span class="err">/checkpoints/closed failed</span>';
+      return;
+    }
+    const cps = cpClosed.value.checkpoints || [];
+    cps.sort((a,b) => (b.last_updated || '').localeCompare(a.last_updated || ''));
+    const headerHtml = `<div class="stat"><span>total closed right now</span><span class="v">${cps.length}</span></div>`;
+    const tableEl = document.createElement('div');
+    renderTable(tableEl,
+      [{label:'name'},{label:'region'},{label:'updated'},{label:'source',right:false}],
+      cps.slice(0, 12).map(c => [
+        c.name_en || c.name_ar || c.canonical_key,
+        c.region || '-',
+        new Date(c.last_updated).toISOString().substr(11, 5) + 'Z',
+        c.last_source_type || '-',
+      ]));
+    document.getElementById('closedCps').innerHTML = headerHtml + tableEl.innerHTML;
+  });
 
   // === Recent alerts ===
   safe('recent', () => {
