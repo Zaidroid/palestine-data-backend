@@ -360,10 +360,26 @@ async def _process_checkpoint_message(message, channel_username: str):
             updates = parse_message(raw, is_admin=is_admin)
 
     if not updates:
-        log.debug(
-            f"[CHECKPOINT/NOMATCH] @{channel_username} msg={message.id}: "
-            f"{raw[:80]!r}"
-        )
+        # The message isn't a checkpoint status update — but checkpoint
+        # channels post "and more": road incidents, attacks near
+        # checkpoints, military movements. Run it through the alerts
+        # pipeline so that content surfaces too. Previously this was
+        # silently dropped (961 checkpoint updates per day from
+        # @ahwalaltreq alone — anything that wasn't a status update
+        # vanished).
+        if len(raw) >= 10:
+            log.debug(
+                f"[CHECKPOINT/NOMATCH→ALERTS] @{channel_username} msg={message.id}: "
+                f"{raw[:80]!r}"
+            )
+            ts = (message.date.replace(tzinfo=None) if message.date else datetime.utcnow())
+            await _process_text(
+                raw_text=raw,
+                source=channel_username,
+                external_id=message.id,
+                timestamp=ts,
+                source_type="telegram",
+            )
         return
 
     source_type = "admin" if is_admin else "crowd"
