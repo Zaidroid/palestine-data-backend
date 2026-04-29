@@ -1014,6 +1014,33 @@ async def admin_anomalies(
     return {"count": len(rows), "anomalies": rows, "window_hours": hours}
 
 
+@app.get("/quality/anomalies", tags=["quality"])
+async def public_anomalies(hours: int = Query(24, ge=1, le=168)):
+    """Public read-only view of A3 volume-anomaly detections in the last
+    `hours` window. Returns count + condensed details without auth so
+    dashboards/operators can verify the detector is firing without an
+    API key. Distinct from /admin/anomalies which can also trigger a
+    fresh check (admin-only)."""
+    from . import anomaly
+    rows = await anomaly.list_recent_anomalies(hours=hours)
+    return {
+        "count": len(rows),
+        "window_hours": hours,
+        "anomalies": [
+            {
+                "event_type": r.get("event_type"),
+                "source": r.get("source"),
+                "bucket_hour": r.get("bucket_hour"),
+                "count_1h": r.get("count_1h"),
+                "baseline_mean": r.get("baseline_mean"),
+                "sigma": r.get("sigma"),
+                "detected_at": r.get("detected_at"),
+            }
+            for r in rows
+        ],
+    }
+
+
 @app.get("/channel-reliability", tags=["alerts"])
 async def list_channel_reliability():
     """

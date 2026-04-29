@@ -131,7 +131,7 @@ async function loadAll() {
   // Pull data in parallel — alerts pipeline + checkpoints pipeline (the
   // primary source for live route-safety updates, which feed a separate DB
   // and weren't visible in the dashboard until /checkpoints/sources was added).
-  const [stats, alerts24h, corrob, cpSources, cpStats, cpClosed, incidents] = await Promise.allSettled([
+  const [stats, alerts24h, corrob, cpSources, cpStats, cpClosed, incidents, anomalies24h] = await Promise.allSettled([
     jget('/stats'),
     jget('/alerts?per_page=200'),  // 200 = endpoint cap
     jget('/quality/corroboration?days=1'),
@@ -139,6 +139,7 @@ async function loadAll() {
     jget('/checkpoints/stats'),
     jget('/checkpoints/closed'),
     jget('/incidents/live?limit=50'),
+    jget('/quality/anomalies?hours=24'),
   ]);
   // /admin/anomalies requires X-API-Key — fall back silently in the public dashboard.
   const anomalies = { status: 'fulfilled', value: { anomalies: [] } };
@@ -253,13 +254,19 @@ async function loadAll() {
 
   // === Self-improvement loops ===
   // Light-touch indicators — no DB introspection from browser, just hint at status
+  const a3Count = (anomalies24h.status === 'fulfilled' ? anomalies24h.value.count : null);
+  const a3Pill = a3Count == null
+    ? '<span class="pill warn">scheduled (count unknown)</span>'
+    : a3Count > 0
+      ? `<span class="pill warn">${a3Count} anomalies (24h)</span>`
+      : '<span class="pill ok">scheduled · 0 anomalies (24h)</span>';
   const loopRows = [
     ['B1 cross-channel corroboration', '<span class="pill ok">closed</span>'],
     ['Insecurity Insight historical', '<span class="pill ok">closed</span>'],
     ['ACLED elevated-volume', '<span class="pill ok">closed</span>'],
     ['A2 retraction → keyword overrides', '<span class="pill ok">closed (hourly)</span>'],
     ['B6 review queue auto-resolve', '<span class="pill ok">closed (hourly)</span>'],
-    ['A3 volume anomaly detection', '<span class="pill ok">scheduled (hourly)</span>'],
+    ['A3 volume anomaly detection', a3Pill],
     ['Channel reliability', '<span class="pill warn">static seed</span>'],
   ];
   document.getElementById('loops').innerHTML = loopRows.map(([k,v]) =>
