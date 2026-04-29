@@ -268,7 +268,100 @@ async def duplicate_check_cp(source_channel: str, msg_id: int, canonical_key: st
 
 # ── Write operations ──────────────────────────────────────────────────────────
 
+# Status / restriction / generic words that should never be a checkpoint name.
+# Matched against the normalized canonical_key and name_ar. Two layers:
+#  - EXACT_GARBAGE: drop iff canonical_key is exactly this (single-word ones
+#    are too dangerous to substring-match; "محسوم" alone is garbage but a
+#    legit checkpoint name might end with the substring innocently)
+#  - SUBSTRING_GARBAGE: drop if canonical_key contains this token as a
+#    standalone segment (between underscores)
+_EXACT_GARBAGE = {
+    "محسوم",                        # generic "barrier"
+    "كثافه_سير", "كثافة_سير",       # traffic congestion
+    "سالكات", "سالكه", "سالك",      # open/clear (status words alone)
+    "مغلقات", "مغلقه", "مغلق",      # closed (status words alone)
+    "للنمر_الصفراء_فقط",           # yellow plates only
+    "للنمر_الصفراء",
+    "انسحبو", "انسحب",              # "withdrew" — verb leaked as name
+    "تماما",                        # "completely" — adverb
+}
+
+# Substrings that, when appearing in the canonical_key (between word
+# boundaries), strongly indicate the parser captured status text.
+# These match concatenated-phrase garbage like "حزما_المعبر_كثافه_سير"
+# (Hizma crossing — traffic congestion) or "سالكات_تماما".
+_GARBAGE_TOKENS = (
+    "كثافه_سير", "كثافة_سير",
+    "_سالكات", "سالكات_",
+    "_مغلقات", "مغلقات_",
+    "_سالككك",                     # typo pattern (سالك + extra ك repetitions)
+    "_تماما",
+    "للنمر_الصفراء",
+)
+
+
+def _accept_checkpoint_name(upd: dict) -> bool:
+    """Return True if the parsed update should be persisted as a checkpoint.
+
+    Order of checks:
+      1. Whitelist (curated KB) wins — always accept.
+      2. Exact-garbage match → reject.
+      3. Substring-garbage token in canonical_key → reject.
+      4. Length sanity (1-char or 80+ char) → reject.
+      5. Otherwise accept.
+    """
+    key = upd.get("canonical_key", "") or ""
+    name = upd.get("name_raw", "") or ""
+
+    # 1. Whitelist short-circuit
+    try:
+        from .checkpoint_knowledge_base import get_knowledge_base
+        kb = get_knowledge_base()
+        if kb is not None and kb.is_known(key):
+            return True
+    except Exception:
+        pass
+
+    # 2. Exact garbage
+    if key in _EXACT_GARBAGE or name.strip() in _EXACT_GARBAGE:
+        return False
+
+    # 3. Substring garbage
+    for token in _GARBAGE_TOKENS:
+        if token in key:
+            return False
+
+    # 4. Sanity bounds — checkpoint names are usually 2-40 chars
+    if len(key) < 2 or len(key) > 80:
+        return False
+
+    return True
+
+
 async def insert_checkpoint_update(upd: dict) -> int:
+    """Insert a parsed update with smart accept/reject:
+
+      1. If canonical_key is in the curated whitelist → ACCEPT (always)
+      2. If name matches status-word / garbage patterns → REJECT
+         ("كثافة سير", "للنمر الصفراء فقط", "سالكات", "مغلقات",
+         "محسوم" alone, typo patterns like "سالككك", concatenated
+         phrases ending in status words)
+      3. Otherwise → ACCEPT (provisional — real places not yet in the
+         whitelist will accumulate and can be promoted later)
+
+    The garbage that prompted this gate (2026-04-29 user report):
+       'كثافة سير'         = 'traffic congestion'   (pure status)
+       'للنمر الصفراء فقط' = 'yellow plates only'   (restriction)
+       'محسوم'              = 'barrier'              (generic noun)
+       'سالكات تماما'      = 'all completely open'   (concatenated status)
+    """
+    if not _accept_checkpoint_name(upd):
+        log.debug(
+            f"[CP/REJECT-GARBAGE] {upd['canonical_key']!r} "
+            f"({upd.get('name_raw','')[:40]!r})"
+        )
+        return 0
+
     now = datetime.utcnow().isoformat()
     async with get_checkpoint_db() as db:
         await db.execute(
