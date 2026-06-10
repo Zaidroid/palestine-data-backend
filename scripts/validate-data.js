@@ -209,7 +209,7 @@ async function main() {
 
     for (const file of timeSeriesFiles) {
       const data = await readJSON(file);
-      if (data?.data) {
+      if (data?.data && Array.isArray(data.data)) {
         for (const record of data.data) {
           if (record.date) {
             if (isValidDate(record.date)) validDates++;
@@ -240,7 +240,7 @@ async function main() {
 
     // Test 7: Index Files
     console.log(`\n${colors.blue}=== Index File Tests ===${colors.reset}\n`);
-    const indexFiles = files.filter(f => f.endsWith('index.json') && !f.endsWith('search-index.json'));
+    const indexFiles = files.filter(f => f.endsWith('index.json') && !f.endsWith('search-index.json') && !f.endsWith('stable-id-index.json'));
 
     let validIndexes = 0;
     const failedIndexFiles = [];
@@ -296,8 +296,8 @@ async function main() {
       test('All Tech4Palestine martyrs files exist', filesExist.every(e => e));
     }
 
-    // Check Unified Martyrs
-    const unifiedMartyrsPath = path.join(DATA_DIR, 'unified/martyrs/all-data.json');
+    // Check Unified Martyrs (frozen snapshot category since the 2026 pivot)
+    const unifiedMartyrsPath = path.join(DATA_DIR, 'unified/martyrs_snapshot_2023/all-data.json');
     const unifiedMartyrsExists = await fs.access(unifiedMartyrsPath).then(() => true).catch(() => false);
     test('Unified martyrs data exists', unifiedMartyrsExists);
 
