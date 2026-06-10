@@ -28,7 +28,7 @@ echo "[deploy] bake src+scripts into palestine-api:latest and restart api"
 ssh "$HOST" "
     docker rm -f tmp-sc 2>/dev/null;
     docker run --name tmp-sc --entrypoint bash -v ${DEST}:/srcro:ro palestine-api:latest \
-        -c 'rm -rf /app/src /app/scripts && cp -r /srcro/src /app/src && cp -r /srcro/scripts /app/scripts' &&
+        -c 'rm -rf /app/src /app/scripts && cp -r /srcro/src /app/src && cp -r /srcro/scripts /app/scripts && cp /srcro/public/*.html /srcro/public/*.json /app/public/ 2>/dev/null; true' &&
     docker commit --change 'ENTRYPOINT [\"node\",\"src/api/server.js\"]' --change 'CMD []' tmp-sc palestine-api:latest >/dev/null &&
     docker rm tmp-sc >/dev/null &&
     cd ${DEST} && docker compose up -d --no-build --force-recreate api
