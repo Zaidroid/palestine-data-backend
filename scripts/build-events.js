@@ -79,55 +79,65 @@ async function main() {
     let placed = 0;
     let skipped = 0;
 
+    const addToCluster = (ck, kind, placeName, loc, week, cat, rec) => {
+        let cluster = clusters.get(ck);
+        if (!cluster) {
+            cluster = {
+                cluster_id: `ev-${crypto.createHash('sha256').update(ck).digest('hex').slice(0, 16)}`,
+                place_key: ck.split('|')[0],
+                place_kind: kind,
+                place_name: placeName,
+                admin1: loc.admin1 || null,
+                admin2: loc.admin2 || null,
+                week: week.key,
+                period: { start: week.start, end: week.end },
+                categories: [],
+                record_count: 0,
+                members: {},
+                aggregated: Object.fromEntries(METRIC_KEYS.map((k) => [k, 0])),
+            };
+            clusters.set(ck, cluster);
+        }
+        if (!cluster.members[cat]) {
+            cluster.members[cat] = [];
+            cluster.categories.push(cat);
+        }
+        cluster.members[cat].push({
+            stable_id: rec.stable_id,
+            date: rec.date,
+            event_type: rec.event_type || null,
+        });
+        cluster.record_count++;
+        for (const k of METRIC_KEYS) {
+            const v = rec.metrics?.[k];
+            if (typeof v === 'number' && Number.isFinite(v)) cluster.aggregated[k] += v;
+        }
+        if (!cluster.admin1 && loc.admin1) cluster.admin1 = loc.admin1;
+        if (!cluster.admin2 && loc.admin2) cluster.admin2 = loc.admin2;
+    };
+
     for (const cat of EVENT_CATEGORIES) {
         const records = await loadCategory(cat);
         for (const rec of records) {
             const loc = rec.location || {};
             const week = rec.date ? isoWeek(rec.date) : null;
-            const placeKey = loc.gazetteer_key || (loc.admin2 ? `admin2:${loc.admin2.toLowerCase()}` : null);
-            if (!week || !placeKey || !rec.stable_id) {
+            if (!week || !rec.stable_id || (!loc.gazetteer_key && !loc.admin2)) {
                 skipped++;
                 continue;
             }
             placed++;
 
-            const ck = `${placeKey}|${week.key}`;
-            let cluster = clusters.get(ck);
-            if (!cluster) {
-                cluster = {
-                    cluster_id: `ev-${crypto.createHash('sha256').update(ck).digest('hex').slice(0, 16)}`,
-                    place_key: placeKey,
-                    place_kind: loc.gazetteer_key ? 'gazetteer' : 'admin2',
-                    place_name: loc.gazetteer_key ? (loc.name || placeKey) : loc.admin2,
-                    admin1: loc.admin1 || null,
-                    admin2: loc.admin2 || null,
-                    week: week.key,
-                    period: { start: week.start, end: week.end },
-                    categories: [],
-                    record_count: 0,
-                    members: {},
-                    aggregated: Object.fromEntries(METRIC_KEYS.map((k) => [k, 0])),
-                };
-                clusters.set(ck, cluster);
+            // Two granularities, both useful: a precise place-level cluster
+            // ("Jenin camp, week 24") AND a governorate rollup ("Jenin
+            // governorate, week 24"). Records sit in both; rollups are where
+            // cross-dataset joins concentrate because every dataset resolves
+            // admin2 even when place spellings differ.
+            if (loc.gazetteer_key) {
+                addToCluster(`${loc.gazetteer_key}|${week.key}`, 'gazetteer', loc.name || loc.gazetteer_key, loc, week, cat, rec);
             }
-
-            if (!cluster.members[cat]) {
-                cluster.members[cat] = [];
-                cluster.categories.push(cat);
+            if (loc.admin2) {
+                addToCluster(`admin2:${loc.admin2.toLowerCase()}|${week.key}`, 'admin2', loc.admin2, loc, week, cat, rec);
             }
-            cluster.members[cat].push({
-                stable_id: rec.stable_id,
-                date: rec.date,
-                event_type: rec.event_type || null,
-            });
-            cluster.record_count++;
-            for (const k of METRIC_KEYS) {
-                const v = rec.metrics?.[k];
-                if (typeof v === 'number' && Number.isFinite(v)) cluster.aggregated[k] += v;
-            }
-            // Backfill admin fields when a later member has them
-            if (!cluster.admin1 && loc.admin1) cluster.admin1 = loc.admin1;
-            if (!cluster.admin2 && loc.admin2) cluster.admin2 = loc.admin2;
         }
     }
 
