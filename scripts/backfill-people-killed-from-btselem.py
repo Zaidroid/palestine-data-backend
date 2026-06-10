@@ -166,7 +166,10 @@ def main():
         print(f"FATAL: snapshot not found: {CSV_PATH}", file=sys.stderr)
         sys.exit(1)
 
-    conn = sqlite3.connect(args.db)
+    conn = sqlite3.connect(args.db, timeout=60)
+    # The live alerts service writes to this DB continuously (5s Telegram
+    # poll) — wait out its write locks instead of failing.
+    conn.execute("PRAGMA busy_timeout=60000")
     ensure_table(conn)
 
     with open(CSV_PATH, newline="", encoding="utf-8") as f:
