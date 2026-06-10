@@ -48,7 +48,7 @@ export function normalizeName(raw) {
         .replace(/[أإآ]/g, 'ا')
         .replace(/ة/g, 'ه')
         .replace(/ى/g, 'ي')
-        .replace(/[''`´]/g, "'")
+        .replace(/[''`´']/g, '') // apostrophes carry no signal: al-Shati' = al-Shati
         .replace(/[-_/]/g, ' ')
         .replace(/[.,()؛،]/g, ' ')
         .replace(/\s+/g, ' ')
@@ -118,14 +118,19 @@ function loadGazetteer() {
     const entries = JSON.parse(fs.readFileSync(GAZETTEER_PATH, 'utf-8'));
     const index = new Map();     // ambiguous region-level names excluded
     const indexAll = new Map();  // everything — used only for typed lookups ("Gaza town")
+    // Index both the name and its definite-article-stripped variant, so
+    // "Maghazi camp" finds the entry stored as "al-Maghazi Camp".
+    const keyVariants = (k) => (k.startsWith('al ') || k.startsWith('el ')) ? [k, k.slice(3)] : [k];
     const put = (key, entry) => {
-        const k = normalizeName(key);
-        if (!k) return;
-        // First writer wins; curated file lists curated entries before
-        // GeoNames merges, so curated names keep priority on collisions.
-        if (!indexAll.has(k)) indexAll.set(k, entry);
-        if (NON_SPECIFIC.has(k)) return;
-        if (!index.has(k)) index.set(k, entry);
+        const k0 = normalizeName(key);
+        if (!k0) return;
+        for (const k of keyVariants(k0)) {
+            // First writer wins; curated file lists curated entries before
+            // GeoNames merges, so curated names keep priority on collisions.
+            if (!indexAll.has(k)) indexAll.set(k, entry);
+            if (NON_SPECIFIC.has(k)) continue;
+            if (!index.has(k)) index.set(k, entry);
+        }
     };
     // Two phases: canonical keys and primary names first, aliases second —
     // an entry's own name must never be shadowed by another entry's alias
@@ -138,6 +143,10 @@ function loadGazetteer() {
     for (const e of entries) {
         for (const a of e.aliases || []) put(a, e);
     }
+    // POM modern layer: localities that still exist (change_2016 "Remaining"
+    // / "New locality"), consulted after the curated gazetteer — fills modern
+    // gaps like the Gaza camps (al-Shati, al-Maghazi) that GeoNames lacks.
+    const indexPomModern = new Map();
     // Historical layer: depopulated localities, consulted only when the
     // modern gazetteer has no match. Keys carry a _1948 suffix so consumers
     // can tell eras apart at a glance.
@@ -155,14 +164,38 @@ function loadGazetteer() {
             ...extra,
         };
         for (const n of [name_en, name_ar]) {
-            const k = normalizeName(n);
-            if (k && !index1948.has(k)) index1948.set(k, entry);
+            const k0 = normalizeName(n);
+            if (!k0) continue;
+            const variants = (k0.startsWith('al ') || k0.startsWith('el ')) ? [k0, k0.slice(3)] : [k0];
+            for (const k of variants) {
+                if (!index1948.has(k)) index1948.set(k, entry);
+            }
         }
     };
     try {
         const pom = JSON.parse(fs.readFileSync(POM_LOCALITIES_PATH, 'utf-8')).data || [];
         for (const v of pom) {
-            if (!/depopulated|abandoned/i.test(v.change_2016 || '')) continue;
+            if (!/depopulated|abandoned/i.test(v.change_2016 || '')) {
+                if (v.lat == null) continue;
+                const key = normalizeName(v.name_en || v.name_ar).replace(/\s+/g, '_');
+                const entry = {
+                    canonical_key: key,
+                    name_en: v.name_en,
+                    name_ar: v.name_ar,
+                    governorate: null,
+                    latitude: v.lat,
+                    longitude: v.lon,
+                    pom_id: v.pom_id,
+                };
+                for (const n of [v.name_en, v.name_ar]) {
+                    const k0 = normalizeName(n);
+                    if (!k0 || NON_SPECIFIC.has(k0)) continue;
+                    for (const k of keyVariants(k0)) {
+                        if (!indexPomModern.has(k)) indexPomModern.set(k, entry);
+                    }
+                }
+                continue;
+            }
             addHistorical(v.name_en, v.name_ar, v.lat, v.lon, { pom_id: v.pom_id });
         }
     } catch {
@@ -177,7 +210,7 @@ function loadGazetteer() {
         }
     }
 
-    GAZ_INDEX = { index, indexAll, index1948 };
+    GAZ_INDEX = { index, indexAll, indexPomModern, index1948 };
     return GAZ_INDEX;
 }
 
@@ -251,7 +284,7 @@ export function pointToAdmin(lat, lon) {
 export function resolveLocation(location) {
     if (!location || typeof location !== 'object') return null;
     const out = {};
-    const { index, indexAll, index1948 } = loadGazetteer();
+    const { index, indexAll, indexPomModern, index1948 } = loadGazetteer();
 
     let entry = null;
     const candidates = nameCandidates(location.name);
@@ -266,7 +299,7 @@ export function resolveLocation(location) {
             if (cand === candidates[0]) break;
             continue;
         }
-        entry = index.get(cand) || index1948.get(cand);
+        entry = index.get(cand) || indexPomModern.get(cand) || index1948.get(cand);
         if (entry) break;
     }
 
