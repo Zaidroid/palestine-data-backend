@@ -45,3 +45,4 @@ data/keys.db-wal
 temp_output*.txt
 test_output*.txt
 .kilo/
+.venv-test/
