@@ -79,6 +79,7 @@ run "historical"      node scripts/fetch-historical-data.js
 # Step 2: Unified pipeline (transforms raw -> /unified/ categories)
 echo "[step 2] unified pipeline" | tee -a "$LOG"
 run "populate-unified" node scripts/populate-unified-data.js
+run "attach-locations" node scripts/attach-locations.js
 
 # Step 3: Manifests + quality snapshot + derived artifacts
 echo "[step 3] manifests + quality" | tee -a "$LOG"

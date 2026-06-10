@@ -40,6 +40,12 @@ export function createEmptyRecord() {
       lat: null,
       lon: null,
       precision: 'unknown',
+      // Filled by scripts/attach-locations.js (post-pipeline sweep):
+      // shared geographic keys that make cross-category joins possible.
+      gazetteer_key: null,   // canonical key in the shared gazetteer
+      admin1: null,          // OCHA COD-AB: "West Bank" | "Gaza Strip"
+      admin2: null,          // OCHA COD-AB governorate name
+      admin2_pcode: null,    // OCHA pcode, e.g. "PS0101"
     },
 
     metrics: {

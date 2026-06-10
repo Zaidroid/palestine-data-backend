@@ -54,6 +54,8 @@ export async function getData(req, res) {
             limit = 50,
             location,
             region,
+            admin2,
+            gazetteer_key,
             event_type,
             start_date,
             end_date,
@@ -97,6 +99,17 @@ export async function getData(req, res) {
         if (region) {
             const r = region.toLowerCase();
             data = data.filter(item => (item.location?.region || '').toLowerCase().includes(r));
+        }
+
+        // Shared geographic keys stamped by attach-locations.js — exact match,
+        // these are controlled vocabularies (OCHA governorate / gazetteer key).
+        if (admin2) {
+            const a = admin2.toLowerCase();
+            data = data.filter(item => (item.location?.admin2 || '').toLowerCase() === a);
+        }
+
+        if (gazetteer_key) {
+            data = data.filter(item => item.location?.gazetteer_key === gazetteer_key);
         }
 
         if (event_type) {
