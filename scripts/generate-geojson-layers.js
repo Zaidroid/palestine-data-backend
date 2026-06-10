@@ -45,6 +45,9 @@ const CATEGORIES = [
     { name: 'economic', description: 'Economic indicators' },
     { name: 'culture', description: 'Cultural heritage sites' },
     { name: 'land', description: 'Settlements, checkpoints, and land status' },
+    { name: 'demolitions', description: 'Demolitions by locality (West Bank + East Jerusalem, OCHA)' },
+    { name: 'historical', description: 'Historical localities incl. Nakba depopulations (Palestine Open Maps)' },
+    { name: 'food', description: 'Food price monitoring markets (WFP)' },
 ];
 
 /**

@@ -749,6 +749,22 @@
         "ooni",
         "open observatory of network interference"
       ]
+    },
+    "anadolu": {
+      "name": "Anadolu Agency",
+      "organization": "Anadolu Agency",
+      "source_url": "https://www.aa.com.tr",
+      "license_id": "fair-use-headlines",
+      "attribution_text": "Headlines: Anadolu Agency (links to original).",
+      "redistribution_allowed": false,
+      "commercial_use": false,
+      "verify_required": false,
+      "aliases": [
+        "anadolu agency",
+        "anadolu agency (middle east)",
+        "anadolu agency middle east",
+        "anadolu"
+      ]
     }
   }
 }
