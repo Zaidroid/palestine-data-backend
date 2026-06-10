@@ -42,28 +42,32 @@ Commercial surface (Stripe, billing, API-key tiers) is scaffolded but
 
 ## Data catalog
 
-14 unified categories, **196,355 records** (measured from
-`unified-manifest.json`, 2026-06-10 pipeline run). Every response carries
-freshness metadata and a `Warning: 299` header when the category has not
-updated in 90+ days. Counts below are regenerated nightly — treat the
-manifest, not this table, as the source of truth between doc updates.
+14 unified categories, **131,630 unique records** (measured from
+`unified-manifest.json`, 2026-06-10 pipeline run, after content-identical
+deduplication — overlapping upstream dataset packages used to inflate raw
+row counts ~1.6x). Every record carries a deterministic `stable_id` and
+shared geographic keys (`gazetteer_key`, OCHA `admin1`/`admin2`/pcode) where
+resolvable. Every response carries freshness metadata and a `Warning: 299`
+header when the category has not updated in 90+ days. Counts below are
+regenerated nightly — treat the manifest, not this table, as the source of
+truth between doc updates.
 
 | Category | Records | Source(s) | License | Status |
 |:--|--:|:--|:--|:--|
-| **Water / WASH** | 71,969 | HDX WASH Cluster (OCHA) | CC-BY | live-daily |
 | **Martyrs (snapshot)** | 60,200 | Tech4Palestine | CC-BY-4.0 | snapshot + live summary (60,199 named + 1 cumulative summary carrying current MoH totals) |
-| **Health** | 38,463 | WHO GHO, HDX, Good Shepherd | CC-BY-NC-SA | live-daily, non-commercial only |
-| **Funding** | 9,489 | UN OCHA Financial Tracking Service | CC-BY-IGO-3.0 | live-daily (2013 → present) |
-| **Economic** | 3,489 | World Bank, IMF | Public | live-weekly (1960 → present) |
+| **Water / WASH** | 24,778 | HDX WASH Cluster (OCHA) | CC-BY | live-daily |
+| **Health** | 12,132 | WHO GHO, HDX, Good Shepherd | CC-BY-NC-SA | live-daily, non-commercial only |
+| **Conflict** | 9,908 | UCDP, Tech4Palestine, OCHA, B'Tselem | Mixed (CC-BY / CC-BY-NC) | live-daily (1989 → present, geocoded) |
+| **Funding** | 9,492 | UN OCHA Financial Tracking Service | CC-BY-IGO-3.0 | live-daily (2013 → present) |
+| **Economic** | 3,963 | World Bank, IMF | Public | live-weekly (1960 → present) |
 | **West Bank layers** | 2,962 | HDX (schools, villages, barrier) | CC-BY | live-daily |
 | **Education** | 2,359 | HDX | CC-BY | live-daily |
-| **Conflict** | 2,354 | Tech4Palestine, OCHA, B'Tselem | Mixed (CC-BY / CC-BY-NC) | live-daily (2000 → present) |
 | **PCBS** | 2,038 | Palestinian Central Bureau of Statistics | Public | live-weekly (1960 → present) |
+| **Infrastructure damage** | 1,333 | Tech4Palestine | CC-BY | live-daily (Oct 2023 → present) |
 | **Refugees** | 1,230 | UNHCR ODP + UNRWA camps | CC-BY-4.0 / CC-BY-SA | live-daily (2010 → present) |
-| **Land** | 702 | OCHA, B'Tselem, Peace Now | Mixed | live-daily |
-| **Infrastructure damage** | 603 | Tech4Palestine | CC-BY | live-daily |
+| **Land** | 700 | OCHA, B'Tselem, Peace Now | Mixed | live-daily |
 | **Culture** | 327 | UNESCO, Wikidata | CC0 / CC-BY | live-daily (upstream SPARQL occasionally flaky; last-good kept) |
-| **News** | 170 | Al Jazeera, MEE, MEMonitor, BBC ME, ToI, Haaretz, EI, Mondoweiss, ReliefWeb, Amnesty, HRW | Fair-use (non-redistributable) | live (25-min collector) |
+| **News** | 208 | Al Jazeera, MEE, MEMonitor, BBC ME, ToI, Haaretz, EI, Mondoweiss, ReliefWeb, Amnesty, HRW | Fair-use (non-redistributable) | live (25-min collector) |
 
 Known degraded source: the Addameer prisoners dashboard
 (`fetch-prisoners.js`) is currently unreachable upstream — the `prisoners`
