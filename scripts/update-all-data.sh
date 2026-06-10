@@ -61,6 +61,11 @@ run_tolerated() {
 # report itself; partial upstream failures are tolerated here).
 run_tolerated "Step 1: Fetching data from all sources" npm run fetch:all
 
+# Step 1b: Enrichment sources consumed by the transformer from
+# public/data/static/ (UN OCHA FTS funding, UNHCR refugee registrations).
+run_tolerated "Step 1b: Fetching UN FTS funding flows" node scripts/sources/unfts.js
+run_tolerated "Step 1c: Fetching UNHCR refugee data" node scripts/sources/unhcr.js
+
 # Step 2: Transform raw data to the unified canonical schema.
 run_fatal "Step 2: Transforming to unified format" npm run transform
 
