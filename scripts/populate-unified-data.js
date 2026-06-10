@@ -2986,22 +2986,54 @@ async function processStaticRefugeesData() {
             return;
         }
 
-        const results = await pipeline.process(
-            mappedRecords,
-            { source: 'UNHCR + UNRWA', category: 'refugees', source_url: 'https://api.unhcr.org/population/v1/population/' },
-            transformer,
-            { enrich: true, validate: true, partition: true, outputDir: path.join(UNIFIED_DIR, 'refugees') }
-        );
+        // Process the two sources SEPARATELY so each record carries honest
+        // per-record attribution — the shared RefugeeTransformer otherwise
+        // stamps everything with its generic HDX source, which breaks both
+        // citations and license filtering (UNHCR ODP is CC-BY-4.0).
+        const UNRWA_SOURCE = {
+            name: 'UNRWA camp registry',
+            organization: 'UNRWA (via Wikipedia camp registry)',
+            url: 'https://www.unrwa.org/where-we-work',
+            license: 'CC-BY-SA-3.0',
+        };
+        const UNHCR_SOURCE = {
+            name: 'UNHCR Operational Data Portal',
+            organization: 'UNHCR',
+            url: 'https://api.unhcr.org/population/v1/population/',
+            license: 'CC-BY-4.0',
+        };
 
-        if (results.success) {
+        const batches = [
+            { rows: mappedRecords.filter((r) => r.type === 'camp_population'), src: UNRWA_SOURCE },
+            { rows: mappedRecords.filter((r) => r.type === 'cross-border_refugees'), src: UNHCR_SOURCE },
+        ];
+
+        const allEnriched = [];
+        for (const { rows, src } of batches) {
+            if (rows.length === 0) continue;
+            const results = await pipeline.process(
+                rows,
+                { source: src.name, organization: src.organization, category: 'refugees', source_url: src.url },
+                transformer,
+                { enrich: true, validate: true, partition: false, outputDir: path.join(UNIFIED_DIR, 'refugees') }
+            );
+            if (results.success) {
+                for (const rec of results.enriched || []) {
+                    rec.sources = [{ ...src, fetched_at: new Date().toISOString() }];
+                    allEnriched.push(rec);
+                }
+            }
+        }
+
+        if (allEnriched.length > 0) {
             const outPath = path.join(UNIFIED_DIR, 'refugees', 'all-data.json');
             await fs.mkdir(path.dirname(outPath), { recursive: true });
             await fs.writeFile(
                 outPath,
                 JSON.stringify({
-                    data: results.enriched || [],
+                    data: allEnriched,
                     metadata: {
-                        total_records: results.stats.recordCount,
+                        total_records: allEnriched.length,
                         generated_at: new Date().toISOString(),
                         sources: [
                             { name: 'UNHCR Operational Data Portal', records: unhcrCount, license: 'CC-BY-4.0' },
@@ -3013,7 +3045,7 @@ async function processStaticRefugeesData() {
                 }, null, 2),
                 'utf-8'
             );
-            logger.success(`Processed ${results.stats.recordCount} refugee records (UNHCR ${unhcrCount} + UNRWA ${unrwaCount})`);
+            logger.success(`Processed ${allEnriched.length} refugee records (UNHCR ${unhcrCount} + UNRWA ${unrwaCount})`);
         }
     } catch (e) {
         logger.warn('Error processing refugees data:', e.message);
