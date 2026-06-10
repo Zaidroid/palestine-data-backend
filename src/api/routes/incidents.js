@@ -41,6 +41,10 @@ const ALT_SOURCES = {
         'insecurity_insight': 'incidents-aid-worker.json',
         'awsd':               'incidents-aid-worker-awsd.json',
     },
+    'healthcare': {
+        'insecurity_insight': 'incidents-healthcare.json',
+        'who_ssa':            'incidents-healthcare-who-ssa.json',
+    },
 };
 
 async function loadShard(category, source) {

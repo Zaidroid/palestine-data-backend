@@ -1,6 +1,28 @@
 import fs from 'fs';
 import path from 'path';
 import { fileURLToPath } from 'url';
+// addameer.ps periodically serves an expired TLS cert (e.g. expired 2026-03-23,
+// unrenewed). When the direct fetch fails, fall back to the latest Wayback
+// Machine snapshot — same page over valid TLS; data is monthly so a snapshot
+// a few weeks old is acceptable.
+async function fetchStatisticsHtml() {
+    const directUrl = 'https://www.addameer.ps/statistics';
+    try {
+        const response = await fetch(directUrl);
+        if (!response.ok) throw new Error(`Failed to fetch: ${response.status} ${response.statusText}`);
+        return { html: await response.text(), via: 'direct' };
+    } catch (err) {
+        console.warn(`Direct fetch failed (${err.cause?.code || err.message}); trying Wayback snapshot...`);
+        const avail = await fetch('https://archive.org/wayback/available?url=addameer.ps/statistics');
+        const closest = (await avail.json())?.archived_snapshots?.closest;
+        if (!closest?.available) throw err;
+        const snapUrl = closest.url.replace(/^http:/, 'https:');
+        const response = await fetch(snapUrl);
+        if (!response.ok) throw new Error(`Wayback fetch failed: ${response.status}`);
+        console.log(`Using Wayback snapshot ${closest.timestamp}`);
+        return { html: await response.text(), via: `wayback_${closest.timestamp}` };
+    }
+}
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
@@ -26,11 +48,7 @@ function monthToDate(label) {
 
 async function fetchAddameerData() {
     console.log('Fetching Addameer statistics...');
-    const response = await fetch('https://www.addameer.ps/statistics');
-    if (!response.ok) {
-        throw new Error(`Failed to fetch: ${response.status} ${response.statusText}`);
-    }
-    const html = await response.text();
+    const { html } = await fetchStatisticsHtml();
 
     const records = [];
     const seen = new Set();

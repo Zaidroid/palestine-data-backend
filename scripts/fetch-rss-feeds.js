@@ -310,6 +310,62 @@ async function fetchRSSFeed(feed) {
 }
 
 /**
+ * Append articles to the permanent monthly archive.
+ * Files: public/data/news/archive/YYYY-MM.json, deduped by guid||link.
+ */
+async function archiveArticles(articles) {
+    const archiveDir = path.join(DATA_DIR, 'archive');
+    await ensureDir(archiveDir);
+
+    // Bucket by publication month (fallback: fetch month).
+    const byMonth = {};
+    for (const a of articles) {
+        const d = new Date(a.pubDate || a.fetchedAt);
+        if (isNaN(d)) continue;
+        const month = d.toISOString().slice(0, 7);
+        if (!byMonth[month]) byMonth[month] = [];
+        byMonth[month].push({
+            title: a.title,
+            link: a.link,
+            pubDate: a.pubDate,
+            guid: a.guid,
+            source: a.source,
+            articleCategory: a.articleCategory,
+        });
+    }
+
+    let added = 0;
+    for (const [month, monthArticles] of Object.entries(byMonth)) {
+        const filePath = path.join(archiveDir, `${month}.json`);
+        let existing = [];
+        try {
+            existing = JSON.parse(await fs.readFile(filePath, 'utf-8')).articles || [];
+        } catch {}
+
+        const seen = new Set(existing.map(a => a.guid || a.link));
+        const fresh = monthArticles.filter(a => {
+            const key = a.guid || a.link;
+            if (!key || seen.has(key)) return false;
+            seen.add(key);
+            return true;
+        });
+        if (fresh.length === 0) continue;
+
+        const merged = [...existing, ...fresh]
+            .sort((a, b) => new Date(b.pubDate || 0) - new Date(a.pubDate || 0));
+        await writeJSON(filePath, {
+            month,
+            count: merged.length,
+            updatedAt: new Date().toISOString(),
+            notice: 'Headlines and URLs only (fair use); append-only archive.',
+            articles: merged,
+        });
+        added += fresh.length;
+    }
+    await logger.info(`Archive: +${added} new headlines across ${Object.keys(byMonth).length} month file(s)`);
+}
+
+/**
  * Main function
  */
 async function fetchRSSFeeds() {
@@ -362,6 +418,12 @@ async function fetchRSSFeeds() {
         });
         await logger.info(`${category}: ${articles.length} articles`);
     }
+
+    // Append to permanent monthly archive (headlines + URLs only — fair-use
+    // safe). all-articles.json is a rolling window that loses anything which
+    // drops off a feed; the archive keeps every headline ever seen, deduped
+    // by guid/link, bucketed by publication month.
+    await archiveArticles(allArticles);
 
     // Save recent (last 24 hours)
     const oneDayAgo = new Date(Date.now() - 24 * 60 * 60 * 1000);

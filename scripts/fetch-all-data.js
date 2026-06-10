@@ -452,29 +452,28 @@ async function saveTech4PalestineData(data) {
       source: 'tech4palestine',
     }));
 
-    // Partition by quarter (will all go to 2023-Q4 if we use 2023-10-07, 
-    // but maybe we should partition by something else? 
-    // For now, let's just dump them all in one or a few files.
-    // Actually, partitionByQuarter uses 'date'.
+    // Records carry date=null (T4P publishes no per-record death date), so
+    // date-based partitioning would drop everything — partitionByQuarter
+    // skips dateless records. Chunk by fixed size instead.
+    const CHUNK_SIZE = 10000;
+    const chunks = {};
+    for (let i = 0; i < normalized.length; i += CHUNK_SIZE) {
+      const name = `roster-${String(i / CHUNK_SIZE).padStart(3, '0')}`;
+      chunks[name] = normalized.slice(i, i + CHUNK_SIZE);
+    }
 
-    // To avoid one giant file, maybe we can artificially partition by ID or just use the default date?
-    // 60k records in one file is ~10-20MB. It's manageable but not ideal for frontend.
-    // Let's stick to the default date for now, it will create one large partition.
-
-    const quarters = partitionByQuarter(normalized);
-
-    for (const [quarter, quarterData] of Object.entries(quarters)) {
-      await writeJSON(path.join(killedPath, `${quarter}.json`), {
+    for (const [chunkName, chunkData] of Object.entries(chunks)) {
+      await writeJSON(path.join(killedPath, `${chunkName}.json`), {
         metadata: {
           source: 'tech4palestine',
           dataset: 'killed-in-gaza',
-          quarter,
-          record_count: quarterData.length,
+          chunk: chunkName,
+          record_count: chunkData.length,
           last_updated: new Date().toISOString(),
         },
-        data: quarterData,
+        data: chunkData,
       });
-      console.log(`  ✓ Saved killed-in-gaza/${quarter}.json (${quarterData.length} records)`);
+      console.log(`  ✓ Saved killed-in-gaza/${chunkName}.json (${chunkData.length} records)`);
     }
 
     // Save index
@@ -485,10 +484,10 @@ async function saveTech4PalestineData(data) {
         end: new Date().toISOString().split('T')[0],
         baseline_date: BASELINE_DATE,
       },
-      files: Object.keys(quarters).sort().map(q => ({
-        file: `${q}.json`,
-        quarter: q,
-        records: quarters[q].length,
+      files: Object.keys(chunks).sort().map(c => ({
+        file: `${c}.json`,
+        chunk: c,
+        records: chunks[c].length,
       })),
       last_updated: new Date().toISOString(),
     });

@@ -38,6 +38,17 @@ import { HistoricalTransformer } from './utils/historical-transformer.js';
 import { GoodShepherdTransformer } from './utils/goodshepherd-transformer.js';
 import { WHOHealthTransformer } from './utils/who-health-transformer.js';
 import { FundingTransformer } from './utils/funding-transformer.js';
+import { FoodPricesTransformer } from './utils/food-prices-transformer.js';
+import { ConnectivityTransformer } from './utils/connectivity-transformer.js';
+import { PomPlacesTransformer } from './utils/pom-places-transformer.js';
+import { AidAccessTransformer } from './utils/aid-access-transformer.js';
+import { DocumentsTransformer } from './utils/documents-transformer.js';
+import { CasualtiesTransformer } from './utils/casualties-transformer.js';
+import { DemolitionsTransformer } from './utils/demolitions-transformer.js';
+import { SettlementsTransformer } from './utils/settlements-transformer.js';
+import { HamokedTransformer } from './utils/hamoked-transformer.js';
+import { PcbsIndicatorsTransformer } from './utils/pcbs-indicators-transformer.js';
+import { OoniTransformer } from './utils/ooni-transformer.js';
 import { UnifiedPipeline } from './utils/unified-pipeline.js';
 import { validateDataset } from './utils/data-validator.js';
 
@@ -2595,6 +2606,8 @@ async function main() {
         'economic', 'conflict', 'infrastructure', 'education', 'health',
         'water', 'refugees', 'martyrs_snapshot_2023', 'news', 'culture',
         'land', 'westbank', 'pcbs', 'prisoners',
+        'food', 'connectivity', 'historical', 'aid_access', 'documents',
+        'casualties', 'demolitions', 'settlements',
     ];
     for (const cat of categories) {
         await fs.mkdir(path.join(UNIFIED_DIR, cat), { recursive: true });
@@ -2605,10 +2618,14 @@ async function main() {
         { name: 'economic',            fn: processEconomicData },
         { name: 'conflict',            fn: processConflictData },
         { name: 'ucdp_conflict',       fn: processUCDPConflict },
-        { name: 'infrastructure_t4p',  fn: processTech4PalestineInfrastructure },
         { name: 'press',               fn: processPressData },
         { name: 'martyrs',             fn: processMartyrsData },
         { name: 'hdx',                 fn: processHDXData },
+        // Infrastructure ordering: 'hdx' (above) writes the clean slate for
+        // unified/infrastructure; these two MERGE on top of it. 'unosat_damage'
+        // (end of list) merges last.
+        { name: 'infrastructure',      fn: processInfrastructureData },
+        { name: 'infrastructure_t4p',  fn: processTech4PalestineInfrastructure },
         { name: 'who',                 fn: processWHOData },
         { name: 'pcbs',                fn: processPCBSData },
         { name: 'goodshepherd_health', fn: processGoodShepherdHealthcare },
@@ -2624,7 +2641,24 @@ async function main() {
         { name: 'westbank',            fn: processWestBankData },
         { name: 'btselem',             fn: processBtselemData },
         { name: 'water',               fn: processWaterData },
-        { name: 'infrastructure',      fn: processInfrastructureData },
+        { name: 'food',                fn: processFoodPricesData },
+        { name: 'connectivity',        fn: processConnectivityData },
+        { name: 'connectivity_ooni',   fn: processOoniData },
+        // 'historical' (curated 1948-2023 events) must run BEFORE
+        // 'historical_pom' — same clean-slate-then-merge pattern as infrastructure.
+        { name: 'historical',          fn: processHistoricalData },
+        { name: 'historical_pom',      fn: processPomPlacesData },
+        { name: 'aid_access',          fn: processAidAccessData },
+        { name: 'documents',           fn: processDocumentsData },
+        { name: 'casualties',          fn: processCasualtiesData },
+        { name: 'demolitions',         fn: processDemolitionsData },
+        { name: 'settlements',         fn: processSettlementsData },
+        // Merge-on-disk: must run after their base-category writers
+        // ('prisoners' = Addameer, 'economic' = World Bank).
+        { name: 'hamoked',             fn: processHamokedData },
+        { name: 'pcbs_indicators',     fn: processPcbsIndicatorsData },
+        // After all infrastructure writers (merges on disk).
+        { name: 'unosat_damage',       fn: processUnosatDamage },
     ];
 
     // Per-category failure isolation with timing
@@ -2643,6 +2677,11 @@ async function main() {
             'funding': 'funding',
             'btselem': 'conflict',
             'martyrs': 'martyrs_snapshot_2023',
+            'historical_pom': 'historical',
+            'unosat_damage': 'infrastructure',
+            'hamoked': 'prisoners',
+            'pcbs_indicators': 'economic',
+            'connectivity_ooni': 'connectivity',
         };
         const dirName = nameMap[categoryName] !== undefined ? nameMap[categoryName] : categoryName;
         if (!dirName) return null;
@@ -2916,6 +2955,306 @@ async function processFundingData() {
         }
     } catch (e) {
         logger.warn('Error processing UN FTS funding data:', e.message);
+    }
+}
+
+/**
+ * Generic processor for fetcher-envelope sources ({ source, source_url,
+ * license, data: [...] } JSON written by scripts/sources/*). Used by the
+ * 2026-06 source expansion (food, connectivity, historical, aid_access,
+ * documents) — same fetch→transform→write shape as processFundingData.
+ */
+async function processEnvelopeSource({ label, relPath, category, transformer, sourceName, organization, sourceUrl, license, notice, mergeOnDisk = false }) {
+    logger.info(`Processing ${label}...`);
+    try {
+        const filePath = path.join(DATA_DIR, relPath);
+        let envelope;
+        try {
+            envelope = JSON.parse(await fs.readFile(filePath, 'utf-8'));
+        } catch (e) {
+            logger.warn(`${label} snapshot unavailable (${relPath}):`, e.message);
+            return;
+        }
+        const records = Array.isArray(envelope) ? envelope : (envelope.data || []);
+        if (records.length === 0) {
+            logger.warn(`No ${label} records on disk; skipping`);
+            return;
+        }
+
+        const pipeline = new UnifiedPipeline({ logger });
+        const outputDir = path.join(UNIFIED_DIR, category);
+        const results = await pipeline.process(
+            records,
+            {
+                source: sourceName,
+                organization,
+                category,
+                source_url: envelope.source_url || sourceUrl,
+                license: envelope.license || license,
+            },
+            transformer,
+            { enrich: true, validate: true, partition: records.length > 5000, outputDir }
+        );
+
+        if (results.success) {
+            let enriched = results.enriched || [];
+            await fs.mkdir(outputDir, { recursive: true });
+            if (mergeOnDisk) {
+                // Earlier task in the same run owns the clean-slate write;
+                // we append (same pattern as the infrastructure tasks).
+                try {
+                    const existing = JSON.parse(
+                        await fs.readFile(path.join(outputDir, 'all-data.json'), 'utf-8')).data || [];
+                    enriched = [...existing, ...enriched];
+                } catch {}
+            }
+            await fs.writeFile(
+                path.join(outputDir, 'all-data.json'),
+                JSON.stringify({
+                    data: enriched,
+                    metadata: {
+                        total_records: enriched.length,
+                        generated_at: new Date().toISOString(),
+                        source: sourceName,
+                        source_url: envelope.source_url || sourceUrl,
+                        category,
+                        ...(notice ? { notice } : {}),
+                        sources: [{ name: sourceName, records: enriched.length, license: envelope.license || license }],
+                    },
+                }, null, 2),
+                'utf-8',
+            );
+            await fs.writeFile(
+                path.join(outputDir, 'metadata.json'),
+                JSON.stringify({
+                    category,
+                    total_records: enriched.length,
+                    last_updated: new Date().toISOString(),
+                    ...(notice ? { notice } : {}),
+                    sources: [sourceName],
+                }, null, 2),
+                'utf-8',
+            );
+            logger.success(`Processed ${enriched.length} ${label} records`);
+        }
+    } catch (e) {
+        logger.warn(`Error processing ${label}:`, e.message);
+    }
+}
+
+const processFoodPricesData = () => processEnvelopeSource({
+    label: 'WFP food prices',
+    relPath: 'static/wfp-food-prices.json',
+    category: 'food',
+    transformer: new FoodPricesTransformer(),
+    sourceName: 'WFP Food Prices',
+    organization: 'World Food Programme',
+    sourceUrl: 'https://data.humdata.org/dataset/wfp-food-prices-for-state-of-palestine',
+    license: 'CC-BY-IGO',
+});
+
+const processConnectivityData = () => processEnvelopeSource({
+    label: 'IODA connectivity',
+    relPath: 'connectivity/ioda-outages.json',
+    category: 'connectivity',
+    transformer: new ConnectivityTransformer(),
+    sourceName: 'IODA',
+    organization: 'Internet Intelligence Lab, Georgia Tech',
+    sourceUrl: 'https://ioda.inetintel.cc.gatech.edu/country/PS',
+    license: 'free-with-attribution',
+});
+
+const processOoniData = () => processEnvelopeSource({
+    label: 'OONI censorship',
+    relPath: 'connectivity/ooni-censorship.json',
+    category: 'connectivity',
+    transformer: new OoniTransformer(),
+    sourceName: 'OONI',
+    organization: 'Open Observatory of Network Interference',
+    sourceUrl: 'https://explorer.ooni.org/country/PS',
+    license: 'free-with-attribution',
+    notice: 'Daily web-censorship measurements (anomaly/confirmed-blocked); complements IODA outage events.',
+    mergeOnDisk: true, // appends to the IODA-written connectivity all-data.json
+});
+
+const processPomPlacesData = () => processEnvelopeSource({
+    label: 'Palestine Open Maps localities',
+    relPath: 'historical/palopenmaps-places.json',
+    category: 'historical',
+    transformer: new PomPlacesTransformer(),
+    sourceName: 'Palestine Open Maps',
+    organization: 'Palestine Open Maps (Visualizing Palestine)',
+    sourceUrl: 'https://github.com/PalOpenMaps/pom-data',
+    license: 'verify-required',
+    notice: 'Mandate-era censuses (1922/1931/1945) + Nakba depopulation status per locality. ' +
+        'Attribution-required (Abu Sitta / Zochrot / PalestineRemembered); verify before commercial redistribution.',
+    mergeOnDisk: true, // 'historical' task writes the curated 1948-2023 events first
+});
+
+const processAidAccessData = () => processEnvelopeSource({
+    label: 'UNRWA aid trucks',
+    relPath: 'static/unrwa-aid-trucks.json',
+    category: 'aid_access',
+    transformer: new AidAccessTransformer(),
+    sourceName: 'UNRWA Gaza Supply and Logistics dashboard',
+    organization: 'UNRWA',
+    sourceUrl: 'https://data.humdata.org/dataset/state-of-palestine-gaza-aid-truck-data',
+    license: 'CC-BY',
+    notice: 'Discontinued upstream 2025-01-16; records after 2024-05-05 are partial (see source disclaimer).',
+});
+
+const processDocumentsData = () => processEnvelopeSource({
+    label: 'ReliefWeb documents',
+    relPath: 'documents/reliefweb-reports.json',
+    category: 'documents',
+    transformer: new DocumentsTransformer(),
+    sourceName: 'ReliefWeb',
+    organization: 'OCHA',
+    sourceUrl: 'https://reliefweb.int/updates?advanced-search=%28C181%29',
+    license: 'metadata-free-with-attribution',
+});
+
+const processCasualtiesData = () => processEnvelopeSource({
+    label: 'OCHA casualties',
+    relPath: 'static/ocha-casualties.json',
+    category: 'casualties',
+    transformer: new CasualtiesTransformer(),
+    sourceName: 'UN OCHA oPt — Data on Casualties',
+    organization: 'UN OCHA (B\'Tselem data)',
+    sourceUrl: 'https://www.ochaopt.org/data/casualties',
+    license: 'verify-required',
+    notice: 'B\'Tselem-verified Palestinian fatalities 2008+, West Bank + Gaza. ' +
+        'Verified individual counts (lower than MoH bulletin totals); annual + region/governorate/demographic/weapon breakdowns.',
+});
+
+const processDemolitionsData = () => processEnvelopeSource({
+    label: 'OCHA demolitions',
+    relPath: 'static/ocha-demolitions.json',
+    category: 'demolitions',
+    transformer: new DemolitionsTransformer(),
+    sourceName: 'UN OCHA oPt — Data on Demolitions',
+    organization: 'UN OCHA oPt',
+    sourceUrl: 'https://www.ochaopt.org/data/demolition',
+    license: 'verify-required',
+    notice: 'West Bank + East Jerusalem demolitions 2009+; per-locality totals (geocoded) + annual series.',
+});
+
+const processSettlementsData = () => processEnvelopeSource({
+    label: 'Peace Now settlements',
+    relPath: 'static/peacenow-settlers.json',
+    category: 'settlements',
+    transformer: new SettlementsTransformer(),
+    sourceName: 'Peace Now — Settlement Watch',
+    organization: 'Peace Now',
+    sourceUrl: 'https://peacenow.org.il/en/settlements-watch/settlements-data/population',
+    license: 'verify-required',
+    notice: 'West Bank settler population 1967-2023 (excludes East Jerusalem).',
+});
+
+const processHamokedData = () => processEnvelopeSource({
+    label: 'HaMoked detention',
+    relPath: 'static/hamoked-detention.json',
+    category: 'prisoners',
+    transformer: new HamokedTransformer(),
+    sourceName: 'HaMoked',
+    organization: 'HaMoked — Center for the Defence of the Individual',
+    sourceUrl: 'https://hamoked.org/prisoners-charts.php',
+    license: 'verify-required',
+    notice: 'Monthly Palestinians-held-by-Israel by detention category (IPS data via HaMoked), 2008+.',
+    mergeOnDisk: true, // appends to the Addameer-written prisoners all-data.json
+});
+
+const processPcbsIndicatorsData = () => processEnvelopeSource({
+    label: 'PCBS direct indicators',
+    relPath: 'static/pcbs-indicators.json',
+    category: 'economic',
+    transformer: new PcbsIndicatorsTransformer(),
+    sourceName: 'Palestinian Central Bureau of Statistics (PCBS)',
+    organization: 'PCBS',
+    sourceUrl: 'https://www.pcbs.gov.ps',
+    license: 'verify-required',
+    notice: 'PCBS official population / CPI / poverty by region (incl. East Jerusalem); merged into economic alongside World Bank series.',
+    mergeOnDisk: true, // appends to the World Bank-written economic all-data.json
+});
+
+/**
+ * Merge UNOSAT damage assessments into the infrastructure category
+ * (runs after the HDX + T4P infrastructure tasks; merges on disk like
+ * processTech4PalestineInfrastructure).
+ */
+async function processUnosatDamage() {
+    logger.info('Processing UNOSAT damage assessments...');
+    try {
+        const filePath = path.join(DATA_DIR, 'static', 'unosat-gaza-damage.json');
+        let envelope;
+        try {
+            envelope = JSON.parse(await fs.readFile(filePath, 'utf-8'));
+        } catch (e) {
+            logger.warn('UNOSAT snapshot unavailable (run scripts/sources/unosat-gaza-damage.js):', e.message);
+            return;
+        }
+        const assessments = envelope.data || [];
+        if (assessments.length === 0) return;
+
+        const infraDir = path.join(UNIFIED_DIR, 'infrastructure');
+        let existing = [];
+        try {
+            existing = JSON.parse(await fs.readFile(path.join(infraDir, 'all-data.json'), 'utf-8')).data || [];
+        } catch {}
+
+        const transformer = new InfrastructureTransformer();
+        const records = assessments.map((a) => transformer.toCanonical({
+            id: a.id,
+            date: a.date,
+            category: 'infrastructure',
+            event_type: 'satellite_damage_assessment',
+            location: {
+                name: a.scope === 'strip' ? 'Gaza Strip' : 'Gaza Governorate',
+                region: 'Gaza Strip',
+                precision: 'region',
+            },
+            metrics: {
+                structures_destroyed: a.destroyed,
+                structures_severely_damaged: a.severely_damaged,
+                structures_moderately_damaged: a.moderately_damaged,
+                structures_possibly_damaged: a.possibly_damaged,
+                structures_total_affected: a.total_affected,
+                housing_units_damaged: a.housing_units_damaged,
+                percent_structures_damaged: a.percent_structures_damaged,
+                unit: 'structures',
+            },
+            assessment_scope: a.scope,
+            geodatabase_url: a.geodatabase_url,
+            description: `UNOSAT satellite damage assessment (${a.scope}) as of ${a.date}: ` +
+                `${a.destroyed?.toLocaleString() || '?'} destroyed` +
+                (a.total_affected ? `, ${a.total_affected.toLocaleString()} total affected structures` : ''),
+            sources: [{
+                name: 'UNOSAT Gaza damage assessments',
+                organization: 'UNITAR/UNOSAT',
+                url: a.source_url,
+                license: 'CC-BY-SA',
+            }],
+        }));
+        const enriched = transformer.enrich(records);
+
+        const merged = [...existing, ...enriched];
+        await fs.mkdir(infraDir, { recursive: true });
+        await fs.writeFile(
+            path.join(infraDir, 'all-data.json'),
+            JSON.stringify({
+                data: merged,
+                metadata: {
+                    total_records: merged.length,
+                    generated_at: new Date().toISOString(),
+                    sources: ['HDX', 'Tech4Palestine', 'UNOSAT'],
+                    category: 'infrastructure',
+                },
+            }, null, 2),
+            'utf-8'
+        );
+        logger.success(`Merged ${enriched.length} UNOSAT assessments into infrastructure (${merged.length} total)`);
+    } catch (e) {
+        logger.warn('Error processing UNOSAT damage assessments:', e.message);
     }
 }
 

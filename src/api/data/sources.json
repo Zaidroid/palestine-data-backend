@@ -1,6 +1,6 @@
 {
   "$schema_version": "1.0.0",
-  "generated_at": "2026-04-25",
+  "generated_at": "2026-06-10",
   "notes": "Authoritative registry of every upstream source feeding the Palestine Data Backend. Each entry declares update cadence, time coverage, license, and which unified categories or databank tables it populates. Read by /api/v1/sources; consumed by the refresh pipeline to surface per-source health.",
   "sources": {
     "ocha_hpc_pse": {
@@ -10,7 +10,10 @@
       "license_id": "CC-BY-IGO",
       "commercial_use": true,
       "attribution_text": "OCHA Humanitarian Programme Cycle Tools (HPC Tools) via HDX (CC-BY-IGO).",
-      "feeds_categories": ["humanitarian", "funding"],
+      "feeds_categories": [
+        "humanitarian",
+        "funding"
+      ],
       "feeds_databank": [],
       "feeds_endpoints": [
         "/api/v1/response",
@@ -33,7 +36,11 @@
       "license_id": "Other",
       "commercial_use": true,
       "attribution_text": "FAO via HDX.",
-      "feeds_categories": ["humanitarian", "food", "agriculture"],
+      "feeds_categories": [
+        "humanitarian",
+        "food",
+        "agriculture"
+      ],
       "feeds_databank": [],
       "feeds_endpoints": [
         "/api/v1/indicators",
@@ -55,7 +62,12 @@
       "license_id": "CC-BY-4.0",
       "commercial_use": true,
       "attribution_text": "World Bank via HDX (CC-BY-4.0).",
-      "feeds_categories": ["economy", "demographics", "health", "education"],
+      "feeds_categories": [
+        "economy",
+        "demographics",
+        "health",
+        "education"
+      ],
       "feeds_databank": [],
       "feeds_endpoints": [
         "/api/v1/indicators",
@@ -78,7 +90,9 @@
       "license_id": "CC-BY-IGO",
       "commercial_use": true,
       "attribution_text": "UNHCR — The UN Refugee Agency via HDX (CC-BY-IGO).",
-      "feeds_categories": ["displacement"],
+      "feeds_categories": [
+        "displacement"
+      ],
       "feeds_databank": [],
       "feeds_endpoints": [
         "/api/v1/displacement",
@@ -102,7 +116,9 @@
       "license_id": "CC-BY-IGO",
       "commercial_use": true,
       "attribution_text": "IDMC via HDX (CC-BY-IGO).",
-      "feeds_categories": ["displacement"],
+      "feeds_categories": [
+        "displacement"
+      ],
       "feeds_databank": [],
       "feeds_endpoints": [
         "/api/v1/displacement/idmc/conflict",
@@ -124,7 +140,10 @@
       "license_id": "Public Domain",
       "commercial_use": true,
       "attribution_text": "Integrated Food Security Phase Classification (IPC) via HDX (public domain).",
-      "feeds_categories": ["humanitarian", "food"],
+      "feeds_categories": [
+        "humanitarian",
+        "food"
+      ],
       "feeds_databank": [],
       "feeds_endpoints": [
         "/api/v1/humanitarian",
@@ -147,7 +166,9 @@
       "license_id": "Other",
       "commercial_use": true,
       "attribution_text": "ACLED — Armed Conflict Location & Event Data Project, via HDX. Use must comply with ACLED Terms of Use.",
-      "feeds_categories": ["conflict"],
+      "feeds_categories": [
+        "conflict"
+      ],
       "feeds_databank": [],
       "feeds_endpoints": [
         "/api/v1/conflict",
@@ -171,7 +192,10 @@
       "license_id": "CC-BY-4.0",
       "commercial_use": true,
       "attribution_text": "Aid Worker Security Database (AWSD) via HDX (CC-BY-4.0).",
-      "feeds_categories": ["conflict", "humanitarian"],
+      "feeds_categories": [
+        "conflict",
+        "humanitarian"
+      ],
       "feeds_databank": [],
       "feeds_endpoints": [
         "/api/v1/incidents/aid-worker?source=awsd"
@@ -192,7 +216,12 @@
       "license_id": "Other",
       "commercial_use": true,
       "attribution_text": "HDX HAPI (Humanitarian API) via HDX.",
-      "feeds_categories": ["humanitarian", "displacement", "food", "conflict"],
+      "feeds_categories": [
+        "humanitarian",
+        "displacement",
+        "food",
+        "conflict"
+      ],
       "feeds_databank": [],
       "feeds_endpoints": [
         "/api/v1/hapi",
@@ -214,7 +243,9 @@
       "license_id": "ODbL",
       "commercial_use": true,
       "attribution_text": "Global Healthsites Mapping Project via HDX (ODbL).",
-      "feeds_categories": ["health"],
+      "feeds_categories": [
+        "health"
+      ],
       "feeds_databank": [],
       "feeds_endpoints": [
         "/api/v1/facilities/health?source=globalhealthsites"
@@ -235,7 +266,11 @@
       "license_id": "ODbL",
       "commercial_use": true,
       "attribution_text": "OpenStreetMap contributors via Humanitarian OpenStreetMap Team (HOT) (ODbL).",
-      "feeds_categories": ["geo", "health", "education"],
+      "feeds_categories": [
+        "geo",
+        "health",
+        "education"
+      ],
       "feeds_databank": [],
       "feeds_endpoints": [
         "/api/v1/facilities",
@@ -259,7 +294,9 @@
       "license_id": "CC-BY-IGO",
       "commercial_use": true,
       "attribution_text": "OCHA Field Information Services Section (FISS) via HDX (CC-BY-IGO).",
-      "feeds_categories": ["geo"],
+      "feeds_categories": [
+        "geo"
+      ],
       "feeds_databank": [],
       "feeds_endpoints": [
         "/api/v1/geo/admin",
@@ -282,7 +319,10 @@
       "license_id": "CC-BY-4.0",
       "commercial_use": true,
       "attribution_text": "Insecurity Insight via HDX (CC-BY-4.0).",
-      "feeds_categories": ["conflict", "health"],
+      "feeds_categories": [
+        "conflict",
+        "health"
+      ],
       "feeds_databank": [],
       "feeds_endpoints": [
         "/api/v1/incidents",
@@ -508,7 +548,7 @@
       "coverage_end": "current_year",
       "typical_lag_days": 365,
       "fetcher_script": "scripts/fetch-who-data.js",
-      "notes": "WHO indicators republished via HDX. 38k+ historical records (life expectancy, vaccination, mortality). Non-commercial license \u2014 paid-tier consumers should query without WHO source filter.",
+      "notes": "WHO indicators republished via HDX. 38k+ historical records (life expectancy, vaccination, mortality). Non-commercial license — paid-tier consumers should query without WHO source filter.",
       "primary": true,
       "fetcher_name": "who"
     },
@@ -552,7 +592,7 @@
       "coverage_end": "ongoing",
       "typical_lag_days": 30,
       "fetcher_script": "scripts/fetch-land-data.js",
-      "notes": "West Bank settlements registry \u2014 boundaries, populations, expansion approvals.",
+      "notes": "West Bank settlements registry — boundaries, populations, expansion approvals.",
       "primary": true,
       "verify_required": true,
       "fetcher_name": "land"
@@ -661,6 +701,313 @@
       "primary": false,
       "verify_required": true,
       "fetcher_name": "goodshepherd"
+    },
+    "wfp_food_prices": {
+      "name": "WFP Food Prices (PSE)",
+      "organization": "World Food Programme",
+      "source_url": "https://data.humdata.org/dataset/wfp-food-prices-for-state-of-palestine",
+      "license_id": "CC-BY-IGO",
+      "commercial_use": true,
+      "attribution_text": "Food prices: World Food Programme (WFP) via HDX (CC-BY-IGO).",
+      "feeds_categories": [
+        "food",
+        "economic"
+      ],
+      "feeds_databank": [],
+      "feeds_endpoints": [
+        "/api/v1/unified/food"
+      ],
+      "update_cadence": "monthly",
+      "coverage_start": "2007-01",
+      "coverage_end": "ongoing",
+      "typical_lag_days": 45,
+      "fetcher_script": "scripts/sources/wfp-food-prices-pse.js",
+      "notes": "Market-level retail/wholesale prices per commodity, Gaza + West Bank, with market coordinates. Longest-running economic micro time series in the bank.",
+      "primary": true,
+      "fetcher_name": "wfp-food-prices"
+    },
+    "ioda_connectivity": {
+      "name": "IODA Internet Outages (PS)",
+      "organization": "Internet Intelligence Lab, Georgia Tech",
+      "source_url": "https://ioda.inetintel.cc.gatech.edu/country/PS",
+      "license_id": "free-with-attribution",
+      "commercial_use": false,
+      "attribution_text": "Internet outage events: IODA, Internet Intelligence Lab, Georgia Tech.",
+      "feeds_categories": [
+        "connectivity"
+      ],
+      "feeds_databank": [],
+      "feeds_endpoints": [
+        "/api/v1/unified/connectivity"
+      ],
+      "update_cadence": "continuous",
+      "coverage_start": "2022-03",
+      "coverage_end": "ongoing",
+      "typical_lag_days": 0,
+      "fetcher_script": "scripts/sources/ioda-connectivity-pse.js",
+      "notes": "Country + Gaza/West Bank regions + PALTEL/JAWWAL ASNs. Event DB reaches back to 2022-03; raw signals API goes further if needed.",
+      "primary": true,
+      "fetcher_name": "ioda-connectivity"
+    },
+    "palopenmaps": {
+      "name": "Palestine Open Maps — historical localities + Mandate censuses",
+      "organization": "Palestine Open Maps (Visualizing Palestine)",
+      "source_url": "https://github.com/PalOpenMaps/pom-data",
+      "license_id": "verify-required",
+      "commercial_use": false,
+      "verify_required": true,
+      "attribution_text": "Historical localities and census data: Palestine Open Maps (palopenmaps.org); digitized from Village Statistics 1945 / Survey of Palestine; cross-referenced with Salman Abu Sitta, Zochrot, PalestineRemembered.",
+      "feeds_categories": [
+        "historical"
+      ],
+      "feeds_databank": [],
+      "feeds_endpoints": [
+        "/api/v1/unified/historical"
+      ],
+      "update_cadence": "static",
+      "coverage_start": "1922",
+      "coverage_end": "2016",
+      "typical_lag_days": null,
+      "fetcher_script": "scripts/sources/palopenmaps-places.js",
+      "notes": "~2,490 localities incl. ~620 depopulated/abandoned (Nakba 1947-49) with pop_1922/1931/1945, land-group splits, depopulation dates. No formal license on repo — attribution required; confirm before commercial redistribution.",
+      "primary": true,
+      "fetcher_name": "palopenmaps-places"
+    },
+    "unrwa_aid_trucks": {
+      "name": "UNRWA Gaza Aid Truck Data",
+      "organization": "UNRWA",
+      "source_url": "https://data.humdata.org/dataset/state-of-palestine-gaza-aid-truck-data",
+      "license_id": "CC-BY",
+      "commercial_use": true,
+      "attribution_text": "Gaza aid truck data: UNRWA via HDX (CC-BY).",
+      "feeds_categories": [
+        "aid_access"
+      ],
+      "feeds_databank": [],
+      "feeds_endpoints": [
+        "/api/v1/unified/aid_access"
+      ],
+      "update_cadence": "discontinued",
+      "coverage_start": "2023-10-21",
+      "coverage_end": "2025-01-16",
+      "typical_lag_days": null,
+      "fetcher_script": "scripts/sources/unrwa-aid-trucks.js",
+      "notes": "Historical baseline; verified fully 2023-10 to 2024-05-05, partial afterwards (see UNRWA disclaimer). COGAT gaza-aid-data.gov.il is the contested ongoing complement (Phase 3).",
+      "primary": true,
+      "fetcher_name": "unrwa-aid-trucks"
+    },
+    "who_ssa": {
+      "name": "WHO Surveillance System for Attacks on Health Care (SSA) — historic",
+      "organization": "World Health Organization",
+      "source_url": "https://data.humdata.org/dataset/surveillance-system-for-attacks-on-health-care-ssa-historic",
+      "license_id": "CC-BY-IGO",
+      "commercial_use": true,
+      "attribution_text": "Attacks on health care: WHO SSA via HDX (CC-BY-IGO).",
+      "feeds_categories": [
+        "incidents"
+      ],
+      "feeds_databank": [],
+      "feeds_endpoints": [
+        "/api/v1/incidents/healthcare?source=who_ssa"
+      ],
+      "update_cadence": "archived",
+      "coverage_start": "2017-07",
+      "coverage_end": "2021-12",
+      "typical_lag_days": null,
+      "fetcher_script": "scripts/sources/who-ssa-attacks.js",
+      "notes": "WHO's own verified surveillance (WHA 65.20). Cross-validates Insecurity Insight healthcare incidents. Live extension = Power BI dashboard at extranet.who.int/ssa (Phase 2 scrape target).",
+      "primary": false,
+      "fetcher_name": "who-ssa-attacks"
+    },
+    "reliefweb": {
+      "name": "ReliefWeb reports (PSE)",
+      "organization": "OCHA",
+      "source_url": "https://reliefweb.int/updates?advanced-search=%28C181%29",
+      "license_id": "metadata-free-with-attribution",
+      "commercial_use": true,
+      "attribution_text": "Report metadata: ReliefWeb (reliefweb.int), OCHA.",
+      "feeds_categories": [
+        "documents"
+      ],
+      "feeds_databank": [],
+      "feeds_endpoints": [
+        "/api/v1/unified/documents"
+      ],
+      "update_cadence": "continuous",
+      "coverage_start": "1996",
+      "coverage_end": "ongoing",
+      "typical_lag_days": 0,
+      "fetcher_script": "scripts/sources/reliefweb-pse.js",
+      "notes": "REQUIRES registered appname (free) in RELIEFWEB_APPNAME env — https://apidoc.reliefweb.int/parameters#appname. Fetcher skips gracefully when unset. Metadata only; per-document licenses vary.",
+      "primary": true,
+      "fetcher_name": "reliefweb"
+    },
+    "unosat_damage": {
+      "name": "UNOSAT Gaza Comprehensive Damage Assessments",
+      "organization": "UNITAR/UNOSAT",
+      "source_url": "https://data.humdata.org/organization/un-operational-satellite-appplications-programme-unosat",
+      "license_id": "CC-BY-SA",
+      "commercial_use": true,
+      "attribution_text": "Satellite damage assessments: UNOSAT (UNITAR) via HDX (CC-BY-SA).",
+      "feeds_categories": [
+        "infrastructure"
+      ],
+      "feeds_databank": [],
+      "feeds_endpoints": [
+        "/api/v1/unified/infrastructure"
+      ],
+      "update_cadence": "per-assessment",
+      "coverage_start": "2023-10",
+      "coverage_end": "ongoing",
+      "typical_lag_days": 30,
+      "fetcher_script": "scripts/sources/unosat-gaza-damage.js",
+      "notes": "Assessment-level totals (destroyed/severe/moderate/possible/housing units) parsed from dataset notes; building-level ESRI GDB linked per record (GDAL ingestion = future enhancement).",
+      "primary": true,
+      "fetcher_name": "unosat-gaza-damage"
+    },
+    "ocha_casualties": {
+      "name": "OCHA oPt — Data on Casualties",
+      "organization": "UN OCHA oPt (B'Tselem data)",
+      "source_url": "https://www.ochaopt.org/data/casualties",
+      "license_id": "verify-required",
+      "commercial_use": false,
+      "verify_required": true,
+      "attribution_text": "Palestinian fatalities: UN OCHA oPt, sourced from B'Tselem.",
+      "feeds_categories": [
+        "casualties"
+      ],
+      "feeds_databank": [],
+      "feeds_endpoints": [
+        "/api/v1/unified/casualties"
+      ],
+      "update_cadence": "weekly",
+      "coverage_start": "2008",
+      "coverage_end": "ongoing",
+      "typical_lag_days": 7,
+      "fetcher_script": "scripts/sources/ocha-casualties.js",
+      "notes": "Extracted from the page's Power BI embed via headless capture. B'Tselem-verified fatalities (lower than MoH bulletin totals); annual + region/governorate/demographic/weapon. Fills the West Bank historical gap.",
+      "primary": true,
+      "fetcher_name": "ocha-casualties"
+    },
+    "ocha_demolitions": {
+      "name": "OCHA oPt — Data on Demolitions",
+      "organization": "UN OCHA oPt",
+      "source_url": "https://www.ochaopt.org/data/demolition",
+      "license_id": "verify-required",
+      "commercial_use": false,
+      "verify_required": true,
+      "attribution_text": "Demolitions and displacement: UN OCHA oPt.",
+      "feeds_categories": [
+        "demolitions"
+      ],
+      "feeds_databank": [],
+      "feeds_endpoints": [
+        "/api/v1/unified/demolitions"
+      ],
+      "update_cadence": "weekly",
+      "coverage_start": "2009",
+      "coverage_end": "ongoing",
+      "typical_lag_days": 7,
+      "fetcher_script": "scripts/sources/ocha-demolitions.js",
+      "notes": "Power BI headless capture. ~500 geocoded localities + annual series. West Bank + East Jerusalem.",
+      "primary": true,
+      "fetcher_name": "ocha-demolitions"
+    },
+    "peace_now_settlers": {
+      "name": "Peace Now — Settler Population",
+      "organization": "Peace Now (Settlement Watch)",
+      "source_url": "https://peacenow.org.il/en/settlements-watch/settlements-data/population",
+      "license_id": "verify-required",
+      "commercial_use": false,
+      "verify_required": true,
+      "attribution_text": "Settler population: Peace Now (Settlement Watch).",
+      "feeds_categories": [
+        "settlements"
+      ],
+      "feeds_databank": [],
+      "feeds_endpoints": [
+        "/api/v1/unified/settlements"
+      ],
+      "update_cadence": "annual",
+      "coverage_start": "1967",
+      "coverage_end": "2023",
+      "typical_lag_days": 365,
+      "fetcher_script": "scripts/sources/peacenow-settlements.js",
+      "notes": "Annual West Bank settler population parsed from inline Highcharts series. Excludes East Jerusalem.",
+      "primary": true,
+      "fetcher_name": "peacenow-settlements"
+    },
+    "hamoked": {
+      "name": "HaMoked — Palestinians held by Israel",
+      "organization": "HaMoked — Center for the Defence of the Individual",
+      "source_url": "https://hamoked.org/prisoners-charts.php",
+      "license_id": "verify-required",
+      "commercial_use": false,
+      "verify_required": true,
+      "attribution_text": "Detention figures: HaMoked (hamoked.org), sourced from Israel Prison Service.",
+      "feeds_categories": [
+        "prisoners"
+      ],
+      "feeds_databank": [],
+      "feeds_endpoints": [
+        "/api/v1/unified/prisoners"
+      ],
+      "update_cadence": "monthly",
+      "coverage_start": "2008-05",
+      "coverage_end": "ongoing",
+      "typical_lag_days": 30,
+      "fetcher_script": "scripts/sources/hamoked-detention.js",
+      "notes": "Headless render of the prisoners-charts pillars (403s to bots). Monthly by category: sentenced/remand/administrative/unlawful-combatant. 17-yr series vs Addameer's ~12 months; adds administrative-detention signal.",
+      "primary": true,
+      "fetcher_name": "hamoked-detention"
+    },
+    "pcbs_direct": {
+      "name": "PCBS — official indicators (direct)",
+      "organization": "Palestinian Central Bureau of Statistics",
+      "source_url": "https://www.pcbs.gov.ps",
+      "license_id": "verify-required",
+      "commercial_use": false,
+      "verify_required": true,
+      "attribution_text": "Official statistics: Palestinian Central Bureau of Statistics (pcbs.gov.ps).",
+      "feeds_categories": [
+        "economic"
+      ],
+      "feeds_databank": [],
+      "feeds_endpoints": [
+        "/api/v1/unified/economic"
+      ],
+      "update_cadence": "varies",
+      "coverage_start": "2005",
+      "coverage_end": "ongoing",
+      "typical_lag_days": 60,
+      "fetcher_script": "scripts/sources/pcbs-indicators.js",
+      "notes": "Headless render of pcbs.gov.ps indicator dashboard. Population / CPI / poverty by region incl. East Jerusalem. Authentic PCBS figures (the existing 'pcbs' category is a World Bank proxy).",
+      "primary": true,
+      "fetcher_name": "pcbs-indicators"
+    },
+    "ooni": {
+      "name": "OONI — Network Interference (PS)",
+      "organization": "Open Observatory of Network Interference",
+      "source_url": "https://explorer.ooni.org/country/PS",
+      "license_id": "free-with-attribution",
+      "commercial_use": false,
+      "verify_required": false,
+      "attribution_text": "Censorship measurements: OONI (ooni.org), CC-BY-SA.",
+      "feeds_categories": [
+        "connectivity"
+      ],
+      "feeds_databank": [],
+      "feeds_endpoints": [
+        "/api/v1/unified/connectivity"
+      ],
+      "update_cadence": "continuous",
+      "coverage_start": "2017-02",
+      "coverage_end": "ongoing",
+      "typical_lag_days": 1,
+      "fetcher_script": "scripts/sources/ooni-censorship.js",
+      "notes": "Daily web_connectivity aggregation (anomaly/confirmed-blocked). Complements IODA outage detection with a censorship signal.",
+      "primary": true,
+      "fetcher_name": "ooni-censorship"
     }
   },
   "category_index": {
@@ -673,7 +1020,9 @@
     ],
     "economic": [
       "world_bank",
-      "imf_datamapper"
+      "imf_datamapper",
+      "wfp_food_prices",
+      "pcbs_direct"
     ],
     "education": [
       "ocha_opt_hdx"
@@ -689,7 +1038,8 @@
     "infrastructure": [
       "tech4palestine_infrastructure",
       "ocha_opt_hdx",
-      "good_shepherd"
+      "good_shepherd",
+      "unosat_damage"
     ],
     "land": [
       "peace_now"
@@ -704,7 +1054,8 @@
       "world_bank"
     ],
     "prisoners": [
-      "addameer"
+      "addameer",
+      "hamoked"
     ],
     "refugees": [
       "unhcr_odp",
@@ -716,13 +1067,41 @@
     ],
     "westbank": [
       "ocha_opt_hdx"
+    ],
+    "food": [
+      "wfp_food_prices"
+    ],
+    "connectivity": [
+      "ioda_connectivity",
+      "ooni"
+    ],
+    "historical": [
+      "palopenmaps"
+    ],
+    "aid_access": [
+      "unrwa_aid_trucks"
+    ],
+    "documents": [
+      "reliefweb"
+    ],
+    "incidents": [
+      "who_ssa"
+    ],
+    "casualties": [
+      "ocha_casualties"
+    ],
+    "demolitions": [
+      "ocha_demolitions"
+    ],
+    "settlements": [
+      "peace_now_settlers"
     ]
   },
   "planned_additions": [
     {
       "source": "ACLED",
       "category": "conflict",
-      "reason": "Cross-verification \u2014 UCDP-GED already covers 1989+"
+      "reason": "Cross-verification — UCDP-GED already covers 1989+"
     },
     {
       "source": "Palestine Monetary Authority",

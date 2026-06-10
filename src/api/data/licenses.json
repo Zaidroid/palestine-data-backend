@@ -1,6 +1,6 @@
 {
   "$schema_version": "1.1.0",
-  "generated_at": "2026-04-18",
+  "generated_at": "2026-06-10",
   "notes": "Best-effort registry of upstream source licenses. Entries marked verify_required must be confirmed with the source before redistributing in a commercial tier. See docs/COMPLIANCE.md for the per-source compliance decisions. The `aliases` field is the canonical lowercase set of source-name strings that records may carry; the CI license-coverage check resolves record sources[] entries against this set.",
   "sources": {
     "tech4palestine": {
@@ -12,7 +12,11 @@
       "redistribution_allowed": true,
       "commercial_use": true,
       "verify_required": false,
-      "aliases": ["tech4palestine", "tech for palestine", "techforpalestine"]
+      "aliases": [
+        "tech4palestine",
+        "tech for palestine",
+        "techforpalestine"
+      ]
     },
     "tech4palestine_telegram": {
       "name": "Tech4Palestine Telegram Channels",
@@ -24,7 +28,11 @@
       "commercial_use": true,
       "verify_required": true,
       "notes": "Derivative alerts are re-published; raw Telegram messages are not redistributed.",
-      "aliases": ["tech4palestine telegram", "tech4palestine_telegram", "telegram alerts"]
+      "aliases": [
+        "tech4palestine telegram",
+        "tech4palestine_telegram",
+        "telegram alerts"
+      ]
     },
     "hdx": {
       "name": "Humanitarian Data Exchange",
@@ -36,7 +44,11 @@
       "commercial_use": "varies",
       "verify_required": true,
       "notes": "HDX hosts datasets with different licenses (CC-BY, CC-BY-IGO, CC0, ODC-BY). Each ingested dataset must be verified individually.",
-      "aliases": ["hdx", "humanitarian data exchange", "humdata"]
+      "aliases": [
+        "hdx",
+        "humanitarian data exchange",
+        "humdata"
+      ]
     },
     "worldbank": {
       "name": "World Bank Open Data",
@@ -47,7 +59,12 @@
       "redistribution_allowed": true,
       "commercial_use": true,
       "verify_required": false,
-      "aliases": ["world bank", "worldbank", "world bank open data", "wb"]
+      "aliases": [
+        "world bank",
+        "worldbank",
+        "world bank open data",
+        "wb"
+      ]
     },
     "who": {
       "name": "WHO Global Health Observatory",
@@ -59,7 +76,12 @@
       "commercial_use": false,
       "verify_required": false,
       "notes": "Non-commercial by default. Paid-tier distribution requires WHO-specific licensing or must exclude WHO-origin records.",
-      "aliases": ["who", "world health organization", "who global health observatory", "gho"]
+      "aliases": [
+        "who",
+        "world health organization",
+        "who global health observatory",
+        "gho"
+      ]
     },
     "goodshepherd": {
       "name": "Good Shepherd Collective",
@@ -70,7 +92,11 @@
       "redistribution_allowed": "unknown",
       "commercial_use": "unknown",
       "verify_required": true,
-      "aliases": ["good shepherd", "good shepherd collective", "goodshepherd"]
+      "aliases": [
+        "good shepherd",
+        "good shepherd collective",
+        "goodshepherd"
+      ]
     },
     "pcbs": {
       "name": "Palestinian Central Bureau of Statistics",
@@ -82,7 +108,11 @@
       "commercial_use": true,
       "verify_required": true,
       "notes": "PCBS publishes as public statistics; attribution required. Verify specific dataset terms for commercial redistribution.",
-      "aliases": ["pcbs", "palestinian central bureau of statistics", "palestinian central bureau of statistics (pcbs)"]
+      "aliases": [
+        "pcbs",
+        "palestinian central bureau of statistics",
+        "palestinian central bureau of statistics (pcbs)"
+      ]
     },
     "btselem": {
       "name": "B'Tselem",
@@ -94,7 +124,11 @@
       "commercial_use": false,
       "verify_required": true,
       "notes": "Non-commercial license. Paid-tier responses must exclude B'Tselem-origin records or obtain commercial permission.",
-      "aliases": ["btselem", "b'tselem", "b tselem"]
+      "aliases": [
+        "btselem",
+        "b'tselem",
+        "b tselem"
+      ]
     },
     "unrwa": {
       "name": "UNRWA",
@@ -105,7 +139,10 @@
       "redistribution_allowed": true,
       "commercial_use": "varies",
       "verify_required": true,
-      "aliases": ["unrwa", "united nations relief and works agency"]
+      "aliases": [
+        "unrwa",
+        "united nations relief and works agency"
+      ]
     },
     "ocha": {
       "name": "UN OCHA oPt",
@@ -116,7 +153,12 @@
       "redistribution_allowed": true,
       "commercial_use": true,
       "verify_required": false,
-      "aliases": ["ocha", "un ocha", "ocha opt", "un ocha opt"]
+      "aliases": [
+        "ocha",
+        "un ocha",
+        "ocha opt",
+        "un ocha opt"
+      ]
     },
     "unhcr": {
       "name": "UNHCR Operational Data Portal",
@@ -127,7 +169,12 @@
       "redistribution_allowed": true,
       "commercial_use": true,
       "verify_required": false,
-      "aliases": ["unhcr", "unhcr operational data portal", "unhcr odp", "unhcr + unrwa"]
+      "aliases": [
+        "unhcr",
+        "unhcr operational data portal",
+        "unhcr odp",
+        "unhcr + unrwa"
+      ]
     },
     "unfts": {
       "name": "UN OCHA Financial Tracking Service",
@@ -138,7 +185,12 @@
       "redistribution_allowed": true,
       "commercial_use": true,
       "verify_required": false,
-      "aliases": ["un ocha fts", "un ocha financial tracking service", "fts", "un fts"]
+      "aliases": [
+        "un ocha fts",
+        "un ocha financial tracking service",
+        "fts",
+        "un fts"
+      ]
     },
     "addameer": {
       "name": "Addameer Prisoner Support and Human Rights Association",
@@ -150,7 +202,11 @@
       "commercial_use": "unknown",
       "verify_required": true,
       "notes": "Aggregate monthly prisoner statistics scraped from public dashboard. Verify terms before commercial redistribution.",
-      "aliases": ["addameer", "addameer prisoner support and human rights association", "addameer ps"]
+      "aliases": [
+        "addameer",
+        "addameer prisoner support and human rights association",
+        "addameer ps"
+      ]
     },
     "unesco": {
       "name": "UNESCO World Heritage",
@@ -162,7 +218,12 @@
       "commercial_use": true,
       "verify_required": false,
       "notes": "Share-alike obligation applies to derivative works.",
-      "aliases": ["unesco", "unesco world heritage", "ministry of tourism", "ngo reports"]
+      "aliases": [
+        "unesco",
+        "unesco world heritage",
+        "ministry of tourism",
+        "ngo reports"
+      ]
     },
     "gaza_moh": {
       "name": "Gaza Ministry of Health",
@@ -173,7 +234,12 @@
       "redistribution_allowed": true,
       "commercial_use": true,
       "verify_required": true,
-      "aliases": ["gaza moh", "gaza ministry of health", "moh gaza", "ministry of health gaza"]
+      "aliases": [
+        "gaza moh",
+        "gaza ministry of health",
+        "moh gaza",
+        "ministry of health gaza"
+      ]
     },
     "al_jazeera_rss": {
       "name": "Al Jazeera (RSS headlines)",
@@ -185,7 +251,12 @@
       "commercial_use": false,
       "verify_required": true,
       "notes": "Only headlines + source link are redistributed. Full article text is not included. Paid-tier requires a separate content agreement.",
-      "aliases": ["al jazeera", "aljazeera", "al jazeera english", "al jazeera media network"]
+      "aliases": [
+        "al jazeera",
+        "aljazeera",
+        "al jazeera english",
+        "al jazeera media network"
+      ]
     },
     "reuters_rss": {
       "name": "Reuters (RSS headlines)",
@@ -196,7 +267,9 @@
       "redistribution_allowed": "headlines-only",
       "commercial_use": false,
       "verify_required": true,
-      "aliases": ["reuters"]
+      "aliases": [
+        "reuters"
+      ]
     },
     "un_news_rss": {
       "name": "UN News",
@@ -207,7 +280,10 @@
       "redistribution_allowed": "headlines-only",
       "commercial_use": "varies",
       "verify_required": true,
-      "aliases": ["un news", "united nations news"]
+      "aliases": [
+        "un news",
+        "united nations news"
+      ]
     },
     "wafa_rss": {
       "name": "WAFA (Palestinian News & Info Agency)",
@@ -218,7 +294,10 @@
       "redistribution_allowed": "headlines-only",
       "commercial_use": false,
       "verify_required": true,
-      "aliases": ["wafa", "wafa news"]
+      "aliases": [
+        "wafa",
+        "wafa news"
+      ]
     },
     "haaretz_rss": {
       "name": "Haaretz",
@@ -229,7 +308,9 @@
       "redistribution_allowed": "headlines-only",
       "commercial_use": false,
       "verify_required": true,
-      "aliases": ["haaretz"]
+      "aliases": [
+        "haaretz"
+      ]
     },
     "mondoweiss_rss": {
       "name": "Mondoweiss",
@@ -240,7 +321,9 @@
       "redistribution_allowed": "headlines-only",
       "commercial_use": false,
       "verify_required": true,
-      "aliases": ["mondoweiss"]
+      "aliases": [
+        "mondoweiss"
+      ]
     },
     "electronic_intifada_rss": {
       "name": "The Electronic Intifada",
@@ -251,7 +334,10 @@
       "redistribution_allowed": "headlines-only",
       "commercial_use": false,
       "verify_required": true,
-      "aliases": ["the electronic intifada", "electronic intifada"]
+      "aliases": [
+        "the electronic intifada",
+        "electronic intifada"
+      ]
     },
     "middle_east_eye_rss": {
       "name": "Middle East Eye",
@@ -262,7 +348,9 @@
       "redistribution_allowed": "headlines-only",
       "commercial_use": false,
       "verify_required": true,
-      "aliases": ["middle east eye"]
+      "aliases": [
+        "middle east eye"
+      ]
     },
     "al_jazeera_palestine_rss": {
       "name": "Al Jazeera Palestine",
@@ -273,7 +361,9 @@
       "redistribution_allowed": "headlines-only",
       "commercial_use": false,
       "verify_required": true,
-      "aliases": ["al jazeera palestine"]
+      "aliases": [
+        "al jazeera palestine"
+      ]
     },
     "historical_archives": {
       "name": "Historical Palestine archives (1948–2000)",
@@ -286,21 +376,378 @@
       "verify_required": true,
       "notes": "Per-record source is recorded in the sources[] field; verify each archive's terms before commercial use.",
       "aliases": [
-        "historical archives", "nakba archives", "academic sources", "historical palestine archives",
-        "historical records", "unispal", "unispal full text", "unispal hebron protocol full text",
-        "idf archives", "israeli knesset records", "us state department", "us state department archive",
-        "us national archives", "un security council", "un", "un commissioner-general report 1967",
-        "un security council res. 252 (1968)", "un security council res. 799", "un sc res. 1073",
-        "un general assembly res. 37/123 d", "un commission of inquiry on haram al-sharif 1990",
-        "kahan commission report 1983", "shamgar commission report 1994", "shamgar commission report 1996",
-        "morris, '1948 and after'", "tom segev 'israel's 1967'", "yezid sayigh", "yezid sayigh 'armed struggle and the search for state'",
-        "rashid khalidi 'the iron cage'", "sabri jiryis 'the arabs in israel'", "robert fisk 'pity the nation'",
-        "said & hitchens 'blaming the victims'", "al-haq 'punishing a nation'", "al-haq", "al-haq annual report 1988",
-        "human rights watch 1993 report", "hrw 1994 report", "save the children 1990 report",
-        "world bank gulf war report", "passia", "adalah", "middle east institute", "middle east eye",
-        "btselem settlement database", "btselem fatalities database", "btselem fatalities database cumulative",
-        "peace now", "quartet archive", "annex i–vii", "annex i-vii",
-        "hussein agha & robert malley 'camp david: the tragedy of errors'", "clinton parameters (dec 2000)"
+        "historical archives",
+        "nakba archives",
+        "academic sources",
+        "historical palestine archives",
+        "historical records",
+        "unispal",
+        "unispal full text",
+        "unispal hebron protocol full text",
+        "idf archives",
+        "israeli knesset records",
+        "us state department",
+        "us state department archive",
+        "us national archives",
+        "un security council",
+        "un",
+        "un commissioner-general report 1967",
+        "un security council res. 252 (1968)",
+        "un security council res. 799",
+        "un sc res. 1073",
+        "un general assembly res. 37/123 d",
+        "un commission of inquiry on haram al-sharif 1990",
+        "kahan commission report 1983",
+        "shamgar commission report 1994",
+        "shamgar commission report 1996",
+        "morris, '1948 and after'",
+        "tom segev 'israel's 1967'",
+        "yezid sayigh",
+        "yezid sayigh 'armed struggle and the search for state'",
+        "rashid khalidi 'the iron cage'",
+        "sabri jiryis 'the arabs in israel'",
+        "robert fisk 'pity the nation'",
+        "said & hitchens 'blaming the victims'",
+        "al-haq 'punishing a nation'",
+        "al-haq",
+        "al-haq annual report 1988",
+        "human rights watch 1993 report",
+        "hrw 1994 report",
+        "save the children 1990 report",
+        "world bank gulf war report",
+        "passia",
+        "adalah",
+        "middle east institute",
+        "middle east eye",
+        "btselem settlement database",
+        "btselem fatalities database",
+        "btselem fatalities database cumulative",
+        "peace now",
+        "quartet archive",
+        "annex i–vii",
+        "annex i-vii",
+        "hussein agha & robert malley 'camp david: the tragedy of errors'",
+        "clinton parameters (dec 2000)"
+      ]
+    },
+    "unrwa_aid_trucks": {
+      "name": "UNRWA Gaza Supply and Logistics dashboard",
+      "organization": "UNRWA",
+      "source_url": "https://data.humdata.org/dataset/state-of-palestine-gaza-aid-truck-data",
+      "license_id": "CC-BY",
+      "attribution_text": "Gaza aid truck data: UNRWA via HDX (CC-BY).",
+      "redistribution_allowed": true,
+      "commercial_use": true,
+      "verify_required": false,
+      "aliases": [
+        "unrwa gaza supply and logistics dashboard",
+        "unrwa aid trucks"
+      ]
+    },
+    "ioda": {
+      "name": "IODA — Internet Outage Detection & Analysis",
+      "organization": "Internet Intelligence Lab, Georgia Tech",
+      "source_url": "https://ioda.inetintel.cc.gatech.edu",
+      "license_id": "free-with-attribution",
+      "attribution_text": "Internet outage events: IODA, Internet Intelligence Lab, Georgia Tech.",
+      "redistribution_allowed": true,
+      "commercial_use": false,
+      "verify_required": true,
+      "aliases": [
+        "ioda"
+      ]
+    },
+    "wfp": {
+      "name": "WFP Food Prices",
+      "organization": "World Food Programme",
+      "source_url": "https://data.humdata.org/dataset/wfp-food-prices-for-state-of-palestine",
+      "license_id": "CC-BY-IGO",
+      "attribution_text": "Food prices: World Food Programme (WFP) via HDX (CC-BY-IGO).",
+      "redistribution_allowed": true,
+      "commercial_use": true,
+      "verify_required": false,
+      "aliases": [
+        "wfp food prices",
+        "wfp",
+        "world food programme"
+      ]
+    },
+    "palopenmaps": {
+      "name": "Palestine Open Maps",
+      "organization": "Palestine Open Maps (Visualizing Palestine)",
+      "source_url": "https://github.com/PalOpenMaps/pom-data",
+      "license_id": "verify-required",
+      "attribution_text": "Historical localities and census data: Palestine Open Maps (palopenmaps.org), with Abu Sitta / Zochrot / PalestineRemembered.",
+      "redistribution_allowed": true,
+      "commercial_use": false,
+      "verify_required": true,
+      "aliases": [
+        "palestine open maps",
+        "palopenmaps",
+        "pom"
+      ]
+    },
+    "unosat": {
+      "name": "UNOSAT (UNITAR)",
+      "organization": "UNITAR/UNOSAT",
+      "source_url": "https://data.humdata.org/organization/un-operational-satellite-appplications-programme-unosat",
+      "license_id": "CC-BY-SA",
+      "attribution_text": "Satellite damage assessments: UNOSAT (UNITAR) via HDX (CC-BY-SA).",
+      "redistribution_allowed": true,
+      "commercial_use": true,
+      "verify_required": false,
+      "aliases": [
+        "unosat gaza damage assessments",
+        "unosat"
+      ]
+    },
+    "reliefweb": {
+      "name": "ReliefWeb",
+      "organization": "OCHA",
+      "source_url": "https://reliefweb.int",
+      "license_id": "metadata-free-with-attribution",
+      "attribution_text": "Report metadata: ReliefWeb (reliefweb.int), OCHA.",
+      "redistribution_allowed": true,
+      "commercial_use": true,
+      "verify_required": false,
+      "aliases": [
+        "reliefweb",
+        "reliefweb palestine"
+      ]
+    },
+    "who_ssa": {
+      "name": "WHO SSA",
+      "organization": "World Health Organization",
+      "source_url": "https://extranet.who.int/ssa",
+      "license_id": "CC-BY-IGO",
+      "attribution_text": "Attacks on health care: WHO SSA via HDX (CC-BY-IGO).",
+      "redistribution_allowed": true,
+      "commercial_use": true,
+      "verify_required": false,
+      "aliases": [
+        "who ssa",
+        "who surveillance system for attacks on health care"
+      ]
+    },
+    "ucdp": {
+      "name": "UCDP Georeferenced Event Dataset",
+      "organization": "Uppsala Conflict Data Program",
+      "source_url": "https://ucdp.uu.se",
+      "license_id": "CC-BY-IGO",
+      "attribution_text": "Conflict events: UCDP GED, Uppsala University.",
+      "redistribution_allowed": true,
+      "commercial_use": true,
+      "verify_required": false,
+      "aliases": [
+        "ucdp ged",
+        "ucdp-ged",
+        "ucdp"
+      ]
+    },
+    "imf": {
+      "name": "IMF DataMapper",
+      "organization": "International Monetary Fund",
+      "source_url": "https://www.imf.org/external/datamapper",
+      "license_id": "CC-BY-4.0",
+      "attribution_text": "Economic indicators: IMF DataMapper.",
+      "redistribution_allowed": true,
+      "commercial_use": true,
+      "verify_required": false,
+      "aliases": [
+        "imf",
+        "imf datamapper"
+      ]
+    },
+    "idmc": {
+      "name": "IDMC",
+      "organization": "Internal Displacement Monitoring Centre",
+      "source_url": "https://www.internal-displacement.org",
+      "license_id": "CC-BY-IGO",
+      "attribution_text": "Displacement events: IDMC (idmc.ch) via HDX, CC-BY-IGO.",
+      "redistribution_allowed": true,
+      "commercial_use": true,
+      "verify_required": false,
+      "aliases": [
+        "idmc",
+        "idmc internal displacement updates"
+      ]
+    },
+    "imemc": {
+      "name": "IMEMC News",
+      "organization": "IMEMC News",
+      "source_url": "https://www.imemc.org",
+      "license_id": "fair-use-headlines",
+      "attribution_text": "Headlines: IMEMC News (links to original).",
+      "redistribution_allowed": false,
+      "commercial_use": false,
+      "verify_required": false,
+      "aliases": [
+        "imemc news"
+      ]
+    },
+    "times_of_israel": {
+      "name": "Times of Israel",
+      "organization": "Times of Israel",
+      "source_url": "https://www.timesofisrael.com",
+      "license_id": "fair-use-headlines",
+      "attribution_text": "Headlines: Times of Israel (links to original).",
+      "redistribution_allowed": false,
+      "commercial_use": false,
+      "verify_required": false,
+      "aliases": [
+        "times of israel"
+      ]
+    },
+    "memo": {
+      "name": "Middle East Monitor",
+      "organization": "Middle East Monitor",
+      "source_url": "https://www.middleeastmonitor.com",
+      "license_id": "fair-use-headlines",
+      "attribution_text": "Headlines: Middle East Monitor (links to original).",
+      "redistribution_allowed": false,
+      "commercial_use": false,
+      "verify_required": false,
+      "aliases": [
+        "middle east monitor"
+      ]
+    },
+    "bbc": {
+      "name": "BBC Middle East",
+      "organization": "BBC Middle East",
+      "source_url": "https://www.bbc.com/news/world/middle_east",
+      "license_id": "fair-use-headlines",
+      "attribution_text": "Headlines: BBC Middle East (links to original).",
+      "redistribution_allowed": false,
+      "commercial_use": false,
+      "verify_required": false,
+      "aliases": [
+        "bbc middle east"
+      ]
+    },
+    "palinfo": {
+      "name": "Palestinian Information Center",
+      "organization": "Palestinian Information Center",
+      "source_url": "https://english.palinfo.com",
+      "license_id": "fair-use-headlines",
+      "attribution_text": "Headlines: Palestinian Information Center (links to original).",
+      "redistribution_allowed": false,
+      "commercial_use": false,
+      "verify_required": false,
+      "aliases": [
+        "palestinian information center"
+      ]
+    },
+    "hrw": {
+      "name": "Human Rights Watch",
+      "organization": "Human Rights Watch",
+      "source_url": "https://www.hrw.org",
+      "license_id": "fair-use-headlines",
+      "attribution_text": "Headlines: Human Rights Watch (links to original).",
+      "redistribution_allowed": false,
+      "commercial_use": false,
+      "verify_required": false,
+      "aliases": [
+        "human rights watch"
+      ]
+    },
+    "amnesty": {
+      "name": "Amnesty International",
+      "organization": "Amnesty International",
+      "source_url": "https://www.amnesty.org",
+      "license_id": "fair-use-headlines",
+      "attribution_text": "Headlines: Amnesty International (links to original).",
+      "redistribution_allowed": false,
+      "commercial_use": false,
+      "verify_required": false,
+      "aliases": [
+        "amnesty international"
+      ]
+    },
+    "ocha_casualties": {
+      "name": "UN OCHA oPt — Data on Casualties",
+      "organization": "UN OCHA oPt (B'Tselem data)",
+      "source_url": "https://www.ochaopt.org/data/casualties",
+      "license_id": "verify-required",
+      "attribution_text": "Palestinian fatalities: UN OCHA oPt, sourced from B'Tselem.",
+      "redistribution_allowed": true,
+      "commercial_use": false,
+      "verify_required": true,
+      "aliases": [
+        "un ocha opt — data on casualties",
+        "un ocha (b'tselem data)",
+        "ocha casualties"
+      ]
+    },
+    "ocha_demolitions": {
+      "name": "UN OCHA oPt — Data on Demolitions",
+      "organization": "UN OCHA oPt",
+      "source_url": "https://www.ochaopt.org/data/demolition",
+      "license_id": "verify-required",
+      "attribution_text": "Demolitions: UN OCHA oPt.",
+      "redistribution_allowed": true,
+      "commercial_use": false,
+      "verify_required": true,
+      "aliases": [
+        "un ocha opt — data on demolitions",
+        "ocha demolitions"
+      ]
+    },
+    "peace_now": {
+      "name": "Peace Now — Settlement Watch",
+      "organization": "Peace Now",
+      "source_url": "https://peacenow.org.il",
+      "license_id": "verify-required",
+      "attribution_text": "Settlement data: Peace Now (Settlement Watch).",
+      "redistribution_allowed": true,
+      "commercial_use": false,
+      "verify_required": true,
+      "aliases": [
+        "peace now — settlement watch",
+        "peace now",
+        "peacenow"
+      ]
+    },
+    "hamoked": {
+      "name": "HaMoked",
+      "organization": "HaMoked — Center for the Defence of the Individual",
+      "source_url": "https://hamoked.org",
+      "license_id": "verify-required",
+      "attribution_text": "Detention figures: HaMoked, sourced from IPS.",
+      "redistribution_allowed": true,
+      "commercial_use": false,
+      "verify_required": true,
+      "aliases": [
+        "hamoked",
+        "hamoked — center for the defence of the individual"
+      ]
+    },
+    "pcbs_direct": {
+      "name": "Palestinian Central Bureau of Statistics (PCBS)",
+      "organization": "PCBS",
+      "source_url": "https://www.pcbs.gov.ps",
+      "license_id": "verify-required",
+      "attribution_text": "Official statistics: PCBS (pcbs.gov.ps).",
+      "redistribution_allowed": true,
+      "commercial_use": false,
+      "verify_required": true,
+      "aliases": [
+        "palestinian central bureau of statistics (pcbs)",
+        "palestinian central bureau of statistics",
+        "pcbs"
+      ]
+    },
+    "ooni": {
+      "name": "OONI",
+      "organization": "Open Observatory of Network Interference",
+      "source_url": "https://ooni.org",
+      "license_id": "free-with-attribution",
+      "attribution_text": "Censorship measurements: OONI (ooni.org), CC-BY-SA.",
+      "redistribution_allowed": true,
+      "commercial_use": false,
+      "verify_required": false,
+      "aliases": [
+        "ooni",
+        "open observatory of network interference"
       ]
     }
   }

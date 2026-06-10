@@ -22,9 +22,21 @@ const __dirname = path.dirname(__filename);
 const OUTPUT_DIR = path.resolve(__dirname, '../../public/data/idmc');
 const OUTPUT = path.join(OUTPUT_DIR, 'displacements-pse.json');
 
-const CSV_URL =
-    'https://data.humdata.org/dataset/a641dda7-9b19-4103-b811-76a3963d29d2/' +
-    'resource/759900bf-d08a-4523-8e4a-157aa97e3d29/download/event_data_pse.csv';
+// Dataset id on HDX (was "idmc-event-data-for-pse" before a 2026 rename).
+// Resolve the CSV resource URL via the CKAN API at runtime so resource-id
+// churn doesn't 404 us again.
+const HDX_DATASET_ID = 'pse-idmc-idu-events';
+
+async function resolveCsvUrl() {
+    const apiUrl = `https://data.humdata.org/api/3/action/package_show?id=${HDX_DATASET_ID}`;
+    const res = await fetch(apiUrl);
+    if (!res.ok) throw new Error(`CKAN package_show HTTP ${res.status}`);
+    const body = await res.json();
+    if (!body.success) throw new Error('CKAN package_show returned success=false');
+    const csv = body.result.resources.find((r) => (r.format || '').toUpperCase() === 'CSV');
+    if (!csv) throw new Error(`No CSV resource on ${HDX_DATASET_ID}`);
+    return csv.url;
+}
 
 function regionFromCoords(lat, lng) {
     if (!Number.isFinite(lat) || !Number.isFinite(lng)) return 'Palestine';
@@ -36,8 +48,9 @@ function regionFromCoords(lat, lng) {
 }
 
 async function main() {
-    console.log(`[IDMC] Downloading ${CSV_URL}`);
-    const res = await fetch(CSV_URL, { redirect: 'follow' });
+    const csvUrl = await resolveCsvUrl();
+    console.log(`[IDMC] Downloading ${csvUrl}`);
+    const res = await fetch(csvUrl, { redirect: 'follow' });
     if (!res.ok) throw new Error(`HTTP ${res.status} ${res.statusText}`);
     const csvText = await res.text();
     const parsed = Papa.parse(csvText, { header: true, dynamicTyping: false, skipEmptyLines: true });
