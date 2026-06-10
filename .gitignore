@@ -40,3 +40,8 @@ data/keys.db
 data/keys.db-journal
 data/keys.db-shm
 data/keys.db-wal
+
+# Ad-hoc debug/test dumps — never commit
+temp_output*.txt
+test_output*.txt
+.kilo/
