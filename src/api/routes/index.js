@@ -9,6 +9,7 @@ import newsRoutes from './news.js';
 import licensesRoutes from './licenses.js';
 import sourcesRoutes from './sources.js';
 import eventsTimelineRoute from './events-timeline.js';
+import eventsClustersRoute from './events.js';
 import incidentsRoute from './incidents.js';
 import geoAdminRoute from './geo-admin.js';
 import facilitiesRoute from './facilities.js';
@@ -55,6 +56,11 @@ router.use('/sources', sourcesRoutes);
 // Cross-category time-ordered event feed. Powers dashboard timeline +
 // interactive timeline map. Reads /unified/* category files directly.
 router.use('/events/timeline', eventsTimelineRoute);
+
+// Place+week event clusters across categories (scripts/build-events.js) —
+// "what happened in Jenin that week" as one queryable object. Registered
+// after /events/timeline; cluster ids are pattern-guarded (ev-<16 hex>).
+router.use('/events', eventsClustersRoute);
 
 // Insecurity Insight incident-level data (1997-2026, ~19k incidents
 // across healthcare, aid_worker, education, food/water systems,

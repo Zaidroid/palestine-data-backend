@@ -80,6 +80,10 @@ run "historical"      node scripts/fetch-historical-data.js
 echo "[step 2] unified pipeline" | tee -a "$LOG"
 run "populate-unified" node scripts/populate-unified-data.js
 run "attach-locations" node scripts/attach-locations.js
+# Re-run after locations so fingerprints cover the geo keys, dedupe collapses
+# overlapping-source rows, and event clusters build on final stable_ids.
+run "attach-stable-ids" node scripts/attach-stable-ids.js
+run "build-events"     node scripts/build-events.js
 
 # Step 3: Manifests + quality snapshot + derived artifacts
 echo "[step 3] manifests + quality" | tee -a "$LOG"
