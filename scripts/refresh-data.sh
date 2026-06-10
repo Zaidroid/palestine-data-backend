@@ -101,6 +101,7 @@ run "quality"         node scripts/generate-quality-snapshot.js
 # Step 4: Databank backfills
 echo "[step 4] databank backfills" | tee -a "$LOG"
 run "databank-martyrs"   python3 scripts/backfill-people-killed-from-martyrs.py
+run "databank-btselem"   python3 scripts/backfill-people-killed-from-btselem.py
 run "databank-gaza"      python3 scripts/backfill-databank-from-gaza-daily.py
 run "databank-prisoners" python3 scripts/backfill-databank-from-prisoners.py
 run "databank-ucdp-actions" python3 scripts/backfill-databank-from-ucdp.py
