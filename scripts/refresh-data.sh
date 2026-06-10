@@ -80,11 +80,16 @@ run "historical"      node scripts/fetch-historical-data.js
 echo "[step 2] unified pipeline" | tee -a "$LOG"
 run "populate-unified" node scripts/populate-unified-data.js
 
-# Step 3: Manifests + quality snapshot
+# Step 3: Manifests + quality snapshot + derived artifacts
 echo "[step 3] manifests + quality" | tee -a "$LOG"
+run "geojson"         node scripts/generate-geojson-layers.js
+run "manifest-full"   node scripts/generate-manifest.js
 run "manifest"        node scripts/generate-unified-manifest.js
-run "quality"         node scripts/generate-quality-snapshot.js
 run "search-index"    node scripts/generate-search-index.js
+run "optimize"        node scripts/optimize-unified-data.js
+run "optimize-search" node scripts/optimize-search-index.js
+run "validate"        node scripts/validate-data.js
+run "quality"         node scripts/generate-quality-snapshot.js
 
 # Step 4: Databank backfills
 echo "[step 4] databank backfills" | tee -a "$LOG"
