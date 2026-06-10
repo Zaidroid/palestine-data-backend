@@ -84,12 +84,52 @@ export async function getUnifiedData(category, opts = {}) {
         try {
             return JSON.parse(await fs.readFile(p, 'utf-8'));
         } catch (err) {
-            if (err.code === 'ENOENT') return null;
+            if (err.code === 'ENOENT') {
+                return readPartitionedCategory(path.join(opts.snapshotDir, category));
+            }
             throw err;
         }
     }
     const filePath = path.join('unified', category, 'all-data.json');
-    return readJsonFile(filePath);
+    const allData = await readJsonFile(filePath);
+    if (allData) return allData;
+    // optimize-unified-data.js deletes oversized all-data.json when
+    // partitions exist — rebuild the same shape from the partitions.
+    return readPartitionedCategory(path.join(UNIFIED_DIR, category));
+}
+
+/**
+ * Reassemble { data, metadata } for a category that only has
+ * partitions/ + metadata.json on disk (large categories whose
+ * all-data.json was removed by the optimizer).
+ */
+async function readPartitionedCategory(catDir) {
+    try {
+        const partitionsDir = path.join(catDir, 'partitions');
+        const files = (await fs.readdir(partitionsDir)).filter((f) => f.endsWith('.json') && f !== 'index.json');
+        if (files.length === 0) return null;
+        const data = [];
+        for (const f of files.sort()) {
+            try {
+                const part = JSON.parse(await fs.readFile(path.join(partitionsDir, f), 'utf-8'));
+                const records = Array.isArray(part) ? part : part.data;
+                if (Array.isArray(records)) data.push(...records);
+            } catch {
+                // skip unreadable partition rather than failing the category
+            }
+        }
+        if (data.length === 0) return null;
+        let metadata = null;
+        try {
+            metadata = JSON.parse(await fs.readFile(path.join(catDir, 'metadata.json'), 'utf-8'));
+        } catch {
+            // metadata is optional
+        }
+        return { data, metadata };
+    } catch (err) {
+        if (err.code === 'ENOENT') return null;
+        throw err;
+    }
 }
 
 /**
@@ -149,7 +189,14 @@ export async function listCategories() {
                     await fs.access(path.join(UNIFIED_DIR, entry.name, 'all-data.json'));
                     categories.push(entry.name);
                 } catch {
-                    // skip dirs without all-data.json
+                    // No all-data.json — still a valid category if the
+                    // optimizer left partitions behind (e.g. health).
+                    try {
+                        const parts = await fs.readdir(path.join(UNIFIED_DIR, entry.name, 'partitions'));
+                        if (parts.some((f) => f.endsWith('.json') && f !== 'index.json')) categories.push(entry.name);
+                    } catch {
+                        // skip dirs without data
+                    }
                 }
             }
         }

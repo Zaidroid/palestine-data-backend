@@ -28,11 +28,14 @@ async function optimizeUnifiedData() {
             if (sizeMB > MAX_FILE_SIZE_MB) {
                 console.log(`⚠️  ${category}/all-data.json is ${sizeMB.toFixed(2)}MB. Checking for partitions...`);
 
-                // Check if partitions exist
+                // Check if partitions exist. index.json alone is NOT data —
+                // deleting all-data.json when the partitioner produced no
+                // real partitions (e.g. dateless records) destroys the only copy.
                 const partitionsDir = path.join(catDir, 'partitions');
                 try {
                     await fs.access(partitionsDir);
-                    const partitions = await fs.readdir(partitionsDir);
+                    const partitions = (await fs.readdir(partitionsDir))
+                        .filter((f) => f.endsWith('.json') && f !== 'index.json');
 
                     if (partitions.length > 0) {
                         console.log(`✅ Partitions exist for ${category}. Removing large all-data.json...`);

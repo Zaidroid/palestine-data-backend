@@ -296,10 +296,14 @@ async function main() {
       test('All Tech4Palestine martyrs files exist', filesExist.every(e => e));
     }
 
-    // Check Unified Martyrs (frozen snapshot category since the 2026 pivot)
+    // Check Unified Martyrs (frozen snapshot category since the 2026 pivot).
+    // Large categories keep only partitions/ after optimize-unified-data.js
+    // removes the oversized all-data.json, so accept either layout.
     const unifiedMartyrsPath = path.join(DATA_DIR, 'unified/martyrs_snapshot_2023/all-data.json');
+    const martyrsPartitionsDir = path.join(DATA_DIR, 'unified/martyrs_snapshot_2023/partitions');
     const unifiedMartyrsExists = await fs.access(unifiedMartyrsPath).then(() => true).catch(() => false);
-    test('Unified martyrs data exists', unifiedMartyrsExists);
+    const martyrsPartitions = await fs.readdir(martyrsPartitionsDir).catch(() => []);
+    test('Unified martyrs data exists', unifiedMartyrsExists || martyrsPartitions.length > 0);
 
     if (unifiedMartyrsExists) {
       const martyrsData = await readJSON(unifiedMartyrsPath);
