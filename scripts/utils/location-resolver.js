@@ -24,10 +24,13 @@ const __dirname = path.dirname(__filename);
 const REPO_ROOT = path.resolve(__dirname, '../..');
 
 const GAZETTEER_PATH = path.join(REPO_ROOT, 'services/westbank-alerts/data/known_locations.json');
-// 1948 depopulated villages (Wikidata, CC0) — a SEPARATE historical layer.
-// Deliberately not merged into known_locations.json: the alerts service
-// matches live Telegram text against that file, and 450 historical names
-// (many shared with modern places) would cause false geocoding there.
+// Depopulated localities — a SEPARATE historical layer. Deliberately not
+// merged into known_locations.json: the alerts service matches live Telegram
+// text against that file, and ~590 historical names (many shared with modern
+// places) would cause false geocoding there.
+// Primary: Palestine Open Maps registry (trusted, Palestinian-led, with
+// Zochrot/PalRemembered/AbuSitta crosswalks). Fallback: Wikidata bootstrap.
+const POM_LOCALITIES_PATH = path.join(REPO_ROOT, 'public/data/static/pom-localities.json');
 const VILLAGES_1948_PATH = path.join(REPO_ROOT, 'public/data/static/villages-1948.json');
 const ADMIN2_PATH = path.join(REPO_ROOT, 'public/data/admin/admin2.geojson');
 
@@ -135,31 +138,43 @@ function loadGazetteer() {
     for (const e of entries) {
         for (const a of e.aliases || []) put(a, e);
     }
-    // Historical layer: 1948 depopulated villages, consulted only when the
+    // Historical layer: depopulated localities, consulted only when the
     // modern gazetteer has no match. Keys carry a _1948 suffix so consumers
     // can tell eras apart at a glance.
     const index1948 = new Map();
+    const addHistorical = (name_en, name_ar, lat, lon, extra) => {
+        const key = `${normalizeName(name_en || name_ar).replace(/\s+/g, '_')}_1948`;
+        const entry = {
+            canonical_key: key,
+            name_en,
+            name_ar,
+            governorate: null,
+            latitude: lat,
+            longitude: lon,
+            historical: true,
+            ...extra,
+        };
+        for (const n of [name_en, name_ar]) {
+            const k = normalizeName(n);
+            if (k && !index1948.has(k)) index1948.set(k, entry);
+        }
+    };
     try {
-        const villages = JSON.parse(fs.readFileSync(VILLAGES_1948_PATH, 'utf-8')).data || [];
-        for (const v of villages) {
-            const key = `${normalizeName(v.name_en || v.name_ar).replace(/\s+/g, '_')}_1948`;
-            const entry = {
-                canonical_key: key,
-                name_en: v.name_en,
-                name_ar: v.name_ar,
-                governorate: null,
-                latitude: v.lat,
-                longitude: v.lon,
-                historical: true,
-                qid: v.qid,
-            };
-            for (const n of [v.name_en, v.name_ar]) {
-                const k = normalizeName(n);
-                if (k && !index1948.has(k)) index1948.set(k, entry);
-            }
+        const pom = JSON.parse(fs.readFileSync(POM_LOCALITIES_PATH, 'utf-8')).data || [];
+        for (const v of pom) {
+            if (!/depopulated|abandoned/i.test(v.change_2016 || '')) continue;
+            addHistorical(v.name_en, v.name_ar, v.lat, v.lon, { pom_id: v.pom_id });
         }
     } catch {
-        // villages file not fetched yet — historical lookups just miss
+        // POM registry not fetched — fall back to the Wikidata bootstrap
+        try {
+            const villages = JSON.parse(fs.readFileSync(VILLAGES_1948_PATH, 'utf-8')).data || [];
+            for (const v of villages) {
+                addHistorical(v.name_en, v.name_ar, v.lat, v.lon, { qid: v.qid });
+            }
+        } catch {
+            // no historical layer available — lookups just miss
+        }
     }
 
     GAZ_INDEX = { index, indexAll, index1948 };

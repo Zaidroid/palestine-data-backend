@@ -45,6 +45,7 @@ echo "[step 1] fetching upstream sources" | tee -a "$LOG"
 run "gaza-daily"      node scripts/fetch-gaza-daily.js
 run "prisoners"       node scripts/fetch-prisoners.js
 run "unhcr-refugees"  node scripts/sources/unhcr.js
+run "pom-localities"  node scripts/sources/pom-localities.js
 run "villages-1948"   node scripts/sources/villages-1948.js
 run "unfts-funding"   node scripts/sources/unfts.js
 run "imf-economic"    node scripts/sources/imf.js

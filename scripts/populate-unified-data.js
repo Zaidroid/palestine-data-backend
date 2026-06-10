@@ -264,42 +264,84 @@ async function processUCDPConflict() {
 
 
 /**
- * Process the 1948 depopulated-villages registry (Wikidata, CC0) into
- * /unified/conflict — one cited depopulation event per village. This is the
- * Nakba layer that makes "1948 → present" real: 450 villages with names,
- * coordinates and (where recorded) population at depopulation. Records merge
- * by id (nakba-<qid>) alongside UCDP/T4P, and the location resolver's
- * historical gazetteer layer links them to modern records at the same
- * coordinates.
+ * Process the depopulated-villages registry into /unified/conflict — one
+ * cited depopulation event per locality.
+ *
+ * PRIMARY source: Palestine Open Maps (Visualizing Palestine — Palestinian-
+ * led), which compiles British Mandate census populations (1922/1931/1945)
+ * and day-precision depopulation dates with per-village crosswalks to the
+ * canonical scholarship: Zochrot, Palestine Remembered, Abu Sitta's Atlas
+ * of Palestine, and PalQuest. The Wikidata bootstrap (villages-1948.json)
+ * is kept only as a QID crosswalk, matched by normalized name.
+ *
+ * conflict_phase derives from the recorded date — the registry includes
+ * 1967 Naksa depopulations (e.g. the Latrun villages), which are honestly
+ * labeled naksa-1967, not folded into the Nakba.
  */
 async function processVillages1948() {
-    logger.info('Processing 1948 depopulated villages (Nakba layer)...');
+    logger.info('Processing depopulated-villages registry (POM + scholarship crosswalks)...');
     try {
-        const filePath = path.join(DATA_DIR, 'static', 'villages-1948.json');
+        const filePath = path.join(DATA_DIR, 'static', 'pom-localities.json');
         let envelope;
         try {
             envelope = JSON.parse(await fs.readFile(filePath, 'utf-8'));
         } catch (e) {
-            logger.warn('villages-1948 snapshot unavailable (run scripts/sources/villages-1948.js):', e.message);
+            logger.warn('POM localities unavailable (run scripts/sources/pom-localities.js):', e.message);
             return;
         }
-        const villages = envelope.data || [];
+        const villages = (envelope.data || []).filter((l) => /depopulated/i.test(l.change_2016 || ''));
         if (villages.length === 0) {
-            logger.warn('No 1948 villages on disk; skipping');
+            logger.warn('No depopulated localities on disk; skipping');
             return;
         }
 
+        // Wikidata QID crosswalk by normalized English name (best effort).
+        const qidByName = new Map();
+        try {
+            const wd = JSON.parse(await fs.readFile(path.join(DATA_DIR, 'static', 'villages-1948.json'), 'utf-8'));
+            for (const v of wd.data || []) {
+                if (v.name_en) qidByName.set(v.name_en.toLowerCase().replace(/[^a-z]/g, ''), v.qid);
+            }
+        } catch {
+            // crosswalk optional
+        }
+
+        const phaseOf = (date) => {
+            if (!date) return 'nakba-1948';
+            if (date <= '1949-12-31') return 'nakba-1948';
+            if (date >= '1967-01-01' && date <= '1967-12-31') return 'naksa-1967';
+            return 'displacement';
+        };
+
         const records = villages.map((v) => {
             const name = v.name_en || v.name_ar;
-            // Honest dating: use the recorded depopulation date when Wikidata
-            // has one AND it falls in the Nakba window — P576 occasionally
-            // carries unrelated dissolution dates (one entry says 1265).
-            // Otherwise date to the year, flagged by date_precision.
-            const dateOk = v.depopulated_on
-                && v.depopulated_on >= '1947-01-01' && v.depopulated_on <= '1950-12-31';
+            const pop = v.pop_1945 ?? v.pop_1931 ?? v.pop_1922 ?? null;
+            const dateOk = !!v.depopulated_on;
+            const date = v.depopulated_on || '1948-01-01';
+            const sources = [{
+                name: 'Palestine Open Maps locality registry',
+                organization: 'Visualizing Palestine',
+                url: `https://palopenmaps.org/en/places/${v.slug || ''}`,
+                license: envelope.license,
+                fetched_at: envelope.generated_at,
+            }];
+            if (v.id_zochrot) {
+                sources.push({ name: `Zochrot village page`, organization: 'Zochrot', url: `https://zochrot.org/en/village/${v.id_zochrot}` });
+            }
+            if (v.url_palremembered) {
+                sources.push({ name: 'Palestine Remembered village page', organization: 'Palestine Remembered', url: `https://www.palestineremembered.com/${v.url_palremembered}/index.html` });
+            }
+            if (v.id_abusitta) {
+                sources.push({ name: `Atlas of Palestine ref ${v.id_abusitta}`, organization: 'Salman Abu Sitta — Palestine Land Society' });
+            }
+            const qid = qidByName.get((v.name_en || '').toLowerCase().replace(/[^a-z]/g, ''));
+            if (qid) {
+                sources.push({ name: `Wikidata ${qid} (crosswalk)`, organization: 'Wikidata', url: `https://www.wikidata.org/wiki/${qid}`, license: 'CC0-1.0' });
+            }
+
             return {
-                id: `nakba-${v.qid}`,
-                date: dateOk ? v.depopulated_on : '1948-01-01',
+                id: `nakba-pom-${v.pom_id}`,
+                date,
                 date_precision: dateOk ? 'day' : 'year',
                 category: 'conflict',
                 event_type: 'village_depopulation',
@@ -315,34 +357,33 @@ async function processVillages1948() {
                 metrics: {
                     killed: 0,
                     injured: 0,
-                    displaced: v.population || 0,
-                    affected: v.population || 0,
+                    displaced: pop || 0,
+                    affected: pop || 0,
                     demolished: 0,
                     detained: 0,
                     count: 1,
-                    value: v.population || 0,
+                    value: pop || 0,
                     unit: 'persons',
                 },
-                description: `${name}${v.district ? ` (${v.district})` : ''} — Palestinian village depopulated during the 1948 Nakba` +
-                    `${v.population ? `; recorded population ${v.population}` : ''}.` +
+                description: `${name}${v.district_1945 ? ` (${v.district_1945} district)` : ''} — Palestinian ${(v.type_1945 || 'village').toLowerCase()} depopulated` +
+                    `${phaseOf(date) === 'nakba-1948' ? ' during the 1948 Nakba' : phaseOf(date) === 'naksa-1967' ? ' during the 1967 Naksa' : ''}` +
+                    `${pop ? `; population ${pop} (Village Statistics 1945 / Mandate censuses)` : ''}.` +
+                    ` Status: ${v.change_2016}.` +
                     `${dateOk ? '' : ' Depopulation date not recorded at day precision; dated to the year 1948.'}`,
                 actors: [],
-                conflict_phase: 'nakba-1948',
+                conflict_phase: phaseOf(date),
+                population_1922: v.pop_1922,
+                population_1931: v.pop_1931,
+                population_1945: v.pop_1945,
                 quality: {
-                    score: 0.9,
-                    completeness: v.lat != null && v.population != null ? 1 : 0.7,
+                    score: 0.95,
+                    completeness: v.lat != null && pop != null && dateOk ? 1 : 0.8,
                     consistency: 1,
-                    accuracy: 0.9,
+                    accuracy: 0.95,
                     confidence: 'high',
                     verified: false,
                 },
-                sources: [{
-                    name: `Wikidata ${v.qid}`,
-                    organization: 'Wikidata',
-                    url: `https://www.wikidata.org/wiki/${v.qid}`,
-                    license: envelope.license || 'CC0-1.0',
-                    fetched_at: envelope.generated_at,
-                }],
+                sources,
             };
         });
 
@@ -353,7 +394,13 @@ async function processVillages1948() {
         try {
             existing = JSON.parse(await fs.readFile(dataPath, 'utf-8'));
         } catch {}
-        const byId = new Map((existing.data || []).map((r) => [r.id, r]));
+        // Drop any previous depopulation records (including the superseded
+        // Wikidata-bootstrap nakba-Q* ids) before merging the fresh registry.
+        const byId = new Map(
+            (existing.data || [])
+                .filter((r) => !String(r.id).startsWith('nakba-'))
+                .map((r) => [r.id, r])
+        );
         for (const r of records) byId.set(r.id, r);
         const merged = Array.from(byId.values());
 
@@ -365,15 +412,18 @@ async function processVillages1948() {
                     ...(existing.metadata || {}),
                     total_records: merged.length,
                     generated_at: new Date().toISOString(),
-                    sources: [...new Set([...(existing.metadata?.sources || []), 'Wikidata-1948-villages'])],
+                    sources: [...new Set([
+                        ...(existing.metadata?.sources || []).filter((s) => s !== 'Wikidata-1948-villages'),
+                        'Palestine Open Maps (Zochrot/PalRemembered/AbuSitta crosswalks)',
+                    ])],
                     category: 'conflict',
                 },
             }, null, 2),
             'utf-8',
         );
-        logger.success(`1948 villages merged: +${records.length} depopulation events into conflict (total ${merged.length})`);
+        logger.success(`Depopulated villages merged: +${records.length} events into conflict (total ${merged.length})`);
     } catch (e) {
-        logger.error('Error processing 1948 villages:', e.message);
+        logger.error('Error processing depopulated villages:', e.message);
     }
 }
 
