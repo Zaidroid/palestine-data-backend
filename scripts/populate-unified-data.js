@@ -264,6 +264,121 @@ async function processUCDPConflict() {
 
 
 /**
+ * Process the 1948 depopulated-villages registry (Wikidata, CC0) into
+ * /unified/conflict — one cited depopulation event per village. This is the
+ * Nakba layer that makes "1948 → present" real: 450 villages with names,
+ * coordinates and (where recorded) population at depopulation. Records merge
+ * by id (nakba-<qid>) alongside UCDP/T4P, and the location resolver's
+ * historical gazetteer layer links them to modern records at the same
+ * coordinates.
+ */
+async function processVillages1948() {
+    logger.info('Processing 1948 depopulated villages (Nakba layer)...');
+    try {
+        const filePath = path.join(DATA_DIR, 'static', 'villages-1948.json');
+        let envelope;
+        try {
+            envelope = JSON.parse(await fs.readFile(filePath, 'utf-8'));
+        } catch (e) {
+            logger.warn('villages-1948 snapshot unavailable (run scripts/sources/villages-1948.js):', e.message);
+            return;
+        }
+        const villages = envelope.data || [];
+        if (villages.length === 0) {
+            logger.warn('No 1948 villages on disk; skipping');
+            return;
+        }
+
+        const records = villages.map((v) => {
+            const name = v.name_en || v.name_ar;
+            // Honest dating: use the recorded depopulation date when Wikidata
+            // has one AND it falls in the Nakba window — P576 occasionally
+            // carries unrelated dissolution dates (one entry says 1265).
+            // Otherwise date to the year, flagged by date_precision.
+            const dateOk = v.depopulated_on
+                && v.depopulated_on >= '1947-01-01' && v.depopulated_on <= '1950-12-31';
+            return {
+                id: `nakba-${v.qid}`,
+                date: dateOk ? v.depopulated_on : '1948-01-01',
+                date_precision: dateOk ? 'day' : 'year',
+                category: 'conflict',
+                event_type: 'village_depopulation',
+                schema_version: '3.0.0',
+                location: {
+                    name,
+                    governorate: null,
+                    region: 'Palestine',
+                    lat: v.lat,
+                    lon: v.lon,
+                    precision: v.lat != null ? 'point' : 'unknown',
+                },
+                metrics: {
+                    killed: 0,
+                    injured: 0,
+                    displaced: v.population || 0,
+                    affected: v.population || 0,
+                    demolished: 0,
+                    detained: 0,
+                    count: 1,
+                    value: v.population || 0,
+                    unit: 'persons',
+                },
+                description: `${name}${v.district ? ` (${v.district})` : ''} — Palestinian village depopulated during the 1948 Nakba` +
+                    `${v.population ? `; recorded population ${v.population}` : ''}.` +
+                    `${dateOk ? '' : ' Depopulation date not recorded at day precision; dated to the year 1948.'}`,
+                actors: [],
+                conflict_phase: 'nakba-1948',
+                quality: {
+                    score: 0.9,
+                    completeness: v.lat != null && v.population != null ? 1 : 0.7,
+                    consistency: 1,
+                    accuracy: 0.9,
+                    confidence: 'high',
+                    verified: false,
+                },
+                sources: [{
+                    name: `Wikidata ${v.qid}`,
+                    organization: 'Wikidata',
+                    url: `https://www.wikidata.org/wiki/${v.qid}`,
+                    license: envelope.license || 'CC0-1.0',
+                    fetched_at: envelope.generated_at,
+                }],
+            };
+        });
+
+        const conflictDir = path.join(UNIFIED_DIR, 'conflict');
+        await fs.mkdir(conflictDir, { recursive: true });
+        const dataPath = path.join(conflictDir, 'all-data.json');
+        let existing = { data: [], metadata: {} };
+        try {
+            existing = JSON.parse(await fs.readFile(dataPath, 'utf-8'));
+        } catch {}
+        const byId = new Map((existing.data || []).map((r) => [r.id, r]));
+        for (const r of records) byId.set(r.id, r);
+        const merged = Array.from(byId.values());
+
+        await fs.writeFile(
+            dataPath,
+            JSON.stringify({
+                data: merged,
+                metadata: {
+                    ...(existing.metadata || {}),
+                    total_records: merged.length,
+                    generated_at: new Date().toISOString(),
+                    sources: [...new Set([...(existing.metadata?.sources || []), 'Wikidata-1948-villages'])],
+                    category: 'conflict',
+                },
+            }, null, 2),
+            'utf-8',
+        );
+        logger.success(`1948 villages merged: +${records.length} depopulation events into conflict (total ${merged.length})`);
+    } catch (e) {
+        logger.error('Error processing 1948 villages:', e.message);
+    }
+}
+
+
+/**
  * Process IDMC (Internal Displacement Monitoring Centre) Palestine.
  *
  * Promotes per-event displacement records (with geocoding, figure,
@@ -2605,6 +2720,7 @@ async function main() {
         { name: 'economic',            fn: processEconomicData },
         { name: 'conflict',            fn: processConflictData },
         { name: 'ucdp_conflict',       fn: processUCDPConflict },
+        { name: 'villages_1948',       fn: processVillages1948 },
         { name: 'infrastructure_t4p',  fn: processTech4PalestineInfrastructure },
         { name: 'press',               fn: processPressData },
         { name: 'martyrs',             fn: processMartyrsData },

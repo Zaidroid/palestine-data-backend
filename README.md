@@ -42,7 +42,7 @@ Commercial surface (Stripe, billing, API-key tiers) is scaffolded but
 
 ## Data catalog
 
-14 unified categories, **131,630 unique records** (measured from
+14 unified categories, **132,080 unique records** (measured from
 `unified-manifest.json`, 2026-06-10 pipeline run, after content-identical
 deduplication — overlapping upstream dataset packages used to inflate raw
 row counts ~1.6x). Every record carries a deterministic `stable_id` and
@@ -57,7 +57,7 @@ truth between doc updates.
 | **Martyrs (snapshot)** | 60,200 | Tech4Palestine | CC-BY-4.0 | snapshot + live summary (60,199 named + 1 cumulative summary carrying current MoH totals) |
 | **Water / WASH** | 24,778 | HDX WASH Cluster (OCHA) | CC-BY | live-daily |
 | **Health** | 12,132 | WHO GHO, HDX, Good Shepherd | CC-BY-NC-SA | live-daily, non-commercial only |
-| **Conflict** | 9,908 | UCDP, Tech4Palestine, OCHA, B'Tselem | Mixed (CC-BY / CC-BY-NC) | live-daily (1989 → present, geocoded) |
+| **Conflict** | 10,358 | Wikidata 1948 villages, UCDP, Tech4Palestine, OCHA, B'Tselem | Mixed (CC0 / CC-BY / CC-BY-NC) | live-daily (**1948 → present**: 450 cited Nakba depopulation events + UCDP geocoded events 1989+ + daily rollups) |
 | **Funding** | 9,492 | UN OCHA Financial Tracking Service | CC-BY-IGO-3.0 | live-daily (2013 → present) |
 | **Economic** | 3,963 | World Bank, IMF | Public | live-weekly (1960 → present) |
 | **West Bank layers** | 2,962 | HDX (schools, villages, barrier) | CC-BY | live-daily |

@@ -24,6 +24,11 @@ const __dirname = path.dirname(__filename);
 const REPO_ROOT = path.resolve(__dirname, '../..');
 
 const GAZETTEER_PATH = path.join(REPO_ROOT, 'services/westbank-alerts/data/known_locations.json');
+// 1948 depopulated villages (Wikidata, CC0) — a SEPARATE historical layer.
+// Deliberately not merged into known_locations.json: the alerts service
+// matches live Telegram text against that file, and 450 historical names
+// (many shared with modern places) would cause false geocoding there.
+const VILLAGES_1948_PATH = path.join(REPO_ROOT, 'public/data/static/villages-1948.json');
 const ADMIN2_PATH = path.join(REPO_ROOT, 'public/data/admin/admin2.geojson');
 
 // ── Normalization ─────────────────────────────────────────────────────────────
@@ -130,7 +135,34 @@ function loadGazetteer() {
     for (const e of entries) {
         for (const a of e.aliases || []) put(a, e);
     }
-    GAZ_INDEX = { index, indexAll };
+    // Historical layer: 1948 depopulated villages, consulted only when the
+    // modern gazetteer has no match. Keys carry a _1948 suffix so consumers
+    // can tell eras apart at a glance.
+    const index1948 = new Map();
+    try {
+        const villages = JSON.parse(fs.readFileSync(VILLAGES_1948_PATH, 'utf-8')).data || [];
+        for (const v of villages) {
+            const key = `${normalizeName(v.name_en || v.name_ar).replace(/\s+/g, '_')}_1948`;
+            const entry = {
+                canonical_key: key,
+                name_en: v.name_en,
+                name_ar: v.name_ar,
+                governorate: null,
+                latitude: v.lat,
+                longitude: v.lon,
+                historical: true,
+                qid: v.qid,
+            };
+            for (const n of [v.name_en, v.name_ar]) {
+                const k = normalizeName(n);
+                if (k && !index1948.has(k)) index1948.set(k, entry);
+            }
+        }
+    } catch {
+        // villages file not fetched yet — historical lookups just miss
+    }
+
+    GAZ_INDEX = { index, indexAll, index1948 };
     return GAZ_INDEX;
 }
 
@@ -204,7 +236,7 @@ export function pointToAdmin(lat, lon) {
 export function resolveLocation(location) {
     if (!location || typeof location !== 'object') return null;
     const out = {};
-    const { index, indexAll } = loadGazetteer();
+    const { index, indexAll, index1948 } = loadGazetteer();
 
     let entry = null;
     const candidates = nameCandidates(location.name);
@@ -219,7 +251,7 @@ export function resolveLocation(location) {
             if (cand === candidates[0]) break;
             continue;
         }
-        entry = index.get(cand);
+        entry = index.get(cand) || index1948.get(cand);
         if (entry) break;
     }
 
