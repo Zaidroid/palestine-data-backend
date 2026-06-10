@@ -95,15 +95,29 @@ curl https://api.zaidlab.xyz/api/v1/gaza/summary
 curl 'https://api.zaidlab.xyz/api/v1/conflict/political-violence?admin2=Hebron&since=2026-01'
 
 # 4. All currently-closed checkpoints
-curl https://wb-alerts.zaidlab.xyz/checkpoints/closed</code></pre>
+curl https://wb-alerts.zaidlab.xyz/checkpoints/closed
+
+# 5. The Nakba, queryable: cited 1948 depopulation events
+curl 'https://api.zaidlab.xyz/api/v1/unified/conflict?event_type=village_depopulation&limit=3'</code></pre>
+<div class="note">Step-by-step guides:
+<a href="https://github.com/Zaidroid/palestine-data-backend/blob/main/docs/QUICKSTART-databank.md">databank in 5 minutes</a> ·
+<a href="https://github.com/Zaidroid/palestine-data-backend/blob/main/docs/QUICKSTART-alerts.md">live alerts &amp; checkpoints</a> ·
+live platform health at <a href="/status.html">/status.html</a>.</div>
 
 <h2 id="auth">Auth &amp; rate limits</h2>
+<p>The two hosts authenticate differently:</p>
 <table>
-  <tr><th>Tier</th><th>Daily quota</th><th>Per-minute</th><th>Auth</th></tr>
-  <tr><td>anonymous (default)</td><td>10,000 req/day</td><td>60 req/min</td><td>none</td></tr>
-  <tr><td>authenticated (bring your key)</td><td>configurable</td><td>configurable</td><td><code>X-API-Key</code> header</td></tr>
+  <tr><th>Host</th><th>Tier</th><th>Per-minute</th><th>Daily</th><th>Auth</th></tr>
+  <tr><td rowspan="3"><code>api.zaidlab.xyz</code> (datasets)</td><td>anonymous</td><td>10</td><td>1,000</td><td>none</td></tr>
+  <tr><td>free key</td><td>30</td><td>5,000</td><td rowspan="2"><code>Authorization: Bearer pdb_live_…</code></td></tr>
+  <tr><td>journalist / NGO / enterprise</td><td>60 / 300 / 1,500</td><td>monthly quotas</td></tr>
+  <tr><td><code>wb-alerts.zaidlab.xyz</code> (live tracker)</td><td>public reads; <code>/admin/*</code> + webhooks keyed</td><td colspan="2">—</td><td><code>X-API-Key</code> header</td></tr>
 </table>
-<div class="note">All read endpoints work anonymously. <code>/admin/*</code> endpoints (review queue, anomaly recompute) require <code>X-API-Key</code>. Health endpoints (<code>/health</code>) are exempt from rate limits.</div>
+<div class="note">Paid tiers on the datasets API license the data for commercial
+reuse: records from non-commercial sources (WHO CC-BY-NC-SA, B'Tselem CC-BY-NC)
+are automatically excluded from paid responses and the exclusion is reported in
+<code>metadata.records_hidden_by_license</code>. Required attribution strings:
+<code>GET /api/v1/licenses</code>. Health endpoints are exempt from rate limits.</div>
 
 <h2 id="alerts">Live alerts</h2>
 <p>Real-time security alerts ingested from Telegram (7 channels) + RSS (3 feeds), classified into 18 event types. Every alert includes <code>trust_score</code> (composite confidence × source reliability), <code>historical_boost</code> (Insecurity Insight + ACLED corroboration), and OCHA <code>admin1</code>/<code>admin2</code> stamps.</p>
@@ -176,25 +190,46 @@ curl https://wb-alerts.zaidlab.xyz/checkpoints/closed</code></pre>
   <span class="desc">% open / closed / restricted per checkpoint over a window.</span></div>
 
 <h2 id="unified">Unified historical datasets</h2>
-<p>14 categories, ~205,000 records. Each category has paginated rows, summary aggregates, time-series, schema metadata, and a stable per-record permalink.</p>
+<p>14 categories, <strong>132,219 unique records, 1948 &rarr; present</strong>
+(deduplicated; measured 2026-06-10 — <code>GET /api/v1/quality</code> is the
+live source of truth). Each category has paginated rows, summary aggregates,
+time-series, schema metadata, and a stable per-record permalink. Every record
+carries citations and shared geographic keys (<code>gazetteer_key</code>,
+OCHA <code>admin1/admin2</code>).</p>
 
 <table>
-<tr><th>Category</th><th>Records</th><th>Source</th></tr>
-<tr><td><code>conflict</code></td><td>~28,000</td><td>UCDP-GED</td></tr>
-<tr><td><code>infrastructure</code></td><td>~80,000</td><td>OSM + WHO + IDA</td></tr>
-<tr><td><code>health</code></td><td>~38,000</td><td>WHO + HDX + GoodShepherd</td></tr>
-<tr><td><code>education</code></td><td>~16,000</td><td>OCHA + UNICEF + HDX</td></tr>
-<tr><td><code>refugees</code></td><td>~31,000</td><td>UNHCR ODP</td></tr>
-<tr><td><code>funding</code></td><td>~5,000</td><td>UN FTS</td></tr>
-<tr><td><code>economic</code></td><td>~3,000</td><td>IMF + World Bank</td></tr>
-<tr><td><code>land</code></td><td>~3,000</td><td>OCHA demolitions + GoodShepherd</td></tr>
-<tr><td><code>water</code></td><td>~2,500</td><td>WHO WASH + EWASH</td></tr>
-<tr><td><code>news</code></td><td>~10,000</td><td>RSS aggregator (fair-use)</td></tr>
-<tr><td><code>pcbs</code></td><td>varies</td><td>Palestinian Central Bureau of Statistics</td></tr>
-<tr><td><code>culture</code></td><td>~700</td><td>UNESCO + heritage feeds</td></tr>
-<tr><td><code>westbank</code></td><td>~5,000</td><td>OCHA settlements + violence</td></tr>
-<tr><td><code>martyrs_snapshot_2023</code></td><td>~60,000</td><td>Tech4Palestine roster (frozen)</td></tr>
+<tr><th>Category</th><th>Records</th><th>Coverage</th><th>Source</th></tr>
+<tr><td><code>martyrs_snapshot_2023</code></td><td>60,200</td><td>named roster + live MoH summary</td><td>Tech4Palestine</td></tr>
+<tr><td><code>water</code></td><td>24,778</td><td>2026</td><td>HDX WASH Cluster</td></tr>
+<tr><td><code>health</code></td><td>12,132</td><td>1975 &rarr; present</td><td>WHO GHO + HDX + Gaza MoH</td></tr>
+<tr><td><code>conflict</code></td><td>10,366</td><td><strong>1948 &rarr; present</strong> (589 cited Nakba/Naksa depopulations + UCDP 1989+ + daily rollups)</td><td>Palestine Open Maps (Zochrot/Abu Sitta crosswalks), UCDP-GED, T4P, B'Tselem</td></tr>
+<tr><td><code>funding</code></td><td>9,492</td><td>2013 &rarr; present</td><td>UN OCHA FTS</td></tr>
+<tr><td><code>economic</code></td><td>3,963</td><td>1960 &rarr; present</td><td>World Bank + IMF</td></tr>
+<tr><td><code>westbank</code></td><td>2,962</td><td>schools, villages, barrier layers</td><td>HDX</td></tr>
+<tr><td><code>education</code></td><td>2,359</td><td>current</td><td>HDX</td></tr>
+<tr><td><code>pcbs</code></td><td>2,038</td><td>1960 &rarr; present</td><td>Palestinian Central Bureau of Statistics</td></tr>
+<tr><td><code>infrastructure</code></td><td>1,333</td><td>Oct 2023 &rarr; present</td><td>Tech4Palestine</td></tr>
+<tr><td><code>refugees</code></td><td>1,230</td><td>2010 &rarr; present</td><td>UNHCR ODP + UNRWA camps</td></tr>
+<tr><td><code>land</code></td><td>700</td><td>current</td><td>OCHA + B'Tselem + Peace Now</td></tr>
+<tr><td><code>culture</code></td><td>327</td><td>heritage sites</td><td>UNESCO + Wikidata</td></tr>
+<tr><td><code>news</code></td><td>208</td><td>rolling (headlines + links only)</td><td>11 outlets, fair-use</td></tr>
 </table>
+
+<div class="note">Plus the person-level <strong>entity databank</strong> on the
+alerts host: 70,262 named individuals killed, continuous 2000 &rarr; present
+(B'Tselem 2000&ndash;Sep 2023 + Tech4Palestine Oct 2023&ndash;) —
+<code>GET https://wb-alerts.zaidlab.xyz/databank/people_killed</code>.</div>
+
+<h2 id="interconnect">Cross-dataset connections</h2>
+<div class="ep"><span class="pill get">GET</span><span class="path">https://api.zaidlab.xyz/api/v1/events</span>
+  <span class="desc">Place+week event clusters across categories. Query: <code>?admin2</code>, <code>?place_key</code>, <code>?min_categories=2</code>, <code>?start_date</code>, <code>?end_date</code>.</span></div>
+<div class="ep"><span class="pill get">GET</span><span class="path">https://api.zaidlab.xyz/api/v1/events/{cluster_id}</span>
+  <span class="desc">One cluster: members per category + aggregated killed/injured/displaced.</span></div>
+<div class="ep"><span class="pill get">GET</span><span class="path">https://api.zaidlab.xyz/api/v1/record/{category}/{stable_id}/related</span>
+  <span class="desc">Everything that happened at the same place in the same week as this record.</span></div>
+<div class="note">New <code>/unified/{category}</code> filters: <code>?admin2=jenin</code>
+(OCHA governorate) and <code>?gazetteer_key=jenin_camp</code> (precise place —
+camps and cities are distinct keys; 1948 villages carry <code>*_1948</code>).</div>
 
 <div class="ep"><span class="pill get">GET</span><span class="path">https://api.zaidlab.xyz/api/v1/unified/{category}</span>
   <span class="desc">Paginated rows. Query: <code>?location</code>, <code>?region</code>, <code>?event_type</code>, <code>?from</code>, <code>?to</code>, <code>?page</code>, <code>?per_page</code>.</span></div>

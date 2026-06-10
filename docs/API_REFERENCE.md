@@ -1,10 +1,29 @@
 # 🔌 API Reference
 
-The data is served as static JSON files. You can access them directly via HTTP.
+**Start here instead:**
+
+- **Live integration guide** (canonical, kept current): https://api.zaidlab.xyz/integrate.html
+- **Interactive Swagger docs**: https://api.zaidlab.xyz/api-docs/
+- **Quickstarts**: [`QUICKSTART-databank.md`](./QUICKSTART-databank.md) · [`QUICKSTART-alerts.md`](./QUICKSTART-alerts.md)
+- **Live alerts service docs** (FastAPI): https://wb-alerts.zaidlab.xyz/docs
+- **Status page**: https://api.zaidlab.xyz/status.html
+
+The REST API base is `https://api.zaidlab.xyz/api/v1` — categories, unified
+queries (with `admin2`/`gazetteer_key`/date filters), full-text search,
+event clusters (`/events`), record permalinks + `/related`, quality and
+license registries, billing. Auth: `Authorization: Bearer pdb_live_…`.
+
+---
+
+## Appendix: direct static-file access
+
+The generated data files are also served directly (same host, no API
+wrapper) — useful for bulk downloads. The shapes below are maintained by the
+nightly pipeline.
 
 ## Base URL
 When running locally: `http://localhost:3000/data`
-In production: `https://[your-domain]/data`
+In production: `https://api.zaidlab.xyz/data`
 
 ## 1. Manifest (Entry Point)
 Start here to discover available data.

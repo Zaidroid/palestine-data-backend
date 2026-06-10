@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Status — Palestine Data Platform</title>
+<style>
+  body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+         max-width: 860px; margin: 2rem auto; padding: 0 1rem; color: #1a1a1a; }
+  h1 { font-size: 1.4rem; } h2 { font-size: 1.05rem; margin-top: 2rem; }
+  .row { display: flex; align-items: baseline; gap: .6rem; padding: .45rem .6rem;
+         border-bottom: 1px solid #eee; }
+  .dot { width: 10px; height: 10px; border-radius: 50%; flex: none; align-self: center; }
+  .ok { background: #2e9e44; } .warn { background: #e6a700; } .down { background: #cc2b2b; }
+  .name { min-width: 240px; font-weight: 600; }
+  .detail { color: #555; font-size: .9rem; }
+  table { border-collapse: collapse; width: 100%; font-size: .9rem; }
+  td, th { text-align: left; padding: .35rem .6rem; border-bottom: 1px solid #eee; }
+  .muted { color: #888; font-size: .85rem; margin-top: 2rem; }
+  code { background: #f4f4f4; padding: .1rem .3rem; border-radius: 3px; }
+</style>
+</head>
+<body>
+<h1>Platform status</h1>
+<p class="detail">Live checks run in your browser against the public APIs — no middleman.</p>
+<div id="services"></div>
+<h2>Data freshness (per category)</h2>
+<p class="detail">From <code>GET /api/v1/quality</code> — the same gate that stamps
+<code>Warning: 299</code> headers on stale responses.</p>
+<table id="freshness"><tr><th>Category</th><th>Records</th><th>Latest record</th><th>Status</th></tr></table>
+<p class="muted">Updated <span id="ts">…</span> · <a href="/integrate.html">API documentation</a></p>
+
+<script>
+const API = 'https://api.zaidlab.xyz';
+const ALERTS = 'https://wb-alerts.zaidlab.xyz';
+
+function row(el, name, cls, detail) {
+  el.insertAdjacentHTML('beforeend',
+    `<div class="row"><span class="dot ${cls}"></span><span class="name">${name}</span><span class="detail">${detail}</span></div>`);
+}
+
+async function probe(url, timeoutMs = 10000) {
+  const t0 = performance.now();
+  const ctrl = new AbortController();
+  const t = setTimeout(() => ctrl.abort(), timeoutMs);
+  try {
+    const res = await fetch(url, { signal: ctrl.signal });
+    clearTimeout(t);
+    return { ok: res.ok, ms: Math.round(performance.now() - t0), body: await res.json() };
+  } catch {
+    return { ok: false, ms: Math.round(performance.now() - t0), body: null };
+  }
+}
+
+(async () => {
+  const services = document.getElementById('services');
+
+  const api = await probe(`${API}/api/v1/health`);
+  row(services, 'Datasets API', api.ok ? 'ok' : 'down',
+      api.ok ? `up · ${api.ms} ms` : 'unreachable');
+
+  const alerts = await probe(`${ALERTS}/health`);
+  if (alerts.ok) {
+    const m = alerts.body.monitor || {};
+    const ingesting = m.connected;
+    row(services, 'Live alerts service', ingesting ? 'ok' : 'warn',
+        ingesting
+          ? `up · ingesting · ${m.alerts_today ?? 0} alerts today · last message ${m.last_message_at ? m.last_message_at.slice(11, 16) + ' UTC' : '—'}`
+          : 'up, but Telegram monitor disconnected');
+  } else {
+    row(services, 'Live alerts service', 'down', 'unreachable');
+  }
+
+  const cps = await probe(`${ALERTS}/checkpoints/summary`);
+  if (cps.ok) {
+    const fresh = cps.body.fresh_last_6h ?? 0;
+    const stale = cps.body.is_data_stale;
+    row(services, 'Checkpoint tracker', stale ? 'warn' : 'ok',
+        `${cps.body.total_active ?? '?'} checkpoints tracked · ${fresh} fresh in last 6h` + (stale ? ' · STALE' : ''));
+  } else {
+    row(services, 'Checkpoint tracker', 'down', 'unreachable');
+  }
+
+  const q = await probe(`${API}/api/v1/quality`);
+  if (q.ok && q.body.categories) {
+    const tbl = document.getElementById('freshness');
+    const cats = Object.entries(q.body.categories).sort((a, b) => (b[1].total || 0) - (a[1].total || 0));
+    for (const [name, c] of cats) {
+      const status = c.frozen_at ? `frozen snapshot (${c.frozen_at})`
+        : c.stale ? `⚠ stale — ${c.freshness_days_since_latest} days`
+        : 'fresh';
+      tbl.insertAdjacentHTML('beforeend',
+        `<tr><td><code>${name}</code></td><td>${(c.total ?? 0).toLocaleString()}</td>` +
+        `<td>${(c.latest_record_at || '').slice(0, 10) || '—'}</td><td>${status}</td></tr>`);
+    }
+  }
+
+  document.getElementById('ts').textContent = new Date().toUTCString();
+})();
+</script>
+</body>
+</html>
