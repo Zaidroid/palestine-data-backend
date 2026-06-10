@@ -332,11 +332,11 @@ async function processVillages1948() {
                 sources.push({ name: 'Palestine Remembered village page', organization: 'Palestine Remembered', url: `https://www.palestineremembered.com/${v.url_palremembered}/index.html` });
             }
             if (v.id_abusitta) {
-                sources.push({ name: `Atlas of Palestine ref ${v.id_abusitta}`, organization: 'Salman Abu Sitta — Palestine Land Society' });
+                sources.push({ name: 'Atlas of Palestine', organization: 'Salman Abu Sitta — Palestine Land Society', ref: v.id_abusitta });
             }
             const qid = qidByName.get((v.name_en || '').toLowerCase().replace(/[^a-z]/g, ''));
             if (qid) {
-                sources.push({ name: `Wikidata ${qid} (crosswalk)`, organization: 'Wikidata', url: `https://www.wikidata.org/wiki/${qid}`, license: 'CC0-1.0' });
+                sources.push({ name: 'Wikidata crosswalk', organization: 'Wikidata', url: `https://www.wikidata.org/wiki/${qid}`, license: 'CC0-1.0', ref: qid });
             }
 
             return {
