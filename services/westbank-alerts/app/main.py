@@ -40,7 +40,7 @@ from datetime import datetime, timedelta, timezone
 from typing import AsyncGenerator, Dict, List, Optional, Set
 
 import sentry_sdk
-from fastapi import Depends, FastAPI, HTTPException, Query, Request, WebSocket, WebSocketDisconnect
+from fastapi import Body, Depends, FastAPI, HTTPException, Query, Request, WebSocket, WebSocketDisconnect
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.responses import FileResponse, RedirectResponse, StreamingResponse
 from fastapi.security import APIKeyHeader
@@ -174,6 +174,11 @@ async def _dispatch_checkpoint(updates: list):
     """Fan out checkpoint status changes to WS/SSE clients."""
     if not updates:
         return
+    # Web Push for closures (opt-in) — background, independent of WS/SSE clients
+    from . import push_notifications
+    for u in updates:
+        if u.get("status") == "closed":
+            asyncio.create_task(push_notifications.notify_checkpoint_closure(u))
     if not cp_ws_manager._clients and not cp_sse_queues:
         return
     payload = json.dumps({
@@ -210,6 +215,9 @@ async def _dispatch(alert: Alert):
         except asyncio.QueueFull:
             pass  # drop alert for slow SSE consumers
     await webhooks.fire_cached(alert)
+    # Web Push fan-out runs in the background — never blocks the live stream
+    from . import push_notifications
+    asyncio.create_task(push_notifications.notify_alert(alert))
 
 
 async def _dispatch_area_status(areas: list):
@@ -267,6 +275,8 @@ async def lifespan(app: FastAPI):
     asyncio.create_task(geo_resolver.geocode_checkpoints())
 
     # Init incident tables + compute initial area status
+    from . import push_notifications
+    await push_notifications.init_push_tables()
     await incident_db.init_incident_tables()
     await area_mod.compute_area_status()
     log.info("Incident tables + area status ready")
@@ -2254,6 +2264,86 @@ async def cleanup_checkpoints(
     """
     result = await cpdb.cleanup_garbage(dry_run=dry_run)
     return result
+
+
+# ── Notifications: Web Push ──────────────────────────────────────────────────
+
+@app.get("/notifications/vapid-public-key", tags=["notifications"])
+async def vapid_public_key():
+    """Application-server key for PushManager.subscribe(). 404 if push is not configured."""
+    from . import push_notifications
+    key = push_notifications.get_vapid_public_key()
+    if not key:
+        raise HTTPException(status_code=404, detail="push notifications not configured")
+    return {"key": key}
+
+
+@app.post("/notifications/subscribe", tags=["notifications"])
+async def push_subscribe(body: dict = Body(...)):
+    """
+    Register a Web Push subscription with a filter.
+    Body: { subscription: {endpoint, keys{p256dh,auth}},
+            governorates: [..]=all, types: [..]=all,
+            min_trust: 0..1, checkpoint_closures: bool }
+    """
+    from . import push_notifications
+    sub = body.get("subscription") or {}
+    if not sub.get("endpoint") or not (sub.get("keys") or {}).get("p256dh"):
+        raise HTTPException(status_code=400, detail="invalid subscription object")
+    await push_notifications.add_subscription(
+        sub,
+        body.get("governorates") or [],
+        body.get("types") or [],
+        float(body.get("min_trust") or 0),
+        bool(body.get("checkpoint_closures")),
+    )
+    return {"subscribed": True, "total": await push_notifications.subscription_count()}
+
+
+@app.post("/notifications/unsubscribe", tags=["notifications"])
+async def push_unsubscribe(body: dict = Body(...)):
+    from . import push_notifications
+    endpoint = (body.get("subscription") or {}).get("endpoint") or body.get("endpoint")
+    if not endpoint:
+        raise HTTPException(status_code=400, detail="endpoint required")
+    removed = await push_notifications.remove_subscription(endpoint)
+    return {"unsubscribed": removed}
+
+
+@app.post("/admin/test-push", tags=["admin"])
+async def test_push(_: str = Depends(require_key)):
+    """Send a test notification to every subscription (admin only)."""
+    from . import push_notifications
+
+    sent = await push_notifications._fanout(
+        {"kind": "test", "title": "تجربة — West Bank Live", "body": "Push notifications are working ✅", "url": "/westbank.html"},
+        lambda *_a: True,
+    )
+    return {"sent": sent, "subscriptions": await push_notifications.subscription_count()}
+
+
+@app.post("/admin/backfill-geo", tags=["admin"])
+async def backfill_geo(_: str = Depends(require_key)):
+    """Stamp oslo_area (and missing admin1/2) on historical alerts that have coordinates."""
+    from . import geo_resolver, admin_lookup
+    updated = 0
+    async with db.get_alerts_db() as adb:
+        cur = await adb.execute(
+            "SELECT id, latitude, longitude FROM alerts "
+            "WHERE latitude IS NOT NULL AND (oslo_area IS NULL OR admin2 IS NULL)"
+        )
+        rows = await cur.fetchall()
+        for aid, lat, lon in rows:
+            cls = geo_resolver.classify_point(lat, lon)
+            a1, a2 = admin_lookup.point_to_admin(lat, lon)
+            await adb.execute(
+                "UPDATE alerts SET oslo_area=COALESCE(oslo_area, ?), "
+                "admin1=COALESCE(admin1, ?), admin2=COALESCE(admin2, ?) WHERE id=?",
+                (cls["oslo_area"], a1, a2, aid),
+            )
+            updated += 1
+        await adb.commit()
+    return {"scanned": len(rows), "updated": updated}
 
 
 @app.post("/admin/canonicalize-checkpoints", tags=["admin"])

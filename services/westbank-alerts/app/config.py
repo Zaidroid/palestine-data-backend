@@ -5,6 +5,10 @@ import sys
 
 
 class Settings(BaseSettings):
+    # Web Push (VAPID) — empty disables push silently
+    VAPID_PRIVATE_KEY: str = ""      # path to PEM or base64url raw key
+    VAPID_CLAIMS_SUB: str = ""       # e.g. mailto:zsalem33@gmail.com
+
     # Telegram
     TELEGRAM_API_ID: int = 0
     TELEGRAM_API_HASH: str = ""
