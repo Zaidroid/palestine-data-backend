@@ -2266,6 +2266,20 @@ async def cleanup_checkpoints(
     return result
 
 
+# ── Tracker web app (static SPA, mounted when the volume is present) ─────────
+import pathlib as _pl
+_TRACKER_DIR = _pl.Path("/tracker-app")
+if _TRACKER_DIR.exists():
+    from fastapi.staticfiles import StaticFiles
+    from fastapi.responses import RedirectResponse
+
+    app.mount("/app", StaticFiles(directory=str(_TRACKER_DIR), html=True), name="tracker-app")
+
+    @app.get("/go", include_in_schema=False)
+    async def tracker_entry():
+        return RedirectResponse("/app/westbank.html")
+
+
 # ── Notifications: Web Push ──────────────────────────────────────────────────
 
 @app.get("/notifications/vapid-public-key", tags=["notifications"])

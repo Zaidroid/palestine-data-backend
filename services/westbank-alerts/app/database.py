@@ -93,6 +93,23 @@ CHANNEL_RELIABILITY_SEED = [
     ("anadolu_ar",    0.55, "Anadolu Agency Arabic RSS"),
     ("rt_arabic",     0.45, "RT Arabic RSS — framing bias"),
     ("skynews_ar",    0.55, "Sky News Arabia RSS — fast breaking news"),
+    # 2026-06 expansion — initial priors from corpus evidence
+    # (RESEARCH-2026-06-sources.md); learner_overrides tunes hourly from observed data.
+    ("alqastalps",      0.70, "Al-Qastal — Jerusalem/EJ focus, 117K subs"),
+    ("maannews",        0.80, "Ma'an News Agency — establishment outlet"),
+    ("safaps",          0.70, "Safa Agency"),
+    ("eyeonpalestine2", 0.50, "Eye on Palestine — aggregation, slower verify"),
+    ("alkofiyatv",      0.60, "Kofiya TV"),
+    ("ahwalaltreq",     0.75, "Road conditions backbone — checkpoint channel"),
+    ("a7walstreet",     0.75, "Roads & checkpoints WB+Jerusalem, 124K subs"),
+    ("road_jehad",      0.70, "Roads & checkpoints — WB-wide"),
+    ("peopleofHebron",  0.60, "Hebron roads — regional"),
+    ("KHBNews1",        0.70, "King Hussein Bridge news — 59K subs, crossing statuses"),
+    ("aljesernews",     0.60, "Bridge news — secondary"),
+    ("jisrrrr",         0.55, "Bridge + Jericho rest stop"),
+    ("Almasshta",       0.60, "Jericho checkpoints — regional"),
+    ("Roaddconditions", 0.60, "Ramallah roads — regional"),
+    ("ahwaltrkwhwagz_nablous", 0.60, "Nablus roads — regional"),
 ]
 
 CREATE_CHANNELS = """

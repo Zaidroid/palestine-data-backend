@@ -2787,5 +2787,37 @@
       "إفرات",
       "عين افرات"
     ]
+  },
+  {
+    "canonical_key": "جسر الملك حسين",
+    "name_ar": "جسر الملك حسين",
+    "name_en": "King Hussein / Allenby Bridge",
+    "region": "jericho",
+    "checkpoint_type": "crossing",
+    "latitude": 31.8736,
+    "longitude": 35.5444,
+    "aliases": [
+      "جسر الملك حسين",
+      "الجسر",
+      "معبر الكرامة",
+      "الكرامة",
+      "اللنبي",
+      "معبر الكرامه",
+      "جسر الكرامة"
+    ]
+  },
+  {
+    "canonical_key": "استراحة اريحا",
+    "name_ar": "استراحة أريحا",
+    "name_en": "Jericho rest stop (bridge terminal)",
+    "region": "jericho",
+    "checkpoint_type": "crossing",
+    "latitude": 31.853,
+    "longitude": 35.464,
+    "aliases": [
+      "استراحة اريحا",
+      "الاستراحه",
+      "الاستراحة"
+    ]
   }
 ]

@@ -112,9 +112,13 @@ async def corpus(client: TelegramClient, channels: list[str], limit: int):
 async def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("--discover", action="store_true")
+    ap.add_argument("--queries", type=str, default="", help="comma-separated override for discovery queries")
     ap.add_argument("--corpus", type=str, default="")
     ap.add_argument("--limit", type=int, default=2000)
     args = ap.parse_args()
+    if args.queries:
+        global QUERIES
+        QUERIES = [q.strip() for q in args.queries.split(",") if q.strip()]
 
     client = TelegramClient(SESSION, API_ID, API_HASH)
     await client.start()
