@@ -91,6 +91,7 @@ STATUS_MAP: dict[str, str] = {
 
     # IDF / army presence
     "جيش":     "idf",
+    "الجيش":   "idf",
     "عسكر":    "idf",
     "مداهمه":  "idf",
     "مداهمة":  "idf",
@@ -177,6 +178,8 @@ DIRECTION_WORDS: set[str] = {
     "الداخل", "الخارج", "للداخل", "للخارج", "لداخل", "لخارج",
     "داخل", "خارج", "بالاتجاهين",
     "دخول", "خروج", "للدخول", "للخروج",
+    # corpus evidence 2026-06: a7walstreet/road_jehad write the bare form
+    "اتجاهين", "الاتجاهين", "باتجاهين", "بالإتجاهين",
 }
 _DIRECTION_NORMALISED: set[str] | None = None
 
@@ -190,7 +193,7 @@ def _get_direction_normalised() -> set[str]:
 # Direction word → canonical direction mapping
 _INBOUND_WORDS = {"الداخل", "للداخل", "لداخل", "داخل", "دخول", "للدخول"}
 _OUTBOUND_WORDS = {"الخارج", "للخارج", "لخارج", "خارج", "خروج", "للخروج"}
-_BOTH_WORDS = {"بالاتجاهين"}
+_BOTH_WORDS = {"بالاتجاهين", "اتجاهين", "الاتجاهين", "باتجاهين", "بالإتجاهين"}
 
 _INBOUND_NORMALISED: set[str] | None = None
 _OUTBOUND_NORMALISED: set[str] | None = None

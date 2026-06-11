@@ -2539,5 +2539,163 @@
       "ناقوره",
       "مدخل ناقوره"
     ]
+  },
+  {
+    "canonical_key": "قلقيلية",
+    "name_ar": "قلقيلية",
+    "name_en": "",
+    "region": null,
+    "checkpoint_type": "checkpoint",
+    "latitude": 32.18966,
+    "longitude": 34.97063,
+    "aliases": [
+      "قلقيلية"
+    ]
+  },
+  {
+    "canonical_key": "النبي الياس",
+    "name_ar": "النبي الياس",
+    "name_en": "",
+    "region": null,
+    "checkpoint_type": "checkpoint",
+    "latitude": 32.18482,
+    "longitude": 35.0176,
+    "aliases": [
+      "النبي الياس"
+    ]
+  },
+  {
+    "canonical_key": "كفر لاقف",
+    "name_ar": "كفر لاقف",
+    "name_en": "",
+    "region": null,
+    "checkpoint_type": "checkpoint",
+    "latitude": 32.18342,
+    "longitude": 35.09073,
+    "aliases": [
+      "كفر لاقف"
+    ]
+  },
+  {
+    "canonical_key": "كراميلو الطيبه",
+    "name_ar": "كراميلو الطيبه",
+    "name_en": "",
+    "region": null,
+    "checkpoint_type": "checkpoint",
+    "latitude": 32.51494,
+    "longitude": 35.18574,
+    "aliases": [
+      "كراميلو الطيبه"
+    ]
+  },
+  {
+    "canonical_key": "الزعيم",
+    "name_ar": "الزعيم",
+    "name_en": "",
+    "region": null,
+    "checkpoint_type": "checkpoint",
+    "latitude": 31.78852,
+    "longitude": 35.26511,
+    "aliases": [
+      "الزعيم"
+    ]
+  },
+  {
+    "canonical_key": "كفر عقب",
+    "name_ar": "كفر عقب",
+    "name_en": "",
+    "region": null,
+    "checkpoint_type": "checkpoint",
+    "latitude": 31.87963,
+    "longitude": 35.22047,
+    "aliases": [
+      "كفر عقب"
+    ]
+  },
+  {
+    "canonical_key": "ام سلمونه",
+    "name_ar": "ام سلمونه",
+    "name_en": "",
+    "region": null,
+    "checkpoint_type": "checkpoint",
+    "latitude": 31.64457,
+    "longitude": 35.16674,
+    "aliases": [
+      "ام سلمونه"
+    ]
+  },
+  {
+    "canonical_key": "النبي إلياس",
+    "name_ar": "النبي إلياس",
+    "name_en": "",
+    "region": null,
+    "checkpoint_type": "checkpoint",
+    "latitude": 32.18482,
+    "longitude": 35.0176,
+    "aliases": [
+      "النبي إلياس"
+    ]
+  },
+  {
+    "canonical_key": "الطيبة كراميلو",
+    "name_ar": "الطيبة كراميلو",
+    "name_en": "",
+    "region": null,
+    "checkpoint_type": "checkpoint",
+    "latitude": 32.51494,
+    "longitude": 35.18574,
+    "aliases": [
+      "الطيبة كراميلو"
+    ]
+  },
+  {
+    "canonical_key": "مدخل قلقيلية",
+    "name_ar": "مدخل قلقيلية",
+    "name_en": "",
+    "region": null,
+    "checkpoint_type": "checkpoint",
+    "latitude": 32.18966,
+    "longitude": 34.97063,
+    "aliases": [
+      "مدخل قلقيلية"
+    ]
+  },
+  {
+    "canonical_key": "اريحا الجنوبي dco",
+    "name_ar": "اريحا الجنوبي dco",
+    "name_en": "",
+    "region": "jericho",
+    "checkpoint_type": "checkpoint",
+    "latitude": 31.8611,
+    "longitude": 35.4597,
+    "aliases": [
+      "اريحا الجنوبي dco"
+    ]
+  },
+  {
+    "canonical_key": "اريحا dco",
+    "name_ar": "اريحا dco",
+    "name_en": "",
+    "region": "jericho",
+    "checkpoint_type": "checkpoint",
+    "latitude": 31.8611,
+    "longitude": 35.4597,
+    "aliases": [
+      "اريحا dco"
+    ]
+  },
+  {
+    "canonical_key": "شافي شمرون",
+    "name_ar": "شافي شمرون",
+    "name_en": "Shave Shomron",
+    "region": "nablus",
+    "checkpoint_type": "checkpoint",
+    "latitude": 32.2461,
+    "longitude": 35.2117,
+    "aliases": [
+      "شافي شمرون",
+      "شابي شمرون",
+      "شفي شمرون"
+    ]
   }
 ]

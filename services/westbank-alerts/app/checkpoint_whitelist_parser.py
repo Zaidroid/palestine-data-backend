@@ -239,6 +239,11 @@ def _parse_line_whitelist(line: str, knowledge_base: CheckpointKnowledgeBase) ->
     if words_no_direction:
         for i, w in enumerate(words_no_direction):
             w_norm = _normalise(w)
+            # A LEADING "حاجز" is a generic prefix ("حاجز عناب سالك"), not the
+            # army-presence status — only treat it as status when it follows
+            # the name ("عورتا حاجز"). (Corpus evidence 2026-06.)
+            if i == 0 and w_norm == _normalise("حاجز") and len(words_no_direction) > 2:
+                continue
             if _is_status_word(w_norm):
                 status_word_indices.add(i)
                 # Use this word status (prefer word-based status over emoji)
@@ -263,11 +268,21 @@ def _parse_line_whitelist(line: str, knowledge_base: CheckpointKnowledgeBase) ->
         log.debug(f"No status found in line: {original_line}")
         return None
 
-    # Step 4: Build name from words, excluding direction and status words
-    name_words = []
-    for i, w in enumerate(words_no_direction):
-        if i not in status_word_indices:
-            name_words.append(w)
+    # Step 4: Build name from words, excluding direction and status words.
+    # When a word-based status was found, the name is what comes BEFORE it —
+    # words after the status are modifiers ("صرة سالك بدون جيش" → name "صرة"),
+    # and keeping them poisons the whitelist lookup. (Corpus evidence 2026-06.)
+    if status_word_indices:
+        first_status = min(status_word_indices)
+        name_words = words_no_direction[:first_status]
+        if not name_words:  # status-first lines: fall back to the old behavior
+            name_words = [w for i, w in enumerate(words_no_direction) if i not in status_word_indices]
+    else:
+        name_words = list(words_no_direction)
+
+    # Drop the generic "حاجز" prefix from the name ("حاجز شافي شمرون" → "شافي شمرون")
+    if len(name_words) > 1 and _normalise(name_words[0]) == _normalise("حاجز"):
+        name_words = name_words[1:]
 
     if not name_words:
         return None

@@ -169,8 +169,13 @@ class CheckpointStrictValidator:
         if not is_valid:
             return is_valid, f"name validation: {reason}"
 
-        # Validate status
-        if not status or status not in {"open", "closed", "congested", "slow", "military", "unknown"}:
+        # Validate status — must cover everything STATUS_MAP/_extract_emoji_status
+        # can emit. (Bug fixed 2026-06-11: idf/police/inspection were missing, so
+        # every جيش/شرطة/تفتيش report was silently dropped by the whitelist path.)
+        if not status or status not in {
+            "open", "closed", "congested", "slow",
+            "idf", "police", "inspection", "military", "unknown",
+        }:
             return False, f"invalid status: {status}"
 
         # Validate direction (if provided)

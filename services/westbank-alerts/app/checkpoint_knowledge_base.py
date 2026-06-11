@@ -73,9 +73,9 @@ class CheckpointKnowledgeBase:
             checkpoints = data if isinstance(data, list) else data.get('checkpoints', [])
 
             for cp in checkpoints:
-                canonical_key = cp.get('canonical_key', '').strip()
-                name_ar = cp.get('name_ar', '').strip()
-                name_en = cp.get('name_en', '').strip()
+                canonical_key = (cp.get('canonical_key') or '').strip()
+                name_ar = (cp.get('name_ar') or '').strip()
+                name_en = (cp.get('name_en') or '').strip()
 
                 if not canonical_key or not name_ar:
                     log.warning(f"Skipping checkpoint with missing key or Arabic name: {cp}")
