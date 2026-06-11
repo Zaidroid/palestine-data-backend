@@ -1,4 +1,53 @@
-# Source research — June 2026 (Tier-A rework, phase 1)
+# Source research — June 2026 (Tier-A rework, phases 1–2)
+
+## PHASE 2 EXECUTED 2026-06-11 (with Zaid's per-channel approval)
+
+**Live config now:** security channels = QudsN, palinfo, alqastalps, maannews,
+safaps, eyeonpalestine2, alkofiyatv (dead wafanews/nablus_now/shehabagency
+removed). CHECKPOINT_CHANNELS = ahwalaltreq, **a7walstreet, road_jehad,
+peopleofHebron** (.env backed up to .env.bak-2026-06-11). All 11 resolve.
+
+**Telethon discovery (SearchRequest, via service session)** found the whole
+road-channel ecosystem — top hits, all active 2026-06-11 unless noted:
+a7walstreet (124K), road_jehad (29.7K), peopleofHebron (13.7K, Hebron),
+aljanoop48 (10.5K, south), ahwalaltareq (7.6K, north→Ramallah), ahwaltareq1
+(6.2K), rsdrasd (3.7K), Roaddconditions (2.4K, Ramallah),
+ahwaltrkwhwagz_nablous (2.2K, Nablus), Almasshta (1.1K, Jericho),
+ahwalaltorq (1K, S-Nablus), roadsnajah (1.3K, Najah radio). Full list in
+`/data/corpus/discovery.json` on the server. **Future per-governorate
+expansion candidates: aljanoop48, Roaddconditions, ahwaltrkwhwagz_nablous,
+Almasshta, ahwalaltorq.**
+
+**Corpus captured** (~21k messages, 10 channels → `/data/corpus/*.jsonl`,
+mirrored at /tmp/corpus locally). Evidence (scripts/analyze_corpus.py):
+
+| channel | msgs/day | status-content | character |
+|---|---|---|---|
+| a7walstreet | 676 | 46% | checkpoint firehose |
+| ahwalaltreq | 414 | 84% | checkpoint backbone (current) |
+| alkofiyatv | 266 | 28% | raids/settlers |
+| qudsn | 226 | 36% | broad incidents |
+| safaps | 205 | 85%* | *🔴 used as news bullets — NOT statuses |
+| road_jehad | 179 | 47% | checkpoint, WB-wide |
+| palinfo | 142 | 34% | broad |
+| alqastalps | 76 | 30% | Jerusalem/EJ raids + أزمة reports |
+| eyeonpalestine2 | 26 | 29% | aggregation |
+| maannews | 19 | 20% | establishment news |
+
+**Classifier findings from corpus:**
+- Emoji semantics are channel-specific: safaps uses 🔴 as a bullet (1,952×) —
+  emoji status parsing must stay restricted to checkpoint channels.
+- ahwalaltreq vocabulary confirmed: ✅/سالك dominate (~2.6k/1.9k per week),
+  ❌/مغلق secondary; congested family (أزمة/كثافة) underweighted in current
+  vocab relative to corpus frequency.
+- alqastalps is the only news channel with heavy أزمة (traffic) reporting —
+  candidate for Jerusalem-area congestion signals.
+- Naive token mining is too noisy for KB names — checkpoint-name extraction
+  should reuse checkpoint_parser line splitting over the corpus instead
+  (next iteration; history_analyzer needs a non-interactive auth fix to run
+  under `docker compose run` — it EOFs on the Telethon phone prompt).
+
+
 
 Empirical probe of Telegram channels via `t.me/s/<handle>` previews, 2026-06-11.
 Caveat: channels can disable web previews — "hidden" ≠ dead. Channels the
