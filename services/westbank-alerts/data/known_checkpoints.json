@@ -247,7 +247,9 @@
     "latitude": 31.823,
     "longitude": 35.264,
     "aliases": [
-      "حزما"
+      "حزما",
+      "حزمه",
+      "حاجز حزما"
     ]
   },
   {
@@ -364,7 +366,9 @@
     "latitude": 32.147,
     "longitude": 35.232,
     "aliases": [
-      "يتسهار"
+      "يتسهار",
+      "خط يتساهر",
+      "يتساهر"
     ]
   },
   {
@@ -555,7 +559,9 @@
     "longitude": 35.23,
     "aliases": [
       "خط_يتسهار",
-      "خط يتسهار"
+      "خط يتسهار",
+      "خط يتساهر",
+      "يتساهر"
     ]
   },
   {
@@ -2695,7 +2701,91 @@
     "aliases": [
       "شافي شمرون",
       "شابي شمرون",
+      "شفي شمرون",
+      "شافي شمررون",
       "شفي شمرون"
+    ]
+  },
+  {
+    "canonical_key": "دير استيا",
+    "name_ar": "دير استيا",
+    "name_en": "Deir Istiya",
+    "region": "salfit",
+    "checkpoint_type": "checkpoint",
+    "latitude": 32.1228,
+    "longitude": 35.1408,
+    "aliases": [
+      "دير استيا",
+      "دير ستيا",
+      "دير إستيا"
+    ]
+  },
+  {
+    "canonical_key": "خربثا",
+    "name_ar": "خربثا",
+    "name_en": "Kharbatha al-Misbah",
+    "region": "ramallah",
+    "checkpoint_type": "checkpoint",
+    "latitude": 31.8999,
+    "longitude": 35.0309,
+    "aliases": [
+      "خربثا",
+      "خربثا المصباح"
+    ]
+  },
+  {
+    "canonical_key": "دوار معالي ادوميم",
+    "name_ar": "دوار معالي أدوميم",
+    "name_en": "Ma'ale Adumim junction",
+    "region": "jerusalem",
+    "checkpoint_type": "checkpoint",
+    "latitude": 31.778,
+    "longitude": 35.298,
+    "aliases": [
+      "دوار معالي ادوميم",
+      "معالي ادوميم"
+    ]
+  },
+  {
+    "canonical_key": "سدة قراوة",
+    "name_ar": "سدة قراوة",
+    "name_en": "Qarawat Bani Hassan gate",
+    "region": "salfit",
+    "checkpoint_type": "checkpoint",
+    "latitude": 32.1481,
+    "longitude": 35.0903,
+    "aliases": [
+      "سدة قراوة",
+      "سده قراوه",
+      "قراوه بني حسان"
+    ]
+  },
+  {
+    "canonical_key": "عصيون",
+    "name_ar": "عصيون",
+    "name_en": "Etzion junction / DCO",
+    "region": "bethlehem",
+    "checkpoint_type": "checkpoint",
+    "latitude": 31.6536,
+    "longitude": 35.1322,
+    "aliases": [
+      "عصيون",
+      "مفرق عصيون",
+      "جوش عصيون"
+    ]
+  },
+  {
+    "canonical_key": "افرات",
+    "name_ar": "إفرات",
+    "name_en": "Efrat",
+    "region": "bethlehem",
+    "checkpoint_type": "checkpoint",
+    "latitude": 31.654,
+    "longitude": 35.153,
+    "aliases": [
+      "افرات",
+      "إفرات",
+      "عين افرات"
     ]
   }
 ]

@@ -2256,6 +2256,19 @@ async def cleanup_checkpoints(
     return result
 
 
+@app.post("/admin/canonicalize-checkpoints", tags=["admin"])
+async def canonicalize_checkpoints(
+    dry_run: bool = Query(True, description="Preview only, don't modify"),
+    _: str = Depends(require_key),
+):
+    """
+    Merge parse-era variant keys into their KB-canonical checkpoint (history
+    preserved) and delete keys that resolve to no known checkpoint or town.
+    Keys with ≥10 updates in 30 days are kept and reported for review.
+    """
+    return await cpdb.canonicalize_and_clean(dry_run=dry_run)
+
+
 # ── Admin: seed checkpoint directory ─────────────────────────────────────────
 
 @app.post("/admin/seed-checkpoints", tags=["admin"])

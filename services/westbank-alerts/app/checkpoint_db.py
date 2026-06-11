@@ -837,6 +837,98 @@ async def bulk_seed_checkpoints(entries: list[dict]) -> dict:
     return {"inserted": inserted, "updated": updated, "total": len(entries)}
 
 
+async def canonicalize_and_clean(dry_run: bool = True) -> dict:
+    """
+    Structural cleanup of the checkpoints table (2026-06 corpus rework):
+
+    1. MERGE: keys that aren't KB-canonical but resolve to a KB checkpoint
+       (e.g. parse-era variants "مدخل_سلفيت_الشمالي" → KB "سلفيت الشمالي").
+       Their updates/status history moves to the canonical key.
+    2. DELETE: keys that resolve to nothing — not in the KB, not a known
+       town (geo_resolver) — i.e. parser junk like "سيارة"/"وخارج".
+       Guard: keys with ≥10 updates in the last 30 days are KEPT and
+       reported instead (recurring signal worth promoting, not junk).
+    """
+    from .checkpoint_knowledge_base import get_knowledge_base
+    from . import geo_resolver
+
+    kb = get_knowledge_base()
+    if not kb or kb.size() == 0:
+        return {"error": "knowledge base not loaded"}
+
+    merges: list[tuple[str, str]] = []   # (old_key, canonical_key)
+    deletes: list[str] = []
+    kept_for_review: list[tuple[str, int]] = []
+    d30 = (datetime.utcnow() - timedelta(days=30)).isoformat()
+
+    async with get_checkpoint_db() as db:
+        cur = await db.execute("SELECT canonical_key, name_ar FROM checkpoints")
+        rows = await cur.fetchall()
+
+        for key, name in rows:
+            if kb.is_known(key):
+                continue
+            text = (name or key).replace("_", " ")
+            canonical = kb.find_checkpoint(text)
+            if canonical and canonical != key:
+                merges.append((key, canonical))
+                continue
+            if canonical == key:
+                continue
+            # not KB-resolvable — is it at least a real place?
+            if geo_resolver.resolve_place(text):
+                continue  # legit unknown locality — keep as provisional
+            cur2 = await db.execute(
+                "SELECT COUNT(*) FROM checkpoint_updates WHERE canonical_key=? AND timestamp>=?",
+                (key, d30),
+            )
+            (recent,) = await cur2.fetchone()
+            if recent >= 10:
+                kept_for_review.append((key, recent))
+            else:
+                deletes.append(key)
+
+        if not dry_run:
+            for old, canon in merges:
+                await db.execute(
+                    "UPDATE checkpoint_updates SET canonical_key=? WHERE canonical_key=?",
+                    (canon, old),
+                )
+                # keep the newest status row per (key, direction)
+                await db.execute(
+                    """DELETE FROM checkpoint_status WHERE canonical_key=? AND EXISTS (
+                         SELECT 1 FROM checkpoint_status s2
+                         WHERE s2.canonical_key=? AND s2.direction=checkpoint_status.direction
+                           AND s2.last_updated >= checkpoint_status.last_updated)""",
+                    (old, canon),
+                )
+                await db.execute(
+                    "UPDATE OR IGNORE checkpoint_status SET canonical_key=? WHERE canonical_key=?",
+                    (canon, old),
+                )
+                await db.execute("DELETE FROM checkpoint_status WHERE canonical_key=?", (old,))
+                await db.execute("DELETE FROM checkpoints WHERE canonical_key=?", (old,))
+            for key in deletes:
+                await db.execute("DELETE FROM checkpoint_updates WHERE canonical_key=?", (key,))
+                await db.execute("DELETE FROM checkpoint_status WHERE canonical_key=?", (key,))
+                await db.execute("DELETE FROM checkpoints WHERE canonical_key=?", (key,))
+            await db.commit()
+
+    log.info(
+        f"canonicalize_and_clean dry_run={dry_run}: "
+        f"{len(merges)} merges, {len(deletes)} deletes, {len(kept_for_review)} kept-for-review"
+    )
+    return {
+        "dry_run": dry_run,
+        "total": len(rows),
+        "merges": len(merges),
+        "merge_samples": merges[:25],
+        "deletes": len(deletes),
+        "delete_samples": deletes[:40],
+        "kept_for_review": kept_for_review[:20],
+    }
+
+
 async def cleanup_garbage(dry_run: bool = False) -> dict:
     """
     Remove garbage checkpoint records:
