@@ -260,6 +260,12 @@ async def lifespan(app: FastAPI):
     from . import admin_lookup
     admin_lookup.init()
 
+    # Geo resolver: governorate + Oslo (A/B/C) polygons, then backfill
+    # coordinates/classification onto any checkpoint rows missing them.
+    from . import geo_resolver
+    geo_resolver.load_polygon_indexes()
+    asyncio.create_task(geo_resolver.geocode_checkpoints())
+
     # Init incident tables + compute initial area status
     await incident_db.init_incident_tables()
     await area_mod.compute_area_status()
@@ -368,8 +374,8 @@ async def geo_admin(level: str):
     """OCHA admin polygon GeoJSON baked into the image. Same source as
     the Node API's /api/v1/geo/admin — exposed here so the live /map
     can fetch polygons same-origin without CORS."""
-    if level not in ("admin1", "admin2"):
-        raise HTTPException(status_code=400, detail="level must be admin1 or admin2")
+    if level not in ("admin1", "admin2", "oslo"):
+        raise HTTPException(status_code=400, detail="level must be admin1, admin2 or oslo")
     import pathlib
     candidates = [
         pathlib.Path("/app/data/admin") / f"{level}.geojson",
@@ -2167,7 +2173,11 @@ async def checkpoints_geojson(status: Optional[str] = Query(None)):
                 "name_ar":          c["name_ar"],
                 "name_en":          c.get("name_en"),
                 "region":           c.get("region"),
+                "governorate":      c.get("governorate"),
+                "oslo_area":        c.get("oslo_area"),
+                "geo_precision":    c.get("geo_precision"),
                 "status":           c.get("status", "unknown"),
+                "status_raw":       c.get("status_raw"),
                 "confidence":       c.get("confidence", "low"),
                 "last_updated":     _utc_iso(c["last_updated"])
                                     if hasattr(c["last_updated"], "isoformat")
@@ -2280,12 +2290,29 @@ async def seed_checkpoints(_: str = Depends(require_key)):
         })
 
     result = await cpdb.bulk_seed_checkpoints(entries)
+    # Re-resolve coords/classification now that the KB rows are in place.
+    from . import geo_resolver
+    geo_stats = await geo_resolver.geocode_checkpoints()
     return {
         "seeded": True,
         "source": "data/known_checkpoints.json",
         "entries": len(entries),
         **result,
+        "geocode": geo_stats,
     }
+
+
+@app.post("/admin/geocode-checkpoints", tags=["admin"])
+async def admin_geocode_checkpoints(force: bool = Query(False), _: str = Depends(require_key)):
+    """
+    Stamp coordinates + governorate + Oslo area onto checkpoint rows.
+    Resolution: curated checkpoint KB (exact) → location KB town match
+    (approximate, the town the checkpoint is named after). Idempotent;
+    force=true re-resolves rows that already have coordinates.
+    """
+    from . import geo_resolver
+    stats = await geo_resolver.geocode_checkpoints(force=force)
+    return {"geocoded": True, **stats}
 
 
 # ── Areas: live status ──────────────────────────────────────────────────────

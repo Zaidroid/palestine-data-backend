@@ -189,6 +189,10 @@ async def init_db():
         if "trust_score" not in alert_cols:
             await db.execute("ALTER TABLE alerts ADD COLUMN trust_score REAL")
             await db.execute("CREATE INDEX IF NOT EXISTS idx_alerts_trust ON alerts(trust_score)")
+        # Oslo classification (A/B/C/H1/H2/...) via geo_resolver point-in-polygon.
+        if "oslo_area" not in alert_cols:
+            await db.execute("ALTER TABLE alerts ADD COLUMN oslo_area TEXT")
+            await db.execute("CREATE INDEX IF NOT EXISTS idx_alerts_oslo ON alerts(oslo_area)")
         await db.execute("CREATE INDEX IF NOT EXISTS idx_alerts_admin1 ON alerts(admin1)")
         await db.execute("CREATE INDEX IF NOT EXISTS idx_alerts_admin2 ON alerts(admin2)")
         await db.execute("CREATE INDEX IF NOT EXISTS idx_alerts_status ON alerts(status)")
@@ -259,6 +263,7 @@ def _row_to_alert(row) -> Alert:
         admin2=row[26] if len(row) > 26 else None,
         historical_boost=row[27] if len(row) > 27 else None,
         trust_score=row[28] if len(row) > 28 else None,
+        oslo_area=row[29] if len(row) > 29 else None,
     )
 
 
@@ -285,8 +290,8 @@ async def insert_alert(alert: Alert) -> Alert:
                 raw_text, timestamp, created_at, event_subtype, latitude, longitude,
                 title_ar, confidence, source_reliability, status, correction_note,
                 geo_precision, geo_source_phrase, count, temporal_certainty,
-                source_type, admin1, admin2, trust_score)
-               VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)""",
+                source_type, admin1, admin2, trust_score, oslo_area)
+               VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)""",
             (alert.type, alert.severity, alert.title, alert.body,
              alert.source, alert.source_msg_id, alert.area,
              getattr(alert, "zone", None),
@@ -306,7 +311,8 @@ async def insert_alert(alert: Alert) -> Alert:
              getattr(alert, "source_type", None) or "telegram",
              getattr(alert, "admin1", None),
              getattr(alert, "admin2", None),
-             trust)
+             trust,
+             getattr(alert, "oslo_area", None))
         )
         await db.commit()
         alert.id = cur.lastrowid

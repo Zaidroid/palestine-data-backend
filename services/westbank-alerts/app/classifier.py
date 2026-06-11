@@ -1925,6 +1925,15 @@ def _build(
         result["admin1"] = None
         result["admin2"] = None
 
+    # Oslo classification (A/B/C/H1/H2/...) — same lazy-singleton pattern.
+    try:
+        from . import geo_resolver
+        result["oslo_area"] = geo_resolver.classify_point(
+            result.get("latitude"), result.get("longitude")
+        )["oslo_area"]
+    except Exception:
+        result["oslo_area"] = None
+
     return result
 
 

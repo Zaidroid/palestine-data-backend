@@ -70,7 +70,8 @@ class Alert(BaseModel):
     geo_source_phrase: Optional[str] = None  # Text that resolved the coords (for debugging + learner)
     admin1: Optional[str] = None             # OCHA admin1 (West Bank | Gaza Strip), via point-in-polygon
     admin2: Optional[str] = None             # OCHA admin2 (governorate), via point-in-polygon
-    count: Optional[int] = None              # Extracted casualty/arrest count (e.g. "اعتقل 5" → 5)
+    oslo_area: Optional[str] = None          # Oslo classification (A/B/C/H1/H2/Nature Reserve/...) via point-in-polygon
+    count: Optional[int] = None             # Extracted casualty/arrest count (e.g. "اعتقل 5" → 5)
     temporal_certainty: Optional[str] = None # "now" | "today" | "past" — past markers downweight confidence
     confidence: Optional[float] = None       # 0.0-1.0 — classifier+source-weighted score
     source_reliability: Optional[float] = None  # 0.0-1.0 — channel-level baseline trust

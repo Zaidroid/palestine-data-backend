@@ -116,6 +116,14 @@ async def init_checkpoint_db():
             await db.execute("ALTER TABLE checkpoints ADD COLUMN longitude REAL")
         if "checkpoint_type" not in cp_columns:
             await db.execute("ALTER TABLE checkpoints ADD COLUMN checkpoint_type TEXT DEFAULT 'checkpoint'")
+        # Geo enrichment (geo_resolver.py): admin + Oslo classification and
+        # how the coordinates were resolved ("checkpoint" exact vs "town" approx).
+        if "governorate" not in cp_columns:
+            await db.execute("ALTER TABLE checkpoints ADD COLUMN governorate TEXT")
+        if "oslo_area" not in cp_columns:
+            await db.execute("ALTER TABLE checkpoints ADD COLUMN oslo_area TEXT")
+        if "geo_precision" not in cp_columns:
+            await db.execute("ALTER TABLE checkpoints ADD COLUMN geo_precision TEXT")
 
         # Add direction to checkpoint_updates
         cursor = await db.execute("PRAGMA table_info(checkpoint_updates)")
@@ -185,7 +193,8 @@ def _row_to_checkpoint(row) -> dict:
     # Row order matches _CHECKPOINT_SELECT:
     # 0:canonical_key, 1:name_ar, 2:name_en, 3:region, 4:checkpoint_type,
     # 5:latitude, 6:longitude, 7:status, 8:status_raw, 9:direction,
-    # 10:confidence, 11:crowd_reports_1h, 12:last_updated, 13:last_source_type
+    # 10:confidence, 11:crowd_reports_1h, 12:last_updated, 13:last_source_type,
+    # 14:governorate, 15:oslo_area, 16:geo_precision
     last_updated = row[12]
     if last_updated:
         try:
@@ -218,6 +227,9 @@ def _row_to_checkpoint(row) -> dict:
         "crowd_reports_1h": row[11] or 0,
         "last_updated":     last_updated,
         "last_source_type": row[13],
+        "governorate":      row[14] if len(row) > 14 else None,
+        "oslo_area":        row[15] if len(row) > 15 else None,
+        "geo_precision":    row[16] if len(row) > 16 else None,
         "last_active_hours": last_active_hours,
         "is_stale":          is_stale,
     }
@@ -368,6 +380,29 @@ async def insert_checkpoint_update(upd: dict) -> int:
             "INSERT OR IGNORE INTO checkpoints(canonical_key, name_ar, created_at) VALUES(?,?,?)",
             (upd["canonical_key"], upd["name_raw"], now),
         )
+        # Geo-enrich rows that still lack coordinates (new or legacy). All
+        # lookups are in-memory KB scans — cheap enough to run inline.
+        cur = await db.execute(
+            "SELECT latitude FROM checkpoints WHERE canonical_key=?",
+            (upd["canonical_key"],),
+        )
+        row = await cur.fetchone()
+        if row and row[0] is None:
+            try:
+                from . import geo_resolver
+                r = geo_resolver.resolve_place(upd.get("name_raw") or upd["canonical_key"])
+                if r:
+                    cls = geo_resolver.classify_point(r["latitude"], r["longitude"])
+                    await db.execute(
+                        "UPDATE checkpoints SET latitude=?, longitude=?, "
+                        "region=COALESCE(region, ?), name_en=COALESCE(name_en, ?), "
+                        "geo_precision=?, governorate=?, oslo_area=? WHERE canonical_key=?",
+                        (r["latitude"], r["longitude"], r.get("region"), r.get("name_en"),
+                         r["precision"], cls["governorate"], cls["oslo_area"],
+                         upd["canonical_key"]),
+                    )
+            except Exception as e:
+                log.debug(f"geo-enrich failed for {upd['canonical_key']!r}: {e}")
         cur = await db.execute(
             """INSERT INTO checkpoint_updates
                (canonical_key, name_raw, status, status_raw, direction, source_type,
@@ -472,7 +507,8 @@ _CHECKPOINT_SELECT = """
     SELECT c.canonical_key, c.name_ar, c.name_en, c.region,
            c.checkpoint_type, c.latitude, c.longitude,
            s.status, s.status_raw, s.direction, s.confidence,
-           s.crowd_reports_1h, s.last_updated, s.last_source_type
+           s.crowd_reports_1h, s.last_updated, s.last_source_type,
+           c.governorate, c.oslo_area, c.geo_precision
     FROM checkpoints c
     LEFT JOIN (
         SELECT canonical_key, status, status_raw, direction, confidence,
