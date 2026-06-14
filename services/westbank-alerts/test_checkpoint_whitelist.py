@@ -307,6 +307,64 @@ class TestCheckpointWhitelistParser:
         assert len(results) == 0
 
 
+class TestParseCheckpointMessage:
+    """parse_checkpoint_message is the SINGLE strict entry point shared by the live
+    monitor AND the startup-catchup. Regression guard for the 2026-06 false positives:
+    the catchup path used the OLD permissive parser, minting user statements like
+    'عطارة شالو الحاجز بس' ("Atara, they removed the checkpoint") as their own
+    checkpoint entities. The strict path must map chatter to a known checkpoint or
+    nothing — never a new non-whitelist key — and must never fall back to the old parser.
+    """
+
+    def test_real_status_report_still_parses(self, knowledge_base):
+        from app.checkpoint_whitelist_parser import parse_checkpoint_message
+        results = parse_checkpoint_message("عطاره ازمه 🔴", knowledge_base)
+        assert len(results) == 1
+        assert results[0]["canonical_key"] == "عطاره"
+        assert results[0]["status"] == "congested"
+
+    def test_never_emits_a_non_whitelist_key(self, knowledge_base):
+        from app.checkpoint_whitelist_parser import parse_checkpoint_message
+        messages = [
+            "عطارة شالو الحاجز بس",   # statement mentioning a known town
+            "جبع راح الجيش",          # unknown town + statement
+            "بلده مجهوله سالكه",      # unknown place carrying a status word
+            "عطاره ازمه 🔴",          # a real report
+        ]
+        for msg in messages:
+            for r in parse_checkpoint_message(msg, knowledge_base):
+                assert knowledge_base.is_known(r["canonical_key"]), (
+                    f"{msg!r} emitted non-whitelist key {r['canonical_key']!r}"
+                )
+
+    def test_no_permissive_fallback_without_kb(self, knowledge_base):
+        from app.checkpoint_whitelist_parser import parse_checkpoint_message
+        # Strict-or-nothing: without a loaded KB, emit nothing — never the old parser.
+        assert parse_checkpoint_message("عين سينيا سالكه ✅", None) == []
+
+
+class TestServeFilterKnownOnly:
+    """F3 serve-filter: the map/list endpoints must expose ONLY whitelist checkpoints,
+    so un-curated junk rows (e.g. 'جبع راح الجيش') are hidden without being deleted.
+    Passes everything through untouched if the KB isn't loaded (fail-open on startup).
+    """
+
+    def test_filter_hides_unknown_keys(self, knowledge_base):
+        from app.checkpoint_knowledge_base import filter_to_known
+        items = [
+            {"canonical_key": "حواره", "name_ar": "حوارة"},                 # whitelist
+            {"canonical_key": "جبع_راح_الجيش", "name_ar": "جبع راح الجيش"},  # junk
+            {"canonical_key": "عطاره", "name_ar": "عطارة"},                 # whitelist
+        ]
+        out = filter_to_known(items, knowledge_base)
+        assert {c["canonical_key"] for c in out} == {"حواره", "عطاره"}
+
+    def test_filter_passthrough_when_kb_missing(self):
+        from app.checkpoint_knowledge_base import filter_to_known
+        items = [{"canonical_key": "anything"}]
+        assert filter_to_known(items, None) == items
+
+
 if __name__ == "__main__":
     # For running tests manually
     pytest.main([__file__, "-v"])

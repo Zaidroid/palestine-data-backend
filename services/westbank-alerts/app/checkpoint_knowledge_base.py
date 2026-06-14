@@ -211,3 +211,15 @@ async def load_knowledge_base() -> CheckpointKnowledgeBase:
 def get_knowledge_base() -> Optional[CheckpointKnowledgeBase]:
     """Get the global knowledge base instance (may be None if not loaded)."""
     return _knowledge_base
+
+
+def filter_to_known(checkpoints: list, kb: Optional[CheckpointKnowledgeBase]) -> list:
+    """Serve-time guard (F3): expose only checkpoints in the curated whitelist.
+
+    Hides un-curated / junk rows (e.g. a chatter line that became a row) from the
+    public map + list WITHOUT deleting them. Fail-open: if the KB isn't loaded yet,
+    return everything rather than blank the map.
+    """
+    if kb is None:
+        return checkpoints
+    return [c for c in checkpoints if kb.is_known(c.get("canonical_key"))]

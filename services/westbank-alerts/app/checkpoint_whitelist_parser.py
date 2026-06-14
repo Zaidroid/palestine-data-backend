@@ -105,6 +105,21 @@ def parse_message_whitelist(text: str, knowledge_base: CheckpointKnowledgeBase) 
     return results
 
 
+def parse_checkpoint_message(
+    text: str, knowledge_base: Optional[CheckpointKnowledgeBase]
+) -> list[dict]:
+    """Single strict entry point: a raw channel message → validated checkpoint updates.
+
+    Used by BOTH the live monitor and the startup-catchup so the two ingestion paths
+    can never diverge again. Strict-or-nothing: with no knowledge base we emit nothing
+    rather than falling back to the old permissive parser — that fallback is what minted
+    user statements (e.g. "عطارة شالو الحاجز بس") as their own checkpoints (2026-06).
+    """
+    if not knowledge_base:
+        return []
+    return parse_message_whitelist(text, knowledge_base)
+
+
 def _parse_colon_line_whitelist(line: str, knowledge_base: CheckpointKnowledgeBase) -> Optional[list[dict]]:
     """
     Parse a colon-delimited line with whitelist validation.

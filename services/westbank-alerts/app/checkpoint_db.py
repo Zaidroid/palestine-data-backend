@@ -526,6 +526,7 @@ async def get_all_checkpoints(
     region: Optional[str] = None,
     active_only: bool = False,
     since: Optional[datetime] = None,
+    known_only: bool = True,
 ) -> list:
     """
     Get checkpoints with optional filters.
@@ -534,6 +535,8 @@ async def get_all_checkpoints(
     - region: filter by region name
     - active_only: only checkpoints that have received at least one status update
     - since: only checkpoints updated after this time
+    - known_only: only checkpoints in the curated whitelist (F3 serve-guard —
+      hides un-curated/junk rows from the public map+list without deleting them)
     """
     conditions = []
     params = []
@@ -559,7 +562,11 @@ async def get_all_checkpoints(
     async with get_checkpoint_db() as db:
         cur = await db.execute(query, params)
         rows = await cur.fetchall()
-    return [_row_to_checkpoint(r) for r in rows]
+    cps = [_row_to_checkpoint(r) for r in rows]
+    if known_only:
+        from .checkpoint_knowledge_base import get_knowledge_base, filter_to_known
+        cps = filter_to_known(cps, get_knowledge_base())
+    return cps
 
 
 async def get_checkpoint(canonical_key: str) -> Optional[dict]:
@@ -1155,28 +1162,28 @@ async def get_checkpoint_summary() -> dict:
     h6  = (now - timedelta(hours=6)).isoformat()
 
     async with get_checkpoint_db() as db:
-        # Status breakdown
-        by_status: dict = {}
         async with db.execute(
-            "SELECT status, COUNT(*) FROM checkpoint_status GROUP BY status"
+            "SELECT canonical_key, status, last_updated FROM checkpoint_status"
         ) as cur:
-            async for row in cur:
-                by_status[row[0]] = row[1]
+            rows = await cur.fetchall()
 
-        # Freshness counts
-        fresh_1h = (await (await db.execute(
-            "SELECT COUNT(*) FROM checkpoint_status WHERE last_updated >= ?", (h1,)
-        )).fetchone())[0]
+    # F3: count only curated (whitelist) checkpoints so the header matches the map.
+    from .checkpoint_knowledge_base import get_knowledge_base
+    kb = get_knowledge_base()
+    if kb is not None:
+        rows = [r for r in rows if kb.is_known(r[0])]
 
-        fresh_6h = (await (await db.execute(
-            "SELECT COUNT(*) FROM checkpoint_status WHERE last_updated >= ?", (h6,)
-        )).fetchone())[0]
-
-        # Last update timestamp across all checkpoints
-        last_update_row = await (await db.execute(
-            "SELECT MAX(last_updated) FROM checkpoint_status"
-        )).fetchone()
-        last_update = last_update_row[0] if last_update_row else None
+    by_status: dict = {}
+    fresh_1h = fresh_6h = 0
+    last_update = None
+    for _key, status, lu in rows:
+        by_status[status] = by_status.get(status, 0) + 1
+        if lu and lu >= h1:
+            fresh_1h += 1
+        if lu and lu >= h6:
+            fresh_6h += 1
+        if lu and (last_update is None or lu > last_update):
+            last_update = lu
 
     # Determine overall staleness (no updates in 6 hours = stale)
     is_stale = True

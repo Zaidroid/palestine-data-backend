@@ -18,9 +18,9 @@ from telethon import TelegramClient
 from telethon.tl.types import ChannelParticipantsAdmins
 
 from .classifier import classify, is_security_relevant, classify_wb_operational
-from .checkpoint_parser import is_admin_message, parse_message
-from .checkpoint_matcher import load_checkpoint_index, match_message, get_index
-from .checkpoint_whitelist_parser import parse_message_whitelist
+from .checkpoint_parser import is_admin_message
+from .checkpoint_matcher import load_checkpoint_index
+from .checkpoint_whitelist_parser import parse_checkpoint_message
 from .checkpoint_knowledge_base import get_knowledge_base
 from .config import settings
 from .database import duplicate_check, content_duplicate_check, get_channels, insert_alert, prune_alerts_if_needed
@@ -33,6 +33,11 @@ from .models import Alert
 log = logging.getLogger("monitor")
 
 POLL_INTERVAL = 5
+
+# Force a Telegram reconnect if no message has arrived in this many minutes — a
+# half-open socket reports is_connected()==True but delivers nothing (root cause
+# of the 23h feed stall on 2026-06-13).
+STALE_RECONNECT_MIN = 20
 
 # Live AlertType → Insecurity Insight humanitarian_incidents.category set.
 # Only high-signal civilian-life types are mapped; broad WB ops (idf_raid,
@@ -346,18 +351,14 @@ async def _process_checkpoint_message(message, channel_username: str):
     else:
         is_admin = is_admin_message(raw)
 
-    # NEW: Use whitelist-first parsing (strict validation against known checkpoints)
+    # Strict whitelist-first parsing — shared with the startup catchup via
+    # parse_checkpoint_message so the two ingestion paths can never diverge again
+    # (that divergence let chatter become checkpoints — 2026-06). Strict-or-nothing:
+    # no permissive fallback.
     kb = get_knowledge_base()
-    if kb:
-        updates = parse_message_whitelist(raw, kb)
-    else:
-        # Fallback to old parser if knowledge base isn't loaded yet
-        log.warning("[CHECKPOINT] Knowledge base not loaded, using fallback parser")
-        index = get_index()
-        if index:
-            updates = match_message(raw, index)
-        else:
-            updates = parse_message(raw, is_admin=is_admin)
+    if kb is None:
+        log.warning("[CHECKPOINT] Knowledge base not loaded yet — skipping message")
+    updates = parse_checkpoint_message(raw, kb)
 
     if not updates:
         # The message isn't a checkpoint status update — but checkpoint
@@ -564,56 +565,60 @@ async def start():
         log.warning(f"RSS poller failed to start: {e}")
 
     _cycle_count = 0
-    _consecutive_errors = 0
     while True:
         _cycle_count += 1
+        # The whole cycle is wrapped so a single failure can never kill the poll
+        # loop (a silent loop death left the feed dark for 23h on 2026-06-13).
+        try:
+            # Reconnect if the socket is down OR has gone silent too long. A
+            # half-open connection reports is_connected()==True but delivers
+            # nothing — the silence watchdog is what catches that case.
+            silent_min = 0.0
+            last_at = _stats.get("last_message_at")
+            if last_at:
+                try:
+                    silent_min = (datetime.utcnow() - datetime.fromisoformat(last_at)).total_seconds() / 60
+                except (ValueError, TypeError):
+                    silent_min = 0.0
 
-        # Auto-reconnect if Telegram connection dropped
-        if not client.is_connected():
-            log.warning("Telegram disconnected — reconnecting...")
-            try:
-                await client.connect()
-                _consecutive_errors = 0
-                log.info("Telegram reconnected successfully")
-            except Exception as e:
-                log.error(f"Reconnect failed: {e}. Retrying in 30s...")
-                await asyncio.sleep(30)
-                continue
+            if not client.is_connected() or silent_min >= STALE_RECONNECT_MIN:
+                why = "disconnected" if not client.is_connected() else f"silent {silent_min:.0f}m"
+                log.warning(f"Telegram {why} — reconnecting...")
+                try:
+                    await client.disconnect()
+                except Exception:
+                    pass
+                try:
+                    await client.connect()
+                    _stats["last_message_at"] = datetime.utcnow().isoformat()  # reset silence timer
+                    log.info("Telegram reconnected")
+                except Exception as e:
+                    log.error(f"Reconnect failed: {e}. Retrying in 30s...")
+                    _stats["connected"] = False
+                    await asyncio.sleep(30)
+                    continue
 
-        for username, (entity, is_cp) in channel_map.items():
-            result = await _poll_channel(entity, username, last_id, is_cp)
-            if result == 0 and not client.is_connected():
-                _consecutive_errors += 1
-            else:
-                _consecutive_errors = 0
+            for username, (entity, is_cp) in channel_map.items():
+                await _poll_channel(entity, username, last_id, is_cp)
 
-        # Force reconnect after 10 consecutive failed cycles
-        if _consecutive_errors >= 10:
-            log.warning(f"[RECONNECT] {_consecutive_errors} failed cycles — forcing reconnect")
-            try:
-                await client.disconnect()
-            except Exception:
-                pass
-            try:
-                await client.connect()
-                _consecutive_errors = 0
-                log.info("Telegram force-reconnected successfully")
-            except Exception as e:
-                log.error(f"Force reconnect failed: {e}")
+            # Heartbeat log every 60 cycles (~5 minutes)
+            if _cycle_count % 60 == 0:
+                log.info(
+                    f"[HEARTBEAT] cycle={_cycle_count} "
+                    f"msgs_today={_stats['messages_today']} "
+                    f"alerts={_stats['alerts_today']} "
+                    f"cp_updates={_stats['cp_updates_today']}"
+                )
+                await prune_alerts_if_needed()
+                try:
+                    await auto_resolve_stale()
+                except Exception as e:
+                    log.warning(f"Auto-resolve stale incidents failed: {e}")
+        except Exception as e:
+            log.error(f"[MONITOR] poll cycle crashed (continuing): {e}", exc_info=True)
 
-        # Heartbeat log every 60 cycles (~5 minutes)
-        if _cycle_count % 60 == 0:
-            log.info(
-                f"[HEARTBEAT] cycle={_cycle_count} "
-                f"msgs_today={_stats['messages_today']} "
-                f"alerts={_stats['alerts_today']} "
-                f"cp_updates={_stats['cp_updates_today']}"
-            )
-            await prune_alerts_if_needed()
-            try:
-                await auto_resolve_stale()
-            except Exception as e:
-                log.warning(f"Auto-resolve stale incidents failed: {e}")
+        # Keep /health honest so a silent disconnect is visible, not masked.
+        _stats["connected"] = bool(client and client.is_connected())
         await asyncio.sleep(POLL_INTERVAL)
 
 

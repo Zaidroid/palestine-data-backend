@@ -2819,5 +2819,159 @@
       "الاستراحه",
       "الاستراحة"
     ]
+  },
+  {
+    "canonical_key": "رامين",
+    "name_ar": "رامين",
+    "name_en": "Ramin",
+    "region": null,
+    "checkpoint_type": "checkpoint",
+    "latitude": 32.2852,
+    "longitude": 35.14951,
+    "aliases": []
+  },
+  {
+    "canonical_key": "ديربلوط",
+    "name_ar": "دير بلوط",
+    "name_en": "Dayr Ballut",
+    "region": null,
+    "checkpoint_type": "checkpoint",
+    "latitude": 32.06551,
+    "longitude": 35.02451,
+    "aliases": [
+      "ديربلوط"
+    ]
+  },
+  {
+    "canonical_key": "العبيديه",
+    "name_ar": "العبيدية",
+    "name_en": "Al 'Ubaydiyah",
+    "region": null,
+    "checkpoint_type": "checkpoint",
+    "latitude": 31.71697,
+    "longitude": 35.29007,
+    "aliases": []
+  },
+  {
+    "canonical_key": "دير_جرير",
+    "name_ar": "دير جرير",
+    "name_en": "Dayr Jarir",
+    "region": null,
+    "checkpoint_type": "checkpoint",
+    "latitude": 31.96636,
+    "longitude": 35.29261,
+    "aliases": []
+  },
+  {
+    "canonical_key": "سده_كفرالديك",
+    "name_ar": "كفر الديك",
+    "name_en": "Kafr ad-Dik",
+    "region": null,
+    "checkpoint_type": "checkpoint",
+    "latitude": 32.05,
+    "longitude": 35.1167,
+    "aliases": [
+      "سدة كفرالديك"
+    ]
+  },
+  {
+    "canonical_key": "جسر_الزاويه",
+    "name_ar": "الزاوية",
+    "name_en": "Az Zawiyah",
+    "region": null,
+    "checkpoint_type": "checkpoint",
+    "latitude": 32.37596,
+    "longitude": 35.23166,
+    "aliases": [
+      "جسر الزاوية"
+    ]
+  },
+  {
+    "canonical_key": "ديرستا",
+    "name_ar": "دير استيا",
+    "name_en": "Dayr Istiya",
+    "region": null,
+    "checkpoint_type": "checkpoint",
+    "latitude": 32.13096,
+    "longitude": 35.13963,
+    "aliases": [
+      "مدخل ديراستيا",
+      "ديرستا"
+    ]
+  },
+  {
+    "canonical_key": "طريق_زواتا_اتجاهين",
+    "name_ar": "زواتا",
+    "name_en": "Zawata",
+    "region": null,
+    "checkpoint_type": "checkpoint",
+    "latitude": 32.24611,
+    "longitude": 35.2265,
+    "aliases": [
+      "طريق زواتا اتجاهين"
+    ]
+  },
+  {
+    "canonical_key": "مدخل_بني_زيد",
+    "name_ar": "بني زيد",
+    "name_en": "Bani Zayd",
+    "region": null,
+    "checkpoint_type": "checkpoint",
+    "latitude": 32.03924,
+    "longitude": 35.10316,
+    "aliases": [
+      "مدخل بني زيد"
+    ]
+  },
+  {
+    "canonical_key": "دوار_جيت",
+    "name_ar": "جيت",
+    "name_en": "Jit",
+    "region": null,
+    "checkpoint_type": "checkpoint",
+    "latitude": 32.21431,
+    "longitude": 35.17081,
+    "aliases": [
+      "مفرق جيت",
+      "دوار جيت",
+      "دوار جيت اتجاهين"
+    ]
+  },
+  {
+    "canonical_key": "بوابه_القبلان_اتجاهين",
+    "name_ar": "قبلان",
+    "name_en": "Qabalan",
+    "region": null,
+    "checkpoint_type": "checkpoint",
+    "latitude": 32.15,
+    "longitude": 35.2833,
+    "aliases": [
+      "بوابه القبلان اتجاهين"
+    ]
+  },
+  {
+    "canonical_key": "برقه",
+    "name_ar": "برقة",
+    "name_en": "Burqah",
+    "region": null,
+    "checkpoint_type": "checkpoint",
+    "latitude": 32.30177,
+    "longitude": 35.19263,
+    "aliases": [
+      "مخصوم برقة"
+    ]
+  },
+  {
+    "canonical_key": "مداخل_سبسطيه",
+    "name_ar": "سبسطية",
+    "name_en": "Sabastiyah",
+    "region": null,
+    "checkpoint_type": "checkpoint",
+    "latitude": 32.27562,
+    "longitude": 35.19873,
+    "aliases": [
+      "مداخل سبسطية",
+      "مداخل سبسطية اتجاهين"
+    ]
   }
 ]

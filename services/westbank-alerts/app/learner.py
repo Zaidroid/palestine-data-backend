@@ -24,7 +24,7 @@ from typing import Optional
 
 from .checkpoint_parser import (
     _normalise, _has_status_emoji, _extract_emoji_status,
-    STATUS_MAP, FILLER_WORDS, make_canonical_key, parse_message, is_admin_message,
+    STATUS_MAP, FILLER_WORDS, make_canonical_key, is_admin_message,
 )
 from .checkpoint_matcher import CheckpointIndex, get_index, _is_clean_name
 from .checkpoint_db import insert_vocab_discovery, get_learned_vocab, promote_vocab
@@ -190,7 +190,7 @@ def extract_vocab_patterns(messages: list[str]) -> dict:
 async def run_startup_catchup(client, cp_channel: str, limit: int = 500) -> dict:
     """
     On startup, fetch the last `limit` messages from the checkpoint channel
-    and push them through the normal parse_message pipeline.
+    and push them through the strict whitelist parser (same as the live monitor).
 
     This catches any messages that arrived while the service was down.
     Uses min_id=0 to get the most recent `limit` messages in bulk.
@@ -198,7 +198,9 @@ async def run_startup_catchup(client, cp_channel: str, limit: int = 500) -> dict
     Returns {"processed": int, "checkpoints_found": int}
     """
     from .checkpoint_db import duplicate_check_cp, insert_checkpoint_update, upsert_checkpoint_status
-    from .checkpoint_matcher import get_index, match_message
+    from .checkpoint_matcher import get_index
+    from .checkpoint_whitelist_parser import parse_checkpoint_message
+    from .checkpoint_knowledge_base import get_knowledge_base
 
     cp_channel = cp_channel.strip().lstrip("@")
     if not cp_channel:
@@ -222,8 +224,6 @@ async def run_startup_catchup(client, cp_channel: str, limit: int = 500) -> dict
     processed = 0
     checkpoints_found = 0
 
-    index = get_index()
-
     for msg in reversed(messages):  # oldest first
         raw = (msg.message or "").strip()
         if len(raw) < 2:
@@ -236,10 +236,7 @@ async def run_startup_catchup(client, cp_channel: str, limit: int = 500) -> dict
 
         is_admin = is_admin_message(raw)
 
-        if index:
-            updates = match_message(raw, index)
-        else:
-            updates = parse_message(raw, is_admin=is_admin)
+        updates = parse_checkpoint_message(raw, get_knowledge_base())
 
         if not updates:
             continue
