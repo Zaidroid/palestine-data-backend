@@ -70,6 +70,7 @@ from . import incident_db
 from . import area_status as area_mod
 from .config import settings
 from .models import Alert, AlertResponse, StatsResponse, WebhookTarget, RouteCheckRequest
+from .stats import aggregate_today_counts
 from .checkpoint_models import (
     Checkpoint, CheckpointUpdate, CheckpointListResponse,
     CheckpointHistoryResponse, UpdateFeedResponse, CheckpointStatsResponse,
@@ -1452,28 +1453,9 @@ async def stats_today():
     since = datetime(now.year, now.month, now.day)
     alerts, _ = await db.get_alerts(since=since, limit=1000, offset=0)
 
-    total_arrests = 0
-    total_injuries = 0
-    settler_attacks = 0
-    military_raids = 0
-
-    for a in alerts:
-        if a.type == "arrest_campaign" or getattr(a, "event_subtype", "") == "arrest":
-            # Extract count if present (attribute exists but may be None)
-            total_arrests += getattr(a, "count", None) or 1
-        elif a.type == "injury_report":
-            total_injuries += getattr(a, "count", None) or 1
-        elif a.type == "settler_attack":
-            settler_attacks += 1
-        elif a.type == "idf_raid":
-            military_raids += 1
-
     return {
         "date": since.date().isoformat(),
-        "total_arrests_today": total_arrests,
-        "total_injuries_today": total_injuries,
-        "settler_attacks_today": settler_attacks,
-        "military_raids_today": military_raids
+        **aggregate_today_counts(alerts),
     }
 
 
