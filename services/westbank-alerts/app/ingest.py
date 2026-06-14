@@ -114,8 +114,10 @@ async def fetch_osm_obstacles(bbox=WB_BBOX, *, timeout: float = 60.0) -> list:
         f'node["military"="checkpoint"]{box};way["military"="checkpoint"]{box};'
         ");out center;"
     )
+    # Overpass returns 406 without a real User-Agent.
+    headers = {"User-Agent": "westbank-checkpoint-tracker/1.0 (zsalem33@gmail.com)"}
     async with httpx.AsyncClient(timeout=timeout) as client:
-        resp = await client.post(OVERPASS_URL, data={"data": query})
+        resp = await client.post(OVERPASS_URL, data={"data": query}, headers=headers)
         resp.raise_for_status()
         elements = resp.json().get("elements", [])
     return parse_overpass(elements)
