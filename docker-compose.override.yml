@@ -1,0 +1,25 @@
+# Deployment overrides for the homelab "main" server (192.168.1.114).
+#
+# - Images are built via `docker run --dns ... + docker commit` (host DNS on
+#   main historically unreliable), so both services pin :latest local images
+#   instead of compose build contexts.
+# - Host port 8081 for alerts: 8080 is taken by wire-pod's chipper.
+# - Explicit container DNS: survives homelab Pi-hole outages.
+# - api gets 2g: the martyrs/water categories are ~110MB JSON monoliths and
+#   V8 needs headroom to parse them (see NODE_OPTIONS).
+services:
+  api:
+    image: palestine-api:latest
+    mem_limit: 2g
+    environment:
+      - NODE_OPTIONS=--max-old-space-size=1536
+    dns:
+      - 1.1.1.1
+      - 9.9.9.9
+  alerts:
+    image: wb-alerts:latest
+    ports: !override
+      - "8081:8080"
+    dns:
+      - 1.1.1.1
+      - 9.9.9.9

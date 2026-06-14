@@ -45,6 +45,8 @@ echo "[step 1] fetching upstream sources" | tee -a "$LOG"
 run "gaza-daily"      node scripts/fetch-gaza-daily.js
 run "prisoners"       node scripts/fetch-prisoners.js
 run "unhcr-refugees"  node scripts/sources/unhcr.js
+run "pom-localities"  node scripts/sources/pom-localities.js
+run "villages-1948"   node scripts/sources/villages-1948.js
 run "unfts-funding"   node scripts/sources/unfts.js
 run "imf-economic"    node scripts/sources/imf.js
 run "ucdp-conflict"   node scripts/sources/ucdp-conflict.js
@@ -91,16 +93,27 @@ run "historical"      node scripts/fetch-historical-data.js
 # Step 2: Unified pipeline (transforms raw -> /unified/ categories)
 echo "[step 2] unified pipeline" | tee -a "$LOG"
 run "populate-unified" node scripts/populate-unified-data.js
+run "attach-locations" node scripts/attach-locations.js
+# Re-run after locations so fingerprints cover the geo keys, dedupe collapses
+# overlapping-source rows, and event clusters build on final stable_ids.
+run "attach-stable-ids" node scripts/attach-stable-ids.js
+run "build-events"     node scripts/build-events.js
 
-# Step 3: Manifests + quality snapshot
+# Step 3: Manifests + quality snapshot + derived artifacts
 echo "[step 3] manifests + quality" | tee -a "$LOG"
+run "geojson"         node scripts/generate-geojson-layers.js
+run "manifest-full"   node scripts/generate-manifest.js
 run "manifest"        node scripts/generate-unified-manifest.js
-run "quality"         node scripts/generate-quality-snapshot.js
 run "search-index"    node scripts/generate-search-index.js
+run "optimize"        node scripts/optimize-unified-data.js
+run "optimize-search" node scripts/optimize-search-index.js
+run "validate"        node scripts/validate-data.js
+run "quality"         node scripts/generate-quality-snapshot.js
 
 # Step 4: Databank backfills
 echo "[step 4] databank backfills" | tee -a "$LOG"
 run "databank-martyrs"   python3 scripts/backfill-people-killed-from-martyrs.py
+run "databank-btselem"   python3 scripts/backfill-people-killed-from-btselem.py
 run "databank-gaza"      python3 scripts/backfill-databank-from-gaza-daily.py
 run "databank-prisoners" python3 scripts/backfill-databank-from-prisoners.py
 run "databank-ucdp-actions" python3 scripts/backfill-databank-from-ucdp.py

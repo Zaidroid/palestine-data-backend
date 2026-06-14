@@ -2,7 +2,7 @@ name: Node.js CI
 
 on:
   push:
-    branches: [ "main", "master" ]
+    branches: [ "main", "master", "revival/**" ]
   pull_request:
     branches: [ "main", "master" ]
 
@@ -25,3 +25,22 @@ jobs:
       - run: npm run lint --if-present
       - run: npm run check:licenses
       - run: npm test
+
+  # Alerts classifier regression gate — the same fixture harness exposed
+  # live at /quality/eval. A classifier edit that breaks a known
+  # false-positive family fails CI before it ships.
+  classifier-eval:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: services/westbank-alerts
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - run: pip install -q pydantic pydantic-settings pytest
+      - name: Classifier false-positive audit
+        run: API_SECRET_KEY=ci-eval-secret-key-16chars python test_classifier_fp_audit.py
+      - name: Checkpoint whitelist suite
+        run: API_SECRET_KEY=ci-eval-secret-key-16chars python -m pytest test_checkpoint_whitelist.py -q

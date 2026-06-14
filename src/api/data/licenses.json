@@ -1,6 +1,6 @@
 {
   "$schema_version": "1.1.0",
-  "generated_at": "2026-06-10",
+  "generated_at": "2026-04-18",
   "notes": "Best-effort registry of upstream source licenses. Entries marked verify_required must be confirmed with the source before redistributing in a commercial tier. See docs/COMPLIANCE.md for the per-source compliance decisions. The `aliases` field is the canonical lowercase set of source-name strings that records may carry; the CI license-coverage check resolves record sources[] entries against this set.",
   "sources": {
     "tech4palestine": {
@@ -141,7 +141,9 @@
       "verify_required": true,
       "aliases": [
         "unrwa",
-        "united nations relief and works agency"
+        "united nations relief and works agency",
+        "unrwa camp registry",
+        "unrwa (via wikipedia camp registry)"
       ]
     },
     "ocha": {
@@ -430,6 +432,255 @@
         "clinton parameters (dec 2000)"
       ]
     },
+    "ucdp": {
+      "name": "UCDP-GED",
+      "organization": "Uppsala Conflict Data Program",
+      "source_url": "https://ucdp.uu.se/downloads/",
+      "license_id": "UCDP-attribution",
+      "attribution_text": "Conflict event data: UCDP Georeferenced Event Dataset (GED), Uppsala University. Cite Sundberg & Melander (2013).",
+      "redistribution_allowed": true,
+      "commercial_use": true,
+      "verify_required": true,
+      "notes": "UCDP data is provided free of charge with citation; commercial redistribution terms flagged for manual verification.",
+      "aliases": [
+        "ucdp-ged",
+        "ucdp ged",
+        "ucdp",
+        "uppsala conflict data program"
+      ]
+    },
+    "palopenmaps": {
+      "name": "Palestine Open Maps",
+      "organization": "Visualizing Palestine",
+      "source_url": "https://palopenmaps.org/",
+      "license_id": "POM-attribution",
+      "attribution_text": "Locality registry: Palestine Open Maps (Visualizing Palestine). Underlying Survey of Palestine maps and Village Statistics 1945 are public domain.",
+      "redistribution_allowed": true,
+      "commercial_use": true,
+      "verify_required": true,
+      "notes": "Compilation by POM; underlying Mandate-government census/map data is public domain. Explicit compilation terms flagged for verification.",
+      "aliases": [
+        "palestine open maps locality registry",
+        "palestine open maps",
+        "pom",
+        "visualizing palestine"
+      ]
+    },
+    "zochrot": {
+      "name": "Zochrot",
+      "organization": "Zochrot",
+      "source_url": "https://zochrot.org/",
+      "license_id": "citation-only",
+      "attribution_text": "Village documentation: Zochrot (zochrot.org).",
+      "redistribution_allowed": false,
+      "commercial_use": true,
+      "verify_required": false,
+      "notes": "Cited as a per-village reference URL only; no Zochrot content is redistributed by this API.",
+      "aliases": [
+        "zochrot village page",
+        "zochrot"
+      ]
+    },
+    "palestineremembered": {
+      "name": "Palestine Remembered",
+      "organization": "Palestine Remembered",
+      "source_url": "https://www.palestineremembered.com/",
+      "license_id": "citation-only",
+      "attribution_text": "Village documentation: PalestineRemembered.com.",
+      "redistribution_allowed": false,
+      "commercial_use": true,
+      "verify_required": false,
+      "notes": "Cited as a per-village reference URL only; no content redistributed.",
+      "aliases": [
+        "palestine remembered village page",
+        "palestine remembered"
+      ]
+    },
+    "abusitta": {
+      "name": "Atlas of Palestine",
+      "organization": "Salman Abu Sitta — Palestine Land Society",
+      "source_url": "https://www.plands.org/",
+      "license_id": "citation-only",
+      "attribution_text": "Village registry cross-reference: Salman Abu Sitta, Atlas of Palestine (Palestine Land Society).",
+      "redistribution_allowed": false,
+      "commercial_use": true,
+      "verify_required": false,
+      "notes": "Cited as a scholarly cross-reference id only; no Atlas content redistributed.",
+      "aliases": [
+        "atlas of palestine",
+        "abu sitta",
+        "palestine land society"
+      ]
+    },
+    "wikidata": {
+      "name": "Wikidata",
+      "organization": "Wikimedia Foundation",
+      "source_url": "https://www.wikidata.org/",
+      "license_id": "CC0-1.0",
+      "attribution_text": "Entity crosswalk ids: Wikidata (CC0).",
+      "redistribution_allowed": true,
+      "commercial_use": true,
+      "verify_required": false,
+      "notes": "Tier-3 bootstrap/crosswalk only per the source-trust policy in docs/DATA_SOURCES.md.",
+      "aliases": [
+        "wikidata crosswalk",
+        "wikidata"
+      ]
+    },
+    "imf": {
+      "name": "IMF",
+      "organization": "International Monetary Fund",
+      "source_url": "https://www.imf.org/en/Data",
+      "license_id": "IMF-terms",
+      "attribution_text": "Macroeconomic indicators: IMF World Economic Outlook / DataMapper.",
+      "redistribution_allowed": true,
+      "commercial_use": true,
+      "verify_required": false,
+      "aliases": [
+        "imf",
+        "international monetary fund",
+        "imf datamapper"
+      ]
+    },
+    "anadolu": {
+      "name": "Anadolu Agency (Middle East)",
+      "organization": "Anadolu Agency (Middle East)",
+      "source_url": "",
+      "license_id": "fair-use",
+      "attribution_text": "Headlines via RSS: Anadolu Agency (Middle East) (fair use; titles and links only).",
+      "redistribution_allowed": false,
+      "commercial_use": false,
+      "verify_required": false,
+      "notes": "News category serves headline + link only; full text never redistributed.",
+      "aliases": [
+        "anadolu agency (middle east)",
+        "anadolu agency middle east",
+        "anadolu agency"
+      ]
+    },
+    "memonitor": {
+      "name": "Middle East Monitor",
+      "organization": "Middle East Monitor",
+      "source_url": "",
+      "license_id": "fair-use",
+      "attribution_text": "Headlines via RSS: Middle East Monitor (fair use; titles and links only).",
+      "redistribution_allowed": false,
+      "commercial_use": false,
+      "verify_required": false,
+      "notes": "News category serves headline + link only; full text never redistributed.",
+      "aliases": [
+        "middle east monitor",
+        "middle east monitor",
+        "memo"
+      ]
+    },
+    "timesofisrael": {
+      "name": "Times of Israel",
+      "organization": "Times of Israel",
+      "source_url": "",
+      "license_id": "fair-use",
+      "attribution_text": "Headlines via RSS: Times of Israel (fair use; titles and links only).",
+      "redistribution_allowed": false,
+      "commercial_use": false,
+      "verify_required": false,
+      "notes": "News category serves headline + link only; full text never redistributed.",
+      "aliases": [
+        "times of israel",
+        "times of israel"
+      ]
+    },
+    "pic": {
+      "name": "Palestinian Information Center",
+      "organization": "Palestinian Information Center",
+      "source_url": "",
+      "license_id": "fair-use",
+      "attribution_text": "Headlines via RSS: Palestinian Information Center (fair use; titles and links only).",
+      "redistribution_allowed": false,
+      "commercial_use": false,
+      "verify_required": false,
+      "notes": "News category serves headline + link only; full text never redistributed.",
+      "aliases": [
+        "palestinian information center",
+        "palestinian information center"
+      ]
+    },
+    "hrw_news": {
+      "name": "Human Rights Watch",
+      "organization": "Human Rights Watch",
+      "source_url": "",
+      "license_id": "fair-use",
+      "attribution_text": "Headlines via RSS: Human Rights Watch (fair use; titles and links only).",
+      "redistribution_allowed": false,
+      "commercial_use": false,
+      "verify_required": false,
+      "notes": "News category serves headline + link only; full text never redistributed.",
+      "aliases": [
+        "human rights watch",
+        "human rights watch"
+      ]
+    },
+    "amnesty_news": {
+      "name": "Amnesty International",
+      "organization": "Amnesty International",
+      "source_url": "",
+      "license_id": "fair-use",
+      "attribution_text": "Headlines via RSS: Amnesty International (fair use; titles and links only).",
+      "redistribution_allowed": false,
+      "commercial_use": false,
+      "verify_required": false,
+      "notes": "News category serves headline + link only; full text never redistributed.",
+      "aliases": [
+        "amnesty international",
+        "amnesty international"
+      ]
+    },
+    "imemc": {
+      "name": "IMEMC News",
+      "organization": "IMEMC News",
+      "source_url": "",
+      "license_id": "fair-use",
+      "attribution_text": "Headlines via RSS: IMEMC News (fair use; titles and links only).",
+      "redistribution_allowed": false,
+      "commercial_use": false,
+      "verify_required": false,
+      "notes": "News category serves headline + link only; full text never redistributed.",
+      "aliases": [
+        "imemc news",
+        "imemc news",
+        "imemc"
+      ]
+    },
+    "bbcme": {
+      "name": "BBC Middle East",
+      "organization": "BBC Middle East",
+      "source_url": "",
+      "license_id": "fair-use",
+      "attribution_text": "Headlines via RSS: BBC Middle East (fair use; titles and links only).",
+      "redistribution_allowed": false,
+      "commercial_use": false,
+      "verify_required": false,
+      "notes": "News category serves headline + link only; full text never redistributed.",
+      "aliases": [
+        "bbc middle east",
+        "bbc middle east"
+      ]
+    },
+    "reliefweb_news": {
+      "name": "ReliefWeb (Palestine)",
+      "organization": "ReliefWeb (Palestine)",
+      "source_url": "",
+      "license_id": "fair-use",
+      "attribution_text": "Headlines via RSS: ReliefWeb (Palestine) (fair use; titles and links only).",
+      "redistribution_allowed": false,
+      "commercial_use": false,
+      "verify_required": false,
+      "notes": "News category serves headline + link only; full text never redistributed.",
+      "aliases": [
+        "reliefweb (palestine)",
+        "reliefweb palestine",
+        "reliefweb"
+      ]
+    },
     "unrwa_aid_trucks": {
       "name": "UNRWA Gaza Supply and Logistics dashboard",
       "organization": "UNRWA",
@@ -470,21 +721,6 @@
         "wfp food prices",
         "wfp",
         "world food programme"
-      ]
-    },
-    "palopenmaps": {
-      "name": "Palestine Open Maps",
-      "organization": "Palestine Open Maps (Visualizing Palestine)",
-      "source_url": "https://github.com/PalOpenMaps/pom-data",
-      "license_id": "verify-required",
-      "attribution_text": "Historical localities and census data: Palestine Open Maps (palopenmaps.org), with Abu Sitta / Zochrot / PalestineRemembered.",
-      "redistribution_allowed": true,
-      "commercial_use": false,
-      "verify_required": true,
-      "aliases": [
-        "palestine open maps",
-        "palopenmaps",
-        "pom"
       ]
     },
     "unosat": {
@@ -529,35 +765,6 @@
         "who surveillance system for attacks on health care"
       ]
     },
-    "ucdp": {
-      "name": "UCDP Georeferenced Event Dataset",
-      "organization": "Uppsala Conflict Data Program",
-      "source_url": "https://ucdp.uu.se",
-      "license_id": "CC-BY-IGO",
-      "attribution_text": "Conflict events: UCDP GED, Uppsala University.",
-      "redistribution_allowed": true,
-      "commercial_use": true,
-      "verify_required": false,
-      "aliases": [
-        "ucdp ged",
-        "ucdp-ged",
-        "ucdp"
-      ]
-    },
-    "imf": {
-      "name": "IMF DataMapper",
-      "organization": "International Monetary Fund",
-      "source_url": "https://www.imf.org/external/datamapper",
-      "license_id": "CC-BY-4.0",
-      "attribution_text": "Economic indicators: IMF DataMapper.",
-      "redistribution_allowed": true,
-      "commercial_use": true,
-      "verify_required": false,
-      "aliases": [
-        "imf",
-        "imf datamapper"
-      ]
-    },
     "idmc": {
       "name": "IDMC",
       "organization": "Internal Displacement Monitoring Centre",
@@ -570,97 +777,6 @@
       "aliases": [
         "idmc",
         "idmc internal displacement updates"
-      ]
-    },
-    "imemc": {
-      "name": "IMEMC News",
-      "organization": "IMEMC News",
-      "source_url": "https://www.imemc.org",
-      "license_id": "fair-use-headlines",
-      "attribution_text": "Headlines: IMEMC News (links to original).",
-      "redistribution_allowed": false,
-      "commercial_use": false,
-      "verify_required": false,
-      "aliases": [
-        "imemc news"
-      ]
-    },
-    "times_of_israel": {
-      "name": "Times of Israel",
-      "organization": "Times of Israel",
-      "source_url": "https://www.timesofisrael.com",
-      "license_id": "fair-use-headlines",
-      "attribution_text": "Headlines: Times of Israel (links to original).",
-      "redistribution_allowed": false,
-      "commercial_use": false,
-      "verify_required": false,
-      "aliases": [
-        "times of israel"
-      ]
-    },
-    "memo": {
-      "name": "Middle East Monitor",
-      "organization": "Middle East Monitor",
-      "source_url": "https://www.middleeastmonitor.com",
-      "license_id": "fair-use-headlines",
-      "attribution_text": "Headlines: Middle East Monitor (links to original).",
-      "redistribution_allowed": false,
-      "commercial_use": false,
-      "verify_required": false,
-      "aliases": [
-        "middle east monitor"
-      ]
-    },
-    "bbc": {
-      "name": "BBC Middle East",
-      "organization": "BBC Middle East",
-      "source_url": "https://www.bbc.com/news/world/middle_east",
-      "license_id": "fair-use-headlines",
-      "attribution_text": "Headlines: BBC Middle East (links to original).",
-      "redistribution_allowed": false,
-      "commercial_use": false,
-      "verify_required": false,
-      "aliases": [
-        "bbc middle east"
-      ]
-    },
-    "palinfo": {
-      "name": "Palestinian Information Center",
-      "organization": "Palestinian Information Center",
-      "source_url": "https://english.palinfo.com",
-      "license_id": "fair-use-headlines",
-      "attribution_text": "Headlines: Palestinian Information Center (links to original).",
-      "redistribution_allowed": false,
-      "commercial_use": false,
-      "verify_required": false,
-      "aliases": [
-        "palestinian information center"
-      ]
-    },
-    "hrw": {
-      "name": "Human Rights Watch",
-      "organization": "Human Rights Watch",
-      "source_url": "https://www.hrw.org",
-      "license_id": "fair-use-headlines",
-      "attribution_text": "Headlines: Human Rights Watch (links to original).",
-      "redistribution_allowed": false,
-      "commercial_use": false,
-      "verify_required": false,
-      "aliases": [
-        "human rights watch"
-      ]
-    },
-    "amnesty": {
-      "name": "Amnesty International",
-      "organization": "Amnesty International",
-      "source_url": "https://www.amnesty.org",
-      "license_id": "fair-use-headlines",
-      "attribution_text": "Headlines: Amnesty International (links to original).",
-      "redistribution_allowed": false,
-      "commercial_use": false,
-      "verify_required": false,
-      "aliases": [
-        "amnesty international"
       ]
     },
     "ocha_casualties": {
@@ -748,22 +864,6 @@
       "aliases": [
         "ooni",
         "open observatory of network interference"
-      ]
-    },
-    "anadolu": {
-      "name": "Anadolu Agency",
-      "organization": "Anadolu Agency",
-      "source_url": "https://www.aa.com.tr",
-      "license_id": "fair-use-headlines",
-      "attribution_text": "Headlines: Anadolu Agency (links to original).",
-      "redistribution_allowed": false,
-      "commercial_use": false,
-      "verify_required": false,
-      "aliases": [
-        "anadolu agency",
-        "anadolu agency (middle east)",
-        "anadolu agency middle east",
-        "anadolu"
       ]
     }
   }

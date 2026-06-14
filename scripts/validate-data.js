@@ -175,6 +175,10 @@ async function main() {
     // Test 4: Time-Series Data
     console.log(`\n${colors.blue}=== Time-Series Data Tests ===${colors.reset}\n`);
     const timeSeriesFiles = files.filter(f =>
+      // Scope to the fetcher layouts this structure check was written for —
+      // top-level displacement/ now holds raw UNHCR/IDMC envelopes with a
+      // different (legitimate) shape.
+      (f.includes('tech4palestine/') || f.includes('goodshepherd/')) &&
       (f.includes('/casualties/') ||
         f.includes('/displacement/') ||
         f.includes('/prisoners/') ||
@@ -209,7 +213,7 @@ async function main() {
 
     for (const file of timeSeriesFiles) {
       const data = await readJSON(file);
-      if (data?.data) {
+      if (data?.data && Array.isArray(data.data)) {
         for (const record of data.data) {
           if (record.date) {
             if (isValidDate(record.date)) validDates++;
@@ -240,7 +244,7 @@ async function main() {
 
     // Test 7: Index Files
     console.log(`\n${colors.blue}=== Index File Tests ===${colors.reset}\n`);
-    const indexFiles = files.filter(f => f.endsWith('index.json') && !f.endsWith('search-index.json'));
+    const indexFiles = files.filter(f => f.endsWith('index.json') && !f.endsWith('search-index.json') && !f.endsWith('stable-id-index.json') && !f.endsWith('member-index.json'));
 
     let validIndexes = 0;
     const failedIndexFiles = [];
@@ -296,10 +300,14 @@ async function main() {
       test('All Tech4Palestine martyrs files exist', filesExist.every(e => e));
     }
 
-    // Check Unified Martyrs
-    const unifiedMartyrsPath = path.join(DATA_DIR, 'unified/martyrs/all-data.json');
+    // Check Unified Martyrs (frozen snapshot category since the 2026 pivot).
+    // Large categories keep only partitions/ after optimize-unified-data.js
+    // removes the oversized all-data.json, so accept either layout.
+    const unifiedMartyrsPath = path.join(DATA_DIR, 'unified/martyrs_snapshot_2023/all-data.json');
+    const martyrsPartitionsDir = path.join(DATA_DIR, 'unified/martyrs_snapshot_2023/partitions');
     const unifiedMartyrsExists = await fs.access(unifiedMartyrsPath).then(() => true).catch(() => false);
-    test('Unified martyrs data exists', unifiedMartyrsExists);
+    const martyrsPartitions = await fs.readdir(martyrsPartitionsDir).catch(() => []);
+    test('Unified martyrs data exists', unifiedMartyrsExists || martyrsPartitions.length > 0);
 
     if (unifiedMartyrsExists) {
       const martyrsData = await readJSON(unifiedMartyrsPath);
@@ -310,6 +318,65 @@ async function main() {
     const unifiedInfraPath = path.join(DATA_DIR, 'unified/infrastructure/all-data.json');
     const unifiedInfraExists = await fs.access(unifiedInfraPath).then(() => true).catch(() => false);
     test('Unified infrastructure data exists', unifiedInfraExists);
+
+    // Test 9: Cross-source consistency — what we serve must reconcile with
+    // what we fetched. Catches silent transform data loss between refreshes.
+    console.log(`\n${colors.blue}=== Cross-Source Consistency Tests ===${colors.reset}\n`);
+
+    // 9a. Martyrs summary record carries the live MoH cumulative totals from
+    // the T4P summary fetched the same run (tolerance ±5% for fetch skew).
+    const t4pSummary = await readJSON(path.join(DATA_DIR, 'tech4palestine/summary.json'));
+    const gazaSummary = t4pSummary?.data?.gaza ?? t4pSummary?.gaza ?? null;
+    const mohKilled = gazaSummary?.killed?.total ?? gazaSummary?.killed ?? null;
+    if (mohKilled) {
+      let summaryRec = null;
+      if (unifiedMartyrsExists) {
+        const martyrsData = await readJSON(unifiedMartyrsPath);
+        summaryRec = (martyrsData?.data || []).find(r => r.event_type === 'cumulative_summary');
+      }
+      if (!summaryRec) {
+        for (const f of martyrsPartitions) {
+          if (!f.endsWith('.json') || f === 'index.json') continue;
+          const part = await readJSON(path.join(DATA_DIR, 'unified/martyrs_snapshot_2023/partitions', f));
+          summaryRec = (part?.data || []).find(r => r.event_type === 'cumulative_summary');
+          if (summaryRec) break;
+        }
+      }
+      const served = summaryRec?.metrics?.killed ?? null;
+      const within = served != null && Math.abs(served - mohKilled) / mohKilled <= 0.05;
+      test(`Martyrs cumulative summary matches MoH total (served ${served}, MoH ${mohKilled})`, within);
+    }
+
+    // 9b. FTS funding: unified records vs fetched flows (dedup may shrink
+    // the served count slightly; it must never exceed the fetched count nor
+    // fall below 90% of it).
+    const ftsRaw = await readJSON(path.join(DATA_DIR, 'static/unfts-funding.json'));
+    const ftsUnified = await readJSON(path.join(DATA_DIR, 'unified/funding/all-data.json'));
+    if (ftsRaw?.count && ftsUnified?.data) {
+      const served = ftsUnified.data.length;
+      test(`Funding records reconcile with FTS fetch (served ${served}, fetched ${ftsRaw.count})`,
+        served <= ftsRaw.count && served >= ftsRaw.count * 0.9);
+    }
+
+    // 9c. Depopulated villages: unified events vs POM registry count.
+    const pom = await readJSON(path.join(DATA_DIR, 'static/pom-localities.json'));
+    const conflictAll = await readJSON(path.join(DATA_DIR, 'unified/conflict/all-data.json'));
+    if (pom?.depopulated_count && conflictAll?.data) {
+      const served = conflictAll.data.filter(r => r.event_type === 'village_depopulation').length;
+      test(`Depopulation events match POM registry (served ${served}, registry ${pom.depopulated_count})`,
+        served === pom.depopulated_count);
+    }
+
+    // 9d. UNHCR refugees: unified records sourced from UNHCR vs fetched rows.
+    const unhcrRaw = await readJSON(path.join(DATA_DIR, 'static/unhcr-refugees.json'));
+    const refugeesAll = await readJSON(path.join(DATA_DIR, 'unified/refugees/all-data.json'));
+    if (unhcrRaw?.data?.length && refugeesAll?.data) {
+      const served = refugeesAll.data.filter(r =>
+        (r.sources || []).some(s => /unhcr/i.test(s?.organization || s?.name || ''))
+      ).length;
+      test(`UNHCR refugee records reconcile (served ${served}, fetched ${unhcrRaw.data.length})`,
+        served >= unhcrRaw.data.length * 0.9 && served <= unhcrRaw.data.length);
+    }
 
     // Summary
     console.log(`\n${colors.blue}=== Summary ===${colors.reset}\n`);

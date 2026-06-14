@@ -98,7 +98,20 @@ function resolveName(rawName, lookup) {
 
 async function main() {
     const lookup = await loadLicenseLookup();
-    const categories = (await fs.readdir(UNIFIED_DIR, { withFileTypes: true }))
+    let entries;
+    try {
+        entries = await fs.readdir(UNIFIED_DIR, { withFileTypes: true });
+    } catch (err) {
+        if (err.code === 'ENOENT') {
+            // CI and fresh clones have no generated data (public/data is
+            // gitignored) — nothing to scan is a skip, not a failure. The
+            // nightly refresh on the data host runs the real check.
+            console.log('license-coverage: SKIP — public/data/unified not present (no generated data in this environment)');
+            return;
+        }
+        throw err;
+    }
+    const categories = entries
         .filter((e) => e.isDirectory())
         .map((e) => e.name);
 

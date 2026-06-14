@@ -275,6 +275,171 @@ async function processUCDPConflict() {
 
 
 /**
+ * Process the depopulated-villages registry into /unified/conflict — one
+ * cited depopulation event per locality.
+ *
+ * PRIMARY source: Palestine Open Maps (Visualizing Palestine — Palestinian-
+ * led), which compiles British Mandate census populations (1922/1931/1945)
+ * and day-precision depopulation dates with per-village crosswalks to the
+ * canonical scholarship: Zochrot, Palestine Remembered, Abu Sitta's Atlas
+ * of Palestine, and PalQuest. The Wikidata bootstrap (villages-1948.json)
+ * is kept only as a QID crosswalk, matched by normalized name.
+ *
+ * conflict_phase derives from the recorded date — the registry includes
+ * 1967 Naksa depopulations (e.g. the Latrun villages), which are honestly
+ * labeled naksa-1967, not folded into the Nakba.
+ */
+async function processVillages1948() {
+    logger.info('Processing depopulated-villages registry (POM + scholarship crosswalks)...');
+    try {
+        const filePath = path.join(DATA_DIR, 'static', 'pom-localities.json');
+        let envelope;
+        try {
+            envelope = JSON.parse(await fs.readFile(filePath, 'utf-8'));
+        } catch (e) {
+            logger.warn('POM localities unavailable (run scripts/sources/pom-localities.js):', e.message);
+            return;
+        }
+        const villages = (envelope.data || []).filter((l) => /depopulated/i.test(l.change_2016 || ''));
+        if (villages.length === 0) {
+            logger.warn('No depopulated localities on disk; skipping');
+            return;
+        }
+
+        // Wikidata QID crosswalk by normalized English name (best effort).
+        const qidByName = new Map();
+        try {
+            const wd = JSON.parse(await fs.readFile(path.join(DATA_DIR, 'static', 'villages-1948.json'), 'utf-8'));
+            for (const v of wd.data || []) {
+                if (v.name_en) qidByName.set(v.name_en.toLowerCase().replace(/[^a-z]/g, ''), v.qid);
+            }
+        } catch {
+            // crosswalk optional
+        }
+
+        const phaseOf = (date) => {
+            if (!date) return 'nakba-1948';
+            if (date <= '1949-12-31') return 'nakba-1948';
+            if (date >= '1967-01-01' && date <= '1967-12-31') return 'naksa-1967';
+            return 'displacement';
+        };
+
+        const records = villages.map((v) => {
+            const name = v.name_en || v.name_ar;
+            const pop = v.pop_1945 ?? v.pop_1931 ?? v.pop_1922 ?? null;
+            const dateOk = !!v.depopulated_on;
+            const date = v.depopulated_on || '1948-01-01';
+            const sources = [{
+                name: 'Palestine Open Maps locality registry',
+                organization: 'Visualizing Palestine',
+                url: `https://palopenmaps.org/en/places/${v.slug || ''}`,
+                license: envelope.license,
+                fetched_at: envelope.generated_at,
+            }];
+            if (v.id_zochrot) {
+                sources.push({ name: `Zochrot village page`, organization: 'Zochrot', url: `https://zochrot.org/en/village/${v.id_zochrot}` });
+            }
+            if (v.url_palremembered) {
+                sources.push({ name: 'Palestine Remembered village page', organization: 'Palestine Remembered', url: `https://www.palestineremembered.com/${v.url_palremembered}/index.html` });
+            }
+            if (v.id_abusitta) {
+                sources.push({ name: 'Atlas of Palestine', organization: 'Salman Abu Sitta — Palestine Land Society', ref: v.id_abusitta });
+            }
+            const qid = qidByName.get((v.name_en || '').toLowerCase().replace(/[^a-z]/g, ''));
+            if (qid) {
+                sources.push({ name: 'Wikidata crosswalk', organization: 'Wikidata', url: `https://www.wikidata.org/wiki/${qid}`, license: 'CC0-1.0', ref: qid });
+            }
+
+            return {
+                id: `nakba-pom-${v.pom_id}`,
+                date,
+                date_precision: dateOk ? 'day' : 'year',
+                category: 'conflict',
+                event_type: 'village_depopulation',
+                schema_version: '3.0.0',
+                location: {
+                    name,
+                    governorate: null,
+                    region: 'Palestine',
+                    lat: v.lat,
+                    lon: v.lon,
+                    precision: v.lat != null ? 'point' : 'unknown',
+                },
+                metrics: {
+                    killed: 0,
+                    injured: 0,
+                    displaced: pop || 0,
+                    affected: pop || 0,
+                    demolished: 0,
+                    detained: 0,
+                    count: 1,
+                    value: pop || 0,
+                    unit: 'persons',
+                },
+                description: `${name}${v.district_1945 ? ` (${v.district_1945} district)` : ''} — Palestinian ${(v.type_1945 || 'village').toLowerCase()} depopulated` +
+                    `${phaseOf(date) === 'nakba-1948' ? ' during the 1948 Nakba' : phaseOf(date) === 'naksa-1967' ? ' during the 1967 Naksa' : ''}` +
+                    `${pop ? `; population ${pop} (Village Statistics 1945 / Mandate censuses)` : ''}.` +
+                    ` Status: ${v.change_2016}.` +
+                    `${dateOk ? '' : ' Depopulation date not recorded at day precision; dated to the year 1948.'}`,
+                actors: [],
+                conflict_phase: phaseOf(date),
+                population_1922: v.pop_1922,
+                population_1931: v.pop_1931,
+                population_1945: v.pop_1945,
+                quality: {
+                    score: 0.95,
+                    completeness: v.lat != null && pop != null && dateOk ? 1 : 0.8,
+                    consistency: 1,
+                    accuracy: 0.95,
+                    confidence: 'high',
+                    verified: false,
+                },
+                sources,
+            };
+        });
+
+        const conflictDir = path.join(UNIFIED_DIR, 'conflict');
+        await fs.mkdir(conflictDir, { recursive: true });
+        const dataPath = path.join(conflictDir, 'all-data.json');
+        let existing = { data: [], metadata: {} };
+        try {
+            existing = JSON.parse(await fs.readFile(dataPath, 'utf-8'));
+        } catch {}
+        // Drop any previous depopulation records (including the superseded
+        // Wikidata-bootstrap nakba-Q* ids) before merging the fresh registry.
+        const byId = new Map(
+            (existing.data || [])
+                .filter((r) => !String(r.id).startsWith('nakba-'))
+                .map((r) => [r.id, r])
+        );
+        for (const r of records) byId.set(r.id, r);
+        const merged = Array.from(byId.values());
+
+        await fs.writeFile(
+            dataPath,
+            JSON.stringify({
+                data: merged,
+                metadata: {
+                    ...(existing.metadata || {}),
+                    total_records: merged.length,
+                    generated_at: new Date().toISOString(),
+                    sources: [...new Set([
+                        ...(existing.metadata?.sources || []).filter((s) => s !== 'Wikidata-1948-villages'),
+                        'Palestine Open Maps (Zochrot/PalRemembered/AbuSitta crosswalks)',
+                    ])],
+                    category: 'conflict',
+                },
+            }, null, 2),
+            'utf-8',
+        );
+        logger.success(`Depopulated villages merged: +${records.length} events into conflict (total ${merged.length})`);
+    } catch (e) {
+        logger.error('Error processing depopulated villages:', e.message);
+    }
+}
+
+
+/**
  * Process IDMC (Internal Displacement Monitoring Centre) Palestine.
  *
  * Promotes per-event displacement records (with geocoding, figure,
@@ -2618,6 +2783,8 @@ async function main() {
         { name: 'economic',            fn: processEconomicData },
         { name: 'conflict',            fn: processConflictData },
         { name: 'ucdp_conflict',       fn: processUCDPConflict },
+        { name: 'villages_1948',       fn: processVillages1948 },
+        { name: 'infrastructure_t4p',  fn: processTech4PalestineInfrastructure },
         { name: 'press',               fn: processPressData },
         { name: 'martyrs',             fn: processMartyrsData },
         { name: 'hdx',                 fn: processHDXData },
@@ -2859,22 +3026,54 @@ async function processStaticRefugeesData() {
             return;
         }
 
-        const results = await pipeline.process(
-            mappedRecords,
-            { source: 'UNHCR + UNRWA', category: 'refugees', source_url: 'https://api.unhcr.org/population/v1/population/' },
-            transformer,
-            { enrich: true, validate: true, partition: true, outputDir: path.join(UNIFIED_DIR, 'refugees') }
-        );
+        // Process the two sources SEPARATELY so each record carries honest
+        // per-record attribution — the shared RefugeeTransformer otherwise
+        // stamps everything with its generic HDX source, which breaks both
+        // citations and license filtering (UNHCR ODP is CC-BY-4.0).
+        const UNRWA_SOURCE = {
+            name: 'UNRWA camp registry',
+            organization: 'UNRWA (via Wikipedia camp registry)',
+            url: 'https://www.unrwa.org/where-we-work',
+            license: 'CC-BY-SA-3.0',
+        };
+        const UNHCR_SOURCE = {
+            name: 'UNHCR Operational Data Portal',
+            organization: 'UNHCR',
+            url: 'https://api.unhcr.org/population/v1/population/',
+            license: 'CC-BY-4.0',
+        };
 
-        if (results.success) {
+        const batches = [
+            { rows: mappedRecords.filter((r) => r.type === 'camp_population'), src: UNRWA_SOURCE },
+            { rows: mappedRecords.filter((r) => r.type === 'cross-border_refugees'), src: UNHCR_SOURCE },
+        ];
+
+        const allEnriched = [];
+        for (const { rows, src } of batches) {
+            if (rows.length === 0) continue;
+            const results = await pipeline.process(
+                rows,
+                { source: src.name, organization: src.organization, category: 'refugees', source_url: src.url },
+                transformer,
+                { enrich: true, validate: true, partition: false, outputDir: path.join(UNIFIED_DIR, 'refugees') }
+            );
+            if (results.success) {
+                for (const rec of results.enriched || []) {
+                    rec.sources = [{ ...src, fetched_at: new Date().toISOString() }];
+                    allEnriched.push(rec);
+                }
+            }
+        }
+
+        if (allEnriched.length > 0) {
             const outPath = path.join(UNIFIED_DIR, 'refugees', 'all-data.json');
             await fs.mkdir(path.dirname(outPath), { recursive: true });
             await fs.writeFile(
                 outPath,
                 JSON.stringify({
-                    data: results.enriched || [],
+                    data: allEnriched,
                     metadata: {
-                        total_records: results.stats.recordCount,
+                        total_records: allEnriched.length,
                         generated_at: new Date().toISOString(),
                         sources: [
                             { name: 'UNHCR Operational Data Portal', records: unhcrCount, license: 'CC-BY-4.0' },
@@ -2886,7 +3085,7 @@ async function processStaticRefugeesData() {
                 }, null, 2),
                 'utf-8'
             );
-            logger.success(`Processed ${results.stats.recordCount} refugee records (UNHCR ${unhcrCount} + UNRWA ${unrwaCount})`);
+            logger.success(`Processed ${allEnriched.length} refugee records (UNHCR ${unhcrCount} + UNRWA ${unrwaCount})`);
         }
     } catch (e) {
         logger.warn('Error processing refugees data:', e.message);

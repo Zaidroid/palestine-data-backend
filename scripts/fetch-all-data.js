@@ -452,28 +452,27 @@ async function saveTech4PalestineData(data) {
       source: 'tech4palestine',
     }));
 
-    // Records carry date=null (T4P publishes no per-record death date), so
-    // date-based partitioning would drop everything — partitionByQuarter
-    // skips dateless records. Chunk by fixed size instead.
-    const CHUNK_SIZE = 10000;
+    // Records carry date=null (T4P publishes no per-record date of death),
+    // so date-based partitioning would drop every record. Chunk by count
+    // instead so files stay frontend-friendly and the index is non-empty.
+    const CHUNK_SIZE = 20000;
     const chunks = {};
     for (let i = 0; i < normalized.length; i += CHUNK_SIZE) {
-      const name = `roster-${String(i / CHUNK_SIZE).padStart(3, '0')}`;
-      chunks[name] = normalized.slice(i, i + CHUNK_SIZE);
+      chunks[`part-${Math.floor(i / CHUNK_SIZE) + 1}`] = normalized.slice(i, i + CHUNK_SIZE);
     }
 
-    for (const [chunkName, chunkData] of Object.entries(chunks)) {
-      await writeJSON(path.join(killedPath, `${chunkName}.json`), {
+    for (const [chunk, chunkData] of Object.entries(chunks)) {
+      await writeJSON(path.join(killedPath, `${chunk}.json`), {
         metadata: {
           source: 'tech4palestine',
           dataset: 'killed-in-gaza',
-          chunk: chunkName,
+          chunk,
           record_count: chunkData.length,
           last_updated: new Date().toISOString(),
         },
         data: chunkData,
       });
-      console.log(`  ✓ Saved killed-in-gaza/${chunkName}.json (${chunkData.length} records)`);
+      console.log(`  ✓ Saved killed-in-gaza/${chunk}.json (${chunkData.length} records)`);
     }
 
     // Save index

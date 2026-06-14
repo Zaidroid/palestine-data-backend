@@ -4,6 +4,7 @@ import cors from 'cors';
 import helmet from 'helmet';
 import compression from 'compression';
 import swaggerUi from 'swagger-ui-express';
+import apicache from 'apicache';
 import path from 'path';
 import { fileURLToPath } from 'url';
 import { specs } from './config/swagger.js';
@@ -12,6 +13,14 @@ import { apiKey } from './middleware/apiKey.js';
 import { tieredRateLimit } from './middleware/rateLimit.js';
 import { logger, httpLogger } from './logger.js';
 import routes from './routes/index.js';
+
+// Response caches must vary by customer tier: license filtering changes the
+// PAYLOAD per tier (paid tiers get non-commercial sources stripped), so a
+// shared cache key would serve one tier's body to another. appendKey is
+// evaluated per request, after the apiKey middleware has set req.customer.
+apicache.options({
+    appendKey: (req) => (req.customer && req.customer.tier) || 'anonymous',
+});
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);

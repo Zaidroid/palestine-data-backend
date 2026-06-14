@@ -42,26 +42,36 @@ Commercial surface (Stripe, billing, API-key tiers) is scaffolded but
 
 ## Data catalog
 
-14 unified categories, ~194 k records. Every response carries freshness
-metadata and a `Warning: 299` header when the category has not updated in 90+
-days.
+14 unified categories, **132,219 unique records** (measured from
+`unified-manifest.json`, 2026-06-10 pipeline run, after content-identical
+deduplication — overlapping upstream dataset packages used to inflate raw
+row counts ~1.6x). Every record carries a deterministic `stable_id` and
+shared geographic keys (`gazetteer_key`, OCHA `admin1`/`admin2`/pcode) where
+resolvable. Every response carries freshness metadata and a `Warning: 299`
+header when the category has not updated in 90+ days. Counts below are
+regenerated nightly — treat the manifest, not this table, as the source of
+truth between doc updates.
 
 | Category | Records | Source(s) | License | Status |
 |:--|--:|:--|:--|:--|
-| **Water / WASH** | 72,603 | HDX WASH Cluster (OCHA) | CC-BY | live |
-| **Martyrs** | 60,200 | Tech4Palestine | CC-BY-4.0 | live (60,199 named + 1 cumulative summary; current MoH total: 72,345 killed Gaza, 1,065 WB) |
-| **Health** | 38,232 | WHO GHO | CC-BY-NC-SA | live, non-commercial only |
-| **Funding** | 9,139 | UN OCHA Financial Tracking Service | CC-BY-IGO-3.0 | live (NEW) |
-| **Education** | 2,359 | HDX | CC-BY | live |
-| **West Bank layers** | 2,962 | HDX (schools, villages, barrier) | CC-BY | live |
-| **Conflict** | 2,101 | Tech4Palestine, OCHA, B'Tselem | Mixed (CC-BY / CC-BY-NC) | live |
-| **Conflict/Historical** | 1,572 | World Bank + PCBS | Public | live |
-| **Infrastructure damage** | 1,333 | Tech4Palestine | CC-BY | live |
-| **Refugees** | 1,230 | UNHCR ODP + UNRWA camps | CC-BY-4.0 / CC-BY-SA | live |
-| **PCBS** | 875 | Palestinian Central Bureau of Statistics | Public | live |
-| **Land** | 691 | OCHA, B'Tselem, Peace Now | Mixed | live |
-| **Culture** | 333 | UNESCO, Wikidata | CC0 / CC-BY | live |
-| **News** | 153 | Al Jazeera, MEE, MEMonitor, BBC ME, ToI, Haaretz, EI, Mondoweiss, ReliefWeb, Amnesty, HRW | Fair-use (non-redistributable) | live |
+| **Martyrs (snapshot)** | 60,200 | Tech4Palestine | CC-BY-4.0 | snapshot + live summary (60,199 named + 1 cumulative summary carrying current MoH totals) |
+| **Water / WASH** | 24,778 | HDX WASH Cluster (OCHA) | CC-BY | live-daily |
+| **Health** | 12,132 | WHO GHO, HDX, Good Shepherd | CC-BY-NC-SA | live-daily, non-commercial only |
+| **Conflict** | 10,366 | Palestine Open Maps (Zochrot/PalRemembered/AbuSitta), UCDP, Tech4Palestine, OCHA, B'Tselem | Mixed (CC0 / CC-BY / CC-BY-NC) | live-daily (**1948 → present**: 589 cited depopulation events (Nakba + Naksa, day-precision dates, Mandate census populations) + UCDP geocoded events 1989+ + daily rollups) |
+| **Funding** | 9,492 | UN OCHA Financial Tracking Service | CC-BY-IGO-3.0 | live-daily (2013 → present) |
+| **Economic** | 3,963 | World Bank, IMF | Public | live-weekly (1960 → present) |
+| **West Bank layers** | 2,962 | HDX (schools, villages, barrier) | CC-BY | live-daily |
+| **Education** | 2,359 | HDX | CC-BY | live-daily |
+| **PCBS** | 2,038 | Palestinian Central Bureau of Statistics | Public | live-weekly (1960 → present) |
+| **Infrastructure damage** | 1,333 | Tech4Palestine | CC-BY | live-daily (Oct 2023 → present) |
+| **Refugees** | 1,230 | UNHCR ODP + UNRWA camps | CC-BY-4.0 / CC-BY-SA | live-daily (2010 → present) |
+| **Land** | 700 | OCHA, B'Tselem, Peace Now | Mixed | live-daily |
+| **Culture** | 327 | UNESCO, Wikidata | CC0 / CC-BY | live-daily (upstream SPARQL occasionally flaky; last-good kept) |
+| **News** | 208 | Al Jazeera, MEE, MEMonitor, BBC ME, ToI, Haaretz, EI, Mondoweiss, ReliefWeb, Amnesty, HRW | Fair-use (non-redistributable) | live (25-min collector) |
+
+Known degraded source: the Addameer prisoners dashboard
+(`fetch-prisoners.js`) is currently unreachable upstream — the `prisoners`
+category stays delisted until the source recovers.
 
 Prior to the pivot the catalog listed `prisoners`, `historical`, and
 `humanitarian` — all have been removed as stubs (1, 44, and 598 records

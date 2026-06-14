@@ -220,6 +220,23 @@ def main():
         existing_keys = {row[0] for row in cur.fetchall()}
         print(f"Found {len(existing_keys)} existing entity_keys; skipping those in input", file=sys.stderr)
     to_insert = [r for r in transformed if not r.get("entity_key") or r["entity_key"] not in existing_keys]
+
+    # The input roster itself can contain same-identity rows (same normalized
+    # name|age|year but different stable_id) — the ON CONFLICT(stable_id)
+    # upsert can't absorb those and the UNIQUE(entity_key) constraint aborts
+    # the batch. Keep the first row per entity_key.
+    seen_batch_keys = set()
+    deduped = []
+    for r in to_insert:
+        k = r.get("entity_key")
+        if k and k in seen_batch_keys:
+            continue
+        if k:
+            seen_batch_keys.add(k)
+        deduped.append(r)
+    if len(deduped) != len(to_insert):
+        print(f"  → dropped {len(to_insert) - len(deduped)} intra-batch entity_key duplicates", file=sys.stderr)
+    to_insert = deduped
     print(f"  → {len(to_insert)} net-new rows to insert", file=sys.stderr)
 
     cols = [

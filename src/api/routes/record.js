@@ -32,6 +32,63 @@ async function loadStableIdIndex(category) {
     }
 }
 
+// In-process cache for the event-cluster member index (stable_id → cluster ids).
+const EVENTS_DIR = path.resolve(__dirname, '../../../public/data/events');
+let memberIndexCache = null;
+let memberIndexMtime = 0;
+
+async function loadMemberIndex() {
+    try {
+        const p = path.join(EVENTS_DIR, 'member-index.json');
+        const stat = await fs.stat(p);
+        if (memberIndexCache && stat.mtimeMs === memberIndexMtime) return memberIndexCache;
+        memberIndexCache = JSON.parse(await fs.readFile(p, 'utf-8'));
+        memberIndexMtime = stat.mtimeMs;
+        return memberIndexCache;
+    } catch {
+        return null;
+    }
+}
+
+/**
+ * GET /api/v1/record/:category/:id/related
+ * Event clusters containing this record, with their sibling member refs —
+ * "what else happened at the same place in the same week".
+ */
+router.get('/:category/:id/related', cache('5 minutes'), async (req, res) => {
+    const { category, id } = req.params;
+
+    const memberIndex = await loadMemberIndex();
+    if (!memberIndex) {
+        return res.status(503).json({ error: 'Event clusters not generated yet — run scripts/build-events.js' });
+    }
+
+    const clusterIds = memberIndex[id] || [];
+    if (clusterIds.length === 0) {
+        return res.json({ category, id, clusters: [], related_records: [] });
+    }
+
+    let eventsDoc = null;
+    try {
+        eventsDoc = JSON.parse(await fs.readFile(path.join(EVENTS_DIR, 'events.json'), 'utf-8'));
+    } catch {
+        return res.status(503).json({ error: 'Event clusters unreadable' });
+    }
+
+    const clusters = eventsDoc.data.filter((c) => clusterIds.includes(c.cluster_id));
+    const related = [];
+    for (const c of clusters) {
+        for (const [cat, members] of Object.entries(c.members)) {
+            for (const m of members) {
+                if (m.stable_id === id) continue;
+                related.push({ ...m, category: cat, cluster_id: c.cluster_id });
+            }
+        }
+    }
+
+    res.json({ category, id, clusters, related_records: related });
+});
+
 router.get('/:category/:id', cache('5 minutes'), async (req, res) => {
     const { category, id } = req.params;
 

@@ -1,5 +1,40 @@
 # 📊 Data Sources
 
+## Source-trust policy
+
+Every dataset in the databank is classified into one of three trust tiers.
+The tier governs how a source may be used — never the other way around.
+
+**Tier 1 — Primary documentation (the authority).** Palestinian official
+statistics and on-the-ground documentation, UN agencies, and established
+human-rights monitors: PCBS, Gaza Ministry of Health, UNRWA, UN OCHA,
+UNHCR, WHO, B'Tselem, Al-Haq, PCHR, Al Mezan, Addameer. Claims about
+casualties, demolitions, detentions and displacement must trace to this
+tier.
+
+**Tier 2 — Scholarly and curated datasets.** Academic registries and
+Palestinian-led data projects with published methodology: UCDP-GED,
+Insecurity Insight, Walid Khalidi's *All That Remains*, Salman Abu Sitta's
+*Atlas of Palestine*, Zochrot, Palestine Remembered, Palestine Open Maps
+(Visualizing Palestine), Tech4Palestine. Used as event/registry backbones,
+cited per record.
+
+**Tier 3 — Tertiary aggregators (bootstrap and crosswalk ONLY).** Wikidata,
+Wikipedia, GeoNames, OpenStreetMap. Useful for machine-readable
+coordinates, name variants and entity crosswalks — never the authority for
+contested claims. The English Wikipedia's Israel/Palestine topic area in
+particular has a documented history of organized partisan editing; prose
+claims from it are not citable here. Where a record was bootstrapped from
+Tier 3 (e.g. the first Nakba-villages import), it is upgraded to Tier 1/2
+citations as soon as a trusted registry covers it, keeping the Tier 3 id
+only as a crosswalk key.
+
+The depopulated-villages registry follows this policy: primary data and
+citations come from Palestine Open Maps + Zochrot + Palestine Remembered +
+Abu Sitta per village; Wikidata QIDs are retained as crosswalk keys only.
+
+---
+
 This document lists all the external sources integrated into the Palestine Data Backend.
 
 ## 1. Tech4Palestine
