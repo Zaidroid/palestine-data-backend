@@ -1002,38 +1002,15 @@ async def get_checkpoint_stats() -> dict:
     h24 = (now - timedelta(hours=24)).isoformat()
 
     async with get_checkpoint_db() as db:
-        # Total with known status
-        total_active = (await (await db.execute(
-            "SELECT COUNT(*) FROM checkpoint_status")).fetchone())[0]
-
-        # Total in directory
-        total_directory = (await (await db.execute(
-            "SELECT COUNT(*) FROM checkpoints")).fetchone())[0]
-
-        # Total with geo
-        total_geo = (await (await db.execute(
-            "SELECT COUNT(*) FROM checkpoints WHERE latitude IS NOT NULL")).fetchone())[0]
-
-        by_status = {}
         async with db.execute(
-            "SELECT status, COUNT(*) FROM checkpoint_status GROUP BY status"
+            "SELECT canonical_key, status, confidence FROM checkpoint_status"
         ) as cur:
-            async for row in cur:
-                by_status[row[0]] = row[1]
+            status_rows = await cur.fetchall()
 
-        by_conf = {}
         async with db.execute(
-            "SELECT confidence, COUNT(*) FROM checkpoint_status GROUP BY confidence"
+            "SELECT canonical_key, latitude, COALESCE(checkpoint_type, 'checkpoint') FROM checkpoints"
         ) as cur:
-            async for row in cur:
-                by_conf[row[0]] = row[1]
-
-        by_type = {}
-        async with db.execute(
-            "SELECT COALESCE(checkpoint_type, 'checkpoint'), COUNT(*) FROM checkpoints GROUP BY checkpoint_type"
-        ) as cur:
-            async for row in cur:
-                by_type[row[0]] = row[1]
+            cp_rows = await cur.fetchall()
 
         u1h  = (await (await db.execute(
             "SELECT COUNT(*) FROM checkpoint_updates WHERE timestamp>=?", (h1,)
@@ -1048,9 +1025,29 @@ async def get_checkpoint_stats() -> dict:
             "WHERE source_type='admin' AND timestamp>=?", (h24,)
         )).fetchone())[0]
 
+    # F3: count only curated (whitelist) checkpoints so /stats matches /summary + the map.
+    from .checkpoint_knowledge_base import get_knowledge_base
+    kb = get_knowledge_base()
+    if kb is not None:
+        status_rows = [r for r in status_rows if kb.is_known(r[0])]
+        cp_rows = [r for r in cp_rows if kb.is_known(r[0])]
+
+    by_status: dict = {}
+    by_conf: dict = {}
+    for _key, status, conf in status_rows:
+        by_status[status] = by_status.get(status, 0) + 1
+        by_conf[conf] = by_conf.get(conf, 0) + 1
+
+    by_type: dict = {}
+    total_geo = 0
+    for _key, lat, ctype in cp_rows:
+        by_type[ctype] = by_type.get(ctype, 0) + 1
+        if lat is not None:
+            total_geo += 1
+
     return dict(
-        total_checkpoints=total_active,
-        total_directory=total_directory,
+        total_checkpoints=len(status_rows),
+        total_directory=len(cp_rows),
         total_with_geo=total_geo,
         by_status=by_status,
         by_confidence=by_conf,

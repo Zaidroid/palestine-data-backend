@@ -15,6 +15,7 @@ is returned with a `stale: true` flag.
 
 import asyncio
 import logging
+import re
 import time
 import xml.etree.ElementTree as ET
 from dataclasses import dataclass, field
@@ -357,19 +358,18 @@ async def _fetch_fuel_tfp() -> Dict[str, Any]:
             row_text = " ".join(c.get_text(strip=True) for c in cells).lower()
 
             for keyword, key in _FUEL_TYPES.items():
-                if keyword in row_text:
-                    # Find the price — first numeric value in the row
+                if keyword in row_text and key not in prices:
+                    # Find the price — first in-range number in the row. Cells carry a
+                    # trend marker (▲ up / ▼ down / ▬ unchanged) before the number, so
+                    # extract the numeric token rather than float() the whole cell.
                     for cell in cells:
-                        text = cell.get_text(strip=True)
-                        # Strip trend arrows (▲▼) and whitespace
-                        cleaned = text.replace("▲", "").replace("▼", "").replace("△", "").replace("▽", "").strip()
-                        try:
-                            price = float(cleaned)
-                            if 1.0 < price < 20.0:  # sanity: ILS/liter range
-                                prices[key] = round(price, 2)
-                                break
-                        except ValueError:
+                        m = re.search(r"\d+\.\d+|\d+", cell.get_text(strip=True))
+                        if not m:
                             continue
+                        price = float(m.group(0))
+                        if 1.0 < price < 20.0:  # sanity: ILS/liter range
+                            prices[key] = round(price, 2)
+                            break
                     break
 
             # Look for date in row
