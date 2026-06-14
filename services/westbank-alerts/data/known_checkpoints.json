@@ -7,6 +7,7 @@
     "checkpoint_type": "checkpoint",
     "latitude": 32.1587,
     "longitude": 35.2538,
+    "permanent_status": "closed_since:2023-10",
     "aliases": [
       "حواره",
       "حوارة"
@@ -2972,6 +2973,21 @@
     "aliases": [
       "مداخل سبسطية",
       "مداخل سبسطية اتجاهين"
+    ]
+  },
+  {
+    "canonical_key": "بيت_ايبا",
+    "name_ar": "بيت إيبا",
+    "name_en": "Beit Iba",
+    "region": "nablus",
+    "checkpoint_type": "checkpoint",
+    "latitude": 32.2294,
+    "longitude": 35.2086,
+    "source_layer": "manual",
+    "aliases": [
+      "بيت ايبا",
+      "بيت إيبا",
+      "بيت_ايبا"
     ]
   }
 ]

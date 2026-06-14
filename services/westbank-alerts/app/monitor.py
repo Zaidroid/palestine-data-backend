@@ -21,6 +21,7 @@ from .classifier import classify, is_security_relevant, classify_wb_operational
 from .checkpoint_parser import is_admin_message
 from .checkpoint_matcher import load_checkpoint_index
 from .checkpoint_whitelist_parser import parse_checkpoint_message
+from .llm.checkpoint_extractor import extract_checkpoint_llm
 from .checkpoint_knowledge_base import get_knowledge_base
 from .config import settings
 from .database import duplicate_check, content_duplicate_check, get_channels, insert_alert, prune_alerts_if_needed
@@ -359,6 +360,19 @@ async def _process_checkpoint_message(message, channel_username: str):
     if kb is None:
         log.warning("[CHECKPOINT] Knowledge base not loaded yet — skipping message")
     updates = parse_checkpoint_message(raw, kb)
+    extraction = "strict"
+
+    # Hybrid fallback (B2): if the deterministic parser found nothing, let MiniMax
+    # try to pull a status report out of messy phrasing — but every result is
+    # validated against the catalog (no invented checkpoints) and tagged crowd so it
+    # never outranks an admin report. Off by default (MINIMAX_ENABLED); fails to rules.
+    if not updates and settings.MINIMAX_ENABLED and kb is not None:
+        llm_updates = await extract_checkpoint_llm(raw, kb)
+        if llm_updates:
+            updates = llm_updates
+            extraction = "llm"
+            log.info(f"[CHECKPOINT/LLM] @{channel_username} msg={message.id}: "
+                     f"{len(updates)} checkpoint(s) recovered by MiniMax")
 
     if not updates:
         # The message isn't a checkpoint status update — but checkpoint
@@ -383,7 +397,9 @@ async def _process_checkpoint_message(message, channel_username: str):
             )
         return
 
-    source_type = "admin" if is_admin else "crowd"
+    # LLM-recovered reports are inferred, never authoritative — force crowd even on
+    # an admin channel so they can't be promoted to high-confidence admin status.
+    source_type = "admin" if (is_admin and extraction == "strict") else "crowd"
     log.info(
         f"[CHECKPOINT/{source_type.upper()}] "
         f"@{channel_username} msg={message.id}: "

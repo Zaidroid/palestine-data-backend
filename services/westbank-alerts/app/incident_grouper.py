@@ -15,7 +15,10 @@ from .incident_db import (
     merge_into_incident,
     resolve_stale_incidents,
     regenerate_narrative,
+    get_recent_incidents_by_type,
+    record_llm_cluster,
 )
+from .llm.incident_clusterer import should_merge_llm
 
 log = logging.getLogger("incident_grouper")
 
@@ -47,6 +50,33 @@ async def process_alert_into_incident(alert) -> int:
         except Exception as e:
             log.warning(f"narrative regen failed for incident #{existing['id']}: {e}")
         return existing["id"]
+
+    # B3 — cross-channel clustering: the exact type+area merge missed, but another
+    # channel may have reported the SAME event with different area wording. Ask
+    # MiniMax to match against recent same-type incidents. Off by default; fail-safe
+    # to creating a new incident (today's behavior) on any error / low confidence.
+    if settings.MINIMAX_ENABLED:
+        try:
+            candidates = await get_recent_incidents_by_type(incident_type, window, limit=10)
+            verdict = await should_merge_llm(
+                {"title": getattr(alert, "title", None), "area": area,
+                 "incident_type": incident_type,
+                 "timestamp": str(getattr(alert, "timestamp", ""))},
+                candidates,
+            )
+            iid = verdict.get("incident_id")
+            if iid:
+                await merge_into_incident(iid, alert.id, severity)
+                await record_llm_cluster(alert.id, iid, verdict.get("confidence"))
+                try:
+                    await regenerate_narrative(iid)
+                except Exception as e:
+                    log.warning(f"narrative regen failed for incident #{iid}: {e}")
+                log.info(f"[INCIDENT/LLM] alert #{alert.id} → incident #{iid} "
+                         f"(conf {verdict.get('confidence')})")
+                return iid
+        except Exception as e:
+            log.warning(f"LLM incident clustering failed: {e}")
 
     area_ar = getattr(alert, "title_ar", None)
     zone = getattr(alert, "zone", None)

@@ -90,11 +90,61 @@ CREATE TABLE IF NOT EXISTS learned_vocab (
 )
 """
 
+# ── Phase 0 / S3 — review queue, crowdsource reports, LLM cache ─────────────────
+CREATE_CHECKPOINT_CANDIDATES = """
+CREATE TABLE IF NOT EXISTS checkpoint_candidates (
+    id                    INTEGER PRIMARY KEY AUTOINCREMENT,
+    raw_name              TEXT NOT NULL,
+    normalized            TEXT NOT NULL,
+    suggested_canonical_key TEXT,
+    suggested_name_ar     TEXT,
+    suggested_lat         REAL,
+    suggested_lon         REAL,
+    governorate           TEXT,
+    mentions              INTEGER DEFAULT 1,
+    first_seen            TEXT NOT NULL,
+    last_seen             TEXT NOT NULL,
+    llm_verdict           TEXT,
+    llm_confidence        REAL,
+    status                TEXT NOT NULL DEFAULT 'pending',
+    reviewed_at           TEXT,
+    reviewed_by           TEXT,
+    UNIQUE(normalized)
+)
+"""
+
+CREATE_USER_REPORTS = """
+CREATE TABLE IF NOT EXISTS user_reports (
+    id             INTEGER PRIMARY KEY AUTOINCREMENT,
+    canonical_key  TEXT,
+    status         TEXT NOT NULL,
+    direction      TEXT,
+    latitude       REAL,
+    longitude      REAL,
+    reporter_hash  TEXT,
+    created_at     TEXT NOT NULL,
+    verified       INTEGER DEFAULT 0,
+    corroborations INTEGER DEFAULT 0
+)
+"""
+
+CREATE_LLM_CACHE = """
+CREATE TABLE IF NOT EXISTS llm_cache (
+    cache_key     TEXT PRIMARY KEY,
+    response_json TEXT,
+    model         TEXT,
+    created_at    TEXT NOT NULL
+)
+"""
+
 INDEXES = [
     "CREATE INDEX IF NOT EXISTS idx_cp_updates_key       ON checkpoint_updates(canonical_key)",
     "CREATE INDEX IF NOT EXISTS idx_cp_updates_timestamp ON checkpoint_updates(timestamp DESC)",
     "CREATE INDEX IF NOT EXISTS idx_cp_updates_source    ON checkpoint_updates(source_type)",
     "CREATE INDEX IF NOT EXISTS idx_cp_status_status     ON checkpoint_status(status)",
+    "CREATE INDEX IF NOT EXISTS idx_cp_candidates_status ON checkpoint_candidates(status)",
+    "CREATE INDEX IF NOT EXISTS idx_user_reports_key     ON user_reports(canonical_key)",
+    "CREATE INDEX IF NOT EXISTS idx_user_reports_created ON user_reports(created_at DESC)",
 ]
 
 
@@ -105,6 +155,9 @@ async def init_checkpoint_db():
         await db.execute(CREATE_STATUS)
         await db.execute(CREATE_VOCAB_DISCOVERIES)
         await db.execute(CREATE_LEARNED_VOCAB)
+        await db.execute(CREATE_CHECKPOINT_CANDIDATES)
+        await db.execute(CREATE_USER_REPORTS)
+        await db.execute(CREATE_LLM_CACHE)
         for idx in INDEXES:
             await db.execute(idx)
         # Migrations for existing DBs
@@ -124,6 +177,22 @@ async def init_checkpoint_db():
             await db.execute("ALTER TABLE checkpoints ADD COLUMN oslo_area TEXT")
         if "geo_precision" not in cp_columns:
             await db.execute("ALTER TABLE checkpoints ADD COLUMN geo_precision TEXT")
+        # Phase 0 / S3 — static-vs-live data model + provenance.
+        # source_layer distinguishes Telegram-tracked checkpoints from imported
+        # OCHA/OSM static obstacles; permanent_status carries e.g. Huwara's
+        # "closed_since:2023-10"; external_ref makes OCHA/OSM re-imports idempotent.
+        if "source_layer" not in cp_columns:
+            await db.execute("ALTER TABLE checkpoints ADD COLUMN source_layer TEXT DEFAULT 'telegram'")
+        if "obstacle_type" not in cp_columns:
+            await db.execute("ALTER TABLE checkpoints ADD COLUMN obstacle_type TEXT")
+        if "permanent_status" not in cp_columns:
+            await db.execute("ALTER TABLE checkpoints ADD COLUMN permanent_status TEXT")
+        if "external_ref" not in cp_columns:
+            await db.execute("ALTER TABLE checkpoints ADD COLUMN external_ref TEXT")
+        if "verified_at" not in cp_columns:
+            await db.execute("ALTER TABLE checkpoints ADD COLUMN verified_at TEXT")
+        if "updated_at" not in cp_columns:
+            await db.execute("ALTER TABLE checkpoints ADD COLUMN updated_at TEXT")
 
         # Add direction to checkpoint_updates
         cursor = await db.execute("PRAGMA table_info(checkpoint_updates)")
@@ -194,7 +263,8 @@ def _row_to_checkpoint(row) -> dict:
     # 0:canonical_key, 1:name_ar, 2:name_en, 3:region, 4:checkpoint_type,
     # 5:latitude, 6:longitude, 7:status, 8:status_raw, 9:direction,
     # 10:confidence, 11:crowd_reports_1h, 12:last_updated, 13:last_source_type,
-    # 14:governorate, 15:oslo_area, 16:geo_precision
+    # 14:governorate, 15:oslo_area, 16:geo_precision,
+    # 17:source_layer, 18:obstacle_type, 19:permanent_status, 20:last_msg_id
     last_updated = row[12]
     if last_updated:
         try:
@@ -230,6 +300,13 @@ def _row_to_checkpoint(row) -> dict:
         "governorate":      row[14] if len(row) > 14 else None,
         "oslo_area":        row[15] if len(row) > 15 else None,
         "geo_precision":    row[16] if len(row) > 16 else None,
+        "source_layer":     (row[17] if len(row) > 17 else None) or "telegram",
+        "obstacle_type":    row[18] if len(row) > 18 else None,
+        "permanent_status": row[19] if len(row) > 19 else None,
+        "last_msg_id":      row[20] if len(row) > 20 else None,
+        # Raw last_updated (None when no status row) — provenance uses this to tell
+        # "never reported" (freshness band "none") from "reported just now".
+        "last_updated_iso": row[12],
         "last_active_hours": last_active_hours,
         "is_stale":          is_stale,
     }
@@ -508,11 +585,12 @@ _CHECKPOINT_SELECT = """
            c.checkpoint_type, c.latitude, c.longitude,
            s.status, s.status_raw, s.direction, s.confidence,
            s.crowd_reports_1h, s.last_updated, s.last_source_type,
-           c.governorate, c.oslo_area, c.geo_precision
+           c.governorate, c.oslo_area, c.geo_precision,
+           c.source_layer, c.obstacle_type, c.permanent_status, s.last_msg_id
     FROM checkpoints c
     LEFT JOIN (
         SELECT canonical_key, status, status_raw, direction, confidence,
-               crowd_reports_1h, last_updated, last_source_type
+               crowd_reports_1h, last_updated, last_source_type, last_msg_id
         FROM checkpoint_status
         WHERE rowid IN (
             SELECT MAX(rowid) FROM checkpoint_status GROUP BY canonical_key
@@ -798,6 +876,11 @@ async def bulk_seed_checkpoints(entries: list[dict]) -> dict:
             cp_type = entry.get("checkpoint_type", "checkpoint")
             latitude = entry.get("latitude")
             longitude = entry.get("longitude")
+            # Phase-0 catalog fields (curation source of truth → DB columns).
+            source_layer = entry.get("source_layer")
+            obstacle_type = entry.get("obstacle_type")
+            permanent_status = entry.get("permanent_status")
+            external_ref = entry.get("external_ref")
 
             cur = await db.execute(
                 "SELECT canonical_key FROM checkpoints WHERE canonical_key=?",
@@ -823,6 +906,19 @@ async def bulk_seed_checkpoints(entries: list[dict]) -> dict:
                 if longitude is not None:
                     updates.append("longitude = ?")
                     params.append(longitude)
+                # Curated facts are authoritative — set explicitly when provided.
+                if source_layer is not None:
+                    updates.append("source_layer = ?")
+                    params.append(source_layer)
+                if obstacle_type is not None:
+                    updates.append("obstacle_type = ?")
+                    params.append(obstacle_type)
+                if permanent_status is not None:
+                    updates.append("permanent_status = ?")
+                    params.append(permanent_status)
+                if external_ref is not None:
+                    updates.append("external_ref = COALESCE(external_ref, ?)")
+                    params.append(external_ref)
                 if updates:
                     params.append(key)
                     await db.execute(
@@ -833,8 +929,11 @@ async def bulk_seed_checkpoints(entries: list[dict]) -> dict:
             else:
                 await db.execute(
                     "INSERT INTO checkpoints(canonical_key, name_ar, name_en, region, "
-                    "checkpoint_type, latitude, longitude, created_at) VALUES(?,?,?,?,?,?,?,?)",
-                    (key, name_ar, name_en, region, cp_type, latitude, longitude, now),
+                    "checkpoint_type, latitude, longitude, created_at, "
+                    "source_layer, obstacle_type, permanent_status, external_ref) "
+                    "VALUES(?,?,?,?,?,?,?,?,?,?,?,?)",
+                    (key, name_ar, name_en, region, cp_type, latitude, longitude, now,
+                     source_layer or "telegram", obstacle_type, permanent_status, external_ref),
                 )
                 inserted += 1
 
@@ -842,6 +941,158 @@ async def bulk_seed_checkpoints(entries: list[dict]) -> dict:
 
     log.info(f"Bulk seed: {inserted} inserted, {updated} updated")
     return {"inserted": inserted, "updated": updated, "total": len(entries)}
+
+
+# ── Checkpoint candidates (Phase C — review/promote pipeline) ────────────────────
+_CANDIDATE_COLS = (
+    "id, raw_name, normalized, suggested_canonical_key, suggested_name_ar, "
+    "suggested_lat, suggested_lon, governorate, mentions, first_seen, last_seen, "
+    "llm_verdict, llm_confidence, status, reviewed_at, reviewed_by"
+)
+
+
+def _row_to_candidate(r) -> dict:
+    return {
+        "id": r[0], "raw_name": r[1], "normalized": r[2],
+        "suggested_canonical_key": r[3], "suggested_name_ar": r[4],
+        "suggested_lat": r[5], "suggested_lon": r[6], "governorate": r[7],
+        "mentions": r[8], "first_seen": r[9], "last_seen": r[10],
+        "llm_verdict": r[11], "llm_confidence": r[12], "status": r[13],
+        "reviewed_at": r[14], "reviewed_by": r[15],
+    }
+
+
+async def upsert_candidate(raw_name: str, normalized: str, mentions: int = 1,
+                           suggested_name_ar: Optional[str] = None,
+                           suggested_lat: Optional[float] = None,
+                           suggested_lon: Optional[float] = None,
+                           governorate: Optional[str] = None,
+                           absolute: bool = False) -> int:
+    """Insert a new candidate or update an existing one (by normalized).
+
+    absolute=False → accumulate mentions (live parser-miss counting).
+    absolute=True  → set mentions to the given value (directory seeding, where the
+                     count is already cumulative and re-running must be idempotent)."""
+    now = datetime.utcnow().isoformat()
+    async with get_checkpoint_db() as db:
+        cur = await db.execute(
+            "SELECT id FROM checkpoint_candidates WHERE normalized=?", (normalized,))
+        row = await cur.fetchone()
+        if row:
+            if absolute:
+                await db.execute(
+                    "UPDATE checkpoint_candidates SET mentions = ?, last_seen = ? "
+                    "WHERE id = ?", (mentions, now, row[0]))
+            else:
+                await db.execute(
+                    "UPDATE checkpoint_candidates SET mentions = mentions + ?, last_seen = ? "
+                    "WHERE id = ?", (mentions, now, row[0]))
+            cid = row[0]
+        else:
+            cur = await db.execute(
+                "INSERT INTO checkpoint_candidates (raw_name, normalized, suggested_name_ar, "
+                "suggested_lat, suggested_lon, governorate, mentions, first_seen, last_seen, "
+                "status) VALUES (?,?,?,?,?,?,?,?,?, 'pending')",
+                (raw_name, normalized, suggested_name_ar, suggested_lat, suggested_lon,
+                 governorate, mentions, now, now))
+            cid = cur.lastrowid
+        await db.commit()
+    return cid
+
+
+async def get_candidates(status: Optional[str] = None, limit: int = 200) -> list:
+    q = f"SELECT {_CANDIDATE_COLS} FROM checkpoint_candidates"
+    params = []
+    if status:
+        q += " WHERE status = ?"
+        params.append(status)
+    q += " ORDER BY mentions DESC LIMIT ?"
+    params.append(limit)
+    async with get_checkpoint_db() as db:
+        cur = await db.execute(q, params)
+        rows = await cur.fetchall()
+    return [_row_to_candidate(r) for r in rows]
+
+
+async def get_candidate(candidate_id: int) -> Optional[dict]:
+    async with get_checkpoint_db() as db:
+        cur = await db.execute(
+            f"SELECT {_CANDIDATE_COLS} FROM checkpoint_candidates WHERE id = ?",
+            (candidate_id,))
+        row = await cur.fetchone()
+    return _row_to_candidate(row) if row else None
+
+
+async def set_candidate_llm(candidate_id: int, verdict: str, confidence: float,
+                            suggested_name_ar: Optional[str] = None,
+                            governorate: Optional[str] = None,
+                            lat: Optional[float] = None,
+                            lon: Optional[float] = None) -> None:
+    async with get_checkpoint_db() as db:
+        await db.execute(
+            "UPDATE checkpoint_candidates SET llm_verdict=?, llm_confidence=?, "
+            "suggested_name_ar=COALESCE(?, suggested_name_ar), "
+            "governorate=COALESCE(?, governorate), "
+            "suggested_lat=COALESCE(?, suggested_lat), "
+            "suggested_lon=COALESCE(?, suggested_lon) WHERE id=?",
+            (verdict, confidence, suggested_name_ar, governorate, lat, lon, candidate_id))
+        await db.commit()
+
+
+async def set_candidate_review(candidate_id: int, status: str,
+                               reviewed_by: Optional[str] = None) -> None:
+    now = datetime.utcnow().isoformat()
+    async with get_checkpoint_db() as db:
+        await db.execute(
+            "UPDATE checkpoint_candidates SET status=?, reviewed_at=?, reviewed_by=? WHERE id=?",
+            (status, now, reviewed_by, candidate_id))
+        await db.commit()
+
+
+async def candidate_counts() -> dict:
+    async with get_checkpoint_db() as db:
+        cur = await db.execute(
+            "SELECT status, COUNT(*) FROM checkpoint_candidates GROUP BY status")
+        rows = await cur.fetchall()
+    return {r[0]: r[1] for r in rows}
+
+
+# ── User crowdsource reports (Phase E / E3) ──────────────────────────────────────
+async def insert_user_report(canonical_key: Optional[str], status: str,
+                             direction: Optional[str], lat: Optional[float],
+                             lon: Optional[float], reporter_hash: str) -> int:
+    now = datetime.utcnow().isoformat()
+    async with get_checkpoint_db() as db:
+        cur = await db.execute(
+            "INSERT INTO user_reports (canonical_key, status, direction, latitude, "
+            "longitude, reporter_hash, created_at) VALUES (?,?,?,?,?,?,?)",
+            (canonical_key, status, direction, lat, lon, reporter_hash, now))
+        rid = cur.lastrowid
+        await db.commit()
+    return rid
+
+
+async def count_recent_user_reports(reporter_hash: str, since_iso: str) -> int:
+    async with get_checkpoint_db() as db:
+        cur = await db.execute(
+            "SELECT COUNT(*) FROM user_reports WHERE reporter_hash=? AND created_at>=?",
+            (reporter_hash, since_iso))
+        (n,) = await cur.fetchone()
+    return n
+
+
+async def find_nearest_checkpoint(lat: float, lon: float, max_km: float = 0.5) -> Optional[dict]:
+    """Nearest curated checkpoint within max_km, for matching a coord-only report."""
+    cps = await get_all_checkpoints()
+    best, best_d = None, max_km
+    for c in cps:
+        clat, clon = c.get("latitude"), c.get("longitude")
+        if clat is None or clon is None:
+            continue
+        d = _haversine_km(lat, lon, clat, clon)
+        if d <= best_d:
+            best, best_d = c, d
+    return best
 
 
 async def canonicalize_and_clean(dry_run: bool = True) -> dict:
