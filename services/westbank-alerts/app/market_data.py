@@ -263,10 +263,12 @@ async def _fetch_gold_spot_usd() -> float:
 
 async def get_gold() -> Dict[str, Any]:
     """
-    Return gold prices — local Palestine karat rates in ILS + international spot.
+    Return gold prices in ILS by karat, derived from the international spot
+    price (Yahoo Finance GC=F) and the BOI USD->ILS rate, plus the USD spot.
 
-    Primary source: exchange-rates.org Palestine page (ILS/gram by karat).
-    Fallback: Yahoo Finance spot + BOI cross-rate for calculated ILS prices.
+    The exchange-rates.org "local" scrape (`_fetch_gold_local`) is bypassed —
+    it returned wrong figures (~20x off, impossible 10K). It's kept in the
+    module in case the local-market source is fixed and re-enabled later.
     """
     cached = _gold_cache.get()
     if cached:
@@ -274,41 +276,29 @@ async def get_gold() -> Dict[str, Any]:
 
     result: Dict[str, Any] = {"fetched_at": _now_iso()}
 
-    # Try local karat prices first (most useful for Palestinian users)
-    local_ok = False
-    try:
-        local = await _fetch_gold_local()
-        result.update(local)
-        local_ok = True
-        log.info(f"Gold local prices: {local['karats_ils_gram']}")
-    except Exception as e:
-        log.warning(f"Gold local (exchange-rates.org) failed: {e}")
-
-    # Always try international spot for USD reference
     try:
         spot_usd = await _fetch_gold_spot_usd()
         result["usd_per_oz"]   = round(spot_usd, 2)
         result["usd_per_gram"] = round(spot_usd / TROY_OZ_GRAMS, 2)
         result["spot_source"]  = "Yahoo Finance (GC=F)"
 
-        # If local scrape failed, calculate ILS prices from spot + BOI rate
-        if not local_ok:
-            try:
-                currency = await get_currency()
-                usd_ils = currency.get("rates", {}).get("USD")
-                if usd_ils:
-                    ils_per_gram = (spot_usd / TROY_OZ_GRAMS) * usd_ils
-                    result["karats_ils_gram"] = {
-                        "24K": round(ils_per_gram, 2),
-                        "22K": round(ils_per_gram * 22 / 24, 2),
-                        "21K": round(ils_per_gram * 21 / 24, 2),
-                        "18K": round(ils_per_gram * 18 / 24, 2),
-                    }
-                    result["currency"] = "ILS"
-                    result["source"]   = "Yahoo Finance spot + BOI cross-rate (calculated)"
-                    result["note"]     = "Calculated from international spot, not local market"
-            except Exception as e:
-                log.warning(f"Gold ILS cross-rate failed: {e}")
+        # ILS karat prices from spot x BOI cross-rate.
+        try:
+            currency = await get_currency()
+            usd_ils = currency.get("rates", {}).get("USD")
+            if usd_ils:
+                ils_per_gram = (spot_usd / TROY_OZ_GRAMS) * usd_ils
+                result["karats_ils_gram"] = {
+                    "24K": round(ils_per_gram, 2),
+                    "22K": round(ils_per_gram * 22 / 24, 2),
+                    "21K": round(ils_per_gram * 21 / 24, 2),
+                    "18K": round(ils_per_gram * 18 / 24, 2),
+                }
+                result["currency"] = "ILS"
+                result["source"]   = "Yahoo Finance spot + BOI cross-rate"
+                result["note"]     = "ILS karat prices from international spot price"
+        except Exception as e:
+            log.warning(f"Gold ILS cross-rate failed: {e}")
     except Exception as e:
         log.warning(f"Gold spot (Yahoo) failed: {e}")
 
