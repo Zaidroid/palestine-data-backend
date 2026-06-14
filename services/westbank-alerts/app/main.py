@@ -179,6 +179,8 @@ async def _dispatch_checkpoint(updates: list):
     for u in updates:
         if u.get("status") == "closed":
             asyncio.create_task(push_notifications.notify_checkpoint_closure(u))
+        # individually watched checkpoints: any status change
+        asyncio.create_task(push_notifications.notify_checkpoint_change(u))
     if not cp_ws_manager._clients and not cp_sse_queues:
         return
     payload = json.dumps({
@@ -1457,10 +1459,10 @@ async def stats_today():
 
     for a in alerts:
         if a.type == "arrest_campaign" or getattr(a, "event_subtype", "") == "arrest":
-            # Extract count if present (default to 1)
-            total_arrests += getattr(a, "count", 1)
+            # Extract count if present (attribute exists but may be None)
+            total_arrests += getattr(a, "count", None) or 1
         elif a.type == "injury_report":
-            total_injuries += getattr(a, "count", 1)
+            total_injuries += getattr(a, "count", None) or 1
         elif a.type == "settler_attack":
             settler_attacks += 1
         elif a.type == "idf_raid":
@@ -2298,7 +2300,8 @@ async def push_subscribe(body: dict = Body(...)):
     Register a Web Push subscription with a filter.
     Body: { subscription: {endpoint, keys{p256dh,auth}},
             governorates: [..]=all, types: [..]=all,
-            min_trust: 0..1, checkpoint_closures: bool }
+            min_trust: 0..1, checkpoint_closures: bool,
+            checkpoint_keys: [..] (watched checkpoints — any status change pushes) }
     """
     from . import push_notifications
     sub = body.get("subscription") or {}
@@ -2310,6 +2313,7 @@ async def push_subscribe(body: dict = Body(...)):
         body.get("types") or [],
         float(body.get("min_trust") or 0),
         bool(body.get("checkpoint_closures")),
+        [str(k) for k in (body.get("checkpoint_keys") or [])][:50],
     )
     return {"subscribed": True, "total": await push_notifications.subscription_count()}
 

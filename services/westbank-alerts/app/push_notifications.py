@@ -38,6 +38,7 @@ CREATE TABLE IF NOT EXISTS push_subscriptions (
     types         TEXT NOT NULL DEFAULT '[]',
     min_trust     REAL NOT NULL DEFAULT 0,
     checkpoint_closures INTEGER NOT NULL DEFAULT 0,
+    checkpoint_keys TEXT NOT NULL DEFAULT '[]',
     created_at    TEXT NOT NULL,
     last_success  TEXT,
     failures      INTEGER NOT NULL DEFAULT 0
@@ -48,24 +49,34 @@ CREATE TABLE IF NOT EXISTS push_subscriptions (
 async def init_push_tables():
     async with get_alerts_db() as db:
         await db.execute(CREATE_SUBSCRIPTIONS)
+        # migration for pre-checkpoint_keys databases
+        cur = await db.execute("PRAGMA table_info(push_subscriptions)")
+        cols = {row[1] for row in await cur.fetchall()}
+        if "checkpoint_keys" not in cols:
+            await db.execute(
+                "ALTER TABLE push_subscriptions ADD COLUMN checkpoint_keys TEXT NOT NULL DEFAULT '[]'"
+            )
         await db.commit()
 
 
 async def add_subscription(sub: dict, governorates: list[str], types: list[str],
-                           min_trust: float, checkpoint_closures: bool) -> int:
+                           min_trust: float, checkpoint_closures: bool,
+                           checkpoint_keys: list[str] | None = None) -> int:
     now = datetime.utcnow().isoformat()
     async with get_alerts_db() as db:
         cur = await db.execute(
             """INSERT INTO push_subscriptions(endpoint, keys_json, governorates, types,
-                 min_trust, checkpoint_closures, created_at)
-               VALUES (?,?,?,?,?,?,?)
+                 min_trust, checkpoint_closures, checkpoint_keys, created_at)
+               VALUES (?,?,?,?,?,?,?,?)
                ON CONFLICT(endpoint) DO UPDATE SET
                  keys_json=excluded.keys_json, governorates=excluded.governorates,
                  types=excluded.types, min_trust=excluded.min_trust,
-                 checkpoint_closures=excluded.checkpoint_closures, failures=0""",
+                 checkpoint_closures=excluded.checkpoint_closures,
+                 checkpoint_keys=excluded.checkpoint_keys, failures=0""",
             (sub["endpoint"], json.dumps(sub.get("keys", {})),
              json.dumps(governorates or []), json.dumps(types or []),
-             float(min_trust or 0), 1 if checkpoint_closures else 0, now),
+             float(min_trust or 0), 1 if checkpoint_closures else 0,
+             json.dumps(checkpoint_keys or [], ensure_ascii=False), now),
         )
         await db.commit()
         return cur.lastrowid
@@ -139,7 +150,7 @@ async def _fanout(payload: dict, match) -> int:
         return 0
     async with get_alerts_db() as db:
         cur = await db.execute(
-            "SELECT endpoint, keys_json, governorates, types, min_trust, checkpoint_closures "
+            "SELECT endpoint, keys_json, governorates, types, min_trust, checkpoint_closures, checkpoint_keys "
             "FROM push_subscriptions WHERE failures < 5"
         )
         rows = await cur.fetchall()
@@ -150,9 +161,9 @@ async def _fanout(payload: dict, match) -> int:
     sent = 0
     gone: list[str] = []
     loop = asyncio.get_running_loop()
-    for endpoint, keys_json, govs, types, min_trust, cp_closures in rows:
+    for endpoint, keys_json, govs, types, min_trust, cp_closures, cp_keys in rows:
         try:
-            if not match(json.loads(govs), json.loads(types), min_trust, bool(cp_closures)):
+            if not match(json.loads(govs), json.loads(types), min_trust, bool(cp_closures), json.loads(cp_keys or "[]")):
                 continue
         except Exception:
             continue
@@ -185,7 +196,7 @@ async def notify_alert(alert) -> int:
             "url": "/westbank.html",
         }
 
-        def match(govs, types, min_trust, _cp):
+        def match(govs, types, min_trust, _cp, _cp_keys):
             if govs and (not gov or gov not in govs):
                 return False
             if types and a_type not in types:
@@ -224,7 +235,7 @@ async def notify_checkpoint_closure(update: dict) -> int:
             "url": "/westbank.html",
         }
 
-        def match(govs, _types, _min_trust, cp_closures):
+        def match(govs, _types, _min_trust, cp_closures, _cp_keys):
             if not cp_closures:
                 return False
             if govs and (not gov_raw or gov_raw not in govs):
@@ -234,4 +245,36 @@ async def notify_checkpoint_closure(update: dict) -> int:
         return await _fanout(payload, match)
     except Exception as e:
         log.warning(f"notify_checkpoint_closure failed: {e}")
+        return 0
+
+
+async def notify_checkpoint_change(update: dict) -> int:
+    """Push ANY status change of an individually watched checkpoint
+    (saved-commute / watch-this-checkpoint subscriptions)."""
+    try:
+        key = update.get("canonical_key") or ""
+        status = update.get("status") or ""
+        if not key or not status:
+            return 0
+        name = update.get("name_ar") or update.get("name_raw") or key
+        status_ar = {
+            "open": "سالك", "closed": "مغلق", "congested": "أزمة",
+            "slow": "بطيء", "idf": "تواجد جيش", "police": "شرطة",
+            "inspection": "تفتيش",
+        }.get(status, status)
+        payload = {
+            "kind": "watched_checkpoint",
+            "title": f"{name}: {status_ar}",
+            "body": update.get("status_raw") or status_ar,
+            "canonical_key": key,
+            "status": status,
+            "url": f"/westbank.html#/map/cp/{key}",
+        }
+
+        def match(_govs, _types, _min_trust, _cp_closures, cp_keys):
+            return bool(cp_keys) and key in cp_keys
+
+        return await _fanout(payload, match)
+    except Exception as e:
+        log.warning(f"notify_checkpoint_change failed: {e}")
         return 0
