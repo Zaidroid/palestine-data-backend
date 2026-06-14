@@ -40,6 +40,17 @@ CREATE TABLE IF NOT EXISTS incident_alerts (
 )
 """
 
+# B3 — records which alert→incident merges were decided by MiniMax (audit + metrics).
+CREATE_INCIDENT_CLUSTER_MAP = """
+CREATE TABLE IF NOT EXISTS incident_cluster_map (
+    alert_id       INTEGER PRIMARY KEY,
+    incident_id    INTEGER NOT NULL,
+    llm_grouped    INTEGER DEFAULT 1,
+    llm_confidence REAL,
+    created_at     TEXT NOT NULL
+)
+"""
+
 INCIDENT_INDEXES = [
     "CREATE INDEX IF NOT EXISTS idx_incidents_status ON incidents(status)",
     "CREATE INDEX IF NOT EXISTS idx_incidents_type ON incidents(incident_type)",
@@ -52,6 +63,7 @@ async def init_incident_tables():
     async with get_alerts_db() as db:
         await db.execute(CREATE_INCIDENTS)
         await db.execute(CREATE_INCIDENT_ALERTS)
+        await db.execute(CREATE_INCIDENT_CLUSTER_MAP)
         # F7 — auto-generated rule-based narrative summary. Regenerated
         # whenever a new alert merges into the incident.
         cur = await db.execute("PRAGMA table_info(incidents)")
@@ -282,6 +294,33 @@ async def get_incident(incident_id: int) -> Optional[dict]:
         )
         row = await cur.fetchone()
     return _row_to_incident(row) if row else None
+
+
+async def get_recent_incidents_by_type(
+    incident_type: str, window_iso: str, limit: int = 10
+) -> list[dict]:
+    """Active incidents of the same type within the merge window — the candidate
+    set the LLM clusterer chooses among when the exact-area merge misses."""
+    async with get_alerts_db() as db:
+        cur = await db.execute(
+            "SELECT * FROM incidents WHERE status='active' AND incident_type=? "
+            "AND last_updated>=? ORDER BY last_updated DESC LIMIT ?",
+            (incident_type, window_iso, limit),
+        )
+        rows = await cur.fetchall()
+    return [_row_to_incident(r) for r in rows]
+
+
+async def record_llm_cluster(alert_id: int, incident_id: int, confidence) -> None:
+    now = datetime.utcnow().isoformat()
+    async with get_alerts_db() as db:
+        await db.execute(
+            "INSERT OR REPLACE INTO incident_cluster_map"
+            "(alert_id, incident_id, llm_grouped, llm_confidence, created_at) "
+            "VALUES(?,?,1,?,?)",
+            (alert_id, incident_id, confidence, now),
+        )
+        await db.commit()
 
 
 async def get_incident_alert_ids(incident_id: int) -> list[int]:

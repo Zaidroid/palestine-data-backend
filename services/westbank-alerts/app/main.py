@@ -311,6 +311,11 @@ async def lifespan(app: FastAPI):
     from . import learner_overrides
     asyncio.create_task(learner_overrides.run_periodic())
 
+    # Phase C — checkpoint candidate review pipeline (populate + vet the queue;
+    # auto-promotion gated by CANDIDATE_AUTO_PROMOTE, off by default).
+    from . import learner_checkpoints
+    asyncio.create_task(learner_checkpoints.run_candidate_periodic())
+
     yield
     monitor_task.cancel()
     await monitor.stop()
@@ -343,6 +348,23 @@ def require_key(key: Optional[str] = Depends(api_key_header)):
     if key != settings.API_SECRET_KEY:
         raise HTTPException(status_code=401, detail="Invalid or missing X-API-Key header")
     return key
+
+
+# Phase A — unified /v2 canonical feeds (additive; v1 endpoints unchanged).
+from .routers.v2 import router as v2_router  # noqa: E402
+app.include_router(v2_router)
+
+# Phase D — routing (/v2/route); dark-launched behind settings.ROUTING_ENABLED.
+from .routers.route import router as route_router  # noqa: E402
+app.include_router(route_router)
+
+# Phase C — checkpoint candidate review + self-improvement metrics.
+from .routers.admin_checkpoints import router as admin_cp_router  # noqa: E402
+app.include_router(admin_cp_router)
+
+# Phase E — crowdsource report endpoint (/v2/report).
+from .routers.reports import router as reports_router  # noqa: E402
+app.include_router(reports_router)
 
 
 # ── Info ──────────────────────────────────────────────────────────────────────

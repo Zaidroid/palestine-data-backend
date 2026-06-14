@@ -1,0 +1,43 @@
+# Valhalla routing engine for the West Bank tracker (Phase D).
+#
+# Merge this `valhalla` service into the live stack compose at
+# /opt/stacks/palestine/docker-compose.yml so it shares the default network with
+# `alerts` (reachable as http://valhalla:8002). Internal-only — no host port needed
+# unless you want to curl it directly during bring-up.
+#
+# First boot builds routing tiles from the Geofabrik Palestine extract placed in
+# ./valhalla_tiles (see scripts/fetch_osm_extract.sh). Tile build needs ~1–3 GB RAM
+# and a few minutes; subsequent boots reuse the built tiles.
+services:
+  valhalla:
+    image: ghcr.io/gis-ops/docker-valhalla/valhalla:latest
+    container_name: wb-valhalla
+    restart: unless-stopped
+    ports:
+      - "8002:8002"            # optional: expose for `curl localhost:8002/status` during bring-up
+    volumes:
+      - ./valhalla_tiles:/custom_files
+    environment:
+      # The image downloads this PBF into /custom_files on first run if absent,
+      # then builds + serves tiles. Pin to the Palestine-only extract.
+      - tile_urls=https://download.geofabrik.de/asia/israel-and-palestine-latest.osm.pbf
+      - use_tiles_ignore_pbf=False
+      - build_elevation=False
+      - build_admins=True
+      - build_time_zones=False
+      - force_rebuild=False
+      - serve_tiles=True
+    healthcheck:
+      test: ["CMD", "wget", "-qO-", "http://localhost:8002/status"]
+      interval: 30s
+      timeout: 10s
+      retries: 5
+      start_period: 300s        # allow first-run tile build
+    mem_limit: 3g
+    dns:
+      - 1.1.1.1
+      - 9.9.9.9
+    logging:
+      driver: json-file
+      options:
+        max-size: "10m"

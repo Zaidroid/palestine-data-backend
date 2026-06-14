@@ -53,6 +53,29 @@ class Settings(BaseSettings):
     OCR_TIMEOUT_SECONDS: float = 10.0
     OCR_MAX_PIXELS: int = 4_000_000  # Skip very large images (latency cap)
 
+    # ── MiniMax LLM (hybrid extraction / news clustering / candidate vetting) ──
+    # Off by default; the deterministic rule/whitelist pipeline always runs first
+    # and the LLM is a fallback/enrichment tier that fails safe to rules.
+    MINIMAX_ENABLED: bool = False
+    MINIMAX_BASE_URL: str = "https://api.minimax.io/v1"
+    MINIMAX_API_KEY: str = ""
+    MINIMAX_MODEL: str = "MiniMax-Text-01"   # reliable for Arabic; M3 garbles numbers
+    MINIMAX_TIMEOUT_S: float = 20.0
+    MINIMAX_DAILY_BUDGET: int = 0            # 0 = unlimited (subscription has generous limits)
+
+    # ── Routing (self-hosted Valhalla on the Palestine OSM extract) ──
+    # Dark-launchable: ROUTING_ENABLED gates the /v2/route endpoint so the engine can
+    # be deployed and tiles built before the frontend is switched over.
+    ROUTING_ENABLED: bool = False
+    VALHALLA_URL: str = "http://valhalla:8002"
+    ROUTE_CORRIDOR_M: float = 300.0          # checkpoint-on-route corridor width (was 400m point-buffer)
+    ROUTE_EXCLUDE_BOX_M: float = 200.0       # avoid-polygon size around a closed checkpoint
+
+    # ── Checkpoint self-improvement (candidate → vet → review → promote) ──
+    CANDIDATE_MIN_MENTIONS: int = 5          # min corpus mentions before a candidate is vetted
+    CANDIDATE_MIN_CONFIDENCE: float = 0.9    # LLM confidence required for auto-promotion
+    CANDIDATE_AUTO_PROMOTE: bool = False     # ship review-only; enable after observing precision
+
     class Config:
         env_file = ".env"
         env_file_encoding = "utf-8"
