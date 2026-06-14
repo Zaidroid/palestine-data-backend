@@ -2410,8 +2410,14 @@ async def seed_checkpoints(_: str = Depends(require_key)):
             "name_ar": cp.get("name_ar", ""),
             "name_en": cp.get("name_en"),
             "region": cp.get("region"),
+            "checkpoint_type": cp.get("checkpoint_type", "checkpoint"),
             "latitude": cp.get("latitude"),
             "longitude": cp.get("longitude"),
+            # Phase-0 curated fields (Huwara permanent closure, manual/ocha source layer, …)
+            "source_layer": cp.get("source_layer"),
+            "obstacle_type": cp.get("obstacle_type"),
+            "permanent_status": cp.get("permanent_status"),
+            "external_ref": cp.get("external_ref"),
         })
 
     result = await cpdb.bulk_seed_checkpoints(entries)
