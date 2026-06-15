@@ -234,11 +234,12 @@
     "name_en": "Jaba'",
     "region": "jerusalem",
     "checkpoint_type": "checkpoint",
-    "latitude": 31.865,
-    "longitude": 35.253,
+    "latitude": 31.85392,
+    "longitude": 35.2564,
     "aliases": [
       "جبع"
-    ]
+    ],
+    "geo_precision": "checkpoint"
   },
   {
     "canonical_key": "حزما",
@@ -1342,12 +1343,13 @@
     "name_en": "Beit Jala",
     "region": "bethlehem",
     "checkpoint_type": "checkpoint",
-    "latitude": 31.714,
-    "longitude": 35.188,
+    "latitude": 31.71604,
+    "longitude": 35.17751,
     "aliases": [
       "ب��ت_جالا",
       "بيت جالا"
-    ]
+    ],
+    "geo_precision": "checkpoint"
   },
   {
     "canonical_key": "سلواد_يبرود",
@@ -2492,12 +2494,13 @@
     "name_en": "Anata",
     "region": "jerusalem",
     "checkpoint_type": "checkpoint",
-    "latitude": 31.812,
-    "longitude": 35.262,
+    "latitude": 31.8084,
+    "longitude": 35.24238,
     "aliases": [
       "عناتا",
       "عناتتا"
-    ]
+    ],
+    "geo_precision": "checkpoint"
   },
   {
     "canonical_key": "قصرة",
