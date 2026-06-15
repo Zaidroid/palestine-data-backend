@@ -1108,18 +1108,6 @@
     ]
   },
   {
-    "canonical_key": "الحواور",
-    "name_ar": "الحواور",
-    "name_en": "Al-Hawawer",
-    "region": "nablus",
-    "checkpoint_type": "checkpoint",
-    "latitude": 32.14,
-    "longitude": 35.26,
-    "aliases": [
-      "الحواور"
-    ]
-  },
-  {
     "canonical_key": "ترقوميا_المصانع",
     "name_ar": "ترقوميا المصانع",
     "name_en": "Tarqumiya Industrial Zone",
