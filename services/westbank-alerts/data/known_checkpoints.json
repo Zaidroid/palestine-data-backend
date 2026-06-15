@@ -5,13 +5,14 @@
     "name_en": "Huwara",
     "region": "nablus",
     "checkpoint_type": "checkpoint",
-    "latitude": 32.1587,
-    "longitude": 35.2538,
+    "latitude": 32.1780141,
+    "longitude": 35.2734519,
     "permanent_status": "closed_since:2023-10",
     "aliases": [
       "حواره",
       "حوارة"
-    ]
+    ],
+    "geo_precision": "checkpoint"
   },
   {
     "canonical_key": "زعتره",
@@ -1595,11 +1596,12 @@
     "name_en": "Anabta",
     "region": "tulkarm",
     "checkpoint_type": "checkpoint",
-    "latitude": 32.305,
-    "longitude": 35.134,
+    "latitude": 32.2904334,
+    "longitude": 35.1357898,
     "aliases": [
       "عنبتا"
-    ]
+    ],
+    "geo_precision": "checkpoint"
   },
   {
     "canonical_key": "دير_الغصون",
@@ -1769,11 +1771,12 @@
     "name_en": "Tayasir",
     "region": "tubas",
     "checkpoint_type": "checkpoint",
-    "latitude": 32.335,
-    "longitude": 35.42,
+    "latitude": 32.3289189,
+    "longitude": 35.4353458,
     "aliases": [
       "تياسير"
-    ]
+    ],
+    "geo_precision": "checkpoint"
   },
   {
     "canonical_key": "الحمرا",
@@ -1856,12 +1859,13 @@
     "name_en": "Al-Walaja",
     "region": "bethlehem",
     "checkpoint_type": "checkpoint",
-    "latitude": 31.73,
-    "longitude": 35.162,
+    "latitude": 31.7425736,
+    "longitude": 35.1708226,
     "aliases": [
       "الولجه",
       "الولجة"
-    ]
+    ],
+    "geo_precision": "checkpoint"
   },
   {
     "canonical_key": "نحالين",
@@ -2601,11 +2605,12 @@
     "name_en": "",
     "region": null,
     "checkpoint_type": "checkpoint",
-    "latitude": 31.78852,
-    "longitude": 35.26511,
+    "latitude": 31.7833576,
+    "longitude": 35.2638149,
     "aliases": [
       "الزعيم"
-    ]
+    ],
+    "geo_precision": "checkpoint"
   },
   {
     "canonical_key": "كفر عقب",
@@ -2795,8 +2800,8 @@
     "name_en": "King Hussein / Allenby Bridge",
     "region": "jericho",
     "checkpoint_type": "crossing",
-    "latitude": 31.8736,
-    "longitude": 35.5444,
+    "latitude": 31.8738717,
+    "longitude": 35.5409112,
     "aliases": [
       "جسر الملك حسين",
       "الجسر",
@@ -2805,7 +2810,8 @@
       "اللنبي",
       "معبر الكرامه",
       "جسر الكرامة"
-    ]
+    ],
+    "geo_precision": "checkpoint"
   },
   {
     "canonical_key": "استراحة اريحا",

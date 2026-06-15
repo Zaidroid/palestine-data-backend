@@ -68,7 +68,10 @@ class Settings(BaseSettings):
     # be deployed and tiles built before the frontend is switched over.
     ROUTING_ENABLED: bool = False
     VALHALLA_URL: str = "http://valhalla:8002"
-    ROUTE_CORRIDOR_M: float = 300.0          # checkpoint-on-route corridor width (was 400m point-buffer)
+    ROUTE_CORRIDOR_M: float = 400.0          # "actually on this road" threshold. Wider (e.g. 1000)
+                                             # sweeps in village-access gates ~800m off the highway as
+                                             # false positives; city-entry gates are covered separately
+                                             # by the gateway advisory, so the corridor stays tight.
     ROUTE_EXCLUDE_BOX_M: float = 200.0       # avoid-polygon size around a closed checkpoint
 
     # ── Checkpoint self-improvement (candidate → vet → review → promote) ──
