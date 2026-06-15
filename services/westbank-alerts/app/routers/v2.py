@@ -16,6 +16,7 @@ from .. import incident_db
 from ..config import settings
 from ..db_pool import get_alerts_db
 from ..serving import provenance as P
+from ..serving import gateways as GW
 
 router = APIRouter(prefix="/v2", tags=["v2"])
 
@@ -87,6 +88,23 @@ async def v2_incidents(limit: int = Query(50, ge=1, le=200)):
     envs = [P.incident_envelope(i, members.get(i["id"], []), stale_hours=_STALE)
             for i in incidents]
     return {"incidents": envs, "total": len(envs)}
+
+
+@router.get("/cities")
+async def v2_cities():
+    """Cities with a curated gateway model."""
+    return {"cities": GW.list_cities()}
+
+
+@router.get("/city/{city}/gateways")
+async def v2_city_gateways(city: str):
+    """Live entry/exit gateway status + detour advisory for a city
+    (e.g. "Enter via Deir Sharaf. Huwara closed → use Awarta")."""
+    result = await GW.get_city_gateways(city.lower())
+    if result is None:
+        raise HTTPException(status_code=404,
+                            detail=f"No gateway model for '{city}'. See /v2/cities.")
+    return result
 
 
 @router.get("/incidents/{incident_id}")

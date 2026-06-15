@@ -1,0 +1,99 @@
+{
+  "nablus": {
+    "name_ar": "نابلس",
+    "name_en": "Nablus",
+    "gateways": [
+      {"name_ar": "دير شرف", "name_en": "Deir Sharaf", "side": "west", "connects_to": "Tulkarem, central West Bank", "role": "primary", "detour_if_closed": "Sarra", "confidence": "high", "current_status_note": "Main working west gateway (resident-confirmed 2026)"},
+      {"name_ar": "صرة", "name_en": "Sarra", "side": "west", "connects_to": "central West Bank", "role": "alternate", "detour_if_closed": "Deir Sharaf", "confidence": "high"},
+      {"name_ar": "حوارة", "name_en": "Huwara", "side": "south", "connects_to": "Ramallah", "role": "closed", "detour_if_closed": "Awarta", "confidence": "high", "current_status_note": "Closed to civilian passage since Oct 2023"},
+      {"name_ar": "عورتا", "name_en": "Awarta", "side": "south", "connects_to": "Ramallah", "role": "primary", "detour_if_closed": "Beit Furik", "confidence": "high", "current_status_note": "Current main southern gateway (replaced Huwara)"},
+      {"name_ar": "بيت فوريك", "name_en": "Beit Furik", "side": "east", "connects_to": "Jordan Valley, Jericho", "role": "primary", "detour_if_closed": "Awarta", "confidence": "high"},
+      {"name_ar": "زعترة", "name_en": "Za'tara / Tapuach", "side": "south", "connects_to": "Ramallah/Salfit regional junction", "role": "alternate", "detour_if_closed": "Awarta", "confidence": "medium"}
+    ]
+  },
+  "ramallah": {
+    "name_ar": "رام الله",
+    "name_en": "Ramallah",
+    "gateways": [
+      {"name_ar": "قلنديا", "name_en": "Qalandiya", "side": "south", "connects_to": "Jerusalem", "role": "primary", "detour_if_closed": "Jaba", "confidence": "high"},
+      {"name_ar": "جبع", "name_en": "Jaba", "side": "south", "connects_to": "Jerusalem area", "role": "alternate", "detour_if_closed": "Qalandiya", "confidence": "high"},
+      {"name_ar": "عطارة", "name_en": "Atara", "side": "north", "connects_to": "Nablus, northern West Bank", "role": "primary", "detour_if_closed": "Ein Yabrud", "confidence": "high"},
+      {"name_ar": "بيت إيل", "name_en": "Beit El / DCO", "side": "east", "connects_to": "eastern West Bank, Jordan Valley", "role": "primary", "detour_if_closed": "Qalandiya", "confidence": "high"}
+    ]
+  },
+  "jenin": {
+    "name_ar": "جنين",
+    "name_en": "Jenin",
+    "gateways": [
+      {"name_ar": "الجلمة", "name_en": "Jalama", "side": "north", "connects_to": "Israel / northern crossing", "role": "primary", "detour_if_closed": "Dotan/Ya'bad", "confidence": "high"},
+      {"name_ar": "يعبد", "name_en": "Dotan / Ya'bad", "side": "west", "connects_to": "Tulkarem, western West Bank", "role": "primary", "detour_if_closed": "Jalama or southern Nablus road", "confidence": "high"},
+      {"name_ar": "عجة", "name_en": "Ajja / Jaba road", "side": "south", "connects_to": "Nablus", "role": "primary", "detour_if_closed": "Jalama via city center", "confidence": "high", "current_status_note": "New military checkpoint installed Mar 2026; frequent closures"}
+    ]
+  },
+  "bethlehem": {
+    "name_ar": "بيت لحم",
+    "name_en": "Bethlehem",
+    "gateways": [
+      {"name_ar": "محسوم 300", "name_en": "Checkpoint 300", "side": "north", "connects_to": "Jerusalem", "role": "primary", "detour_if_closed": "Container/Wadi Nar", "confidence": "high", "current_status_note": "Permit/age-restricted pedestrian + vehicle to Jerusalem"},
+      {"name_ar": "الكونتينر", "name_en": "Container / Wadi Nar", "side": "east", "connects_to": "Ramallah, Jericho (north-south spine)", "role": "primary", "detour_if_closed": "Checkpoint 300 area", "confidence": "high", "current_status_note": "Reported closed since Feb 2026 — verify"},
+      {"name_ar": "النشاش", "name_en": "Al-Nashash", "side": "south", "connects_to": "Al-Khader, Hebron", "role": "primary", "detour_if_closed": "Husan/western routes", "confidence": "medium"},
+      {"name_ar": "حوسان", "name_en": "Husan", "side": "west", "connects_to": "western villages (Battir, Nahalin)", "role": "primary", "detour_if_closed": "Checkpoint 300 or Walaja", "confidence": "medium"}
+    ]
+  },
+  "jericho": {
+    "name_ar": "أريحا",
+    "name_en": "Jericho",
+    "gateways": [
+      {"name_ar": "اريحا dco", "name_en": "Jericho DCO", "side": "west", "connects_to": "Ramallah, West Bank interior", "role": "primary", "detour_if_closed": "Container/Wadi Nar", "confidence": "high"},
+      {"name_ar": "الكرامة", "name_en": "Allenby / King Hussein Bridge", "side": "east", "connects_to": "Jordan (international)", "role": "primary", "detour_if_closed": "none (international crossing)", "confidence": "high"},
+      {"name_ar": "العوجا", "name_en": "Al-Auja", "side": "north", "connects_to": "northern Jordan Valley (Route 90)", "role": "occasional", "detour_if_closed": "Route 90 back roads", "confidence": "medium"}
+    ]
+  },
+  "salfit": {
+    "name_ar": "سلفيت",
+    "name_en": "Salfit",
+    "gateways": [
+      {"name_ar": "زعترة", "name_en": "Za'tara / Tapuach", "side": "east", "connects_to": "Nablus (Route 60/505)", "role": "primary", "detour_if_closed": "limited — strands Salfit from Nablus", "confidence": "high"},
+      {"name_ar": "دير بلوط", "name_en": "Deir Ballut", "side": "west", "connects_to": "Ramallah (Route 446)", "role": "closed", "detour_if_closed": "Az-Zawiya/Rafat dirt-road detours (12+ km)", "confidence": "high", "current_status_note": "Continuously closed since Nov 2025"},
+      {"name_ar": "كفل حارس", "name_en": "Kifl Haris gate", "side": "north", "connects_to": "northern villages", "role": "closed", "detour_if_closed": "Deir Istiya long detour (15+ km)", "confidence": "high", "current_status_note": "Sealed since early 2025 (Ariel barrier)"}
+    ]
+  },
+  "tubas": {
+    "name_ar": "طوباس",
+    "name_en": "Tubas",
+    "gateways": [
+      {"name_ar": "تياسير", "name_en": "Tayasir", "side": "northeast", "connects_to": "Jordan Valley, Jericho", "role": "primary", "detour_if_closed": "Al-Hamra (+1.5-2h)", "confidence": "high"},
+      {"name_ar": "الحمرا", "name_en": "Al-Hamra", "side": "southeast", "connects_to": "Jordan Valley, Jericho", "role": "alternate", "detour_if_closed": "Tayasir", "confidence": "high"},
+      {"name_ar": "طمون", "name_en": "Tamun", "side": "south", "connects_to": "Nablus", "role": "occasional", "detour_if_closed": "Aqaba/Nablus road", "confidence": "medium"}
+    ]
+  },
+  "tulkarem": {
+    "name_ar": "طولكرم",
+    "name_en": "Tulkarem",
+    "gateways": [
+      {"name_ar": "عناب", "name_en": "Ennab (Anabta)", "side": "east", "connects_to": "Nablus, northern West Bank", "role": "primary", "detour_if_closed": "Bazariya", "confidence": "high", "current_status_note": "Main east gate to Nablus; frequently closed (Mar + Jun 2026)"},
+      {"name_ar": "بزاريا", "name_en": "Bazariya", "side": "east", "connects_to": "Nablus", "role": "alternate", "detour_if_closed": "long detours around Nablus", "confidence": "medium", "current_status_note": "Detour gate when Ennab closed; metal-detector gate since Jan 2025"},
+      {"name_ar": "الطيبة", "name_en": "Al-Tayba / Shaar Efraim", "side": "west", "connects_to": "Israel (worker crossing)", "role": "primary", "detour_if_closed": "no alternate worker crossing in region", "confidence": "high", "current_status_note": "Worker crossing, ~15k/day"},
+      {"name_ar": "جبارة", "name_en": "Jabara Bridge", "side": "south", "connects_to": "Qalqilya, southern villages", "role": "primary", "detour_if_closed": "longer alternate routes", "confidence": "high", "current_status_note": "Frequently closed (Mar + Jun 2026)"}
+    ]
+  },
+  "qalqilya": {
+    "name_ar": "قلقيلية",
+    "name_en": "Qalqilya",
+    "gateways": [
+      {"name_ar": "الممر الشرقي", "name_en": "Eastern Corridor", "side": "east", "connects_to": "Nablus, West Bank interior", "role": "primary", "detour_if_closed": "Eyal (north) or a 12-19 mi detour around the barrier", "confidence": "high", "current_status_note": "Main interior exit; iron gate Mar 2026, ~3 openings/day"},
+      {"name_ar": "معبر إيال", "name_en": "Eyal Terminal", "side": "north", "connects_to": "Israel (worker permits)", "role": "primary", "detour_if_closed": "Eliyahu / Fruit Crossing", "confidence": "high", "current_status_note": "Worker crossing 04:00-19:00, ~15k/day"},
+      {"name_ar": "حبلة", "name_en": "Habla", "side": "south", "connects_to": "Habla village / agricultural seam zone", "role": "occasional", "detour_if_closed": "Eyal", "confidence": "high", "current_status_note": "Agricultural; opens ~3x/day for ~45 min"}
+    ]
+  },
+  "hebron": {
+    "name_ar": "الخليل",
+    "name_en": "Hebron",
+    "gateways": [
+      {"name_ar": "ترقوميا", "name_en": "Tarqumiya", "side": "west", "connects_to": "Israel / Green Line (commercial + workers)", "role": "primary", "detour_if_closed": "Dura-Fawwar (south) or Halhul (north)", "confidence": "high", "current_status_note": "24/7 vehicle terminal; commercial 03:45-19:00"},
+      {"name_ar": "راس الجورة", "name_en": "Ras al-Joura", "side": "north", "connects_to": "Bethlehem (Route 60)", "role": "closed", "detour_if_closed": "Tarqumiya or southern routes via Dura", "confidence": "high", "current_status_note": "Closed since Jan 2025 (Hebron siege)"},
+      {"name_ar": "فرش الهوا", "name_en": "Farsh al-Hawa / Beit Kahel", "side": "west", "connects_to": "Dura / Beit Kahel (Road 35)", "role": "closed", "detour_if_closed": "Tarqumiya", "confidence": "medium", "current_status_note": "Closed since Jan 2025"},
+      {"name_ar": "الفوار", "name_en": "Al-Fawwar", "side": "south", "connects_to": "Dura, southern Hebron", "role": "primary", "detour_if_closed": "alternate southern roads", "confidence": "medium"}
+    ]
+  }
+}
