@@ -77,13 +77,28 @@ def _point_dist_m(a, b) -> float:
     return math.hypot((b[1] - a[1]) * _m_per_deg_lon(a[0]), (b[0] - a[0]) * _M_PER_DEG_LAT)
 
 
+def _norm_name(s: str) -> str:
+    s = (s or "").replace("_", " ")
+    try:
+        from ..checkpoint_parser import _normalise
+        return _normalise(s)
+    except Exception:  # noqa: BLE001
+        return " ".join(s.split()).strip()
+
+
 def dedup_on_route(on_route: list, min_gap_m: float = 200.0) -> list:
-    """Collapse checkpoints clustered within min_gap_m of each other (the catalog has
-    many near-duplicate variants of one gate, e.g. Huwara / Huwara-gate / Huwara-bridge).
-    Keeps the most important per cluster (closed > open, then nearest to the route)."""
+    """Collapse near-duplicate catalog entries for one gate — both spatial (within
+    min_gap_m, e.g. Huwara / Huwara-gate / Huwara-bridge) and same-name variants at
+    slightly different coords (e.g. اللبن الشرقيه vs اللبن_الشرقيه). Keeps the most
+    important per cluster (closed > open, then nearest to the route)."""
     kept = []
+    seen_names = set()
     for o in sorted(on_route, key=lambda x: (0 if x.get("closed") else 1, x.get("distance_m", 1e9))):
-        coords = o["checkpoint"].get("coordinates") or {}
+        cp = o["checkpoint"]
+        name = _norm_name(cp.get("canonical_key") or cp.get("name_ar") or "")
+        if name and name in seen_names:
+            continue
+        coords = cp.get("coordinates") or {}
         lat, lon = coords.get("lat"), coords.get("lon")
         is_dup = False
         if lat is not None and lon is not None:
@@ -96,6 +111,8 @@ def dedup_on_route(on_route: list, min_gap_m: float = 200.0) -> list:
                     break
         if not is_dup:
             kept.append(o)
+            if name:
+                seen_names.add(name)
     return sorted(kept, key=lambda o: o["along_km"])
 
 
