@@ -106,9 +106,12 @@ async def v2_route(req: RouteRequest):
     for r in plan["routes"]:
         r["checkpoints_on_route"] = OR.dedup_on_route(r["checkpoints_on_route"])
         r["closed_count"] = len([o for o in r["checkpoints_on_route"] if o["closed"]])
-    # Attach the authoritative destination-city gateway advisory (the "what
-    # checkpoints to enter Nablus" answer — independent of route geometry/coords).
+    # Attach the authoritative gateway advisories for the origin (how to LEAVE) and
+    # destination (how to ENTER) cities — independent of route geometry/coords.
     dest_city = GW.nearest_city(req.to.lat, req.to.lon)
+    origin_city = GW.nearest_city(req.from_.lat, req.from_.lon)
     if dest_city:
         plan["destination_gateways"] = await GW.get_city_gateways(dest_city)
+    if origin_city and origin_city != dest_city:
+        plan["origin_gateways"] = await GW.get_city_gateways(origin_city)
     return plan
