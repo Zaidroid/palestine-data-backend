@@ -20,6 +20,8 @@ COPY data/known_locations.json ./data/known_locations.json
 COPY data/admin/admin1.geojson ./data/admin/admin1.geojson
 COPY data/admin/admin2.geojson ./data/admin/admin2.geojson
 COPY data/conflict/ ./data/conflict/
+# Phase 2 — static road-restriction layer (closed/segregated segments, OCHA-seeded)
+COPY data/restrictions.geojson ./data/restrictions.geojson
 COPY seed_checkpoints.py ./seed_checkpoints.py
 
 # Force rebuild when source files change

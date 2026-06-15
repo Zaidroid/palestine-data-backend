@@ -17,6 +17,7 @@ from pydantic import BaseModel, Field
 from .. import checkpoint_db as cpdb
 from ..config import settings
 from ..routing import on_route as OR
+from ..routing import restrictions as RES
 from ..routing import valhalla_client
 from ..serving import gateways as GW
 from .v2 import _cp_envelope
@@ -49,8 +50,12 @@ def _advisory(route_obj: dict) -> str:
 
 
 async def build_route_plan(from_latlon, to_latlon, *, avoid_closed: bool, envelopes: list,
-                           route_fn, corridor_m: float, box_m: float) -> dict:
-    base = await route_fn([from_latlon, to_latlon], alternates=2)
+                           route_fn, corridor_m: float, box_m: float,
+                           restriction_polys: Optional[list] = None) -> dict:
+    rp = restriction_polys or []
+    base = await route_fn([from_latlon, to_latlon], exclude_polygons=(rp or None), alternates=2)
+    if not base and rp:                       # fail-open: a (possibly stale) closed road orphaned the route
+        base = await route_fn([from_latlon, to_latlon], alternates=2)
     if not base:
         return {"routes": [], "advisory": "UNKNOWN", "rerouted": False}
 
@@ -61,7 +66,7 @@ async def build_route_plan(from_latlon, to_latlon, *, avoid_closed: bool, envelo
     primary_onr = routes_out[0]["checkpoints_on_route"]
     closed = OR.closed_checkpoints(primary_onr)
     if avoid_closed and closed:
-        polys = OR.exclude_polygons(closed, box_m=box_m)
+        polys = rp + OR.exclude_polygons(closed, box_m=box_m)
         alt = await route_fn([from_latlon, to_latlon], exclude_polygons=polys, alternates=0)
         if alt:
             ar = alt[0]
@@ -101,6 +106,7 @@ async def v2_route(req: RouteRequest):
         avoid_closed=req.avoid_closed, envelopes=envelopes,
         route_fn=valhalla_client.route,
         corridor_m=settings.ROUTE_CORRIDOR_M, box_m=settings.ROUTE_EXCLUDE_BOX_M,
+        restriction_polys=RES.avoid_polygons((req.from_.lat, req.from_.lon), (req.to.lat, req.to.lon)),
     )
     # Collapse near-duplicate catalog variants of one gate (Huwara / gate / bypass …).
     for r in plan["routes"]:

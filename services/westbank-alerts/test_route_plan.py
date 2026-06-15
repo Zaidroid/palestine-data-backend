@@ -86,3 +86,23 @@ def test_clear_route_advisory_ok():
                                  corridor_m=300, box_m=200))
     assert plan["advisory"] == "OK"
     assert plan["rerouted"] is False
+
+
+def test_restriction_polys_fail_open_when_no_restricted_route():
+    """Phase 2: a (possibly stale) closed segment that orphans the route must fail
+    open — retry without the restriction polys so a route is still returned."""
+    calls = []
+
+    async def route_fn(locations, *, exclude_polygons=None, alternates=1):
+        calls.append(bool(exclude_polygons))
+        if exclude_polygons:
+            return []                       # restricted route impossible
+        return [{"coords": [[35.187, 32.015], [35.19, 32.10]],
+                 "distance_km": 12, "duration_min": 18}]
+
+    poly = [[[35.2, 32.1], [35.21, 32.1], [35.21, 32.11], [35.2, 32.11], [35.2, 32.1]]]
+    plan = _run(build_route_plan((32.0, 35.18), (32.10, 35.19), avoid_closed=False,
+                                 envelopes=ENVELOPES, route_fn=route_fn,
+                                 corridor_m=300, box_m=200, restriction_polys=poly))
+    assert plan["routes"], "fail-open must yield a route when restrictions orphan the destination"
+    assert calls == [True, False]           # tried restricted, then retried without
