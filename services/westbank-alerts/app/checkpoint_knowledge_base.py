@@ -219,7 +219,12 @@ def filter_to_known(checkpoints: list, kb: Optional[CheckpointKnowledgeBase]) ->
     Hides un-curated / junk rows (e.g. a chatter line that became a row) from the
     public map + list WITHOUT deleting them. Fail-open: if the KB isn't loaded yet,
     return everything rather than blank the map.
+
+    Imported static-base layers (source_layer osm/ocha/manual) are always allowed
+    through — they're authoritative geographic obstacles, not chatter junk.
     """
     if kb is None:
         return checkpoints
-    return [c for c in checkpoints if kb.is_known(c.get("canonical_key"))]
+    return [c for c in checkpoints
+            if c.get("source_layer") in ("osm", "ocha", "manual")
+            or kb.is_known(c.get("canonical_key"))]

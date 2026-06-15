@@ -13,6 +13,7 @@ from __future__ import annotations
 
 import json
 import logging
+import math
 from pathlib import Path
 from typing import Optional
 
@@ -97,6 +98,31 @@ def _load() -> dict:
 
 def list_cities() -> list:
     return sorted(_load().keys())
+
+
+def _haversine_km(lat1, lon1, lat2, lon2) -> float:
+    r = 6371.0
+    dlat = math.radians(lat2 - lat1)
+    dlon = math.radians(lon2 - lon1)
+    a = (math.sin(dlat / 2) ** 2 + math.cos(math.radians(lat1)) *
+         math.cos(math.radians(lat2)) * math.sin(dlon / 2) ** 2)
+    return 2 * r * math.asin(math.sqrt(a))
+
+
+def nearest_city(lat: float, lon: float, cities: Optional[dict] = None,
+                 max_km: float = 12.0) -> Optional[str]:
+    """City key whose center is nearest to (lat,lon) within max_km, for attaching the
+    destination-city gateway advisory to a route. None if no city is close enough."""
+    cities = _load() if cities is None else cities
+    best, best_d = None, max_km
+    for key, data in cities.items():
+        c = data.get("center")
+        if not c:
+            continue
+        d = _haversine_km(lat, lon, c["lat"], c["lon"])
+        if d <= best_d:
+            best, best_d = key, d
+    return best
 
 
 async def get_city_gateways(city_key: str) -> Optional[dict]:

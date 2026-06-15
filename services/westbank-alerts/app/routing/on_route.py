@@ -72,6 +72,33 @@ def checkpoints_on_route(route_coords: list, checkpoints: list, corridor_m: floa
     return out
 
 
+def _point_dist_m(a, b) -> float:
+    """Distance (m) between two {lat,lon}-ish points given as (lat, lon) tuples."""
+    return math.hypot((b[1] - a[1]) * _m_per_deg_lon(a[0]), (b[0] - a[0]) * _M_PER_DEG_LAT)
+
+
+def dedup_on_route(on_route: list, min_gap_m: float = 200.0) -> list:
+    """Collapse checkpoints clustered within min_gap_m of each other (the catalog has
+    many near-duplicate variants of one gate, e.g. Huwara / Huwara-gate / Huwara-bridge).
+    Keeps the most important per cluster (closed > open, then nearest to the route)."""
+    kept = []
+    for o in sorted(on_route, key=lambda x: (0 if x.get("closed") else 1, x.get("distance_m", 1e9))):
+        coords = o["checkpoint"].get("coordinates") or {}
+        lat, lon = coords.get("lat"), coords.get("lon")
+        is_dup = False
+        if lat is not None and lon is not None:
+            for k in kept:
+                kc = k["checkpoint"].get("coordinates") or {}
+                if kc.get("lat") is None or kc.get("lon") is None:
+                    continue
+                if _point_dist_m((lat, lon), (kc["lat"], kc["lon"])) <= min_gap_m:
+                    is_dup = True
+                    break
+        if not is_dup:
+            kept.append(o)
+    return sorted(kept, key=lambda o: o["along_km"])
+
+
 def closed_checkpoints(on_route: list) -> list:
     """The closed entries from a checkpoints_on_route result."""
     return [o for o in on_route if o.get("closed")]

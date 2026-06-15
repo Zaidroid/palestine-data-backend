@@ -18,6 +18,7 @@ from .. import checkpoint_db as cpdb
 from ..config import settings
 from ..routing import on_route as OR
 from ..routing import valhalla_client
+from ..serving import gateways as GW
 from .v2 import _cp_envelope
 
 router = APIRouter(prefix="/v2", tags=["route"])
@@ -101,4 +102,13 @@ async def v2_route(req: RouteRequest):
         route_fn=valhalla_client.route,
         corridor_m=settings.ROUTE_CORRIDOR_M, box_m=settings.ROUTE_EXCLUDE_BOX_M,
     )
+    # Collapse near-duplicate catalog variants of one gate (Huwara / gate / bypass …).
+    for r in plan["routes"]:
+        r["checkpoints_on_route"] = OR.dedup_on_route(r["checkpoints_on_route"])
+        r["closed_count"] = len([o for o in r["checkpoints_on_route"] if o["closed"]])
+    # Attach the authoritative destination-city gateway advisory (the "what
+    # checkpoints to enter Nablus" answer — independent of route geometry/coords).
+    dest_city = GW.nearest_city(req.to.lat, req.to.lon)
+    if dest_city:
+        plan["destination_gateways"] = await GW.get_city_gateways(dest_city)
     return plan

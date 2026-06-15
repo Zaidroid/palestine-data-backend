@@ -70,3 +70,20 @@ def test_advisory_lists_open_and_closed_with_detours():
     assert "Deir Sharaf" in out["open_gateways"] and "Awarta" in out["open_gateways"]
     assert out["advisory"]  # non-empty human-readable string
     assert "Huwara" in out["advisory"] and "Awarta" in out["advisory"]  # closed + its detour named
+
+
+# ── nearest_city (for attaching the destination-city advisory to a route) ─────
+
+_CENTERS = {
+    "nablus": {"center": {"lat": 32.221, "lon": 35.254}},
+    "ramallah": {"center": {"lat": 31.905, "lon": 35.205}},
+}
+
+
+def test_nearest_city_matches_within_radius():
+    assert G.nearest_city(32.220, 35.255, _CENTERS, max_km=10) == "nablus"
+    assert G.nearest_city(31.900, 35.200, _CENTERS, max_km=10) == "ramallah"
+
+
+def test_nearest_city_none_when_too_far():
+    assert G.nearest_city(31.50, 35.10, _CENTERS, max_km=10) is None  # Hebron-ish, far

@@ -76,6 +76,22 @@ def test_checkpoints_without_coords_are_skipped():
     assert all(o["checkpoint"]["canonical_key"] != "nocoord" for o in out)
 
 
+def test_dedup_collapses_near_duplicates():
+    # two near-identical points (~120m apart) + one distinct → collapse the pair
+    near = [
+        {"checkpoint": {"canonical_key": "حواره", "coordinates": {"lat": 32.1587, "lon": 35.2538}}, "distance_m": 50, "along_km": 40.0, "closed": True},
+        {"checkpoint": {"canonical_key": "بوابه_حواره", "coordinates": {"lat": 32.1595, "lon": 35.2545}}, "distance_m": 80, "along_km": 40.1, "closed": False},
+        {"checkpoint": {"canonical_key": "عطاره", "coordinates": {"lat": 32.015, "lon": 35.187}}, "distance_m": 30, "along_km": 5.0, "closed": False},
+    ]
+    out = R.dedup_on_route(near, min_gap_m=200)
+    keys = [o["checkpoint"]["canonical_key"] for o in out]
+    assert "عطاره" in keys
+    assert len(out) == 2  # the two Huwara points collapse to one
+    # the collapsed one keeps the closed=True member (more important)
+    huwara_grp = [o for o in out if o["checkpoint"]["canonical_key"] in ("حواره", "بوابه_حواره")]
+    assert len(huwara_grp) == 1 and huwara_grp[0]["closed"] is True
+
+
 def test_closed_checkpoints_and_exclude_polygons():
     out = R.checkpoints_on_route(ROUTE, CATALOG, corridor_m=300)
     closed = R.closed_checkpoints(out)
