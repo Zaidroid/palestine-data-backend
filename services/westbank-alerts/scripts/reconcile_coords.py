@@ -81,8 +81,7 @@ def fetch_osm() -> list:
     for el in data.get("elements", []):
         tags = el.get("tags") or {}
         name_ar = tags.get("name:ar")
-        if not name_ar:
-            continue
+        name_en = tags.get("name:en") or tags.get("name")
         if el["type"] == "node":
             lat, lon = el.get("lat"), el.get("lon")
         else:
@@ -90,8 +89,11 @@ def fetch_osm() -> list:
             lat, lon = c.get("lat"), c.get("lon")
         if lat is None or lon is None:
             continue
-        out.append({"name_norm": normalise(name_ar), "lat": lat, "lon": lon,
-                    "name_ar": name_ar})
+        out.append({
+            "name_ar_norm": normalise(name_ar) if name_ar else "",
+            "name_en_norm": (name_en or "").strip().lower(),
+            "lat": lat, "lon": lon, "name_ar": name_ar, "name_en": name_en,
+        })
     return out
 
 
@@ -115,17 +117,29 @@ def valhalla_snap(lat, lon):
         return None
 
 
-def osm_candidates(cp, osm, aliases):
-    names = {normalise(cp.get("name_ar", "")), normalise(cp.get("canonical_key", ""))}
-    names |= {normalise(a) for a in (cp.get("aliases") or [])}
-    names.discard("")
+PROX_M = 250.0  # proximity match: an OSM checkpoint within this of a catalog point is the same one
+
+
+def osm_candidates(cp, osm, aliases=None):
+    """Return [(distance_m, osm, how)] matches, nearest first. Match by Arabic name,
+    English name, or — failing names — pure proximity (same checkpoint, different/no name)."""
+    ar_names = {normalise(cp.get("name_ar", "")), normalise(cp.get("canonical_key", ""))}
+    ar_names |= {normalise(a) for a in (cp.get("aliases") or [])}
+    ar_names.discard("")
+    en = (cp.get("name_en") or "").strip().lower()
     cands = []
     for o in osm:
-        on = o["name_norm"]
-        if any(nm == on or (len(nm) >= 4 and (nm in on or on in nm)) for nm in names):
-            d = haversine_m(cp["latitude"], cp["longitude"], o["lat"], o["lon"])
-            if d <= MAX_MATCH_KM * 1000:
-                cands.append((d, o))
+        d = haversine_m(cp["latitude"], cp["longitude"], o["lat"], o["lon"])
+        how = None
+        oa = o["name_ar_norm"]
+        if oa and any(nm == oa or (len(nm) >= 4 and (nm in oa or oa in nm)) for nm in ar_names):
+            how = "name:ar"
+        elif en and len(en) >= 4 and o["name_en_norm"] and (en == o["name_en_norm"] or en in o["name_en_norm"] or o["name_en_norm"] in en):
+            how = "name:en"
+        elif d <= PROX_M:
+            how = "proximity"
+        if how and d <= MAX_MATCH_KM * 1000:
+            cands.append((d, o, how))
     cands.sort(key=lambda x: x[0])
     return cands
 
@@ -144,11 +158,15 @@ def main():
         if cp.get("latitude") is None or cp.get("longitude") is None:
             tiers["kept"].append((cp["canonical_key"], "no coords"))
             continue
-        # Tier 1 — OSM authoritative match
-        cands = osm_candidates(cp, osm, None)
+        # Tier 1 — OSM match. name:ar + proximity are high-confidence (auto-adopt);
+        # name:en is ambiguity-prone (transliteration collisions) so it's review-only.
+        cands = osm_candidates(cp, osm)
         if cands:
-            d, o = cands[0]
-            tiers["osm"].append((cp["canonical_key"], round(d), o["lat"], o["lon"]))
+            d, o, how = cands[0]
+            if how == "name:en":
+                tiers.setdefault("review", []).append((cp["canonical_key"], round(d), o["lat"], o["lon"], o.get("name_en")))
+                continue
+            tiers["osm"].append((cp["canonical_key"], round(d), o["lat"], o["lon"], how))
             if APPLY:
                 cp["latitude"], cp["longitude"] = o["lat"], o["lon"]
                 cp["geo_precision"] = "checkpoint"
@@ -165,8 +183,12 @@ def main():
         tiers["kept"].append((cp["canonical_key"], "no confident match"))
 
     print(f"\n=== TIER 1: OSM-matched ({len(tiers['osm'])}) — adopted authoritative coord ===")
-    for k, d, lat, lon in sorted(tiers["osm"], key=lambda x: -x[1]):
-        print(f"  moved {d:5d} m -> ({lat:.5f},{lon:.5f})  {k}")
+    for k, d, lat, lon, how in sorted(tiers["osm"], key=lambda x: -x[1]):
+        print(f"  moved {d:5d} m [{how:9}] -> ({lat:.5f},{lon:.5f})  {k}")
+    review = tiers.get("review", [])
+    print(f"\n=== REVIEW: name:en matches ({len(review)}) — NOT auto-applied (ambiguity risk), confirm manually ===")
+    for k, d, lat, lon, en in sorted(review, key=lambda x: -x[1]):
+        print(f"  {k}  ->  OSM '{en}' at ({lat:.5f},{lon:.5f}), {d} m away")
     print(f"\n=== TIER 2: Valhalla road-snap ({len(tiers['snap'])}) ===")
     for k, d, lat, lon in sorted(tiers["snap"], key=lambda x: -x[1]):
         print(f"  snapped {d:4d} m  {k}")

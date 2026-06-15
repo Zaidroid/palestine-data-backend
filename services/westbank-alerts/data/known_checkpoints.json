@@ -2319,11 +2319,12 @@
     "name_en": "Iskaka",
     "region": "salfit",
     "checkpoint_type": "checkpoint",
-    "latitude": 32.103,
-    "longitude": 35.164,
+    "latitude": 32.1027182,
+    "longitude": 35.1637583,
     "aliases": [
       "اسكاكا"
-    ]
+    ],
+    "geo_precision": "checkpoint"
   },
   {
     "canonical_key": "انشيه",

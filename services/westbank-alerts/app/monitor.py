@@ -86,10 +86,19 @@ def _maybe_reset_daily():
         _stats["_stats_date"] = today
 
 
-def _record_message(is_alert: bool = False, is_cp: bool = False):
+def _record_seen():
+    """Count every message the monitor actually pulls (true feed throughput +
+    liveness), regardless of whether it produced an alert/checkpoint update."""
     _maybe_reset_daily()
     _stats["last_message_at"] = datetime.utcnow().isoformat()
     _stats["messages_today"] += 1
+
+
+def _record_message(is_alert: bool = False, is_cp: bool = False):
+    """Count OUTCOMES produced from a message (alerts / checkpoint updates).
+    Does NOT touch messages_today/last_message_at — those track messages seen,
+    bumped in the poll loop via _record_seen()."""
+    _maybe_reset_daily()
     if is_alert:
         _stats["alerts_today"] += 1
     if is_cp:
@@ -469,6 +478,7 @@ async def _poll_channel(entity, username: str, last_id: dict, is_checkpoint: boo
                 continue
             new_max = max(new_max, msg.id)
             processed += 1
+            _record_seen()
             if is_checkpoint:
                 await _process_checkpoint_message(msg, username)
             else:
