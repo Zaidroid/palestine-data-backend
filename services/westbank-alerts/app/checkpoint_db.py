@@ -509,9 +509,52 @@ async def insert_checkpoint_update(upd: dict) -> int:
         return cur.lastrowid
 
 
+# ── Phase 2a: status consensus ────────────────────────────────────────────────
+
+_CONSENSUS_HALF_LIFE_MIN = 30.0
+_CONSENSUS_WINDOW_HOURS = 6.0          # reports older than this are ignored (decay ~0)
+_CONSENSUS_SRC_WEIGHT = {"admin": 5.0, "crowd": 1.0}
+
+
+def _consensus_status(reports, *, half_life_min: float = _CONSENSUS_HALF_LIFE_MIN):
+    """Recency-decayed, source-weighted vote over recent reports.
+
+    reports: iterable of (status, source_type, age_minutes).
+    Returns (winning_status, confidence_label, agreement_ratio).
+
+    Each report's weight = source_weight (admin >> crowd) * 0.5**(age/half_life),
+    so a lone spam report can't outvote several recent agreeing reports, while a
+    sparse checkpoint's freshest report still wins (it's the only live signal).
+    Confidence is the winner's share of total weight (agreement) — not a raw count.
+    """
+    weights: dict = {}
+    admin_backed: set = set()
+    for status, src, age_min in reports:
+        if not status:
+            continue
+        decay = 0.5 ** (max(0.0, age_min) / half_life_min)
+        weights[status] = weights.get(status, 0.0) + _CONSENSUS_SRC_WEIGHT.get(src, 1.0) * decay
+        if src == "admin":
+            admin_backed.add(status)
+    if not weights:
+        return None, "low", 0.0
+    total = sum(weights.values())
+    win = max(weights, key=weights.get)
+    ratio = round(weights[win] / total, 3) if total else 0.0
+    # "high" requires both strong agreement AND an authoritative (admin) report
+    # backing the winner — crowd-only consensus caps at "medium" (it can be
+    # flooded by one channel; high confidence is reserved for official sources).
+    if ratio >= 0.75 and win in admin_backed:
+        conf = "high"
+    elif ratio >= 0.5:
+        conf = "medium"
+    else:
+        conf = "low"
+    return win, conf, ratio
+
+
 async def upsert_checkpoint_status(upd: dict, is_admin: bool, channel: str) -> str:
     now = datetime.utcnow()
-    confidence = "high" if is_admin else "low"
     direction = upd.get("direction", "") or ""
 
     async with get_checkpoint_db() as db:
@@ -520,17 +563,36 @@ async def upsert_checkpoint_status(upd: dict, is_admin: bool, channel: str) -> s
             (upd["canonical_key"], direction),
         )
         existing = await cur.fetchone()
-        changed = existing is None or existing[0] != upd["status"]
 
-        h1 = (now - timedelta(hours=1)).isoformat()
+        # Phase 2a: the displayed status is a recency-decayed, source-weighted
+        # CONSENSUS over recent reports (the new report is already in
+        # checkpoint_updates), not last-write-wins — a lone spam/contradictory
+        # report can no longer flip the map. Confidence reflects agreement.
+        h1 = now - timedelta(hours=1)
+        window_start = (now - timedelta(hours=_CONSENSUS_WINDOW_HOURS)).isoformat()
         cur = await db.execute(
-            "SELECT COUNT(*) FROM checkpoint_updates "
-            "WHERE canonical_key=? AND source_type='crowd' AND timestamp>=?",
-            (upd["canonical_key"], h1),
+            "SELECT status, source_type, timestamp FROM checkpoint_updates "
+            "WHERE canonical_key=? AND COALESCE(direction,'')=? AND timestamp>=?",
+            (upd["canonical_key"], direction, window_start),
         )
-        (crowd_1h,) = await cur.fetchone()
-        if not is_admin and crowd_1h >= 3:
-            confidence = "medium"
+        reports = []
+        crowd_1h = 0
+        for status, src, ts in await cur.fetchall():
+            try:
+                t = datetime.fromisoformat(ts) if ts else now
+            except (ValueError, TypeError):
+                t = now
+            reports.append((status, src, max(0.0, (now - t).total_seconds() / 60.0)))
+            if src == "crowd" and t >= h1:
+                crowd_1h += 1
+
+        consensus, confidence, _ratio = _consensus_status(reports)
+        if consensus is None:  # no reports in window (shouldn't happen post-insert)
+            consensus = upd["status"]
+            confidence = "high" if is_admin else "low"
+        # status_raw is only meaningful when the displayed status matches THIS report.
+        status_raw = upd.get("status_raw") if consensus == upd["status"] else None
+        changed = existing is None or existing[0] != consensus
 
         await db.execute(
             """INSERT INTO checkpoint_status
@@ -549,7 +611,7 @@ async def upsert_checkpoint_status(upd: dict, is_admin: bool, channel: str) -> s
                  last_source_channel=excluded.last_source_channel""",
             (
                 upd["canonical_key"], direction, upd["name_raw"],
-                upd["status"], upd.get("status_raw"),
+                consensus, status_raw,
                 confidence, crowd_1h, now.isoformat(), "admin" if is_admin else "crowd",
                 upd.get("source_msg_id"), channel,
             ),

@@ -12,6 +12,11 @@ from typing import Optional, Union
 
 DEFAULT_STALE_HOURS = 12.0
 LIVE_HOURS = 1.0  # <= this age → "live"
+# Phase 2b: a continuous freshness score (1.0 at age 0, halving every
+# FRESHNESS_HALF_LIFE_HOURS) so consumers downweight aging data smoothly instead
+# of falling off the hard stale-band cliff. The categorical band stays for the
+# map's safety floor; the score is the gradient.
+FRESHNESS_HALF_LIFE_HOURS = 6.0
 
 _TRUST = {"admin": 0.9, "crowd": 0.4}
 # Phase 1: a crowd report's trust is driven by the reporting channel's observed
@@ -47,7 +52,7 @@ def freshness(
     lu = _as_datetime(last_updated)
     if lu is None:
         return {"last_updated": None, "age_hours": None,
-                "is_stale": True, "freshness_band": "none"}
+                "is_stale": True, "freshness_band": "none", "freshness_score": 0.0}
 
     age_hours = round((now - lu).total_seconds() / 3600, 1)
     if age_hours <= LIVE_HOURS:
@@ -56,11 +61,13 @@ def freshness(
         band = "recent"
     else:
         band = "stale"
+    score = round(0.5 ** (max(0.0, age_hours) / FRESHNESS_HALF_LIFE_HOURS), 3)
     return {
         "last_updated": lu.isoformat(),
         "age_hours": age_hours,
         "is_stale": band == "stale",
         "freshness_band": band,
+        "freshness_score": score,
     }
 
 

@@ -48,6 +48,26 @@ def test_freshness_accepts_iso_string():
     assert f["freshness_band"] == "recent"
 
 
+# ── freshness_score (Phase 2b — continuous decay, smooths the hard 12h cliff) ──
+
+def test_freshness_score_decays_exponentially():
+    assert P.freshness(NOW, now=NOW)["freshness_score"] == 1.0
+    half = NOW - timedelta(hours=P.FRESHNESS_HALF_LIFE_HOURS)
+    assert P.freshness(half, now=NOW)["freshness_score"] == 0.5
+
+
+def test_freshness_score_is_continuous_across_the_12h_band_edge():
+    # The categorical band flips recent->stale at 12h, but the score must NOT
+    # jump — 11h59 and 12h01 are nearly equal (no perception cliff).
+    before = P.freshness(NOW - timedelta(hours=11, minutes=59), now=NOW)["freshness_score"]
+    after = P.freshness(NOW - timedelta(hours=12, minutes=1), now=NOW)["freshness_score"]
+    assert abs(before - after) < 0.02
+
+
+def test_freshness_score_zero_when_never_reported():
+    assert P.freshness(None, now=NOW)["freshness_score"] == 0.0
+
+
 # ── effective_status (the staleness-honesty fix) ─────────────────────────────
 
 def test_effective_status_permanently_closed_overrides_fresh_open():
