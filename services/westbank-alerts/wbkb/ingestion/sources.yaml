@@ -1,0 +1,42 @@
+# Source registry — authority ranks + refresh cadence.
+# The canonical ranks live in engine/confidence.py (SOURCES); this mirrors them
+# for humans and documents how each source flows in.
+
+sources:
+  human_local:
+    authority_rank: 6
+    base_confidence: 0.98
+    cadence: on_demand
+    adapter: ingestion/confirm_cli.py
+    note: Apex authority. You or a trusted local confirm/correct from the worklist.
+  live_feed:
+    authority_rank: 5
+    base_confidence: 0.90
+    cadence: continuous
+    adapter: ingestion/telegram_adapter.py
+    half_life_days: 1.5
+    note: 11+ Telegram channels. Authoritative for OPEN/CLOSED right now; decays fast.
+  ocha_hdx:
+    authority_rank: 4
+    base_confidence: 0.85
+    cadence: monthly
+    adapter: ingestion/ocha_loader.py
+    note: OCHA Movement & Access obstacle survey (HDX). Authoritative for existence + coords.
+  rights_doc:
+    authority_rank: 3
+    base_confidence: 0.75
+    cadence: as_published
+    adapter: manual
+    note: B'Tselem / HaMoked forbidden-roads + checkpoint documentation.
+  osm:
+    authority_rank: 2
+    base_confidence: 0.70
+    cadence: weekly
+    adapter: ingestion/osm_extract.py
+    note: Real road geometry + barrier nodes (Overpass).
+  model_inferred:
+    authority_rank: 1
+    base_confidence: 0.30
+    cadence: seed_only
+    adapter: build_kb.py
+    note: Scaffold only. Every model_inferred fact must be confirmed before safety trust.

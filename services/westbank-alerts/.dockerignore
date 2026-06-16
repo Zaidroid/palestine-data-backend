@@ -1,0 +1,6 @@
+**/__pycache__/
+**/*.pyc
+# wbkb runtime state — seeded into /data at startup, never baked into the image
+wbkb/data/
+wbkb/kb/nodes.json
+wbkb/kb/edges.json

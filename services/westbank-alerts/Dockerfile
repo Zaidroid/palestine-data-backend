@@ -8,6 +8,9 @@ COPY requirements.txt .
 RUN pip install --no-cache-dir -r requirements.txt
 
 COPY app/ ./app/
+# wbkb — checkpoint-aware knowledge-base router (the DB under wbkb/data is excluded
+# via .dockerignore; it is seeded into the persistent /data volume at startup, see CMD).
+COPY wbkb/ ./wbkb/
 COPY dashboard.html ./dashboard.html
 COPY tracker.html ./tracker.html
 COPY map.html ./map.html
@@ -31,4 +34,9 @@ RUN find ./app -name "*.py" -newer /app/app/main.py -exec echo "Files updated" \
 ARG SENTRY_RELEASE=""
 ENV SENTRY_RELEASE=${SENTRY_RELEASE}
 
-CMD ["python", "-m", "uvicorn", "app.main:app", "--host", "0.0.0.0", "--port", "8080"]
+# wbkb DB lives in the persistent, backed-up /data volume (survives rebuilds).
+ENV WBKB_DB_PATH=/data/wbkb.db
+
+# Seed the KB (idempotent) into /data, then start the API. If seeding fails the
+# API still starts and /v2/route transparently falls back to Valhalla.
+CMD ["sh", "-c", "cd /app/wbkb && (python3 build_kb.py || echo 'wbkb seed skipped'); cd /app && exec python -m uvicorn app.main:app --host 0.0.0.0 --port 8080"]

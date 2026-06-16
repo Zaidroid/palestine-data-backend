@@ -1,0 +1,8 @@
+# runtime state — rebuilt from kb/_source_graph_v1_1.json; back up separately (not git)
+data/wbkb.db
+data/wbkb.db-wal
+data/wbkb.db-shm
+# generated snapshots of the current KB (source of truth is the DB + _source_graph_v1_1.json)
+kb/nodes.json
+kb/edges.json
+__pycache__/
