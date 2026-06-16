@@ -93,10 +93,8 @@ def _envelope(node: dict, status: str) -> dict:
     }
 
 
-def _shape(res: dict, nodes: dict) -> dict:
-    """wbkb route result -> the /v2/route response contract (+ wbkb extras)."""
-    coords, dist_km = [], 0.0
-    prev = None
+def _schematic_coords(res: dict, nodes: dict) -> tuple[list, float]:
+    coords, dist_km, prev = [], 0.0, None
     for nid in res["path_nodes"]:
         c = nodes[nid].get("coord")
         if not c:
@@ -105,6 +103,39 @@ def _shape(res: dict, nodes: dict) -> dict:
         if prev:
             dist_km += _km(prev[1], prev[0], c["lat"], c["lng"])
         prev = [c["lng"], c["lat"]]
+    return coords, round(dist_km, 1)
+
+
+async def _real_geometry(res: dict, nodes: dict, route_fn) -> dict | None:
+    """Real road geometry from Valhalla, routed THROUGH the wbkb checkpoint
+    waypoints so the drawn line follows roads and passes the correct entrance/
+    gates. None on any failure → caller uses schematic coords."""
+    pts = res.get("path_nodes") or []
+    if len(pts) < 2:
+        return None
+
+    def latlon(nid):
+        c = nodes.get(nid, {}).get("coord")
+        return (c["lat"], c["lng"]) if c else None
+
+    a, b = latlon(pts[0]), latlon(pts[-1])
+    if not a or not b:
+        return None
+    via = [latlon(n) for n in pts[1:-1] if nodes.get(n, {}).get("type") == "checkpoint" and nodes[n].get("coord")]
+    try:
+        out = await route_fn([a, *via, b], alternates=0)
+    except Exception:  # noqa: BLE001
+        log.exception("valhalla geometry for wbkb route failed")
+        return None
+    return out[0] if out else None
+
+
+def _shape(res: dict, nodes: dict, geom: dict | None = None) -> dict:
+    """wbkb route result -> the /v2/route response contract (+ wbkb extras)."""
+    if geom and geom.get("coords"):
+        coords, dist_km = geom["coords"], round(geom.get("distance_km", 0.0), 1)
+    else:
+        coords, dist_km = _schematic_coords(res, nodes)
 
     onr, along = [], 0.0
     prevc = None
@@ -156,8 +187,11 @@ def _has_verified_edge(res: dict, edges: dict) -> bool:
     return False
 
 
-def plan(from_latlon: tuple[float, float], to_latlon: tuple[float, float], envelopes: list) -> dict | None:
-    """Try a KB route. Returns the /v2/route plan dict, or None to fall back."""
+async def plan(from_latlon: tuple[float, float], to_latlon: tuple[float, float],
+               envelopes: list, route_fn=None) -> dict | None:
+    """Try a KB route. Returns the /v2/route plan dict, or None to fall back.
+    ``route_fn`` (valhalla_client.route) is used to draw real road geometry through
+    the KB's checkpoint waypoints; without it the geometry is schematic."""
     if not _AVAILABLE:
         return None
     try:
@@ -179,7 +213,8 @@ def plan(from_latlon: tuple[float, float], to_latlon: tuple[float, float], envel
         if not _has_verified_edge(res, edges):
             return None
         assert_safe(res, edges)        # never return a forbidden route
-        return _shape(res, nodes)
+        geom = await _real_geometry(res, nodes, route_fn) if route_fn else None
+        return _shape(res, nodes, geom)
     except Exception:  # noqa: BLE001 — any failure → Valhalla fallback
         log.exception("wbkb plan failed; falling back")
         return None

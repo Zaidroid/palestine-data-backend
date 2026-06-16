@@ -109,7 +109,8 @@ async def v2_route(req: RouteRequest):
     # the Valhalla geometry router below. Kill-switch: WBKB_ROUTE_ENABLED=0.
     plan = None
     if os.environ.get("WBKB_ROUTE_ENABLED", "1") != "0":
-        plan = kb_service.plan((req.from_.lat, req.from_.lon), (req.to.lat, req.to.lon), envelopes)
+        plan = await kb_service.plan((req.from_.lat, req.from_.lon), (req.to.lat, req.to.lon),
+                                     envelopes, route_fn=valhalla_client.route)
 
     if plan is None:
         plan = await build_route_plan(
