@@ -61,6 +61,7 @@ CREATE TABLE IF NOT EXISTS checkpoint_status (
     last_updated     TEXT NOT NULL,
     last_source_type TEXT,
     last_msg_id      INTEGER,
+    last_source_channel TEXT,
     PRIMARY KEY (canonical_key, direction)
 )
 """
@@ -218,6 +219,13 @@ async def init_checkpoint_db():
             """)
             await db.execute("DROP TABLE checkpoint_status_old")
 
+        # Phase 1: carry the reporting channel of the latest status so per-channel
+        # trust has data. Re-query columns (the block above may have recreated it).
+        cursor = await db.execute("PRAGMA table_info(checkpoint_status)")
+        status_columns = {row[1] for row in await cursor.fetchall()}
+        if "last_source_channel" not in status_columns:
+            await db.execute("ALTER TABLE checkpoint_status ADD COLUMN last_source_channel TEXT")
+
         # ── One-time migration: split "military" into idf/police/inspection ──
         cur = await db.execute(
             "SELECT COUNT(*) FROM checkpoint_updates WHERE status='military'"
@@ -264,7 +272,8 @@ def _row_to_checkpoint(row) -> dict:
     # 5:latitude, 6:longitude, 7:status, 8:status_raw, 9:direction,
     # 10:confidence, 11:crowd_reports_1h, 12:last_updated, 13:last_source_type,
     # 14:governorate, 15:oslo_area, 16:geo_precision,
-    # 17:source_layer, 18:obstacle_type, 19:permanent_status, 20:last_msg_id
+    # 17:source_layer, 18:obstacle_type, 19:permanent_status, 20:last_msg_id,
+    # 21:last_source_channel
     last_updated = row[12]
     if last_updated:
         try:
@@ -304,6 +313,7 @@ def _row_to_checkpoint(row) -> dict:
         "obstacle_type":    row[18] if len(row) > 18 else None,
         "permanent_status": row[19] if len(row) > 19 else None,
         "last_msg_id":      row[20] if len(row) > 20 else None,
+        "source_channel":   row[21] if len(row) > 21 else None,
         # Raw last_updated (None when no status row) — provenance uses this to tell
         # "never reported" (freshness band "none") from "reported just now".
         "last_updated_iso": row[12],
@@ -525,8 +535,9 @@ async def upsert_checkpoint_status(upd: dict, is_admin: bool, channel: str) -> s
         await db.execute(
             """INSERT INTO checkpoint_status
                (canonical_key, direction, name_ar, status, status_raw, confidence,
-                crowd_reports_1h, last_updated, last_source_type, last_msg_id)
-               VALUES (?,?,?,?,?,?,?,?,?,?)
+                crowd_reports_1h, last_updated, last_source_type, last_msg_id,
+                last_source_channel)
+               VALUES (?,?,?,?,?,?,?,?,?,?,?)
                ON CONFLICT(canonical_key, direction) DO UPDATE SET
                  status=excluded.status,
                  status_raw=excluded.status_raw,
@@ -534,12 +545,13 @@ async def upsert_checkpoint_status(upd: dict, is_admin: bool, channel: str) -> s
                  crowd_reports_1h=excluded.crowd_reports_1h,
                  last_updated=excluded.last_updated,
                  last_source_type=excluded.last_source_type,
-                 last_msg_id=excluded.last_msg_id""",
+                 last_msg_id=excluded.last_msg_id,
+                 last_source_channel=excluded.last_source_channel""",
             (
                 upd["canonical_key"], direction, upd["name_raw"],
                 upd["status"], upd.get("status_raw"),
                 confidence, crowd_1h, now.isoformat(), "admin" if is_admin else "crowd",
-                upd.get("source_msg_id"),
+                upd.get("source_msg_id"), channel,
             ),
         )
         await db.commit()
@@ -586,11 +598,13 @@ _CHECKPOINT_SELECT = """
            s.status, s.status_raw, s.direction, s.confidence,
            s.crowd_reports_1h, s.last_updated, s.last_source_type,
            c.governorate, c.oslo_area, c.geo_precision,
-           c.source_layer, c.obstacle_type, c.permanent_status, s.last_msg_id
+           c.source_layer, c.obstacle_type, c.permanent_status, s.last_msg_id,
+           s.last_source_channel
     FROM checkpoints c
     LEFT JOIN (
         SELECT canonical_key, status, status_raw, direction, confidence,
-               crowd_reports_1h, last_updated, last_source_type, last_msg_id
+               crowd_reports_1h, last_updated, last_source_type, last_msg_id,
+               last_source_channel
         FROM checkpoint_status
         WHERE rowid IN (
             SELECT MAX(rowid) FROM checkpoint_status GROUP BY canonical_key
