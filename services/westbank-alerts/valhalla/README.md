@@ -20,17 +20,23 @@ curl -s localhost:8002/status     # {"version":...} when ready
 `scripts/fetch_osm_extract.sh` can pre-download the PBF into `valhalla_tiles/` if you
 prefer not to let the container fetch it.
 
-## 2. Enable hard exclusions (avoid-closed reroute)
+## 2. Exclusion limits (avoid-closed reroute + restriction layer)
 
-`exclude_polygons` is honored only when the generated `valhalla.json` allows hard
-exclusions. After the first tile build, edit `valhalla_tiles/valhalla.json`:
+This gis-ops image (the one running on .114) honors `exclude_polygons` **natively — no
+flag needed**. ⚠️ Do NOT add `service_limits.allow_hard_exclusions`: this build's config
+parser does not recognise it and the engine **crash-loops on startup**
+(`No such node (service_limits.allow_hard_exclusions.max_locations)`). Verified
+2026-06-16 — a one-box `exclude_polygons` request detours the route ~17 km as expected.
+(The instruction to set that flag was for a newer Valhalla; it is wrong for this image.)
 
-```json
-"service_limits": { "allow_hard_exclusions": true }
-```
-
-then `docker compose restart valhalla`. (The gis-ops image regenerates the config
-only when missing, so this edit persists.)
+The real tunable is **`service_limits.max_exclude_polygons_length`** — the max *summed
+circumference in METRES* of all exclude polygons (NOT vertex count; engine returns
+`error 167` when exceeded). Each 60 m restriction box ≈ 240 m perimeter, so the default
+`10000` caps ~41 boxes and dense WB routes (70–150 boxes) would silently fail-open with
+no restrictions applied. Raised to **`50000`** on .114 (covers the app's `max_polys=150`
+cap → 150 × 240 = 36000 m, with headroom). To change: edit `valhalla_tiles/valhalla.json`,
+then `docker restart wb-valhalla`. (The gis-ops image regenerates the config only when
+missing, so the edit persists.)
 
 ## 3. Point the alerts service at it & enable routing
 
