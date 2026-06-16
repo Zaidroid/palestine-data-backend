@@ -23,16 +23,24 @@ def _fresh_stats():
 def test_telemetry_counters_start_at_zero_and_increment():
     _fresh_stats()
     s0 = monitor.get_stats()
+    assert s0["security_seen_today"] == 0
     assert s0["security_discarded_today"] == 0
     assert s0["cp_messages_seen_today"] == 0
     assert s0["cp_whitelist_miss_today"] == 0
 
+    # security_seen is the denominator paired with security_discarded: every
+    # message that reaches the classifier (Telegram + RSS + cp-fallthrough),
+    # so discard_rate = discarded / seen is source-consistent.
+    monitor._record_security_seen()
+    monitor._record_security_seen()
+    monitor._record_security_seen()
     monitor._record_discard()
     monitor._record_cp_seen()
     monitor._record_cp_seen()
     monitor._record_cp_miss()
 
     s1 = monitor.get_stats()
+    assert s1["security_seen_today"] == 3
     assert s1["security_discarded_today"] == 1
     assert s1["cp_messages_seen_today"] == 2
     assert s1["cp_whitelist_miss_today"] == 1
@@ -47,5 +55,6 @@ def test_telemetry_resets_at_utc_day_rollover():
     # Simulate yesterday's counters carrying a stale date → next read resets.
     monitor._stats["_stats_date"] = "1999-01-01"
     s = monitor.get_stats()
+    assert s["security_seen_today"] == 0
     assert s["security_discarded_today"] == 0
     assert s["cp_whitelist_miss_today"] == 0

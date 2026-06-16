@@ -70,7 +70,8 @@ _stats: dict = {
     "cp_updates_today": 0,
     # Phase-0 telemetry — the otherwise-invisible drops (discarded/unmatched
     # messages are never stored, so they can't be read from the DB or API).
-    "security_discarded_today": 0,  # classifier produced no alert
+    "security_seen_today":      0,  # messages reaching the classifier (TG+RSS+cp-fallthrough)
+    "security_discarded_today": 0,  # of those, the classifier produced no alert
     "cp_messages_seen_today":   0,  # checkpoint-channel messages processed
     "cp_whitelist_miss_today":  0,  # strict parser matched no known checkpoint
     "_stats_date":      None,  # track which day the counters belong to
@@ -88,6 +89,7 @@ def _maybe_reset_daily():
         _stats["messages_today"] = 0
         _stats["alerts_today"] = 0
         _stats["cp_updates_today"] = 0
+        _stats["security_seen_today"] = 0
         _stats["security_discarded_today"] = 0
         _stats["cp_messages_seen_today"] = 0
         _stats["cp_whitelist_miss_today"] = 0
@@ -113,8 +115,14 @@ def _record_message(is_alert: bool = False, is_cp: bool = False):
         _stats["cp_updates_today"] += 1
 
 
+def _record_security_seen():
+    """A message reached the security classifier (denominator for discard rate)."""
+    _maybe_reset_daily()
+    _stats["security_seen_today"] += 1
+
+
 def _record_discard():
-    """A security-channel message produced no alert (both tiers returned None)."""
+    """A security message produced no alert (both tiers returned None)."""
     _maybe_reset_daily()
     _stats["security_discarded_today"] += 1
 
@@ -207,6 +215,9 @@ async def _process_text(
     if await content_duplicate_check(raw_text):
         log.debug(f"CONTENT_DUP [{source_type}/{source}]: {raw_text[:80]}")
         return
+
+    # Telemetry denominator: this message reaches the classifier (post-dedup).
+    _record_security_seen()
 
     classified = None
 
