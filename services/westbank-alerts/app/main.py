@@ -483,6 +483,10 @@ async def health():
             "messages_today":   monitor_stats.get("messages_today", 0),
             "alerts_today":     monitor_stats.get("alerts_today", 0),
             "cp_updates_today": monitor_stats.get("cp_updates_today", 0),
+            # Phase-0 telemetry: the otherwise-invisible drops.
+            "security_discarded_today": monitor_stats.get("security_discarded_today", 0),
+            "cp_messages_seen_today":   monitor_stats.get("cp_messages_seen_today", 0),
+            "cp_whitelist_miss_today":  monitor_stats.get("cp_whitelist_miss_today", 0),
         },
         "checkpoints": {
             "last_update": cp_last,
