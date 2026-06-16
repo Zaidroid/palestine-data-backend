@@ -216,8 +216,11 @@ async def _process_text(
         log.debug(f"CONTENT_DUP [{source_type}/{source}]: {raw_text[:80]}")
         return
 
-    # Telemetry denominator: this message reaches the classifier (post-dedup).
-    _record_security_seen()
+    # Telemetry denominator: count Telegram WB-channel messages that reach the
+    # classifier (post-dedup). RSS is excluded — it is title-only global news,
+    # inherently ~100% discard, and would swamp the WB false-negative signal.
+    if source_type == "telegram":
+        _record_security_seen()
 
     classified = None
 
@@ -230,7 +233,8 @@ async def _process_text(
         classified = classify_wb_operational(raw_text, source)
 
     if classified is None:
-        _record_discard()
+        if source_type == "telegram":
+            _record_discard()
         log.debug(f"DISCARD [{source_type}/{source}]: {raw_text[:80]}")
         return
 

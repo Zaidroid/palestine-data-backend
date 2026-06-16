@@ -28,9 +28,9 @@ def test_telemetry_counters_start_at_zero_and_increment():
     assert s0["cp_messages_seen_today"] == 0
     assert s0["cp_whitelist_miss_today"] == 0
 
-    # security_seen is the denominator paired with security_discarded: every
-    # message that reaches the classifier (Telegram + RSS + cp-fallthrough),
-    # so discard_rate = discarded / seen is source-consistent.
+    # security_seen is the denominator paired with security_discarded: Telegram
+    # WB-channel messages that reach the classifier (RSS excluded at the call
+    # site), so discard_rate = discarded / seen reflects the WB-channel signal.
     monitor._record_security_seen()
     monitor._record_security_seen()
     monitor._record_security_seen()
