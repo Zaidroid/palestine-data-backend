@@ -145,6 +145,17 @@ def _shape(res: dict, nodes: dict) -> dict:
     }
 
 
+def _has_verified_edge(res: dict, edges: dict) -> bool:
+    for leg in res.get("edges", []):
+        e = edges.get(leg["id"])
+        if not e:
+            continue
+        for slot in ("permission", "road_exists"):
+            if (e["facts"].get(slot) or {}).get("source") == "human_local":
+                return True
+    return False
+
+
 def plan(from_latlon: tuple[float, float], to_latlon: tuple[float, float], envelopes: list) -> dict | None:
     """Try a KB route. Returns the /v2/route plan dict, or None to fall back."""
     if not _AVAILABLE:
@@ -160,6 +171,12 @@ def plan(from_latlon: tuple[float, float], to_latlon: tuple[float, float], envel
             return None
         res = kbrouter.route(nodes, edges, src, dst, _status_map(envelopes))
         if not res.get("found"):
+            return None
+        # Confidence gate: only let the KB override Valhalla on a route that has at
+        # least one human-verified (ground-truth) edge. Pure model_inferred scaffold
+        # corridors fall back to Valhalla (richer geometry + OCHA restriction layer)
+        # until they're confirmed via the worklist.
+        if not _has_verified_edge(res, edges):
             return None
         assert_safe(res, edges)        # never return a forbidden route
         return _shape(res, nodes)
