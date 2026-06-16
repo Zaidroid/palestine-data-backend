@@ -14,6 +14,7 @@ from fastapi import APIRouter, Query, HTTPException
 from .. import checkpoint_db as cpdb
 from .. import incident_db
 from ..config import settings
+from ..database import get_channel_reliability_map
 from ..db_pool import get_alerts_db
 from ..serving import provenance as P
 from ..serving import gateways as GW
@@ -23,11 +24,16 @@ router = APIRouter(prefix="/v2", tags=["v2"])
 _STALE = settings.CHECKPOINT_STALE_HOURS
 
 
-def _cp_envelope(cp: dict) -> dict:
+def _cp_envelope(cp: dict, rel_map: Optional[dict] = None) -> dict:
     # Use the RAW last_updated (None when never reported) so freshness can return
     # band "none" instead of treating a never-reported checkpoint as fresh.
     src = {**cp, "last_updated": cp.get("last_updated_iso")}
-    return P.checkpoint_envelope(src, stale_hours=_STALE)
+    # Phase 1: a crowd report's trust reflects the reporting channel's observed
+    # reliability (resolved here, not inside the I/O-free provenance layer).
+    rel = None
+    if rel_map:
+        rel = rel_map.get((cp.get("source_channel") or "").lower())
+    return P.checkpoint_envelope(src, stale_hours=_STALE, channel_reliability=rel)
 
 
 @router.get("/checkpoints")
@@ -36,7 +42,8 @@ async def v2_checkpoints(
     status: Optional[str] = Query(None, description="filter by effective_status"),
 ):
     cps = await cpdb.get_all_checkpoints(region=region)
-    envs = [_cp_envelope(c) for c in cps]
+    rel_map = await get_channel_reliability_map()
+    envs = [_cp_envelope(c, rel_map) for c in cps]
     if status:
         envs = [e for e in envs if e["effective_status"] == status]
     return {"checkpoints": envs, "total": len(envs),
@@ -46,9 +53,10 @@ async def v2_checkpoints(
 @router.get("/checkpoints/geojson")
 async def v2_checkpoints_geojson(region: Optional[str] = Query(None)):
     cps = await cpdb.get_all_checkpoints(region=region)
+    rel_map = await get_channel_reliability_map()
     features = []
     for c in cps:
-        env = _cp_envelope(c)
+        env = _cp_envelope(c, rel_map)
         lat, lon = env["coordinates"]["lat"], env["coordinates"]["lon"]
         if lat is None or lon is None:
             continue

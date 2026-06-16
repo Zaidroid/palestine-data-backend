@@ -77,6 +77,27 @@ def test_trust_admin_beats_crowd_beats_none():
     assert P.source_trust("admin") > P.source_trust("crowd") > P.source_trust(None)
 
 
+def test_trust_crowd_uses_channel_reliability_when_provided():
+    # Phase 1: a crowd report from a reputable checkpoint channel beats the
+    # flat 0.4 prior — trust must discriminate by channel.
+    assert P.source_trust("crowd", channel_reliability=0.75) == 0.75
+
+
+def test_trust_crowd_defaults_to_flat_prior_without_reliability():
+    # Backward compatible: when no reliability is resolved, keep the 0.4 prior.
+    assert P.source_trust("crowd") == 0.4
+
+
+def test_trust_crowd_capped_below_admin_and_floored():
+    # Crowd never reaches admin (0.9); a near-zero channel keeps a little signal.
+    assert P.source_trust("crowd", channel_reliability=0.99) == 0.85
+    assert P.source_trust("crowd", channel_reliability=0.05) == 0.2
+
+
+def test_trust_admin_stays_authoritative_regardless_of_channel():
+    assert P.source_trust("admin", channel_reliability=0.6) == 0.9
+
+
 # ── checkpoint_envelope ──────────────────────────────────────────────────────
 
 def _cp(**over):
@@ -111,6 +132,14 @@ def test_checkpoint_envelope_stale_row_effective_unknown():
     env = P.checkpoint_envelope(_cp(last_updated=NOW - timedelta(hours=30)), now=NOW)
     assert env["freshness"]["freshness_band"] == "stale"
     assert env["effective_status"] == "unknown"
+
+
+def test_checkpoint_envelope_threads_channel_reliability():
+    # Phase 1: a crowd report's trust reflects the channel's reliability weight,
+    # resolved by the caller and passed in (provenance stays I/O-free).
+    env = P.checkpoint_envelope(_cp(last_source_type="crowd"),
+                                channel_reliability=0.75, now=NOW)
+    assert env["source_trust"]["trust"] == 0.75
 
 
 def test_checkpoint_envelope_permanent_closure_marks_closed_even_if_stale():

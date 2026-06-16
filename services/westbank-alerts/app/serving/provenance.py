@@ -14,6 +14,12 @@ DEFAULT_STALE_HOURS = 12.0
 LIVE_HOURS = 1.0  # <= this age → "live"
 
 _TRUST = {"admin": 0.9, "crowd": 0.4}
+# Phase 1: a crowd report's trust is driven by the reporting channel's observed
+# reliability (resolved by the caller), bounded so it keeps a floor of signal
+# and never reaches admin (0.9). Falls back to the flat 0.4 prior when the
+# caller has no reliability for the channel.
+_CROWD_TRUST_FLOOR = 0.2
+_CROWD_TRUST_CEIL = 0.85
 
 
 def _as_datetime(value: Union[datetime, str, None]) -> Optional[datetime]:
@@ -82,7 +88,24 @@ def effective_status(
     return cp.get("status") or "unknown"
 
 
-def source_trust(last_source_type: Optional[str]) -> float:
+def source_trust(
+    last_source_type: Optional[str],
+    channel_reliability: Optional[float] = None,
+) -> float:
+    """Trust score for a checkpoint's most recent report.
+
+    admin reports stay authoritative (0.9). A crowd report is scored by the
+    reporting channel's reliability weight when the caller supplies one
+    (bounded to [_CROWD_TRUST_FLOOR, _CROWD_TRUST_CEIL] so it carries a floor
+    of signal and never reaches admin); otherwise the flat 0.4 prior is used.
+    """
+    if last_source_type == "admin":
+        return _TRUST["admin"]
+    if last_source_type == "crowd":
+        if channel_reliability is None:
+            return _TRUST["crowd"]
+        return round(min(_CROWD_TRUST_CEIL,
+                         max(_CROWD_TRUST_FLOOR, channel_reliability)), 3)
     return _TRUST.get(last_source_type or "", 0.0)
 
 
@@ -91,6 +114,7 @@ def checkpoint_envelope(
     *,
     stale_hours: float = DEFAULT_STALE_HOURS,
     now: Optional[datetime] = None,
+    channel_reliability: Optional[float] = None,
 ) -> dict:
     """Canonical checkpoint record for the /v2 feeds and route endpoints.
 
@@ -125,7 +149,7 @@ def checkpoint_envelope(
         "freshness": fresh,
         "source_trust": {
             "last_source_type": cp.get("last_source_type"),
-            "trust": source_trust(cp.get("last_source_type")),
+            "trust": source_trust(cp.get("last_source_type"), channel_reliability),
         },
         "provenance": {
             "last_msg_id": cp.get("last_msg_id"),

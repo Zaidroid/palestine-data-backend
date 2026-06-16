@@ -732,6 +732,21 @@ async def get_channel_reliability(channel: Optional[str] = None):
     return out
 
 
+async def get_channel_reliability_map() -> dict:
+    """All channel reliability weights as {lower(channel): weight} — one query,
+    for batch construction of checkpoint envelopes (Phase 1 dynamic trust).
+
+    Reliability is enrichment: if the table is unavailable, return {} so callers
+    fall back to the flat crowd prior rather than failing the checkpoint feed.
+    """
+    try:
+        async with get_alerts_db() as db:
+            cur = await db.execute("SELECT lower(channel), weight FROM channel_reliability")
+            return {row[0]: float(row[1]) for row in await cur.fetchall()}
+    except aiosqlite.OperationalError:
+        return {}
+
+
 # ── Security vocab candidates ─────────────────────────────────────────────────
 
 async def insert_security_vocab_candidate(
