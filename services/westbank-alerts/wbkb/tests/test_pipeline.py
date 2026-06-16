@@ -129,6 +129,14 @@ class Pipeline(unittest.TestCase):
         self.assertEqual(sm.get("atara"), "congested")
         self.assertNotIn("zaatara", sm)
 
+    # 11 — an unmapped live status (e.g. 'police') must never crash the router
+    def test_11_unknown_status_no_crash(self):
+        nodes, edges, _ = load_kb(self.conn)
+        sm = {"atara": "police", "zaatara": "some_new_status", "murabbaa": "open"}
+        res = router.route(nodes, edges, "city_ramallah", "city_nablus", sm)
+        self.assertTrue(res["found"])
+        self.assertEqual(res["edges"][-1]["to"], "city_nablus")
+
     # 10 — append-only: history is preserved (audit trail / time travel)
     def test_10_append_only_history(self):
         n0 = len(fact_history(self.conn, "edge", "e_lubban_zaatara", "permission"))

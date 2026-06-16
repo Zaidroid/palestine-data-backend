@@ -22,9 +22,21 @@ FORBIDDEN_PERMISSIONS = {"forbidden", "settler_road", "settlement_road", "israel
 # extra minutes by live checkpoint status; "closed" blocks the edge entirely.
 STATUS_PENALTY = {
     "open": 0.0, "clear": 0.0,
-    "inspection": 10.0, "slow": 12.0, "partial": 8.0, "unknown": 8.0,
+    "inspection": 10.0, "police": 10.0, "slow": 12.0, "partial": 8.0, "unknown": 8.0,
     "congested": 20.0, "crisis": 28.0, "idf": 26.0,
 }
+
+# severity order (low → high). Any status NOT listed is treated as "unknown" so a
+# new/unexpected feed status (e.g. a vocabulary we haven't mapped) never crashes
+# the router — it just degrades to the cautious default.
+_SEVERITY = ["open", "clear", "partial", "unknown", "inspection", "police", "slow", "congested", "idf", "crisis", "closed"]
+
+
+def _severity_rank(status: str) -> int:
+    try:
+        return _SEVERITY.index(status)
+    except ValueError:
+        return _SEVERITY.index("unknown")
 RESIDENTS_ONLY_PENALTY = 30.0   # not the hard safety class, but not for through-travel
 LOW_CONF_PENALTY = 15.0         # discourage (but allow) unverified roads
 LOW_CONF_THRESHOLD = 0.40
@@ -61,13 +73,12 @@ def edge_status(edge: dict, nodes: dict, status_map: dict[str, str]) -> tuple[st
     A gate with no live signal defaults to the cautious ``partial``."""
     gates = _val(edge, "gating", []) or []
     worst, detail = "open", []
-    order = ["open", "partial", "unknown", "inspection", "slow", "congested", "idf", "crisis", "closed"]
     for cp_id in gates:
         cp = nodes.get(cp_id, {})
         fk = cp.get("feed_key")
         st = status_map.get(fk, "partial") if fk else "open"
         detail.append({"cp": cp_id, "feed_key": fk, "status": st})
-        if order.index(st) > order.index(worst if worst in order else "open"):
+        if _severity_rank(st) > _severity_rank(worst):
             worst = st
     return worst, detail
 
