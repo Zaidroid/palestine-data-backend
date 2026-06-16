@@ -9,6 +9,7 @@ reroute logic is unit-tested without Valhalla or the DB.
 """
 from __future__ import annotations
 
+import os
 from typing import Optional
 
 from fastapi import APIRouter, HTTPException
@@ -16,6 +17,7 @@ from pydantic import BaseModel, Field
 
 from .. import checkpoint_db as cpdb
 from ..config import settings
+from ..routing import kb_service
 from ..routing import on_route as OR
 from ..routing import restrictions as RES
 from ..routing import valhalla_client
@@ -101,17 +103,26 @@ async def v2_route(req: RouteRequest):
     cps = await cpdb.get_all_checkpoints()
     envelopes = [_cp_envelope(c) for c in cps]
 
-    plan = await build_route_plan(
-        (req.from_.lat, req.from_.lon), (req.to.lat, req.to.lon),
-        avoid_closed=req.avoid_closed, envelopes=envelopes,
-        route_fn=valhalla_client.route,
-        corridor_m=settings.ROUTE_CORRIDOR_M, box_m=settings.ROUTE_EXCLUDE_BOX_M,
-        restriction_polys=RES.avoid_polygons((req.from_.lat, req.from_.lon), (req.to.lat, req.to.lon)),
-    )
-    # Collapse near-duplicate catalog variants of one gate (Huwara / gate / bypass …).
-    for r in plan["routes"]:
-        r["checkpoints_on_route"] = OR.dedup_on_route(r["checkpoints_on_route"])
-        r["closed_count"] = len([o for o in r["checkpoints_on_route"] if o["closed"]])
+    # KB-first: the checkpoint-aware knowledge-base router (correct green-plate
+    # entrances, never a forbidden/settlement road). Confidence-gated + additive —
+    # returns None for any pair it doesn't cover or on any error, falling back to
+    # the Valhalla geometry router below. Kill-switch: WBKB_ROUTE_ENABLED=0.
+    plan = None
+    if os.environ.get("WBKB_ROUTE_ENABLED", "1") != "0":
+        plan = kb_service.plan((req.from_.lat, req.from_.lon), (req.to.lat, req.to.lon), envelopes)
+
+    if plan is None:
+        plan = await build_route_plan(
+            (req.from_.lat, req.from_.lon), (req.to.lat, req.to.lon),
+            avoid_closed=req.avoid_closed, envelopes=envelopes,
+            route_fn=valhalla_client.route,
+            corridor_m=settings.ROUTE_CORRIDOR_M, box_m=settings.ROUTE_EXCLUDE_BOX_M,
+            restriction_polys=RES.avoid_polygons((req.from_.lat, req.from_.lon), (req.to.lat, req.to.lon)),
+        )
+        # Collapse near-duplicate catalog variants of one gate (Huwara / gate / bypass …).
+        for r in plan["routes"]:
+            r["checkpoints_on_route"] = OR.dedup_on_route(r["checkpoints_on_route"])
+            r["closed_count"] = len([o for o in r["checkpoints_on_route"] if o["closed"]])
     # Attach the authoritative gateway advisories for the origin (how to LEAVE) and
     # destination (how to ENTER) cities — independent of route geometry/coords.
     dest_city = GW.nearest_city(req.to.lat, req.to.lon)

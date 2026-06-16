@@ -66,6 +66,16 @@ def _norm(s: str) -> str:
     return re.sub(r"\s+", " ", s).strip()
 
 
+def match_feed_key(text: str) -> str | None:
+    """Map a checkpoint name (AR or EN) to its feed_key, longest name first so a
+    short name can't fire inside a longer one. Used to bind the live catalog."""
+    n = _norm(text)
+    for name, key in sorted(NAME_TO_FEED, key=lambda nk: len(_norm(nk[0])), reverse=True):
+        if _norm(name) in n:
+            return key
+    return None
+
+
 def parse_message(text: str) -> dict[str, str]:
     """One message -> {feed_key: status} for every checkpoint named in it."""
     n = _norm(text)

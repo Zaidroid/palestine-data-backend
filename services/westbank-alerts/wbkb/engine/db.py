@@ -14,12 +14,16 @@ so it is already covered by the nightly backup on .114.
 """
 from __future__ import annotations
 
+import os
 import sqlite3
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parent.parent
 DATA_DIR = ROOT / "data"
-DB_PATH = DATA_DIR / "wbkb.db"
+# In production the DB lives in the persistent bind-mounted volume (/data), so it
+# survives container rebuilds and is covered by the nightly backup. Override with
+# WBKB_DB_PATH; defaults to the package-local data dir for dev.
+DB_PATH = Path(os.environ.get("WBKB_DB_PATH", str(DATA_DIR / "wbkb.db")))
 SCHEMA_VERSION = "1"
 
 SCHEMA = """
