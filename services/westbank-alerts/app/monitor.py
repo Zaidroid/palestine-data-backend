@@ -68,6 +68,11 @@ _stats: dict = {
     "messages_today":   0,
     "alerts_today":     0,
     "cp_updates_today": 0,
+    # Phase-0 telemetry — the otherwise-invisible drops (discarded/unmatched
+    # messages are never stored, so they can't be read from the DB or API).
+    "security_discarded_today": 0,  # classifier produced no alert
+    "cp_messages_seen_today":   0,  # checkpoint-channel messages processed
+    "cp_whitelist_miss_today":  0,  # strict parser matched no known checkpoint
     "_stats_date":      None,  # track which day the counters belong to
 }
 
@@ -83,6 +88,9 @@ def _maybe_reset_daily():
         _stats["messages_today"] = 0
         _stats["alerts_today"] = 0
         _stats["cp_updates_today"] = 0
+        _stats["security_discarded_today"] = 0
+        _stats["cp_messages_seen_today"] = 0
+        _stats["cp_whitelist_miss_today"] = 0
         _stats["_stats_date"] = today
 
 
@@ -103,6 +111,24 @@ def _record_message(is_alert: bool = False, is_cp: bool = False):
         _stats["alerts_today"] += 1
     if is_cp:
         _stats["cp_updates_today"] += 1
+
+
+def _record_discard():
+    """A security-channel message produced no alert (both tiers returned None)."""
+    _maybe_reset_daily()
+    _stats["security_discarded_today"] += 1
+
+
+def _record_cp_seen():
+    """A checkpoint-channel message reached the strict parser."""
+    _maybe_reset_daily()
+    _stats["cp_messages_seen_today"] += 1
+
+
+def _record_cp_miss():
+    """The strict whitelist parser matched no known checkpoint (coverage gap)."""
+    _maybe_reset_daily()
+    _stats["cp_whitelist_miss_today"] += 1
 
 
 def set_broadcast_fn(fn: Callable):
@@ -193,6 +219,7 @@ async def _process_text(
         classified = classify_wb_operational(raw_text, source)
 
     if classified is None:
+        _record_discard()
         log.debug(f"DISCARD [{source_type}/{source}]: {raw_text[:80]}")
         return
 
@@ -370,6 +397,9 @@ async def _process_checkpoint_message(message, channel_username: str):
         log.warning("[CHECKPOINT] Knowledge base not loaded yet — skipping message")
     updates = parse_checkpoint_message(raw, kb)
     extraction = "strict"
+    _record_cp_seen()
+    if not updates:
+        _record_cp_miss()  # strict whitelist matched no known checkpoint
 
     # Hybrid fallback (B2): if the deterministic parser found nothing, let MiniMax
     # try to pull a status report out of messy phrasing — but every result is

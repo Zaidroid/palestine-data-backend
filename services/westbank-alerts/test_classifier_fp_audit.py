@@ -402,6 +402,41 @@ NORTHERN_ISRAEL_TPS = [
      "حزب الله لصواريخ.", "qudsn", "northern_israel_siren"),
 ]
 
+# 26. NEW (2026-06-16 audit) — MENA-area bleed. A regional event (South
+#     Lebanon / Iran / Syria strike) leaks into a WEST-BANK-LOCAL alert type
+#     because a spurious WB_ZONE token (e.g. the news-agency branding "صفا"
+#     collides with the Ramallah village "صفا") defeats the MENA guard, and
+#     _extract_area then resolves the foreign country (Lebanon/Iran/Syria).
+#     A WB-local type (injury_report/idf_raid/settler_attack/demolition/…/
+#     west_bank_siren) must NEVER carry a foreign-country area. regional_attack
+#     IS allowed to (that is its job).
+#     Row 1 is the real production leak (alert id 1650, area=Lebanon).
+MENA_AREA_BLEED = [
+    ("🔴 متابعة صفا| الدفاع المدني في جنوب لبنان للجزيرة: 4 شهداء في "
+     "غارتين إسرائيليتين على ميفدون وشوكين", "safaps"),
+    ("متابعة صفا| مراسلنا: استشهاد 5 مواطنين في قصف إسرائيلي استهدف ايران",
+     "safaps"),
+    ("صفا| جرافات الاحتلال تهدم منازل في سوريا بريف دمشق", "safaps"),
+    ("صفا| قوات الاحتلال تعتقل 3 شبان خلال توغل في لبنان", "safaps"),
+]
+
+# WB-local alert types (everything except the regional/northern buckets that
+# are SUPPOSED to be able to carry a foreign area).
+_WB_LOCAL_TYPES = {
+    "west_bank_siren", "idf_raid", "settler_attack", "demolition",
+    "injury_report", "arrest_campaign", "road_closure", "flying_checkpoint",
+    "child_detention", "evacuation_order", "hospital_strike",
+    "journalist_targeted", "utility_cutoff", "school_closure",
+}
+# Foreign-country area labels AREA_MAP can emit (the "Regional (for Tier 3)"
+# block in classifier.py). Excludes Israeli-interior cities, which are
+# intentionally west_bank_siren by shared-airspace design.
+_FOREIGN_AREA_LABELS = {
+    "Lebanon", "Beirut", "Syria", "Iran", "Iraq", "Baghdad",
+    "Yemen", "Jordan", "Kuwait",
+}
+
+
 # True positives — must continue to classify (not None) with expected type.
 # Optional 4th element = expected `area`. None means we don't assert area.
 TRUE_POSITIVES = [
@@ -483,6 +518,13 @@ def _run_all():
     # accept either None (filtered) or a non-Yatta area.
     _fp_bucket("GEO_BOUNDARY_REGRESSION", GEO_BOUNDARY_REGRESSION,
                lambda r: r is not None and r.get("area") == "Yatta")
+
+    # MENA_AREA_BLEED: a WB-local type must not carry a foreign-country area.
+    # regional_attack@<foreign> is fine; injury_report@Lebanon is the bug.
+    _fp_bucket("MENA_AREA_BLEED", MENA_AREA_BLEED,
+               lambda r: (r is not None
+                          and _type_name(r["type"]) in _WB_LOCAL_TYPES
+                          and r.get("area") in _FOREIGN_AREA_LABELS))
 
     # NORTHERN_ISRAEL_TPS — must classify as the new type, not west_bank_siren.
     nis_outcomes = []

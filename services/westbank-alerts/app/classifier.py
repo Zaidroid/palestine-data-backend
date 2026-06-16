@@ -1570,6 +1570,23 @@ AREA_MAP = {_normalize(k): v for k, v in _AREA_MAP_RAW.items()}
 # Sort by key length descending so longer (more specific) matches win
 _AREA_KEYS_SORTED = sorted(AREA_MAP.keys(), key=len, reverse=True)
 
+# Foreign-country area labels (the "Regional (for Tier 3)" block in
+# _AREA_MAP_RAW). These are legitimate areas ONLY for regional_attack. A
+# West-Bank-local event type must never carry one — when _extract_area
+# resolves to a foreign country inside a WB-local branch, the message is
+# regional news that defeated the MENA zone guard via a spurious WB_ZONE
+# token collision (e.g. the news-agency name "صفا" ≡ the village "صفا").
+# Israeli-interior cities are deliberately excluded: a missile on
+# Tel Aviv/Haifa shares WB airspace and is west_bank_siren by design.
+_FOREIGN_AREAS = frozenset({
+    "Lebanon", "Beirut", "Syria", "Iran", "Iraq", "Baghdad",
+    "Yemen", "Jordan", "Kuwait",
+})
+
+
+def _is_foreign_area(area: Optional[str]) -> bool:
+    return area in _FOREIGN_AREAS
+
 
 # Marker-prefixed location extraction. When a post says "بلدة X" /
 # "قرية X" / "مخيم X" / "حي X", X is the actual location — even if a
@@ -2141,6 +2158,11 @@ def classify(raw_text: str, source: str) -> Optional[dict]:
         )
         area = _extract_area(normed) or "West Bank"
         zone = _extract_zone(normed)
+        # A spurious WB_ZONE token (e.g. agency name "صفا" ≡ village "صفا")
+        # can flip _is_wb_zone on a regional strike. If the location actually
+        # resolved to a foreign country, surface it as regional, not WB siren.
+        if _is_foreign_area(area):
+            return _build(AlertType.regional_attack, Severity.medium, clean, source, area)
         return _build(AlertType.west_bank_siren, severity, clean, source, area, zone=zone)
 
     # Sirens / missiles hitting Israel interior — same geolocation, HIGH severity
@@ -2230,6 +2252,12 @@ def classify_wb_operational(raw_text: str, source: str) -> Optional[dict]:
     area = _extract_area(normed) or ("Gaza Strip" if _is_gaza else "West Bank")
     zone = _extract_zone(normed) or ("gaza_strip" if _is_gaza else "west_bank")
     is_urgent = _has_urgent_marker(normed)
+
+    # Foreign-area guard: if the location resolved to a MENA country, this is
+    # regional news that slipped past the MENA zone guard (e.g. a spurious
+    # WB_ZONE token collision). It is NOT a West-Bank operational event.
+    if _is_foreign_area(area):
+        return None
 
     # ── B5 — civilian-life specific checks (run BEFORE generic injury/raid/arrest)
     # Hospital strike beats raid (raid into a hospital is more specifically "hospital_strike")
