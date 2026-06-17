@@ -10,9 +10,16 @@ Loads from known_checkpoints.json and provides fast indexed lookups by:
 
 import json
 import logging
+import re
 from pathlib import Path
 from typing import Optional
 from .checkpoint_parser import _normalise
+
+
+def _collapse_elongation(s: str) -> str:
+    """Collapse runs of 2+ identical characters to one — social-media letter
+    stretching (المربععه → المربعه, بحححرررري → بحري)."""
+    return re.sub(r"(.)\1+", r"\1", s)
 
 log = logging.getLogger("checkpoint_knowledge_base")
 
@@ -157,6 +164,35 @@ class CheckpointKnowledgeBase:
 
             if name_norm in norm_known:
                 # Incoming is substring of known — always accept
+                return canonical_key
+
+        # ── Phase 3b: noise-robust recovery. ADDITIVE — only reached when exact /
+        # alias / substring all missed, and resolves ONLY to an exact whitelist
+        # name (no open-ended fuzzy), so existing matches are unchanged and there
+        # is no wrong-checkpoint risk.
+
+        # 3.5 De-elongation retry: collapse stretched letters and re-match
+        # (المربععه بحري → المربعه ...).
+        deelong = _collapse_elongation(name_norm)
+        if deelong != name_norm:
+            if deelong in self.by_name_norm:
+                return self.by_name_norm[deelong]
+            if deelong in self.aliases:
+                return self.aliases[deelong]
+            for norm_known, canonical_key in self.all_names:
+                if len(norm_known) >= 3 and norm_known in deelong:
+                    extra = len(deelong.split()) - len(norm_known.split())
+                    if extra <= len(norm_known.split()):
+                        return canonical_key
+
+        # 4. Distinctive whole-token match: a known single-token name of >= 4 chars
+        # appearing as a complete token in the (de-elongated) text recovers a real
+        # whitelisted checkpoint surrounded by status/prefix noise
+        # (عطارة البرج فتحت الان → عطاره). The >= 4 chars + whole-token gate avoids
+        # short-substring false positives ("تل" inside "مقاتلو").
+        tokens = set(deelong.split())
+        for norm_known, canonical_key in self.all_names:
+            if len(norm_known) >= 4 and " " not in norm_known and norm_known in tokens:
                 return canonical_key
 
         return None
