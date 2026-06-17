@@ -60,7 +60,8 @@ def _extract_direction_before_parse(text: str) -> tuple[str, Optional[str]]:
     return " ".join(words_to_keep).strip(), direction
 
 
-def parse_message_whitelist(text: str, knowledge_base: CheckpointKnowledgeBase) -> list[dict]:
+def parse_message_whitelist(text: str, knowledge_base: CheckpointKnowledgeBase,
+                            misses: Optional[list] = None) -> list[dict]:
     """
     Parse a message using whitelist-first approach.
 
@@ -70,6 +71,10 @@ def parse_message_whitelist(text: str, knowledge_base: CheckpointKnowledgeBase) 
     3. Have valid status
 
     Returns list of dicts with: canonical_key, name_raw, status, status_raw, direction, raw_line
+
+    Phase 3a: if `misses` is a list, each line that named a validated-but-unknown
+    checkpoint (no whitelist match, no successful parse) contributes ONE candidate
+    name to it.
     """
     if not text or len(text.strip()) < 3:
         return []
@@ -82,9 +87,13 @@ def parse_message_whitelist(text: str, knowledge_base: CheckpointKnowledgeBase) 
         if not line_stripped or _is_skippable(line_stripped):
             continue
 
+        line_misses: list = []
+        matched = False
+
         # Try colon format first (admin lists are usually well-structured)
         if ":" in line_stripped:
-            parsed_items = _parse_colon_line_whitelist(line_stripped, knowledge_base)
+            parsed_items = _parse_colon_line_whitelist(line_stripped, knowledge_base,
+                                                       misses=line_misses)
             if parsed_items:
                 for item in parsed_items:
                     if item:
@@ -95,18 +104,24 @@ def parse_message_whitelist(text: str, knowledge_base: CheckpointKnowledgeBase) 
                 continue
 
         # Try word-based parsing
-        parsed = _parse_line_whitelist(line_stripped, knowledge_base)
+        parsed = _parse_line_whitelist(line_stripped, knowledge_base, misses=line_misses)
         if parsed:
             dedup_key = (parsed["canonical_key"], parsed.get("direction") or "")
             if dedup_key not in seen_keys:
                 results.append(parsed)
                 seen_keys.add(dedup_key)
+            matched = True
+
+        # A line that named a plausible checkpoint but matched nothing → one candidate.
+        if not matched and misses is not None and line_misses:
+            misses.append(line_misses[0])
 
     return results
 
 
 def parse_checkpoint_message(
-    text: str, knowledge_base: Optional[CheckpointKnowledgeBase]
+    text: str, knowledge_base: Optional[CheckpointKnowledgeBase],
+    misses: Optional[list] = None,
 ) -> list[dict]:
     """Single strict entry point: a raw channel message → validated checkpoint updates.
 
@@ -114,13 +129,18 @@ def parse_checkpoint_message(
     can never diverge again. Strict-or-nothing: with no knowledge base we emit nothing
     rather than falling back to the old permissive parser — that fallback is what minted
     user statements (e.g. "عطارة شالو الحاجز بس") as their own checkpoints (2026-06).
+
+    Phase 3a: when `misses` is a list, validated-but-unknown checkpoint names (a
+    line that named a plausible checkpoint not in the whitelist) are appended to it
+    so the caller can accrue them as candidates. None (default) keeps the old behaviour.
     """
     if not knowledge_base:
         return []
-    return parse_message_whitelist(text, knowledge_base)
+    return parse_message_whitelist(text, knowledge_base, misses=misses)
 
 
-def _parse_colon_line_whitelist(line: str, knowledge_base: CheckpointKnowledgeBase) -> Optional[list[dict]]:
+def _parse_colon_line_whitelist(line: str, knowledge_base: CheckpointKnowledgeBase,
+                                misses: Optional[list] = None) -> Optional[list[dict]]:
     """
     Parse a colon-delimited line with whitelist validation.
 
@@ -171,6 +191,8 @@ def _parse_colon_line_whitelist(line: str, knowledge_base: CheckpointKnowledgeBa
         # Look up in whitelist
         canonical_key = knowledge_base.find_checkpoint(name_for_lookup)
         if not canonical_key:
+            if misses is not None:
+                misses.append(name_for_lookup)
             log.debug(f"Unknown checkpoint: '{name_for_lookup}'")
             return None
 
@@ -210,7 +232,8 @@ def _parse_colon_line_whitelist(line: str, knowledge_base: CheckpointKnowledgeBa
         return None
 
 
-def _parse_line_whitelist(line: str, knowledge_base: CheckpointKnowledgeBase) -> Optional[dict]:
+def _parse_line_whitelist(line: str, knowledge_base: CheckpointKnowledgeBase,
+                          misses: Optional[list] = None) -> Optional[dict]:
     """
     Parse a word-based checkpoint line with whitelist validation.
 
@@ -317,6 +340,8 @@ def _parse_line_whitelist(line: str, knowledge_base: CheckpointKnowledgeBase) ->
     # Step 6: Look up in whitelist
     canonical_key = knowledge_base.find_checkpoint(name_candidate)
     if not canonical_key:
+        if misses is not None:
+            misses.append(name_candidate)
         log.debug(f"Unknown checkpoint: '{name_candidate}'")
         return None
 

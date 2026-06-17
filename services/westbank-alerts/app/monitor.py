@@ -18,7 +18,7 @@ from telethon import TelegramClient
 from telethon.tl.types import ChannelParticipantsAdmins
 
 from .classifier import classify, is_security_relevant, classify_wb_operational
-from .checkpoint_parser import is_admin_message
+from .checkpoint_parser import is_admin_message, _normalise
 from .checkpoint_matcher import load_checkpoint_index
 from .checkpoint_whitelist_parser import parse_checkpoint_message
 from .llm.checkpoint_extractor import extract_checkpoint_llm
@@ -26,7 +26,8 @@ from .checkpoint_knowledge_base import get_knowledge_base
 from .config import settings
 from .database import duplicate_check, content_duplicate_check, get_channels, insert_alert, prune_alerts_if_needed
 from .checkpoint_db import (
-    duplicate_check_cp, insert_checkpoint_update, upsert_checkpoint_status
+    duplicate_check_cp, insert_checkpoint_update, upsert_checkpoint_status,
+    upsert_candidate,
 )
 from .incident_grouper import process_alert_into_incident, auto_resolve_stale
 from .models import Alert
@@ -410,11 +411,19 @@ async def _process_checkpoint_message(message, channel_username: str):
     kb = get_knowledge_base()
     if kb is None:
         log.warning("[CHECKPOINT] Knowledge base not loaded yet — skipping message")
-    updates = parse_checkpoint_message(raw, kb)
+    miss_names: list = []
+    updates = parse_checkpoint_message(raw, kb, misses=miss_names)
     extraction = "strict"
     _record_cp_seen()
     if not updates:
         _record_cp_miss()  # strict whitelist matched no known checkpoint
+    # Phase 3a: accrue validated-but-unknown checkpoint names as candidates (feeds
+    # the existing upsert→vet→promote pipeline). Capture must never break ingestion.
+    for _name in miss_names:
+        try:
+            await upsert_candidate(raw_name=_name, normalized=_normalise(_name), absolute=False)
+        except Exception as e:
+            log.debug(f"[CANDIDATE] capture failed for {_name!r}: {e}")
 
     # Hybrid fallback (B2): if the deterministic parser found nothing, let MiniMax
     # try to pull a status report out of messy phrasing — but every result is
