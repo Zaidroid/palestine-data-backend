@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Access &amp; Pricing — Palestine Data Platform</title>
+<style>
+  body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+         max-width: 860px; margin: 2rem auto; padding: 0 1rem; color: #1a1a1a; }
+  h1 { font-size: 1.4rem; } h2 { font-size: 1.05rem; margin-top: 2rem; }
+  .detail { color: #555; font-size: .9rem; }
+  table { border-collapse: collapse; width: 100%; font-size: .9rem; margin-top: 1rem; }
+  td, th { text-align: left; padding: .5rem .6rem; border-bottom: 1px solid #eee; vertical-align: top; }
+  th { font-weight: 600; }
+  .price { font-weight: 600; white-space: nowrap; }
+  .free { color: #2e9e44; font-weight: 600; }
+  .cta { display: inline-block; margin-top: .3rem; padding: .5rem 1rem; background: #1a1a1a;
+         color: #fff; text-decoration: none; border-radius: 4px; font-size: .9rem; }
+  .cta:hover { background: #333; }
+  .muted { color: #888; font-size: .85rem; margin-top: 2rem; }
+  code { background: #f4f4f4; padding: .1rem .3rem; border-radius: 3px; }
+  ul { padding-left: 1.2rem; } li { margin: .3rem 0; font-size: .95rem; }
+</style>
+</head>
+<body>
+<h1>Access &amp; pricing</h1>
+<p class="detail">The public data stays free — that's the point of this project. Paid
+tiers exist for organizations that need full granularity, freshness, reliability, and
+support. Paid tiers only ever <em>add</em>; they never take anything away from public
+access.</p>
+
+<table>
+  <tr><th>Tier</th><th>Price</th><th>What you get</th></tr>
+  <tr>
+    <td><strong>Public</strong></td>
+    <td class="free">Free</td>
+    <td>Open API access with standard rate limits. Attribution required.
+        No signup. <a href="/integrate.html">Start here</a>.</td>
+  </tr>
+  <tr>
+    <td><strong>Researcher</strong></td>
+    <td class="free">Free (registered)</td>
+    <td>For academic and journalistic use: full-granularity data, higher rate
+        limits, stable IDs for citation. Email us with your affiliation.</td>
+  </tr>
+  <tr>
+    <td><strong>Journalist</strong></td>
+    <td class="price">$29/mo</td>
+    <td>For solo reporters and freelance newsrooms: full granularity,
+        60 req/min, 50k requests/month.</td>
+  </tr>
+  <tr>
+    <td><strong>Organization</strong></td>
+    <td class="price">$99/mo<br><span class="detail">founding rate · $149 list</span></td>
+    <td>Full granularity and freshness, 300 req/min, 500k requests/month,
+        email support, quarterly invoice billing (wire transfer).</td>
+  </tr>
+  <tr>
+    <td><strong>Organization + Alerts</strong></td>
+    <td class="price">$199/mo</td>
+    <td>Everything in Organization, plus real-time West Bank alert feeds
+        (webhook or email) from the live alerts service.</td>
+  </tr>
+  <tr>
+    <td><strong>Enterprise / custom</strong></td>
+    <td class="price">from $500/quarter</td>
+    <td>Custom data extracts (CSV/Parquet), commercial license, integration
+        help, named support contact.</td>
+  </tr>
+</table>
+
+<h2>Commercial use of the free tier</h2>
+<p class="detail">Individuals, activists, journalists, researchers, and NGOs: use the
+free tier without restriction beyond attribution. Companies incorporating this data
+into commercial products or services need an Organization or Enterprise license.</p>
+
+<h2>How billing works</h2>
+<ul>
+  <li>Quarterly invoicing, payable by USD wire transfer (SWIFT) — standard institutional
+      procurement. Card payment and crypto invoicing available on request.</li>
+  <li>Founding organizations (first three) lock this pricing for 12 months.</li>
+  <li>Field NGOs and humanitarian organizations: we do not charge you. Write to us —
+      researcher-tier access applies.</li>
+</ul>
+
+<h2>Request access</h2>
+<p><a class="cta" href="mailto:zaidsalem@live.com?subject=Data%20platform%20access%20request&body=Organization%3A%0ATier%3A%0AUse%20case%3A%0A">Request access by email</a></p>
+<p class="detail">Tell us your organization, the tier you're after, and what you're
+building. You'll get an answer, and a trial key, within two working days.</p>
+
+<p class="muted"><a href="/status.html">Platform status</a> ·
+<a href="/integrate.html">API documentation</a> ·
+<a href="https://palboard.net">Data explorer</a> ·
+Verified sources and licensing: <a href="/api/v1/meta/licenses">per-source licenses</a></p>
+</body>
+</html>
