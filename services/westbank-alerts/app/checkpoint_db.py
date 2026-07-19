@@ -528,18 +528,29 @@ def _consensus_status(reports, *, half_life_min: float = _CONSENSUS_HALF_LIFE_MI
     Confidence is the winner's share of total weight (agreement) — not a raw count.
     """
     weights: dict = {}
+    counts: dict = {}
     admin_backed: set = set()
     for status, src, age_min in reports:
         if not status:
             continue
         decay = 0.5 ** (max(0.0, age_min) / half_life_min)
         weights[status] = weights.get(status, 0.0) + _CONSENSUS_SRC_WEIGHT.get(src, 1.0) * decay
+        counts[status] = counts.get(status, 0) + 1
         if src == "admin":
             admin_backed.add(status)
     if not weights:
         return None, "low", 0.0
     total = sum(weights.values())
     win = max(weights, key=weights.get)
+    # F9 — large-cohort guard: a status with a strong, unambiguous cohort (>=4
+    # reports and >=3x the recency-winner's report count) must not be flipped by a
+    # couple of recent contrarian reports (measured: بيت إيل served 'closed' on 2
+    # recent reports despite 14 'open'). Admin winners are exempt (authoritative).
+    if win not in admin_backed:
+        for st, c in counts.items():
+            if st != win and c >= 4 and c >= 3 * counts[win]:
+                win = st
+                break
     ratio = round(weights[win] / total, 3) if total else 0.0
     # "high" requires both strong agreement AND an authoritative (admin) report
     # backing the winner — crowd-only consensus caps at "medium" (it can be
