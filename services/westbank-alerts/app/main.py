@@ -2293,13 +2293,20 @@ async def checkpoints_summary():
     Does NOT return individual checkpoint data — use GET /checkpoints for that.
     Designed to be polled every 30 seconds by frontends.
 
+    Counts are per DISTINCT checkpoint (a checkpoint's directions are collapsed,
+    freshest wins) — not per-direction status rows — so numbers match the catalog.
+
     Fields:
-      - by_status:      { open: N, closed: N, congested: N, ... }
-      - fresh_last_1h:  checkpoints updated in the last hour
-      - fresh_last_6h:  checkpoints updated in the last 6 hours
-      - total_active:   total checkpoints with any known status
-      - last_update:    ISO timestamp of most recent checkpoint update
-      - is_data_stale:  true if no updates in the last 6 hours
+      - by_status:          distinct checkpoints by current status { open, closed, ... }
+      - by_status_fresh_6h: same, but only checkpoints reported in the last 6h (the
+                            honest "current situation" — excludes stale reports)
+      - fresh_last_1h/6h:   distinct checkpoints reported in the last 1h / 6h
+      - stale:              distinct checkpoints last reported >6h ago (served status
+                            may be outdated — read alongside per-checkpoint age_hours)
+      - total_active:       distinct checkpoints with any report (= sum of by_status)
+      - total_directory:    catalog size (the denominator)
+      - last_update:        ISO timestamp of most recent checkpoint update
+      - is_data_stale:      feed liveness (no updates in 6h) — NOT per-checkpoint freshness
     """
     return await cpdb.get_checkpoint_summary()
 

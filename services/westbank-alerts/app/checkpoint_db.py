@@ -1330,7 +1330,7 @@ async def get_checkpoint_stats() -> dict:
 
     async with get_checkpoint_db() as db:
         async with db.execute(
-            "SELECT canonical_key, status, confidence FROM checkpoint_status"
+            "SELECT canonical_key, status, confidence, last_updated FROM checkpoint_status"
         ) as cur:
             status_rows = await cur.fetchall()
 
@@ -1352,17 +1352,28 @@ async def get_checkpoint_stats() -> dict:
             "WHERE source_type='admin' AND timestamp>=?", (h24,)
         )).fetchone())[0]
 
-    # F3: count only curated (whitelist) checkpoints so /stats matches /summary + the map.
+    # F2/F3: curated (whitelist) checkpoints only, collapsed to distinct (freshest
+    # direction wins) so total_checkpoints reflects real checkpoints, not per-direction rows.
     from .checkpoint_knowledge_base import get_knowledge_base
     kb = get_knowledge_base()
     if kb is not None:
-        status_rows = [r for r in status_rows if kb.is_known(r[0])]
         cp_rows = [r for r in cp_rows if kb.is_known(r[0])]
+
+    # confidence per distinct checkpoint comes from the freshest direction row
+    best_conf: dict = {}
+    for key, _status, conf, lu in status_rows:
+        if kb is not None and not kb.is_known(key):
+            continue
+        if key not in best_conf or (lu or "") > (best_conf[key][1] or ""):
+            best_conf[key] = (conf, lu)
+    distinct = _collapse_status_by_checkpoint(
+        [(r[0], r[1], r[3]) for r in status_rows], kb)
 
     by_status: dict = {}
     by_conf: dict = {}
-    for _key, status, conf in status_rows:
+    for _key, (status, _lu) in distinct.items():
         by_status[status] = by_status.get(status, 0) + 1
+    for _key, (conf, _lu) in best_conf.items():
         by_conf[conf] = by_conf.get(conf, 0) + 1
 
     by_type: dict = {}
@@ -1373,7 +1384,7 @@ async def get_checkpoint_stats() -> dict:
             total_geo += 1
 
     return dict(
-        total_checkpoints=len(status_rows),
+        total_checkpoints=len(distinct),
         total_directory=len(cp_rows),
         total_with_geo=total_geo,
         by_status=by_status,
@@ -1475,11 +1486,26 @@ async def get_vocab_discoveries(promoted: Optional[bool] = None, limit: int = 10
 
 # ── Summary snapshot ──────────────────────────────────────────────────────────
 
+def _collapse_status_by_checkpoint(rows, kb):
+    """F2 — checkpoint_status has one row per (checkpoint, direction). Collapse to
+    one entry per DISTINCT checkpoint (freshest direction wins) so counts reflect
+    real checkpoints, not inflated per-direction rows. rows: (key, status, last_updated).
+    Returns {canonical_key: (status, last_updated)}."""
+    best: dict = {}
+    for key, status, lu in rows:
+        if kb is not None and not kb.is_known(key):
+            continue
+        if key not in best or (lu or "") > (best[key][1] or ""):
+            best[key] = (status, lu)
+    return best
+
+
 async def get_checkpoint_summary() -> dict:
     """
     Lightweight snapshot for dashboard headers and status bars.
-    Returns counts by status, freshness, last update time, and stale flag.
-    Designed to be polled every 30 seconds by frontends.
+    Counts DISTINCT checkpoints (not per-direction status rows) and separates
+    freshly-reported from stale, so the headline is neither inflated nor
+    stale-inclusive. Designed to be polled every 30 seconds by frontends.
     """
     now = datetime.utcnow()
     h1  = (now - timedelta(hours=1)).isoformat()
@@ -1490,42 +1516,51 @@ async def get_checkpoint_summary() -> dict:
             "SELECT canonical_key, status, last_updated FROM checkpoint_status"
         ) as cur:
             rows = await cur.fetchall()
+        async with db.execute("SELECT canonical_key FROM checkpoints") as cur:
+            cp_keys = [r[0] for r in await cur.fetchall()]
 
-    # F3: count only curated (whitelist) checkpoints so the header matches the map.
+    # F2/F3: count only curated (whitelist) checkpoints, collapsed to distinct.
     from .checkpoint_knowledge_base import get_knowledge_base
     kb = get_knowledge_base()
-    if kb is not None:
-        rows = [r for r in rows if kb.is_known(r[0])]
+    distinct = _collapse_status_by_checkpoint(rows, kb)
+    total_directory = len([k for k in cp_keys if kb is None or kb.is_known(k)])
 
     by_status: dict = {}
-    fresh_1h = fresh_6h = 0
+    by_status_fresh_6h: dict = {}
+    fresh_1h = fresh_6h = stale = 0
     last_update = None
-    for _key, status, lu in rows:
+    for _key, (status, lu) in distinct.items():
         by_status[status] = by_status.get(status, 0) + 1
         if lu and lu >= h1:
             fresh_1h += 1
         if lu and lu >= h6:
             fresh_6h += 1
+            by_status_fresh_6h[status] = by_status_fresh_6h.get(status, 0) + 1
+        else:
+            stale += 1
         if lu and (last_update is None or lu > last_update):
             last_update = lu
 
-    # Determine overall staleness (no updates in 6 hours = stale)
+    # Feed-level liveness (did we receive ANY update in 6h). Per-checkpoint
+    # staleness is the `stale` count above — don't conflate the two.
     is_stale = True
     if last_update:
         try:
-            last_dt = datetime.fromisoformat(last_update)
-            is_stale = (now - last_dt).total_seconds() > 6 * 3600
+            is_stale = (now - datetime.fromisoformat(last_update)).total_seconds() > 6 * 3600
         except (ValueError, TypeError):
             pass
 
     return {
-        "by_status":       by_status,
-        "fresh_last_1h":   fresh_1h,
-        "fresh_last_6h":   fresh_6h,
-        "total_active":    sum(by_status.values()),
-        "last_update":     last_update,
-        "is_data_stale":   is_stale,
-        "snapshot_at":     now.isoformat(),
+        "by_status":          by_status,           # distinct checkpoints by current status
+        "by_status_fresh_6h": by_status_fresh_6h,  # only checkpoints reported in the last 6h
+        "fresh_last_1h":      fresh_1h,
+        "fresh_last_6h":      fresh_6h,
+        "stale":              stale,               # reported >6h ago (served status may be outdated)
+        "total_active":       len(distinct),       # distinct checkpoints with any report
+        "total_directory":    total_directory,     # catalog size (the denominator)
+        "last_update":        last_update,
+        "is_data_stale":      is_stale,             # feed liveness, NOT per-checkpoint freshness
+        "snapshot_at":        now.isoformat(),
     }
 
 
