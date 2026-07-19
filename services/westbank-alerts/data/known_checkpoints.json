@@ -2987,5 +2987,61 @@
       "بيت إيبا",
       "بيت_ايبا"
     ]
+  },
+  {
+    "canonical_key": "اشارات_عوفرا",
+    "name_ar": "إشارات عوفرا",
+    "name_en": "Ofra Junction",
+    "region": "ramallah",
+    "checkpoint_type": "checkpoint",
+    "latitude": 31.9563,
+    "longitude": 35.2601,
+    "aliases": [
+      "اشارات عوفرا",
+      "عوفرا"
+    ],
+    "geo_precision": "gazetteer"
+  },
+  {
+    "canonical_key": "واد_قانا",
+    "name_ar": "وادي قانا",
+    "name_en": "Wadi Qana",
+    "region": "salfit",
+    "checkpoint_type": "checkpoint",
+    "latitude": 32.1591,
+    "longitude": 35.1064,
+    "aliases": [
+      "واد قانا",
+      "وادي قانا"
+    ],
+    "geo_precision": "gazetteer"
+  },
+  {
+    "canonical_key": "سيله_الظهر",
+    "name_ar": "سيلة الظهر",
+    "name_en": "Silat adh-Dhahr",
+    "region": "jenin",
+    "checkpoint_type": "checkpoint",
+    "latitude": 32.3193,
+    "longitude": 35.1842,
+    "aliases": [
+      "سيله الظهر",
+      "سيلة الظهر"
+    ],
+    "geo_precision": "gazetteer"
+  },
+  {
+    "canonical_key": "مدخل_رافات",
+    "name_ar": "مدخل رافات",
+    "name_en": "Rafat Entrance",
+    "region": "salfit",
+    "checkpoint_type": "checkpoint",
+    "latitude": 32.0781,
+    "longitude": 35.0442,
+    "aliases": [
+      "مدخل رافات",
+      "رافات"
+    ],
+    "geo_precision": "gazetteer"
   }
 ]
