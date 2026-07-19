@@ -98,14 +98,23 @@ Shipped 2026-07-19:
 - ✅ Reconcile checkpoint counts + fresh/stale split (F2): `/checkpoints/summary` `total_active`
   585 → 210 (distinct, matching the served feeds); added `total_directory`, `by_status_fresh_6h`,
   and an explicit `stale` count so the headline is neither inflated nor stale-inclusive.
-- ✅ Promote verified-new checkpoints (F3): catalog 234 → 238 (Ofra Junction, Wadi Qana,
-  Silat adh-Dhahr, Rafat Entrance). The "46 unpromoted" mostly turned out to be status-word
-  variants of cataloged checkpoints; only entries that are genuinely new, real, and
-  coord-plausible were promoted — the rest await an OSM-precision pass (F3-PROMOTIONS.md).
+- ✅ Promote verified-new checkpoints (F3 + OSM): catalog 234 → 240 (Ofra Junction, Wadi Qana,
+  Silat adh-Dhahr, Rafat Entrance, Kedumim, Ma'ale Efrayim; Bani Na'im coord corrected via OSM;
+  Beit Jala key un-corrupted). Most "46 unpromoted" were status-word variants of cataloged ones.
+- ✅ F7 media/commentary FP filter (podcasts, infographics, prisoner-release, body-recovery) —
+  lifts the low-precision types (arrest, utility, injury).
+- ✅ F8 staleness honesty: a checkpoint not reported in >6h (was 12h) serves effective_status
+  'unknown' + is_stale, so a 9h-old 'open' is no longer painted live.
+- ✅ F9 consensus large-cohort guard: 2 recent reports can no longer flip a checkpoint with a
+  strong agreeing cohort (بيت إيل was served 'closed' despite 14 'open').
+- ✅ Bounded English event coverage (real WB/Gaza ground events in English; hard-gated vs
+  MoH statistics + Lebanon).
+- ✅ F10 (config, applied at deploy): replace 3 dead checkpoint channels with vetted active
+  discovery candidates for redundancy.
 
-Still open:
-- English-language event coverage.
-- OSM-precision coordinates for the deferred real-but-uncoordinated checkpoints.
+Remaining (genuinely minor / external):
+- OSM-precision coordinates for the ~10 still-uncoordinated deferred checkpoints (thin OSM name:ar).
+- Fuller English parity (current coverage is deliberately narrow).
 
 Progress is tracked in the audit findings; this page updates with each fix round.
 
