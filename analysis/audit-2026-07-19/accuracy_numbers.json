@@ -172,7 +172,7 @@
     "discard_fn_after_est": 0.065,
     "recall_before_est": 0.78,
     "recall_after_est": 0.88,
-    "status": "committed + corpus-verified; deploy pending",
+    "status": "DEPLOYED + live-verified 2026-07-19 (confirmed in running container)",
     "note": "Gaza غارة/قنابل/نسف + present-tense arrests/search/clashes/settler verbs; نسف metaphor-guarded; FP audit 96/96"
   }
 }

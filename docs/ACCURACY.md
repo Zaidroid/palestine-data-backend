@@ -20,7 +20,7 @@ Round-1 fixes are **deployed and live-verified 2026-07-19** (full test suite + F
 96/96; default WB feed confirmed free of foreign sirens; 189 historical rows re-typed to
 match the patched classifier).
 
-**Round 2 — F0 recall (2026-07-19, committed + corpus-verified; deploy pending):** the
+**Round 2 — F0 recall (2026-07-19, DEPLOYED + live-verified 2026-07-19):** the
 classifier was dropping real events on Arabic-verb gaps. Fixed: Gaza airstrikes (غارة/قنابل/
 نسف, which had no tier-2 path), present-tense arrests (تعتقل), house search (تفتيش), clashes
 (مواجهات), settler present-tense/kill verbs — with نسف gated on physical context to reject the
