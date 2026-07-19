@@ -19,7 +19,7 @@ API_HASH = os.environ["TELEGRAM_API_HASH"]
 # monitor's own session 'wb_alerts' — but ONLY when the monitor is stopped.
 _SESS_NAME = os.environ.get("AUDIT_SESSION", "wb_alerts_analyzer")
 SESSION = os.path.join(os.environ.get("TELEGRAM_SESSION_DIR", "/session"), _SESS_NAME)
-OUT = Path("/tmp/corpus")
+OUT = Path(os.environ.get("AUDIT_OUT", "/tmp/corpus"))
 
 QUERIES = ["أحوال الطرق", "أحوال الطرق والحواجز", "حواجز الضفة", "حواجز",
            "أحوال طرق الخليل", "أحوال طرق نابلس", "أحوال طرق رام الله", "طرق وحواجز"]
