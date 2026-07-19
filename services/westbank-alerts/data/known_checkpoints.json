@@ -261,12 +261,14 @@
     "name_en": "Bani Na'im",
     "region": "hebron",
     "checkpoint_type": "checkpoint",
-    "latitude": 31.528,
-    "longitude": 35.119,
+    "latitude": 31.5169,
+    "longitude": 35.163,
     "aliases": [
-      "بني_نعيم",
-      "بني نعيم"
-    ]
+      "بني انعيم",
+      "بني نعيم",
+      "بني_نعيم"
+    ],
+    "geo_precision": "osm"
   },
   {
     "canonical_key": "دير_شرف",
@@ -1338,7 +1340,7 @@
     ]
   },
   {
-    "canonical_key": "ب��ت_جالا",
+    "canonical_key": "بيت_جالا",
     "name_ar": "بيت جالا",
     "name_en": "Beit Jala",
     "region": "bethlehem",
@@ -1346,8 +1348,9 @@
     "latitude": 31.71604,
     "longitude": 35.17751,
     "aliases": [
-      "ب��ت_جالا",
-      "بيت جالا"
+      "بيت جالا",
+      "بيت_جالا",
+      "ب��ت_جالا"
     ],
     "geo_precision": "checkpoint"
   },
@@ -3043,5 +3046,31 @@
       "رافات"
     ],
     "geo_precision": "gazetteer"
+  },
+  {
+    "canonical_key": "قدوميم",
+    "name_ar": "قدوميم",
+    "name_en": "Kedumim",
+    "region": "qalqilya",
+    "checkpoint_type": "checkpoint",
+    "latitude": 32.2119,
+    "longitude": 35.1511,
+    "aliases": [
+      "قدوميم"
+    ],
+    "geo_precision": "osm"
+  },
+  {
+    "canonical_key": "معاليه_افرايم",
+    "name_ar": "معاليه افرايم",
+    "name_en": "Ma'ale Efrayim",
+    "region": "jericho",
+    "checkpoint_type": "checkpoint",
+    "latitude": 32.0708,
+    "longitude": 35.4034,
+    "aliases": [
+      "معاليه افرايم"
+    ],
+    "geo_precision": "osm"
   }
 ]
