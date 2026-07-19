@@ -385,11 +385,19 @@ async def get_alerts(
     until: Optional[datetime] = None,
     min_confidence: Optional[float] = None,
     status: Optional[str] = None,
+    include_types: Optional[list] = None,
+    exclude_types: Optional[list] = None,
     limit: int = 50,
     offset: int = 0,
 ) -> tuple:
     conditions, params = [], []
     if type:     conditions.append("type = ?");      params.append(type)
+    if include_types:
+        conditions.append(f"type IN ({','.join('?' * len(include_types))})")
+        params.extend(include_types)
+    if exclude_types:
+        conditions.append(f"type NOT IN ({','.join('?' * len(exclude_types))})")
+        params.extend(exclude_types)
     if severity: conditions.append("severity = ?");  params.append(severity)
     if area:     conditions.append("area LIKE ?");   params.append(f"%{area}%")
     if since:    conditions.append("timestamp >= ?"); params.append(since.isoformat())

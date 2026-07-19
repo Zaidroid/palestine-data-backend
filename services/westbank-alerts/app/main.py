@@ -534,11 +534,31 @@ async def zone_polygons():
 
 # ── Alerts ────────────────────────────────────────────────────────────────────
 
+# F5 — regional events (Lebanon/Iran/Gulf/etc.) are a SEPARATE tagged feed. They
+# are still classified and stored, but the default WB/Gaza feed excludes them so
+# a "West Bank alert" is never actually a Bahrain siren. scope: wb_gaza (default)
+# | regional | all.
+REGIONAL_ALERT_TYPES = ["regional_attack", "northern_israel_siren"]
+
+
+def scope_to_exclude_types(scope: Optional[str]) -> list:
+    """Types the default WB/Gaza feed excludes. Only wb_gaza (default) excludes;
+    regional is served via include-types, all excludes nothing."""
+    if scope in (None, "wb_gaza"):
+        return list(REGIONAL_ALERT_TYPES)
+    return []
+
+
+def scope_to_include_types(scope: Optional[str]) -> Optional[list]:
+    return list(REGIONAL_ALERT_TYPES) if scope == "regional" else None
+
+
 @app.get("/alerts", response_model=AlertResponse, tags=["alerts"])
 async def list_alerts(
     type:           Optional[str]      = Query(None),
     severity:       Optional[str]      = Query(None),
     area:           Optional[str]      = Query(None),
+    scope:          Optional[str]      = Query(None, pattern="^(wb_gaza|regional|all)$"),
     since:          Optional[datetime] = Query(None),
     until:          Optional[datetime] = Query(None),
     min_confidence: Optional[float]    = Query(None, ge=0.0, le=1.0),
@@ -549,6 +569,9 @@ async def list_alerts(
     """
     List alerts. Newest first. All parameters are optional.
 
+    `scope` (default wb_gaza) controls regional bleed: wb_gaza excludes regional
+    (Lebanon/Iran/Gulf) events, `regional` returns only those, `all` returns both.
+
     For AI agent polling: call every 30-60s and pass `since` to avoid
     re-processing old alerts. Use severity=critical for urgent-only mode.
     Use `min_confidence` to filter low-confidence classifier outputs.
@@ -558,6 +581,8 @@ async def list_alerts(
         type=type, severity=severity, area=area,
         since=since, until=until,
         min_confidence=min_confidence, status=status,
+        include_types=scope_to_include_types(scope),
+        exclude_types=scope_to_exclude_types(scope),
         limit=per_page, offset=offset,
     )
     return AlertResponse(alerts=alerts, total=total, page=page, per_page=per_page)
@@ -566,10 +591,15 @@ async def list_alerts(
 @app.get("/alerts/latest", response_model=List[Alert], tags=["alerts"])
 async def latest_alerts(
     n:              int             = Query(10, ge=1, le=100),
+    scope:          Optional[str]   = Query(None, pattern="^(wb_gaza|regional|all)$"),
     min_confidence: Optional[float] = Query(None, ge=0.0, le=1.0),
 ):
-    """Return the N most recent alerts. Default 10."""
-    alerts, _ = await db.get_alerts(limit=n, min_confidence=min_confidence)
+    """Return the N most recent alerts. Default 10. `scope` defaults to wb_gaza
+    (excludes regional Lebanon/Iran/Gulf events)."""
+    alerts, _ = await db.get_alerts(
+        limit=n, min_confidence=min_confidence,
+        include_types=scope_to_include_types(scope),
+        exclude_types=scope_to_exclude_types(scope))
     return alerts
 
 
@@ -577,15 +607,20 @@ async def latest_alerts(
 async def active_alerts(
     hours:          float           = Query(2.0, ge=0.5, le=24.0,
                                              description="Alerts from last N hours (default 2)"),
+    scope:          Optional[str]   = Query(None, pattern="^(wb_gaza|regional|all)$"),
     min_confidence: Optional[float] = Query(None, ge=0.0, le=1.0),
 ):
     """
-    Alerts from the last N hours. Default: 2 hours.
+    Alerts from the last N hours. Default: 2 hours. `scope` defaults to wb_gaza
+    (excludes regional Lebanon/Iran/Gulf events).
     Returns empty list when the situation is calm — ideal for frontends
     that need to display a current status indicator.
     """
     since = datetime.utcnow() - timedelta(hours=hours)
-    alerts, total = await db.get_alerts(since=since, limit=200, min_confidence=min_confidence)
+    alerts, total = await db.get_alerts(
+        since=since, limit=200, min_confidence=min_confidence,
+        include_types=scope_to_include_types(scope),
+        exclude_types=scope_to_exclude_types(scope))
     return AlertResponse(alerts=alerts, total=total, page=1, per_page=200)
 
 
