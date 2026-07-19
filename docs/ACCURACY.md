@@ -98,10 +98,14 @@ Shipped 2026-07-19:
 - ✅ Reconcile checkpoint counts + fresh/stale split (F2): `/checkpoints/summary` `total_active`
   585 → 210 (distinct, matching the served feeds); added `total_directory`, `by_status_fresh_6h`,
   and an explicit `stale` count so the headline is neither inflated nor stale-inclusive.
+- ✅ Promote verified-new checkpoints (F3): catalog 234 → 238 (Ofra Junction, Wadi Qana,
+  Silat adh-Dhahr, Rafat Entrance). The "46 unpromoted" mostly turned out to be status-word
+  variants of cataloged checkpoints; only entries that are genuinely new, real, and
+  coord-plausible were promoted — the rest await an OSM-precision pass (F3-PROMOTIONS.md).
 
 Still open:
-- Re-vet and promote reviewed real checkpoints (catalog coverage) (F3).
 - English-language event coverage.
+- OSM-precision coordinates for the deferred real-but-uncoordinated checkpoints.
 
 Progress is tracked in the audit findings; this page updates with each fix round.
 
