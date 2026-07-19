@@ -11,7 +11,7 @@ infrastructure inquiry
 > Hello — I maintain live, open data infrastructure for Palestine, built and
 > operated from Ramallah: a real-time West Bank alerts platform
 > (live.zaidlab.xyz) ingesting 17+ Arabic-language channels with verification
-> and geocoding, and a unified open databank of 132,000+ provenance-tracked
+> and geocoding, and a unified open databank of 295,000+ provenance-tracked
 > records, 1948→present (api.zaidlab.xyz, palboard.net). Both are free to the
 > public and used by journalists covering the region.
 >

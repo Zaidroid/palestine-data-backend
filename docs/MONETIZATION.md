@@ -95,7 +95,7 @@ Africa (Africa-only), Sloan/Ford DIF (closed).
 
 ## 7. First three customers — the outreach plan
 
-Positioning line: *"The only unified, provenance-first API for Palestine data — 132k+
+Positioning line: *"The only unified, provenance-first API for Palestine data — 295k+
 verified records, 1948→present, plus real-time West Bank alerts. Built and operated
 from Ramallah."*
 
