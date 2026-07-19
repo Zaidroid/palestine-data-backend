@@ -3295,5 +3295,74 @@
       "معاليه افرايم"
     ],
     "geo_precision": "osm"
+  },
+  {
+    "canonical_key": "شوفه",
+    "name_ar": "حاجز شوفة",
+    "name_en": "Shufa Checkpoint",
+    "region": "tulkarm",
+    "checkpoint_type": "checkpoint",
+    "latitude": 32.2803,
+    "longitude": 35.0668,
+    "aliases": [
+      "شوفه",
+      "حاجز شوفه"
+    ],
+    "geo_precision": "osm"
+  },
+  {
+    "canonical_key": "تئينيم",
+    "name_ar": "معبر تئينيم",
+    "name_en": "Te'enim Crossing",
+    "region": "tulkarm",
+    "checkpoint_type": "crossing",
+    "latitude": 32.2804,
+    "longitude": 35.0391,
+    "aliases": [
+      "تئينيم",
+      "تانيم",
+      "معبر تئينيم"
+    ],
+    "geo_precision": "osm"
+  },
+  {
+    "canonical_key": "افني_حيفتس",
+    "name_ar": "حاجز أفني حيفتس",
+    "name_en": "Avnei Hefetz Checkpoint",
+    "region": "tulkarm",
+    "checkpoint_type": "checkpoint",
+    "latitude": 32.2812,
+    "longitude": 35.0757,
+    "aliases": [
+      "افني حيفتس"
+    ],
+    "geo_precision": "osm"
+  },
+  {
+    "canonical_key": "شرق_اريحا",
+    "name_ar": "حاجز شرق أريحا",
+    "name_en": "Jericho East Checkpoint",
+    "region": "jericho",
+    "checkpoint_type": "checkpoint",
+    "latitude": 31.8642,
+    "longitude": 35.498,
+    "aliases": [
+      "شرق اريحا",
+      "حاجز شرق اريحا"
+    ],
+    "geo_precision": "osm"
+  },
+  {
+    "canonical_key": "الشيخ_سعد",
+    "name_ar": "حاجز الشيخ سعد",
+    "name_en": "Al-Sheikh Sa'd Checkpoint",
+    "region": "jerusalem",
+    "checkpoint_type": "checkpoint",
+    "latitude": 31.7368,
+    "longitude": 35.2568,
+    "aliases": [
+      "الشيخ سعد"
+    ],
+    "geo_precision": "osm"
   }
 ]
