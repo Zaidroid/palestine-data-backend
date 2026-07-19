@@ -1242,6 +1242,27 @@ async def quality_eval(force: bool = Query(False, description="Bypass 5-min cach
     return result
 
 
+@app.get("/quality/accuracy", tags=["quality"])
+async def quality_accuracy():
+    """Latest hand-measured accuracy audit (static, dated) + today's live
+    pipeline counters. Methodology: docs/METHODOLOGY.md, numbers: docs/ACCURACY.md.
+    The audit file is refreshed after each fix round so before/after is visible."""
+    import json as _json
+    from pathlib import Path as _Path
+    for cand in (_Path(__file__).resolve().parent.parent / "data" / "accuracy_audit.json",
+                 _Path("/data/accuracy_audit.json")):
+        if cand.exists():
+            audit = _json.loads(cand.read_text())
+            break
+    else:
+        audit = {"error": "no accuracy audit on disk yet"}
+    stats = monitor.get_stats()
+    live = {k: stats.get(k, 0) for k in (
+        "messages_today", "cp_messages_seen_today", "cp_whitelist_miss_today",
+        "security_seen_today", "security_discarded_today")}
+    return {"audit": audit, "live": live, "docs": "/docs/ACCURACY.md"}
+
+
 @app.get("/quality/corroboration", tags=["quality"])
 async def quality_corroboration(days: int = Query(7, ge=1, le=90)):
     """
