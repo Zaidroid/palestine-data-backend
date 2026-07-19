@@ -10,7 +10,10 @@ Local (snapshot):
   AUDIT_DB=/path/alerts.db python scripts/retype_after_f1f4.py --days 30
 """
 import argparse, os, sqlite3, sys
+# app package: the service root (…/services/westbank-alerts) in the repo, or /app
+# in the container (this script may be docker-cp'd to /tmp, so add both).
 sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
+sys.path.insert(0, "/app")
 from app.classifier import classify, classify_wb_operational, is_security_relevant
 
 # only re-type WITHIN these — narrow blast radius (the two types F1/F4 fix)
