@@ -18,8 +18,17 @@ numbers alongside the good ones — that is the point of a trust product.
 
 Round-1 fixes are **deployed and live-verified 2026-07-19** (full test suite + FP audit
 96/96; default WB feed confirmed free of foreign sirens; 189 historical rows re-typed to
-match the patched classifier). Round-2 targets (not yet started): F0 recall (missed-events),
-F2 count reconciliation, F3 catalog promotion.
+match the patched classifier).
+
+**Round 2 — F0 recall (2026-07-19, committed + corpus-verified; deploy pending):** the
+classifier was dropping real events on Arabic-verb gaps. Fixed: Gaza airstrikes (غارة/قنابل/
+نسف, which had no tier-2 path), present-tense arrests (تعتقل), house search (تفتيش), clashes
+(مواجهات), settler present-tense/kill verbs — with نسف gated on physical context to reject the
+metaphor "المخطط ينسف إمكانية الدولة". Kept the intentional caption-dedup and funeral filters.
+Corpus effect: fire rate 38.9% → 42.3% (~173 more real events caught), **discard-FN
+~11.9% → ~6–7%, recall ~78% → ~88%**; newly-fired ~95% real; FP audit still 96/96. Remaining
+misses are English-only content (the classifier is Arabic-focused) — a separate limitation.
+Round-2 remaining (not started): F2 count reconciliation, F3 catalog promotion.
 
 ## Scorecard
 
@@ -32,7 +41,7 @@ F2 count reconciliation, F3 catalog promotion.
 | Checkpoint served-status agreement (≥2 reports) | 83.7% | vs the recent report stream |
 | Provenance completeness (per report) | 100% | channel + message id + timestamp + trust |
 | Coordinate integrity (audited fixes) | 10/10 intact | authoritative OSM/resident coords |
-| Discard false-negative rate (missed real events) | **11.9%** | ~1 in 5 real events dropped (recall ≈78%) |
+| Discard false-negative rate (missed real events) | 11.9% → **~6–7%** (F0) | recall ~78% → ~88% |
 
 ## Alert precision by type (2026-07-19)
 

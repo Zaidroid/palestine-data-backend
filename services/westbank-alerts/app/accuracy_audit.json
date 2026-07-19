@@ -162,5 +162,17 @@
     "default_feed_precision_before": 0.654,
     "default_feed_precision_after_est": 0.827,
     "status": "DEPLOYED + live-verified 2026-07-19; 189 historical rows re-typed"
+  },
+  "fix_round_2": {
+    "date": "2026-07-19",
+    "fix": "F0 classifier recall",
+    "fire_rate_before": 0.389,
+    "fire_rate_after": 0.423,
+    "discard_fn_before": 0.119,
+    "discard_fn_after_est": 0.065,
+    "recall_before_est": 0.78,
+    "recall_after_est": 0.88,
+    "status": "committed + corpus-verified; deploy pending",
+    "note": "Gaza غارة/قنابل/نسف + present-tense arrests/search/clashes/settler verbs; نسف metaphor-guarded; FP audit 96/96"
   }
 }
