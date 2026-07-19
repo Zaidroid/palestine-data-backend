@@ -2311,6 +2311,75 @@ def classify(raw_text: str, source: str) -> Optional[dict]:
     return None
 
 
+# ── English coverage (bounded) ────────────────────────────────────────────────
+# Some channels (e.g. Eye on Palestine) post in English. The Arabic verb lists miss
+# these. A narrow, hard-gated English detector catches real WB/Gaza ground events
+# while rejecting the two big English non-event families: MoH daily statistics and
+# Lebanon/regional. Not full parity — deliberately conservative to avoid FPs.
+import re as _re_en
+
+_EN_WB_PLACES = _re_en.compile(
+    r"\b(west bank|jenin|nablus|hebron|ramallah|al-?bireh|bireh|silwan|tulkar[ei]m|"
+    r"qalqilya|bethlehem|jericho|tubas|salfit|kafr|ya'?bad|yatta|dura|beita|huwara|"
+    r"tel rumeida|sheikh jarrah|nabi saleh|beit|jerusalem)\b", _re_en.I)
+_EN_GAZA = _re_en.compile(r"\bgaza\b|khan\s?y(o|u)nis|rafah|jabalia|deir al-?balah|nuseirat", _re_en.I)
+_EN_FORCES = _re_en.compile(r"\b(israeli|occupation)\b.{0,20}\b(forces|army|soldiers|troops|military)\b|\boccupation forces\b", _re_en.I)
+_EN_STATS = _re_en.compile(r"ministry of health|reported (on|that).{0,40}(over the |in the )?past|past 24 hours|hourly toll|death toll (rose|climbed)", _re_en.I)
+_EN_REGIONAL = _re_en.compile(r"\b(lebanon|lebanese|iran|iranian|syria|syrian|yemen|houthi|bahrain|qatar|hormuz|bandar)\b", _re_en.I)
+_EN_RAID = _re_en.compile(r"\b(raid|raided|storm|stormed|incursion|entered|enter|search(ed|ing)?|besiege|besieged)\b", _re_en.I)
+_EN_ARREST = _re_en.compile(r"\b(detain|detained|detention|arrest|arrests|arrested|round(ed)? up)\b", _re_en.I)
+_EN_CHILD = _re_en.compile(r"\b(child|minor|boy|girl|teenager)\b", _re_en.I)
+_EN_STRIKE = _re_en.compile(r"\b(airstrike|air strike|shell(ed|ing)?|bombard|struck|targeted|missile)\b", _re_en.I)
+_EN_INJURY = _re_en.compile(r"\b(shot|wounded|injur(ed|y|ies)|opened fire|gunfire|killed|martyr)\b", _re_en.I)
+_EN_SETTLER = _re_en.compile(r"\bsettlers?\b.{0,30}\b(attack|assault|storm|torch|burn|uproot|raid)|\bsettler (attack|violence)\b", _re_en.I)
+_EN_DEMOLISH = _re_en.compile(r"\b(demolish(ed|es)?|bulldoz(ed|e|er)|razed)\b", _re_en.I)
+
+
+def _is_english(text: str) -> bool:
+    letters = [c for c in text if c.isalpha()]
+    if len(letters) < 8:
+        return False
+    return sum(1 for c in letters if c.isascii()) / len(letters) > 0.7
+
+
+def _classify_english_wb_event(clean: str) -> Optional[dict]:
+    """Narrow English detector for real WB/Gaza ground events. Returns a _build
+    dict or None. Hard-gated: rejects MoH statistics and Lebanon/regional first,
+    requires occupation-forces context + a WB/Gaza place + an event verb."""
+    if not _is_english(clean):
+        return None
+    if _EN_STATS.search(clean):
+        return None
+    wb = _EN_WB_PLACES.search(clean)
+    gaza = _EN_GAZA.search(clean)
+    if not (wb or gaza):
+        return None
+    # regional guard: a MENA country named without a Palestinian target → not ours
+    if _EN_REGIONAL.search(clean) and not (wb or gaza):
+        return None
+    if _EN_REGIONAL.search(clean) and not wb and not gaza:
+        return None
+    if not _EN_FORCES.search(clean) and not _EN_SETTLER.search(clean):
+        return None
+    area = "Gaza Strip" if (gaza and not wb) else "West Bank"
+    zone = "gaza_strip" if (gaza and not wb) else "west_bank"
+    if _EN_SETTLER.search(clean):
+        return _build(AlertType.settler_attack, Severity.medium, clean, "en", area, zone=zone)
+    if gaza and _EN_STRIKE.search(clean):
+        return _build(AlertType.gaza_strike, Severity.high, clean, "en", area, zone=zone)
+    if _EN_DEMOLISH.search(clean):
+        return _build(AlertType.demolition, Severity.medium, clean, "en", area, zone=zone)
+    if _EN_ARREST.search(clean):
+        typ = AlertType.child_detention if _EN_CHILD.search(clean) else AlertType.arrest_campaign
+        return _build(typ, Severity.medium, clean, "en", area, zone=zone)
+    # injury/killing is more specific than a generic raid → check it first
+    if _EN_INJURY.search(clean):
+        return _build(AlertType.injury_report, Severity.high, clean, "en", area, zone=zone)
+    if _EN_RAID.search(clean):
+        return _build(AlertType.idf_raid, Severity.medium, clean, "en", area, zone=zone)
+    return None
+
+
 def classify_wb_operational(raw_text: str, source: str) -> Optional[dict]:
     """
     Tier 2: West Bank operational events.
@@ -2329,6 +2398,12 @@ def classify_wb_operational(raw_text: str, source: str) -> Optional[dict]:
 
     clean = _sanitize(_strip_reporter_byline(raw_text))
     normed = _normalize(clean)
+
+    # English coverage — the Arabic wb-context gate below rejects English text, so
+    # try the narrow English detector first (hard-gated against stats/regional).
+    en = _classify_english_wb_event(clean)
+    if en is not None:
+        return en
 
     # Must be WB-relevant (exact zone match OR Palestinian context markers)
     wb_relevant = _is_wb_contextual(normed)
