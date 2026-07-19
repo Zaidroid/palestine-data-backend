@@ -49,6 +49,22 @@ CREATE TABLE IF NOT EXISTS usage_daily (
     bytes INTEGER NOT NULL DEFAULT 0,
     PRIMARY KEY (key_id, date)
 );
+
+-- Inbound "request access" submissions from the pricing page. Lives in keys.db
+-- (which deploys never touch) so the funnel survives redeploys. Zaid triages
+-- these into issued keys via scripts/manage-keys.js.
+CREATE TABLE IF NOT EXISTS access_requests (
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    name TEXT,
+    org TEXT,
+    email TEXT NOT NULL,
+    tier TEXT NOT NULL DEFAULT 'other',
+    use_case TEXT,
+    ip TEXT,
+    status TEXT NOT NULL DEFAULT 'new',
+    created_at TEXT NOT NULL DEFAULT (datetime('now'))
+);
+CREATE INDEX IF NOT EXISTS idx_access_requests_status ON access_requests(status, created_at);
 `;
 
 let _db = null;
@@ -192,6 +208,23 @@ export function rollupYesterday() {
     db.prepare(`DELETE FROM usage_events WHERE substr(ts, 1, 10) = ?`).run(yesterday);
 
     return { date: yesterday, keys_rolled_up: rows.length };
+}
+
+export function createAccessRequest({ name = null, org = null, email, tier = 'other', use_case = null, ip = null }) {
+    return getDb()
+        .prepare(
+            `INSERT INTO access_requests (name, org, email, tier, use_case, ip)
+             VALUES (?, ?, ?, ?, ?, ?)
+             RETURNING id, name, org, email, tier, use_case, created_at`
+        )
+        .get(name, org, email, tier, use_case, ip);
+}
+
+export function listAccessRequests({ status = null } = {}) {
+    const db = getDb();
+    return status
+        ? db.prepare('SELECT * FROM access_requests WHERE status = ? ORDER BY created_at DESC').all(status)
+        : db.prepare('SELECT * FROM access_requests ORDER BY created_at DESC').all();
 }
 
 export const _paths = { DB_PATH };

@@ -25,6 +25,7 @@ import recordRoutes from './record.js';
 import snapshotsRoutes from './snapshots.js';
 import meRoutes from './me.js';
 import billingRoutes from './billing.js';
+import accessRequestRoutes from './access-request.js';
 import { getCategories, getStats } from '../controllers/statsController.js';
 
 const router = express.Router();
@@ -102,6 +103,9 @@ router.use('/snapshots', snapshotsRoutes);
 // Customer surfaces (C3/C4): own-key usage stats + Stripe billing
 router.use('/me', meRoutes);
 router.use('/billing', billingRoutes);
+
+// Pricing-page "request access" funnel → access_requests table + ntfy push.
+router.use('/access-request', accessRequestRoutes);
 
 router.get('/categories', cache('10 minutes'), getCategories);
 router.get('/stats', cache('10 minutes'), getStats);

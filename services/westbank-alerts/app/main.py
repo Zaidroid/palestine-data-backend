@@ -339,6 +339,12 @@ app.add_middleware(
 )
 
 from .middleware.api_key import ApiKeyMiddleware
+from .middleware.rate_limit import RateLimitMiddleware
+
+# Order note: the most-recently-added middleware is the OUTERMOST. ApiKey must
+# run before RateLimit (the limiter reads request.state.customer.tier), so
+# RateLimit is added first (inner) and ApiKey second (outer).
+app.add_middleware(RateLimitMiddleware)
 app.add_middleware(ApiKeyMiddleware)
 
 api_key_header = APIKeyHeader(name="X-API-Key", auto_error=False)

@@ -46,3 +46,5 @@ jobs:
         run: API_SECRET_KEY=ci-eval-secret-key-16chars python -m pytest test_checkpoint_whitelist.py -q
       - name: Tier-1 trust fixes (F0-F11 + English)
         run: API_SECRET_KEY=ci-eval-secret-key-16chars python -m pytest test_siren_geo_restrict.py test_reporter_byline.py test_alerts_scope.py test_recall_f0.py test_checkpoint_counts_f2.py test_media_fp_f7.py test_consensus_f9.py test_staleness_f8.py test_english_f0.py -q
+      - name: Tiered rate limiting (P5)
+        run: API_SECRET_KEY=ci-eval-secret-key-16chars python -m pytest test_rate_limit.py -q

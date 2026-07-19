@@ -84,9 +84,66 @@ into commercial products or services need an Organization or Enterprise license.
 </ul>
 
 <h2>Request access</h2>
-<p><a class="cta" href="mailto:zaidsalem@live.com?subject=Data%20platform%20access%20request&body=Organization%3A%0ATier%3A%0AUse%20case%3A%0A">Request access by email</a></p>
 <p class="detail">Tell us your organization, the tier you're after, and what you're
 building. You'll get an answer, and a trial key, within two working days.</p>
+
+<form id="access-form" style="margin-top:1rem; display:grid; gap:.7rem; max-width:520px;">
+  <label>Name<br><input name="name" type="text" autocomplete="name" style="width:100%; padding:.45rem; border:1px solid #ccc; border-radius:4px;"></label>
+  <label>Organization<br><input name="org" type="text" autocomplete="organization" style="width:100%; padding:.45rem; border:1px solid #ccc; border-radius:4px;"></label>
+  <label>Email <span style="color:#c0392b;">*</span><br><input name="email" type="email" required autocomplete="email" style="width:100%; padding:.45rem; border:1px solid #ccc; border-radius:4px;"></label>
+  <label>Tier<br>
+    <select name="tier" style="width:100%; padding:.45rem; border:1px solid #ccc; border-radius:4px;">
+      <option value="researcher">Researcher — free (registered)</option>
+      <option value="journalist">Journalist — $29/mo</option>
+      <option value="organization">Organization — $99–149/mo</option>
+      <option value="org_alerts">Organization + Alerts — $199/mo</option>
+      <option value="enterprise">Enterprise — custom</option>
+      <option value="other">Not sure yet</option>
+    </select>
+  </label>
+  <label>What are you building?<br><textarea name="use_case" rows="3" style="width:100%; padding:.45rem; border:1px solid #ccc; border-radius:4px;"></textarea></label>
+  <input type="text" name="website" tabindex="-1" autocomplete="off" style="position:absolute; left:-9999px;" aria-hidden="true">
+  <div><button type="submit" class="cta" style="border:0; cursor:pointer;">Request access</button></div>
+  <p id="access-status" class="detail" role="status" aria-live="polite"></p>
+</form>
+<p class="detail">Prefer email? Write to
+<a href="mailto:zaidsalem@live.com?subject=Data%20platform%20access%20request&body=Organization%3A%0ATier%3A%0AUse%20case%3A%0A">zaidsalem@live.com</a>.</p>
+
+<script>
+(function () {
+  var form = document.getElementById('access-form');
+  var status = document.getElementById('access-status');
+  form.addEventListener('submit', function (e) {
+    e.preventDefault();
+    var btn = form.querySelector('button[type=submit]');
+    var data = Object.fromEntries(new FormData(form).entries());
+    btn.disabled = true;
+    status.style.color = '#555';
+    status.textContent = 'Sending…';
+    fetch('/api/v1/access-request', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(data),
+    }).then(function (r) {
+      return r.json().then(function (body) { return { ok: r.ok, body: body }; });
+    }).then(function (res) {
+      if (res.ok) {
+        status.style.color = '#2e9e44';
+        status.textContent = res.body.message || 'Request received.';
+        form.reset();
+      } else {
+        status.style.color = '#c0392b';
+        status.textContent = (res.body && res.body.message) || 'Something went wrong — please email us instead.';
+        btn.disabled = false;
+      }
+    }).catch(function () {
+      status.style.color = '#c0392b';
+      status.textContent = 'Network error — please email us instead.';
+      btn.disabled = false;
+    });
+  });
+})();
+</script>
 
 <p class="muted"><a href="/status.html">Platform status</a> ·
 <a href="/integrate.html">API documentation</a> ·
