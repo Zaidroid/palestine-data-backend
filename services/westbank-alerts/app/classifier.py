@@ -1724,6 +1724,24 @@ def _sanitize(text: str, max_len: int = 500) -> str:
     return text[:max_len - 3] + "..." if len(text) > max_len else text
 
 
+# F4 — leading REPORTER byline ("🔴 مراسل صفا:", "مراسل صفا|", "(محدث) مراسل صفا:").
+# The byline names the reporter, not a targeted journalist; left in place its
+# "مراسل" false-triggers journalist_targeted, and the real event after it is
+# mislabeled. Stripping only the leading reporter byline fixes both (a real
+# journalist named later in the text is untouched).
+_REPORTER_BYLINE_RE = re.compile(
+    r"^[^\wء-ي]*"                                   # leading emoji/symbols/space
+    r"(?:\([^)]*\)\s*)?"                            # optional (محدث) update marker
+    r"(?:مراسل|مراسلة|مراسله|مراسلين|مندوب)\s+"      # reporter word
+    r"[^:|｜\n]{0,20}?"                              # short agency name
+    r"\s*[:|｜]\s*"                                  # separator
+)
+
+
+def _strip_reporter_byline(text: str) -> str:
+    return _REPORTER_BYLINE_RE.sub("", text, count=1)
+
+
 # ── Confidence scoring (Phase P3.3) ──────────────────────────────────────────
 # Mirrors the seed in database.py CHANNEL_RELIABILITY_SEED. Kept as a sync dict
 # so classify() can stay synchronous on the hot path; the DB copy is the
@@ -2110,7 +2128,7 @@ def classify(raw_text: str, source: str) -> Optional[dict]:
     if not _channel_allows_tier(source, "tier1"):
         return None
 
-    clean = _sanitize(raw_text)
+    clean = _sanitize(_strip_reporter_byline(raw_text))
     normed = _normalize(clean)
 
     if not _has_attack_verb(normed):
@@ -2234,7 +2252,7 @@ def classify_wb_operational(raw_text: str, source: str) -> Optional[dict]:
     if not _channel_allows_tier(source, "tier2"):
         return None
 
-    clean = _sanitize(raw_text)
+    clean = _sanitize(_strip_reporter_byline(raw_text))
     normed = _normalize(clean)
 
     # Must be WB-relevant (exact zone match OR Palestinian context markers)
