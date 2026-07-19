@@ -39,8 +39,10 @@ jobs:
       - uses: actions/setup-python@v5
         with:
           python-version: '3.11'
-      - run: pip install -q pydantic pydantic-settings pytest
+      - run: pip install -q pydantic pydantic-settings pytest fastapi aiosqlite httpx
       - name: Classifier false-positive audit
         run: API_SECRET_KEY=ci-eval-secret-key-16chars python test_classifier_fp_audit.py
       - name: Checkpoint whitelist suite
         run: API_SECRET_KEY=ci-eval-secret-key-16chars python -m pytest test_checkpoint_whitelist.py -q
+      - name: Tier-1 trust fixes (F1 siren geo, F4 byline, F5 scope)
+        run: API_SECRET_KEY=ci-eval-secret-key-16chars python -m pytest test_siren_geo_restrict.py test_reporter_byline.py test_alerts_scope.py -q

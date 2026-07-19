@@ -1284,7 +1284,10 @@ async def quality_accuracy():
     The audit file is refreshed after each fix round so before/after is visible."""
     import json as _json
     from pathlib import Path as _Path
-    for cand in (_Path(__file__).resolve().parent.parent / "data" / "accuracy_audit.json",
+    # Baked into the image inside app/ (app/ is COPY'd and NOT bind-mounted, so it
+    # survives; /app/data and /data ARE mounted). Fallbacks kept for older layouts.
+    for cand in (_Path(__file__).resolve().parent / "accuracy_audit.json",
+                 _Path(__file__).resolve().parent.parent / "data" / "accuracy_audit.json",
                  _Path("/data/accuracy_audit.json")):
         if cand.exists():
             audit = _json.loads(cand.read_text())

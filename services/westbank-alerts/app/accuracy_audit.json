@@ -151,5 +151,16 @@
   },
   "m8_coords": {
     "june_fixes_intact": "10/10"
+  },
+  "fix_round_1": {
+    "date": "2026-07-19",
+    "fixes": [
+      "F1 siren geo-restrict",
+      "F4 byline strip",
+      "F5 regional tagged feed"
+    ],
+    "default_feed_precision_before": 0.654,
+    "default_feed_precision_after_est": 0.827,
+    "status": "committed + offline-verified; deploy pending"
   }
 }

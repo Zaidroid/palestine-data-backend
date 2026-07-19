@@ -1,0 +1,13 @@
+{
+  "sample_n": 102,
+  "default_feed_precision_before": 0.67,
+  "default_feed_n_before": 88,
+  "default_feed_precision_after": 0.694,
+  "default_feed_n_after": 85,
+  "reclassifications": {
+    "journalist_targeted -> injury_report": 3,
+    "journalist_targeted -> idf_raid": 2,
+    "west_bank_siren -> regional_attack": 3
+  },
+  "removed_from_default_feed": 3
+}

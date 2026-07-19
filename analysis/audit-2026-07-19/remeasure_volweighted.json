@@ -1,0 +1,8 @@
+{
+  "vol_weighted_precision_before": 0.654,
+  "vol_weighted_after_F5_regional_excluded": 0.807,
+  "vol_weighted_after_F5_F1_est": 0.827,
+  "default_feed_volume_before": 6877,
+  "default_feed_volume_after": 5569,
+  "note": "F5 removes the 19%-volume regional bleed from the default WB/Gaza feed; F1 estimate lifts west_bank_siren precision as foreign sirens reclassify to regional. Sample-level direct measure: 0.67->0.69 (stratified sample under-weights regional volume)."
+}

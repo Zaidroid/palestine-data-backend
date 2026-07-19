@@ -7,11 +7,25 @@ numbers alongside the good ones — that is the point of a trust product.
 
 **Last measured: 2026-07-19.** Re-measured after each fix round (before/after shown).
 
+## Fix round 1 (2026-07-19) — before → after
+
+| Metric | Before | After | Fix |
+|---|---|---|---|
+| Default-feed precision (volume-weighted) | 65.4% | **~81%** | F5 excludes regional bleed from the WB/Gaza feed; F1 removes foreign sirens |
+| "West Bank siren" that is actually foreign (Bahrain/Kuwait/Jordan) | ~all of them | **0** → regional_attack | F1 siren geo-restrict |
+| `journalist_targeted` fired on a reporter byline | yes (6/7) | **no** — byline stripped, event reclassified | F4 |
+| Regional (Lebanon/Iran/Gulf) events in the default feed | 19% of volume | **0** (own `?scope=regional` feed) | F5 |
+
+Round-1 fixes are committed and offline-verified (full test suite + FP audit 96/96);
+deploy to production is pending. Round-2 targets (not yet started): F0 recall
+(missed-events), F2 count reconciliation, F3 catalog promotion.
+
 ## Scorecard
 
 | Metric | Value | Notes |
 |---|---|---|
-| Classifier precision (alerts served), volume-weighted | **65.4%** | genuine WB/Gaza safety events among served alerts |
+| Classifier precision (alerts served), volume-weighted (pre-fix) | **65.4%** | genuine WB/Gaza safety events among served alerts |
+| Default-feed precision after round-1 fixes (volume-weighted) | **~81%** | regional bleed removed from the WB/Gaza feed |
 | — core ground-event types (raids, strikes, flying checkpoints) | ~100% | the high-trust feed |
 | Classifier drift (deployed vs source) | 0.98% | deployed behavior matches published code |
 | Checkpoint served-status agreement (≥2 reports) | 83.7% | vs the recent report stream |
