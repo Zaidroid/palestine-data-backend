@@ -832,6 +832,31 @@ COMMENTARY_MARKERS = [
 ]
 COMMENTARY_MARKERS = [_normalize(t) for t in COMMENTARY_MARKERS]
 
+# F7 — media-container posts (podcast/infographic episodes ABOUT events, not event
+# reports). High-confidence non-events regardless of the words they contain.
+MEDIA_CONTENT_MARKERS = [
+    "بودكاست", "بودكست", "انفوجرافيك", "انفوغرافيك", "انفوجراف",
+    "حلقه جديده من", "شاهد الحلقه", "في الحلقه",
+]
+MEDIA_CONTENT_MARKERS = [_normalize(t) for t in MEDIA_CONTENT_MARKERS]
+
+# F7 — released-prisoner ARRIVAL (a positive release event, not a new arrest/injury
+# of that person). Filtered only when NO fresh harm/arrest verb is present, so a
+# re-arrest ("تعتقل الأسير المحرر") or an injury ("الأسير المحرر أصيب") still fires.
+PRISONER_RELEASE_MARKERS = [
+    "اسير محرر", "اسيرا محررا", "اسرى محررين", "اسرى محررون",
+    "دفعه من الاسرى", "دفعه جديده من الاسرى المحررين", "المحررين من سجون",
+]
+PRISONER_RELEASE_MARKERS = [_normalize(t) for t in PRISONER_RELEASE_MARKERS]
+
+# F7 — body-recovery operations (retrieving the already-dead). References a past
+# event, not a fresh strike; filtered when no fresh attack verb leads.
+BODY_RECOVERY_MARKERS = [
+    "انتشال الجثامين", "انتشال جثامين", "انتشال الجثث", "انتشال جثث",
+    "انتشال شهداء", "انتشال الشهداء", "استعاده الجثامين",
+]
+BODY_RECOVERY_MARKERS = [_normalize(t) for t in BODY_RECOVERY_MARKERS]
+
 # Non-war health statistics — disease/condition counts that aren't combat
 # trauma. Distinct from injury_report which is for kinetic injuries.
 NON_WAR_HEALTH_MARKERS = [
@@ -1334,6 +1359,23 @@ def _is_noise(text: str, tier: str = "tier1", source: str = "") -> bool:
     # Funeral / body-arrival / posthumous profile of someone already dead.
     if _has(text, FUNERAL_BURIAL_PATTERNS):
         return True
+
+    # F7 — media-container post (podcast/infographic ABOUT events, not a report).
+    if _has(text, MEDIA_CONTENT_MARKERS):
+        return True
+
+    # F7 — released-prisoner arrival, only when it's NOT a fresh arrest/injury of them.
+    if _has(text, PRISONER_RELEASE_MARKERS):
+        _harm = [_normalize(t) for t in ("اصيب", "اصابه", "استشهد", "استشهاد", "برصاص",
+                                         "تعتقل", "اعتقل", "اعتقال", "قصف", "استهداف")]
+        if not _has(text, _harm):
+            return True
+
+    # F7 — body-recovery of the already-dead (past event, not a fresh strike).
+    if _has(text, BODY_RECOVERY_MARKERS):
+        _fresh = [_normalize(t) for t in ("يشن", "تشن", "يقصف", "تقصف", "غاره", "غارتين")]
+        if not _has(text[:40], _fresh):
+            return True
 
     # Past-perfect recap leading the post (وكان قد / وكانت قد …).
     if _has(text[:80], PAST_PERFECT_RECAP_LEADING):
