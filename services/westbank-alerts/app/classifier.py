@@ -584,6 +584,11 @@ IDF_RAID_VERBS = [
     "توغل", "توغلت", "اجتاح", "اجتاحت",
     "دخل بالقوه", "قوات خاصه دخلت",
     "اشتباك", "اشتباكات",
+    # F0 — clashes (real confrontation events, not the "من مواجهات" caption which
+    # the caption-dedup filter still strips first)
+    "مواجهات", "مواجهه", "اندلاع مواجهات",
+    # F0 — house/area search
+    "تفتيش", "يفتش", "تفتش", "فتشت", "بتفتيش",
     "قوات الاحتلال دخلت", "قوات الاحتلال اقتحمت",
     "جيش الاحتلال اقتحم", "جيش الاحتلال يقتحم",
     "قوات الاحتلال تقتحم",
@@ -593,6 +598,20 @@ IDF_RAID_VERBS = [
     "قنابل غاز", "قنابل صوت", "غاز مسيل للدموع",
 ]
 IDF_RAID_VERBS = [_normalize(v) for v in IDF_RAID_VERBS]
+
+# F0 — Gaza airstrike verbs. Gaza strikes phrased with غارة/قنابل/نسف reach tier-2
+# (is_security_relevant is False for these) but tier-2 had no strike path, so they
+# were discarded. Gated on Gaza context in classify_wb_operational.
+GAZA_STRIKE_VERBS = [
+    "غاره", "غارات", "غارتين", "يشن غاره", "يشن غارتين", "شن غاره", "شن غارات",
+    "غاره جويه", "ضربه جويه", "قصف", "يقصف", "تقصف", "قصفت",
+    "تلقي قنابل", "القت قنابل", "يلقي قنابل",
+    # نسف only in physical context — bare نسف is also metaphorical ("المخطط ينسف
+    # إمكانية الدولة" = nullifies), so require an explosives/structure co-word.
+    "عمليه نسف", "عمليات نسف", "نسف بالمتفجرات", "ينسف بالمتفجرات", "بالمتفجرات مبان",
+    "استهداف طيران", "استهدفت طائرات", "استهدفت طائره",
+]
+GAZA_STRIKE_VERBS = [_normalize(v) for v in GAZA_STRIKE_VERBS]
 
 # Settler compound phrases — self-sufficient (contain actor + action)
 SETTLER_ATTACK_PHRASES = [
@@ -618,6 +637,9 @@ SETTLER_ACTION_VERBS = [
     "اقتحم", "اقتحموا", "رشق", "رشقوا", "اتلف", "خرب",
     "قطع", "اقتلع", "دمر", "دمروا", "اطلق النار", "اطلقوا النار",
     "هجم", "نفذ هجوم", "داهم", "نهب",
+    # F0 — present-tense + additional harm verbs (يعتدون، يقتلون، رش غاز، تسميم)
+    "يعتدون", "يعتدي", "يهاجمون", "يهاجم", "يقتلون", "يقتل", "قتلوا",
+    "يحرقون", "يقتحمون", "رش غاز", "رشوا", "سمم", "سموا", "تسميم",
 ]
 SETTLER_ACTION_VERBS = [_normalize(v) for v in SETTLER_ACTION_VERBS]
 
@@ -652,12 +674,14 @@ INJURY_TERMS = [
 INJURY_TERMS = [_normalize(t) for t in INJURY_TERMS]
 
 DEMOLITION_TERMS = [
-    "هدم", "هدمت", "هدم منزل", "هدم منازل", "عمليه هدم",
+    "هدم", "هدمت", "هدم منزل", "هدم منازل", "عمليه هدم", "عمليات الهدم",
     "تجريف", "جرفت", "جرافات", "جرافه",
     "ازاله", "ازالت قوات",
     "اخطار بالهدم", "اخطارات هدم",
     "هدم ذاتي", "اجبر على هدم",
     "تدمير", "دمرت",
+    # نسف: physical context only (bare نسف is also metaphorical "nullify")
+    "عمليه نسف", "عمليات نسف", "نسف بالمتفجرات", "ينسف بالمتفجرات",
 ]
 DEMOLITION_TERMS = [_normalize(t) for t in DEMOLITION_TERMS]
 
@@ -667,6 +691,8 @@ ARREST_CAMPAIGN_TERMS = [
     "اعتقل الاحتلال", "اعتقلت", "اعتقل",
     "معتقل", "معتقلين",
     "اعتقال عدد", "اعتقال مواطنين",
+    # F0 — present-tense arrests (تعتقل فلسطينيا / تعتقل 4 شبان)
+    "تعتقل", "يعتقل", "يعتقلون", "تعتقلهم", "اعتقلوا",
 ]
 ARREST_CAMPAIGN_TERMS = [_normalize(t) for t in ARREST_CAMPAIGN_TERMS]
 
@@ -2292,6 +2318,12 @@ def classify_wb_operational(raw_text: str, source: str) -> Optional[dict]:
         return None
 
     # ── B5 — civilian-life specific checks (run BEFORE generic injury/raid/arrest)
+    # F0 — Gaza airstrike: strikes phrased with غارة/قنابل/نسف reach tier-2
+    # (is_security_relevant=False) and had no path here → were discarded. Gated on
+    # Gaza context so WB نسف/قصف still route to demolition/raid below.
+    if _is_gaza and _has(normed, GAZA_STRIKE_VERBS):
+        return _build(AlertType.gaza_strike, Severity.high, clean, source, area, zone=zone)
+
     # Hospital strike beats raid (raid into a hospital is more specifically "hospital_strike")
     if _has(normed, HOSPITAL_NOUNS) and _has(normed, HOSPITAL_HARM_VERBS):
         return _build(AlertType.hospital_strike, Severity.high, clean, source, area, zone=zone)
