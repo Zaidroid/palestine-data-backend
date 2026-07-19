@@ -21,6 +21,13 @@ def test_kuwait_bahrain_siren_is_regional():
 def test_jordan_amman_siren_is_regional():
     assert _type("عاجل | صفارات الإنذار تدوي في العاصمة الأردنية عمان ومناطق مختلفة من الأردن") != "west_bank_siren"
 
+# adjectival country forms in bylines ("الداخلية البحرينية", "التلفزيون الأردني")
+def test_bahrain_adjectival_byline_is_regional():
+    assert _type("🔴 متابعة صفا| الداخلية البحرينية: إطلاق صفارة الإنذار وعلى المواطنين التوجه للملاجئ") != "west_bank_siren"
+
+def test_jordan_adjectival_tv_is_regional():
+    assert _type("عاجل | التلفزيون الأردني: إطلاق صفارات الإنذار في مختلف مناطق المملكة") != "west_bank_siren"
+
 
 # --- real Israel/WB sirens (shared airspace) must STAY west_bank_siren ---
 def test_telaviv_siren_still_wb():

@@ -439,6 +439,12 @@ MENA_ZONE = [
     "السعوديه",
     "منطقه الخليج",
     "مصر", "القاهره", "تركيا", "الامارات", "قطر", "الدوحه",
+    # adjectival country forms (appear in bylines: "الداخلية البحرينية",
+    # "التلفزيون الأردني", "الحرس الثوري الإيراني") — the noun forms above miss these.
+    "البحرينيه", "الاردنيه", "الاردني", "الكويتيه", "الكويتي",
+    "الايرانيه", "الايراني", "اللبنانيه", "اللبناني", "السوريه", "السوري",
+    "العراقيه", "العراقي", "المصريه", "المصري", "التركيه", "التركي",
+    "اليمنيه", "اليمني", "العمانيه", "القطريه", "الاماراتيه",
 ]
 MENA_ZONE = [_normalize(z) for z in MENA_ZONE]
 
@@ -1724,16 +1730,17 @@ def _sanitize(text: str, max_len: int = 500) -> str:
     return text[:max_len - 3] + "..." if len(text) > max_len else text
 
 
-# F4 — leading REPORTER byline ("🔴 مراسل صفا:", "مراسل صفا|", "(محدث) مراسل صفا:").
-# The byline names the reporter, not a targeted journalist; left in place its
-# "مراسل" false-triggers journalist_targeted, and the real event after it is
-# mislabeled. Stripping only the leading reporter byline fixes both (a real
-# journalist named later in the text is untouched).
+# F4 — leading REPORTER/AGENCY byline ("🔴 مراسل صفا:", "متابعة صفا|",
+# "(محدث) مراسل صفا:", "خاص|"). The byline is metadata, not content. Left in place
+# it causes two bugs: (a) "مراسل" false-triggers journalist_targeted; (b) the agency
+# name "صفا" collides with the WB village "صفا" so _is_wb_zone false-fires (a Bahrain
+# siren bylined "متابعة صفا|" is read as West Bank). Stripping the leading byline
+# fixes both; a real journalist/place named later in the text is untouched.
 _REPORTER_BYLINE_RE = re.compile(
     r"^[^\wء-ي]*"                                   # leading emoji/symbols/space
     r"(?:\([^)]*\)\s*)?"                            # optional (محدث) update marker
-    r"(?:مراسل|مراسلة|مراسله|مراسلين|مندوب)\s+"      # reporter word
-    r"[^:|｜\n]{0,20}?"                              # short agency name
+    r"(?:مراسل|مراسلة|مراسله|مراسلين|مندوب|متابعة|متابعه|ترجمة|ترجمه|خاص)"  # byline word
+    r"(?:\s+[^:|｜\n]{0,20}?)?"                      # optional short agency name
     r"\s*[:|｜]\s*"                                  # separator
 )
 
