@@ -438,6 +438,7 @@ MENA_ZONE = [
     "البحرين",
     "السعوديه",
     "منطقه الخليج",
+    "مصر", "القاهره", "تركيا", "الامارات", "قطر", "الدوحه",
 ]
 MENA_ZONE = [_normalize(z) for z in MENA_ZONE]
 
@@ -1580,7 +1581,8 @@ _AREA_KEYS_SORTED = sorted(AREA_MAP.keys(), key=len, reverse=True)
 # Tel Aviv/Haifa shares WB airspace and is west_bank_siren by design.
 _FOREIGN_AREAS = frozenset({
     "Lebanon", "Beirut", "Syria", "Iran", "Iraq", "Baghdad",
-    "Yemen", "Jordan", "Kuwait",
+    "Yemen", "Jordan", "Kuwait", "Bahrain", "Egypt", "Turkey",
+    "UAE", "Qatar", "Oman", "Saudi Arabia",
 })
 
 
@@ -2179,9 +2181,14 @@ def classify(raw_text: str, source: str) -> Optional[dict]:
     is_retrospective = _has(normed, retrospective_markers)
 
     if _is_israel_interior(normed) or has_siren:
-        # Co-occurrence guard: Lebanon/Iran/Syria + Israel city without an active
-        # siren marker → regional narrative, not a current incoming alert.
-        if _is_mena_zone(normed) and not has_siren:
+        # F1 geo-restrict: the "shared airspace = local threat" rule applies ONLY
+        # to Israel-proper / WB / Gaza. A siren in a foreign MENA country
+        # (Bahrain/Kuwait/Jordan/Iran/…) is NOT a West-Bank threat even though it
+        # says "siren" — unless an Israel target is also named (incoming = shared
+        # airspace). WB/Gaza zones already returned above, so the only local
+        # target reachable here is Israel-interior / ISRAEL_AS_TARGET.
+        has_local_target = _is_israel_interior(normed) or _has(normed, ISRAEL_AS_TARGET)
+        if _is_mena_zone(normed) and not has_local_target:
             area = _extract_area(normed)
             return _build(AlertType.regional_attack, Severity.medium, clean, source, area)
         if is_retrospective and not has_siren:
