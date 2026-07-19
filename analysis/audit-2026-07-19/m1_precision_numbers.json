@@ -1,0 +1,110 @@
+{
+  "measured_at": "2026-07-19",
+  "method": "stratified 7/type, hand-labeled, volume-weighted by 30d counts",
+  "m1_precision": {
+    "sample_n": 102,
+    "sample_real_rate": 0.578,
+    "offtopic_region_rate_sample": 0.206,
+    "content_fp_rate_sample": 0.216,
+    "type_error_among_real_sample": 0.119,
+    "volume_weighted_precision_30d": 0.654,
+    "per_type_precision": {
+      "arrest_campaign": {
+        "n": 7,
+        "real": 2,
+        "vol_30d": 241,
+        "precision": 0.29
+      },
+      "demolition": {
+        "n": 7,
+        "real": 4,
+        "vol_30d": 411,
+        "precision": 0.57
+      },
+      "evacuation_order": {
+        "n": 3,
+        "real": 2,
+        "vol_30d": 3,
+        "precision": 0.67
+      },
+      "flying_checkpoint": {
+        "n": 7,
+        "real": 7,
+        "vol_30d": 66,
+        "precision": 1.0
+      },
+      "gaza_strike": {
+        "n": 7,
+        "real": 7,
+        "vol_30d": 1141,
+        "precision": 1.0
+      },
+      "hospital_strike": {
+        "n": 7,
+        "real": 6,
+        "vol_30d": 24,
+        "precision": 0.86
+      },
+      "idf_raid": {
+        "n": 7,
+        "real": 7,
+        "vol_30d": 2052,
+        "precision": 1.0
+      },
+      "injury_report": {
+        "n": 7,
+        "real": 4,
+        "vol_30d": 932,
+        "precision": 0.57
+      },
+      "journalist_targeted": {
+        "n": 7,
+        "real": 5,
+        "vol_30d": 142,
+        "precision": 0.71
+      },
+      "northern_israel_siren": {
+        "n": 7,
+        "real": 0,
+        "vol_30d": 15,
+        "precision": 0.0
+      },
+      "regional_attack": {
+        "n": 7,
+        "real": 0,
+        "vol_30d": 1293,
+        "precision": 0.0
+      },
+      "road_closure": {
+        "n": 7,
+        "real": 5,
+        "vol_30d": 8,
+        "precision": 0.71
+      },
+      "school_closure": {
+        "n": 1,
+        "real": 0,
+        "vol_30d": 1,
+        "precision": 0.0
+      },
+      "settler_attack": {
+        "n": 7,
+        "real": 5,
+        "vol_30d": 263,
+        "precision": 0.71
+      },
+      "utility_cutoff": {
+        "n": 7,
+        "real": 3,
+        "vol_30d": 13,
+        "precision": 0.43
+      },
+      "west_bank_siren": {
+        "n": 7,
+        "real": 2,
+        "vol_30d": 272,
+        "precision": 0.29
+      }
+    }
+  }
+}
