@@ -139,7 +139,11 @@ async function parseShapefile(shpPath) {
     const features = [];
 
     try {
-        const source = await shapefile.open(shpPath);
+        // The `shapefile` lib defaults DBF text decoding to windows-1252, but the
+        // HDX West Bank DBF stores Arabic locality/district names as UTF-8 — so
+        // the default mangles them (جنين -> "Ø¬Ù†ÙŠÙ†", a UTF-8-as-cp1252 mojibake).
+        // Decode as UTF-8 so governorate/locality come through clean.
+        const source = await shapefile.open(shpPath, undefined, { encoding: 'utf-8' });
         let result = await source.read();
 
         while (!result.done) {
