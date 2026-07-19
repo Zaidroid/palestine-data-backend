@@ -108,10 +108,14 @@
     }
   },
   "m1_recall": {
-    "status": "pending_corpus"
+    "estimate": 0.78,
+    "caveat": "estimate: 4 security channels, ~8-day window; TP≈0.65×fired"
   },
   "m5_discard_fn": {
-    "status": "pending_corpus"
+    "discard_fn_rate": 0.119,
+    "sample_n": 160,
+    "fire_rate": 0.389,
+    "est_missed_in_window": 406
   },
   "m2_misses": {
     "candidates": 5275,

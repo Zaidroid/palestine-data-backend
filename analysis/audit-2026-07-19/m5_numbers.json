@@ -1,0 +1,13 @@
+{
+  "discard_sample_n": 160,
+  "discard_fn": 19,
+  "cp_misroute": 5,
+  "discard_fn_rate": 0.119,
+  "estimated_missed_events_in_corpus_window": 406,
+  "recall_estimate": 0.78,
+  "recall_caveat": "estimate: 4 security channels, ~8-day window; TP\u22480.65\u00d7fired",
+  "security_msgs": 5597,
+  "fired": 2180,
+  "discarded": 3417,
+  "fire_rate": 0.389
+}

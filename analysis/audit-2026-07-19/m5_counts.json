@@ -1,0 +1,7 @@
+{
+  "security_msgs": 5597,
+  "fired": 2180,
+  "discarded": 3417,
+  "fire_rate": 0.389,
+  "discard_sample_n": 160
+}

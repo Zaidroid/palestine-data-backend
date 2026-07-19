@@ -14,12 +14,25 @@ of the deployed classifier/parser (verified deployed == repo HEAD, 0.98% drift).
 | M3 | Served status vs evidence (≥2 reports) | 83.7% agree | mostly-honest; 5 false-open |
 | M4 | Checkpoint count consistency across endpoints | **210 / 258 / 585** | breaks-trust |
 | M4 | Freshness honesty (v2 bands) | live 14 / stale 171 / none 48 | needs surfacing |
-| M5 | Discard false-negatives (missed alerts) | **pending corpus** | — |
+| M5 | Discard false-negatives (missed alerts) | **11.9%** (~1 in 5 real events missed) | breaks-trust |
+| M1 | Recall estimate | ~78% | breaks-trust |
 | M6 | Active checkpoint channels | 4 (3 dead) | resilience risk |
 | M7 | Provenance completeness (reports) | 100% | strong / sellable |
 | M8 | June coordinate fixes intact | 10/10 | clean |
 
 ## Findings (ranked by trust impact)
+
+**F0 [breaks-trust] The classifier silently drops ~1 in 5 real events (11.9% discard FN rate).**
+Replaying the full classify path over 5,597 security-channel messages: 38.9% fired, and a
+160-message stratified sample of the *discards* contained 19 real WB/Gaza safety events
+wrongly dropped (11.9%) → ~406 missed in the corpus window; recall ≈78%. Verified missed:
+Gaza airstrikes phrased with غارة/غارتين, single arrests (Masafer Yatta, Qalqilya),
+demolitions (Anza, نسف east Gaza), settler assaults (Huwara), raids (اقتحام البيرة), clashes.
+Root cause: keyword-brittle classification — the same event type fires on one phrasing and
+drops on another (prod fired 2,052 raids / 411 demolitions, so coverage is partial). For a
+safety product, a missed real airstrike is worse than a false one. *Fix direction:* broaden
+verb/trigger coverage (غارة family, single-arrest, نسف/تجريف), add a high-signal-noun recall
+net, route checkpoint-congestion off security channels. Evidence: M1-M5-RESULTS.md M5.
 
 **F1 [breaks-trust] `west_bank_siren` alerts are ~0% actually West Bank.**
 0 of 7 sampled were WB — they were Bahrain, Kuwait, Jordan, Lebanon, Gaza. The
@@ -93,17 +106,23 @@ Jala canonical_key carries corrupted bytes (works via name_ar). Low impact.
 - Coordinate integrity intact (10/10 June fixes) — M8.
 - The freshness *data* exists (age_hours, bands) — honesty is a surfacing problem, not a data hole.
 
-## Pending (corpus gate — Task 4)
-M5 discard false-negatives + M1 recall = the safety-critical "missed alerts" number.
-Needs the non-firing message stream (not persisted). Corpus commands staged in
-CORPUS-COMMANDS.md; ~5–10 min monitor pause.
+## Corpus measurements — DONE 2026-07-19
+M5 + M1-recall completed (corpus re-pulled via a helper container; monitor restored, no
+lasting prod impact). Two channel facts surfaced: **Almasshta checkpoint channel is now
+private/banned** (0 pull); 6 security channels (safaps, palinfo, maannews, nablus_now,
+shehabagency, wafanews) allow live receipt but not history pull. Discovery sweep returned
+25 candidates (see SOURCES-SHORTLIST.md).
 
-## Proposed Plan B cut line (recommendation)
-**This round (highest trust-per-effort):** F1 (WB siren geo-restrict), F2 (reconcile the
-585/258/210 counts + freshness-filter aggregates), F5 (decide regional bleed → tag or drop),
-F3 (re-vet + promote the reviewed real checkpoints). These four move the two customer-facing
-"breaks-trust" numbers (precision, count honesty) the most and add real coverage.
-**Next round:** F4, F6, F7, F8, F9 (classifier + consensus refinements, each CI-gated).
-**Backlog:** F10 (channel replacement — needs discovery.json), F11 (cosmetic).
+## Proposed Plan B cut line (recommendation, updated with F0)
+**This round (highest trust-per-effort):**
+- **F0** — classifier recall: broaden triggers so real airstrikes/raids/arrests/demolitions
+  stop being dropped. Top item now: missed real events is the worst failure of a safety product.
+- **F1** (WB siren geo-restrict), **F2** (reconcile the 585/258/210 counts + freshness-filter
+  aggregates), **F5** (decide regional bleed → tag or drop), **F3** (re-vet + promote the
+  reviewed real checkpoints).
+These five move both customer-facing "breaks-trust" axes (missed events + false/inflated
+served data) the most and add real coverage. **Next round:** F4, F6, F7, F8, F9 (classifier +
+consensus refinements, each CI-gated). **Backlog:** F10 (channel replacement — discovery
+candidates ready), F11 (cosmetic).
 Every fix ships with a regression test wired into the classifier-eval CI gate; re-measure
 after each so ACCURACY.md shows before/after.

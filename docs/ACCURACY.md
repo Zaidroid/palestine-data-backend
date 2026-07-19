@@ -17,7 +17,7 @@ numbers alongside the good ones — that is the point of a trust product.
 | Checkpoint served-status agreement (≥2 reports) | 83.7% | vs the recent report stream |
 | Provenance completeness (per report) | 100% | channel + message id + timestamp + trust |
 | Coordinate integrity (audited fixes) | 10/10 intact | authoritative OSM/resident coords |
-| Discard false-negative rate (missed alerts) | *pending* | requires non-firing corpus (in progress) |
+| Discard false-negative rate (missed real events) | **11.9%** | ~1 in 5 real events dropped (recall ≈78%) |
 
 ## Alert precision by type (2026-07-19)
 
@@ -53,8 +53,20 @@ never-reported 48**. Most checkpoints were last reported hours ago — normal fo
 data. Every record exposes `age_hours` and a `freshness_band`; do not read status
 without them.
 
+## Recall — the missed-events number (2026-07-19)
+
+Replaying the classifier over 5,597 security-channel messages: 38.9% became alerts. A
+stratified sample of the *discarded* messages found **11.9% were real WB/Gaza safety events
+wrongly dropped** — verified misses include Gaza airstrikes (phrased غارة/غارتين), single
+arrests, demolitions, settler assaults, and raids. Estimated recall ≈78% (the classifier
+currently misses roughly 1 in 5 real events). This is keyword brittleness — the same event
+type fires on one phrasing and drops on another — and it is the top fix priority, because
+for a safety product a missed real event outweighs a false one.
+
 ## What we're fixing (transparency)
 
+- **Broaden classifier triggers so real airstrikes/raids/arrests/demolitions stop being
+  dropped** (recall is the top priority).
 - Restrict siren locality to WB/Gaza/Israel geography (west_bank_siren over-captures).
 - Separate regional (Lebanon/Iran) events from the WB/Gaza safety scope.
 - Reconcile checkpoint counts across endpoints and freshness-filter the summary aggregates.

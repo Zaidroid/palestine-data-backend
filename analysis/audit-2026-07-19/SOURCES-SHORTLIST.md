@@ -29,15 +29,31 @@ Plus the **vetter false-negatives** (F6) to re-vet and likely promote: فرش ا
 **Prereq:** re-run the vetter (llm_cache dead since 2026-06-24) over the 5,096 unvetted
 candidates; add gazetteer cross-check so bare place-names aren't rejected.
 
-## Tier 1 — replace dead checkpoint channels (Finding F10)
+## Tier 1 — replace dead checkpoint channels (Finding F10) — discovery DONE 2026-07-19
 
-Dead (0 msgs/7d): **jisrrrr, khbnews1, aljesernews**. Dying: **almasshta**. Coverage rests
-on 4 channels — no redundancy. Replacements come from the discovery sweep:
-- `corpus_dump.py --discover` is **staged in the container**; runs with the corpus pull
-  (Task 4 gate). It searches road/checkpoint queries and ranks candidates by subscribers +
-  last-post recency. **Pending corpus gate — results append here.**
-- Target governorates currently thin on live channels: Jenin, Tubas, Jericho, Salfit
-  (their checkpoints are reported mostly by the 4 big cross-WB channels, not local ones).
+Dead in checkpoint_updates (0/7d): **jisrrrr, khbnews1, aljesernews** — but note jisrrrr
+posts 1,464 recent messages (its content just doesn't match the checkpoint parser, a recall
+issue, not a dead channel). **Almasshta is now private/banned** (history pull failed) — a real
+loss (it was the Jericho regional channel). Coverage rests on 4 channels — no redundancy.
+
+Discovery sweep (25 candidates ranked by subs + recency) — top active, not-yet-monitored:
+
+| candidate | subs | last post | focus |
+|---|---|---|---|
+| @aljanoop48 | 10,493 | 2026-07-19 | roads + checkpoints (🇵🇸) — high value |
+| @ahwalaltareq | 7,480 | 2026-07-19 | North → Ramallah roads |
+| @ahwaltareq1 | 6,293 | 2026-07-19 | roads + checkpoints (WB-wide) |
+| @rsdrasd | 3,538 | 2026-07-19 | roads + checkpoint monitoring |
+| @roadsnajah | 1,231 | 2026-07-18 | An-Najah Radio roads |
+| @areenablus | 1,050 | 2026-07-17 | Nablus roads + raids |
+| @ahwalaltorq | 1,008 | 2026-07-19 | **south Nablus** roads (gap area) |
+| @Palestine_j1984 | 592 | 2026-07-13 | North |
+| @hawajezaldefa | 459 | 2026-07-19 | WB checkpoints |
+| @alkaflawestreet | 64 | 2026-03-04 | Salfit/Nablus (low volume) |
+
+Shadow-ingest the top 4–6 (aljanoop48, ahwalaltareq, ahwaltareq1, rsdrasd, areenablus,
+ahwalaltorq) first; promote those that corroborate. This adds redundancy for the big-4 and
+local coverage for Nablus-south. Governorates still thin: Jenin, Tubas, Jericho (Almasshta loss).
 
 ## Tier 2 — non-Telegram sources (probed 2026-07-19)
 
