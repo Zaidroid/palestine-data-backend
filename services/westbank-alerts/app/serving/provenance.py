@@ -10,7 +10,7 @@ from __future__ import annotations
 from datetime import datetime
 from typing import Optional, Union
 
-DEFAULT_STALE_HOURS = 12.0
+DEFAULT_STALE_HOURS = 6.0
 LIVE_HOURS = 1.0  # <= this age → "live"
 # Phase 2b: a continuous freshness score (1.0 at age 0, halving every
 # FRESHNESS_HALF_LIFE_HOURS) so consumers downweight aging data smoothly instead

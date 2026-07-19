@@ -39,7 +39,7 @@ class Settings(BaseSettings):
     WEBHOOK_MAX_RETRIES: int = 3
 
     # Checkpoint staleness threshold — checkpoints older than this are marked stale
-    CHECKPOINT_STALE_HOURS: float = 12.0
+    CHECKPOINT_STALE_HOURS: float = 6.0
 
     # Incident grouping
     INCIDENT_MERGE_WINDOW_HOURS: float = 2.0
