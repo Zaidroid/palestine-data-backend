@@ -16,9 +16,10 @@ numbers alongside the good ones — that is the point of a trust product.
 | `journalist_targeted` fired on a reporter byline | yes (6/7) | **no** — byline stripped, event reclassified | F4 |
 | Regional (Lebanon/Iran/Gulf) events in the default feed | 19% of volume | **0** (own `?scope=regional` feed) | F5 |
 
-Round-1 fixes are committed and offline-verified (full test suite + FP audit 96/96);
-deploy to production is pending. Round-2 targets (not yet started): F0 recall
-(missed-events), F2 count reconciliation, F3 catalog promotion.
+Round-1 fixes are **deployed and live-verified 2026-07-19** (full test suite + FP audit
+96/96; default WB feed confirmed free of foreign sirens; 189 historical rows re-typed to
+match the patched classifier). Round-2 targets (not yet started): F0 recall (missed-events),
+F2 count reconciliation, F3 catalog promotion.
 
 ## Scorecard
 

@@ -161,6 +161,6 @@
     ],
     "default_feed_precision_before": 0.654,
     "default_feed_precision_after_est": 0.827,
-    "status": "committed + offline-verified; deploy pending"
+    "status": "DEPLOYED + live-verified 2026-07-19; 189 historical rows re-typed"
   }
 }
