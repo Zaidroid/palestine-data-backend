@@ -79,23 +79,28 @@ without them.
 
 ## Recall — the missed-events number (2026-07-19)
 
-Replaying the classifier over 5,597 security-channel messages: 38.9% became alerts. A
-stratified sample of the *discarded* messages found **11.9% were real WB/Gaza safety events
-wrongly dropped** — verified misses include Gaza airstrikes (phrased غارة/غارتين), single
-arrests, demolitions, settler assaults, and raids. Estimated recall ≈78% (the classifier
-currently misses roughly 1 in 5 real events). This is keyword brittleness — the same event
-type fires on one phrasing and drops on another — and it is the top fix priority, because
-for a safety product a missed real event outweighs a false one.
+Replaying the classifier over 5,597 security-channel messages: originally 38.9% became
+alerts, and a stratified sample of the *discarded* messages found **11.9% were real WB/Gaza
+safety events wrongly dropped** (Gaza airstrikes phrased غارة, single arrests, demolitions,
+settler assaults, raids) — recall ≈78%. **Fixed (F0, deployed 2026-07-19):** broadened the
+Arabic verb/term coverage and added a Gaza-airstrike path; fire rate rose to 42.3% (~173
+more real events caught), moving **discard-FN to ~6–7% and recall to ~88%**, with no
+precision regression (FP audit 96/96; نسف metaphor guarded). Remaining misses are largely
+English-only posts — the classifier is Arabic-focused, a separate limitation.
 
 ## What we're fixing (transparency)
 
-- **Broaden classifier triggers so real airstrikes/raids/arrests/demolitions stop being
-  dropped** (recall is the top priority).
-- Restrict siren locality to WB/Gaza/Israel geography (west_bank_siren over-captures).
-- Separate regional (Lebanon/Iran) events from the WB/Gaza safety scope.
-- Reconcile checkpoint counts across endpoints and freshness-filter the summary aggregates.
-- Re-vet and promote reviewed real checkpoints (catalog coverage).
+Shipped 2026-07-19:
+- ✅ Broaden classifier triggers so real airstrikes/raids/arrests/clashes stop being dropped (F0).
+- ✅ Restrict siren locality to WB/Gaza/Israel geography (F1) — foreign sirens no longer WB alerts.
+- ✅ Separate regional (Lebanon/Iran/Gulf) events into their own `?scope=regional` feed (F5).
+- ✅ Stop the reporter byline mislabeling events as journalist-targeted (F4).
+
+Still open:
+- Reconcile checkpoint counts across endpoints and freshness-filter the summary aggregates (F2).
+- Re-vet and promote reviewed real checkpoints (catalog coverage) (F3).
 - Surface staleness in `effective_status`/`is_stale`, not only in `age_hours`.
+- English-language event coverage.
 
 Progress is tracked in the audit findings; this page updates with each fix round.
 
