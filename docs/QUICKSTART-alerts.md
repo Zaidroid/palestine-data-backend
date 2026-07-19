@@ -80,3 +80,13 @@ For the full historical databank (14 categories, 1948 → present) see
 Note the auth header here is `X-API-Key` (admin/webhook routes only —
 reading alerts is public); the databank API at api.zaidlab.xyz uses
 `Authorization: Bearer` keys.
+
+## 6. How accurate is this?
+
+Accuracy is measured, not asserted. See:
+- **`METHODOLOGY.md`** — how the feed is produced, classified, and served (whitelist-first
+  detection, source trust, consensus + freshness, known limitations).
+- **`ACCURACY.md`** — the latest measured numbers (classifier precision by type, checkpoint
+  agreement, provenance completeness, freshness reality), including the weak spots.
+- **`GET /quality/accuracy`** — those numbers served live, with today's pipeline counters.
+- **`GET /quality/eval`** — runs the classifier FP-fixture suite on demand.
