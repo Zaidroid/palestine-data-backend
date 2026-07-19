@@ -4,6 +4,9 @@
 **Scope decided with Zaid:** Harden the existing West Bank live tier (services/westbank-alerts) to
 data-trustworthiness quality first; Gaza live coverage is designed here but built in a later round.
 Commercial plumbing (rate limiting, request-access form, digests) is explicitly a later round.
+**Added 2026-07-19 (Zaid):** expand live sources for a richer system — the goal is to be the best
+existing option for Palestine data. Expansion is evidence-driven (Phase 4) and every new source
+passes the same trust gate before it is served.
 **Approach decided:** Measure-first audit — no fix ships without a measured problem behind it.
 
 ## Why (context)
@@ -60,7 +63,26 @@ review — not assumed.
 - Deploys to .114 are batched as numbered `!`-prefix commands for Zaid (auto-mode cannot write
   to `/opt/stacks/palestine`); verification between steps per the prod-deploy protocol.
 
-## Phase 4 — Published trust artifacts (the sellable output)
+## Phase 4 — Evidence-driven source expansion (richness)
+
+Expansion follows the audit, because the audit tells us where coverage is actually thin:
+
+- **Catalog growth from measurement 2:** real-but-uncataloged checkpoints found in the miss
+  stream get promoted through the existing candidate→vet→promote loop (strict gate), closing
+  the coverage gaps the data itself proves exist.
+- **Channel replacement from measurement 6:** dead/dying channels replaced; governorates with
+  no active channel get a discovery pass.
+- **New-source discovery sweep:** candidate WB live sources enumerated and vetted — additional
+  governorate road/news Telegram channels, WAFA/Quds/Ma'an wires, OCHA flash updates, PRCS
+  incident reports. None verified yet; the sweep validates each.
+- **Vetting protocol (applies to every new source):** shadow-ingest first (ingested, trust-
+  calibrated via the Phase-1 dynamic-trust mechanism, NOT served) for a calibration window,
+  then promoted to serving only if its reports corroborate trusted sources. No source ships
+  straight to serving.
+- **Coverage metrics (before/after, into ACCURACY.md):** governorates with ≥1 active live
+  channel; catalog size vs. OCHA's published obstacle counts; median report age per governorate.
+
+## Phase 5 — Published trust artifacts (the sellable output)
 
 - `docs/METHODOLOGY.md` — source → classification → consensus → serving, the whitelist-first
   detection doctrine, source-trust policy reference, update cadences, known limitations.
@@ -69,7 +91,7 @@ review — not assumed.
 - Key metrics wired into the live `/quality/checkpoints` endpoint so trust claims are
   verifiable at runtime, not static marketing.
 
-## Phase 5 — Gaza live coverage (design sketch only, built next round)
+## Phase 6 — Gaza live coverage (design sketch only, built next round)
 
 Reuse the exact trust framework (whitelist-first catalog → classifier → consensus → freshness →
 provenance) with Gaza-appropriate sources. Candidate source classes to validate at build time
@@ -89,14 +111,18 @@ The entity catalog concept still applies (known facilities list instead of known
 
 1. All 8 measurements have numbers in ACCURACY.md.
 2. Top-ranked findings fixed, each verified live on .114, each with a CI regression gate.
-3. METHODOLOGY.md + ACCURACY.md published on the live docs surface.
-4. `/quality` serves the trust metrics live.
-5. Gaza build round can start from Phase 5 without new discovery.
+3. Coverage measurably expanded (Phase 4): gap-list checkpoints promoted, new sources
+   shadow-vetted and promoted or rejected with reasons, before/after coverage metrics recorded.
+4. METHODOLOGY.md + ACCURACY.md published on the live docs surface.
+5. `/quality` serves the trust metrics live.
+6. Gaza build round can start from Phase 6 without new discovery.
 
 ## Non-goals (this round)
 
 - Alerts API rate limiting, request-access form, webhook digests, uptime monitoring, billing —
   all deferred to the commercial-plumbing round (P5-PLAN.md).
 - Building Gaza ingestion.
+- Databank (Tier 2) source expansion — the remaining hard sources (PMA, PCPSR, UNISPAL, …)
+  are a separate Tier 2 round; this round's expansion is live-tier only.
 - Frontend work (live.zaidlab.xyz).
 - Any prod schema/infra migration not required by a ranked finding.
