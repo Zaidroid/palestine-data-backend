@@ -95,11 +95,12 @@ Shipped 2026-07-19:
 - ✅ Restrict siren locality to WB/Gaza/Israel geography (F1) — foreign sirens no longer WB alerts.
 - ✅ Separate regional (Lebanon/Iran/Gulf) events into their own `?scope=regional` feed (F5).
 - ✅ Stop the reporter byline mislabeling events as journalist-targeted (F4).
+- ✅ Reconcile checkpoint counts + fresh/stale split (F2): `/checkpoints/summary` `total_active`
+  585 → 210 (distinct, matching the served feeds); added `total_directory`, `by_status_fresh_6h`,
+  and an explicit `stale` count so the headline is neither inflated nor stale-inclusive.
 
 Still open:
-- Reconcile checkpoint counts across endpoints and freshness-filter the summary aggregates (F2).
 - Re-vet and promote reviewed real checkpoints (catalog coverage) (F3).
-- Surface staleness in `effective_status`/`is_stale`, not only in `age_hours`.
 - English-language event coverage.
 
 Progress is tracked in the audit findings; this page updates with each fix round.
