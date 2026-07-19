@@ -25,7 +25,8 @@
     "aliases": [
       "زعتره",
       "زعترة"
-    ]
+    ],
+    "geo_precision": "gazetteer"
   },
   {
     "canonical_key": "اشارات_زعتره",
@@ -38,7 +39,8 @@
     "aliases": [
       "اشارات_زعتره",
       "اشارات زعترة"
-    ]
+    ],
+    "geo_precision": "gazetteer"
   },
   {
     "canonical_key": "بيتا",
@@ -50,7 +52,8 @@
     "longitude": 35.2667,
     "aliases": [
       "بيتا"
-    ]
+    ],
+    "geo_precision": "gazetteer"
   },
   {
     "canonical_key": "بورين",
@@ -62,7 +65,8 @@
     "longitude": 35.2361,
     "aliases": [
       "بورين"
-    ]
+    ],
+    "geo_precision": "gazetteer"
   },
   {
     "canonical_key": "يتما",
@@ -74,7 +78,8 @@
     "longitude": 35.256,
     "aliases": [
       "يتما"
-    ]
+    ],
+    "geo_precision": "gazetteer"
   },
   {
     "canonical_key": "عقربا",
@@ -86,7 +91,8 @@
     "longitude": 35.35,
     "aliases": [
       "عقربا"
-    ]
+    ],
+    "geo_precision": "gazetteer"
   },
   {
     "canonical_key": "جوريش",
@@ -98,7 +104,8 @@
     "longitude": 35.3167,
     "aliases": [
       "جوريش"
-    ]
+    ],
+    "geo_precision": "gazetteer"
   },
   {
     "canonical_key": "عيون_الحراميه",
@@ -111,7 +118,8 @@
     "aliases": [
       "عيون_الحراميه",
       "عيون الحرامية"
-    ]
+    ],
+    "geo_precision": "gazetteer"
   },
   {
     "canonical_key": "ترمسعيا",
@@ -123,7 +131,8 @@
     "longitude": 35.2519,
     "aliases": [
       "ترمسعيا"
-    ]
+    ],
+    "geo_precision": "gazetteer"
   },
   {
     "canonical_key": "سنجل",
@@ -135,7 +144,8 @@
     "longitude": 35.2589,
     "aliases": [
       "سنجل"
-    ]
+    ],
+    "geo_precision": "gazetteer"
   },
   {
     "canonical_key": "روابي",
@@ -147,7 +157,8 @@
     "longitude": 35.163,
     "aliases": [
       "روابي"
-    ]
+    ],
+    "geo_precision": "gazetteer"
   },
   {
     "canonical_key": "عطاره",
@@ -160,7 +171,8 @@
     "aliases": [
       "عطاره",
       "عطارة"
-    ]
+    ],
+    "geo_precision": "gazetteer"
   },
   {
     "canonical_key": "عين_سينيا",
@@ -175,7 +187,8 @@
       "عين_سينا",
       "عين_سينيا",
       "عين سينيا"
-    ]
+    ],
+    "geo_precision": "gazetteer"
   },
   {
     "canonical_key": "النبي_صالح",
@@ -188,7 +201,8 @@
     "aliases": [
       "النبي_صالح",
       "النبي صالح"
-    ]
+    ],
+    "geo_precision": "gazetteer"
   },
   {
     "canonical_key": "مدخل_بزاريا",
@@ -201,7 +215,8 @@
     "aliases": [
       "مدخل_بزاريا",
       "مدخل بزاريا"
-    ]
+    ],
+    "geo_precision": "gazetteer"
   },
   {
     "canonical_key": "حومش",
@@ -214,7 +229,8 @@
     "aliases": [
       "حوميش",
       "حومش"
-    ]
+    ],
+    "geo_precision": "gazetteer"
   },
   {
     "canonical_key": "جماعين",
@@ -226,7 +242,8 @@
     "longitude": 35.1892,
     "aliases": [
       "جماعين"
-    ]
+    ],
+    "geo_precision": "gazetteer"
   },
   {
     "canonical_key": "جبع",
@@ -253,7 +270,8 @@
       "حزما",
       "حزمه",
       "حاجز حزما"
-    ]
+    ],
+    "geo_precision": "gazetteer"
   },
   {
     "canonical_key": "بني_نعيم",
@@ -276,13 +294,14 @@
     "name_en": "Deir Sharaf",
     "region": "nablus",
     "checkpoint_type": "checkpoint",
-    "latitude": 32.238,
-    "longitude": 35.183,
+    "latitude": 32.2551,
+    "longitude": 35.1852,
     "aliases": [
       "ديرشرف",
       "دير_شرف",
       "دير شرف"
-    ]
+    ],
+    "geo_precision": "osm"
   },
   {
     "canonical_key": "صره",
@@ -295,7 +314,8 @@
     "aliases": [
       "صره",
       "صرة"
-    ]
+    ],
+    "geo_precision": "gazetteer"
   },
   {
     "canonical_key": "قراوه_بديا",
@@ -308,7 +328,8 @@
     "aliases": [
       "قراوه_بديا",
       "قراوة بديا"
-    ]
+    ],
+    "geo_precision": "gazetteer"
   },
   {
     "canonical_key": "شافي_شمرون",
@@ -321,7 +342,8 @@
     "aliases": [
       "شافي_شمرون",
       "شافي شمرون"
-    ]
+    ],
+    "geo_precision": "gazetteer"
   },
   {
     "canonical_key": "الساويه",
@@ -334,7 +356,8 @@
     "aliases": [
       "الساويه",
       "الساوية"
-    ]
+    ],
+    "geo_precision": "gazetteer"
   },
   {
     "canonical_key": "حواره_تحت_الجسر",
@@ -347,7 +370,8 @@
     "aliases": [
       "حواره_تحت_الجسر",
       "حوارة تحت الجسر"
-    ]
+    ],
+    "geo_precision": "gazetteer"
   },
   {
     "canonical_key": "حواره_زعتره",
@@ -360,7 +384,8 @@
     "aliases": [
       "حواره_زعتره",
       "حوارة زعترة"
-    ]
+    ],
+    "geo_precision": "gazetteer"
   },
   {
     "canonical_key": "يتسهار",
@@ -374,7 +399,8 @@
       "يتسهار",
       "خط يتساهر",
       "يتساهر"
-    ]
+    ],
+    "geo_precision": "gazetteer"
   },
   {
     "canonical_key": "مردا",
@@ -387,7 +413,8 @@
     "aliases": [
       "مرردا",
       "مردا"
-    ]
+    ],
+    "geo_precision": "gazetteer"
   },
   {
     "canonical_key": "الفحص",
@@ -399,7 +426,8 @@
     "longitude": 35.28,
     "aliases": [
       "الفحص"
-    ]
+    ],
+    "geo_precision": "gazetteer"
   },
   {
     "canonical_key": "راس_الجوره",
@@ -412,7 +440,8 @@
     "aliases": [
       "راس_الجوره",
       "رأس الجورة"
-    ]
+    ],
+    "geo_precision": "gazetteer"
   },
   {
     "canonical_key": "التفافي_حواره",
@@ -420,12 +449,13 @@
     "name_en": "Huwara Bypass Road",
     "region": "nablus",
     "checkpoint_type": "bypass_road",
-    "latitude": 32.16,
-    "longitude": 35.258,
+    "latitude": 32.1633,
+    "longitude": 35.2632,
     "aliases": [
       "التفافي_حواره",
       "التفافي حوارة"
-    ]
+    ],
+    "geo_precision": "osm"
   },
   {
     "canonical_key": "بوابه_حواره",
@@ -438,7 +468,8 @@
     "aliases": [
       "بوابه_حواره",
       "بوابة حوارة"
-    ]
+    ],
+    "geo_precision": "gazetteer"
   },
   {
     "canonical_key": "بوابه_بيتا",
@@ -451,7 +482,8 @@
     "aliases": [
       "بوابه_بيتا",
       "بوابة بيتا"
-    ]
+    ],
+    "geo_precision": "gazetteer"
   },
   {
     "canonical_key": "اللبن_الشرقيه",
@@ -464,7 +496,8 @@
     "aliases": [
       "اللبن_الشرقيه",
       "اللبن الشرقية"
-    ]
+    ],
+    "geo_precision": "gazetteer"
   },
   {
     "canonical_key": "عابود",
@@ -476,7 +509,8 @@
     "longitude": 35.062,
     "aliases": [
       "عابود"
-    ]
+    ],
+    "geo_precision": "gazetteer"
   },
   {
     "canonical_key": "دير_ابو_مشعل",
@@ -489,7 +523,8 @@
     "aliases": [
       "دير_ابو_مشعل",
       "دير أبو مشعل"
-    ]
+    ],
+    "geo_precision": "gazetteer"
   },
   {
     "canonical_key": "دير_استيا",
@@ -502,7 +537,8 @@
     "aliases": [
       "دير_استيا",
       "دير استيا"
-    ]
+    ],
+    "geo_precision": "gazetteer"
   },
   {
     "canonical_key": "حارس",
@@ -514,7 +550,8 @@
     "longitude": 35.128,
     "aliases": [
       "حارس"
-    ]
+    ],
+    "geo_precision": "gazetteer"
   },
   {
     "canonical_key": "اشارات_شيلو",
@@ -527,7 +564,8 @@
     "aliases": [
       "اشارات_شيلو",
       "اشارات شيلو"
-    ]
+    ],
+    "geo_precision": "gazetteer"
   },
   {
     "canonical_key": "اشارات_ارائيل",
@@ -535,12 +573,13 @@
     "name_en": "Ariel Junction Signals",
     "region": "salfit",
     "checkpoint_type": "traffic_signal",
-    "latitude": 32.105,
-    "longitude": 35.165,
+    "latitude": 32.1027,
+    "longitude": 35.1638,
     "aliases": [
       "اشارات_ارائيل",
       "اشارات ارائيل"
-    ]
+    ],
+    "geo_precision": "osm"
   },
   {
     "canonical_key": "حلميش",
@@ -552,7 +591,8 @@
     "longitude": 35.137,
     "aliases": [
       "حلميش"
-    ]
+    ],
+    "geo_precision": "gazetteer"
   },
   {
     "canonical_key": "خط_يتسهار",
@@ -567,7 +607,8 @@
       "خط يتسهار",
       "خط يتساهر",
       "يتساهر"
-    ]
+    ],
+    "geo_precision": "gazetteer"
   },
   {
     "canonical_key": "جسر_اودلا",
@@ -580,7 +621,8 @@
     "aliases": [
       "جسر_اودلا",
       "جسر اودلا"
-    ]
+    ],
+    "geo_precision": "gazetteer"
   },
   {
     "canonical_key": "اشارات_عيون_الحراميه",
@@ -593,7 +635,8 @@
     "aliases": [
       "اشارات_عيون_الحراميه",
       "اشارات عيون الحرامية"
-    ]
+    ],
+    "geo_precision": "gazetteer"
   },
   {
     "canonical_key": "حجه_الفندق",
@@ -606,7 +649,8 @@
     "aliases": [
       "حجه_الفندق",
       "حجة الفندق"
-    ]
+    ],
+    "geo_precision": "gazetteer"
   },
   {
     "canonical_key": "عش_غراب",
@@ -620,7 +664,8 @@
       "عش_الغراب",
       "عش_غراب",
       "عش غراب"
-    ]
+    ],
+    "geo_precision": "gazetteer"
   },
   {
     "canonical_key": "عناب",
@@ -632,7 +677,8 @@
     "longitude": 35.143,
     "aliases": [
       "عناب"
-    ]
+    ],
+    "geo_precision": "gazetteer"
   },
   {
     "canonical_key": "بيت_فوريك",
@@ -645,7 +691,8 @@
     "aliases": [
       "بيت_فوريك",
       "بيت فوريك"
-    ]
+    ],
+    "geo_precision": "gazetteer"
   },
   {
     "canonical_key": "المربعه",
@@ -659,7 +706,8 @@
       "المربع",
       "المربعه",
       "المربعة"
-    ]
+    ],
+    "geo_precision": "gazetteer"
   },
   {
     "canonical_key": "عورتا",
@@ -671,7 +719,8 @@
     "longitude": 35.305,
     "aliases": [
       "عورتا"
-    ]
+    ],
+    "geo_precision": "gazetteer"
   },
   {
     "canonical_key": "عين_شبلي",
@@ -684,7 +733,8 @@
     "aliases": [
       "عين_شبلي",
       "عين شبلي"
-    ]
+    ],
+    "geo_precision": "gazetteer"
   },
   {
     "canonical_key": "الكنتينر",
@@ -692,12 +742,13 @@
     "name_en": "Container (Wadi Nar)",
     "region": "bethlehem",
     "checkpoint_type": "checkpoint",
-    "latitude": 31.731,
-    "longitude": 35.258,
+    "latitude": 31.7422,
+    "longitude": 35.2893,
     "aliases": [
       "الكونتينر",
       "الكنتينر"
-    ]
+    ],
+    "geo_precision": "osm"
   },
   {
     "canonical_key": "بيت_ليد",
@@ -710,7 +761,8 @@
     "aliases": [
       "بيت_ليد",
       "بيت ليد"
-    ]
+    ],
+    "geo_precision": "gazetteer"
   },
   {
     "canonical_key": "فرش_الهوي",
@@ -724,7 +776,8 @@
       "فرش_الهوا",
       "فرش_الهوي",
       "فرش الهوى"
-    ]
+    ],
+    "geo_precision": "gazetteer"
   },
   {
     "canonical_key": "ترقوميا",
@@ -736,7 +789,8 @@
     "longitude": 34.953,
     "aliases": [
       "ترقوميا"
-    ]
+    ],
+    "geo_precision": "gazetteer"
   },
   {
     "canonical_key": "دوار_البلوطه",
@@ -749,7 +803,8 @@
     "aliases": [
       "دوار_البلوطه",
       "دوار البلوطة"
-    ]
+    ],
+    "geo_precision": "gazetteer"
   },
   {
     "canonical_key": "جسر_حلحول",
@@ -762,7 +817,8 @@
     "aliases": [
       "جسر_حلحول",
       "جسر حلحول"
-    ]
+    ],
+    "geo_precision": "gazetteer"
   },
   {
     "canonical_key": "كرمه",
@@ -775,7 +831,8 @@
     "aliases": [
       "كرمه",
       "كرمة"
-    ]
+    ],
+    "geo_precision": "gazetteer"
   },
   {
     "canonical_key": "المعرجات",
@@ -787,7 +844,8 @@
     "longitude": 35.39,
     "aliases": [
       "المعرجات"
-    ]
+    ],
+    "geo_precision": "gazetteer"
   },
   {
     "canonical_key": "دوار_طقوع",
@@ -801,7 +859,8 @@
       "دوار_تقوع",
       "دوار_طقوع",
       "دوار طقوع"
-    ]
+    ],
+    "geo_precision": "gazetteer"
   },
   {
     "canonical_key": "شيلو_عيلي",
@@ -815,7 +874,8 @@
       "شيلو_وعيلي",
       "شيلو_عيلي",
       "شيلو عيلي"
-    ]
+    ],
+    "geo_precision": "gazetteer"
   },
   {
     "canonical_key": "بتما_قبلان",
@@ -828,7 +888,8 @@
     "aliases": [
       "بتما_قبلان",
       "بتما قبلان"
-    ]
+    ],
+    "geo_precision": "gazetteer"
   },
   {
     "canonical_key": "شقبا_شبتين",
@@ -842,7 +903,8 @@
       "شقبا_شبتبن",
       "شقبا_شبتين",
       "شقبا شبتين"
-    ]
+    ],
+    "geo_precision": "gazetteer"
   },
   {
     "canonical_key": "المنشيه",
@@ -855,7 +917,8 @@
     "aliases": [
       "المنشيه",
       "المنشية"
-    ]
+    ],
+    "geo_precision": "gazetteer"
   },
   {
     "canonical_key": "مراح_رباح",
@@ -868,7 +931,8 @@
     "aliases": [
       "مراح_رباح",
       "مراح رباح"
-    ]
+    ],
+    "geo_precision": "gazetteer"
   },
   {
     "canonical_key": "النشاش",
@@ -880,7 +944,8 @@
     "longitude": 35.089,
     "aliases": [
       "النشاش"
-    ]
+    ],
+    "geo_precision": "gazetteer"
   },
   {
     "canonical_key": "دورا",
@@ -892,7 +957,8 @@
     "longitude": 35.0274,
     "aliases": [
       "دورا"
-    ]
+    ],
+    "geo_precision": "gazetteer"
   },
   {
     "canonical_key": "النبي_يونس",
@@ -905,7 +971,8 @@
     "aliases": [
       "النبي_يونس",
       "النبي يونس"
-    ]
+    ],
+    "geo_precision": "gazetteer"
   },
   {
     "canonical_key": "زيف_يطا",
@@ -918,7 +985,8 @@
     "aliases": [
       "زيف_يطا",
       "زيف يطا"
-    ]
+    ],
+    "geo_precision": "gazetteer"
   },
   {
     "canonical_key": "سلفيت_الشمالي",
@@ -931,7 +999,8 @@
     "aliases": [
       "سلفيت_الشمالي",
       "سلفيت الشمالي"
-    ]
+    ],
+    "geo_precision": "gazetteer"
   },
   {
     "canonical_key": "العيزريه",
@@ -944,7 +1013,8 @@
     "aliases": [
       "العيزريه",
       "العيزرية"
-    ]
+    ],
+    "geo_precision": "gazetteer"
   },
   {
     "canonical_key": "الفوار",
@@ -956,7 +1026,8 @@
     "longitude": 35.061,
     "aliases": [
       "الفوار"
-    ]
+    ],
+    "geo_precision": "gazetteer"
   },
   {
     "canonical_key": "بزاريا",
@@ -968,7 +1039,8 @@
     "longitude": 35.17,
     "aliases": [
       "بزاريا"
-    ]
+    ],
+    "geo_precision": "gazetteer"
   },
   {
     "canonical_key": "سعير_واد_الشرق",
@@ -981,7 +1053,8 @@
     "aliases": [
       "سعير_واد_الشرق",
       "سعير واد الشرق"
-    ]
+    ],
+    "geo_precision": "gazetteer"
   },
   {
     "canonical_key": "واد_السمن",
@@ -994,7 +1067,8 @@
     "aliases": [
       "واد_السمن",
       "واد السمن"
-    ]
+    ],
+    "geo_precision": "gazetteer"
   },
   {
     "canonical_key": "بيت_ايل",
@@ -1007,7 +1081,8 @@
     "aliases": [
       "بيت_ايل",
       "بيت ايل"
-    ]
+    ],
+    "geo_precision": "gazetteer"
   },
   {
     "canonical_key": "الزعتري",
@@ -1019,7 +1094,8 @@
     "longitude": 35.086,
     "aliases": [
       "الزعتري"
-    ]
+    ],
+    "geo_precision": "gazetteer"
   },
   {
     "canonical_key": "حسكا",
@@ -1031,7 +1107,8 @@
     "longitude": 35.06,
     "aliases": [
       "حسكا"
-    ]
+    ],
+    "geo_precision": "gazetteer"
   },
   {
     "canonical_key": "راس_بيت_جالا",
@@ -1044,7 +1121,8 @@
     "aliases": [
       "راس_بيت_جالا",
       "راس بيت جالا"
-    ]
+    ],
+    "geo_precision": "gazetteer"
   },
   {
     "canonical_key": "الفندق",
@@ -1056,7 +1134,8 @@
     "longitude": 35.088,
     "aliases": [
       "الفندق"
-    ]
+    ],
+    "geo_precision": "gazetteer"
   },
   {
     "canonical_key": "جوره_الشمعه",
@@ -1069,7 +1148,8 @@
     "aliases": [
       "جوره_الشمعه",
       "جورة الشمعة"
-    ]
+    ],
+    "geo_precision": "gazetteer"
   },
   {
     "canonical_key": "تحت_جسر_بيت_كاحل",
@@ -1082,7 +1162,8 @@
     "aliases": [
       "تحت_جسر_بيت_كاحل",
       "تحت جسر بيت كاحل"
-    ]
+    ],
+    "geo_precision": "gazetteer"
   },
   {
     "canonical_key": "بوابه_بورين",
@@ -1095,7 +1176,8 @@
     "aliases": [
       "بوابه_بورين",
       "بوابة بورين"
-    ]
+    ],
+    "geo_precision": "gazetteer"
   },
   {
     "canonical_key": "بيت_امر_الكليه",
@@ -1108,7 +1190,8 @@
     "aliases": [
       "بيت_امر_الكليه",
       "بيت امر الكلية"
-    ]
+    ],
+    "geo_precision": "gazetteer"
   },
   {
     "canonical_key": "ترقوميا_المصانع",
@@ -1121,7 +1204,8 @@
     "aliases": [
       "ترقوميا_المصانع",
       "ترقوميا المصانع"
-    ]
+    ],
+    "geo_precision": "gazetteer"
   },
   {
     "canonical_key": "اماتين",
@@ -1133,7 +1217,8 @@
     "longitude": 35.106,
     "aliases": [
       "اماتين"
-    ]
+    ],
+    "geo_precision": "gazetteer"
   },
   {
     "canonical_key": "تقوع",
@@ -1145,7 +1230,8 @@
     "longitude": 35.228,
     "aliases": [
       "تقوع"
-    ]
+    ],
+    "geo_precision": "gazetteer"
   },
   {
     "canonical_key": "عطاره_طلوع_البرج",
@@ -1158,7 +1244,8 @@
     "aliases": [
       "عطاره_طلوع_البرج",
       "عطارة طلوع البرج"
-    ]
+    ],
+    "geo_precision": "gazetteer"
   },
   {
     "canonical_key": "جباره",
@@ -1171,7 +1258,8 @@
     "aliases": [
       "جباره",
       "جبارة"
-    ]
+    ],
+    "geo_precision": "gazetteer"
   },
   {
     "canonical_key": "بوابه_دورا",
@@ -1184,7 +1272,8 @@
     "aliases": [
       "بوابه_دورا",
       "بوابة دورا"
-    ]
+    ],
+    "geo_precision": "gazetteer"
   },
   {
     "canonical_key": "عقبه_حسنه",
@@ -1197,7 +1286,8 @@
     "aliases": [
       "عقبه_حسنه",
       "عقبة حسنة"
-    ]
+    ],
+    "geo_precision": "gazetteer"
   },
   {
     "canonical_key": "الجلزون",
@@ -1209,7 +1299,8 @@
     "longitude": 35.22,
     "aliases": [
       "الجلزون"
-    ]
+    ],
+    "geo_precision": "gazetteer"
   },
   {
     "canonical_key": "بوابه_النبي_صالح",
@@ -1222,7 +1313,8 @@
     "aliases": [
       "بوابه_النبي_صالح",
       "بوابة النبي صالح"
-    ]
+    ],
+    "geo_precision": "gazetteer"
   },
   {
     "canonical_key": "سعير",
@@ -1234,7 +1326,8 @@
     "longitude": 35.134,
     "aliases": [
       "سعير"
-    ]
+    ],
+    "geo_precision": "gazetteer"
   },
   {
     "canonical_key": "مراح_معلا",
@@ -1247,7 +1340,8 @@
     "aliases": [
       "مراح_معلا",
       "مراح معلا"
-    ]
+    ],
+    "geo_precision": "gazetteer"
   },
   {
     "canonical_key": "ام_السلمونا",
@@ -1260,7 +1354,8 @@
     "aliases": [
       "ام_السلمونا",
       "ام السلمونا"
-    ]
+    ],
+    "geo_precision": "gazetteer"
   },
   {
     "canonical_key": "جناتا_تل_الربيع",
@@ -1273,7 +1368,8 @@
     "aliases": [
       "جناتا_تل_الربيع",
       "جناتا تل الربيع"
-    ]
+    ],
+    "geo_precision": "gazetteer"
   },
   {
     "canonical_key": "كوربه_صايل",
@@ -1286,7 +1382,8 @@
     "aliases": [
       "كوربه_صايل",
       "كوربة صايل"
-    ]
+    ],
+    "geo_precision": "gazetteer"
   },
   {
     "canonical_key": "العروب",
@@ -1298,7 +1395,8 @@
     "longitude": 35.101,
     "aliases": [
       "العروب"
-    ]
+    ],
+    "geo_precision": "gazetteer"
   },
   {
     "canonical_key": "خله_المي",
@@ -1311,7 +1409,8 @@
     "aliases": [
       "خله_المي",
       "خلة المي"
-    ]
+    ],
+    "geo_precision": "gazetteer"
   },
   {
     "canonical_key": "بيت_عينون",
@@ -1324,7 +1423,8 @@
     "aliases": [
       "بيت_عينون",
       "بيت عينون"
-    ]
+    ],
+    "geo_precision": "gazetteer"
   },
   {
     "canonical_key": "دير_نظام",
@@ -1337,7 +1437,8 @@
     "aliases": [
       "دير_نظام",
       "دير نظام"
-    ]
+    ],
+    "geo_precision": "gazetteer"
   },
   {
     "canonical_key": "بيت_جالا",
@@ -1365,7 +1466,8 @@
     "aliases": [
       "سلواد_يبرود",
       "سلواد يبرود"
-    ]
+    ],
+    "geo_precision": "gazetteer"
   },
   {
     "canonical_key": "البنانا",
@@ -1377,7 +1479,8 @@
     "longitude": 35.283,
     "aliases": [
       "البنانا"
-    ]
+    ],
+    "geo_precision": "gazetteer"
   },
   {
     "canonical_key": "اشارات_عيلي",
@@ -1390,7 +1493,8 @@
     "aliases": [
       "اشارات_عيلي",
       "اشارات عيلي"
-    ]
+    ],
+    "geo_precision": "gazetteer"
   },
   {
     "canonical_key": "عطاره_البلد",
@@ -1398,12 +1502,13 @@
     "name_en": "Atara Town",
     "region": "ramallah",
     "checkpoint_type": "checkpoint",
-    "latitude": 32.014,
-    "longitude": 35.186,
+    "latitude": 31.9828,
+    "longitude": 35.2006,
     "aliases": [
       "عطاره_البلد",
       "عطارة البلد"
-    ]
+    ],
+    "geo_precision": "osm"
   },
   {
     "canonical_key": "سده_بديا_قراوه",
@@ -1416,7 +1521,8 @@
     "aliases": [
       "سده_بديا_قراوه",
       "سدة بديا قراوة"
-    ]
+    ],
+    "geo_precision": "gazetteer"
   },
   {
     "canonical_key": "الكساره",
@@ -1429,7 +1535,8 @@
     "aliases": [
       "الكساره",
       "الكسارة"
-    ]
+    ],
+    "geo_precision": "gazetteer"
   },
   {
     "canonical_key": "اذنا",
@@ -1441,7 +1548,8 @@
     "longitude": 34.966,
     "aliases": [
       "اذنا"
-    ]
+    ],
+    "geo_precision": "gazetteer"
   },
   {
     "canonical_key": "الهجره",
@@ -1454,7 +1562,8 @@
     "aliases": [
       "الهجره",
       "الهجرة"
-    ]
+    ],
+    "geo_precision": "gazetteer"
   },
   {
     "canonical_key": "بيت_امر",
@@ -1467,7 +1576,8 @@
     "aliases": [
       "بيت_امر",
       "بيت امر"
-    ]
+    ],
+    "geo_precision": "gazetteer"
   },
   {
     "canonical_key": "دخله_ولاد_عرفات",
@@ -1480,7 +1590,8 @@
     "aliases": [
       "دخله_ولاد_عرفات",
       "دخلة ولاد عرفات"
-    ]
+    ],
+    "geo_precision": "gazetteer"
   },
   {
     "canonical_key": "اشارات_35",
@@ -1493,7 +1604,8 @@
     "aliases": [
       "اشارات_35",
       "اشارات 35"
-    ]
+    ],
+    "geo_precision": "gazetteer"
   },
   {
     "canonical_key": "قلنديا",
@@ -1505,7 +1617,8 @@
     "longitude": 35.221,
     "aliases": [
       "قلنديا"
-    ]
+    ],
+    "geo_precision": "gazetteer"
   },
   {
     "canonical_key": "بيتونيا",
@@ -1517,7 +1630,8 @@
     "longitude": 35.175,
     "aliases": [
       "بيتونيا"
-    ]
+    ],
+    "geo_precision": "gazetteer"
   },
   {
     "canonical_key": "DCO",
@@ -1530,7 +1644,8 @@
     "aliases": [
       "دي_سي_او",
       "DCO"
-    ]
+    ],
+    "geo_precision": "gazetteer"
   },
   {
     "canonical_key": "عزون",
@@ -1542,7 +1657,8 @@
     "longitude": 35.04,
     "aliases": [
       "عزون"
-    ]
+    ],
+    "geo_precision": "gazetteer"
   },
   {
     "canonical_key": "بوابه_عزون",
@@ -1555,7 +1671,8 @@
     "aliases": [
       "بوابه_عزون",
       "بوابة عزون"
-    ]
+    ],
+    "geo_precision": "gazetteer"
   },
   {
     "canonical_key": "عتيل",
@@ -1567,7 +1684,8 @@
     "longitude": 35.032,
     "aliases": [
       "عتيل"
-    ]
+    ],
+    "geo_precision": "gazetteer"
   },
   {
     "canonical_key": "نور_شمس",
@@ -1581,7 +1699,8 @@
       "مخيم_نور_شمس",
       "نور_شمس",
       "نور شمس"
-    ]
+    ],
+    "geo_precision": "gazetteer"
   },
   {
     "canonical_key": "عنبتا",
@@ -1607,7 +1726,8 @@
     "aliases": [
       "دير_الغصون",
       "دير الغصون"
-    ]
+    ],
+    "geo_precision": "gazetteer"
   },
   {
     "canonical_key": "قفين",
@@ -1619,7 +1739,8 @@
     "longitude": 35.09,
     "aliases": [
       "قفين"
-    ]
+    ],
+    "geo_precision": "gazetteer"
   },
   {
     "canonical_key": "بلعا",
@@ -1631,7 +1752,8 @@
     "longitude": 35.108,
     "aliases": [
       "بلعا"
-    ]
+    ],
+    "geo_precision": "gazetteer"
   },
   {
     "canonical_key": "شويكه",
@@ -1644,7 +1766,8 @@
     "aliases": [
       "شويكه",
       "شويكة"
-    ]
+    ],
+    "geo_precision": "gazetteer"
   },
   {
     "canonical_key": "يعبد",
@@ -1656,7 +1779,8 @@
     "longitude": 35.173,
     "aliases": [
       "يعبد"
-    ]
+    ],
+    "geo_precision": "gazetteer"
   },
   {
     "canonical_key": "قباطيه",
@@ -1669,7 +1793,8 @@
     "aliases": [
       "قباطيه",
       "قباطية"
-    ]
+    ],
+    "geo_precision": "gazetteer"
   },
   {
     "canonical_key": "برقين",
@@ -1681,7 +1806,8 @@
     "longitude": 35.243,
     "aliases": [
       "برقين"
-    ]
+    ],
+    "geo_precision": "gazetteer"
   },
   {
     "canonical_key": "جلبون",
@@ -1693,7 +1819,8 @@
     "longitude": 35.334,
     "aliases": [
       "جلبون"
-    ]
+    ],
+    "geo_precision": "gazetteer"
   },
   {
     "canonical_key": "الجلمه",
@@ -1706,7 +1833,8 @@
     "aliases": [
       "الجلمه",
       "الجلمة"
-    ]
+    ],
+    "geo_precision": "gazetteer"
   },
   {
     "canonical_key": "دوتان",
@@ -1718,7 +1846,8 @@
     "longitude": 35.211,
     "aliases": [
       "دوتان"
-    ]
+    ],
+    "geo_precision": "gazetteer"
   },
   {
     "canonical_key": "مسليه",
@@ -1731,7 +1860,8 @@
     "aliases": [
       "مسليه",
       "مسلية"
-    ]
+    ],
+    "geo_precision": "gazetteer"
   },
   {
     "canonical_key": "عرابه",
@@ -1744,7 +1874,8 @@
     "aliases": [
       "عرابه",
       "عرابة"
-    ]
+    ],
+    "geo_precision": "gazetteer"
   },
   {
     "canonical_key": "طمون",
@@ -1756,7 +1887,8 @@
     "longitude": 35.365,
     "aliases": [
       "طمون"
-    ]
+    ],
+    "geo_precision": "gazetteer"
   },
   {
     "canonical_key": "تياسير",
@@ -1781,7 +1913,8 @@
     "longitude": 35.46,
     "aliases": [
       "الحمرا"
-    ]
+    ],
+    "geo_precision": "gazetteer"
   },
   {
     "canonical_key": "عقابا",
@@ -1793,7 +1926,8 @@
     "longitude": 35.374,
     "aliases": [
       "عقابا"
-    ]
+    ],
+    "geo_precision": "gazetteer"
   },
   {
     "canonical_key": "الفارعه",
@@ -1806,7 +1940,8 @@
     "aliases": [
       "الفارعه",
       "الفارعة"
-    ]
+    ],
+    "geo_precision": "gazetteer"
   },
   {
     "canonical_key": "بيت_ساحور",
@@ -1819,7 +1954,8 @@
     "aliases": [
       "بيت_ساحور",
       "بيت ساحور"
-    ]
+    ],
+    "geo_precision": "gazetteer"
   },
   {
     "canonical_key": "الخضر",
@@ -1831,7 +1967,8 @@
     "longitude": 35.178,
     "aliases": [
       "الخضر"
-    ]
+    ],
+    "geo_precision": "gazetteer"
   },
   {
     "canonical_key": "بيت_فجار",
@@ -1844,7 +1981,8 @@
     "aliases": [
       "بيت_فجار",
       "بيت فجار"
-    ]
+    ],
+    "geo_precision": "gazetteer"
   },
   {
     "canonical_key": "الولجه",
@@ -1870,7 +2008,8 @@
     "longitude": 35.147,
     "aliases": [
       "نحالين"
-    ]
+    ],
+    "geo_precision": "gazetteer"
   },
   {
     "canonical_key": "حوسان",
@@ -1882,7 +2021,8 @@
     "longitude": 35.136,
     "aliases": [
       "حوسان"
-    ]
+    ],
+    "geo_precision": "gazetteer"
   },
   {
     "canonical_key": "بيت_اولا",
@@ -1895,7 +2035,8 @@
     "aliases": [
       "بيت_اولا",
       "بيت اولا"
-    ]
+    ],
+    "geo_precision": "gazetteer"
   },
   {
     "canonical_key": "حلحول",
@@ -1907,7 +2048,8 @@
     "longitude": 35.093,
     "aliases": [
       "حلحول"
-    ]
+    ],
+    "geo_precision": "gazetteer"
   },
   {
     "canonical_key": "يطا",
@@ -1919,7 +2061,8 @@
     "longitude": 35.082,
     "aliases": [
       "يطا"
-    ]
+    ],
+    "geo_precision": "gazetteer"
   },
   {
     "canonical_key": "الظاهريه",
@@ -1932,7 +2075,8 @@
     "aliases": [
       "الظاهريه",
       "الظاهرية"
-    ]
+    ],
+    "geo_precision": "gazetteer"
   },
   {
     "canonical_key": "السموع",
@@ -1944,7 +2088,8 @@
     "longitude": 35.085,
     "aliases": [
       "السموع"
-    ]
+    ],
+    "geo_precision": "gazetteer"
   },
   {
     "canonical_key": "صوريف",
@@ -1956,7 +2101,8 @@
     "longitude": 35.014,
     "aliases": [
       "صوريف"
-    ]
+    ],
+    "geo_precision": "gazetteer"
   },
   {
     "canonical_key": "الشيوخ",
@@ -1968,7 +2114,8 @@
     "longitude": 35.151,
     "aliases": [
       "الشيوخ"
-    ]
+    ],
+    "geo_precision": "gazetteer"
   },
   {
     "canonical_key": "بيت_كاحل",
@@ -1981,7 +2128,8 @@
     "aliases": [
       "بيت_كاحل",
       "بيت كاحل"
-    ]
+    ],
+    "geo_precision": "gazetteer"
   },
   {
     "canonical_key": "خاراس",
@@ -1993,7 +2141,8 @@
     "longitude": 35.016,
     "aliases": [
       "خاراس"
-    ]
+    ],
+    "geo_precision": "gazetteer"
   },
   {
     "canonical_key": "نوبا",
@@ -2005,7 +2154,8 @@
     "longitude": 34.973,
     "aliases": [
       "نوبا"
-    ]
+    ],
+    "geo_precision": "gazetteer"
   },
   {
     "canonical_key": "تفوح",
@@ -2017,7 +2167,8 @@
     "longitude": 35.022,
     "aliases": [
       "تفوح"
-    ]
+    ],
+    "geo_precision": "gazetteer"
   },
   {
     "canonical_key": "جيوس",
@@ -2029,7 +2180,8 @@
     "longitude": 35.034,
     "aliases": [
       "جيوس"
-    ]
+    ],
+    "geo_precision": "gazetteer"
   },
   {
     "canonical_key": "كفر_ثلث",
@@ -2042,7 +2194,8 @@
     "aliases": [
       "كفر_ثلث",
       "كفر ثلث"
-    ]
+    ],
+    "geo_precision": "gazetteer"
   },
   {
     "canonical_key": "حبله",
@@ -2055,7 +2208,8 @@
     "aliases": [
       "حبله",
       "حبلة"
-    ]
+    ],
+    "geo_precision": "gazetteer"
   },
   {
     "canonical_key": "عزبه_الطبيب",
@@ -2068,7 +2222,8 @@
     "aliases": [
       "عزبه_الطبيب",
       "عزبة الطبيب"
-    ]
+    ],
+    "geo_precision": "gazetteer"
   },
   {
     "canonical_key": "كفل_حارس",
@@ -2081,7 +2236,8 @@
     "aliases": [
       "كفل_حارس",
       "كفل حارس"
-    ]
+    ],
+    "geo_precision": "gazetteer"
   },
   {
     "canonical_key": "بديا",
@@ -2093,7 +2249,8 @@
     "longitude": 35.076,
     "aliases": [
       "بديا"
-    ]
+    ],
+    "geo_precision": "gazetteer"
   },
   {
     "canonical_key": "بروقين",
@@ -2105,7 +2262,8 @@
     "longitude": 35.096,
     "aliases": [
       "بروقين"
-    ]
+    ],
+    "geo_precision": "gazetteer"
   },
   {
     "canonical_key": "كفر_الديك",
@@ -2118,7 +2276,8 @@
     "aliases": [
       "كفر_الديك",
       "كفر الديك"
-    ]
+    ],
+    "geo_precision": "gazetteer"
   },
   {
     "canonical_key": "سلواد",
@@ -2130,7 +2289,8 @@
     "longitude": 35.278,
     "aliases": [
       "سلواد"
-    ]
+    ],
+    "geo_precision": "gazetteer"
   },
   {
     "canonical_key": "كوبر",
@@ -2142,7 +2302,8 @@
     "longitude": 35.159,
     "aliases": [
       "كوبر"
-    ]
+    ],
+    "geo_precision": "gazetteer"
   },
   {
     "canonical_key": "نعلين",
@@ -2154,7 +2315,8 @@
     "longitude": 35.055,
     "aliases": [
       "نعلين"
-    ]
+    ],
+    "geo_precision": "gazetteer"
   },
   {
     "canonical_key": "بلعين",
@@ -2166,7 +2328,8 @@
     "longitude": 35.064,
     "aliases": [
       "بلعين"
-    ]
+    ],
+    "geo_precision": "gazetteer"
   },
   {
     "canonical_key": "بير_زيت",
@@ -2179,7 +2342,8 @@
     "aliases": [
       "بير_زيت",
       "بير زيت"
-    ]
+    ],
+    "geo_precision": "gazetteer"
   },
   {
     "canonical_key": "العوجا",
@@ -2191,7 +2355,8 @@
     "longitude": 35.444,
     "aliases": [
       "العوجا"
-    ]
+    ],
+    "geo_precision": "gazetteer"
   },
   {
     "canonical_key": "فصايل",
@@ -2203,7 +2368,8 @@
     "longitude": 35.432,
     "aliases": [
       "فصايل"
-    ]
+    ],
+    "geo_precision": "gazetteer"
   },
   {
     "canonical_key": "النويعمه",
@@ -2216,7 +2382,8 @@
     "aliases": [
       "النويعمه",
       "النويعمة"
-    ]
+    ],
+    "geo_precision": "gazetteer"
   },
   {
     "canonical_key": "دير_حجله",
@@ -2229,7 +2396,8 @@
     "aliases": [
       "دير_حجله",
       "دير حجلة"
-    ]
+    ],
+    "geo_precision": "gazetteer"
   },
   {
     "canonical_key": "الشيخ_جراح",
@@ -2242,7 +2410,8 @@
     "aliases": [
       "الشيخ_جراح",
       "الشيخ جراح"
-    ]
+    ],
+    "geo_precision": "gazetteer"
   },
   {
     "canonical_key": "سلوان",
@@ -2254,7 +2423,8 @@
     "longitude": 35.237,
     "aliases": [
       "سلوان"
-    ]
+    ],
+    "geo_precision": "gazetteer"
   },
   {
     "canonical_key": "العيساويه",
@@ -2267,7 +2437,8 @@
     "aliases": [
       "العيساويه",
       "العيساوية"
-    ]
+    ],
+    "geo_precision": "gazetteer"
   },
   {
     "canonical_key": "شعفاط",
@@ -2279,7 +2450,8 @@
     "longitude": 35.238,
     "aliases": [
       "شعفاط"
-    ]
+    ],
+    "geo_precision": "gazetteer"
   },
   {
     "canonical_key": "ابو_ديس",
@@ -2292,7 +2464,8 @@
     "aliases": [
       "ابو_ديس",
       "ابو ديس"
-    ]
+    ],
+    "geo_precision": "gazetteer"
   },
   {
     "canonical_key": "الرام",
@@ -2304,7 +2477,8 @@
     "longitude": 35.228,
     "aliases": [
       "الرام"
-    ]
+    ],
+    "geo_precision": "gazetteer"
   },
   {
     "canonical_key": "ياسوف",
@@ -2316,7 +2490,8 @@
     "longitude": 35.186,
     "aliases": [
       "ياسوف"
-    ]
+    ],
+    "geo_precision": "gazetteer"
   },
   {
     "canonical_key": "اسكاكا",
@@ -2342,7 +2517,8 @@
     "aliases": [
       "انشيه",
       "انشية"
-    ]
+    ],
+    "geo_precision": "gazetteer"
   },
   {
     "canonical_key": "مراح_رياح",
@@ -2355,7 +2531,8 @@
     "aliases": [
       "مراح_رياح",
       "مراح رياح"
-    ]
+    ],
+    "geo_precision": "gazetteer"
   },
   {
     "canonical_key": "الكونتينر",
@@ -2369,7 +2546,8 @@
       "الكونتير",
       "كونتينر",
       "الكونتينر"
-    ]
+    ],
+    "geo_precision": "gazetteer"
   },
   {
     "canonical_key": "النفق",
@@ -2382,7 +2560,8 @@
     "aliases": [
       "حاجز النفق",
       "النفق"
-    ]
+    ],
+    "geo_precision": "gazetteer"
   },
   {
     "canonical_key": "عش غراب",
@@ -2394,7 +2573,8 @@
     "longitude": 35.228,
     "aliases": [
       "عش غراب"
-    ]
+    ],
+    "geo_precision": "gazetteer"
   },
   {
     "canonical_key": "عيون الحراميه",
@@ -2407,7 +2587,8 @@
     "aliases": [
       "عيون الحراميه",
       "عيون الحرامية"
-    ]
+    ],
+    "geo_precision": "gazetteer"
   },
   {
     "canonical_key": "اللبن الشرقيه",
@@ -2421,7 +2602,8 @@
       "اللبن",
       "اللبن الشرقيه",
       "اللبن الشرقية"
-    ]
+    ],
+    "geo_precision": "gazetteer"
   },
   {
     "canonical_key": "عيلي شيلو",
@@ -2437,7 +2619,8 @@
       "عيلي",
       "عيلي شيلو",
       "عيلي - شيلو"
-    ]
+    ],
+    "geo_precision": "gazetteer"
   },
   {
     "canonical_key": "معالي افرايم",
@@ -2451,7 +2634,8 @@
       "معالي فرايم",
       "معالي افرايم",
       "معالي أفرايم"
-    ]
+    ],
+    "geo_precision": "gazetteer"
   },
   {
     "canonical_key": "دوار كدوميم",
@@ -2464,7 +2648,8 @@
     "aliases": [
       "كدوميم",
       "دوار كدوميم"
-    ]
+    ],
+    "geo_precision": "gazetteer"
   },
   {
     "canonical_key": "النبي يونس",
@@ -2476,7 +2661,8 @@
     "longitude": 35.109,
     "aliases": [
       "النبي يونس"
-    ]
+    ],
+    "geo_precision": "gazetteer"
   },
   {
     "canonical_key": "واد السمن",
@@ -2489,7 +2675,8 @@
     "aliases": [
       "وادي السمن",
       "واد السمن"
-    ]
+    ],
+    "geo_precision": "gazetteer"
   },
   {
     "canonical_key": "عناتا",
@@ -2517,7 +2704,8 @@
       "قصرة",
       "قصرى",
       "قصره"
-    ]
+    ],
+    "geo_precision": "gazetteer"
   },
   {
     "canonical_key": "البادان",
@@ -2530,7 +2718,8 @@
     "aliases": [
       "البادان",
       "وادي البادان"
-    ]
+    ],
+    "geo_precision": "gazetteer"
   },
   {
     "canonical_key": "ناقورة",
@@ -2544,7 +2733,8 @@
       "ناقورة",
       "ناقوره",
       "مدخل ناقوره"
-    ]
+    ],
+    "geo_precision": "gazetteer"
   },
   {
     "canonical_key": "قلقيلية",
@@ -2556,7 +2746,8 @@
     "longitude": 34.97063,
     "aliases": [
       "قلقيلية"
-    ]
+    ],
+    "geo_precision": "gazetteer"
   },
   {
     "canonical_key": "النبي الياس",
@@ -2568,7 +2759,8 @@
     "longitude": 35.0176,
     "aliases": [
       "النبي الياس"
-    ]
+    ],
+    "geo_precision": "gazetteer"
   },
   {
     "canonical_key": "كفر لاقف",
@@ -2580,7 +2772,8 @@
     "longitude": 35.09073,
     "aliases": [
       "كفر لاقف"
-    ]
+    ],
+    "geo_precision": "gazetteer"
   },
   {
     "canonical_key": "كراميلو الطيبه",
@@ -2592,7 +2785,8 @@
     "longitude": 35.18574,
     "aliases": [
       "كراميلو الطيبه"
-    ]
+    ],
+    "geo_precision": "gazetteer"
   },
   {
     "canonical_key": "الزعيم",
@@ -2617,7 +2811,8 @@
     "longitude": 35.22047,
     "aliases": [
       "كفر عقب"
-    ]
+    ],
+    "geo_precision": "gazetteer"
   },
   {
     "canonical_key": "ام سلمونه",
@@ -2629,7 +2824,8 @@
     "longitude": 35.16674,
     "aliases": [
       "ام سلمونه"
-    ]
+    ],
+    "geo_precision": "gazetteer"
   },
   {
     "canonical_key": "النبي إلياس",
@@ -2641,7 +2837,8 @@
     "longitude": 35.0176,
     "aliases": [
       "النبي إلياس"
-    ]
+    ],
+    "geo_precision": "gazetteer"
   },
   {
     "canonical_key": "الطيبة كراميلو",
@@ -2653,7 +2850,8 @@
     "longitude": 35.18574,
     "aliases": [
       "الطيبة كراميلو"
-    ]
+    ],
+    "geo_precision": "gazetteer"
   },
   {
     "canonical_key": "مدخل قلقيلية",
@@ -2665,31 +2863,34 @@
     "longitude": 34.97063,
     "aliases": [
       "مدخل قلقيلية"
-    ]
+    ],
+    "geo_precision": "gazetteer"
   },
   {
     "canonical_key": "اريحا الجنوبي dco",
     "name_ar": "اريحا الجنوبي dco",
-    "name_en": "",
+    "name_en": "Jericho DCO Checkpoint",
     "region": "jericho",
     "checkpoint_type": "checkpoint",
-    "latitude": 31.8611,
-    "longitude": 35.4597,
+    "latitude": 31.8307,
+    "longitude": 35.446,
     "aliases": [
       "اريحا الجنوبي dco"
-    ]
+    ],
+    "geo_precision": "osm"
   },
   {
     "canonical_key": "اريحا dco",
     "name_ar": "اريحا dco",
-    "name_en": "",
+    "name_en": "Jericho DCO Checkpoint",
     "region": "jericho",
     "checkpoint_type": "checkpoint",
-    "latitude": 31.8611,
-    "longitude": 35.4597,
+    "latitude": 31.8307,
+    "longitude": 35.446,
     "aliases": [
       "اريحا dco"
-    ]
+    ],
+    "geo_precision": "osm"
   },
   {
     "canonical_key": "شافي شمرون",
@@ -2697,15 +2898,16 @@
     "name_en": "Shave Shomron",
     "region": "nablus",
     "checkpoint_type": "checkpoint",
-    "latitude": 32.2461,
-    "longitude": 35.2117,
+    "latitude": 32.2642,
+    "longitude": 35.1879,
     "aliases": [
       "شافي شمرون",
       "شابي شمرون",
       "شفي شمرون",
       "شافي شمررون",
       "شفي شمرون"
-    ]
+    ],
+    "geo_precision": "osm"
   },
   {
     "canonical_key": "دير استيا",
@@ -2719,7 +2921,8 @@
       "دير استيا",
       "دير ستيا",
       "دير إستيا"
-    ]
+    ],
+    "geo_precision": "gazetteer"
   },
   {
     "canonical_key": "خربثا",
@@ -2732,7 +2935,8 @@
     "aliases": [
       "خربثا",
       "خربثا المصباح"
-    ]
+    ],
+    "geo_precision": "gazetteer"
   },
   {
     "canonical_key": "دوار معالي ادوميم",
@@ -2745,7 +2949,8 @@
     "aliases": [
       "دوار معالي ادوميم",
       "معالي ادوميم"
-    ]
+    ],
+    "geo_precision": "gazetteer"
   },
   {
     "canonical_key": "سدة قراوة",
@@ -2759,7 +2964,8 @@
       "سدة قراوة",
       "سده قراوه",
       "قراوه بني حسان"
-    ]
+    ],
+    "geo_precision": "gazetteer"
   },
   {
     "canonical_key": "عصيون",
@@ -2773,7 +2979,8 @@
       "عصيون",
       "مفرق عصيون",
       "جوش عصيون"
-    ]
+    ],
+    "geo_precision": "gazetteer"
   },
   {
     "canonical_key": "افرات",
@@ -2787,7 +2994,8 @@
       "افرات",
       "إفرات",
       "عين افرات"
-    ]
+    ],
+    "geo_precision": "gazetteer"
   },
   {
     "canonical_key": "جسر الملك حسين",
@@ -2820,7 +3028,8 @@
       "استراحة اريحا",
       "الاستراحه",
       "الاستراحة"
-    ]
+    ],
+    "geo_precision": "gazetteer"
   },
   {
     "canonical_key": "رامين",
@@ -2830,7 +3039,8 @@
     "checkpoint_type": "checkpoint",
     "latitude": 32.2852,
     "longitude": 35.14951,
-    "aliases": []
+    "aliases": [],
+    "geo_precision": "gazetteer"
   },
   {
     "canonical_key": "ديربلوط",
@@ -2842,7 +3052,8 @@
     "longitude": 35.02451,
     "aliases": [
       "ديربلوط"
-    ]
+    ],
+    "geo_precision": "gazetteer"
   },
   {
     "canonical_key": "العبيديه",
@@ -2852,7 +3063,8 @@
     "checkpoint_type": "checkpoint",
     "latitude": 31.71697,
     "longitude": 35.29007,
-    "aliases": []
+    "aliases": [],
+    "geo_precision": "gazetteer"
   },
   {
     "canonical_key": "دير_جرير",
@@ -2862,7 +3074,8 @@
     "checkpoint_type": "checkpoint",
     "latitude": 31.96636,
     "longitude": 35.29261,
-    "aliases": []
+    "aliases": [],
+    "geo_precision": "gazetteer"
   },
   {
     "canonical_key": "سده_كفرالديك",
@@ -2874,7 +3087,8 @@
     "longitude": 35.1167,
     "aliases": [
       "سدة كفرالديك"
-    ]
+    ],
+    "geo_precision": "gazetteer"
   },
   {
     "canonical_key": "جسر_الزاويه",
@@ -2886,7 +3100,8 @@
     "longitude": 35.23166,
     "aliases": [
       "جسر الزاوية"
-    ]
+    ],
+    "geo_precision": "gazetteer"
   },
   {
     "canonical_key": "ديرستا",
@@ -2899,7 +3114,8 @@
     "aliases": [
       "مدخل ديراستيا",
       "ديرستا"
-    ]
+    ],
+    "geo_precision": "gazetteer"
   },
   {
     "canonical_key": "طريق_زواتا_اتجاهين",
@@ -2911,7 +3127,8 @@
     "longitude": 35.2265,
     "aliases": [
       "طريق زواتا اتجاهين"
-    ]
+    ],
+    "geo_precision": "gazetteer"
   },
   {
     "canonical_key": "مدخل_بني_زيد",
@@ -2923,7 +3140,8 @@
     "longitude": 35.10316,
     "aliases": [
       "مدخل بني زيد"
-    ]
+    ],
+    "geo_precision": "gazetteer"
   },
   {
     "canonical_key": "دوار_جيت",
@@ -2937,7 +3155,8 @@
       "مفرق جيت",
       "دوار جيت",
       "دوار جيت اتجاهين"
-    ]
+    ],
+    "geo_precision": "gazetteer"
   },
   {
     "canonical_key": "بوابه_القبلان_اتجاهين",
@@ -2949,7 +3168,8 @@
     "longitude": 35.2833,
     "aliases": [
       "بوابه القبلان اتجاهين"
-    ]
+    ],
+    "geo_precision": "gazetteer"
   },
   {
     "canonical_key": "برقه",
@@ -2961,7 +3181,8 @@
     "longitude": 35.19263,
     "aliases": [
       "مخصوم برقة"
-    ]
+    ],
+    "geo_precision": "gazetteer"
   },
   {
     "canonical_key": "مداخل_سبسطيه",
@@ -2974,7 +3195,8 @@
     "aliases": [
       "مداخل سبسطية",
       "مداخل سبسطية اتجاهين"
-    ]
+    ],
+    "geo_precision": "gazetteer"
   },
   {
     "canonical_key": "بيت_ايبا",
@@ -2989,7 +3211,8 @@
       "بيت ايبا",
       "بيت إيبا",
       "بيت_ايبا"
-    ]
+    ],
+    "geo_precision": "gazetteer"
   },
   {
     "canonical_key": "اشارات_عوفرا",

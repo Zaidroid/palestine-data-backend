@@ -1,0 +1,408 @@
+[
+ {
+  "lat": 31.78336,
+  "lon": 35.26381,
+  "name_ar": "حاجز الزعيم",
+  "name": "מחסום א-זעיים / حاجز الزعيم",
+  "name_en": "Az-Za'ayyem Checkpoint"
+ },
+ {
+  "lat": 31.941,
+  "lon": 35.03316,
+  "name_ar": "",
+  "name": "מעבר חשמונאים",
+  "name_en": "Hashmonaim Crossing"
+ },
+ {
+  "lat": 31.52348,
+  "lon": 35.10886,
+  "name_ar": "",
+  "name": "Islamic Court Junction Checkpoint",
+  "name_en": "Islamic Court Junction Check point"
+ },
+ {
+  "lat": 31.52315,
+  "lon": 35.1075,
+  "name_ar": "",
+  "name": "Nova Check point",
+  "name_en": "Nova Check point"
+ },
+ {
+  "lat": 31.52192,
+  "lon": 35.11228,
+  "name_ar": "",
+  "name": "Tarek Check point",
+  "name_en": "Tarek Check point"
+ },
+ {
+  "lat": 31.53253,
+  "lon": 35.11033,
+  "name_ar": "",
+  "name": "Giv'at Havot Check point",
+  "name_en": "Giv'at Havot Check point"
+ },
+ {
+  "lat": 32.19955,
+  "lon": 35.31789,
+  "name_ar": "نقطة تفتيش اسرائيلية",
+  "name": "Israeli Check Point",
+  "name_en": "Israeli Check Point"
+ },
+ {
+  "lat": 32.17801,
+  "lon": 35.27345,
+  "name_ar": "نقطة تفتيش حوارة العسكرية الاسرائيلية",
+  "name": "Hawwarah Israili Check Point",
+  "name_en": "Hawwarah Israili Check Point"
+ },
+ {
+  "lat": 31.52372,
+  "lon": 35.11005,
+  "name_ar": "",
+  "name": "Abed Checkpoint",
+  "name_en": "Abed Check point"
+ },
+ {
+  "lat": 31.52611,
+  "lon": 35.10413,
+  "name_ar": "نقطة تفتيش بيت هداسا",
+  "name": "نقطة تفتيش بيت هداسا",
+  "name_en": "Beit Hadassa Check point"
+ },
+ {
+  "lat": 31.73682,
+  "lon": 35.25676,
+  "name_ar": "نقطة تفتيش الشيخ سعد الاسرائيلية",
+  "name": "Al Shaikh Sa'd Israeli Check Point",
+  "name_en": ""
+ },
+ {
+  "lat": 31.85392,
+  "lon": 35.2564,
+  "name_ar": "نقطة تفتيش الجبع الاسرائيلية",
+  "name": "Jaba' Israeli Check Point",
+  "name_en": "Jaba' Israeli Check Point"
+ },
+ {
+  "lat": 32.10231,
+  "lon": 35.53376,
+  "name_ar": "",
+  "name": "Damia Bridge border crossing",
+  "name_en": "Damia Bridge border crossing"
+ },
+ {
+  "lat": 32.18485,
+  "lon": 34.99885,
+  "name_ar": "معبر إِلِياهو",
+  "name": "מעבר אליהו",
+  "name_en": "Eliyahu Checkpoint"
+ },
+ {
+  "lat": 31.71497,
+  "lon": 35.24691,
+  "name_ar": "",
+  "name": "מחסום מזמוריה",
+  "name_en": "An Nu'man Checkpoint"
+ },
+ {
+  "lat": 31.89,
+  "lon": 35.57778,
+  "name_ar": "مركز حدود جسر الملك حسين",
+  "name": "مركز حدود جسر الملك حسين",
+  "name_en": "King Hussein Border Crossing"
+ },
+ {
+  "lat": 31.58117,
+  "lon": 35.40729,
+  "name_ar": "",
+  "name": "Mizpe Shalem Checkpoint",
+  "name_en": "Mizpe Shalem Checkpoint"
+ },
+ {
+  "lat": 31.80833,
+  "lon": 35.24227,
+  "name_ar": "",
+  "name": "Anata - Shwafat Checkpoint",
+  "name_en": ""
+ },
+ {
+  "lat": 31.80831,
+  "lon": 35.24223,
+  "name_ar": "",
+  "name": "Anata - Shwafat Checkpoint",
+  "name_en": ""
+ },
+ {
+  "lat": 31.80838,
+  "lon": 35.24232,
+  "name_ar": "",
+  "name": "Anata - Shwafat Checkpoint",
+  "name_en": ""
+ },
+ {
+  "lat": 31.8084,
+  "lon": 35.24238,
+  "name_ar": "",
+  "name": "Anata - Shwafat Checkpoint",
+  "name_en": ""
+ },
+ {
+  "lat": 31.52559,
+  "lon": 35.10582,
+  "name_ar": "",
+  "name": "israel occupation border_control",
+  "name_en": "israel occupation border_control"
+ },
+ {
+  "lat": 31.85684,
+  "lon": 35.17613,
+  "name_ar": "",
+  "name": "Al Jeb Check point",
+  "name_en": "Al Jeb Check point"
+ },
+ {
+  "lat": 32.28028,
+  "lon": 35.06678,
+  "name_ar": "حاجز شوفة",
+  "name": "حاجز شوفة/ מחסום שופה‎",
+  "name_en": "Shufa Checkpoint"
+ },
+ {
+  "lat": 31.77578,
+  "lon": 35.23403,
+  "name_ar": "",
+  "name": "Access to the bridge",
+  "name_en": "Access to the bridge"
+ },
+ {
+  "lat": 31.77577,
+  "lon": 35.23398,
+  "name_ar": "",
+  "name": "Access to the Western Wall Area",
+  "name_en": "Access to the Western Wall Area"
+ },
+ {
+  "lat": 31.72379,
+  "lon": 35.20503,
+  "name_ar": "",
+  "name": "Car-only Checkpoint",
+  "name_en": "Car-only Checkpoint"
+ },
+ {
+  "lat": 31.59164,
+  "lon": 34.96281,
+  "name_ar": "",
+  "name": "Tarqumia Check Point",
+  "name_en": "Tarqumia Check Point"
+ },
+ {
+  "lat": 31.74257,
+  "lon": 35.17082,
+  "name_ar": "حاجز الولجة - عين ياعيل",
+  "name": "מחסום אל-וולג'ה - עין יעל / حاجز الولجة - عين ياعيل",
+  "name_en": "Al-Walaja - Ein Yael Checkpoint"
+ },
+ {
+  "lat": 31.71566,
+  "lon": 35.12068,
+  "name_ar": "",
+  "name": "Bettar Terminal",
+  "name_en": "Bettar Terminal"
+ },
+ {
+  "lat": 32.2904,
+  "lon": 35.13565,
+  "name_ar": "حاجز عنبتا - عيناف",
+  "name": "حاجز عنبتا - عيناف/ מחסום ענבתא -עינב‎",
+  "name_en": "Antaba - Einav Checkpoint"
+ },
+ {
+  "lat": 32.29043,
+  "lon": 35.13579,
+  "name_ar": "حاجز عنبتا - عيناف",
+  "name": "حاجز عنبتا - عيناف/ מחסום ענבתא -עינב‎",
+  "name_en": "Antaba - Einav Checkpoint"
+ },
+ {
+  "lat": 31.71604,
+  "lon": 35.17751,
+  "name_ar": "",
+  "name": "Check Point Beit Jala",
+  "name_en": "Check Point Beit Jala"
+ },
+ {
+  "lat": 31.52456,
+  "lon": 35.11003,
+  "name_ar": "",
+  "name": "Machpela Check Point",
+  "name_en": "Machpela Check Point"
+ },
+ {
+  "lat": 31.52461,
+  "lon": 35.098,
+  "name_ar": "",
+  "name": "Qafesha Building Checkpoint",
+  "name_en": "Qafesha Building Checkpoint"
+ },
+ {
+  "lat": 31.52295,
+  "lon": 35.10658,
+  "name_ar": "",
+  "name": "Qarantina Checkpoint",
+  "name_en": "Qarantina Checkpoint"
+ },
+ {
+  "lat": 31.98284,
+  "lon": 35.20056,
+  "name_ar": "حاجز عطارة",
+  "name": "حاجز عطارة",
+  "name_en": "Israeli army checkpoint"
+ },
+ {
+  "lat": 31.52451,
+  "lon": 35.10999,
+  "name_ar": "",
+  "name": "Ibrahimi Checkpoint",
+  "name_en": "Ibrahimi Checkpoint"
+ },
+ {
+  "lat": 31.52484,
+  "lon": 35.11036,
+  "name_ar": "",
+  "name": "Machpela Checkpoint",
+  "name_en": "Machpela Checkpoint"
+ },
+ {
+  "lat": 32.32892,
+  "lon": 35.43535,
+  "name_ar": "حاجز تياسير العسكري",
+  "name": "حاجز تياسير العسكري",
+  "name_en": "Tayaser checkpoint"
+ },
+ {
+  "lat": 32.10272,
+  "lon": 35.16376,
+  "name_ar": "حاجز اريئيل",
+  "name": "מחסום אריאל",
+  "name_en": "Ariel Checkpoint"
+ },
+ {
+  "lat": 32.28121,
+  "lon": 35.07566,
+  "name_ar": "حاجز أفني حيفتس",
+  "name": "حاجز أفني حيفتس/ מחסום שופה‎",
+  "name_en": "Avnei Hefetz Checkpoint"
+ },
+ {
+  "lat": 32.14649,
+  "lon": 35.11624,
+  "name_ar": "",
+  "name": "שער יקיר",
+  "name_en": ""
+ },
+ {
+  "lat": 31.74222,
+  "lon": 35.28928,
+  "name_ar": "حاجز وادي النار /الكونتينار",
+  "name": "Container Checkpoint",
+  "name_en": "Container Checkpoint"
+ },
+ {
+  "lat": 31.58118,
+  "lon": 35.40741,
+  "name_ar": "",
+  "name": "Mizpe Shalem Checkpoint",
+  "name_en": "Mizpe Shalem Checkpoint"
+ },
+ {
+  "lat": 31.83077,
+  "lon": 35.44587,
+  "name_ar": "حاجز جنوب أريحا",
+  "name": "حاجز جنوب أريحا / מחסום דרום יריחו",
+  "name_en": "Jericho - South Checkpoint"
+ },
+ {
+  "lat": 31.83075,
+  "lon": 35.44599,
+  "name_ar": "",
+  "name": "Jericho DCO Checkpoint",
+  "name_en": "Jericho DCO Checkpoint"
+ },
+ {
+  "lat": 31.86425,
+  "lon": 35.49796,
+  "name_ar": "حاجز شرق أريحا",
+  "name": "حاجز شرق أريحا / מחסום מזרוח יריחו",
+  "name_en": "Jericho - East Checkpoint"
+ },
+ {
+  "lat": 31.86862,
+  "lon": 35.50869,
+  "name_ar": "حاجز جسر الملك حسين",
+  "name": "حاجز جسر الملك حسين / מחסום מזרוח יריחו",
+  "name_en": "Allenby Bridge Checkpoint"
+ },
+ {
+  "lat": 32.28042,
+  "lon": 35.03912,
+  "name_ar": "معبر تئينيم",
+  "name": "מעבר תאנים",
+  "name_en": "Te'enim Checkpoint"
+ },
+ {
+  "lat": 31.78331,
+  "lon": 35.26381,
+  "name_ar": "حاجز الزعيم",
+  "name": "מחסום א-זעיים / حاجز الزعيم",
+  "name_en": "Az-Za'ayyem Checkpoint"
+ },
+ {
+  "lat": 31.78325,
+  "lon": 35.26381,
+  "name_ar": "حاجز الزعيم",
+  "name": "מחסום א-זעיים / حاجز الزعيم",
+  "name_en": "Az-Za'ayyem Checkpoint"
+ },
+ {
+  "lat": 32.04014,
+  "lon": 35.00668,
+  "name_ar": "",
+  "name": "מחסום רנתיס",
+  "name_en": ""
+ },
+ {
+  "lat": 32.1633,
+  "lon": 35.26316,
+  "name_ar": "",
+  "name": "حاجز حوارة",
+  "name_en": ""
+ },
+ {
+  "lat": 32.26422,
+  "lon": 35.18792,
+  "name_ar": "",
+  "name": "מחסום שבי שומרון حاجز شافي شمرون",
+  "name_en": ""
+ },
+ {
+  "lat": 32.25507,
+  "lon": 35.18525,
+  "name_ar": "",
+  "name": "מחסום דיר שרף حاجز ديار شرف",
+  "name_en": ""
+ },
+ {
+  "lat": 32.14645,
+  "lon": 35.11619,
+  "name_ar": "",
+  "name": "שער יקיר",
+  "name_en": ""
+ },
+ {
+  "lat": 32.19316,
+  "lon": 34.99943,
+  "name_ar": "",
+  "name": "מעבר צופים",
+  "name_en": "Tzufim Checkpoint"
+ }
+]

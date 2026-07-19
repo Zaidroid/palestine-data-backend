@@ -1,0 +1,333 @@
+[
+ {
+  "catalog_key": "بيت_عينون",
+  "catalog_name": "بيت عينون",
+  "osm_name_ar": "نقطة تفتيش بيت هداسا",
+  "osm_name_en": "Beit Hadassa Check point",
+  "old": [
+   31.561,
+   35.122
+  ],
+  "new": [
+   31.52611,
+   35.10413
+  ],
+  "shift_km": 4.23,
+  "shared_tokens": [
+   "Beit",
+   "بيت"
+  ],
+  "cur_precision": "(none)"
+ },
+ {
+  "catalog_key": "عطاره_البلد",
+  "catalog_name": "عطارة البلد",
+  "osm_name_ar": "حاجز عطارة",
+  "osm_name_en": "Israeli army checkpoint",
+  "old": [
+   32.014,
+   35.186
+  ],
+  "new": [
+   31.98284,
+   35.20056
+  ],
+  "shift_km": 3.73,
+  "shared_tokens": [
+   "عطاره"
+  ],
+  "cur_precision": "(none)"
+ },
+ {
+  "catalog_key": "الكنتينر",
+  "catalog_name": "الكنتينر",
+  "osm_name_ar": "حاجز وادي النار /الكونتينار",
+  "osm_name_en": "Container Checkpoint",
+  "old": [
+   31.731,
+   35.258
+  ],
+  "new": [
+   31.74222,
+   35.28928
+  ],
+  "shift_km": 3.21,
+  "shared_tokens": [
+   "Container"
+  ],
+  "cur_precision": "(none)"
+ },
+ {
+  "catalog_key": "جسر الملك حسين",
+  "catalog_name": "جسر الملك حسين",
+  "osm_name_ar": "حاجز جسر الملك حسين",
+  "osm_name_en": "Allenby Bridge Checkpoint",
+  "old": [
+   31.8739,
+   35.5409
+  ],
+  "new": [
+   31.86862,
+   35.50869
+  ],
+  "shift_km": 3.1,
+  "shared_tokens": [
+   "Allenby",
+   "Bridge",
+   "الملك",
+   "جسر",
+   "حسين"
+  ],
+  "cur_precision": "checkpoint"
+ },
+ {
+  "catalog_key": "شافي شمرون",
+  "catalog_name": "شافي شمرون",
+  "osm_name_ar": "",
+  "osm_name_en": "מחסום שבי שומרון حاجز شافي شمرون",
+  "old": [
+   32.2461,
+   35.2117
+  ],
+  "new": [
+   32.26422,
+   35.18792
+  ],
+  "shift_km": 3.01,
+  "shared_tokens": [
+   "شافي",
+   "شمرون"
+  ],
+  "cur_precision": "(none)"
+ },
+ {
+  "catalog_key": "استراحة اريحا",
+  "catalog_name": "استراحة أريحا",
+  "osm_name_ar": "",
+  "osm_name_en": "Jericho DCO Checkpoint",
+  "old": [
+   31.853,
+   35.464
+  ],
+  "new": [
+   31.83075,
+   35.44599
+  ],
+  "shift_km": 3.0,
+  "shared_tokens": [
+   "Jericho"
+  ],
+  "cur_precision": "(none)"
+ },
+ {
+  "catalog_key": "دير_شرف",
+  "catalog_name": "دير شرف",
+  "osm_name_ar": "",
+  "osm_name_en": "מחסום דיר שרף حاجز ديار شرف",
+  "old": [
+   32.238,
+   35.183
+  ],
+  "new": [
+   32.25507,
+   35.18525
+  ],
+  "shift_km": 1.91,
+  "shared_tokens": [
+   "شرف"
+  ],
+  "cur_precision": "(none)"
+ },
+ {
+  "catalog_key": "التفافي_حواره",
+  "catalog_name": "التفافي حوارة",
+  "osm_name_ar": "",
+  "osm_name_en": "حاجز حوارة",
+  "old": [
+   32.16,
+   35.258
+  ],
+  "new": [
+   32.1633,
+   35.26316
+  ],
+  "shift_km": 0.61,
+  "shared_tokens": [
+   "حواره"
+  ],
+  "cur_precision": "(none)"
+ },
+ {
+  "catalog_key": "اشارات_ارائيل",
+  "catalog_name": "اشارات ارائيل",
+  "osm_name_ar": "حاجز اريئيل",
+  "osm_name_en": "Ariel Checkpoint",
+  "old": [
+   32.105,
+   35.165
+  ],
+  "new": [
+   32.10272,
+   35.16376
+  ],
+  "shift_km": 0.28,
+  "shared_tokens": [
+   "Ariel"
+  ],
+  "cur_precision": "(none)"
+ },
+ {
+  "catalog_key": "الزعيم",
+  "catalog_name": "الزعيم",
+  "osm_name_ar": "حاجز الزعيم",
+  "osm_name_en": "Az-Za'ayyem Checkpoint",
+  "old": [
+   31.7834,
+   35.2638
+  ],
+  "new": [
+   31.78336,
+   35.26381
+  ],
+  "shift_km": 0.0,
+  "shared_tokens": [
+   "الزعيم"
+  ],
+  "cur_precision": "checkpoint"
+ },
+ {
+  "catalog_key": "حواره",
+  "catalog_name": "حوارة",
+  "osm_name_ar": "نقطة تفتيش حوارة العسكرية الاسرائيلية",
+  "osm_name_en": "Hawwarah Israili Check Point",
+  "old": [
+   32.178,
+   35.2735
+  ],
+  "new": [
+   32.17801,
+   35.27345
+  ],
+  "shift_km": 0.0,
+  "shared_tokens": [
+   "حواره"
+  ],
+  "cur_precision": "checkpoint"
+ },
+ {
+  "catalog_key": "جبع",
+  "catalog_name": "جبع",
+  "osm_name_ar": "نقطة تفتيش الجبع الاسرائيلية",
+  "osm_name_en": "Jaba' Israeli Check Point",
+  "old": [
+   31.8539,
+   35.2564
+  ],
+  "new": [
+   31.85392,
+   35.2564
+  ],
+  "shift_km": 0.0,
+  "shared_tokens": [
+   "Jaba'"
+  ],
+  "cur_precision": "checkpoint"
+ },
+ {
+  "catalog_key": "عناتا",
+  "catalog_name": "عناتا",
+  "osm_name_ar": "",
+  "osm_name_en": "Anata - Shwafat Checkpoint",
+  "old": [
+   31.8084,
+   35.2424
+  ],
+  "new": [
+   31.8084,
+   35.24238
+  ],
+  "shift_km": 0.0,
+  "shared_tokens": [
+   "Anata"
+  ],
+  "cur_precision": "checkpoint"
+ },
+ {
+  "catalog_key": "الولجه",
+  "catalog_name": "الولجة",
+  "osm_name_ar": "حاجز الولجة - عين ياعيل",
+  "osm_name_en": "Al-Walaja - Ein Yael Checkpoint",
+  "old": [
+   31.7426,
+   35.1708
+  ],
+  "new": [
+   31.74257,
+   35.17082
+  ],
+  "shift_km": 0.0,
+  "shared_tokens": [
+   "Al-Walaja",
+   "الولجه"
+  ],
+  "cur_precision": "checkpoint"
+ },
+ {
+  "catalog_key": "عنبتا",
+  "catalog_name": "عنبتا",
+  "osm_name_ar": "حاجز عنبتا - عيناف",
+  "osm_name_en": "Antaba - Einav Checkpoint",
+  "old": [
+   32.2904,
+   35.1358
+  ],
+  "new": [
+   32.29043,
+   35.13579
+  ],
+  "shift_km": 0.0,
+  "shared_tokens": [
+   "عنبتا"
+  ],
+  "cur_precision": "checkpoint"
+ },
+ {
+  "catalog_key": "بيت_جالا",
+  "catalog_name": "بيت جالا",
+  "osm_name_ar": "",
+  "osm_name_en": "Check Point Beit Jala",
+  "old": [
+   31.716,
+   35.1775
+  ],
+  "new": [
+   31.71604,
+   35.17751
+  ],
+  "shift_km": 0.0,
+  "shared_tokens": [
+   "Beit",
+   "Jala"
+  ],
+  "cur_precision": "checkpoint"
+ },
+ {
+  "catalog_key": "تياسير",
+  "catalog_name": "تياسير",
+  "osm_name_ar": "حاجز تياسير العسكري",
+  "osm_name_en": "Tayaser checkpoint",
+  "old": [
+   32.3289,
+   35.4353
+  ],
+  "new": [
+   32.32892,
+   35.43535
+  ],
+  "shift_km": 0.0,
+  "shared_tokens": [
+   "تياسير"
+  ],
+  "cur_precision": "checkpoint"
+ }
+]
